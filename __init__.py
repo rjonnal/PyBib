@@ -17,6 +17,8 @@ LOWER_CASE_WORDS = ['a', 'aboard', 'about', 'above', 'absent', 'across', 'after'
 
 class Journal:
 
+    db_put_count = 1
+    
     def __init__(self,long_title,short_title):
         self.long_title = long_title
         self.short_title = short_title
@@ -28,7 +30,13 @@ class Journal:
         return self.short_title
 
     def db_put(self,cursor):
-        cursor.execute('''INSERT INTO journals VALUES(?,?)''',(self.long_title,self.short_title))
+        print 'Adding %s to database (%d).'%(self,Journal.db_put_count),
+        try:
+            cursor.execute('''INSERT INTO journals VALUES(?,?)''',(self.long_title,self.short_title))
+            Journal.db_put_count = Journal.db_put_count + 1
+            print
+        except sqlite3.IntegrityError as e:
+            print e,'. Journal "%s" already exists.'%self
                 
 class JournalList:
 
@@ -36,13 +44,18 @@ class JournalList:
         self.journals = []
         self.long_titles = []
         self.short_titles = []
-
-    def write_db(self):
         self.conn = sqlite3.connect(DATABASE_FILENAME)
+
+    def read_db(self):
+        c = self.conn.cursor()
+        for row in c.execute('SELECT * FROM journals ORDER BY long_title'):
+            self.add(*row)
+        
+    def write_db(self):
         c = self.conn.cursor()
 
         c.execute('''DROP TABLE IF EXISTS journals''')
-        c.execute('''CREATE TABLE journals (title text, abbreviated_title text)''')
+        c.execute('''CREATE TABLE journals (long_title TEXT PRIMARY KEY, short_title TEXT)''')
         for j in self.journals:
             j.db_put(self.conn.cursor())
         self.conn.commit()
@@ -71,11 +84,11 @@ class JournalList:
                     long_title = row[0]
                     short_title = row[1]
                     journal = Journal(long_title,short_title)
-                    self.add(long_title,short_title)
+                    self.add(long_title,short_title,True)
 
-    def populate_from_html(self):
+    def populate_from_html(self,dirname):
         for letter in LETTERS:
-            fid = open(os.path.join(ISI_HTML_DIR,'%s.html'%letter))
+            fid = open(os.path.join(dirname,'%s.html'%letter))
             html = fid.read()
             fid.close()
             while len(html)>VALID_ENTRY_MINIMUM_LENGTH:
@@ -91,16 +104,17 @@ class JournalList:
                 html = html[ddidx+4:]
                 nlidx = html.find('\n')
                 short_title = html[:nlidx].strip()
-                self.add(long_title,short_title)
+                self.add(long_title,short_title,True)
                 
-    def add(self,long_title,short_title):
-        long_title = self.title_case(long_title)
-        short_title = self.title_case(short_title)
+    def add(self,long_title,short_title,check_case=False):
+        if check_case:
+            long_title = self.title_case(long_title)
+            short_title = self.title_case(short_title)
         journal = Journal(long_title,short_title)
-        self.short_titles.append(short_title)
-        self.long_titles.append(long_title)
-        self.journals.append(journal)
-        print journal
+        if not long_title in self.long_titles:
+            self.short_titles.append(short_title)
+            self.long_titles.append(long_title)
+            self.journals.append(journal)
         
     def title_case(self,string):
         word_list = string.split(' ')
@@ -121,8 +135,12 @@ class JournalList:
                 last_colon = False
         output.append(word_list[-1].title())
         return ' '.join(output)
-    def get_close_matches(self,test_string,n=3,cutoff=0.6):
-        return difflib.get_close_matches(test_string,self.all_titles)
+    
+    def get_close_matches_long(self,test_string,n=3,cutoff=0.6):
+        return difflib.get_close_matches(test_string,self.long_titles)
+
+    def get_close_matches_short(self,test_string,n=3,cutoff=0.6):
+        return difflib.get_close_matches(test_string,self.short_titles)
 
 
 class BibtexString:
@@ -237,17 +255,17 @@ class BibtexBibliography:
                 continue
 
 jlist = JournalList()
-jlist.populate_from_html()
-jlist.write_db()
-sys.exit()
-jlist = JournalList(JOURNAL_LIST_FILENAME)
+#jlist.populate_from_html(ISI_HTML_DIR)
+#jlist.populate_from_csv(JOURNAL_LIST_FILENAME)
+jlist.read_db()
 bb = BibtexBibliography(BIBTEX_FILENAME)
 bb.replace_strings(TITLE_KEY_FILENAME,'./bibtex/test.bib')
 
 for item in bb.database:
     try:
-        matches = jlist.get_close_matches(item['journal'])
-        print item,matches
+        long_matches = jlist.get_close_matches_long(item['journal'])
+        short_matches = jlist.get_close_matches_long(item['journal'])
+        print item,long_matches,short_matches
     except KeyError as e:
         print e
     print
