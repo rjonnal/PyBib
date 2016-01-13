@@ -4,7 +4,7 @@ import sys,os
 from time import sleep
 import difflib
 import urllib2
-from bs4 import BeautifulSoup
+import distance
 
 JOURNAL_LIST_FILENAME = './journal_list/jlist.csv'
 DATABASE_FILENAME = './db/pybib.db'
@@ -14,6 +14,8 @@ VALID_ENTRY_MINIMUM_LENGTH = 10
 ISI_HTML_DIR = './journal_list/isi_html'
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 LOWER_CASE_WORDS = ['a', 'aboard', 'about', 'above', 'absent', 'across', 'after', 'against', 'along', 'alongside', 'amid', 'amidst', 'among', 'amongst', 'an', 'and', 'around', 'as', 'aslant', 'astride', 'at', 'athwart', 'atop', 'barring', 'before', 'behind', 'below', 'beneath', 'beside', 'besides', 'between', 'beyond', 'but', 'by', 'despite', 'down', 'during', 'except', 'failing', 'following', 'for', 'for', 'from', 'in', 'inside', 'into', 'like', 'mid', 'minus', 'near', 'next', 'nor', 'notwithstanding', 'of', 'off', 'on', 'onto', 'opposite', 'or', 'out', 'outside', 'over', 'past', 'per', 'plus', 'regarding', 'round', 'save', 'since', 'so', 'than', 'the', 'through', 'throughout', 'till', 'times', 'to', 'toward', 'towards', 'under', 'underneath', 'unlike', 'until', 'up', 'upon', 'via', 'vs.', 'when', 'with', 'within', 'without', 'worth', 'yet']
+
+PARAMETER_PRIORITIES = {'entry_type':99, 'journal':85, 'tag':100, 'year':65, 'title':90, 'publisher':0, 'author':95, 'number':75, 'volume':80, 'pages':70, 'blurb':0, 'note':0, 'booktitle':0, 'organization':0, 'howpublished':0, 'editor':0, 'timestamp':0, 'owner':0, 'institution':0, 'month':0, 'nourl':0, 'abstract':0, 'keywords':0, 'location':0, '__markedentry':0, 'chapter':0, 'pii':0, 'doi':0, 'pmid':0, 'school':0, 'address':0, 'url':0, 'edition':0, 'city':0, 'issue':0}
 
 class Journal:
 
@@ -136,11 +138,23 @@ class JournalList:
         output.append(word_list[-1].title())
         return ' '.join(output)
     
-    def get_close_matches_long(self,test_string,n=3,cutoff=0.6):
-        return difflib.get_close_matches(test_string,self.long_titles)
 
-    def get_close_matches_short(self,test_string,n=3,cutoff=0.6):
-        return difflib.get_close_matches(test_string,self.short_titles)
+    def get_close_matches_short(self,test_string,n=5,cutoff=0.5):
+        return self.get_scored_matches(test_string,self.short_titles,n,cutoff,True)
+
+    def get_close_matches_long(self,test_string,n=5,cutoff=0.5):
+        return self.get_scored_matches(test_string,self.long_titles,n,cutoff,True)
+
+    def get_scored_matches(self,test_string,test_list,n,cutoff,ignore_case):
+        candidates = difflib.get_close_matches(test_string,test_list,n=n,cutoff=cutoff)
+        scores = []
+        for candidate in candidates:
+            if ignore_case:
+                scores.append(1.0-distance.levenshtein(test_string,candidate,normalized=True))
+            else:
+                scores.append(1.0-distance.levenshtein(test_string.lower(),candidate.lower(),normalized=True))
+        return zip(candidates,scores)
+    
 
 
 class BibtexString:
@@ -176,7 +190,7 @@ class BibtexString:
     def process_chunk(self):
         out = {}
         chunk = self.get_chunk()
-        entry_type = chunk[chunk.find('@')+1:chunk.find('{')]
+        entry_type = chunk[chunk.find('@')+1:chunk.find('{')].upper()
         out['entry_type'] = entry_type
         last_close_curly = len(chunk) - chunk[::-1].find('}')
         innards = chunk[chunk.find('{')+1:last_close_curly-1]
@@ -209,24 +223,101 @@ class BibtexString:
                 out['tag'] = item
             else:
                 temp = item.split('=')
-                key = temp[0]
+                key = temp[0].strip().lower()
                 val = '='.join(temp[1:])
-                out[key] = val.replace('{','').replace('}','')
+                out[key] = val.replace('{','').replace('}','').strip()
         return out
         
     
 class BibtexBibliography:
 
-    def __init__(self,filename):
+    def __init__(self):
+        self.conn = sqlite3.connect(DATABASE_FILENAME)
+
         self.database = []
+        self.entry_types = []
+        self.parameters = []
+        self.tags = []
+
+
+    def populate_from_bibtex(self,filename):
         with open(filename,'rb') as f:
             bibtex_string = f.read()
         bs = BibtexString(bibtex_string)
         while bs.has_chunks():
             entry = bs.process_chunk()
-            self.database.append(entry)
 
-    def replace_strings(self,replacement_key_filename,output_filename):
+            while entry['tag'] in self.tags:
+                entry['tag'] = entry['tag'] + '_'
+                
+            self.database.append(entry)
+            self.add_schema(entry)
+
+    def add_schema(self,entry):
+            self.tags.append(entry['tag'])
+            
+            et = entry['entry_type']
+            if not et in self.entry_types:
+                self.entry_types.append(et)
+            ekeys = entry.keys()
+            for ekey in ekeys:
+                if not ekey.lower() in self.parameters:
+                    self.parameters.append(ekey.lower())
+
+    def read_db(self):
+        c = self.conn.cursor()
+        keys = []
+        for row in c.execute('PRAGMA table_info(bibliography)'):
+            keys.append(row[1])
+        for row in c.execute('SELECT * FROM bibliography ORDER BY tag'):
+            entry = {}
+            for key,value in zip(keys,row):
+                entry[key] = value
+            self.database.append(entry)
+            self.add_schema(entry)
+            
+    def write_db(self):
+        c = self.conn.cursor()
+        # look through the parameters of the existing entries to assemble some SQL
+        priorities = []
+        pkeys = PARAMETER_PRIORITIES.keys()
+        for param in self.parameters:
+            if param in pkeys:
+                priorities.append(PARAMETER_PRIORITIES[param])
+            else:
+                priorities.append(0)
+
+        # sort params by priority, for sensible ordering in db
+        params = [param for (priority,param) in sorted(zip(priorities,self.parameters))][::-1]
+        sql = '(%s TEXT PRIMARY KEY, '%params[0]
+        params = params
+        for param in params[1:]:
+            sql = sql + '%s TEXT, '%param
+        sql = sql[:-2]
+        sql = sql + ')'
+
+        n_params = len(params)
+        qmarks = '('+'?,'*(n_params-1)+'?)'
+        
+        c.execute('''DROP TABLE IF EXISTS bibliography''')
+        c.execute('''CREATE TABLE bibliography'''+sql)
+
+        for entry in self.database:
+            values = []
+            for param in params:
+                try:
+                    values.append(unicode(entry[param]))
+                except Exception as e:
+                    values.append('')
+            command = '''INSERT INTO bibliography VALUES'''+qmarks
+            try:
+                c.execute(command,values)
+            except sqlite3.IntegrityError as e:
+                print 'Tag %s already exists in bibliography.'%(entry['tag']),params[0]
+        self.conn.commit()
+
+                    
+    def replace_strings(self,replacement_key_filename):
         with open(replacement_key_filename,'rb') as f:
             bibtex_string = f.read()
 
@@ -254,19 +345,32 @@ class BibtexBibliography:
             except Exception as e:
                 continue
 
-jlist = JournalList()
-#jlist.populate_from_html(ISI_HTML_DIR)
-#jlist.populate_from_csv(JOURNAL_LIST_FILENAME)
-jlist.read_db()
-bb = BibtexBibliography(BIBTEX_FILENAME)
-bb.replace_strings(TITLE_KEY_FILENAME,'./bibtex/test.bib')
+    def clean_journal_titles(self,use_long_titles=True):
+        jlist = JournalList()
+        jlist.read_db()
+        for idx,entry in enumerate(self.database):
+            print 'Item %d of %d.'%(idx+1,len(self.database)),
+            try:
+                if use_long_titles:
+                    matches = jlist.get_close_matches_long(entry['journal'],n=1)
+                else:
+                    matches = jlist.get_close_matches_short(entry['journal'],n=1)
+            except KeyError as e:
+                print e
 
-for item in bb.database:
-    try:
-        long_matches = jlist.get_close_matches_long(item['journal'])
-        short_matches = jlist.get_close_matches_long(item['journal'])
-        print item,long_matches,short_matches
-    except KeyError as e:
-        print e
-    print
+            if len(matches):
+                score = [y for x,y in matches][0]
+                new_journal = [x for x,y in matches][0]
+                if .95<score<1.0:
+                    print 'Replacing %s with %s.'%(entry['journal'],new_journal)
+                    entry['journal'] = new_journal
+                else:
+                    print
+                
+            
+bb = BibtexBibliography()
+bb.populate_from_bibtex(BIBTEX_FILENAME)
+bb.replace_strings(TITLE_KEY_FILENAME)
+bb.clean_journal_titles()
+bb.write_db()
 
