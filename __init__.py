@@ -17,6 +17,8 @@ LOWER_CASE_WORDS = ['a', 'aboard', 'about', 'above', 'absent', 'across', 'after'
 
 PARAMETER_PRIORITIES = {'entry_type':99, 'journal':85, 'tag':100, 'year':65, 'title':90, 'publisher':0, 'author':95, 'number':75, 'volume':80, 'pages':70, 'blurb':0, 'note':0, 'booktitle':0, 'organization':0, 'howpublished':0, 'editor':0, 'timestamp':0, 'owner':0, 'institution':0, 'month':0, 'nourl':0, 'abstract':0, 'keywords':0, 'location':0, '__markedentry':0, 'chapter':0, 'pii':0, 'doi':0, 'pmid':0, 'school':0, 'address':0, 'url':0, 'edition':0, 'city':0, 'issue':0}
 
+ACRONYMNS = ['AO','OCT','SLO','AO-OCT','AO-SLO','AOSLO','AOOCT','SD-OCT','TD-OCT','SS-OCT','pvOCT']
+
 class Journal:
 
     db_put_count = 1
@@ -224,8 +226,10 @@ class BibtexString:
             else:
                 temp = item.split('=')
                 key = temp[0].strip().lower()
-                val = '='.join(temp[1:])
-                out[key] = val.replace('{','').replace('}','').strip()
+                val = '='.join(temp[1:]).strip()
+                if val[0]=='{' and val[-1]=='}':
+                    val = val[1:-1]
+                out[key] = val
         return out
         
     
@@ -349,24 +353,22 @@ class BibtexBibliography:
         jlist = JournalList()
         jlist.read_db()
         for idx,entry in enumerate(self.database):
-            print 'Item %d of %d.'%(idx+1,len(self.database)),
             try:
                 if use_long_titles:
                     matches = jlist.get_close_matches_long(entry['journal'],n=1)
                 else:
                     matches = jlist.get_close_matches_short(entry['journal'],n=1)
             except KeyError as e:
-                print e
+                pass
 
             if len(matches):
                 score = [y for x,y in matches][0]
                 new_journal = [x for x,y in matches][0]
                 if .95<score<1.0:
-                    print 'Replacing %s with %s.'%(entry['journal'],new_journal)
+                    print 'Item %d of %d.'%(idx+1,len(self.database)),'%s -> %s.'%(entry['journal'],new_journal)
                     entry['journal'] = new_journal
                 else:
-                    print
-                
+                    pass
             
 bb = BibtexBibliography()
 bb.populate_from_bibtex(BIBTEX_FILENAME)
