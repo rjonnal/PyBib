@@ -1,11 +1,16 @@
 import csv
 import sqlite3
 import sys,os
+from time import sleep
+import difflib
+import urllib2
+
 
 JOURNAL_LIST_FILENAME = './journal_list/jlist.csv'
 DATABASE_FILENAME = './db/pybib.db'
-BIBTEX_FILENAME = './bibtex/bibliography.bib'
+BIBTEX_FILENAME = './bibtex/bibliography_full.bib'
 TITLE_KEY_FILENAME = './bibtex/longtitles.bib'
+VALID_ENTRY_MINIMUM_LENGTH = 10
 
 class Journal:
 
@@ -27,7 +32,30 @@ class Journal:
 
     def db_put(self,cursor):
         cursor.execute('''INSERT INTO journals VALUES(?,?,?,?,?,?,?)''',(self.title,self.abbreviated_title,self.publisher,self.latest_issue,self.earliest_volume,self.open_access,self.url))
+
+
+
+class JournalListISI:
+
+    def __init__(self):
+        pass
+
+    def get_html(self):
+        template = 'http://www.efm.leeds.ac.uk/~mark/ISIabbr/%s_abrvjt.html'
+        letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        outdir = './journal_list/isi_html'
+        for letter in letters:
+            url = template%letter
+            response = urllib2.urlopen('http://pythonforbeginners.com/')
+            print letter,response.info()
+            html = response.read()
+            outfn = os.path.join(outdir,'%s.html'%letter)
+            with open(outfn,'w') as fid:
+                fid.write(html)
+            response.close()  # best practice to close the file
+
     
+        
 class JournalList:
 
     def __init__(self,filename):
@@ -37,7 +65,11 @@ class JournalList:
 
         c.execute('''DROP TABLE IF EXISTS journals''')
         c.execute('''CREATE TABLE journals (title text, abbreviated_title text, publisher text, latest_issue text, earliest_volume text, open_access text, url text)''')
-            
+
+        self.all_titles = []
+        self.long_titles = []
+        self.short_titles = []
+        
         with open(filename,'rb') as csvfile:
             reader = csv.reader(csvfile)
             header_done = False
@@ -56,10 +88,16 @@ class JournalList:
                     journal = Journal(title,abbreviated_title,publisher,
                                       latest_issue,earliest_volume,open_access,url)
                     journal.db_put(c)
-
+                    self.all_titles.append(title)
+                    self.all_titles.append(abbreviated_title)
+                    self.short_titles.append(abbreviated_title)
+                    self.long_titles.append(title)
+                    
                     self.journals.append(journal)
         self.conn.commit()
 
+    def get_close_matches(self,test_string,n=3,cutoff=0.6):
+        return difflib.get_close_matches(test_string,self.all_titles)
 
 
 class BibtexString:
@@ -67,21 +105,27 @@ class BibtexString:
     def __init__(self,string):
         self.string = string
         self.substring = string
+        self.original_length = len(self.string)
 
+    def has_chunks(self):
+        return len(self.substring)>VALID_ENTRY_MINIMUM_LENGTH
+    
     def get_chunk(self):
         out = ''
         at_idx = self.substring.find('@')
         self.substring = self.substring[at_idx:]
-        open_bracket_idx = self.substring.find('{')+1
+        open_bracket_idx = self.substring.find('{')
         score = 1
-        position = open_bracket_idx
-        while score>0:
-            if self.substring[position]=='}':
-                score = score - 1
-            if self.substring[position]=='{':
-                score = score + 1
-            #print self.substring[position],score
-            position = position + 1
+        position = open_bracket_idx+1
+        while score>0 and len(self.substring)>1:
+            try:
+                if self.substring[position]=='}':
+                    score = score - 1
+                if self.substring[position]=='{':
+                    score = score + 1
+                position = position + 1
+            except IndexError as e:
+                break
         out = self.substring[:position]
         self.substring = self.substring[position:]
         return out
@@ -121,19 +165,23 @@ class BibtexString:
             if item.find('=')==-1:
                 out['tag'] = item
             else:
-                key,val = item.split('=')
-                out[key] = val[1:-1]
+                temp = item.split('=')
+                key = temp[0]
+                val = '='.join(temp[1:])
+                out[key] = val.replace('{','').replace('}','')
         return out
         
     
 class BibtexBibliography:
 
     def __init__(self,filename):
+        self.database = []
         with open(filename,'rb') as f:
             bibtex_string = f.read()
         bs = BibtexString(bibtex_string)
-        for k in range(100):
-            print bs.process_chunk()
+        while bs.has_chunks():
+            entry = bs.process_chunk()
+            self.database.append(entry)
 
     def replace_strings(self,replacement_key_filename,output_filename):
         with open(replacement_key_filename,'rb') as f:
@@ -154,22 +202,26 @@ class BibtexBibliography:
             self.string_database[key] = val
 
         keys = self.string_database.keys()
-        print self.string_database.values()
 
-        for idx,item in enumerate(self.database.entries):
+        for idx,item in enumerate(self.database):
             try:
                 journal = item['journal']
                 if journal in keys:
                     item['journal'] = self.string_database[journal]
             except Exception as e:
                 continue
-            
-        out = bibtexparser.dumps(self.database)
-        #print out
-        #writer = bibtexparser.bwriter.BibTexWriter()
-        #with open(output_filename, 'w') as bibfile:
-        #    bibfile.write(writer.write(self.database))
-    
-#jlist = JournalList(JOURNAL_LIST_FILENAME)
+jlist = JournalListISI()
+jlist.get_html()
+sys.exit()
+jlist = JournalList(JOURNAL_LIST_FILENAME)
 bb = BibtexBibliography(BIBTEX_FILENAME)
-#bb.replace_strings(TITLE_KEY_FILENAME,'./bibtex/test.bib')
+bb.replace_strings(TITLE_KEY_FILENAME,'./bibtex/test.bib')
+
+for item in bb.database:
+    try:
+        matches = jlist.get_close_matches(item['journal'])
+        print item,matches
+    except KeyError as e:
+        print e
+    print
+
