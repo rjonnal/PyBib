@@ -1,715 +1,2907 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="A"></A><DT>A + U-ARCHITECTURE AND URBANISM
+<B><DD>	A U-ARCHIT URBAN
+</B><DT>A N A E-APPROCHE NEUROPSYCHOLOGIQUE DES APPRENTISSAGES CHEZ L ENFANT
+<B><DD>	ANAE
+</B><DT>AAA-ARBEITEN AUS ANGLISTIK UND AMERIKANISTIK
+<B><DD>	AAA-ARB ANGLIST AM
+</B><DT>AAPG BULLETIN-AMERICAN ASSOCIATION OF PETROLEUM GEOLOGISTS
+<B><DD>	AAPG BULL
+</B><DT>AAPS PHARMSCI
+<B><DD>	AAPS PHARMSCI
+</B><DT>ABA JOURNAL
+<B><DD>	ABA J
+</B><DT>ABACUS-NEW YORK
+<B><DD>	ABACUS-NEW YORK
+</B><DT>ABDOMINAL IMAGING
+<B><DD>	ABDOM IMAGING
+</B><DT>ABHANDLUNGEN AUS DEM MATHEMATISCHEN SEMINAR DER UNIVERSITAT HAMBURG
+<B><DD>	ABH MATH SEM HAMBURG
+</B><DT>ABSTRACTS OF PAPERS OF THE AMERICAN CHEMICAL SOCIETY
+<B><DD>	ABSTR PAP AM CHEM S
+</B><DT>ACADEME-BULLETIN OF THE AAUP
+<B><DD>	ACADEME
+</B><DT>ACADEMIC EMERGENCY MEDICINE
+<B><DD>	ACAD EMERG MED
+</B><DT>ACADEMIC MEDICINE
+<B><DD>	ACAD MED
+</B><DT>ACADEMIC PSYCHIATRY
+<B><DD>	ACAD PSYCHIATR
+</B><DT>ACADEMIC RADIOLOGY
+<B><DD>	ACAD RADIOL
+</B><DT>ACADEMY OF MANAGEMENT EXECUTIVE
+<B><DD>	ACAD MANAGE EXEC
+</B><DT>ACADEMY OF MANAGEMENT JOURNAL
+<B><DD>	ACAD MANAGE J
+</B><DT>ACADEMY OF MANAGEMENT REVIEW
+<B><DD>	ACAD MANAGE REV
+</B><DT>ACADIENSIS
+<B><DD>	ACADIENSIS
+</B><DT>ACAROLOGIA
+<B><DD>	ACAROLOGIA
+</B><DT>ACCIDENT ANALYSIS AND PREVENTION
+<B><DD>	ACCIDENT ANAL PREV
+</B><DT>ACCOUNTING ORGANIZATIONS AND SOCIETY
+<B><DD>	ACCOUNT ORG SOC
+</B><DT>ACCOUNTING REVIEW
+<B><DD>	ACCOUNT REV
+</B><DT>ACCOUNTS OF CHEMICAL RESEARCH
+<B><DD>	ACCOUNTS CHEM RES
+</B><DT>ACCREDITATION AND QUALITY ASSURANCE
+<B><DD>	ACCREDIT QUAL ASSUR
+</B><DT>ACH-MODELS IN CHEMISTRY
+<B><DD>	ACH-MODELS CHEM
+</B><DT>ACI MATERIALS JOURNAL
+<B><DD>	ACI MATER J
+</B><DT>ACI STRUCTURAL JOURNAL
+<B><DD>	ACI STRUCT J
+</B><DT>ACM COMPUTING SURVEYS
+<B><DD>	ACM COMPUT SURV
+</B><DT>ACM SIGPLAN NOTICES
+<B><DD>	ACM SIGPLAN NOTICES
+</B><DT>ACM TRANSACTIONS ON COMPUTER SYSTEMS
+<B><DD>	ACM T COMPUT SYST
+</B><DT>ACM TRANSACTIONS ON DATABASE SYSTEMS
+<B><DD>	ACM T DATABASE SYST
+</B><DT>ACM TRANSACTIONS ON DESIGN AUTOMATION OF ELECTRONIC SYSTEMS
+<B><DD>	ACM T DES AUTOMAT EL
+</B><DT>ACM TRANSACTIONS ON GRAPHICS
+<B><DD>	ACM T GRAPHIC
+</B><DT>ACM TRANSACTIONS ON INFORMATION SYSTEMS
+<B><DD>	ACM T INFORM SYST
+</B><DT>ACM TRANSACTIONS ON MATHEMATICAL SOFTWARE
+<B><DD>	ACM T MATH SOFTWARE
+</B><DT>ACM TRANSACTIONS ON OFFICE INFORMATION SYSTEMS
+<B><DD>	ACM T INFORM SYST
+</B><DT>ACM TRANSACTIONS ON OFFICE INFORMATION SYSTEMS
+<B><DD>	ACM T OFF INF SYST
+</B><DT>ACM TRANSACTIONS ON PROGRAMMING LANGUAGES AND SYSTEMS
+<B><DD>	ACM T PROGR LANG SYS
+</B><DT>ACM TRANSACTIONS ON SOFTWARE ENGINEERING AND METHODOLOGY
+<B><DD>	ACM T SOFTW ENG METH
+</B><DT>ACOUSTICAL PHYSICS
+<B><DD>	ACOUST PHYS+
+</B><DT>ACP-APPLIED CARDIOPULMONARY PATHOPHYSIOLOGY
+<B><DD>	ACP-APPL CARDIOPUL P
+</B><DT>ACRIDA
+<B><DD>	ACRIDA
+</B><DT>ACS SYMPOSIUM SERIES
+<B><DD>	ACS SYM SER
+</B><DT>ACSMS HEALTH & FITNESS JOURNAL
+<B><DD>	ACSMS HEALTH FIT J
+</B><DT>ACTA ACUSTICA
+<B><DD>	ACTA ACUST
+</B><DT>ACTA AGRICULTURAE SCANDINAVICA
+<B><DD>	ACTA AGR SCAND
+</B><DT>ACTA AGRICULTURAE SCANDINAVICA SECTION A-ANIMAL SCIENCE
+<B><DD>	ACTA AGR SCAND A-AN
+</B><DT>ACTA AGRICULTURAE SCANDINAVICA SECTION B-SOIL AND PLANT SCIENCE
+<B><DD>	ACTA AGR SCAND B-S P
+</B><DT>ACTA AGRONOMICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA AGRON HUNG
+</B><DT>ACTA ALIMENTARIA
+<B><DD>	ACTA ALIMENT HUNG
+</B><DT>ACTA ANAESTHESIOLOGICA SCANDINAVICA
+<B><DD>	ACTA ANAESTH SCAND
+</B><DT>ACTA ANATOMICA
+<B><DD>	ACTA ANAT
+</B><DT>ACTA APPLICANDAE MATHEMATICAE
+<B><DD>	ACTA APPL MATH
+</B><DT>ACTA ARITHMETICA
+<B><DD>	ACTA ARITH
+</B><DT>ACTA ASTRONAUTICA
+<B><DD>	ACTA ASTRONAUT
+</B><DT>ACTA ASTRONOMICA
+<B><DD>	ACTA ASTRONOM
+</B><DT>ACTA BIOCHIMICA ET BIOPHYSICA HUNGARICA
+<B><DD>	ACTA BIOCHIM BIOPHYS
+</B><DT>ACTA BIOCHIMICA ET BIOPHYSICA SINICA
+<B><DD>	ACTA BIOCH BIOPH SIN
+</B><DT>ACTA BIOCHIMICA POLONICA
+<B><DD>	ACTA BIOCHIM POL
+</B><DT>ACTA BIOLOGICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA BIOL ACAD SCI H
+</B><DT>ACTA BIOLOGICA CRACOVIENSIA SERIES BOTANICA
+<B><DD>	ACTA BIOL CRACOV BOT
+</B><DT>ACTA BIOLOGICA CRACOVIENSIA SERIES ZOOLOGIA
+<B><DD>	ACTA BIOL CRACOV ZOO
+</B><DT>ACTA BIOLOGICA ET MEDICA GERMANICA
+<B><DD>	ACTA BIOL MED GER
+</B><DT>ACTA BIOLOGICA HUNGARICA
+<B><DD>	ACTA BIOL HUNG
+</B><DT>ACTA BIOQUIMICA CLINICA LATINOAMERICANA
+<B><DD>	ACTA BIOQUIM CLIN L
+</B><DT>ACTA BIOTECHNOLOGICA
+<B><DD>	ACTA BIOTECHNOL
+</B><DT>ACTA BIOTHEORETICA
+<B><DD>	ACTA BIOTHEOR
+</B><DT>ACTA BOTANICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA BOT HUNG
+</B><DT>ACTA BOTANICA GALLICA
+<B><DD>	ACTA BOT GALLICA
+</B><DT>ACTA BOTANICA HUNGARICA
+<B><DD>	ACTA BOT HUNG
+</B><DT>ACTA BOTANICA INDICA
+<B><DD>	ACTA BOT INDICA
+</B><DT>ACTA BOTANICA NEERLANDICA
+<B><DD>	ACTA BOT NEERL
+</B><DT>ACTA BOTANICA SINICA
+<B><DD>	ACTA BOT SIN
+</B><DT>ACTA CARDIOLOGICA
+<B><DD>	ACTA CARDIOL
+</B><DT>ACTA CHEMICA SCANDINAVICA
+<B><DD>	ACTA CHEM SCAND
+</B><DT>ACTA CHEMICA SCANDINAVICA SERIES A-PHYSICAL AND INORGANIC CHEMISTRY
+<B><DD>	ACTA CHEM SCAND A
+</B><DT>ACTA CHEMICA SCANDINAVICA SERIES B-ORGANIC CHEMISTRY AND BIOCHEMISTRY
+<B><DD>	ACTA CHEM SCAND B
+</B><DT>ACTA CHIMICA ACADEMIAE SCIENTARIUM HUNGARICAE
+<B><DD>	ACTA CHIM HUNG
+</B><DT>ACTA CHIMICA HUNGARICA-MODELS IN CHEMISTRY
+<B><DD>	ACTA CHIM HUNG
+</B><DT>ACTA CHIMICA SINICA
+<B><DD>	ACTA CHIM SINICA
+</B><DT>ACTA CHIMICA SLOVENICA
+<B><DD>	ACTA CHIM SLOV
+</B><DT>ACTA CHIRURGIAE PLASTICAE
+<B><DD>	ACTA CHIR PLAST
+</B><DT>ACTA CHIRURGICA AUSTRIACA
+<B><DD>	ACTA CHIR AUSTRIACA
+</B><DT>ACTA CHIRURGICA BELGICA
+<B><DD>	ACTA CHIR BELG
+</B><DT>ACTA CHIRURGICA SCANDINAVICA
+<B><DD>	ACTA CHIR SCAND
+</B><DT>ACTA CHIRURGICA-THE EUROPEAN JOURNAL OF SURGERY
+<B><DD>	ACTA CHIR-EUR J SURG
+</B><DT>ACTA CIENTIFICA VENEZOLANA
+<B><DD>	ACTA CIENT VENEZ
+</B><DT>ACTA CLINICA BELGICA
+<B><DD>	ACTA CLIN BELG
+</B><DT>ACTA CRYSTALLOGRAPHICA SECTION A
+<B><DD>	ACTA CRYSTALLOGR A
+</B><DT>ACTA CRYSTALLOGRAPHICA SECTION B-STRUCTURAL SCIENCE
+<B><DD>	ACTA CRYSTALLOGR B
+</B><DT>ACTA CRYSTALLOGRAPHICA SECTION C-CRYSTAL STRUCTURE COMMUNICATIONS
+<B><DD>	ACTA CRYSTALLOGR C
+</B><DT>ACTA CRYSTALLOGRAPHICA SECTION D-BIOLOGICAL CRYSTALLOGRAPHY
+<B><DD>	ACTA CRYSTALLOGR D
+</B><DT>ACTA CYTOLOGICA
+<B><DD>	ACTA CYTOL
+</B><DT>ACTA DERMATO-VENEREOLOGICA
+<B><DD>	ACTA DERM-VENEREOL
+</B><DT>ACTA DIABETOLOGICA
+<B><DD>	ACTA DIABETOL
+</B><DT>ACTA DIABETOLOGICA LATINA
+<B><DD>	ACTA DIABETOL LAT
+</B><DT>ACTA ELECTRONICA
+<B><DD>	ACTA ELECTRON
+</B><DT>ACTA ENDOCRINOLOGICA
+<B><DD>	ACTA ENDOCRINOL-COP
+</B><DT>ACTA ENTOMOLOGICA BOHEMOSLOVACA
+<B><DD>	ACTA ENTOMOL BOHEMOS
+</B><DT>ACTA ENTOMOLOGICA SINICA
+<B><DD>	ACTA ENTOMOL SINICA
+</B><DT>ACTA FACULTATIS RERUM NATURALIUM UNIVERSITATIS COMENIANAE SERIES PHYSIOLOGIA PLANTARUM
+<B><DD>	ACTA FAC RERUM PHY
+</B><DT>ACTA FACULTATIS RERUM NATURALIUM UNIVERSITATIS COMENIANAE SERIES ZOOLOGIA
+<B><DD>	ACTA FAC RERUM ZOO
+</B><DT>ACTA GASTRO-ENTEROLOGICA BELGICA
+<B><DD>	ACTA GASTRO-ENT BELG
+</B><DT>ACTA GENETICAE MEDICAE ET GEMELLOLOGIAE
+<B><DD>	ACTA GENET MED GEMEL
+</B><DT>ACTA GEOLOGICA SINICA
+<B><DD>	ACTA GEOL SIN-ENGL
+</B><DT>ACTA GEOLOGICA SINICA-ENGLISH EDITION
+<B><DD>	ACTA GEOL SIN-ENGL
+</B><DT>ACTA GEOPHYSICA SINICA
+<B><DD>	ACTA GEOPHYS SINICA
+</B><DT>ACTA HAEMATOLOGICA
+<B><DD>	ACTA HAEMATOL-BASEL
+</B><DT>ACTA HAEMATOLOGICA JAPONICA
+<B><DD>	ACTA HAEMATOL JAPON
+</B><DT>ACTA HISTOCHEMICA
+<B><DD>	ACTA HISTOCHEM
+</B><DT>ACTA HISTOCHEMICA ET CYTOCHEMICA
+<B><DD>	ACTA HISTOCHEM CYTOC
+</B><DT>ACTA HYDROCHIMICA ET HYDROBIOLOGICA
+<B><DD>	ACTA HYDROCH HYDROB
+</B><DT>ACTA INFORMATICA
+<B><DD>	ACTA INFORM
+</B><DT>ACTA MATERIALIA
+<B><DD>	ACTA MATER
+</B><DT>ACTA MATHEMATICA
+<B><DD>	ACTA MATH-DJURSHOLM
+</B><DT>ACTA MATHEMATICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA MATH ACAD SCI H
+</B><DT>ACTA MATHEMATICA HUNGARICA
+<B><DD>	ACTA MATH HUNG
+</B><DT>ACTA MATHEMATICA SCIENTIA
+<B><DD>	ACTA MATH SCI
+</B><DT>ACTA MATHEMATICA SINICA-ENGLISH SERIES
+<B><DD>	ACTA MATH SIN
+</B><DT>ACTA MATHEMATICA SINICA-NEW SERIES
+<B><DD>	ACTA MATH SIN
+</B><DT>ACTA MECHANICA
+<B><DD>	ACTA MECH
+</B><DT>ACTA MECHANICA SINICA
+<B><DD>	ACTA MECH SINICA
+</B><DT>ACTA MECHANICA SOLIDA SINICA
+<B><DD>	ACTA MECH SOLIDA SIN
+</B><DT>ACTA MEDICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA MED HUNG
+</B><DT>ACTA MEDICA AUSTRIACA
+<B><DD>	ACTA MED AUST
+</B><DT>ACTA MEDICA HUNGARICA
+<B><DD>	ACTA MED HUNG
+</B><DT>ACTA MEDICA OKAYAMA
+<B><DD>	ACTA MED OKAYAMA
+</B><DT>ACTA MEDICA POLONA
+<B><DD>	ACTA MED POL
+</B><DT>ACTA MEDICA SCANDINAVICA
+<B><DD>	ACTA MED SCAND
+</B><DT>ACTA METALLURGICA
+<B><DD>	ACTA METALL MATER
+</B><DT>ACTA METALLURGICA ET MATERIALIA
+<B><DD>	ACTA METALL MATER
+</B><DT>ACTA MICROBIOLOGICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA MICROBIOL HUNG
+</B><DT>ACTA MICROBIOLOGICA HUNGARICA
+<B><DD>	ACTA MICROBIOL HUNG
+</B><DT>ACTA MICROBIOLOGICA POLONICA
+<B><DD>	ACTA MICROBIOL POL
+</B><DT>ACTA MORPHOLOGICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA MORPHOL HUNG
+</B><DT>ACTA MORPHOLOGICA HUNGARICA
+<B><DD>	ACTA MORPHOL HUNG
+</B><DT>ACTA MORPHOLOGICA NEERLANDO-SCANDINAVICA
+<B><DD>	ACTA MORPHOL NEER SC
+</B><DT>ACTA MOZARTIANA
+<B><DD>	ACTA MOZARTIANA
+</B><DT>ACTA MUSICOLOGICA
+<B><DD>	ACTA MUSICOLOGICA
+</B><DT>ACTA NEUROBIOLOGIAE EXPERIMENTALIS
+<B><DD>	ACTA NEUROBIOL EXP
+</B><DT>ACTA NEUROCHIRURGICA
+<B><DD>	ACTA NEUROCHIR
+</B><DT>ACTA NEUROLOGICA
+<B><DD>	ACTA NEUROL
+</B><DT>ACTA NEUROLOGICA BELGICA
+<B><DD>	ACTA NEUROL BELG
+</B><DT>ACTA NEUROLOGICA SCANDINAVICA
+<B><DD>	ACTA NEUROL SCAND
+</B><DT>ACTA NEUROPATHOLOGICA
+<B><DD>	ACTA NEUROPATHOL
+</B><DT>ACTA NEUROPSYCHIATRICA
+<B><DD>	ACTA NEUROPSYCHIATR
+</B><DT>ACTA OBSTETRICA ET GYNAECOLOGICA JAPONICA
+<B><DD>	ACTA OBSTET GYN JPN
+</B><DT>ACTA OBSTETRICIA ET GYNECOLOGICA SCANDINAVICA
+<B><DD>	ACTA OBSTET GYN SCAN
+</B><DT>ACTA ODONTOLOGICA SCANDINAVICA
+<B><DD>	ACTA ODONTOL SCAND
+</B><DT>ACTA OECOLOGICA-INTERNATIONAL JOURNAL OF ECOLOGY
+<B><DD>	ACTA OECOL
+</B><DT>ACTA OECOLOGICA-OECOLOGIA APPLICATA
+<B><DD>	ACTA OECOL-OEC APPL
+</B><DT>ACTA OECOLOGICA-OECOLOGIA GENERALIS
+<B><DD>	ACTA OECOL-OEC GEN
+</B><DT>ACTA OECOLOGICA-OECOLOGIA PLANTARUM
+<B><DD>	ACTA OECOL-OEC PLANT
+</B><DT>ACTA OECONOMICA
+<B><DD>	ACTA OECON
+</B><DT>ACTA ONCOLOGICA
+<B><DD>	ACTA ONCOL
+</B><DT>ACTA OPHTHALMOLOGICA
+<B><DD>	ACTA OPHTHALMOL
+</B><DT>ACTA OPHTHALMOLOGICA SCANDINAVICA
+<B><DD>	ACTA OPHTHALMOL SCAN
+</B><DT>ACTA ORTHOPAEDICA SCANDINAVICA
+<B><DD>	ACTA ORTHOP SCAND
+</B><DT>ACTA OTO-LARYNGOLOGICA
+<B><DD>	ACTA OTO-LARYNGOL
+</B><DT>ACTA PAEDIATRICA
+<B><DD>	ACTA PAEDIATR
+</B><DT>ACTA PAEDIATRICA JAPONICA
+<B><DD>	ACTA PAEDIATR JAPON
+</B><DT>ACTA PAEDIATRICA SCANDINAVICA
+<B><DD>	ACTA PAEDIATR SCAND
+</B><DT>ACTA PALAEONTOLOGICA POLONICA
+<B><DD>	ACTA PALAEONTOL POL
+</B><DT>ACTA PARASITOLOGICA
+<B><DD>	ACTA PARASITOL
+</B><DT>ACTA PATHOLOGICA ET MICROBIOLOGICA SCANDINAVICA SECTION A-PATHOLOGY
+<B><DD>	ACTA PATH MICRO IM A
+</B><DT>ACTA PATHOLOGICA ET MICROBIOLOGICA SCANDINAVICA SECTION B-MICROBIOLOGY
+<B><DD>	ACTA PATH MICRO IM B
+</B><DT>ACTA PATHOLOGICA ET MICROBIOLOGICA SCANDINAVICA SECTION C-IMMUNOLOGY
+<B><DD>	ACTA PATH MICRO IM C
+</B><DT>ACTA PATHOLOGICA JAPONICA
+<B><DD>	ACTA PATHOL JAPON
+</B><DT>ACTA PATHOLOGICA MICROBIOLOGICA ET IMMUNOLOGICA SCANDINAVICA SECTION A-PATHOLOGY
+<B><DD>	ACTA PATH MICRO IM A
+</B><DT>ACTA PATHOLOGICA MICROBIOLOGICA ET IMMUNOLOGICA SCANDINAVICA SECTION B-MICROBIOLOGY
+<B><DD>	ACTA PATH MICRO IM B
+</B><DT>ACTA PATHOLOGICA MICROBIOLOGICA ET IMMUNOLOGICA SCANDINAVICA SECTION C-IMMUNOLOGY
+<B><DD>	ACTA PATH MICRO IM C
+</B><DT>ACTA PHARMACEUTICA
+<B><DD>	ACTA PHARMACEUT
+</B><DT>ACTA PHARMACEUTICA JUGOSLAVICA
+<B><DD>	ACTA PHARM JUGOSL
+</B><DT>ACTA PHARMACEUTICA NORDICA
+<B><DD>	ACTA PHARM NORDICA
+</B><DT>ACTA PHARMACEUTICA SUECICA
+<B><DD>	ACTA PHARM SUEC
+</B><DT>ACTA PHARMACEUTICA TECHNOLOGICA-INTERNATIONAL JOURNAL OF DRUG FORUMLATION AND BIOPHARMACEUTICS
+<B><DD>	ACTA PHARM TECHNOL
+</B><DT>ACTA PHARMACOLOGICA ET TOXICOLOGICA
+<B><DD>	ACTA PHARMACOL TOX
+</B><DT>ACTA PHARMACOLOGICA SINICA
+<B><DD>	ACTA PHARM SINIC
+</B><DT>ACTA PHARMACOLOGICA SINICA
+<B><DD>	ACTA PHARMACOL SIN
+</B><DT>ACTA PHYSICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA PHYS HUNG
+</B><DT>ACTA PHYSICA AUSTRIACA
+<B><DD>	ACTA PHYS AUSTRIACA
+</B><DT>ACTA PHYSICA ET CHEMICA
+<B><DD>	ACTA PHYS CHEM
+</B><DT>ACTA PHYSICA HUNGARICA
+<B><DD>	ACTA PHYS HUNG
+</B><DT>ACTA PHYSICA HUNGARICA NEW SERIES-HEAVY ION PHYSICS
+<B><DD>	ACTA PHYS HUNG NS-H
+</B><DT>ACTA PHYSICA POLONICA A
+<B><DD>	ACTA PHYS POL A
+</B><DT>ACTA PHYSICA POLONICA B
+<B><DD>	ACTA PHYS POL B
+</B><DT>ACTA PHYSICA SINICA
+<B><DD>	ACTA PHYS SIN-CH ED
+</B><DT>ACTA PHYSICA SINICA-OVERSEAS EDITION
+<B><DD>	ACTA PHYS SIN-OV ED
+</B><DT>ACTA PHYSICA SLOVACA
+<B><DD>	ACTA PHYS SLOVACA
+</B><DT>ACTA PHYSICO-CHIMICA SINICA
+<B><DD>	ACTA PHYS-CHIM SIN
+</B><DT>ACTA PHYSIOLOGIAE PLANTARUM
+<B><DD>	ACTA PHYSIOL PLANT
+</B><DT>ACTA PHYSIOLOGICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA PHYSIOL HUNG
+</B><DT>ACTA PHYSIOLOGICA ET PHARMACOLOGICA LATINOAMERICANA
+<B><DD>	ACTA PHYSIOL PHARM L
+</B><DT>ACTA PHYSIOLOGICA HUNGARICA
+<B><DD>	ACTA PHYSIOL HUNG
+</B><DT>ACTA PHYSIOLOGICA LATINOAMERICANA
+<B><DD>	ACTA PHYSIOL LAT AM
+</B><DT>ACTA PHYSIOLOGICA SCANDINAVICA
+<B><DD>	ACTA PHYSIOL SCAND
+</B><DT>ACTA PHYTOPATHOLOGICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA PHYTOPATHOL HUN
+</B><DT>ACTA PHYTOPATHOLOGICA ET ENTOMOLOGICA HUNGARICA
+<B><DD>	ACTA PHYTOPATHOL HUN
+</B><DT>ACTA POLONIAE HISTORICA
+<B><DD>	ACTA POL HIST
+</B><DT>ACTA POLONIAE PHARMACEUTICA
+<B><DD>	ACTA POL PHARM
+</B><DT>ACTA POLYMERICA
+<B><DD>	ACTA POLYM
+</B><DT>ACTA POLYMERICA SINICA
+<B><DD>	ACTA POLYM SIN
+</B><DT>ACTA POLYTECHNICA SCANDINAVICA-APPLIED PHYSICS SERIES
+<B><DD>	ACTA POLYTECH SC AP
+</B><DT>ACTA POLYTECHNICA SCANDINAVICA-CHEMICAL TECHNOLOGY SERIES
+<B><DD>	ACTA POLYTECH SC CH
+</B><DT>ACTA POLYTECHNICA SCANDINAVICA-CIVIL ENGINEERING AND BUILDING CONSTRUCTION SERIES
+<B><DD>	ACTA POLYTECH SC CI
+</B><DT>ACTA POLYTECHNICA SCANDINAVICA-ELECTRICAL ENGINEERING SERIES
+<B><DD>	ACTA POLYTECH SC EL
+</B><DT>ACTA POLYTECHNICA SCANDINAVICA-MATHEMATICS AND COMPUTER SCIENCE SERIES
+<B><DD>	ACTA POLYTECH SC MA
+</B><DT>ACTA POLYTECHNICA SCANDINAVICA-MECHANICAL ENGINEERING SERIES
+<B><DD>	ACTA POLYTECH SC ME
+</B><DT>ACTA PROTOZOOLOGICA
+<B><DD>	ACTA PROTOZOOL
+</B><DT>ACTA PSYCHIATRICA SCANDINAVICA
+<B><DD>	ACTA PSYCHIAT SCAND
+</B><DT>ACTA PSYCHOLOGICA
+<B><DD>	ACTA PSYCHOL
+</B><DT>ACTA RADIOLOGICA
+<B><DD>	ACTA RADIOL
+</B><DT>ACTA RADIOLOGICA ONCOLOGY
+<B><DD>	ACTA ONCOL
+</B><DT>ACTA RADIOLOGICA ONCOLOGY
+<B><DD>	ACTA RADIOL ONCOL
+</B><DT>ACTA RADIOLOGICA-DIAGNOSIS
+<B><DD>	ACTA RADIOL
+</B><DT>ACTA RADIOLOGICA-DIAGNOSIS
+<B><DD>	ACTA RADIOL DIAGN
+</B><DT>ACTA SCIENTIARUM MATHEMATICARUM
+<B><DD>	ACTA SCI MATH
+</B><DT>ACTA SOCIETATIS BOTANICORUM POLONIAE
+<B><DD>	ACTA SOC BOT POL
+</B><DT>ACTA SOCIOLOGICA
+<B><DD>	ACTA SOCIOL
+</B><DT>ACTA TECHNICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA TECH HUNG
+</B><DT>ACTA THERAPEUTICA
+<B><DD>	ACTA THERAP
+</B><DT>ACTA THERIOLOGICA
+<B><DD>	ACTA THERIOL
+</B><DT>ACTA TROPICA
+<B><DD>	ACTA TROP
+</B><DT>ACTA VETERINARIA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA VET ACAD SCI H
+</B><DT>ACTA VETERINARIA BRNO
+<B><DD>	ACTA VET BRNO
+</B><DT>ACTA VETERINARIA HUNGARICA
+<B><DD>	ACTA VET HUNG
+</B><DT>ACTA VETERINARIA SCANDINAVICA
+<B><DD>	ACTA VET SCAND
+</B><DT>ACTA VETERINARIA-BEOGRAD
+<B><DD>	ACTA VET-BEOGRAD
+</B><DT>ACTA VIROLOGICA
+<B><DD>	ACTA VIROL
+</B><DT>ACTA ZOOLOGICA
+<B><DD>	ACTA ZOOL-STOCKHOLM
+</B><DT>ACTA ZOOLOGICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA ZOOL ACAD SCI H
+</B><DT>ACTA ZOOLOGICA ACADEMIAE SCIENTIARUM HUNGARICAE
+<B><DD>	ACTA ZOOL HUNG
+</B><DT>ACTA ZOOLOGICA ET PATHOLOGICA ANTVERPIENSIA
+<B><DD>	ACTA ZOOL PATHOL ANT
+</B><DT>ACTA ZOOLOGICA HUNGARICA
+<B><DD>	ACTA ZOOL HUNG
+</B><DT>ACTA ZOOLOGICA SINICA
+<B><DD>	ACTA ZOOL SINICA
+</B><DT>ACTAS ESPANOLAS DE PSIQUIATRIA
+<B><DD>	ACTAS ESP PSIQUIATRI
+</B><DT>ACTAS LUSO-ESPANOLAS DE NEUROLOGIA PSIQUIATRIA Y CIENCIAS AFINES
+<B><DD>	ACTAS LUSO-ESP NEUR
+</B><DT>ACTES DE LA RECHERCHE EN SCIENCES SOCIALES
+<B><DD>	ACTES RECH SCI SOC
+</B><DT>ACTIVITAS NERVOSA SUPERIOR
+<B><DD>	ACTIV NERV SUPER
+</B><DT>ACTUALITE CHIMIQUE
+<B><DD>	ACTUAL CHIMIQUE
+</B><DT>ACTUALITES ODONTO-STOMATOLOGIQUES
+<B><DD>	ACTUAL ODONTO-STOMAT
+</B><DT>ACUPUNCTURE & ELECTRO-THERAPEUTICS RESEARCH
+<B><DD>	ACUPUNCTURE ELECTRO
+</B><DT>ACUSTICA
+<B><DD>	ACUSTICA
+</B><DT>ACUTE CARE
+<B><DD>	ACUTE CARE
+</B><DT>ADAPTED PHYSICAL ACTIVITY QUARTERLY
+<B><DD>	ADAPT PHYS ACT Q
+</B><DT>ADAPTIVE BEHAVIOR
+<B><DD>	ADAPT BEHAV
+</B><DT>ADAPTIVE PROCESSING OF SEQUENCES AND DATA STRUCTURES
+<B><DD>	LECT NOTES ARTIF INT
+</B><DT>ADDICTION
+<B><DD>	ADDICTION
+</B><DT>ADDICTION BIOLOGY
+<B><DD>	ADDICT BIOL
+</B><DT>ADDICTION RESEARCH
+<B><DD>	ADDICT RES
+</B><DT>ADDICTIVE BEHAVIORS
+<B><DD>	ADDICT BEHAV
+</B><DT>ADHESIVES AGE
+<B><DD>	ADHES AGE
+</B><DT>ADMINISTRATION & SOCIETY
+<B><DD>	ADMIN SOC
+</B><DT>ADMINISTRATION AND POLICY IN MENTAL HEALTH
+<B><DD>	ADM POLICY MENT HLTH
+</B><DT>ADMINISTRATION IN SOCIAL WORK
+<B><DD>	ADMIN SOC WORK
+</B><DT>ADMINISTRATIVE LAW REVIEW
+<B><DD>	ADMIN LAW REV
+</B><DT>ADMINISTRATIVE SCIENCE QUARTERLY
+<B><DD>	ADMIN SCI QUART
+</B><DT>ADOLESCENCE
+<B><DD>	ADOLESCENCE
+</B><DT>ADOLESCENT AND PEDIATRIC GYNECOLOGY
+<B><DD>	ADOLESCENT PEDIAT G
+</B><DT>ADOLESCENT PSYCHIATRY
+<B><DD>	ADOLESCENT PSYCHIAT
+</B><DT>ADSORPTION SCIENCE & TECHNOLOGY
+<B><DD>	ADSORPT SCI TECHNOL
+</B><DT>ADSORPTION-JOURNAL OF THE INTERNATIONAL ADSORPTION SOCIETY
+<B><DD>	ADSORPTION
+</B><DT>ADULT EDUCATION QUARTERLY
+<B><DD>	ADULT EDUC QUART
+</B><DT>ADVANCED CEMENT BASED MATERIALS
+<B><DD>	ADV CEM BASED MATER
+</B><DT>ADVANCED CERAMIC MATERIALS
+<B><DD>	ADV CERAM MATER
+</B><DT>ADVANCED COMPOSITE MATERIALS
+<B><DD>	ADV COMPOS MATER
+</B><DT>ADVANCED COMPOSITES LETTERS
+<B><DD>	ADV COMPOS LETT
+</B><DT>ADVANCED DRUG DELIVERY REVIEWS
+<B><DD>	ADV DRUG DELIVER REV
+</B><DT>ADVANCED MATERIALS
+<B><DD>	ADV MATER
+</B><DT>ADVANCED MATERIALS & PROCESSES
+<B><DD>	ADV MATER PROCESS
+</B><DT>ADVANCED MATERIALS FOR OPTICS AND ELECTRONICS
+<B><DD>	ADV MATER OPT ELECTR
+</B><DT>ADVANCED PERFORMANCE MATERIALS
+<B><DD>	ADV PERFORM MATER
+</B><DT>ADVANCED POWDER TECHNOLOGY
+<B><DD>	ADV POWDER TECHNOL
+</B><DT>ADVANCED ROBOTICS
+<B><DD>	ADV ROBOTICS
+</B><DT>ADVANCES IN AGRONOMY
+<B><DD>	ADV AGRON
+</B><DT>ADVANCES IN ANATOMIC PATHOLOGY
+<B><DD>	ADV ANAT PATHOL
+</B><DT>ADVANCES IN ANATOMY EMBRYOLOGY AND CELL BIOLOGY
+<B><DD>	ADV ANAT EMBRYOL CEL
+</B><DT>ADVANCES IN APPLIED MATHEMATICS
+<B><DD>	ADV APPL MATH
+</B><DT>ADVANCES IN APPLIED MECHANICS
+<B><DD>	ADV APPL MECH
+</B><DT>ADVANCES IN APPLIED MICROBIOLOGY
+<B><DD>	ADV APPL MICROBIOL
+</B><DT>ADVANCES IN APPLIED PROBABILITY
+<B><DD>	ADV APPL PROBAB
+</B><DT>ADVANCES IN ATMOSPHERIC SCIENCES
+<B><DD>	ADV ATMOS SCI
+</B><DT>ADVANCES IN ATOMIC AND MOLECULAR PHYSICS
+<B><DD>	ADV ATOM MOL PHYS
+</B><DT>ADVANCES IN ATOMIC MOLECULAR AND OPTICAL PHYSICS
+<B><DD>	ADV ATOM MOL OPT PHY
+</B><DT>ADVANCES IN ATOMIC, MOLECULAR, AND OPTICAL PHYSICS
+<B><DD>	ADV ATOM MOL OPT PHY
+</B><DT>ADVANCES IN BEHAVIORAL PHARMACOLOGY
+<B><DD>	ADV BEHAV PHARMACOL
+</B><DT>ADVANCES IN BEHAVIOUR RESEARCH AND THERAPY
+<B><DD>	ADV BEHAV RES THER
+</B><DT>ADVANCES IN BIOCHEMICAL PSYCHOPHARMACOLOGY
+<B><DD>	ADV BIOCHEM PSYCHOPH
+</B><DT>ADVANCES IN BIOPHYSICS
+<B><DD>	ADV BIOPHYS
+</B><DT>ADVANCES IN BLADDER RESEARCH
+<B><DD>	ADV EXP MED BIOL
+</B><DT>ADVANCES IN BOTANICAL RESEARCH
+<B><DD>	ADV BOT RES
+</B><DT>ADVANCES IN BOTANICAL RESEARCH INCORPORATING ADVANCES IN PLANT PATHOLOGY
+<B><DD>	ADV BOT RES
+</B><DT>ADVANCES IN BRAIN VASOPRESSIN
+<B><DD>	PROG BRAIN RES
+</B><DT>ADVANCES IN CANCER RESEARCH
+<B><DD>	ADV CANCER RES
+</B><DT>ADVANCES IN CARBOHYDRATE CHEMISTRY AND BIOCHEMISTRY
+<B><DD>	ADV CARBOHYD CHEM BI
+</B><DT>ADVANCES IN CASE-BASED REASONING
+<B><DD>	LECT NOTES ARTIF INT
+</B><DT>ADVANCES IN CATALYSIS
+<B><DD>	ADV CATAL
+</B><DT>ADVANCES IN CEMENT RESEARCH
+<B><DD>	ADV CEM RES
+</B><DT>ADVANCES IN CHEMICAL CONVERSIONS FOR MITIGATING CARBON DIOXIDE
+<B><DD>	STUD SURF SCI CATAL
+</B><DT>ADVANCES IN CHEMICAL PHYSICS
+<B><DD>	ADV CHEM PHYS
+</B><DT>ADVANCES IN CHEMISTRY SERIES
+<B><DD>	ADV CHEM SER
+</B><DT>ADVANCES IN CHILD DEVELOPMENT AND BEHAVIOR
+<B><DD>	ADV CHILD DEV BEHAV
+</B><DT>ADVANCES IN CHROMATOGRAPHY
+<B><DD>	ADV CHROMATOGR
+</B><DT>ADVANCES IN CIRRHOSIS, HYPERAMMONEMIA, AND HEPATIC ENCEPHALOPATHY
+<B><DD>	ADV EXP MED BIOL
+</B><DT>ADVANCES IN CLINICAL CHEMISTRY
+<B><DD>	ADV CLIN CHEM
+</B><DT>ADVANCES IN CLINICAL CHILD PSYCHOLOGY
+<B><DD>	ADV CLIN CHILD PSYCH
+</B><DT>ADVANCES IN COLLOID AND INTERFACE SCIENCE
+<B><DD>	ADV COLLOID INTERFAC
+</B><DT>ADVANCES IN COMPARATIVE PHYSIOLOGY AND BIOCHEMISTRY
+<B><DD>	ADV COMP PHYSIOL BIO
+</B><DT>ADVANCES IN COMPUTATIONAL MATHEMATICS
+<B><DD>	ADV COMPUT MATH
+</B><DT>ADVANCES IN COMPUTERS
+<B><DD>	ADV COMPUT
+</B><DT>ADVANCES IN CONSUMER RESEARCH
+<B><DD>	ADV CONSUM RES
+</B><DT>ADVANCES IN CONTRACEPTION
+<B><DD>	ADV CONTRACEPT
+</B><DT>ADVANCES IN CRYSTAL GROWTH
+<B><DD>	MATER SCI FORUM
+</B><DT>ADVANCES IN CYCLIC NUCLEOTIDE AND PROTEIN PHOSPHORYLATION RESEARCH
+<B><DD>	ADV CYCLIC NUCL PROT
+</B><DT>ADVANCES IN CYCLIC NUCLEOTIDE RESEARCH
+<B><DD> ADV CYCLIC NUCL RES
+</B><DT>ADVANCES IN EARTH ORIENTED APPLICATIONS OF SPACE TECHNOLOGY
+<B><DD>	ADV EARTH ORIENT SP
+</B><DT>ADVANCES IN ECOLOGICAL RESEARCH
+<B><DD>	ADV ECOL RES
+</B><DT>ADVANCES IN ECONOMETRICS
+<B><DD>	ADV ECONOM
+</B><DT>ADVANCES IN ECONOMETRICS : A RESEARCH ANNUAL
+<B><DD>	ADV E
+</B><DT>ADVANCES IN ELECTROCHEMISTRY AND ELECTROCHEMICAL ENGINEERING
+<B><DD>	ADV ELECTROCH EL ENG
+</B><DT>ADVANCES IN ELECTRONICS AND ELECTRON PHYSICS
+<B><DD>	ADV ELECTRON EL PHYS
+</B><DT>ADVANCES IN ENGINEERING SOFTWARE
+<B><DD>	ADV ENG SOFTW
+</B><DT>ADVANCES IN ENGINEERING SOFTWARE AND WORKSTATIONS
+<B><DD>	ADV ENG SOFTW WORKST
+</B><DT>ADVANCES IN ENVIRONMENTAL RESEARCH
+<B><DD>	ADV ENVIRON RES
+</B><DT>ADVANCES IN ENZYME REGULATION
+<B><DD>	ADV ENZYME REGUL
+</B><DT>ADVANCES IN ENZYMOLOGY AND RELATED AREAS OF MOLECULAR BIOLOGY
+<B><DD>	ADV ENZYMOL RAMB
+</B><DT>ADVANCES IN EXPERIMENTAL MEDICINE AND BIOLOGY
+<B><DD>	ADV EXP MED BIOL
+</B><DT>ADVANCES IN EXPERIMENTAL SOCIAL PSYCHOLOGY
+<B><DD>	ADV EXP SOC PSYCHOL
+</B><DT>ADVANCES IN FOOD RESEARCH
+<B><DD>	ADV FOOD RES
+</B><DT>ADVANCES IN FREE RADICAL BIOLOGY AND MEDICINE
+<B><DD>	ADV FREE RADICAL BIO
+</B><DT>ADVANCES IN GENETICS
+<B><DD>	ADV GENET
+</B><DT>ADVANCES IN GENETICS INCORPORATING MOLECULAR GENETIC MEDICINE
+<B><DD>	ADV GENET
+</B><DT>ADVANCES IN GEOPHYSICS
+<B><DD>	ADV GEOPHYS
+</B><DT>ADVANCES IN HETEROCYCLIC CHEMISTRY
+<B><DD>	ADV HETEROCYCL CHEM
+</B><DT>ADVANCES IN HUMAN GENETICS
+<B><DD>	ADV HUM GENET
+</B><DT>ADVANCES IN HYDROSCIENCE
+<B><DD>	ADV HYDROSCI
+</B><DT>ADVANCES IN IMAGING AND ELECTRON PHYSICS
+<B><DD>	ADV IMAG ELECT PHYS
+</B><DT>ADVANCES IN IMAGING AND ELECTRON PHYSICS
+<B><DD>	ADV IMAG ELECTR PHYS
+</B><DT>ADVANCES IN IMMUNOLOGY
+<B><DD>	ADV IMMUNOL
+</B><DT>ADVANCES IN INORGANIC BIOCHEMISTRY
+<B><DD>	ADV INORG BIOCHEM
+</B><DT>ADVANCES IN INORGANIC CHEMISTRY
+<B><DD>	ADV INORG CHEM
+</B><DT>ADVANCES IN INORGANIC CHEMISTRY
+<B><DD>	ADV INORG CHEM RAD
+</B><DT>ADVANCES IN INSECT PHYSIOLOGY
+<B><DD>	ADV INSECT PHYSIOL
+</B><DT>ADVANCES IN INTERNAL MEDICINE
+<B><DD>	ADV INTERNAL MED
+</B><DT>ADVANCES IN LIPID RESEARCH
+<B><DD>	ADV LIPID RES
+</B><DT>ADVANCES IN LIQUID CRYSTALS
+<B><DD>	ADV LIQ CRYST
+</B><DT>ADVANCES IN MAGNETIC RESONANCE
+<B><DD>	ADV MAGN RESON
+</B><DT>ADVANCES IN MARINE BIOLOGY
+<B><DD>	ADV MAR BIOL
+</B><DT>ADVANCES IN MATHEMATICS
+<B><DD>	ADV MATH
+</B><DT>ADVANCES IN MICROBIAL ECOLOGY
+<B><DD>	ADV MICROB ECOL
+</B><DT>ADVANCES IN MICROBIAL PHYSIOLOGY
+<B><DD>	ADV MICROB PHYSIOL
+</B><DT>ADVANCES IN MICROCIRCULATION
+<B><DD>	ADV MICROCIRCULAT
+</B><DT>ADVANCES IN MOLECULAR RELAXATION AND INTERACTION PROCESSES
+<B><DD>	ADV MOL RELAX INT PR
+</B><DT>ADVANCES IN NEUROIMMUNOLOGY
+<B><DD>	ADV NEUROIMMUNOL
+</B><DT>ADVANCES IN NEUROLOGY
+<B><DD>	ADV NEUROL
+</B><DT>ADVANCES IN NUCLEAR PHYSICS
+<B><DD>	ADV NUCL PHYS
+</B><DT>ADVANCES IN NURSING SCIENCE
+<B><DD>	ADV NURS SCI
+</B><DT>ADVANCES IN NUTRITIONAL RESEARCH
+<B><DD>	ADV NUTR RES
+</B><DT>ADVANCES IN ORGANOMETALLIC CHEMISTRY
+<B><DD>	ADV ORGANOMET CHEM
+</B><DT>ADVANCES IN OTO-RHINO-LARYNGOLOGY
+<B><DD>	ADV OTO-RHINO-LARYNG
+</B><DT>ADVANCES IN PAIN RESEARCH AND THERAPY
+<B><DD>	ADV PAIN RES THER
+</B><DT>ADVANCES IN PARASITOLOGY
+<B><DD>	ADV PARASIT
+</B><DT>ADVANCES IN PEDIATRIC PULMONOLOGY
+<B><DD>	PEDIAT ADOL
+</B><DT>ADVANCES IN PHARMACOLOGY AND CHEMOTHERAPY
+<B><DD>	ADV PHARMACOL CHEMOT
+</B><DT>ADVANCES IN PHYSICAL ORGANIC CHEMISTRY
+<B><DD>	ADV PHYS ORG CHEM
+</B><DT>ADVANCES IN PHYSICS
+<B><DD>	ADV PHYS
+</B><DT>ADVANCES IN PHYSIOLOGY EDUCATION
+<B><DD>	ADV PHYSIOL EDUC
+</B><DT>ADVANCES IN POLYAMINE RESEARCH
+<B><DD>	ADV POLYAMINE RES
+</B><DT>ADVANCES IN POLYMER SCIENCE
+<B><DD>	ADV POLYM SCI
+</B><DT>ADVANCES IN POLYMER TECHNOLOGY
+<B><DD>	ADV POLYM TECH
+</B><DT>ADVANCES IN PROSTAGLANDIN THROMBOXANE AND LEUKOTRIENE RESEARCH
+<B><DD>	ADV PROSTAG THROMB L
+</B><DT>ADVANCES IN PROTEIN CHEMISTRY
+<B><DD>	ADV PROTEIN CHEM
+</B><DT>ADVANCES IN QUANTUM CHEMISTRY
+<B><DD>	ADV QUANTUM CHEM
+</B><DT>ADVANCES IN RADIATION BIOLOGY
+<B><DD>	ADV RADIAT BIOL
+</B><DT>ADVANCES IN RENAL REPLACEMENT THERAPY
+<B><DD>	ADV RENAL REPLACE TH
+</B><DT>ADVANCES IN SECOND MESSENGER AND PHOSPHOPROTEIN RESEARCH
+<B><DD>	ADV SEC MESS PHOSPH
+</B><DT>ADVANCES IN SERVICES MARKETING AND MANAGEMENT
+<B><DD>	ADV SERV MARK MAN
+</B><DT>ADVANCES IN SPACE RESEARCH
+<B><DD>	ADV SPACE RES
+</B><DT>ADVANCES IN STRATEGIC MANAGEMENT
+<B><DD>	ADV STRATEG MANAGE
+</B><DT>ADVANCES IN THE STUDY OF BEHAVIOR
+<B><DD>	ADV STUD BEHAV
+</B><DT>ADVANCES IN THERAPY
+<B><DD>	ADV THER
+</B><DT>ADVANCES IN URETHANE SCIENCE AND TECHNOLOGY
+<B><DD>	ADV URETHANE SCI TEC
+</B><DT>ADVANCES IN VETERINARY MEDICINE ACADEMIC PRESS
+<B><DD>	ADV VETER MED AP
+</B><DT>ADVANCES IN VETERINARY SCIENCE AND COMPARATIVE MEDICINE
+<B><DD>	ADV VET SCI COMP MED
+</B><DT>ADVANCES IN VIRUS RESEARCH
+<B><DD>	ADV VIRUS RES
+</B><DT>ADVANCES IN WATER RESOURCES
+<B><DD>	ADV WATER RESOUR
+</B><DT>ADVANCES IN X-RAY ANALYSIS
+<B><DD>	ADV X RAY ANAL
+</B><DT>ADVERSE DRUG REACTIONS AND TOXICOLOGICAL REVIEWS
+<B><DD>	ADVERSE DRUG REACT T
+</B><DT>AEI AUTOMAZIONE ENERGIA INFORMAZIONE
+<B><DD>	AEI AUTOM ENERG INF
+</B><DT>AERONAUTICAL JOURNAL
+<B><DD>	AERONAUT J
+</B><DT>AERONAUTICAL QUARTERLY
+<B><DD>	AERONAUT QUART
+</B><DT>AEROSOL SCIENCE AND TECHNOLOGY
+<B><DD>	AEROSOL SCI TECH
+</B><DT>AEROSPACE
+<B><DD>	AEROSPACE
+</B><DT>AEROSPACE AMERICA
+<B><DD>	AEROSPACE AM
+</B><DT>AEROSPACE ENGINEERING
+<B><DD>	AEROSPACE ENG
+</B><DT>AEROSPACE SCIENCE AND TECHNOLOGY
+<B><DD>	AEROSP SCI TECHNOL
+</B><DT>AESTHETIC PLASTIC SURGERY
+<B><DD>	AESTHET PLAST SURG
+</B><DT>AEU-ARCHIV FUR ELEKTRONIK UND UBERTRAGUNGSTECHNIK-INTERNATIONAL JOURNAL OF ELECTRONICS AND COMMUNICATIONS
+<B><DD>	AEU-ARCH ELEKTRON UB
+</B><DT>AEU-INTERNATIONAL JOURNAL OF ELECTRONICS AND COMMUNICATIONS
+<B><DD>	AEU-INT J ELECTRON C
+</B><DT>AEVUM-RASSEGNA DI SCIENZE STORICHE LINGUISTICHE E FILOLOGICHE
+<B><DD>	AEVUM-RASS SCI STOR
+</B><DT>AFFILIA-JOURNAL OF WOMEN AND SOCIAL WORK
+<B><DD>	AFFILIA J WOM SOC WO
+</B><DT>AFINIDAD
+<B><DD>	AFINIDAD
+</B><DT>AFIPS CONFERENCE PROCEEDINGS
+<B><DD>	AFIPS CONF P
+</B><DT>AFRICA
+<B><DD>	AFRICA
+</B><DT>AFRICA TODAY
+<B><DD>	AFR TODAY
+</B><DT>AFRICAN AFFAIRS
+<B><DD>	AFR AFFAIRS
+</B><DT>AFRICAN AMERICAN REVIEW
+<B><DD>	AFR AM REV
+</B><DT>AFRICAN ARTS
+<B><DD>	AFR ARTS
+</B><DT>AFRICAN ECONOMIC HISTORY
+<B><DD>	AFR ECON HIST
+</B><DT>AFRICAN ENTOMOLOGY
+<B><DD>	AFR ENTOMOL
+</B><DT>AFRICAN JOURNAL OF CLINICAL AND EXPERIMENTAL IMMUNOLOGY
+<B><DD>	AFR J CLIN EXP IMMUN
+</B><DT>AFRICAN JOURNAL OF ECOLOGY
+<B><DD>	AFR J ECOL
+</B><DT>AFRICAN STUDIES
+<B><DD>	AFR STUD
+</B><DT>AGE
+<B><DD>	AGE
+</B><DT>AGE AND AGEING
+<B><DD>	AGE AGEING
+</B><DT>AGEING AND SOCIETY
+<B><DD>	AGEING SOC
+</B><DT>AGENDA
+<B><DD>	AGENDA
+</B><DT>AGENTS AND ACTIONS
+<B><DD>	AGENTS ACTIONS
+</B><DT>AGGRESSION AND VIOLENT BEHAVIOR
+<B><DD>	AGGRESS VIOLENT BEH
+</B><DT>AGGRESSIVE BEHAVIOR
+<B><DD>	AGGRESSIVE BEHAV
+</B><DT>AGING & MENTAL HEALTH
+<B><DD>	AGING MENT HEALTH
+</B><DT>AGING AND COGNITION
+<B><DD>	AGING COGNITION
+</B><DT>AGING AND WORKING CAPACITY
+<B><DD>	WHO TECH REP SER
+</B><DT>AGING CLOCK
+<B><DD>	ANN NY ACAD SCI
+</B><DT>AGING NEUROPSYCHOLOGY AND COGNITION
+<B><DD>	AGING NEUROPSYCHOL C
+</B><DT>AGING-CLINICAL AND EXPERIMENTAL RESEARCH
+<B><DD>	AGING-CLIN EXP RES
+</B><DT>AGN/NORMAL GALAXY CONNECTION
+<B><DD>	ADV SPACE RES
+</B><DT>AGRARTECHNIK
+<B><DD>	AGRARTECHNIK
+</B><DT>AGRARTORTENETI SZEMLE
+<B><DD>	AGRARTORT SZEMLE
+</B><DT>AGRI-PRACTICE
+<B><DD>	AGRI-PRACTICE
+</B><DT>AGRIBIOLOGICAL RESEARCH-ZEITSCHRIFT FUR AGRARBIOLOGIE AGRIKULTURCHEMIE OKOLOGIE
+<B><DD>	AGRIBIOL RES
+</B><DT>AGRICULTURA DE LAS AMERICAS
+<B><DD>	AGR AM
+</B><DT>AGRICULTURAL ADMINISTRATION
+<B><DD>	AGR ADMIN EXT
+</B><DT>AGRICULTURAL ADMINISTRATION AND EXTENSION
+<B><DD>	AGR ADMIN EXT
+</B><DT>AGRICULTURAL AND BIOLOGICAL CHEMISTRY
+<B><DD>	AGR BIOL CHEM TOKYO
+</B><DT>AGRICULTURAL AND FOOD SCIENCE IN FINLAND
+<B><DD>	AGR FOOD SCI FINLAND
+</B><DT>AGRICULTURAL AND FOREST METEOROLOGY
+<B><DD>	AGR FOREST METEOROL
+</B><DT>AGRICULTURAL ECONOMICS
+<B><DD>	AGR ECON
+</B><DT>AGRICULTURAL ECONOMICS RESEARCH
+<B><DD>	AGR ECON RES
+</B><DT>AGRICULTURAL EDUCATION MAGAZINE
+<B><DD>	AGR EDUC MAG
+</B><DT>AGRICULTURAL ENGINEERING
+<B><DD>	AGR ENG
+</B><DT>AGRICULTURAL HISTORY
+<B><DD>	AGR HIST
+</B><DT>AGRICULTURAL HISTORY REVIEW
+<B><DD>	AGR HIST REV
+</B><DT>AGRICULTURAL MATERIALS AS RENEWABLE RESOURCES
+<B><DD>	ACS SYM SER
+</B><DT>AGRICULTURAL METEOROLOGY
+<B><DD>	AGR METEOROL
+</B><DT>AGRICULTURAL RECORD
+<B><DD>	AGR REC
+</B><DT>AGRICULTURAL RESEARCH
+<B><DD>	AGR RES
+</B><DT>AGRICULTURAL SCIENCE IN FINLAND
+<B><DD>	AGR SCI FINLAND
+</B><DT>AGRICULTURAL SYSTEMS
+<B><DD>	AGR SYST
+</B><DT>AGRICULTURAL USES OF BY-PRODUCTS AND WASTES
+<B><DD>	ACS SYM SER
+</B><DT>AGRICULTURAL WASTES
+<B><DD>	AGR WASTES
+</B><DT>AGRICULTURAL WATER MANAGEMENT
+<B><DD>	AGR WATER MANAGE
+</B><DT>AGRICULTURE AND ENVIRONMENT
+<B><DD>	AGR ENVIRON
+</B><DT>AGRICULTURE ECOSYSTEMS & ENVIRONMENT
+<B><DD>	AGR ECOSYST ENVIRON
+</B><DT>AGRICULTURE IN EGYPT
+<B><DD>	P BRIT ACAD
+</B><DT>AGRICULTURE IN NORTHERN IRELAND
+<B><DD>	AGR NORTHERN IRELAND
+</B><DT>AGRO FOOD INDUSTRY HI-TECH
+<B><DD>	AGRO FOOD IND HI TEC
+</B><DT>AGRO-ECOSYSTEMS
+<B><DD>	AGRO-ECOSYSTEMS
+</B><DT>AGROBOREALIS
+<B><DD>	AGROBOREALIS
+</B><DT>AGROCHIMICA
+<B><DD>	AGROCHIMICA
+</B><DT>AGROFORESTRY SYSTEMS
+<B><DD>	AGROFOREST SYST
+</B><DT>AGROKEMIA ES TALAJTAN
+<B><DD>	AGROKEM TALAJTAN
+</B><DT>AGROLOGIST
+<B><DD>	AGROLOGIST
+</B><DT>AGRONOMIA COSTARRICENSE
+<B><DD>	AGRON COSTARRIC
+</B><DT>AGRONOMIE
+<B><DD>	AGRONOMIE
+</B><DT>AGRONOMIE TROPICALE
+<B><DD>	AGRON TROP
+</B><DT>AGRONOMY JOURNAL
+<B><DD>	AGRON J
+</B><DT>AI APPLICATIONS
+<B><DD>	AI APPLICATIONS
+</B><DT>AI APPLICATIONS IN NATURAL RESOURCE MANAGEMENT
+<B><DD>	AI APPL NAT RES MAN
+</B><DT>AI COMMUNICATIONS
+<B><DD>	AI COMMUN
+</B><DT>AI EDAM-ARTIFICIAL INTELLIGENCE FOR ENGINEERING DESIGN ANALYSIS AND MANUFACTURING
+<B><DD>	AI EDAM
+</B><DT>AI MAGAZINE
+<B><DD>	AI MAG
+</B><DT>AIAA JOURNAL
+<B><DD>	AIAA J
+</B><DT>AICHE JOURNAL
+<B><DD>	AICHE J
+</B><DT>AIDS
+<B><DD>	AIDS
+</B><DT>AIDS & PUBLIC POLICY JOURNAL
+<B><DD>	AIDS PUBLIC POLICY J
+</B><DT>AIDS CARE-PSYCHOLOGICAL AND SOCIO-MEDICAL ASPECTS OF AIDS/HIV
+<B><DD>	AIDS CARE
+</B><DT>AIDS EDUCATION AND PREVENTION
+<B><DD>	AIDS EDUC PREV
+</B><DT>AIDS PATIENT CARE
+<B><DD>	AIDS PATIENT CARE
+</B><DT>AIDS PATIENT CARE AND STDS
+<B><DD>	AIDS PATIENT CARE ST
+</B><DT>AIDS RESEARCH
+<B><DD>	AIDS RES HUM RETROV
+</B><DT>AIDS RESEARCH AND HUMAN RETROVIRUSES
+<B><DD>	AIDS RES HUM RETROV
+</B><DT>AIIE TRANSACTIONS
+<B><DD>	AIIE T
+</B><DT>AIP CONFERENCE PROCEEDINGS
+<B><DD>	AIP CONF PROC
+</B><DT>AIR PROGRESS
+<B><DD>	AIR PROG
+</B><DT>AIR TRANSPORTATION
+<B><DD>	TRANSPORT RES REC
+</B><DT>AIRCRAFT & AEROSPACE ASIA-PACIFIC
+<B><DD>	AIRCR AEROSP ASIA-PA
+</B><DT>AIRCRAFT ENGINEERING AND AEROSPACE TECHNOLOGY
+<B><DD>	AIRCR ENG AEROSP TEC
+</B><DT>AKTUELLE CHIRURGIE
+<B><DD>	AKTUEL CHIR
+</B><DT>AKTUELLE ERNAHRUNGSMEDIZIN
+<B><DD>	AKTUEL ERNAHRUNGSMED
+</B><DT>AKTUELLE NEUROLOGIE
+<B><DD>	AKTUEL NEUROL
+</B><DT>AKTUELLE RHEUMATOLOGIE
+<B><DD>	AKTUEL RHEUMATOL
+</B><DT>AKTUELLE UROLOGIE
+<B><DD>	AKTUEL UROL
+</B><DT>AKZENTE-ZEITSCHRIFT FUR LITERATUR
+<B><DD>	AKZENTE-Z LIT
+</B><DT>AL-QANTARA
+<B><DD>	AL-QANTARA
+</B><DT>ALABAMA AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	ALA AGR EXP STA BULL
+</B><DT>ALABAMA AGRICULTURAL EXPERIMENT STATION PROGRESS REPORT SERIES
+<B><DD>	ALA AGR EXP STA PROG
+</B><DT>ALABAMA JOURNAL OF MEDICAL SCIENCES
+<B><DD>	ALA J MED SCI
+</B><DT>ALABAMA MARINE RESOURCES BULLETIN
+<B><DD>	ALA MAR RESOUR BULL
+</B><DT>ALASKA AGRICULTURAL AND FORESTRY EXPERIMENT STATION BULLETIN
+<B><DD>	ALASKA AFES BULL
+</B><DT>ALBERTA JOURNAL OF EDUCATIONAL RESEARCH
+<B><DD>	ALBERTA J EDUC RES
+</B><DT>ALBION
+<B><DD>	ALBION
+</B><DT>ALCATEL TELECOMMUNICATIONS REVIEW
+<B><DD>	ALCATEL TELECOMMUN R
+</B><DT>ALCHERINGA
+<B><DD>	ALCHERINGA
+</B><DT>ALCOHOL
+<B><DD>	ALCOHOL
+</B><DT>ALCOHOL AND ALCOHOLISM
+<B><DD>	ALCOHOL ALCOHOLISM
+</B><DT>ALCOHOL AND DRUG RESEARCH
+<B><DD>	ALCOHOL DRUG RES
+</B><DT>ALCOHOL HEALTH & RESEARCH WORLD
+<B><DD>	ALCOHOL HEALTH RES W
+</B><DT>ALCOHOL RESEARCH & HEALTH
+<B><DD>	ALCOHOL RES HEALTH
+</B><DT>ALCOHOLISM-CLINICAL AND EXPERIMENTAL RESEARCH
+<B><DD>	ALCOHOL CLIN EXP RES
+</B><DT>ALDRICHIMICA ACTA
+<B><DD>	ALDRICHIM ACTA
+</B><DT>ALGEBRA COLLOQUIUM
+<B><DD>	ALGEBR COLLOQ
+</B><DT>ALGEBRA UNIVERSALIS
+<B><DD>	ALGEBRA UNIV
+</B><DT>ALGORITHMICA
+<B><DD>	ALGORITHMICA
+</B><DT>ALIMENTA
+<B><DD>	ALIMENTA
+</B><DT>ALIMENTARY PHARMACOLOGY & THERAPEUTICS
+<B><DD>	ALIMENT PHARM THERAP
+</B><DT>ALLELOPATHY
+<B><DD>	ACS SYM SER
+</B><DT>ALLERGOLOGIA ET IMMUNOPATHOLOGIA
+<B><DD>	ALLERGOL IMMUNOPATH
+</B><DT>ALLERGOLOGIE
+<B><DD>	ALLERGOLOGIE
+</B><DT>ALLERGY
+<B><DD>	ALLERGY
+</B><DT>ALLERGY AND ASTHMA PROCEEDINGS
+<B><DD>	ALLERGY ASTHMA PROC
+</B><DT>ALLERGY PROCEEDINGS
+<B><DD>	ALLERGY PROC
+</B><DT>ALLGEMEINE FORST UND JAGDZEITUNG
+<B><DD>	ALLG FORST JAGDZTG
+</B><DT>ALTA FREQUENZA
+<B><DD>	ALTA FREQ
+</B><DT>ALTERNATIVE SOURCES OF ENERGY
+<B><DD>	ALTERNATIVE SOURC EN
+</B><DT>ALTERNATIVE THERAPIES IN HEALTH AND MEDICINE
+<B><DD>	ALTERN THER HEALTH M
+</B><DT>ALTERNATIVES JOURNAL
+<B><DD>	ALTERN J
+</B><DT>ALTERNATIVES-PERSPECTIVES ON SOCIETY TECHNOLOGY AND ENVIRONMENT
+<B><DD>	ALTERN-P SOC TEC
+</B><DT>ALTERNATIVES-SOCIAL TRANSFORMATION AND HUMANE GOVERNANCE
+<B><DD>	ALTERN-SOC TRANSFORM
+</B><DT>ALTEX-ALTERNATIVEN ZU TIEREXPERIMENTEN
+<B><DD>	ALTEX-ALTERN TIEREXP
+</B><DT>ALZHEIMER DISEASE & ASSOCIATED DISORDERS
+<B><DD>	ALZ DIS ASSOC DIS
+</B><DT>ALZHEIMERS REPORTS
+<B><DD>	ALZHEIMERS REP
+</B><DT>AMAZONIANA-LIMNOLOGIA ET OECOLOGIA REGIONALIS SYSTEMAE FLUMINIS AMAZONAS
+<B><DD>	AMAZONIANA
+</B><DT>AMBIO
+<B><DD>	AMBIO
+</B><DT>AMEGHINIANA
+<B><DD>	AMEGHINIANA
+</B><DT>AMERASIA JOURNAL
+<B><DD>	AMERASIA J
+</B><DT>AMERICAN ANNALS OF THE DEAF
+<B><DD>	AM ANN DEAF
+</B><DT>AMERICAN ANTHROPOLOGIST
+<B><DD>	AM ANTHROPOL
+</B><DT>AMERICAN ANTIQUITY
+<B><DD>	AM ANTIQUITY
+</B><DT>AMERICAN ARCHIVIST
+<B><DD>	AM ARCHIVIST
+</B><DT>AMERICAN ART JOURNAL
+<B><DD>	AM ART J
+</B><DT>AMERICAN BANKRUPTCY LAW JOURNAL
+<B><DD>	AM BANKRUPT LAW J
+</B><DT>AMERICAN BEE JOURNAL
+<B><DD>	AM BEE J
+</B><DT>AMERICAN BEHAVIORAL SCIENTIST
+<B><DD>	AM BEHAV SCI
+</B><DT>AMERICAN BIOLOGY TEACHER
+<B><DD>	AM BIOL TEACH
+</B><DT>AMERICAN BIOTECHNOLOGY LABORATORY
+<B><DD>	AM BIOTECHNOL LAB
+</B><DT>AMERICAN BOOK REVIEW
+<B><DD>	AM BOOK REV
+</B><DT>AMERICAN BUSINESS LAW JOURNAL
+<B><DD>	AM BUS LAW J
+</B><DT>AMERICAN CARTOGRAPHER
+<B><DD>	AM CARTOGRAPHER
+</B><DT>AMERICAN CATHOLIC PHILOSOPHICAL QUARTERLY
+<B><DD>	AM CATH PHILOS QUART
+</B><DT>AMERICAN CERAMIC SOCIETY BULLETIN
+<B><DD>	AM CERAM SOC BULL
+</B><DT>AMERICAN CITY & COUNTY
+<B><DD>	AM CITY COUNTY
+</B><DT>AMERICAN CRIMINAL LAW REVIEW
+<B><DD>	AM CRIM LAW REV
+</B><DT>AMERICAN DYESTUFF REPORTER
+<B><DD>	AM DYEST REP
+</B><DT>AMERICAN ECONOMIC REVIEW
+<B><DD>	AM ECON REV
+</B><DT>AMERICAN EDUCATIONAL RESEARCH JOURNAL
+<B><DD>	AM EDUC RES J
+</B><DT>AMERICAN ETHNOLOGIST
+<B><DD>	AM ETHNOL
+</B><DT>AMERICAN FAMILY PHYSICIAN
+<B><DD>	AM FAM PHYSICIAN
+</B><DT>AMERICAN FERN JOURNAL
+<B><DD>	AM FERN J
+</B><DT>AMERICAN FORESTS
+<B><DD>	AM FORESTS
+</B><DT>AMERICAN HEART JOURNAL
+<B><DD>	AM HEART J
+</B><DT>AMERICAN HERITAGE
+<B><DD>	AM HERITAGE
+</B><DT>AMERICAN HISTORICAL REVIEW
+<B><DD>	AM HIST REV
+</B><DT>AMERICAN HISTORY
+<B><DD>	AM HIST
+</B><DT>AMERICAN HISTORY ILLUSTRATED
+<B><DD>	AM HIST ILLUS
+</B><DT>AMERICAN HORTICULTURIST
+<B><DD>	AM HORTIC
+</B><DT>AMERICAN IMAGO
+<B><DD>	AM IMAGO
+</B><DT>AMERICAN INDIAN AND ALASKA NATIVE MENTAL HEALTH RESEARCH
+<B><DD>	AM INDIAN ALASKA NAT
+</B><DT>AMERICAN INDIAN CULTURE AND RESEARCH JOURNAL
+<B><DD>	AM INDIAN CULT RES J
+</B><DT>AMERICAN INDUSTRIAL HYGIENE ASSOCIATION JOURNAL
+<B><DD>	AM IND HYG ASSOC J
+</B><DT>AMERICAN JEWISH ARCHIVES
+<B><DD>	AM JEWISH ARCH
+</B><DT>AMERICAN JEWISH HISTORY
+<B><DD>	AM JEWISH HIST
+</B><DT>AMERICAN JOURNAL OF ACUPUNCTURE
+<B><DD>	AM J ACUPUNCTURE
+</B><DT>AMERICAN JOURNAL OF AGRICULTURAL ECONOMICS
+<B><DD>	AM J AGR ECON
+</B><DT>AMERICAN JOURNAL OF ALTERNATIVE AGRICULTURE
+<B><DD>	AM J ALTERNATIVE AGR
+</B><DT>AMERICAN JOURNAL OF ANATOMY
+<B><DD>	AM J ANAT
+</B><DT>AMERICAN JOURNAL OF ARCHAEOLOGY
+<B><DD>	AM J ARCHAEOL
+</B><DT>AMERICAN JOURNAL OF ART THERAPY
+<B><DD>	AM J ART THER
+</B><DT>AMERICAN JOURNAL OF BOTANY
+<B><DD>	AM J BOT
+</B><DT>AMERICAN JOURNAL OF CARDIOLOGY
+<B><DD>	AM J CARDIOL
+</B><DT>AMERICAN JOURNAL OF CHINESE MEDICINE
+<B><DD>	AM J CHINESE MED
+</B><DT>AMERICAN JOURNAL OF CLINICAL HYPNOSIS
+<B><DD>	AM J CLIN HYPN
+</B><DT>AMERICAN JOURNAL OF CLINICAL NUTRITION
+<B><DD>	AM J CLIN NUTR
+</B><DT>AMERICAN JOURNAL OF CLINICAL ONCOLOGY-CANCER CLINICAL TRIALS
+<B><DD>	AM J CLIN ONCOL-CANC
+</B><DT>AMERICAN JOURNAL OF CLINICAL PATHOLOGY
+<B><DD>	AM J CLIN PATHOL
+</B><DT>AMERICAN JOURNAL OF COMMUNITY PSYCHOLOGY
+<B><DD>	AM J COMMUN PSYCHOL
+</B><DT>AMERICAN JOURNAL OF COMPARATIVE LAW
+<B><DD>	AM J COMP LAW
+</B><DT>AMERICAN JOURNAL OF DANCE THERAPY
+<B><DD>	AM J DANCE THER
+</B><DT>AMERICAN JOURNAL OF DENTISTRY
+<B><DD>	AM J DENT
+</B><DT>AMERICAN JOURNAL OF DERMATOPATHOLOGY
+<B><DD>	AM J DERMATOPATH
+</B><DT>AMERICAN JOURNAL OF DISEASES OF CHILDREN
+<B><DD>	AM J DIS CHILD
+</B><DT>AMERICAN JOURNAL OF DRUG AND ALCOHOL ABUSE
+<B><DD>	AM J DRUG ALCOHOL AB
+</B><DT>AMERICAN JOURNAL OF ECONOMICS AND SOCIOLOGY
+<B><DD>	AM J ECON SOCIOL
+</B><DT>AMERICAN JOURNAL OF EDUCATION
+<B><DD>	AM J EDUC
+</B><DT>AMERICAN JOURNAL OF EEG TECHNOLOGY
+<B><DD>	AM J EEG TECHNOL
+</B><DT>AMERICAN JOURNAL OF ELECTRONEURODIAGNOSTIC TECHNOLOGY
+<B><DD>	AM J ELECTRONEUROD T
+</B><DT>AMERICAN JOURNAL OF EMERGENCY MEDICINE
+<B><DD>	AM J EMERG MED
+</B><DT>AMERICAN JOURNAL OF ENOLOGY AND VITICULTURE
+<B><DD>	AM J ENOL VITICULT
+</B><DT>AMERICAN JOURNAL OF EPIDEMIOLOGY
+<B><DD>	AM J EPIDEMIOL
+</B><DT>AMERICAN JOURNAL OF EVALUATION
+<B><DD>	AM J EVAL
+</B><DT>AMERICAN JOURNAL OF FAMILY THERAPY
+<B><DD>	AM J FAM THER
+</B><DT>AMERICAN JOURNAL OF FORENSIC MEDICINE AND PATHOLOGY
+<B><DD>	AM J FOREN MED PATH
+</B><DT>AMERICAN JOURNAL OF GASTROENTEROLOGY
+<B><DD>	AM J GASTROENTEROL
+</B><DT>AMERICAN JOURNAL OF GERIATRIC PSYCHIATRY
+<B><DD>	AM J GERIAT PSYCHIAT
+</B><DT>AMERICAN JOURNAL OF HEALTH BEHAVIOR
+<B><DD>	AM J HEALTH BEHAV
+</B><DT>AMERICAN JOURNAL OF HEALTH PROMOTION
+<B><DD>	AM J HEALTH PROMOT
+</B><DT>AMERICAN JOURNAL OF HEALTH-SYSTEM PHARMACY
+<B><DD>	AM J HEALTH-SYST PH
+</B><DT>AMERICAN JOURNAL OF HEMATOLOGY
+<B><DD>	AM J HEMATOL
+</B><DT>AMERICAN JOURNAL OF HOSPITAL PHARMACY
+<B><DD>	AM J HOSP PHARM
+</B><DT>AMERICAN JOURNAL OF HUMAN BIOLOGY
+<B><DD>	AM J HUM BIOL
+</B><DT>AMERICAN JOURNAL OF HUMAN GENETICS
+<B><DD>	AM J HUM GENET
+</B><DT>AMERICAN JOURNAL OF HYPERTENSION
+<B><DD>	AM J HYPERTENS
+</B><DT>AMERICAN JOURNAL OF INDUSTRIAL MEDICINE
+<B><DD>	AM J IND MED
+</B><DT>AMERICAN JOURNAL OF INFECTION CONTROL
+<B><DD>	AM J INFECT CONTROL
+</B><DT>AMERICAN JOURNAL OF INTERNATIONAL LAW
+<B><DD>	AM J INT LAW
+</B><DT>AMERICAN JOURNAL OF KIDNEY DISEASES
+<B><DD>	AM J KIDNEY DIS
+</B><DT>AMERICAN JOURNAL OF LAW & MEDICINE
+<B><DD>	AM J LAW MED
+</B><DT>AMERICAN JOURNAL OF LEGAL HISTORY
+<B><DD>	AM J LEGAL HIST
+</B><DT>AMERICAN JOURNAL OF MANAGED CARE
+<B><DD>	AM J MANAG C
+</B><DT>AMERICAN JOURNAL OF MANAGED CARE
+<B><DD>	AM J MANAG CARE
+</B><DT>AMERICAN JOURNAL OF MATHEMATICS
+<B><DD>	AM J MATH
+</B><DT>AMERICAN JOURNAL OF MEDICAL GENETICS
+<B><DD>	AM J MED GENET
+</B><DT>AMERICAN JOURNAL OF MEDICAL QUALITY
+<B><DD>	AM J MED QUAL
+</B><DT>AMERICAN JOURNAL OF MEDICAL TECHNOLOGY
+<B><DD>	AM J MED TECHNOL
+</B><DT>AMERICAN JOURNAL OF MEDICINE
+<B><DD>	AM J MED
+</B><DT>AMERICAN JOURNAL OF MENTAL DEFICIENCY
+<B><DD>	AM J MENT DEF
+</B><DT>AMERICAN JOURNAL OF MENTAL DEFICIENCY
+<B><DD>	AM J MENT RETARD
+</B><DT>AMERICAN JOURNAL OF NEPHROLOGY
+<B><DD>	AM J NEPHROL
+</B><DT>AMERICAN JOURNAL OF NEURORADIOLOGY
+<B><DD>	AM J NEURORADIOL
+</B><DT>AMERICAN JOURNAL OF NONINVASIVE CARDIOLOGY
+<B><DD>	AM J NONINVAS CARD
+</B><DT>AMERICAN JOURNAL OF NURSING
+<B><DD>	AM J NURS
+</B><DT>AMERICAN JOURNAL OF OBSTETRICS AND GYNECOLOGY
+<B><DD>	AM J OBSTET GYNECOL
+</B><DT>AMERICAN JOURNAL OF OCCUPATIONAL THERAPY
+<B><DD>	AM J OCCUP THER
+</B><DT>AMERICAN JOURNAL OF OPHTHALMOLOGY
+<B><DD>	AM J OPHTHALMOL
+</B><DT>AMERICAN JOURNAL OF OPTOMETRY AND PHYSIOLOGICAL OPTICS
+<B><DD>	AM J OPTOM PHYS OPT
+</B><DT>AMERICAN JOURNAL OF ORTHODONTICS AND DENTOFACIAL ORTHOPEDICS
+<B><DD>	AM J ORTHOD DENTOFAC
+</B><DT>AMERICAN JOURNAL OF ORTHOPSYCHIATRY
+<B><DD>	AM J ORTHOPSYCHIAT
+</B><DT>AMERICAN JOURNAL OF OTOLARYNGOLOGY
+<B><DD>	AM J OTOLARYNG
+</B><DT>AMERICAN JOURNAL OF OTOLOGY
+<B><DD>	AM J OTOL
+</B><DT>AMERICAN JOURNAL OF PATHOLOGY
+<B><DD>	AM J PATHOL
+</B><DT>AMERICAN JOURNAL OF PEDIATRIC HEMATOLOGY ONCOLOGY
+<B><DD>	AM J PEDIAT HEMATOL
+</B><DT>AMERICAN JOURNAL OF PERINATOLOGY
+<B><DD>	AM J PERINAT
+</B><DT>AMERICAN JOURNAL OF PHARMACEUTICAL EDUCATION
+<B><DD>	AM J PHARM EDUC
+</B><DT>AMERICAN JOURNAL OF PHILOLOGY
+<B><DD>	AM J PHILOLOGY
+</B><DT>AMERICAN JOURNAL OF PHYSICAL ANTHROPOLOGY
+<B><DD>	AM J PHYS ANTHROPOL
+</B><DT>AMERICAN JOURNAL OF PHYSICAL MEDICINE & REHABILITATION
+<B><DD>	AM J PHYS MED REHAB
+</B><DT>AMERICAN JOURNAL OF PHYSICS
+<B><DD>	AM J PHYS
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY
+<B><DD>	AM J PHYSIOL
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY-CELL PHYSIOLOGY
+<B><DD>	AM J PHYSIOL-CELL PH
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY-ENDOCRINOLOGY AND METABOLISM
+<B><DD>	AM J PHYSIOL-ENDOC M
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY-GASTROINTESTINAL AND LIVER PHYSIOLOGY
+<B><DD>	AM J PHYSIOL-GASTR L
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY-HEART AND CIRCULATORY PHYSIOLOGY
+<B><DD>	AM J PHYSIOL-HEART C
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY-LUNG CELLULAR AND MOLECULAR PHYSIOLOGY
+<B><DD>	AM J PHYSIOL-LUNG C
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY-REGULATORY INTEGRATIVE AND COMPARATIVE PHYSIOLOGY
+<B><DD>	AM J PHYSIOL-REG I
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY-RENAL FLUID AND ELECTROLYTE PHYSIOLOGY
+<B><DD>	AM J PHYSIOL-RENAL
+</B><DT>AMERICAN JOURNAL OF PHYSIOLOGY-RENAL PHYSIOLOGY
+<B><DD>	AM J PHYSIOL-RENAL
+</B><DT>AMERICAN JOURNAL OF POLITICAL SCIENCE
+<B><DD>	AM J POLIT SCI
+</B><DT>AMERICAN JOURNAL OF POTATO RESEARCH
+<B><DD>	AM J POTATO RES
+</B><DT>AMERICAN JOURNAL OF PREVENTIVE MEDICINE
+<B><DD>	AM J PREV MED
+</B><DT>AMERICAN JOURNAL OF PRIMATOLOGY
+<B><DD>	AM J PRIMATOL
+</B><DT>AMERICAN JOURNAL OF PROCTOLOGY GASTROENTEROLOGY & COLON & RECTAL SURGERY
+<B><DD>	AM J PROCTOL GASTRO
+</B><DT>AMERICAN JOURNAL OF PSYCHIATRY
+<B><DD>	AM J PSYCHIAT
+</B><DT>AMERICAN JOURNAL OF PSYCHOLOGY
+<B><DD>	AM J PSYCHOL
+</B><DT>AMERICAN JOURNAL OF PSYCHOTHERAPY
+<B><DD>	AM J PSYCHOTHER
+</B><DT>AMERICAN JOURNAL OF PUBLIC HEALTH
+<B><DD>	AM J PUBLIC HEALTH
+</B><DT>AMERICAN JOURNAL OF REPRODUCTIVE IMMUNOLOGY
+<B><DD>	AM J REPROD IMMUNOL
+</B><DT>AMERICAN JOURNAL OF REPRODUCTIVE IMMUNOLOGY AND MICROBIOLOGY
+<B><DD>	AM J REPROD IM MIC
+</B><DT>AMERICAN JOURNAL OF REPRODUCTIVE IMMUNOLOGY AND MICROBIOLOGY
+<B><DD>	AM J REPROD IMMUNOL
+</B><DT>AMERICAN JOURNAL OF RESPIRATORY AND CRITICAL CARE MEDICINE
+<B><DD>	AM J RESP CRIT CARE
+</B><DT>AMERICAN JOURNAL OF RESPIRATORY CELL AND MOLECULAR BIOLOGY
+<B><DD>	AM J RESP CELL MOL
+</B><DT>AMERICAN JOURNAL OF RHINOLOGY
+<B><DD>	AM J RHINOL
+</B><DT>AMERICAN JOURNAL OF ROENTGENOLOGY
+<B><DD>	AM J ROENTGENOL
+</B><DT>AMERICAN JOURNAL OF SCIENCE
+<B><DD>	AM J SCI
+</B><DT>AMERICAN JOURNAL OF SEMIOTICS
+<B><DD>	AM J SEMIOTICS
+</B><DT>AMERICAN JOURNAL OF SOCIOLOGY
+<B><DD>	AM J SOCIOL
+</B><DT>AMERICAN JOURNAL OF SPEECH-LANGUAGE PATHOLOGY
+<B><DD>	AM J SPEECH-LANG PAT
+</B><DT>AMERICAN JOURNAL OF SPORTS MEDICINE
+<B><DD>	AM J SPORT MED
+</B><DT>AMERICAN JOURNAL OF SURGERY
+<B><DD>	AM J SURG
+</B><DT>AMERICAN JOURNAL OF SURGICAL PATHOLOGY
+<B><DD>	AM J SURG PATHOL
+</B><DT>AMERICAN JOURNAL OF THE MEDICAL SCIENCES
+<B><DD>	AM J MED SCI
+</B><DT>AMERICAN JOURNAL OF TROPICAL MEDICINE AND HYGIENE
+<B><DD>	AM J TROP MED HYG
+</B><DT>AMERICAN JOURNAL OF VETERINARY RESEARCH
+<B><DD>	AM J VET RES
+</B><DT>AMERICAN JOURNAL ON ADDICTIONS
+<B><DD>	AM J ADDICTION
+</B><DT>AMERICAN JOURNAL ON MENTAL RETARDATION
+<B><DD>	AM J MENT RETARD
+</B><DT>AMERICAN LABORATORY
+<B><DD>	AM LAB
+</B><DT>AMERICAN LITERARY HISTORY
+<B><DD>	AM LIT HIST
+</B><DT>AMERICAN LITERARY REALISM 1870-1910
+<B><DD>	AM LIT REALISM
+</B><DT>AMERICAN LITERATURE
+<B><DD>	AM LIT
+</B><DT>AMERICAN MACHINIST
+<B><DD>	AM MACH
+</B><DT>AMERICAN MALACOLOGICAL BULLETIN
+<B><DD>	AM MALACOL BULL
+</B><DT>AMERICAN MATHEMATICAL MONTHLY
+<B><DD>	AM MATH MON
+</B><DT>AMERICAN METRIC JOURNAL
+<B><DD>	AM METRIC J
+</B><DT>AMERICAN MIDLAND NATURALIST
+<B><DD>	AM MIDL NAT
+</B><DT>AMERICAN MINERALOGIST
+<B><DD>	AM MINERAL
+</B><DT>AMERICAN MINING CONGRESS JOURNAL
+<B><DD>	AM MIN CONGR J
+</B><DT>AMERICAN MUSIC
+<B><DD>	AM MUSIC
+</B><DT>AMERICAN NATURALIST
+<B><DD>	AM NAT
+</B><DT>AMERICAN NEPTUNE
+<B><DD>	AM NEPTUNE
+</B><DT>AMERICAN PHARMACY
+<B><DD>	AM PHARM
+</B><DT>AMERICAN PHILOSOPHICAL QUARTERLY
+<B><DD>	AM PHILOS QUART
+</B><DT>AMERICAN POETRY REVIEW
+<B><DD>	AM POETRY REV
+</B><DT>AMERICAN POLITICAL SCIENCE REVIEW
+<B><DD>	AM POLIT SCI REV
+</B><DT>AMERICAN POLITICS QUARTERLY
+<B><DD>	AM POLIT QUART
+</B><DT>AMERICAN POTATO JOURNAL
+<B><DD>	AM POTATO J
+</B><DT>AMERICAN PRESBYTERIANS-JOURNAL OF PRESBYTERIAN HISTORY
+<B><DD>	AM PRESBYTERIAN
+</B><DT>AMERICAN PROGRAMMER
+<B><DD>	AM PROGRAM
+</B><DT>AMERICAN PSYCHOLOGIST
+<B><DD>	AM PSYCHOL
+</B><DT>AMERICAN QUARTERLY
+<B><DD>	AM QUART
+</B><DT>AMERICAN REVIEW OF PUBLIC ADMINISTRATION
+<B><DD>	AM REV PUBLIC ADM
+</B><DT>AMERICAN REVIEW OF RESPIRATORY DISEASE
+<B><DD>	AM REV RESPIR DIS
+</B><DT>AMERICAN SCHOLAR
+<B><DD>	AM SCHOLAR
+</B><DT>AMERICAN SCIENTIST
+<B><DD>	AM SCI
+</B><DT>AMERICAN SOCIOLOGICAL REVIEW
+<B><DD>	AM SOCIOL REV
+</B><DT>AMERICAN SPEECH
+<B><DD>	AM SPEECH
+</B><DT>AMERICAN STATISTICIAN
+<B><DD>	AM STAT
+</B><DT>AMERICAN STUDIES IN SCANDINAVIA
+<B><DD>	AM STUD SCAND
+</B><DT>AMERICAN STUDIES INTERNATIONAL
+<B><DD>	AM STUD INT
+</B><DT>AMERICAN SURGEON
+<B><DD>	AM SURGEON
+</B><DT>AMERICAN TRANSCENDENTAL QUARTERLY
+<B><DD>	AM TRANSCEND QUART
+</B><DT>AMERICAN ZOOLOGIST
+<B><DD>	AM ZOOL
+</B><DT>AMERICAS
+<B><DD>	AMERICAS
+</B><DT>AMINO ACIDS
+<B><DD>	AMINO ACIDS
+</B><DT>AMPHIBIA-REPTILIA
+<B><DD>	AMPHIBIA-REPTILIA
+</B><DT>AMYLOID-INTERNATIONAL JOURNAL OF EXPERIMENTAL AND CLINICAL INVESTIGATION
+<B><DD>	AMYLOID
+</B><DT>ANAEROBE
+<B><DD>	ANAEROBE
+</B><DT>ANAESTHESIA
+<B><DD>	ANAESTHESIA
+</B><DT>ANAESTHESIA AND INTENSIVE CARE
+<B><DD>	ANAESTH INTENS CARE
+</B><DT>ANAESTHESIST
+<B><DD>	ANAESTHESIST
+</B><DT>ANAIS DA ACADEMIA BRASILEIRA DE CIENCIAS
+<B><DD>	AN ACAD BRAS CIENC
+</B><DT>ANALES DE LA ASOCIACION QUIMICA ARGENTINA
+<B><DD>	AN ASOC QUIM ARGENT
+</B><DT>ANALES DE LA LITERATURA ESPANOLA CONTEMPORANEA
+<B><DD>	AN LIT ESPAN CONTEMP
+</B><DT>ANALES DE QUIMICA
+<B><DD>	AN QUIM
+</B><DT>ANALES DE QUIMICA SERIE A-QUIMICA FISICA Y QUIMICA TECNICA
+<B><DD>	AN QUIM A-FIS TEC
+</B><DT>ANALES DE QUIMICA SERIE B-QUIMICA INORGANICA Y QUIMICA ANALYTICA
+<B><DD>	AN QUIM B-INORG ANAL
+</B><DT>ANALES DE QUIMICA SERIE C-QUIMICA ORGANICA Y BIOQUIMICA
+<B><DD>	AN QUIM C-ORG BIOQ
+</B><DT>ANALES DE QUIMICA-INTERNATIONAL EDITION
+<B><DD>	AN QUIM-INT
+</B><DT>ANALOG INTEGRATED CIRCUITS AND SIGNAL PROCESSING
+<B><DD>	ANALOG INTEGR CIRC S
+</B><DT>ANALUSIS
+<B><DD>	ANALUSIS
+</B><DT>ANALYSIS
+<B><DD>	ANALYSIS
+</B><DT>ANALYST
+<B><DD>	ANALYST
+</B><DT>ANALYTICA CHIMICA ACTA
+<B><DD>	ANAL CHIM ACTA
+</B><DT>ANALYTICAL AND QUANTITATIVE CARDIOLOGY
+<B><DD>	ADV EXP MED BIOL
+</B><DT>ANALYTICAL AND QUANTITATIVE CYTOLOGY AND HISTOLOGY
+<B><DD>	ANAL QUANT CYTOL
+</B><DT>ANALYTICAL BIOCHEMISTRY
+<B><DD>	ANAL BIOCHEM
+</B><DT>ANALYTICAL CELLULAR PATHOLOGY
+<B><DD>	ANAL CELL PATHOL
+</B><DT>ANALYTICAL CHEMISTRY
+<B><DD>	ANAL CHEM
+</B><DT>ANALYTICAL COMMUNICATIONS
+<B><DD>	ANAL COMMUN
+</B><DT>ANALYTICAL INSTRUMENTATION
+<B><DD>	ANAL INSTRUM
+</B><DT>ANALYTICAL LETTERS
+<B><DD>	ANAL LETT
+</B><DT>ANALYTICAL LETTERS PART A-CHEMICAL ANALYSIS
+<B><DD>	ANAL LETT PT A
+</B><DT>ANALYTICAL LETTERS PART B-CLINICAL AND BIOCHEMICAL ANALYSIS
+<B><DD>	ANAL LETT PT B
+</B><DT>ANALYTICAL METHODS AND INSTRUMENTATION
+<B><DD>	ANAL METHOD INSTRUM
+</B><DT>ANALYTICAL PROCEEDINGS
+<B><DD>	ANAL PROC
+</B><DT>ANALYTICAL SCIENCES
+<B><DD>	ANAL SCI
+</B><DT>ANALYTISCHE PSYCHOLOGIE
+<B><DD>	ANAL PSYCHOL
+</B><DT>ANASTHESIE INTENSIVTHERAPIE NOTFALLMEDIZIN
+<B><DD>	ANASTH INTENSIV NOTF
+</B><DT>ANASTHESIOLOGIE & INTENSIVMEDIZIN
+<B><DD>	ANASTH INTENSIVMED
+</B><DT>ANASTHESIOLOGIE INTENSIVMEDIZIN NOTFALLMEDIZIN SCHMERZTHERAPIE
+<B><DD>	ANASTH INTENSIV NOTF
+</B><DT>ANASTHESIOLOGIE UND INTENSIVMEDIZIN
+<B><DD>	ANASTH INTENSIVMED
+</B><DT>ANATOMIA CLINICA
+<B><DD>	ANAT CLIN
+</B><DT>ANATOMIA HISTOLOGIA EMBRYOLOGIA-JOURNAL OF VETERINARY MEDICINE SERIES C
+<B><DD>	ANAT HISTOL EMBRYOL
+</B><DT>ANATOMIA HISTOLOGIA EMBRYOLOGIA-JOURNAL OF VETERINARY MEDICINE SERIES C-ZENTRALBLATT FUR VETERINARMEDIZIN REIHE C
+<B><DD>	ANAT HISTOL EMBRYOL
+</B><DT>ANATOMICAL RECORD
+<B><DD>	ANAT REC
+</B><DT>ANATOMISCHER ANZEIGER
+<B><DD>	ANAT ANZEIGER
+</B><DT>ANATOMY AND EMBRYOLOGY
+<B><DD>	ANAT EMBRYOL
+</B><DT>ANDREW SEYBOLDS OUTLOOK ON PROFESSIONAL COMPUTING
+<B><DD>	ANDREW SEYBOLD OUT P
+</B><DT>ANDROLOGIA
+<B><DD>	ANDROLOGIA
+</B><DT>ANESTHESIA AND ANALGESIA
+<B><DD>	ANESTH ANALG
+</B><DT>ANESTHESIOLOGY
+<B><DD>	ANESTHESIOLOGY
+</B><DT>ANESTHESIOLOGY CLINICS OF NORTH AMERICA
+<B><DD>	ANESTHESIOL CLIN N A
+</B><DT>ANGEWANDTE BOTANIK
+<B><DD>	ANGEW BOT
+</B><DT>ANGEWANDTE CHEMIE-INTERNATIONAL EDITION
+<B><DD>	ANGEW CHEM INT EDIT
+</B><DT>ANGEWANDTE CHEMIE-INTERNATIONAL EDITION IN ENGLISH
+<B><DD>	ANGEW CHEM INT EDIT
+</B><DT>ANGEWANDTE INFORMATIK
+<B><DD>	ANGEW INFORM
+</B><DT>ANGEWANDTE MAKROMOLEKULARE CHEMIE
+<B><DD>	ANGEW MAKROMOL CHEM
+</B><DT>ANGIOLOGY
+<B><DD>	ANGIOLOGY
+</B><DT>ANGLE ORTHODONTIST
+<B><DD>	ANGLE ORTHOD
+</B><DT>ANGLIA-ZEITSCHRIFT FUR ENGLISCHE PHILOLOGIE
+<B><DD>	ANGLIA-Z ENGL PHILOL
+</B><DT>ANIMAL BEHAVIOUR
+<B><DD>	ANIM BEHAV
+</B><DT>ANIMAL BIOTECHNOLOGY
+<B><DD>	ANIM BIOTECHNOL
+</B><DT>ANIMAL BLOOD GROUPS AND BIOCHEMICAL GENETICS
+<B><DD>	ANIM BLOOD GROUPS BI
+</B><DT>ANIMAL BLOOD GROUPS AND BIOCHEMICAL GENETICS
+<B><DD>	ANIM GENET
+</B><DT>ANIMAL FEED SCIENCE AND TECHNOLOGY
+<B><DD>	ANIM FEED SCI TECH
+</B><DT>ANIMAL GENETICS
+<B><DD>	ANIM GENET
+</B><DT>ANIMAL LEARNING & BEHAVIOR
+<B><DD>	ANIM LEARN BEHAV
+</B><DT>ANIMAL PRODUCTION
+<B><DD>	ANIM PROD
+</B><DT>ANIMAL REGULATION STUDIES
+<B><DD>	ANIM REGULAT STUD
+</B><DT>ANIMAL REPRODUCTION SCIENCE
+<B><DD>	ANIM REPROD SCI
+</B><DT>ANIMAL SCIENCE
+<B><DD>	ANIM SCI
+</B><DT>ANIMAL WELFARE
+<B><DD>	ANIM WELFARE
+</B><DT>ANNALEN DER PHYSIK
+<B><DD>	ANN PHYS-BERLIN
+</B><DT>ANNALEN DER PHYSIK
+<B><DD>	ANN PHYS-LEIPZIG
+</B><DT>ANNALES ACADEMIAE SCIENTIARUM FENNICAE SERIES A1-MATHEMATICA
+<B><DD>	ANN ACAD SCI FENN A1
+</B><DT>ANNALES ACADEMIAE SCIENTIARUM FENNICAE-MATHEMATICA
+<B><DD>	ANN ACAD SCI FENN-M
+</B><DT>ANNALES AGRICULTURAE FENNIAE
+<B><DD>	ANN AGR FENN
+</B><DT>ANNALES BOTANICI FENNICI
+<B><DD>	ANN BOT FENN
+</B><DT>ANNALES CHIRURGIAE ET GYNAECOLOGIAE
+<B><DD>	ANN CHIR GYNAECOL FE
+</B><DT>ANNALES D ENDOCRINOLOGIE
+<B><DD>	ANN ENDOCRINOL-PARIS
+</B><DT>ANNALES D IMMUNOLOGIE
+<B><DD>	ANN INST PASTEUR IMM
+</B><DT>ANNALES D UROLOGIE
+<B><DD>	ANN UROL
+</B><DT>ANNALES DE BIOLOGIE CLINIQUE
+<B><DD>	ANN BIOL CLIN-PARIS
+</B><DT>ANNALES DE BRETAGNE ET DES PAYS DE L OUEST
+<B><DD>	ANN BRETAGNE PAYS
+</B><DT>ANNALES DE CARDIOLOGIE ET D ANGEIOLOGIE
+<B><DD>	ANN CARDIOL ANGEIOL
+</B><DT>ANNALES DE CHIMIE-SCIENCE DES MATERIAUX
+<B><DD>	ANN CHIM-SCI MAT
+</B><DT>ANNALES DE CHIRURGIE
+<B><DD>	ANN CHIR
+</B><DT>ANNALES DE CHIRURGIE PLASTIQUE
+<B><DD>	ANN CHIR PLAST ESTH
+</B><DT>ANNALES DE CHIRURGIE PLASTIQUE ET ESTHETIQUE
+<B><DD>	ANN CHIR PLAST ESTH
+</B><DT>ANNALES DE DERMATOLOGIE ET DE VENEREOLOGIE
+<B><DD>	ANN DERMATOL VENER
+</B><DT>ANNALES DE GASTROENTEROLOGIE ET D HEPATOLOGIE
+<B><DD>	ANN GASTROENT HEPATO
+</B><DT>ANNALES DE GENETIQUE
+<B><DD>	ANN GENET-PARIS
+</B><DT>ANNALES DE GENETIQUE ET DE SELECTION ANIMALE
+<B><DD>	ANN GENET SEL ANIM
+</B><DT>ANNALES DE GEOPHYSIQUE
+<B><DD>	ANN GEOPHYS
+</B><DT>ANNALES DE L ANESTHESIOLOGIE FRANCAISE
+<B><DD>	ANN ANESTHESIOL FR
+</B><DT>ANNALES DE L INSTITUT FOURIER
+<B><DD>	ANN I FOURIER
+</B><DT>ANNALES DE L INSTITUT HENRI POINCARE SECTION B-CALCUL DES PROBABILITES ET STATISTIQUE
+<B><DD>	ANN I H POINCARE B
+</B><DT>ANNALES DE L INSTITUT HENRI POINCARE-ANALYSE NON LINEAIRE
+<B><DD>	ANN I H POINCARE-AN
+</B><DT>ANNALES DE L INSTITUT HENRI POINCARE-PHYSIQUE THEORIQUE
+<B><DD>	ANN I H POINCARE-PHY
+</B><DT>ANNALES DE L INSTITUT HENRI POINCARE-PROBABILITES ET STATISTIQUES
+<B><DD>	ANN I H POINCARE-PR
+</B><DT>ANNALES DE L INSTITUT OCEANOGRAPHIQUE
+<B><DD>	ANN I OCEANOGR PARIS
+</B><DT>ANNALES DE L INSTITUT PASTEUR-IMMUNOLOGY
+<B><DD>	ANN INST PASTEUR IMM
+</B><DT>ANNALES DE L INSTITUT PASTEUR-MICROBIOLOGIE
+<B><DD>	ANN INST PASTEUR MIC
+</B><DT>ANNALES DE L INSTITUT PASTEUR-VIROLOGY
+<B><DD>	ANN INST PASTEUR VIR
+</B><DT>ANNALES DE LA SOCIETE BELGE DE MEDECINE TROPICALE
+<B><DD>	ANN SOC BELG MED TR
+</B><DT>ANNALES DE LA SOCIETE ENTOMOLOGIQUE DE FRANCE
+<B><DD>	ANN SOC ENTOMOL FR
+</B><DT>ANNALES DE LA SOCIETE ROYALE ZOOLOGIQUE DE BELGIQUE
+<B><DD>	ANN SOC ROY ZOOL BEL
+</B><DT>ANNALES DE LA SOCIETE SCIENTIFIQUE DE BRUXELLES SERIES 1-SCIENCES MATHEMATIQUES ASTRONOMIQUES ET PHYSIQUES
+<B><DD>	ANN SOC SCI BRUX
+</B><DT>ANNALES DE LIMNOLOGIE-INTERNATIONAL JOURNAL OF LIMNOLOGY
+<B><DD>	ANN LIMNOL-INT J LIM
+</B><DT>ANNALES DE MEDECINE INTERNE
+<B><DD>	ANN MED INTERNE
+</B><DT>ANNALES DE MEDECINE VETERINAIRE
+<B><DD>	ANN MED VET
+</B><DT>ANNALES DE MICROBIOLOGIE
+<B><DD>	ANN INST PASTEUR MIC
+</B><DT>ANNALES DE PARASITOLOGIE HUMAINE ET COMPAREE
+<B><DD>	ANN PARASIT HUM COMP
+</B><DT>ANNALES DE PATHOLOGIE
+<B><DD>	ANN PATHOL
+</B><DT>ANNALES DE PEDIATRIE
+<B><DD>	ANN PEDIATR-PARIS
+</B><DT>ANNALES DE PHYSIQUE
+<B><DD>	ANN PHYS-PARIS
+</B><DT>ANNALES DE RADIOLOGIE
+<B><DD>	ANN RADIOL
+</B><DT>ANNALES DE RECHERCHES VETERINAIRES
+<B><DD>	ANN RECH VET
+</B><DT>ANNALES DE VIROLOGIE
+<B><DD>	ANN INST PASTEUR VIR
+</B><DT>ANNALES DE ZOOTECHNIE
+<B><DD>	ANN ZOOTECH
+</B><DT>ANNALES DES MINES
+<B><DD>	ANN MINES
+</B><DT>ANNALES DES SCIENCES FORESTIERES
+<B><DD>	ANN SCI FOREST
+</B><DT>ANNALES DES SCIENCES NATURELLES-BOTANIQUE ET BIOLOGIE VEGETALE
+<B><DD>	ANN SCI NAT BOT BIOL
+</B><DT>ANNALES DES SCIENCES NATURELLES-ZOOLOGIE ET BIOLOGIE ANIMALE
+<B><DD>	ANN SCI NAT ZOOL
+</B><DT>ANNALES DES TELECOMMUNICATIONS-ANNALS OF TELECOMMUNICATIONS
+<B><DD>	ANN TELECOMMUN
+</B><DT>ANNALES ENTOMOLOGICI FENNICI
+<B><DD>	ANN ENTOMOL FENN
+</B><DT>ANNALES FRANCAISES D ANESTHESIE ET DE REANIMATION
+<B><DD>	ANN FR ANESTH
+</B><DT>ANNALES GEOPHYSICAE
+<B><DD>	ANN GEOPHYS
+</B><DT>ANNALES GEOPHYSICAE SERIES A-UPPER ATMOSPHERE AND SPACE SCIENCES
+<B><DD>	ANN GEOPHYS A-UPPER
+</B><DT>ANNALES GEOPHYSICAE SERIES B-TERRESTRIAL AND PLANETARY PHYSICS
+<B><DD>	ANN GEOPHYS B-TERR P
+</B><DT>ANNALES GEOPHYSICAE-ATMOSPHERES HYDROSPHERES AND SPACE SCIENCES
+<B><DD>	ANN GEOPHYS
+</B><DT>ANNALES GEOPHYSICAE-ATMOSPHERES HYDROSPHERES AND SPACE SCIENCES
+<B><DD>	ANN GEOPHYS-ATM HYDR
+</B><DT>ANNALES HENRI POINCARE
+<B><DD>	ANN HENRI POINCARE
+</B><DT>ANNALES HISTORIQUES DE LA REVOLUTION FRANCAISE
+<B><DD>	ANN HIST REVOL FR
+</B><DT>ANNALES MEDICO-PSYCHOLOGIQUES
+<B><DD>	ANN MED-PSYCHOL
+</B><DT>ANNALES PHARMACEUTIQUES FRANCAISES
+<B><DD>	ANN PHARM FR
+</B><DT>ANNALES SCIENTIFIQUES DE L ECOLE NORMALE SUPERIEURE
+<B><DD>	ANN SCI ECOLE NORM S
+</B><DT>ANNALES ZOOLOGICI FENNICI
+<B><DD>	ANN ZOOL FENN
+</B><DT>ANNALES-ECONOMIES SOCIETES CIVILISATIONS
+<B><DD>	ANN ECON SOC CIVIL
+</B><DT>ANNALES-HISTOIRE SCIENCES SOCIALES
+<B><DD>	ANN HIST SCI SOC
+</B><DT>ANNALI DI CHIMICA
+<B><DD>	ANN CHIM-ROME
+</B><DT>ANNALI DI GEOFISICA
+<B><DD>	ANN GEOFIS
+</B><DT>ANNALI DI MATEMATICA PURA ED APPLICATA
+<B><DD>	ANN MAT PUR APPL
+</B><DT>ANNALI DI MICROBIOLOGIA ED ENZIMOLOGIA
+<B><DD>	ANN MICROBIOL ENZIM
+</B><DT>ANNALS OF ALLERGY
+<B><DD>	ANN ALLERGY
+</B><DT>ANNALS OF ALLERGY ASTHMA & IMMUNOLOGY
+<B><DD>	ANN ALLERG ASTHMA IM
+</B><DT>ANNALS OF ANATOMY-ANATOMISCHER ANZEIGER
+<B><DD>	ANN ANAT
+</B><DT>ANNALS OF APPLIED BIOLOGY
+<B><DD>	ANN APPL BIOL
+</B><DT>ANNALS OF APPLIED NEMATOLOGY
+<B><DD>	ANN APPL NEMATOL
+</B><DT>ANNALS OF APPLIED PROBABILITY
+<B><DD>	ANN APPL PROBAB
+</B><DT>ANNALS OF ARID ZONE
+<B><DD>	ANN ARID ZONE
+</B><DT>ANNALS OF BEHAVIORAL MEDICINE
+<B><DD>	ANN BEHAV MED
+</B><DT>ANNALS OF BIOMEDICAL ENGINEERING
+<B><DD>	ANN BIOMED ENG
+</B><DT>ANNALS OF BOTANY
+<B><DD>	ANN BOT-LONDON
+</B><DT>ANNALS OF CARNEGIE MUSEUM
+<B><DD>	ANN CARNEGIE MUS
+</B><DT>ANNALS OF CLINICAL AND LABORATORY SCIENCE
+<B><DD>	ANN CLIN LAB SCI
+</B><DT>ANNALS OF CLINICAL BIOCHEMISTRY
+<B><DD>	ANN CLIN BIOCHEM
+</B><DT>ANNALS OF CLINICAL RESEARCH
+<B><DD>	ANN CLIN RES
+</B><DT>ANNALS OF DYSLEXIA
+<B><DD>	ANN DYSLEXIA
+</B><DT>ANNALS OF EMERGENCY MEDICINE
+<B><DD>	ANN EMERG MED
+</B><DT>ANNALS OF EPIDEMIOLOGY
+<B><DD>	ANN EPIDEMIOL
+</B><DT>ANNALS OF FOREST SCIENCE
+<B><DD>	ANN FOR SCI
+</B><DT>ANNALS OF GLACIOLOGY
+<B><DD>	ANN GLACIOL
+</B><DT>ANNALS OF GLACIOLOGY, VOL 27, 1998
+<B><DD>	ANN GLACIOL
+</B><DT>ANNALS OF GLACIOLOGY, VOL 29, 1999
+<B><DD>	ANN GLACIOL
+</B><DT>ANNALS OF GLOBAL ANALYSIS AND GEOMETRY
+<B><DD>	ANN GLOB ANAL GEOM
+</B><DT>ANNALS OF HEMATOLOGY
+<B><DD>	ANN HEMATOL
+</B><DT>ANNALS OF HUMAN BIOLOGY
+<B><DD>	ANN HUM BIOL
+</B><DT>ANNALS OF HUMAN GENETICS
+<B><DD>	ANN HUM GENET
+</B><DT>ANNALS OF INTERNAL MEDICINE
+<B><DD>	ANN INTERN MED
+</B><DT>ANNALS OF MATHEMATICAL LOGIC
+<B><DD>	ANN MATH LOGIC
+</B><DT>ANNALS OF MATHEMATICS
+<B><DD>	ANN MATH
+</B><DT>ANNALS OF MATHEMATICS AND ARTIFICIAL INTELLIGENCE
+<B><DD>	ANN MATH ARTIF INTEL
+</B><DT>ANNALS OF MATHEMATICS STUDIES
+<B><DD>	ANN MATH STUD
+</B><DT>ANNALS OF MEDICINE
+<B><DD>	ANN MED
+</B><DT>ANNALS OF NEUROLOGY
+<B><DD>	ANN NEUROL
+</B><DT>ANNALS OF NUCLEAR ENERGY
+<B><DD>	ANN NUCL ENERGY
+</B><DT>ANNALS OF NUCLEAR MEDICINE
+<B><DD>	ANN NUCL MED
+</B><DT>ANNALS OF NUTRITION AND METABOLISM
+<B><DD>	ANN NUTR METAB
+</B><DT>ANNALS OF OCCUPATIONAL HYGIENE
+<B><DD>	ANN OCCUP HYG
+</B><DT>ANNALS OF ONCOLOGY
+<B><DD>	ANN ONCOL
+</B><DT>ANNALS OF OPERATIONS RESEARCH
+<B><DD>	ANN OPER RES
+</B><DT>ANNALS OF OPHTHALMOLOGY
+<B><DD>	ANN OPHTHALMOL
+</B><DT>ANNALS OF OPHTHALMOLOGY & GLAUCOMA
+<B><DD>	ANN OPHTHALMOL GLAUC
+</B><DT>ANNALS OF OPHTHALMOLOGY-GLAUCOMA
+<B><DD>	ANN OPHTHALMOL-GLAUC
+</B><DT>ANNALS OF OTOLOGY RHINOLOGY AND LARYNGOLOGY
+<B><DD>	ANN OTO RHINOL LARYN
+</B><DT>ANNALS OF PHARMACOTHERAPY
+<B><DD>	ANN PHARMACOTHER
+</B><DT>ANNALS OF PHYSICS
+<B><DD>	ANN PHYS-NEW YORK
+</B><DT>ANNALS OF PLASTIC SURGERY
+<B><DD>	ANN PLAS SURG
+</B><DT>ANNALS OF PROBABILITY
+<B><DD>	ANN PROBAB
+</B><DT>ANNALS OF PURE AND APPLIED LOGIC
+<B><DD>	ANN PURE APPL LOGIC
+</B><DT>ANNALS OF REGIONAL SCIENCE
+<B><DD>	ANN REGIONAL SCI
+</B><DT>ANNALS OF SAUDI MEDICINE
+<B><DD>	ANN SAUDI MED
+</B><DT>ANNALS OF SCIENCE
+<B><DD>	ANN SCI
+</B><DT>ANNALS OF SOFTWARE ENGINEERING
+<B><DD>	ANN SOFTW ENG
+</B><DT>ANNALS OF STATISTICS
+<B><DD>	ANN STAT
+</B><DT>ANNALS OF SURGERY
+<B><DD>	ANN SURG
+</B><DT>ANNALS OF SURGICAL ONCOLOGY
+<B><DD>	ANN SURG ONCOL
+</B><DT>ANNALS OF THE AMERICAN ACADEMY OF POLITICAL AND SOCIAL SCIENCE
+<B><DD>	ANN AM ACAD POLIT SS
+</B><DT>ANNALS OF THE ASSOCIATION OF AMERICAN GEOGRAPHERS
+<B><DD>	ANN ASSOC AM GEOGR
+</B><DT>ANNALS OF THE ENTOMOLOGICAL SOCIETY OF AMERICA
+<B><DD>	ANN ENTOMOL SOC AM
+</B><DT>ANNALS OF THE HISTORY OF COMPUTING
+<B><DD>	ANN HIST COMPUT
+</B><DT>ANNALS OF THE INSTITUTE OF STATISTICAL MATHEMATICS
+<B><DD>	ANN I STAT MATH
+</B><DT>ANNALS OF THE MISSOURI BOTANICAL GARDEN
+<B><DD>	ANN MO BOT GARD
+</B><DT>ANNALS OF THE NEW YORK ACADEMY OF SCIENCES
+<B><DD>	ANN NY ACAD SCI
+</B><DT>ANNALS OF THE RHEUMATIC DISEASES
+<B><DD>	ANN RHEUM DIS
+</B><DT>ANNALS OF THE ROYAL COLLEGE OF PHYSICIANS AND SURGEONS OF CANADA
+<B><DD>	ANN ROY COLL PHYSIC
+</B><DT>ANNALS OF THE ROYAL COLLEGE OF SURGEONS OF ENGLAND
+<B><DD>	ANN ROY COLL SURG
+</B><DT>ANNALS OF THORACIC SURGERY
+<B><DD>	ANN THORAC SURG
+</B><DT>ANNALS OF TOURISM RESEARCH
+<B><DD>	ANN TOURISM RES
+</B><DT>ANNALS OF TROPICAL MEDICINE AND PARASITOLOGY
+<B><DD>	ANN TROP MED PARASIT
+</B><DT>ANNALS OF TROPICAL PAEDIATRICS
+<B><DD>	ANN TROP PAEDIATR
+</B><DT>ANNALS OF VASCULAR SURGERY
+<B><DD>	ANN VASC SURG
+</B><DT>ANNEE BIOLOGIQUE
+<B><DD>	ANN BIOL-PARIS
+</B><DT>ANNEE PSYCHOLOGIQUE
+<B><DD>	ANN PSYCHOL
+</B><DT>ANNOTATIONES ZOOLOGICAE JAPONENSES
+<B><DD>	ANNOT ZOOL JAPON
+</B><DT>ANNUAL OF THE SOCIETY OF CHRISTIAN ETHICS
+<B><DD>	ANNU SOC CHRIST ETH
+</B><DT>ANNUAL RELIABILITY AND MAINTAINABILITY SYMPOSIUM, 1999 PROCEEDINGS
+<B><DD>	P A REL MAI
+</B><DT>ANNUAL REPORTS IN MEDICINAL CHEMISTRY
+<B><DD>	ANNU REP MED CHEM
+</B><DT>ANNUAL REPORTS ON NMR SPECTROSCOPY
+<B><DD>	ANN R NMR S
+</B><DT>ANNUAL REVIEW OF ANTHROPOLOGY
+<B><DD>	ANNU REV ANTHROPOL
+</B><DT>ANNUAL REVIEW OF ASTRONOMY AND ASTROPHYSICS
+<B><DD>	ANNU REV ASTRON ASTR
+</B><DT>ANNUAL REVIEW OF BIOCHEMISTRY
+<B><DD>	ANNU REV BIOCHEM
+</B><DT>ANNUAL REVIEW OF BIOMEDICAL ENGINEERING
+<B><DD>	ANNU REV BIOMED ENG
+</B><DT>ANNUAL REVIEW OF BIOPHYSICS AND BIOENGINEERING
+<B><DD>	ANNU REV BIOPHYS BIO
+</B><DT>ANNUAL REVIEW OF BIOPHYSICS AND BIOMOLECULAR STRUCTURE
+<B><DD>	ANNU REV BIOPH BIOM
+</B><DT>ANNUAL REVIEW OF BIOPHYSICS AND BIOPHYSICAL CHEMISTRY
+<B><DD>	ANNU REV BIOPHYS BIO
+</B><DT>ANNUAL REVIEW OF CELL AND DEVELOPMENTAL BIOLOGY
+<B><DD>	ANNU REV CELL DEV BI
+</B><DT>ANNUAL REVIEW OF CELL BIOLOGY
+<B><DD>	ANNU REV CELL BIOL
+</B><DT>ANNUAL REVIEW OF COMPUTER SCIENCE
+<B><DD>	ANNU REV COMPUT SCI
+</B><DT>ANNUAL REVIEW OF EARTH AND PLANETARY SCIENCES
+<B><DD>	ANNU REV EARTH PL SC
+</B><DT>ANNUAL REVIEW OF ECOLOGY AND SYSTEMATICS
+<B><DD>	ANNU REV ECOL SYST
+</B><DT>ANNUAL REVIEW OF ENERGY
+<B><DD>	ANNU REV ENERGY
+</B><DT>ANNUAL REVIEW OF ENERGY AND THE ENVIRONMENT
+<B><DD>	ANNU REV ENERG ENV
+</B><DT>ANNUAL REVIEW OF ENTOMOLOGY
+<B><DD>	ANNU REV ENTOMOL
+</B><DT>ANNUAL REVIEW OF FLUID MECHANICS
+<B><DD>	ANNU REV FLUID MECH
+</B><DT>ANNUAL REVIEW OF GENETICS
+<B><DD>	ANNU REV GENET
+</B><DT>ANNUAL REVIEW OF IMMUNOLOGY
+<B><DD>	ANNU REV IMMUNOL
+</B><DT>ANNUAL REVIEW OF INFORMATION SCIENCE AND TECHNOLOGY
+<B><DD>	ANNU REV INFORM SCI
+</B><DT>ANNUAL REVIEW OF MATERIALS SCIENCE
+<B><DD>	ANNU REV MATER SCI
+</B><DT>ANNUAL REVIEW OF MEDICINE
+<B><DD>	ANNU REV MED
+</B><DT>ANNUAL REVIEW OF MICROBIOLOGY
+<B><DD>	ANNU REV MICROBIOL
+</B><DT>ANNUAL REVIEW OF NEUROSCIENCE
+<B><DD>	ANNU REV NEUROSCI
+</B><DT>ANNUAL REVIEW OF NUCLEAR AND PARTICLE SCIENCE
+<B><DD>	ANNU REV NUCL PART S
+</B><DT>ANNUAL REVIEW OF NUTRITION
+<B><DD>	ANNU REV NUTR
+</B><DT>ANNUAL REVIEW OF PHARMACOLOGY AND TOXICOLOGY
+<B><DD>	ANNU REV PHARMACOL
+</B><DT>ANNUAL REVIEW OF PHYSICAL CHEMISTRY
+<B><DD>	ANNU REV PHYS CHEM
+</B><DT>ANNUAL REVIEW OF PHYSIOLOGY
+<B><DD>	ANNU REV PHYSIOL
+</B><DT>ANNUAL REVIEW OF PHYTOPATHOLOGY
+<B><DD>	ANNU REV PHYTOPATHOL
+</B><DT>ANNUAL REVIEW OF PLANT PHYSIOLOGY AND PLANT MOLECULAR BIOLOGY
+<B><DD>	ANNU REV PLANT PHYS
+</B><DT>ANNUAL REVIEW OF PSYCHOLOGY
+<B><DD>	ANNU REV PSYCHOL
+</B><DT>ANNUAL REVIEW OF PUBLIC HEALTH
+<B><DD>	ANNU REV PUBL HEALTH
+</B><DT>ANNUAL REVIEW OF SOCIOLOGY
+<B><DD>	ANNU REV SOCIOL
+</B><DT>ANQ-A QUARTERLY JOURNAL OF SHORT ARTICLES NOTES AND REVIEWS
+<B><DD>	ANQ-Q J SHORT ART N
+</B><DT>ANTARCTIC SCIENCE
+<B><DD>	ANTARCT SCI
+</B><DT>ANTHROPOLOGICAL QUARTERLY
+<B><DD>	ANTHROPOL QUART
+</B><DT>ANTHROPOLOGICAL SCIENCE
+<B><DD>	ANTHROPOL SCI
+</B><DT>ANTHROPOLOGIE
+<B><DD>	ANTHROPOLOGIE
+</B><DT>ANTHROPOLOGY & EDUCATION QUARTERLY
+<B><DD>	ANTHROPOL EDUC QUART
+</B><DT>ANTHROPOLOGY AND ARCHEOLOGY OF EURASIA
+<B><DD>	ANTHR ARCHEOL EURAS
+</B><DT>ANTHROPOS
+<B><DD>	ANTHROPOS
+</B><DT>ANTHROZOOS
+<B><DD>	ANTHROZOOS
+</B><DT>ANTI-CANCER DRUG DESIGN
+<B><DD>	ANTI-CANCER DRUG DES
+</B><DT>ANTI-CANCER DRUGS
+<B><DD>	ANTI-CANCER DRUG
+</B><DT>ANTI-CORROSION METHODS AND MATERIALS
+<B><DD>	ANTI-CORROS METHOD M
+</B><DT>ANTIBIOTIKI
+<B><DD>	ANTIBIOT MED BIOTEK
+</B><DT>ANTIBIOTIKI I KHIMIOTERAPIYA
+<B><DD>	ANTIBIOT KHIMIOTERAP
+</B><DT>ANTIBIOTIKI I MEDITSINSKAYA BIOTEKHNOLOGIYA
+<B><DD>	ANTIBIOT MED BIOTEK
+</B><DT>ANTIBODY IMMUNOCONJUGATES AND RADIOPHARMACEUTICALS
+<B><DD>	ANTIBODY IMMUNOCONJ
+</B><DT>ANTICANCER RESEARCH
+<B><DD>	ANTICANCER RES
+</B><DT>ANTIGONISH REVIEW
+<B><DD>	ANTIGONISH REV
+</B><DT>ANTIKE UND ABENDLAND
+<B><DD>	ANTIKE ABENDLAND
+</B><DT>ANTIMICROBIAL AGENTS AND CHEMOTHERAPY
+<B><DD>	ANTIMICROB AGENTS CH
+</B><DT>ANTIOCH REVIEW
+<B><DD>	ANTIOCH REV
+</B><DT>ANTIPODE
+<B><DD>	ANTIPODE
+</B><DT>ANTIQUITY
+<B><DD>	ANTIQUITY
+</B><DT>ANTISENSE & NUCLEIC ACID DRUG DEVELOPMENT
+<B><DD>	ANTISENSE NUCLEIC A
+</B><DT>ANTISENSE RESEARCH AND DEVELOPMENT
+<B><DD>	ANTISENSE RES DEV
+</B><DT>ANTITRUST LAW JOURNAL
+<B><DD>	ANTITRUST LAW J
+</B><DT>ANTIVIRAL CHEMISTRY & CHEMOTHERAPY
+<B><DD>	ANTIVIR CHEM CHEMOTH
+</B><DT>ANTIVIRAL RESEARCH
+<B><DD>	ANTIVIR RES
+</B><DT>ANTIVIRAL THERAPY
+<B><DD>	ANTIVIR THER
+</B><DT>ANTONIE VAN LEEUWENHOEK INTERNATIONAL JOURNAL OF GENERAL AND MOLECULAR MICROBIOLOGY
+<B><DD>	ANTON LEEUW INT J G
+</B><DT>ANTONIE VAN LEEUWENHOEK JOURNAL OF MICROBIOLOGY
+<B><DD>	A VAN LEEUW J MICROB
+</B><DT>ANXIETY
+<B><DD>	ANXIETY
+</B><DT>ANXIETY STRESS AND COPING
+<B><DD>	ANXIETY STRESS COPIN
+</B><DT>ANZEIGER FUR SCHADLINGSKUNDE PFLANZENSCHUTZ UMWELTSCHUTZ
+<B><DD>	ANZ SCHADLINGSKD PFL
+</B><DT>ANZEIGER FUR SCHADLINGSKUNDE-JOURNAL OF PEST SCIENCE
+<B><DD>	ANZ SCHADL-J PEST SC
+</B><DT>APERTURE
+<B><DD>	APERTURE
+</B><DT>APHASIOLOGY
+<B><DD>	APHASIOLOGY
+</B><DT>APIDOLOGIE
+<B><DD>	APIDOLOGIE
+</B><DT>APMIS
+<B><DD>	APMIS
+</B><DT>APOLLO-THE INTERNATIONAL MAGAZINE OF THE ARTS
+<B><DD>	APOLLO
+</B><DT>APOPTOSIS
+<B><DD>	APOPTOSIS
+</B><DT>APPALACHIAN JOURNAL
+<B><DD>	APPALACHIAN J
+</B><DT>APPETITE
+<B><DD>	APPETITE
+</B><DT>APPITA
+<B><DD>	APPITA
+</B><DT>APPITA
+<B><DD>	APPITA J
+</B><DT>APPITA JOURNAL
+<B><DD>	APPITA J
+</B><DT>APPLICABLE ALGEBRA IN ENGINEERING COMMUNICATION AND COMPUTING
+<B><DD>	APPL ALGEBR ENG COMM
+</B><DT>APPLICABLE ANALYSIS
+<B><DD>	APPL ANAL
+</B><DT>APPLIED & PREVENTIVE PSYCHOLOGY
+<B><DD>	APPL PREV PSYCHOL
+</B><DT>APPLIED ACOUSTICS
+<B><DD>	APPL ACOUST
+</B><DT>APPLIED AND ENVIRONMENTAL MICROBIOLOGY
+<B><DD>	APPL ENVIRON MICROB
+</B><DT>APPLIED AND THEORETICAL ELECTROPHORESIS
+<B><DD>	APPL THEOR ELECTROPH
+</B><DT>APPLIED ANIMAL BEHAVIOUR SCIENCE
+<B><DD>	APPL ANIM BEHAV SCI
+</B><DT>APPLIED ANIMAL ETHOLOGY
+<B><DD>	APPL ANIM ETHOL
+</B><DT>APPLIED ARTIFICIAL INTELLIGENCE
+<B><DD>	APPL ARTIF INTELL
+</B><DT>APPLIED BIOCHEMISTRY AND BIOTECHNOLOGY
+<B><DD>	APPL BIOCHEM BIOTECH
+</B><DT>APPLIED BIOCHEMISTRY AND MICROBIOLOGY
+<B><DD>	APPL BIOCHEM MICRO+
+</B><DT>APPLIED CATALYSIS
+<B><DD>	APPL CATAL
+</B><DT>APPLIED CATALYSIS A-GENERAL
+<B><DD>	APPL CATAL A-GEN
+</B><DT>APPLIED CATALYSIS B-ENVIRONMENTAL
+<B><DD>	APPL CATAL B-ENVIRON
+</B><DT>APPLIED CATEGORICAL STRUCTURES
+<B><DD>	APPL CATEGOR STRUCT
+</B><DT>APPLIED CLAY SCIENCE
+<B><DD>	APPL CLAY SCI
+</B><DT>APPLIED COGNITIVE PSYCHOLOGY
+<B><DD>	APPL COGNITIVE PSYCH
+</B><DT>APPLIED COMPOSITE MATERIALS
+<B><DD>	APPL COMPOS MATER
+</B><DT>APPLIED ECONOMICS
+<B><DD>	APPL ECON
+</B><DT>APPLIED ECONOMICS LETTERS
+<B><DD>	APPL ECON LETT
+</B><DT>APPLIED ENERGY
+<B><DD>	APPL ENERG
+</B><DT>APPLIED ENGINEERING IN AGRICULTURE
+<B><DD>	APPL ENG AGRIC
+</B><DT>APPLIED ENTOMOLOGY AND ZOOLOGY
+<B><DD>	APPL ENTOMOL ZOOL
+</B><DT>APPLIED ERGONOMICS
+<B><DD>	APPL ERGON
+</B><DT>APPLIED GEOCHEMISTRY
+<B><DD>	APPL GEOCHEM
+</B><DT>APPLIED GEOGRAPHY
+<B><DD>	APPL GEOGR
+</B><DT>APPLIED IMMUNOHISTOCHEMISTRY
+<B><DD>	APPL IMMUNOHISTOCHEM
+</B><DT>APPLIED IMMUNOHISTOCHEMISTRY & MOLECULAR MORPHOLOGY
+<B><DD>	APPL IMMUNOHISTO M M
+</B><DT>APPLIED INTELLIGENCE
+<B><DD>	APPL INTELL
+</B><DT>APPLIED LINGUISTICS
+<B><DD>	APPL LINGUIST
+</B><DT>APPLIED MAGNETIC RESONANCE
+<B><DD>	APPL MAGN RESON
+</B><DT>APPLIED MATHEMATICAL MODELLING
+<B><DD>	APPL MATH MODEL
+</B><DT>APPLIED MATHEMATICS AND COMPUTATION
+<B><DD>	APPL MATH COMPUT
+</B><DT>APPLIED MATHEMATICS AND MECHANICS-ENGLISH EDITION
+<B><DD>	APPL MATH MECH-ENGL
+</B><DT>APPLIED MATHEMATICS AND OPTIMIZATION
+<B><DD>	APPL MATH OPT
+</B><DT>APPLIED MATHEMATICS LETTERS
+<B><DD>	APPL MATH LETT
+</B><DT>APPLIED MEASUREMENT IN EDUCATION
+<B><DD>	APPL MEAS EDUC
+</B><DT>APPLIED MICROBIOLOGY AND BIOTECHNOLOGY
+<B><DD>	APPL MICROBIOL BIOT
+</B><DT>APPLIED NEUROPHYSIOLOGY
+<B><DD>	APPL NEUROPHYSIOL
+</B><DT>APPLIED NUMERICAL MATHEMATICS
+<B><DD>	APPL NUMER MATH
+</B><DT>APPLIED NURSING RESEARCH
+<B><DD>	APPL NURS RES
+</B><DT>APPLIED OCEAN RESEARCH
+<B><DD>	APPL OCEAN RES
+</B><DT>APPLIED OPTICS
+<B><DD>	APPL OPTICS
+</B><DT>APPLIED ORGANOMETALLIC CHEMISTRY
+<B><DD>	APPL ORGANOMET CHEM
+</B><DT>APPLIED PHYSICS A-MATERIALS SCIENCE & PROCESSING
+<B><DD>	APPL PHYS A-MATER
+</B><DT>APPLIED PHYSICS B-LASERS AND OPTICS
+<B><DD>	APPL PHYS B-LASERS O
+</B><DT>APPLIED PHYSICS B-PHOTOPHYSICS AND LASER CHEMISTRY
+<B><DD>	APPL PHYS B-PHOTO
+</B><DT>APPLIED PHYSICS LETTERS
+<B><DD>	APPL PHYS LETT
+</B><DT>APPLIED POLYMER SYMPOSIA
+<B><DD>	APPL POLYM SYMP
+</B><DT>APPLIED PSYCHOLINGUISTICS
+<B><DD>	APPL PSYCHOLINGUIST
+</B><DT>APPLIED PSYCHOLOGICAL MEASUREMENT
+<B><DD>	APPL PSYCH MEAS
+</B><DT>APPLIED PSYCHOLOGY-AN INTERNATIONAL REVIEW-PSYCHOLOGIE APPLIQUEE-REVUE INTERNATIONALE
+<B><DD>	APPL PSYCHOL-INT REV
+</B><DT>APPLIED PSYCHOPHYSIOLOGY AND BIOFEEDBACK
+<B><DD>	APPL PSYCHOPHYS BIOF
+</B><DT>APPLIED RADIATION AND ISOTOPES
+<B><DD>	APPL RADIAT ISOTOPES
+</B><DT>APPLIED RHEOLOGY
+<B><DD>	APPL RHEOL
+</B><DT>APPLIED SCIENTIFIC RESEARCH
+<B><DD>	APPL SCI RES
+</B><DT>APPLIED SOIL ECOLOGY
+<B><DD>	APPL SOIL ECOL
+</B><DT>APPLIED SPECTROSCOPY
+<B><DD>	APPL SPECTROSC
+</B><DT>APPLIED SPECTROSCOPY REVIEWS
+<B><DD>	APPL SPECTROSC REV
+</B><DT>APPLIED STATISTICS-JOURNAL OF THE ROYAL STATISTICAL SOCIETY SERIES C
+<B><DD>	APPL STAT-J ROY ST C
+</B><DT>APPLIED STOCHASTIC MODELS AND DATA ANALYSIS
+<B><DD>	APPL STOCH MODEL D A
+</B><DT>APPLIED STOCHASTIC MODELS IN BUSINESS AND INDUSTRY
+<B><DD>	APPL STOCH MODEL BUS
+</B><DT>APPLIED SUPERCONDUCTIVITY
+<B><DD>	APPL SUPERCOND
+</B><DT>APPLIED SURFACE SCIENCE
+<B><DD>	APPL SURF SCI
+</B><DT>APPLIED THERMAL ENGINEERING
+<B><DD>	APPL THERM ENG
+</B><DT>APPROPRIATE TECHNOLOGY
+<B><DD>	APPROPRIATE TECH
+</B><DT>APS JOURNAL
+<B><DD>	APS J
+</B><DT>AQUACULTURAL ENGINEERING
+<B><DD>	AQUACULT ENG
+</B><DT>AQUACULTURE
+<B><DD>	AQUACULTURE
+</B><DT>AQUACULTURE INTERNATIONAL
+<B><DD>	AQUACULT INT
+</B><DT>AQUACULTURE NUTRITION
+<B><DD>	AQUACULT NUTR
+</B><DT>AQUACULTURE RESEARCH
+<B><DD>	AQUAC RES
+</B><DT>AQUATIC BOTANY
+<B><DD>	AQUAT BOT
+</B><DT>AQUATIC CONSERVATION-MARINE AND FRESHWATER ECOSYSTEMS
+<B><DD>	AQUAT CONSERV
+</B><DT>AQUATIC GEOCHEMISTRY
+<B><DD>	AQUAT GEOCHEM
+</B><DT>AQUATIC INSECTS
+<B><DD>	AQUAT INSECT
+</B><DT>AQUATIC LIVING RESOURCES
+<B><DD>	AQUAT LIVING RESOUR
+</B><DT>AQUATIC MICROBIAL ECOLOGY
+<B><DD>	AQUAT MICROB ECOL
+</B><DT>AQUATIC SCIENCES
+<B><DD>	AQUAT SCI
+</B><DT>AQUATIC TOXICOLOGY
+<B><DD>	AQUAT TOXICOL
+</B><DT>ARAB GULF JOURNAL OF SCIENTIFIC RESEARCH
+<B><DD>	ARAB GULF J SCI RES
+</B><DT>ARAB GULF JOURNAL OF SCIENTIFIC RESEARCH B-AGRICULTURAL AND BIOLOGICAL SCIENCES
+<B><DD>	ARAB GULF J SCI RES
+</B><DT>ARABIAN ARCHAEOLOGY AND EPIGRAPHY
+<B><DD>	ARAB ARCHAEOL EPIGR
+</B><DT>ARABIAN JOURNAL FOR SCIENCE AND ENGINEERING
+<B><DD>	ARAB J SCI ENG
+</B><DT>ARACHNE
+<B><DD>	ARACHNE
+</B><DT>ARBEITSMEDIZIN SOZIALMEDIZIN PRAVENTIVMEDIZIN
+<B><DD>	ARB SOZIALMED PRAVEN
+</B><DT>ARBOR-CIENCIA PENSAMIENTO Y CULTURA
+<B><DD>	ARBOR
+</B><DT>ARCADIA
+<B><DD>	ARCADIA
+</B><DT>ARCADIA-ZEITSCHRIFT FUR VERGLEICHENDE LITERATURWISSENSCHAFT
+<B><DD>	ARCADIA-Z VERGLEICH
+</B><DT>ARCHAEOLOGICAL CHEMISTRY
+<B><DD>	ACS SYM SER
+</B><DT>ARCHAEOLOGY
+<B><DD>	ARCHAEOLOGY
+</B><DT>ARCHAEOMETRY
+<B><DD>	ARCHAEOMETRY
+</B><DT>ARCHAOLOGISCHES NACHRICHTENBLATT
+<B><DD>	ARCHAOL NACHR
+</B><DT>ARCHITECTURA-ZEITSCHRIFT FUR GESCHICHTE DER BAUKUNST
+<B><DD>	ARCHITECTURA
+</B><DT>ARCHITECTURAL DESIGN
+<B><DD>	ARCHIT DESIGN
+</B><DT>ARCHITECTURAL DIGEST
+<B><DD>	ARCHIT DIGEST
+</B><DT>ARCHITECTURAL HISTORY
+<B><DD>	ARCHIT HIST
+</B><DT>ARCHITECTURAL RECORD
+<B><DD>	ARCHIT REC
+</B><DT>ARCHITECTURAL REVIEW
+<B><DD>	ARCHIT REV
+</B><DT>ARCHITECTURE
+<B><DD>	ARCHITECTURE
+</B><DT>ARCHITECTURE D AUJOURD HUI
+<B><DD>	ARCHIT AUJOURD HUI
+</B><DT>ARCHITECTURE-THE AIA JOURNAL
+<B><DD>	ARCHITECTURE-AIA J
+</B><DT>ARCHIV DER MATHEMATIK
+<B><DD>	ARCH MATH
+</B><DT>ARCHIV DER PHARMAZIE
+<B><DD>	ARCH PHARM
+</B><DT>ARCHIV FUR ACKER UND PFLANZENBAU UND BODENKUNDE-ARCHIVES OF AGRONOMY AND SOIL SCIENCE
+<B><DD>	ARCH ACKER PFL BODEN
+</B><DT>ARCHIV FUR DAS EISENHUTTENWESEN
+<B><DD>	ARCH EISENHUTTENWES
+</B><DT>ARCHIV FUR DAS STUDIUM DER NEUEREN SPRACHEN UND LITERATUREN
+<B><DD>	ARCH STUD NEUE SPR
+</B><DT>ARCHIV FUR ELEKTROTECHNIK
+<B><DD>	ARCH ELEKTROTECH
+</B><DT>ARCHIV FUR EXPERIMENTELLE VETERINARMEDIZIN
+<B><DD>	ARCH EXP VET MED
+</B><DT>ARCHIV FUR FISCHEREIWISSENSCHAFT
+<B><DD>	ARCH FISCHEREIWISS
+</B><DT>ARCHIV FUR GEFLUGELKUNDE
+<B><DD>	ARCH GEFLUGELKD
+</B><DT>ARCHIV FUR GESCHICHTE DER PHILOSOPHIE
+<B><DD>	ARCH GESCH PHILOS
+</B><DT>ARCHIV FUR GESCHWULSTFORSCHUNG
+<B><DD>	ARCH GESCHWULSTFORSC
+</B><DT>ARCHIV FUR HYDROBIOLOGIE
+<B><DD>	ARCH HYDROBIOL
+</B><DT>ARCHIV FUR JAPANISCHE CHIRURGIE
+<B><DD>	ARCH JPN CHIR
+</B><DT>ARCHIV FUR LEBENSMITTELHYGIENE
+<B><DD>	ARCH LEBENSMITTELHYG
+</B><DT>ARCHIV FUR MUSIKWISSENSCHAFT
+<B><DD>	ARCH MUSIKWISS
+</B><DT>ARCHIV FUR PHYTOPATHOLOGIE UND PFLANZENSCHUTZ-ARCHIVES OF PHYTOPATHOLOGY AND PLANT PROTECTION
+<B><DD>	ARCH PHYTOPATHOL PFL
+</B><DT>ARCHIV FUR PROTISTENKUNDE
+<B><DD>	ARCH PROTISTENKD
+</B><DT>ARCHIV FUR PSYCHIATRIE UND NERVENKRANKHEITEN
+<B><DD>	ARCH PSYCHIAT NERVEN
+</B><DT>ARCHIV FUR REFORMATIONSGESCHICHTE-ARCHIVE FOR REFORMATION HISTORY
+<B><DD>	ARCH REFORMATIONSGES
+</B><DT>ARCHIV FUR SOZIALGESCHICHTE
+<B><DD>	ARCH SOZIALGESCH
+</B><DT>ARCHIV FUR SOZIALGESCHICHTE                                                            <D>
+<B><DD>	ARCH SOZIALGESCH
+</B><DT>ARCHIV FUR SOZIALGESCHICHTE, 34 BAND, 1994
+<B><DD>	ARCH SOZIALGESCH
+</B><DT>ARCHIV FUR SOZIALGESCHICHTE, 35. BD, 1995
+<B><DD>	ARCH SOZIALGESCH
+</B><DT>ARCHIV FUR TIERERNAHRUNG-ARCHIVES OF ANIMAL NUTRITION
+<B><DD>	ARCH TIERERNAHR
+</B><DT>ARCHIV FUR TIERZUCHT-ARCHIVES OF ANIMAL BREEDING
+<B><DD>	ARCH TIERZUCHT
+</B><DT>ARCHIVE FOR HISTORY OF EXACT SCIENCES
+<B><DD>	ARCH HIST EXACT SCI
+</B><DT>ARCHIVE FOR MATHEMATICAL LOGIC
+<B><DD>	ARCH MATH LOGIC
+</B><DT>ARCHIVE FOR RATIONAL MECHANICS AND ANALYSIS
+<B><DD>	ARCH RATION MECH AN
+</B><DT>ARCHIVE OF APPLIED MECHANICS
+<B><DD>	ARCH APPL MECH
+</B><DT>ARCHIVE OF FISHERY AND MARINE RESEARCH
+<B><DD>	ARCH FISH MAR RES
+</B><DT>ARCHIVES D ANATOMIE ET DE CYTOLOGIE PATHOLOGIQUES
+<B><DD>	ARCH ANAT CYTOL PATH
+</B><DT>ARCHIVES D ANATOMIE MICROSCOPIQUE ET DE MORPHOLOGIE EXPERIMENTALE
+<B><DD>	ARCH ANAT MICROSC MO
+</B><DT>ARCHIVES DE PEDIATRIE
+<B><DD>	ARCH PEDIATRIE
+</B><DT>ARCHIVES DE PHILOSOPHIE
+<B><DD>	ARCH PHILOS
+</B><DT>ARCHIVES DE ZOOLOGIE EXPERIMENTALE ET GENERALE
+<B><DD>	ARCH ZOOL EXP GEN
+</B><DT>ARCHIVES DES MALADIES DU COEUR ET DES VAISSEAUX
+<B><DD>	ARCH MAL COEUR VAISS
+</B><DT>ARCHIVES DES SCIENCES
+<B><DD>	ARCH SCI
+</B><DT>ARCHIVES EUROPEENNES DE SOCIOLOGIE
+<B><DD>	ARCH EUR SOCIOL
+</B><DT>ARCHIVES FOR METEOROLOGY GEOPHYSICS AND BIOCLIMATOLOGY SERIES A-METEOROLOGY AND ATMOSPHERIC PHYSICS
+<B><DD>	ARCH METEOR GEOPHY A
+</B><DT>ARCHIVES FOR METEOROLOGY GEOPHYSICS AND BIOCLIMATOLOGY SERIES B-THEORETICAL AND APPLIED CLIMATOLOGY
+<B><DD>	ARCH METEOR GEOPHY B
+</B><DT>ARCHIVES FRANCAISES DE PEDIATRIE
+<B><DD>	ARCH FR PEDIATR
+</B><DT>ARCHIVES INTERNATIONALES DE PHARMACODYNAMIE ET DE THERAPIE
+<B><DD>	ARCH INT PHARMACOD T
+</B><DT>ARCHIVES INTERNATIONALES DE PHYSIOLOGIE DE BIOCHIMIE ET DE BIOPHYSIQUE
+<B><DD>	ARCH INT PHYSIOL BIO
+</B><DT>ARCHIVES ITALIENNES DE BIOLOGIE
+<B><DD>	ARCH ITAL BIOL
+</B><DT>ARCHIVES OF AMERICAN ART JOURNAL
+<B><DD>	ARCH AM ART J
+</B><DT>ARCHIVES OF ANDROLOGY
+<B><DD>	ARCH ANDROLOGY
+</B><DT>ARCHIVES OF ANIMAL NUTRITION-ARCHIV FUR TIERERNAHRUNG
+<B><DD>	ARCH ANIM NUTR
+</B><DT>ARCHIVES OF ASIAN ART
+<B><DD>	ARCH ASIAN ART
+</B><DT>ARCHIVES OF BIOCHEMISTRY AND BIOPHYSICS
+<B><DD>	ARCH BIOCHEM BIOPHYS
+</B><DT>ARCHIVES OF BIOLOGY
+<B><DD>	ARCH BIOL
+</B><DT>ARCHIVES OF CLINICAL NEUROPSYCHOLOGY
+<B><DD>	ARCH CLIN NEUROPSYCH
+</B><DT>ARCHIVES OF COMPUTATIONAL METHODS IN ENGINEERING
+<B><DD>	ARCH COMPUT METHOD E
+</B><DT>ARCHIVES OF DERMATOLOGICAL RESEARCH
+<B><DD>	ARCH DERMATOL RES
+</B><DT>ARCHIVES OF DERMATOLOGY
+<B><DD>	ARCH DERMATOL
+</B><DT>ARCHIVES OF DISEASE IN CHILDHOOD
+<B><DD>	ARCH DIS CHILD
+</B><DT>ARCHIVES OF EMERGENCY MEDICINE
+<B><DD>	ARCH EMERG MED
+</B><DT>ARCHIVES OF ENVIRONMENTAL CONTAMINATION AND TOXICOLOGY
+<B><DD>	ARCH ENVIRON CON TOX
+</B><DT>ARCHIVES OF ENVIRONMENTAL HEALTH
+<B><DD>	ARCH ENVIRON HEALTH
+</B><DT>ARCHIVES OF FAMILY MEDICINE
+<B><DD>	ARCH FAM MED
+</B><DT>ARCHIVES OF GENERAL PSYCHIATRY
+<B><DD>	ARCH GEN PSYCHIAT
+</B><DT>ARCHIVES OF GERONTOLOGY AND GERIATRICS
+<B><DD>	ARCH GERONTOL GERIAT
+</B><DT>ARCHIVES OF GYNECOLOGY
+<B><DD>	ARCH GYNECOL
+</B><DT>ARCHIVES OF GYNECOLOGY
+<B><DD>	ARCH GYNECOL OBSTET
+</B><DT>ARCHIVES OF GYNECOLOGY AND OBSTETRICS
+<B><DD>	ARCH GYNECOL OBSTET
+</B><DT>ARCHIVES OF HISTOLOGY AND CYTOLOGY
+<B><DD>	ARCH HISTOL CYTOL
+</B><DT>ARCHIVES OF INSECT BIOCHEMISTRY AND PHYSIOLOGY
+<B><DD>	ARCH INSECT BIOCHEM
+</B><DT>ARCHIVES OF INTERNAL MEDICINE
+<B><DD>	ARCH INTERN MED
+</B><DT>ARCHIVES OF MECHANICS
+<B><DD>	ARCH MECH
+</B><DT>ARCHIVES OF MEDICAL RESEARCH
+<B><DD>	ARCH MED RES
+</B><DT>ARCHIVES OF METALLURGY
+<B><DD>	ARCH METALL
+</B><DT>ARCHIVES OF MICROBIOLOGY
+<B><DD>	ARCH MICROBIOL
+</B><DT>ARCHIVES OF NEUROLOGY
+<B><DD>	ARCH NEUROL-CHICAGO
+</B><DT>ARCHIVES OF OPHTHALMOLOGY
+<B><DD>	ARCH OPHTHALMOL-CHIC
+</B><DT>ARCHIVES OF ORAL BIOLOGY
+<B><DD>	ARCH ORAL BIOL
+</B><DT>ARCHIVES OF ORTHOPAEDIC AND TRAUMA SURGERY
+<B><DD>	ARCH ORTHOP TRAUM SU
+</B><DT>ARCHIVES OF OTO-RHINO-LARYNGOLOGY
+<B><DD>	ARCH OTO-RHINO-LARYN
+</B><DT>ARCHIVES OF OTO-RHINO-LARYNGOLOGY-ARCHIV FUR OHREN-NASEN-UND KEHLKOPFHEILKUNDE
+<B><DD>	ARCH OTO-RHINO-LARYN
+</B><DT>ARCHIVES OF OTOLARYNGOLOGY-HEAD & NECK SURGERY
+<B><DD>	ARCH OTOLARYNGOL
+</B><DT>ARCHIVES OF PATHOLOGY & LABORATORY MEDICINE
+<B><DD>	ARCH PATHOL LAB MED
+</B><DT>ARCHIVES OF PEDIATRICS & ADOLESCENT MEDICINE
+<B><DD>	ARCH PEDIAT ADOL MED
+</B><DT>ARCHIVES OF PHARMACAL RESEARCH
+<B><DD>	ARCH PHARM RES
+</B><DT>ARCHIVES OF PHYSICAL MEDICINE AND REHABILITATION
+<B><DD>	ARCH PHYS MED REHAB
+</B><DT>ARCHIVES OF PHYSIOLOGY AND BIOCHEMISTRY
+<B><DD>	ARCH PHYSIOL BIOCHEM
+</B><DT>ARCHIVES OF PSYCHIATRIC NURSING
+<B><DD>	ARCH PSYCHIAT NURS
+</B><DT>ARCHIVES OF SEXUAL BEHAVIOR
+<B><DD>	ARCH SEX BEHAV
+</B><DT>ARCHIVES OF SUICIDE RESEARCH
+<B><DD>	ARCH SUICIDE RES
+</B><DT>ARCHIVES OF SURGERY
+<B><DD>	ARCH SURG-CHICAGO
+</B><DT>ARCHIVES OF TOXICOLOGY
+<B><DD>	ARCH TOXICOL
+</B><DT>ARCHIVES OF VIROLOGY
+<B><DD>	ARCH VIROL
+</B><DT>ARCHIVIO STORICO ITALIANO
+<B><DD>	ARCH STORICO ITAL
+</B><DT>ARCHIVIO VETERINARIO ITALIANO
+<B><DD>	ARCH VET ITAL
+</B><DT>ARCHIVO ESPANOL DE ARTE
+<B><DD>	ARCH ESPAN ART
+</B><DT>ARCHIVOS DE BIOLOGIA Y MEDICINA EXPERIMENTALES
+<B><DD>	ARCH BIOL MED EXP
+</B><DT>ARCHIVOS DE INVESTIGACION MEDICA
+<B><DD>	ARCH INVEST MED
+</B><DT>ARCHIVOS DE MEDICINA VETERINARIA
+<B><DD>	ARCH MED VET
+</B><DT>ARCHIVOS DE NEUROBIOLOGIA
+<B><DD>	ARCH NEUROBIOL
+</B><DT>ARCHIVOS DE ZOOTECNIA
+<B><DD>	ARCH ZOOTEC
+</B><DT>ARCHIVOS LATINOAMERICANOS DE NUTRICION
+<B><DD>	ARCH LATINOAM NUTR
+</B><DT>ARCHIVUM HISTOLOGICUM JAPONICUM
+<B><DD>	ARCH HISTOL CYTOL
+</B><DT>ARCHIVUM HISTOLOGICUM JAPONICUM
+<B><DD>	ARCH HISTOL JAPON
+</B><DT>ARCHIVUM IMMUNOLOGIAE ET THERAPIAE EXPERIMENTALIS
+<B><DD>	ARCH IMMUNOL THER EX
+</B><DT>ARCTIC
+<B><DD>	ARCTIC
+</B><DT>ARCTIC AND ALPINE RESEARCH
+<B><DD>	ARCTIC ALPINE RES
+</B><DT>ARCTIC ANTARCTIC AND ALPINE RESEARCH
+<B><DD>	ARCT ANTARCT ALP RES
+</B><DT>ARCTIC ANTHROPOLOGY
+<B><DD>	ARCTIC ANTHROPOL
+</B><DT>ARDEA
+<B><DD>	ARDEA
+</B><DT>AREA
+<B><DD>	AREA
+</B><DT>ARETHUSA
+<B><DD>	ARETHUSA
+</B><DT>ARGUMENT
+<B><DD>	ARGUMENT
+</B><DT>ARHIV ZA POLJOPRIVREDNE NAUKE
+<B><DD>	ARH POLJOPR NAUKE
+</B><DT>ARID SOIL RESEARCH AND REHABILITATION
+<B><DD>	ARID SOIL RES REHAB
+</B><DT>ARIEL-A REVIEW OF INTERNATIONAL ENGLISH LITERATURE
+<B><DD>	ARIEL-REV INT ENGL
+</B><DT>ARION-A JOURNAL OF HUMANITIES AND THE CLASSICS
+<B><DD>	ARION
+</B><DT>ARIZONA MEDICINE
+<B><DD>	ARIZ MED
+</B><DT>ARKANSAS AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	ARKANSAS AES BULL
+</B><DT>ARKANSAS AGRICULTURAL EXPERIMENT STATION MIMEOGRAPH SERIES
+<B><DD>	ARKANSAS AES RES SER
+</B><DT>ARKANSAS AGRICULTURAL EXPERIMENT STATION REPORT SERIES
+<B><DD>	ARKANSAS AES REP SER
+</B><DT>ARKANSAS AGRICULTURAL EXPERIMENT STATION RESEARCH SERIES
+<B><DD>	ARKANSAS AES RES SER
+</B><DT>ARKANSAS AGRICULTURAL EXPERIMENT STATION SPECIAL REPORTS
+<B><DD>	ARKANSAS AES SPEC RE
+</B><DT>ARKANSAS FARM RESEARCH
+<B><DD>	ARKANSAS FARM RES
+</B><DT>ARKANSAS HISTORICAL QUARTERLY
+<B><DD>	ARKANSAS HIST QUART
+</B><DT>ARKHIV PATOLOGII
+<B><DD>	ARK PATOL
+</B><DT>ARKIV FOR MATEMATIK
+<B><DD>	ARK MAT
+</B><DT>ARMED FORCES & SOCIETY
+<B><DD>	ARMED FORCES SOC
+</B><DT>ARQUIVO BRASILEIRO DE MEDICINA VETERINARIA E ZOOTECNIA
+<B><DD>	ARQ BRAS MED VET ZOO
+</B><DT>ARQUIVOS DA ESCOLA DE VETERINARIA DA UNIVERSIDADE FEDERAL DE MINAS GERAIS
+<B><DD>	ARQ ESC VET UNIV FED
+</B><DT>ARQUIVOS DE BIOLOGIA E TECNOLOGIA
+<B><DD>	ARQ BIOL TECNOL
+</B><DT>ARQUIVOS DE NEURO-PSIQUIATRIA
+<B><DD>	ARQ NEURO-PSIQUIAT
+</B><DT>ARS COMBINATORIA
+<B><DD>	ARS COMBINATORIA
+</B><DT>ART BULLETIN
+<B><DD>	ART BULL
+</B><DT>ART CRITICISM
+<B><DD>	ART CRITICISM
+</B><DT>ART HISTORY
+<B><DD>	ART HIST
+</B><DT>ART IN AMERICA
+<B><DD>	ART AM
+</B><DT>ART INSTITUTE OF CHICAGO MUSEUM STUDIES
+<B><DD>	ART INST CHICAGO MUS
+</B><DT>ART JOURNAL
+<B><DD>	ART J
+</B><DT>ARTERIOSCLEROSIS
+<B><DD>	ARTERIOSCLEROSIS
+</B><DT>ARTERIOSCLEROSIS AND THROMBOSIS
+<B><DD>	ARTERIOSCLER THROMB
+</B><DT>ARTERIOSCLEROSIS THROMBOSIS AND VASCULAR BIOLOGY
+<B><DD>	ARTERIOSCL THROM VAS
+</B><DT>ARTERY
+<B><DD>	ARTERY
+</B><DT>ARTFORUM
+<B><DD>	ARTFORUM
+</B><DT>ARTHRITIS AND RHEUMATISM
+<B><DD>	ARTHRITIS RHEUM
+</B><DT>ARTHRITIS CARE AND RESEARCH
+<B><DD>	ARTHRIT CARE RES
+</B><DT>ARTHROSCOPY
+<B><DD>	ARTHROSCOPY
+</B><DT>ARTIBUS ASIAE
+<B><DD>	ARTIBUS ASIAE
+</B><DT>ARTIFICIAL CELLS BLOOD SUBSTITUTES AND IMMOBILIZATION BIOTECHNOLOGY
+<B><DD>	ARTIF CELL BLOOD SUB
+</B><DT>ARTIFICIAL INTELLIGENCE
+<B><DD>	ARTIF INTELL
+</B><DT>ARTIFICIAL INTELLIGENCE IN ENGINEERING
+<B><DD>	ARTIF INTELL ENG
+</B><DT>ARTIFICIAL INTELLIGENCE IN MEDICINE
+<B><DD>	ARTIF INTELL MED
+</B><DT>ARTIFICIAL INTELLIGENCE REVIEW
+<B><DD>	ARTIF INTELL REV
+</B><DT>ARTIFICIAL LIFE
+<B><DD>	ARTIF LIFE
+</B><DT>ARTIFICIAL ORGANS
+<B><DD>	ARTIF ORGANS
+</B><DT>ARTNEWS
+<B><DD>	ART NEWS
+</B><DT>ARTS IN PSYCHOTHERAPY
+<B><DD>	ART PSYCHOTHER
+</B><DT>ARTS OF ASIA
+<B><DD>	ART ASIA
+</B><DT>ARZNEIMITTEL-FORSCHUNG-DRUG RESEARCH
+<B><DD>	ARZNEIMITTEL-FORSCH
+</B><DT>ARZNEIMITTEL-FORSCHUNG/DRUG RESEARCH
+<B><DD>	ARZNEIMITTEL-FORSCH
+</B><DT>ARZTLICHE LABORATORIUM
+<B><DD>	ARZTL LAB
+</B><DT>ASAIO JOURNAL
+<B><DD>	ASAIO J
+</B><DT>ASHRAE JOURNAL
+<B><DD>	ASHRAE J
+</B><DT>ASHRAE JOURNAL-AMERICAN SOCIETY OF HEATING REFRIGERATING AND AIR-CONDITIONING ENGINEERS
+<B><DD>	ASHRAE J
+</B><DT>ASIA PACIFIC JOURNAL OF CLINICAL NUTRITION
+<B><DD>	ASIA PAC J CLIN NUTR
+</B><DT>ASIA PACIFIC JOURNAL OF PHARMACOLOGY
+<B><DD>	ASIA PAC J PHARMACOL
+</B><DT>ASIA PACIFIC JOURNAL OF SOCIAL WORK
+<B><DD>	ASIA PAC J SOC WORK
+</B><DT>ASIA-PACIFIC JOURNAL OF MOLECULAR BIOLOGY AND BIOTECHNOLOGY
+<B><DD>	ASIA-PAC J MOL BIOL
+</B><DT>ASIA-PACIFIC JOURNAL OF OPERATIONAL RESEARCH
+<B><DD>	ASIA PAC J OPER RES
+</B><DT>ASIAN ART & CULTURE
+<B><DD>	ASIAN ART CULT
+</B><DT>ASIAN FOLKLORE STUDIES
+<B><DD>	ASIAN FOLKLORE STUD
+</B><DT>ASIAN JOURNAL OF BUSINESS & INFORMATION SYSTEMS
+<B><DD>	ASIAN J BUS INF SYST
+</B><DT>ASIAN JOURNAL OF CHEMISTRY
+<B><DD>	ASIAN J CHEM
+</B><DT>ASIAN JOURNAL OF CHEMISTRY REVIEWS
+<B><DD>	ASIAN J CHEM REV
+</B><DT>ASIAN JOURNAL OF SPECTROSCOPY
+<B><DD>	ASIAN J SPECTROSC
+</B><DT>ASIAN JOURNAL OF WOMENS STUDIES
+<B><DD>	ASIAN J WOMEN STUD
+</B><DT>ASIAN MUSIC
+<B><DD>	ASIAN MUSIC
+</B><DT>ASIAN PACIFIC JOURNAL OF ALLERGY AND IMMUNOLOGY
+<B><DD>	ASIAN PAC J ALLERGY
+</B><DT>ASIAN PHILOSOPHY
+<B><DD>	ASIAN PHILOS
+</B><DT>ASIAN SURVEY
+<B><DD>	ASIAN SURV
+</B><DT>ASIAN THEATRE JOURNAL
+<B><DD>	ASIAN THEATRE J
+</B><DT>ASIAN-AUSTRALASIAN JOURNAL OF ANIMAL SCIENCES
+<B><DD>	ASIAN AUSTRAL J ANIM
+</B><DT>ASLE TRANSACTIONS
+<B><DD>	ASLE TRANS
+</B><DT>ASLIB PROCEEDINGS
+<B><DD>	ASLIB PROC
+</B><DT>ASM NEWS
+<B><DD>	ASM NEWS
+</B><DT>ASSEMBLY AUTOMATION
+<B><DD>	ASSEMBLY AUTOM
+</B><DT>ASSESSMENT
+<B><DD>	ASSESSMENT
+</B><DT>ASSISTIVE TECHNOLOGY
+<B><DD>	ASSIST TECHNOL
+</B><DT>ASSOCIATION FOR RECORDED SOUND COLLECTIONS-JOURNAL
+<B><DD>	ASSOC REC SOUND COLL
+</B><DT>ASSOCIATION OF FOOD & DRUG OFFICIALS QUARTERLY BULLETIN
+<B><DD>	ASSOC FOOD DRUG OFF
+</B><DT>ASTERISQUE
+<B><DD>	ASTERISQUE
+</B><DT>ASTM STANDARDIZATION NEWS
+<B><DD>	ASTM STAND NEWS
+</B><DT>ASTRONAUTICS & AERONAUTICS
+<B><DD>	ASTRONAUT AERONAUT
+</B><DT>ASTRONOMICAL JOURNAL
+<B><DD>	ASTRON J
+</B><DT>ASTRONOMICHESKII ZHURNAL
+<B><DD>	ASTRON ZH+
+</B><DT>ASTRONOMISCHE NACHRICHTEN
+<B><DD>	ASTRON NACHR
+</B><DT>ASTRONOMY
+<B><DD>	ASTRONOMY
+</B><DT>ASTRONOMY & ASTROPHYSICS SUPPLEMENT SERIES
+<B><DD>	ASTRON ASTROPHYS SUP
+</B><DT>ASTRONOMY & GEOPHYSICS
+<B><DD>	ASTRON GEOPHYS
+</B><DT>ASTRONOMY AND ASTROPHYSICS
+<B><DD>	ASTRON ASTROPHYS
+</B><DT>ASTRONOMY AND ASTROPHYSICS REVIEW
+<B><DD>	ASTRON ASTROPHYS REV
+</B><DT>ASTRONOMY AND SPACE SCIENCE FROM THE MOON
+<B><DD>	ADV SPACE RES
+</B><DT>ASTRONOMY LETTERS-A JOURNAL OF ASTRONOMY AND SPACE ASTROPHYSICS
+<B><DD>	ASTRON LETT+
+</B><DT>ASTRONOMY REPORTS
+<B><DD>	ASTRON REP+
+</B><DT>ASTROPARTICLE PHYSICS
+<B><DD>	ASTROPART PHYS
+</B><DT>ASTROPHYSICAL JOURNAL
+<B><DD>	ASTROPHYS J
+</B><DT>ASTROPHYSICAL JOURNAL SUPPLEMENT SERIES
+<B><DD>	ASTROPHYS J SUPPL S
+</B><DT>ASTROPHYSICAL LETTERS & COMMUNICATIONS
+<B><DD>	ASTROPHYS LETT COMM
+</B><DT>ASTROPHYSICS AND SPACE SCIENCE
+<B><DD>	ASTROPHYS SPACE SCI
+</B><DT>ASYMPTOTIC ANALYSIS
+<B><DD>	ASYMPTOTIC ANAL
+</B><DT>AT&T BELL LABORATORIES TECHNICAL JOURNAL
+<B><DD>	AT&T TECH J
+</B><DT>AT&T TECHNICAL JOURNAL
+<B><DD>	AT&T TECH J
+</B><DT>ATEMWEGS-UND LUNGENKRANKHEITEN
+<B><DD>	ATEMWEG LUNGENKRANK
+</B><DT>ATENE E ROMA
+<B><DD>	ATENE ROMA
+</B><DT>ATHENAEUM-STUDI PERIODICI DI LETTERATURA E STORIA DELL ANTICHITA
+<B><DD>	ATHENAEUM
+</B><DT>ATHEROSCLEROSIS
+<B><DD>	ATHEROSCLEROSIS
+</B><DT>ATHEROSCLEROSIS REVIEWS
+<B><DD>	ATHER REV
+</B><DT>ATHLETIC THERAPY TODAY
+<B><DD>	ATHLET THER TODAY
+</B><DT>ATLA-ALTERNATIVES TO LABORATORY ANIMALS
+<B><DD>	ATLA-ALTERN LAB ANIM
+</B><DT>ATLANTIC GEOLOGY
+<B><DD>	ATLANTIC GEOL
+</B><DT>ATMOSFERA
+<B><DD>	ATMOSFERA
+</B><DT>ATMOSPHERE-OCEAN
+<B><DD>	ATMOS OCEAN
+</B><DT>ATMOSPHERES OF VENUS AND MARS
+<B><DD>	ADV SPACE RES
+</B><DT>ATMOSPHERIC ENVIRONMENT
+<B><DD>	ATMOS ENVIRON
+</B><DT>ATMOSPHERIC ENVIRONMENT PART A-GENERAL TOPICS
+<B><DD>	ATMOS ENVIRON A-GEN
+</B><DT>ATMOSPHERIC ENVIRONMENT PART B-URBAN ATMOSPHERE
+<B><DD>	ATMOS ENVIRON B-URB
+</B><DT>ATMOSPHERIC RESEARCH
+<B><DD>	ATMOS RES
+</B><DT>ATMOSPHERIC STUDIES OF EARTH, VENUS AND MARS
+<B><DD>	ADV SPACE RES
+</B><DT>ATMOSPHERIC TIDAL DYNAMICS AND E- AND D-REGION PHYSICS
+<B><DD>	ADV SPACE RES
+</B><DT>ATOM & STROM
+<B><DD>	ATOM STROM
+</B><DT>ATOMIC DATA AND NUCLEAR DATA TABLES
+<B><DD>	ATOM DATA NUCL DATA
+</B><DT>ATOMIC ENERGY
+<B><DD>	ATOM ENERGY+
+</B><DT>ATOMIC SPECTROSCOPY
+<B><DD>	ATOM SPECTROSC
+</B><DT>ATOMIZATION AND SPRAYS
+<B><DD>	ATOMIZATION SPRAY
+</B><DT>ATOMKERNENERGIE-KERNTECHNIK
+<B><DD>	ATOMKERNENERG/KERNT
+</B><DT>ATOMWIRTSCHAFT-ATOMTECHNIK
+<B><DD>	ATOMWIRTSCH ATOMTECH
+</B><DT>ATTENTION AND PERFORMANCE
+<B><DD>	ATTENTION PERFORM
+</B><DT>ATTI ASSOCIAZIONE GENETICA ITALIANA
+<B><DD>	ATTI ASSOC GENET IT
+</B><DT>ATW-INTERNATIONALE ZEITSCHRIFT FUR KERNENERGIE
+<B><DD>	ATW-INT Z KERNENERG
+</B><DT>AUDIO
+<B><DD>	AUDIO
+</B><DT>AUDIOLOGY
+<B><DD>	AUDIOLOGY
+</B><DT>AUDIOLOGY AND NEURO-OTOLOGY
+<B><DD>	AUDIOL NEURO-OTOL
+</B><DT>AUDITING-A JOURNAL OF PRACTICE & THEORY
+<B><DD>	AUDITING-J PRACT TH
+</B><DT>AUDITORY NEUROSCIENCE
+<B><DD>	AUDIT NEUROSCI
+</B><DT>AUDUBON
+<B><DD>	AUDUBON
+</B><DT>AUK
+<B><DD>	AUK
+</B><DT>AUMLA-JOURNAL OF THE AUSTRALASIAN UNIVERSITIES LANGUAGE AND LITERATURE ASSOCIATION
+<B><DD>	AUMLA
+</B><DT>AUSGRABUNGEN UND FUNDE
+<B><DD>	AUSGRABUNGEN FUNDE
+</B><DT>AUSSEN POLITIK
+<B><DD>	AUSSEN POLIT
+</B><DT>AUSTRAL ECOLOGY
+<B><DD>	AUSTRAL ECOL
+</B><DT>AUSTRALASIAN BIOTECHNOLOGY
+<B><DD>	AUSTRALAS BIOTECHNOL
+</B><DT>AUSTRALASIAN JOURNAL OF PHILOSOPHY
+<B><DD>	AUSTRALAS J PHILOS
+</B><DT>AUSTRALASIAN JOURNAL ON AGEING
+<B><DD>	AUSTRALAS J AGEING
+</B><DT>AUSTRALASIAN PLANT PATHOLOGY
+<B><DD>	AUSTRALAS PLANT PATH
+</B><DT>AUSTRALIAN & NEW ZEALAND JOURNAL OF OBSTETRICS & GYNAECOLOGY
+<B><DD>	AUST NZ J OBSTET GYN
+</B><DT>AUSTRALIAN & NEW ZEALAND JOURNAL OF STATISTICS
+<B><DD>	AUST NZ J STAT
+</B><DT>AUSTRALIAN AND NEW ZEALAND JOURNAL OF CRIMINOLOGY
+<B><DD>	AUST NZ J CRIMINOL
+</B><DT>AUSTRALIAN AND NEW ZEALAND JOURNAL OF MEDICINE
+<B><DD>	AUST NZ J MED
+</B><DT>AUSTRALIAN AND NEW ZEALAND JOURNAL OF OPHTHALMOLOGY
+<B><DD>	AUST NZ J OPHTHALMOL
+</B><DT>AUSTRALIAN AND NEW ZEALAND JOURNAL OF PSYCHIATRY
+<B><DD>	AUST NZ J PSYCHIAT
+</B><DT>AUSTRALIAN AND NEW ZEALAND JOURNAL OF PUBLIC HEALTH
+<B><DD>	AUST NZ J PUBL HEAL
+</B><DT>AUSTRALIAN AND NEW ZEALAND JOURNAL OF SOCIOLOGY
+<B><DD>	AUST NZ J SOCIOL
+</B><DT>AUSTRALIAN AND NEW ZEALAND JOURNAL OF SURGERY
+<B><DD>	AUST NZ J SURG
+</B><DT>AUSTRALIAN COMPUTER JOURNAL
+<B><DD>	AUST COMPUT J
+</B><DT>AUSTRALIAN DENTAL JOURNAL
+<B><DD>	AUST DENT J
+</B><DT>AUSTRALIAN ECONOMIC HISTORY REVIEW
+<B><DD>	AUST ECON HIST REV
+</B><DT>AUSTRALIAN FEMINIST STUDIES
+<B><DD>	AUST FEMINIST STUD
+</B><DT>AUSTRALIAN FOREST RESEARCH
+<B><DD>	AUST FOREST RES
+</B><DT>AUSTRALIAN GEOGRAPHER
+<B><DD>	AUST GEOGR
+</B><DT>AUSTRALIAN HISTORICAL STUDIES
+<B><DD>	AUST HISTORICAL STUD
+</B><DT>AUSTRALIAN JOURNAL OF AGRICULTURAL AND RESOURCE ECONOMICS
+<B><DD>	AUST J AGR RESOUR EC
+</B><DT>AUSTRALIAN JOURNAL OF AGRICULTURAL ECONOMICS
+<B><DD>	AUST J AGR ECON
+</B><DT>AUSTRALIAN JOURNAL OF AGRICULTURAL RESEARCH
+<B><DD>	AUST J AGR RES
+</B><DT>AUSTRALIAN JOURNAL OF BIOLOGICAL SCIENCES
+<B><DD>	AUST J BIOL SCI
+</B><DT>AUSTRALIAN JOURNAL OF BOTANY
+<B><DD>	AUST J BOT
+</B><DT>AUSTRALIAN JOURNAL OF CHEMISTRY
+<B><DD>	AUST J CHEM
+</B><DT>AUSTRALIAN JOURNAL OF CHINESE AFFAIRS
+<B><DD>	AUST J CHINESE AFF
+</B><DT>AUSTRALIAN JOURNAL OF DAIRY TECHNOLOGY
+<B><DD>	AUST J DAIRY TECHNOL
+</B><DT>AUSTRALIAN JOURNAL OF EARTH SCIENCES
+<B><DD>	AUST J EARTH SCI
+</B><DT>AUSTRALIAN JOURNAL OF ECOLOGY
+<B><DD>	AUST J ECOL
+</B><DT>AUSTRALIAN JOURNAL OF EDUCATION
+<B><DD>	AUST J EDUC
+</B><DT>AUSTRALIAN JOURNAL OF ENTOMOLOGY
+<B><DD>	AUST J ENTOMOL
+</B><DT>AUSTRALIAN JOURNAL OF EXPERIMENTAL AGRICULTURE
+<B><DD>	AUST J EXP AGR
+</B><DT>AUSTRALIAN JOURNAL OF EXPERIMENTAL BIOLOGY AND MEDICAL SCIENCE
+<B><DD>	AUST J EXP BIOL MED
+</B><DT>AUSTRALIAN JOURNAL OF FRENCH STUDIES
+<B><DD>	AUST J FR STUD
+</B><DT>AUSTRALIAN JOURNAL OF INSTRUMENTATION & CONTROL
+<B><DD>	AUST J INSTRUM CONTR
+</B><DT>AUSTRALIAN JOURNAL OF INTERNATIONAL AFFAIRS
+<B><DD>	AUST J INT AFF
+</B><DT>AUSTRALIAN JOURNAL OF MARINE AND FRESHWATER RESEARCH
+<B><DD>	AUST J MAR FRESH RES
+</B><DT>AUSTRALIAN JOURNAL OF OPHTHALMOLOGY
+<B><DD>	AUST J OPHTHALMOL
+</B><DT>AUSTRALIAN JOURNAL OF PHYSICS
+<B><DD>	AUST J PHYS
+</B><DT>AUSTRALIAN JOURNAL OF PHYSIOTHERAPY
+<B><DD>	AUST J PHYSIOTHER
+</B><DT>AUSTRALIAN JOURNAL OF PLANT PHYSIOLOGY
+<B><DD>	AUST J PLANT PHYSIOL
+</B><DT>AUSTRALIAN JOURNAL OF POLITICAL SCIENCE
+<B><DD>	AUST J POLIT SCI
+</B><DT>AUSTRALIAN JOURNAL OF POLITICS AND HISTORY
+<B><DD>	AUST J POLIT HIST
+</B><DT>AUSTRALIAN JOURNAL OF PSYCHOLOGY
+<B><DD>	AUST J PSYCHOL
+</B><DT>AUSTRALIAN JOURNAL OF PUBLIC ADMINISTRATION
+<B><DD>	AUST J PUBL ADMIN
+</B><DT>AUSTRALIAN JOURNAL OF PUBLIC HEALTH
+<B><DD>	AUST J PUBLIC HEALTH
+</B><DT>AUSTRALIAN JOURNAL OF SOCIAL ISSUES
+<B><DD>	AUST J SOC ISSUES
+</B><DT>AUSTRALIAN JOURNAL OF SOIL RESEARCH
+<B><DD>	AUST J SOIL RES
+</B><DT>AUSTRALIAN JOURNAL OF STATISTICS
+<B><DD>	AUST J STAT
+</B><DT>AUSTRALIAN JOURNAL OF ZOOLOGY
+<B><DD>	AUST J ZOOL
+</B><DT>AUSTRALIAN JOURNAL ON AGEING
+<B><DD>	AUST J AGEING
+</B><DT>AUSTRALIAN LITERARY STUDIES
+<B><DD>	AUST LIT STUD
+</B><DT>AUSTRALIAN METEOROLOGICAL MAGAZINE
+<B><DD>	AUST METEOROL MAG
+</B><DT>AUSTRALIAN PAEDIATRIC JOURNAL
+<B><DD>	AUST PAEDIATR J
+</B><DT>AUSTRALIAN PSYCHOLOGIST
+<B><DD>	AUST PSYCHOL
+</B><DT>AUSTRALIAN SYSTEMATIC BOTANY
+<B><DD>	AUST SYST BOT
+</B><DT>AUSTRALIAN TELECOMMUNICATION RESEARCH
+<B><DD>	AUST TELECOMMUN RES
+</B><DT>AUSTRALIAN VETERINARY JOURNAL
+<B><DD>	AUST VET J
+</B><DT>AUSTRALIAN VETERINARY PRACTITIONER
+<B><DD>	AUST VET PRACT
+</B><DT>AUSTRALIAN WATER RESOURCES COUNCIL TECHNICAL PAPER
+<B><DD>	AUST WATER RESOUR CO
+</B><DT>AUSTRALIAN WILDLIFE RESEARCH
+<B><DD>	AUST WILDLIFE RES
+</B><DT>AUT AUT
+<B><DD>	AUT AUT
+</B><DT>AUTOIMMUNITY
+<B><DD>	AUTOIMMUNITY
+</B><DT>AUTOMATIC CONTROL AND COMPUTER SCIENCES
+<B><DD>	AUTOM CONTROL COMP S
+</B><DT>AUTOMATIC WELDING USSR
+<B><DD>	AUTOMAT WELD+
+</B><DT>AUTOMATICA
+<B><DD>	AUTOMATICA
+</B><DT>AUTOMATION AND REMOTE CONTROL
+<B><DD>	AUTOMAT REM CONTR+
+</B><DT>AUTOMATION IN CONSTRUCTION
+<B><DD>	AUTOMAT CONSTR
+</B><DT>AUTOMOBILE QUARTERLY
+<B><DD>	AUTOMOB QUART
+</B><DT>AUTOMOTIVE ENGINEERING
+<B><DD>	AUTOMOT ENG
+</B><DT>AUTOMOTIVE ENGINEERING INTERNATIONAL
+<B><DD>	AUTOMOT ENG INT
+</B><DT>AUTOMOTIVE INDUSTRIES
+<B><DD>	AUTOMOT IND
+</B><DT>AUTONOMOUS ROBOTS
+<B><DD>	AUTON ROBOT
+</B><DT>AVANT SCENE OPERA
+<B><DD>	AVANT SCENE OPERA
+</B><DT>AVIAN DISEASES
+<B><DD>	AVIAN DIS
+</B><DT>AVIAN PATHOLOGY
+<B><DD>	AVIAN PATHOL
+</B><DT>AVIATION SPACE AND ENVIRONMENTAL MEDICINE
+<B><DD>	AVIAT SPACE ENVIR MD
+</B><DT>AVIATION WEEK & SPACE TECHNOLOGY
+<B><DD>	AVIAT WEEK SPACE TEC
+</B><DT>AVTOMATIKA
+<B><DD>	AVTOMATIKA+
+</B><DT>AVTOMATIKA I VYCHISLITELNAYA TEKHNIKA
+<B><DD>	AVTOM VYCHISL TEKH+
+</B></DL>
+</BODY>
+</HTML>

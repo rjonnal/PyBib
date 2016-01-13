@@ -1,715 +1,478 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="G"></A>
+<DT>GAIT & POSTURE
+<B><DD>	GAIT POSTURE
+</B><DT>GAMES AND ECONOMIC BEHAVIOR
+<B><DD>	GAME ECON BEHAV
+</B><DT>GAMETE RESEARCH
+<B><DD>	GAMETE RES
+</B><DT>GANN
+<B><DD>	GANN
+</B><DT>GANN MONOGRAPH ON CANCER RESEARCH
+<B><DD>	GANN MONOGR CANC RES
+</B><DT>GARBAGE-THE INDEPENDENT ENVIRONMENTAL QUARTERLY
+<B><DD>	GARBAGE-INDEP ENV Q
+</B><DT>GARTENBAUWISSENSCHAFT
+<B><DD>	GARTENBAUWISSENSCHAF
+</B><DT>GAS ENGINEERING & MANAGEMENT
+<B><DD>	GAS ENG MANAGE
+</B><DT>GAS SEPARATION & PURIFICATION
+<B><DD>	GAS SEP PURIF
+</B><DT>GASTROENTEROLOGIA JAPONICA
+<B><DD>	GASTROENTEROL JPN
+</B><DT>GASTROENTEROLOGIE CLINIQUE ET BIOLOGIQUE
+<B><DD>	GASTROEN CLIN BIOL
+</B><DT>GASTROENTEROLOGY
+<B><DD>	GASTROENTEROLOGY
+</B><DT>GASTROENTEROLOGY CLINICS OF NORTH AMERICA
+<B><DD>	GASTROENTEROL CLIN N
+</B><DT>GASTROINTESTINAL ENDOSCOPY
+<B><DD>	GASTROINTEST ENDOSC
+</B><DT>GASTROINTESTINAL RADIOLOGY
+<B><DD>	GASTROINTEST RADIOL
+</B><DT>GAZETTE MEDICALE
+<B><DD>	GAZ MED-FRANCE
+</B><DT>GAZETTE MEDICALE DE FRANCE
+<B><DD>	GAZETTE MED FRANCE
+</B><DT>GAZZETTA CHIMICA ITALIANA
+<B><DD>	GAZZ CHIM ITAL
+</B><DT>GEBURTSHILFE UND FRAUENHEILKUNDE
+<B><DD>	GEBURTSH FRAUENHEILK
+</B><DT>GEC JOURNAL OF RESEARCH
+<B><DD>	GEC-J RES
+</B><DT>GEC JOURNAL OF TECHNOLOGY
+<B><DD>	GEC J TECHNOL
+</B><DT>GEC REVIEW
+<B><DD>	GEC REV
+</B><DT>GEC-JOURNAL OF SCIENCE & TECHNOLOGY
+<B><DD>	GEC-J SCI TECHNOL
+</B><DT>GEFAHRSTOFFE REINHALTUNG DER LUFT
+<B><DD>	GEFAHRST REINHALT L
+</B><DT>GEGENWARTSKUNDE GESELLSCHAFT STAAT ERZIEHUNG
+<B><DD>	GEGEN GES STAAT ERZ
+</B><DT>GEMATOLOGIYA I TRANSFUZIOLOGIYA
+<B><DD>	GEMATOL TRANSFUZIOL
+</B><DT>GENDER & SOCIETY
+<B><DD>	GENDER SOC
+</B><DT>GENDERS
+<B><DD>	GENDERS
+</B><DT>GENE
+<B><DD>	GENE
+</B><DT>GENE ANALYSIS TECHNIQUES
+<B><DD>	GENE ANAL TECH
+</B><DT>GENE EXPRESSION
+<B><DD>	GENE EXPRESSION
+</B><DT>GENE GEOGRAPHY
+<B><DD>	GENE GEOGR
+</B><DT>GENE THERAPY
+<B><DD>	GENE THER
+</B><DT>GENE-COMBIS
+<B><DD>	GENE-COMBIS
+</B><DT>GENERAL AND COMPARATIVE ENDOCRINOLOGY
+<B><DD>	GEN COMP ENDOCR
+</B><DT>GENERAL HOSPITAL PSYCHIATRY
+<B><DD>	GEN HOSP PSYCHIAT
+</B><DT>GENERAL PHARMACOLOGY
+<B><DD>	GEN PHARMACOL
+</B><DT>GENERAL PHARMACOLOGY-THE VASCULAR SYSTEM
+<B><DD>	GEN PHARMACOL-VASC S
+</B><DT>GENERAL PHYSIOLOGY AND BIOPHYSICS
+<B><DD>	GEN PHYSIOL BIOPHYS
+</B><DT>GENERAL RELATIVITY AND GRAVITATION
+<B><DD>	GEN RELAT GRAVIT
+</B><DT>GENERATIONS-JOURNAL OF THE AMERICAN SOCIETY ON AGING
+<B><DD>	GENERATIONS
+</B><DT>GENES & DEVELOPMENT
+<B><DD>	GENE DEV
+</B><DT>GENES & GENETIC SYSTEMS
+<B><DD>	GENES GENET SYST
+</B><DT>GENES CHROMOSOMES & CANCER
+<B><DD>	GENE CHROMOSOME CANC
+</B><DT>GENES TO CELLS
+<B><DD>	GENES CELLS
+</B><DT>GENETIC ANALYSIS-BIOMOLECULAR ENGINEERING
+<B><DD>	GENET ANAL-BIOMOL E
+</B><DT>GENETIC COUNSELING
+<B><DD>	GENET COUNSEL
+</B><DT>GENETIC ENGINEER & BIOTECHNOLOGIST
+<B><DD>	GENET ENG BIOTECHNOL
+</B><DT>GENETIC ENGINEER AND BIOTECHNOLOGIST
+<B><DD>	GENET ENG BIOTECHNOL
+</B><DT>GENETIC ENGINEERING NEWS
+<B><DD>	GENET ENG NEWS
+</B><DT>GENETIC EPIDEMIOLOGY
+<B><DD>	GENET EPIDEMIOL
+</B><DT>GENETIC RESOURCES AND CROP EVOLUTION
+<B><DD>	GENET RESOUR CROP EV
+</B><DT>GENETIC SOCIAL AND GENERAL PSYCHOLOGY MONOGRAPHS
+<B><DD>	GENET SOC GEN PSYCH
+</B><DT>GENETIC TESTING
+<B><DD>	GENET TEST
+</B><DT>GENETICA
+<B><DD>	GENETICA
+</B><DT>GENETICA POLONICA
+<B><DD>	GENET POL
+</B><DT>GENETICAL RESEARCH
+<B><DD>	GENET RES
+</B><DT>GENETICS
+<B><DD>	GENETICS
+</B><DT>GENETICS AND MOLECULAR BIOLOGY
+<B><DD>	GENET MOL BIOL
+</B><DT>GENETICS IN MEDICINE
+<B><DD>	GENET MED
+</B><DT>GENETICS SELECTION EVOLUTION
+<B><DD>	GENET SEL EVOL
+</B><DT>GENETIKA
+<B><DD>	GENETIKA+
+</B><DT>GENEVA PAPERS ON RISK AND INSURANCE THEORY
+<B><DD>	GENEVA PAP RISK INS
+</B><DT>GENITOURINARY MEDICINE
+<B><DD>	GENITOURIN MED
+</B><DT>GENOME
+<B><DD>	GENOME
+</B><DT>GENOME RESEARCH
+<B><DD>	GENOME RES
+</B><DT>GENOMICS
+<B><DD>	GENOMICS
+</B><DT>GENRE-FORMS OF DISCOURSE AND CULTURE
+<B><DD>	GENRE-FORM DISC CULT
+</B><DT>GEO-MARINE LETTERS
+<B><DD>	GEO-MAR LETT
+</B><DT>GEO-PROCESSING
+<B><DD>	GEO-PROCESSING
+</B><DT>GEOBIOS
+<B><DD>	GEOBIOS-LYON
+</B><DT>GEOCHEMICAL JOURNAL
+<B><DD>	GEOCHEM J
+</B><DT>GEOCHEMISTRY INTERNATIONAL
+<B><DD>	GEOCHEM INT+
+</B><DT>GEOCHIMICA
+<B><DD>	GEOCHIMICA
+</B><DT>GEOCHIMICA ET COSMOCHIMICA ACTA
+<B><DD>	GEOCHIM COSMOCHIM AC
+</B><DT>GEODERMA
+<B><DD>	GEODERMA
+</B><DT>GEODINAMICA ACTA
+<B><DD>	GEODIN ACTA
+</B><DT>GEOEXPLORATION
+<B><DD>	GEOEXPLORATION
+</B><DT>GEOFORUM
+<B><DD>	GEOFORUM
+</B><DT>GEOGRAFISKA ANNALER SERIES A-PHYSICAL GEOGRAPHY
+<B><DD>	GEOGR ANN A
+</B><DT>GEOGRAPHICAL ANALYSIS
+<B><DD>	GEOGR ANAL
+</B><DT>GEOGRAPHICAL JOURNAL
+<B><DD>	GEOGR J
+</B><DT>GEOGRAPHICAL REVIEW
+<B><DD>	GEOGR REV
+</B><DT>GEOGRAPHIE PHYSIQUE ET QUATERNAIRE
+<B><DD>	GEOGR PHYS QUATERN
+</B><DT>GEOGRAPHISCHE ZEITSCHRIFT
+<B><DD>	GEOGR Z
+</B><DT>GEOGRAPHY
+<B><DD>	GEOGRAPHY
+</B><DT>GEOKHIMIYA
+<B><DD>	GEOKHIMIYA+
+</B><DT>GEOLOGICA CARPATHICA
+<B><DD>	GEOL CARPATH
+</B><DT>GEOLOGICAL JOURNAL
+<B><DD>	GEOL J
+</B><DT>GEOLOGICAL MAGAZINE
+<B><DD>	GEOL MAG
+</B><DT>GEOLOGICAL SOCIETY OF AMERICA BULLETIN
+<B><DD>	GEOL SOC AM BULL
+</B><DT>GEOLOGICAL SOCIETY OF AMERICA MEMOIRS
+<B><DD>	GEOL SOC AM MEM
+</B><DT>GEOLOGICAL SURVEY CIRCULAR
+<B><DD>	GEOL SURV CIRCULAR
+</B><DT>GEOLOGICAL SURVEY PROFESSIONAL PAPERS
+<B><DD>	GEOL SURV PROF PAPER
+</B><DT>GEOLOGIE EN MIJNBOUW
+<B><DD>	GEOL MIJNBOUW
+</B><DT>GEOLOGIE EN MIJNBOUW-NETHERLANDS JOURNAL OF GEOSCIENCES
+<B><DD>	GEOL MIJNBOUW-N J G
+</B><DT>GEOLOGISCHE RUNDSCHAU
+<B><DD>	GEOL RUNDSCH
+</B><DT>GEOLOGISKA FORENINGENS I STOCKHOLM FORHANDLINGAR
+<B><DD>	GEOL FOREN STOCK FOR
+</B><DT>GEOLOGIYA I GEOFIZIKA
+<B><DD>	GEOL GEOFIZ
+</B><DT>GEOLOGY
+<B><DD>	GEOLOGY
+</B><DT>GEOLOGY OF ORE DEPOSITS
+<B><DD>	GEOL ORE DEPOSIT+
+</B><DT>GEOMAGNETIZM I AERONOMIYA
+<B><DD>	GEOMAGN AERON+
+</B><DT>GEOMETRIAE DEDICATA
+<B><DD>	GEOMETRIAE DEDICATA
+</B><DT>GEOMETRIC AND FUNCTIONAL ANALYSIS
+<B><DD>	GEOM FUNCT ANAL
+</B><DT>GEOMICROBIOLOGY JOURNAL
+<B><DD>	GEOMICROBIOL J
+</B><DT>GEOMORPHOLOGY
+<B><DD>	GEOMORPHOLOGY
+</B><DT>GEOPHYSICAL AND ASTROPHYSICAL FLUID DYNAMICS
+<B><DD>	GEOPHYS ASTRO FLUID
+</B><DT>GEOPHYSICAL JOURNAL
+<B><DD>	GEOPHYS J+
+</B><DT>GEOPHYSICAL JOURNAL INTERNATIONAL
+<B><DD>	GEOPHYS J INT
+</B><DT>GEOPHYSICAL JOURNAL OF THE ROYAL ASTRONOMICAL SOCIETY
+<B><DD>	GEOPHYS J INT
+</B><DT>GEOPHYSICAL JOURNAL OF THE ROYAL ASTRONOMICAL SOCIETY
+<B><DD>	GEOPHYS J ROY ASTR S
+</B><DT>GEOPHYSICAL JOURNAL-OXFORD
+<B><DD>	GEOPHYS J INT
+</B><DT>GEOPHYSICAL PROSPECTING
+<B><DD>	GEOPHYS PROSPECT
+</B><DT>GEOPHYSICAL RESEARCH LETTERS
+<B><DD>	GEOPHYS RES LETT
+</B><DT>GEOPHYSICAL SURVEYS
+<B><DD>	GEOPHYS SURV
+</B><DT>GEOPHYSICS
+<B><DD>	GEOPHYSICS
+</B><DT>GEORGE WASHINGTON JOURNAL OF INTERNATIONAL LAW AND ECONOMICS
+<B><DD>	GEORGE WASH J INT L
+</B><DT>GEORGE WASHINGTON LAW REVIEW
+<B><DD>	GEORGE WASH LAW REV
+</B><DT>GEORGETOWN LAW JOURNAL
+<B><DD>	GEORGETOWN LAW J
+</B><DT>GEORGIA AGRICULTURAL EXPERIMENT STATION RESEARCH BULLETIN
+<B><DD>	GEO AGR EXP ST BULL
+</B><DT>GEORGIA AGRICULTURAL EXPERIMENT STATION RESEARCH REPORT
+<B><DD>	GEO AGR EXP ST RE RE
+</B><DT>GEORGIA AGRICULTURAL EXPERIMENT STATION SPECIAL PUBLICATION
+<B><DD>	GEORGIA AES SPEC PUB
+</B><DT>GEORGIA AGRICULTURAL RESEARCH
+<B><DD>	GEORGIA AGR RES
+</B><DT>GEORGIA REVIEW
+<B><DD>	GEORGIA REV
+</B><DT>GEOSCIENCE CANADA
+<B><DD>	GEOSCI CAN
+</B><DT>GEOSTANDARDS NEWSLETTER
+<B><DD>	GEOSTANDARD NEWSLETT
+</B><DT>GEOSTANDARDS NEWSLETTER-THE JOURNAL OF GEOSTANDARDS AND GEOANALYSIS
+<B><DD>	GEOSTANDARD NEWSLETT
+</B><DT>GEOSYNTHETICS INTERNATIONAL
+<B><DD>	GEOSYNTH INT
+</B><DT>GEOTECHNICAL TESTING JOURNAL
+<B><DD>	GEOTECH TEST J
+</B><DT>GEOTECHNIQUE
+<B><DD>	GEOTECHNIQUE
+</B><DT>GEOTECTONICS
+<B><DD>	GEOTECTONICS+
+</B><DT>GEOTEXTILES AND GEOMEMBRANES
+<B><DD>	GEOTEXT GEOMEMBRANES
+</B><DT>GEOTHERMICS
+<B><DD>	GEOTHERMICS
+</B><DT>GEOTIMES
+<B><DD>	GEOTIMES
+</B><DT>GERIATRIC CARDIOVASCULAR MEDICINE
+<B><DD>	GERIATR CARDIOVASC
+</B><DT>GERIATRIC NURSING
+<B><DD>	GERIATR NURS
+</B><DT>GERIATRICS
+<B><DD>	GERIATRICS
+</B><DT>GERLANDS BEITRAGE ZUR GEOPHYSIK
+<B><DD>	GERL BEITR GEOPHYS
+</B><DT>GERMAN JOURNAL OF OPHTHALMOLOGY
+<B><DD>	GER J OPHTHALMOL
+</B><DT>GERMAN LIFE AND LETTERS
+<B><DD>	GER LIFE LETT
+</B><DT>GERMAN QUARTERLY
+<B><DD>	GER QUART
+</B><DT>GERMAN STUDIES REVIEW
+<B><DD>	GER STUD REV
+</B><DT>GERMANIC NOTES AND REVIEWS
+<B><DD>	GER NOTES REV
+</B><DT>GERMANIC REVIEW
+<B><DD>	GER REV
+</B><DT>GERMANISCH-ROMANISCHE MONATSSCHRIFT
+<B><DD>	GER-ROMAN MONATSSCHR
+</B><DT>GERMANO-SLAVICA
+<B><DD>	GERMANO-SLAVICA
+</B><DT>GERODONTICS
+<B><DD>	GERODONTICS
+</B><DT>GERODONTOLOGY
+<B><DD>	GERODONTOLOGY
+</B><DT>GERONTOLOGIST
+<B><DD>	GERONTOLOGIST
+</B><DT>GERONTOLOGY
+<B><DD>	GERONTOLOGY
+</B><DT>GESCHICHTE UND GESELLSCHAFT
+<B><DD>	GESCH GES
+</B><DT>GESTA-INTERNATIONAL CENTER OF MEDIEVAL ART
+<B><DD>	GESTA
+</B><DT>GFF
+<B><DD>	GFF
+</B><DT>GI CANCER
+<B><DD>	GI CANCER
+</B><DT>GIFTED CHILD QUARTERLY
+<B><DD>	GIFTED CHILD QUART
+</B><DT>GIORNALE CRITICO DELLA FILOSOFIA ITALIANA
+<B><DD>	GIORN CRIT FILOS IT
+</B><DT>GIORNALE DI GERONTOLOGIA
+<B><DD>	GIORN GERONTOL
+</B><DT>GIORNALE DI NEUROPSICHIATRIA DELL ETA EVOLUTIVA
+<B><DD>	GIORN NEUROPSI EVOL
+</B><DT>GIORNALE DI NEUROPSICOFARMACOLOGIA
+<B><DD>	GIORN NEUROPSICOFARM
+</B><DT>GIORNALE STORICO DELLA LETTERATURA ITALIANA
+<B><DD>	GIORN STORICO LETT
+</B><DT>GLASGOW MATHEMATICAL JOURNAL
+<B><DD>	GLASGOW MATH J
+</B><DT>GLASS AND CERAMICS
+<B><DD>	GLASS CERAM+
+</B><DT>GLASS INDUSTRY
+<B><DD>	GLASS IND
+</B><DT>GLASS PHYSICS AND CHEMISTRY
+<B><DD>	GLASS PHYS CHEM+
+</B><DT>GLASS SCIENCE AND TECHNOLOGY-GLASTECHNISCHE BERICHTE
+<B><DD>	GLASS SCI TECHNOL
+</B><DT>GLASS TECHNOLOGY
+<B><DD>	GLASS TECHNOL
+</B><DT>GLASTECHNISCHE BERICHTE-GLASS SCIENCE AND TECHNOLOGY
+<B><DD>	GLASTECH BER-GLASS
+</B><DT>GLIA
+<B><DD>	GLIA
+</B><DT>GLOBAL AND PLANETARY CHANGE
+<B><DD>	GLOBAL PLANET CHANGE
+</B><DT>GLOBAL BIOGEOCHEMICAL CYCLES
+<B><DD>	GLOBAL BIOGEOCHEM CY
+</B><DT>GLOBAL CHANGE BIOLOGY
+<B><DD>	GLOB CHANGE BIOL
+</B><DT>GLOBAL ECOLOGY AND BIOGEOGRAPHY
+<B><DD>	GLOBAL ECOL BIOGEOGR
+</B><DT>GLOBAL ECOLOGY AND BIOGEOGRAPHY LETTERS
+<B><DD>	GLOBAL ECOL BIOGEOGR
+</B><DT>GLOBAL ENVIRONMENTAL CHANGE-HUMAN AND POLICY DIMENSIONS
+<B><DD>	GLOBAL ENVIRON CHANG
+</B><DT>GLOBAL GOVERNANCE
+<B><DD>	GLOB GOV
+</B><DT>GLOTTA-ZEITSCHRIFT FUR GRIECHISCHE UND LATEINISCHE SPRACHE
+<B><DD>	GLOTTA
+</B><DT>GLQ-A JOURNAL OF LESBIAN AND GAY STUDIES
+<B><DD>	GLQ-J LESBIAN GAY ST
+</B><DT>GLYCOBIOLOGY
+<B><DD>	GLYCOBIOLOGY
+</B><DT>GLYCOCONJUGATE JOURNAL
+<B><DD>	GLYCOCONJUGATE J
+</B><DT>GNOMON-KRITISCHE ZEITSCHRIFT FUR DIE GESAMTE KLASSISCHE ALTERTUMSWISSENSCHAFT
+<B><DD>	GNOMON
+</B><DT>GOETHE JAHRBUCH
+<B><DD>	GOETHE JAHRB
+</B><DT>GOLD BULLETIN
+<B><DD>	GOLD BULL
+</B><DT>GONDWANA RESEARCH
+<B><DD>	GONDWANA RES
+</B><DT>GOVERNANCE-AN INTERNATIONAL JOURNAL OF POLICY AND ADMINISTRATION
+<B><DD>	GOVERNANCE
+</B><DT>GOVERNMENT AND OPPOSITION
+<B><DD>	GOV OPPOS
+</B><DT>GOVERNMENT INFORMATION QUARTERLY
+<B><DD>	GOV INFORM Q
+</B><DT>GOVERNMENT PUBLICATIONS REVIEW
+<B><DD>	GOV PUBL REV
+</B><DT>GOYA
+<B><DD>	GOYA
+</B><DT>GRADIVA
+<B><DD>	GRADIVA
+</B><DT>GRAEFES ARCHIVE FOR CLINICAL AND EXPERIMENTAL OPHTHALMOLOGY
+<B><DD>	GRAEF ARCH CLIN EXP
+</B><DT>GRANA
+<B><DD>	GRANA
+</B><DT>GRANULAR MATTER
+<B><DD>	GRANUL MATTER
+</B><DT>GRAPHICAL MODELS
+<B><DD>	GRAPH MODELS
+</B><DT>GRAPHICAL MODELS AND IMAGE PROCESSING
+<B><DD>	GRAPH MODEL IM PROC
+</B><DT>GRAPHIS
+<B><DD>	GRAPHIS
+</B><DT>GRAPHS AND COMBINATORICS
+<B><DD>	GRAPH COMBINATOR
+</B><DT>GRASAS Y ACEITES
+<B><DD>	GRASAS ACEITES
+</B><DT>GRASS AND FORAGE SCIENCE
+<B><DD>	GRASS FORAGE SCI
+</B><DT>GREAT BASIN NATURALIST
+<B><DD>	GREAT BASIN NAT
+</B><DT>GREAT LAKES ENTOMOLOGIST
+<B><DD>	GREAT LAKES ENTOMOL
+</B><DT>GREAT PLAINS QUARTERLY
+<B><DD>	GREAT PLAINS QUART
+</B><DT>GREECE & ROME
+<B><DD>	GREECE ROME
+</B><DT>GREEK ROMAN AND BYZANTINE STUDIES
+<B><DD>	GREEK ROMAN BYZANTIN
+</B><DT>GREEN CHEMISTRY
+<B><DD>	GREEN CHEM
+</B><DT>GREENHOUSE EFFECT REPORT
+<B><DD>	GREENHOUSE EFF REP
+</B><DT>GROUND ENGINEERING
+<B><DD>	GROUND ENG
+</B><DT>GROUND WATER
+<B><DD>	GROUND WATER
+</B><DT>GROUND WATER MONITORING AND REMEDIATION
+<B><DD>	GROUND WATER MONIT R
+</B><DT>GROUP
+<B><DD>	GROUP
+</B><DT>GROUP & ORGANIZATION MANAGEMENT
+<B><DD>	GROUP ORGAN MANAGE
+</B><DT>GROUP DECISION AND NEGOTIATION
+<B><DD>	GROUP DECIS NEGOT
+</B><DT>GROWTH
+<B><DD>	GROWTH
+</B><DT>GROWTH
+<B><DD>	GROWTH DEVELOP AGING
+</B><DT>GROWTH AND CHANGE
+<B><DD>	GROWTH CHANGE
+</B><DT>GROWTH DEVELOPMENT AND AGING
+<B><DD>	GROWTH DEVELOP AGING
+</B><DT>GROWTH FACTORS
+<B><DD>	GROWTH FACTORS
+</B><DT>GROWTH HORMONE & IGF RESEARCH
+<B><DD>	GROWTH HORM IGF RES
+</B><DT>GROWTH REGULATION
+<B><DD>	GROWTH REGULAT
+</B><DT>GRUPPENDYNAMIK-ZEITSCHRIFT FUR ANGEWANDTE SOZIALPSYCHOLOGIE
+<B><DD>	GRUPPENDYNAMIK
+</B><DT>GRUPPENPSYCHOTHERAPIE UND GRUPPENDYNAMIK
+<B><DD>	GRUPPENPSYCHOTHER GR
+</B><DT>GUERRES MONDIALES ET CONFLITS CONTEMPORAINS
+<B><DD>	GUERRE MOND CONF CON
+</B><DT>GULF RESEARCH REPORTS
+<B><DD>	GULF RES REP
+</B><DT>GUMMI ASBEST KUNSTSTOFFE
+<B><DD>	GUMMI FASERN KUNSTST
+</B><DT>GUMMI FASERN KUNSTSTOFFE
+<B><DD>	GUMMI FASERN KUNSTST
+</B><DT>GUT
+<B><DD>	GUT
+</B><DT>GYMNASIUM
+<B><DD>	GYMNASIUM
+</B><DT>GYNAECOLOGICAL ENDOSCOPY
+<B><DD>	GYNAECOL ENDOSC
+</B><DT>GYNAKOLOGE
+<B><DD>	GYNAKOLOGE
+</B><DT>GYNAKOLOGISCH-GEBURTSHILFLICHE RUNDSCHAU
+<B><DD>	GYNAKOL GEBURT RUNDS
+</B><DT>GYNECOLOGIC AND OBSTETRIC INVESTIGATION
+<B><DD>	GYNECOL OBSTET INVES
+</B><DT>GYNECOLOGIC ONCOLOGY
+<B><DD>	GYNECOL ONCOL
+</B><DT>GYNECOLOGICAL ENDOCRINOLOGY
+<B><DD>	GYNECOL ENDOCRINOL
+</B></DL>
+</BODY>
+</HTML>

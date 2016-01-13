@@ -1,715 +1,1177 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="E"></A><DT>E&MJ-ENGINEERING AND MINING JOURNAL
+<B><DD>	ENG MIN J
+</B><DT>EAR AND HEARING
+<B><DD>	EAR HEARING
+</B><DT>EAR NOSE & THROAT JOURNAL
+<B><DD>	EAR NOSE THROAT J
+</B><DT>EARLY AMERICAN LITERATURE
+<B><DD>	EARLY AM LITERATURE
+</B><DT>EARLY CHILDHOOD RESEARCH QUARTERLY
+<B><DD>	EARLY CHILD RES Q
+</B><DT>EARLY DEVELOPMENT & PARENTING
+<B><DD>	EARLY DEV PARENTING
+</B><DT>EARLY HUMAN DEVELOPMENT
+<B><DD>	EARLY HUM DEV
+</B><DT>EARLY MUSIC
+<B><DD>	EARLY MUSIC
+</B><DT>EARLY MUSIC HISTORY
+<B><DD>	EARLY MUSIC HIST
+</B><DT>EARTH AND PLANETARY SCIENCE LETTERS
+<B><DD>	EARTH PLANET SC LETT
+</B><DT>EARTH ISLAND JOURNAL
+<B><DD>	EARTH ISL J
+</B><DT>EARTH MOON AND PLANETS
+<B><DD>	EARTH MOON PLANETS
+</B><DT>EARTH OBSERVATION AND REMOTE SENSING
+<B><DD>	EARTH OBS REMOT SEN+
+</B><DT>EARTH PLANETS AND SPACE
+<B><DD>	EARTH PLANETS SPACE
+</B><DT>EARTH SCIENCE
+<B><DD>	EARTH SCI
+</B><DT>EARTH SURFACE PROCESSES AND LANDFORMS
+<B><DD>	EARTH SURF PROC LAND
+</B><DT>EARTH SURFACE PROCESSES AND LANDFORMS
+<B><DD>	EARTH SURF PROCESSES
+</B><DT>EARTH-ORIENTED APPLICATIONS OF SPACE TECHNOLOGY
+<B><DD>	EARTH-ORIENT SP TECH
+</B><DT>EARTH-SCIENCE REVIEWS
+<B><DD>	EARTH-SCI REV
+</B><DT>EARTHQUAKE ENGINEERING & STRUCTURAL DYNAMICS
+<B><DD>	EARTHQUAKE ENG STRUC
+</B><DT>EARTHQUAKE PREDICTION RESEARCH
+<B><DD>	EARTHQUAKE PRED RES
+</B><DT>EAST AFRICAN MEDICAL JOURNAL
+<B><DD>	E AFR MED J
+</B><DT>EAST EUROPEAN POLITICS AND SOCIETIES
+<B><DD>	E EUR POLIT SOC
+</B><DT>EAST EUROPEAN QUARTERLY
+<B><DD>	E EUR QUART
+</B><DT>EAST-WEST FILM JOURNAL
+<B><DD>	EAST-WEST FILM J
+</B><DT>EASTERN BUDDHIST
+<B><DD>	EASTERN BUDDHIST
+</B><DT>EASTERN EUROPEAN ECONOMICS
+<B><DD>	EASTERN EUR ECON
+</B><DT>EAU DU QUEBEC
+<B><DD>	EAU QUEBEC
+</B><DT>EC&M-ELECTRICAL CONSTRUCTION AND MAINTENANCE
+<B><DD>	ECM-ELECTR CONSTR M
+</B><DT>ECHOCARDIOGRAPHY-A JOURNAL OF CARDIOVASCULAR ULTRASOUND AND ALLIED TECHNIQUES
+<B><DD>	ECHOCARDIOGR-J CARD
+</B><DT>ECLETICA QUIMICA
+<B><DD>	ECLET QUIM
+</B><DT>ECLOGAE GEOLOGICAE HELVETIAE
+<B><DD>	ECLOGAE GEOL HELV
+</B><DT>ECOGRAPHY
+<B><DD>	ECOGRAPHY
+</B><DT>ECOLOGICAL APPLICATIONS
+<B><DD>	ECOL APPL
+</B><DT>ECOLOGICAL BULLETINS
+<B><DD>	ECOL BULL
+</B><DT>ECOLOGICAL ECONOMICS
+<B><DD>	ECOL ECON
+</B><DT>ECOLOGICAL ENGINEERING
+<B><DD>	ECOL ENG
+</B><DT>ECOLOGICAL ENTOMOLOGY
+<B><DD>	ECOL ENTOMOL
+</B><DT>ECOLOGICAL MODELLING
+<B><DD>	ECOL MODEL
+</B><DT>ECOLOGICAL MONOGRAPHS
+<B><DD>	ECOL MONOGR
+</B><DT>ECOLOGICAL PSYCHOLOGY
+<B><DD>	ECOL PSYCHOL
+</B><DT>ECOLOGICAL RESEARCH
+<B><DD>	ECOL RES
+</B><DT>ECOLOGICAL STUDIES
+<B><DD>	ECOL STUD
+</B><DT>ECOLOGIST
+<B><DD>	ECOLOGIST
+</B><DT>ECOLOGY
+<B><DD>	ECOLOGY
+</B><DT>ECOLOGY LAW QUARTERLY
+<B><DD>	ECOL LAW QUART
+</B><DT>ECOLOGY LETTERS
+<B><DD>	ECOL LETT
+</B><DT>ECOLOGY OF FOOD AND NUTRITION
+<B><DD>	ECOL FOOD NUTR
+</B><DT>ECOLOGY OF FRESHWATER FISH
+<B><DD>	ECOL FRESHW FISH
+</B><DT>ECONOMETRIC THEORY
+<B><DD>	ECONOMET THEOR
+</B><DT>ECONOMETRICA
+<B><DD>	ECONOMETRICA
+</B><DT>ECONOMIC AND INDUSTRIAL DEMOCRACY
+<B><DD>	ECON IND DEMOCRACY
+</B><DT>ECONOMIC AND POLITICAL WEEKLY
+<B><DD>	ECON POLIT WEEKLY
+</B><DT>ECONOMIC AND SOCIAL REVIEW
+<B><DD>	ECON SOC REV
+</B><DT>ECONOMIC BOTANY
+<B><DD>	ECON BOT
+</B><DT>ECONOMIC DEVELOPMENT AND CULTURAL CHANGE
+<B><DD>	ECON DEV CULT CHANGE
+</B><DT>ECONOMIC DEVELOPMENT QUARTERLY
+<B><DD>	ECON DEV Q
+</B><DT>ECONOMIC GEOGRAPHY
+<B><DD>	ECON GEOGR
+</B><DT>ECONOMIC GEOLOGY
+<B><DD>	ECON GEOL
+</B><DT>ECONOMIC GEOLOGY AND THE BULLETIN OF THE SOCIETY OF ECONOMIC GEOLOGISTS
+<B><DD>	ECON GEOL BULL SOC
+</B><DT>ECONOMIC HISTORY REVIEW
+<B><DD>	ECON HIST REV
+</B><DT>ECONOMIC INQUIRY
+<B><DD>	ECON INQ
+</B><DT>ECONOMIC JOURNAL
+<B><DD>	ECON J
+</B><DT>ECONOMIC MODELLING
+<B><DD>	ECON MODEL
+</B><DT>ECONOMIC PLANNING
+<B><DD>	ECON PLANN-CANADA
+</B><DT>ECONOMIC POLICY
+<B><DD>	ECON POLICY
+</B><DT>ECONOMIC RECORD
+<B><DD>	ECON REC
+</B><DT>ECONOMIC THEORY
+<B><DD>	ECON THEOR
+</B><DT>ECONOMIC THEORY
+<B><DD>	ECON THEORY
+</B><DT>ECONOMICA
+<B><DD>	ECONOMICA
+</B><DT>ECONOMICS AND PHILOSOPHY
+<B><DD>	ECON PHILOS
+</B><DT>ECONOMICS LETTERS
+<B><DD>	ECON LETT
+</B><DT>ECONOMICS OF EDUCATION REVIEW
+<B><DD>	ECON EDUC REV
+</B><DT>ECONOMICS OF PLANNING
+<B><DD>	ECON PLANN
+</B><DT>ECONOMICS OF TRANSITION
+<B><DD>	ECON TRANSIT
+</B><DT>ECONOMIST
+<B><DD>	ECONOMIST
+</B><DT>ECONOMY AND SOCIETY
+<B><DD>	ECON SOC
+</B><DT>ECONTENT
+<B><DD>	ECONTENT
+</B><DT>ECOSCIENCE
+<B><DD>	ECOSCIENCE
+</B><DT>ECOSYSTEM HEALTH
+<B><DD>	ECOSYST HEALTH
+</B><DT>ECOSYSTEMS
+<B><DD>	ECOSYSTEMS
+</B><DT>ECOTOXICOLOGY
+<B><DD>	ECOTOXICOLOGY
+</B><DT>ECOTOXICOLOGY AND ENVIRONMENTAL SAFETY
+<B><DD>	ECOTOX ENVIRON SAFE
+</B><DT>ECUMENE
+<B><DD>	ECUMENE
+</B><DT>ECUMENICAL REVIEW
+<B><DD>	ECUMENICAL REV
+</B><DT>EDF LETTER
+<B><DD>	EDF LETT
+</B><DT>EDN
+<B><DD>	EDN
+</B><DT>EDN MAGAZINE-ELECTRICAL DESIGN NEWS
+<B><DD>	EDN
+</B><DT>EDP ANALYZER
+<B><DD>	EDP ANAL
+</B><DT>EDUCATION AND TRAINING IN MENTAL RETARDATION AND DEVELOPMENTAL DISABILITIES
+<B><DD>	EDUC TRAIN MENT RET
+</B><DT>EDUCATION AND URBAN SOCIETY
+<B><DD>	EDUC URBAN SOC
+</B><DT>EDUCATION FOR INFORMATION
+<B><DD>	EDUC INFORM
+</B><DT>EDUCATIONAL & TRAINING TECHNOLOGY INTERNATIONAL
+<B><DD>	EDUC TRAIN TECHNOL
+</B><DT>EDUCATIONAL ADMINISTRATION QUARTERLY
+<B><DD>	EDUC ADMIN QUART
+</B><DT>EDUCATIONAL AND PSYCHOLOGICAL MEASUREMENT
+<B><DD>	EDUC PSYCHOL MEAS
+</B><DT>EDUCATIONAL EVALUATION AND POLICY ANALYSIS
+<B><DD>	EDUC EVAL POLICY AN
+</B><DT>EDUCATIONAL GERONTOLOGY
+<B><DD>	EDUC GERONTOL
+</B><DT>EDUCATIONAL LEADERSHIP
+<B><DD>	EDUC LEADERSHIP
+</B><DT>EDUCATIONAL POLICY
+<B><DD>	EDUC POLICY
+</B><DT>EDUCATIONAL PSYCHOLOGIST
+<B><DD>	EDUC PSYCHOL
+</B><DT>EDUCATIONAL PSYCHOLOGY REVIEW
+<B><DD>	EDUC PSYCHOL REV
+</B><DT>EDUCATIONAL RESEARCH
+<B><DD>	EDUC RES
+</B><DT>EDUCATIONAL REVIEW
+<B><DD>	EDUC REV
+</B><DT>EDUCATIONAL STUDIES
+<B><DD>	EDUC STUD
+</B><DT>EE-EVALUATION ENGINEERING
+<B><DD>	EE-EVAL ENG
+</B><DT>EEG-EMG-ZEITSCHRIFT FUR ELEKTROENZEPHALOGRAPHIE ELEKTROMYOGRAPHIE UND VERWANDTE GEBIETE
+<B><DD>	EEG-EMG-Z ELEK ELEKT
+</B><DT>EFFLUENT & WATER TREATMENT JOURNAL
+<B><DD>	EFFLUENT WATER TREAT
+</B><DT>EGYPTIAN JOURNAL OF GENETICS AND CYTOLOGY
+<B><DD>	EGYPT J GENET CYTOL
+</B><DT>EICOSANOIDS
+<B><DD>	EICOSANOIDS
+</B><DT>EIGHTEENTH CENTURY-THEORY AND INTERPRETATION
+<B><DD>	EIGHTEENTH CENT-THEO
+</B><DT>EIGHTEENTH-CENTURY LIFE
+<B><DD>	EIGHTEENTH-CENT LIFE
+</B><DT>EIGHTEENTH-CENTURY STUDIES
+<B><DD>	EIGHTEENTH-CENT STUD
+</B><DT>EIGSE-A JOURNAL OF IRISH STUDIES
+<B><DD>	EIGSE-J IRISH STUD
+</B><DT>EIRE-IRELAND
+<B><DD>	EIRE-IRELAND
+</B><DT>EISEI KAGAKU-JAPANESE JOURNAL OF TOXICOLOGY AND ENVIRONMENTAL HEALTH
+<B><DD>	EISEI KAGAKU
+</B><DT>EKOLOGIA CSFR
+<B><DD>	EKOL CSFR
+</B><DT>EKOLOGIA POLSKA-POLISH JOURNAL OF ECOLOGY
+<B><DD>	EKOL POL-POL J ECOL
+</B><DT>EKOLOGIA-BRATISLAVA
+<B><DD>	EKOL BRATISLAVA
+</B><DT>EKONOMICKY CASOPIS
+<B><DD>	EKON CAS
+</B><DT>EKONOMISKA SAMFUNDETS TIDSKRIFT
+<B><DD>	EKON SAMF TIDSKR
+</B><DT>EKSPERIMENTALNAYA ONKOLOGIYA
+<B><DD>	EKSP ONKOL
+</B><DT>ELASTOMERICS
+<B><DD>	ELASTOMERICS
+</B><DT>ELECTORAL STUDIES
+<B><DD>	ELECT STUD
+</B><DT>ELECTRIC MACHINES AND ELECTROMECHANICS
+<B><DD>	ELECTR MACH ELECTROM
+</B><DT>ELECTRIC MACHINES AND POWER SYSTEMS
+<B><DD>	ELECTR MACH POW SYST
+</B><DT>ELECTRIC POWER SYSTEMS RESEARCH
+<B><DD>	ELECTR POW SYST RES
+</B><DT>ELECTRICAL COMMUNICATION
+<B><DD>	ELECTR COMMUN
+</B><DT>ELECTRICAL ENGINEERING
+<B><DD>	ELECTR ENG
+</B><DT>ELECTRICAL ENGINEERING IN JAPAN
+<B><DD>	ELECTR ENG JPN
+</B><DT>ELECTRICAL TECHNOLOGY
+<B><DD>	ELECTR TECHNOL+
+</B><DT>ELECTRICAL TECHNOLOGY RUSSIA
+<B><DD>	ELECTR TECHNOL RUSS+
+</B><DT>ELECTRICAL WORLD
+<B><DD>	ELECTR WORLD
+</B><DT>ELECTRO- AND MAGNETOBIOLOGY
+<B><DD>	ELECTRO MAGNETOBIOL
+</B><DT>ELECTRO-OPTICAL SYSTEMS DESIGN
+<B><DD>	ELECTR OPT SYST DES
+</B><DT>ELECTRO-OPTICS
+<B><DD>	ELECTRO-OPTICS
+</B><DT>ELECTROANALYSIS
+<B><DD>	ELECTROANAL
+</B><DT>ELECTROANALYTICAL CHEMISTRY
+<B><DD>	ELECTROANAL CHEM
+</B><DT>ELECTROCHEMICAL AND SOLID STATE LETTERS
+<B><DD>	ELECTROCHEM SOLID ST
+</B><DT>ELECTROCHEMISTRY
+<B><DD>	ELECTROCHEMISTRY
+</B><DT>ELECTROCHEMISTRY COMMUNICATIONS
+<B><DD>	ELECTROCHEM COMMUN
+</B><DT>ELECTROCHIMICA ACTA
+<B><DD>	ELECTROCHIM ACTA
+</B><DT>ELECTROCOMPONENT SCIENCE AND TECHNOLOGY
+<B><DD>	ELECTROCOMP SCI TECH
+</B><DT>ELECTROENCEPHALOGRAPHY AND CLINICAL NEUROPHYSIOLOGY
+<B><DD>	ELECTROEN CLIN NEURO
+</B><DT>ELECTROMAGNETICS
+<B><DD>	ELECTROMAGNETICS
+</B><DT>ELECTROMYOGRAPHY AND MOTOR CONTROL-ELECTROENCEPHALOGRAPHY AND CLINICAL NEUROPHYSIOLOGY
+<B><DD>	ELECTROMYOGR MOTOR C
+</B><DT>ELECTRON DEVICE LETTERS
+<B><DD>	ELECTRON DEVIC LETT
+</B><DT>ELECTRON MICROSCOPY REVIEWS
+<B><DD>	ELECTRON MICROSC REV
+</B><DT>ELECTRON SPIN RESONANCE-A SPECIALIST PERIODICAL REPORT
+<B><DD>	ELECTRON SPIN RESON
+</B><DT>ELECTRONIC DESIGN
+<B><DD>	ELECTRON DES
+</B><DT>ELECTRONIC ENGINEERING
+<B><DD>	ELECTRON ENG
+</B><DT>ELECTRONIC JOURNAL OF THEORETICAL CHEMISTRY
+<B><DD>	ELECTRON J THEOR CH
+</B><DT>ELECTRONIC LIBRARY
+<B><DD>	ELECTRON LIBR
+</B><DT>ELECTRONIC PRODUCT DESIGN
+<B><DD>	ELECTRON PROD DES
+</B><DT>ELECTRONIC PRODUCTS MAGAZINE
+<B><DD>	ELECTRON PROD
+</B><DT>ELECTRONIC RESEARCH ANNOUNCEMENTS OF THE AMERICAN MATHEMATICAL SOCIETY
+<B><DD>	ELECTRON RES ANNOUNC
+</B><DT>ELECTRONICS
+<B><DD>	ELECTRONICS
+</B><DT>ELECTRONICS & COMMUNICATION ENGINEERING JOURNAL
+<B><DD>	ELECTRON COMMUN ENG
+</B><DT>ELECTRONICS & WIRELESS WORLD
+<B><DD>	ELECTRON WIRELESS W
+</B><DT>ELECTRONICS AND COMMUNICATIONS IN JAPAN PART I-COMMUNICATIONS
+<B><DD>	ELECTRON COMM JPN 1
+</B><DT>ELECTRONICS AND COMMUNICATIONS IN JAPAN PART II-ELECTRONICS
+<B><DD>	ELECTRON COMM JPN 2
+</B><DT>ELECTRONICS AND COMMUNICATIONS IN JAPAN PART III-FUNDAMENTAL ELECTRONIC SCIENCE
+<B><DD>	ELECTRON COMM JPN 3
+</B><DT>ELECTRONICS AND POWER
+<B><DD>	ELECTRON POWER
+</B><DT>ELECTRONICS INFORMATION & PLANNING
+<B><DD>	ELECTRON INFORM PLAN
+</B><DT>ELECTRONICS LETTERS
+<B><DD>	ELECTRON LETT
+</B><DT>ELECTRONICS WORLD
+<B><DD>	ELECTRON WORLD
+</B><DT>ELECTRONICS WORLD & WIRELESS WORLD
+<B><DD>	ELECTRON WORLD WIREL
+</B><DT>ELECTRONICSWEEK
+<B><DD>	ELECTRONICS
+</B><DT>ELECTROPHORESIS
+<B><DD>	ELECTROPHORESIS
+</B><DT>ELELMEZESI IPAR
+<B><DD>	ELELMEZESI IPAR
+</B><DT>ELEMENTA-JOURNAL OF SLAVIC STUDIES & COMPARATIVE CULTURAL SEMIOTICS
+<B><DD>	ELEMENTA
+</B><DT>ELEMENTARY SCHOOL JOURNAL
+<B><DD>	ELEM SCHOOL J
+</B><DT>ELETTROTECNICA
+<B><DD>	ELETTROTECNICA
+</B><DT>ELH-ENGLISH LITERARY HISTORY
+<B><DD>	ELH-ENGL LIT HIST
+</B><DT>EMBO JOURNAL
+<B><DD>	EMBO J
+</B><DT>EMERGENCY MEDICAL SERVICES
+<B><DD>	EMERGEN MED SERV
+</B><DT>EMERGENCY MEDICINE
+<B><DD>	EMERGEN MED
+</B><DT>EMERGENCY MEDICINE CLINICS OF NORTH AMERICA
+<B><DD>	EMERG MED CLIN N AM
+</B><DT>EMERGING INFECTIOUS DISEASES
+<B><DD>	EMERG INFECT DIS
+</B><DT>EMPLOYEE RELATIONS LAW JOURNAL
+<B><DD>	EMPLOYEE RELAT LAW J
+</B><DT>EMU
+<B><DD>	EMU
+</B><DT>ENANTIOMER
+<B><DD>	ENANTIOMER
+</B><DT>ENCEPHALE-REVUE DE PSYCHIATRIE CLINIQUE BIOLOGIQUE ET THERAPEUTIQUE
+<B><DD>	ENCEPHALE
+</B><DT>ENDEAVOUR
+<B><DD>	ENDEAVOUR
+</B><DT>ENDOCRINE
+<B><DD>	ENDOCRINE
+</B><DT>ENDOCRINE JOURNAL
+<B><DD>	ENDOCR J
+</B><DT>ENDOCRINE PATHOLOGY
+<B><DD>	ENDOCR PATHOL
+</B><DT>ENDOCRINE RESEARCH
+<B><DD>	ENDOCR RES
+</B><DT>ENDOCRINE RESEARCH COMMUNICATIONS
+<B><DD>	ENDOCR RES COMMUN
+</B><DT>ENDOCRINE REVIEWS
+<B><DD>	ENDOCR REV
+</B><DT>ENDOCRINE-RELATED CANCER
+<B><DD>	ENDOCR-RELAT CANCER
+</B><DT>ENDOCRINOLOGIA EXPERIMENTALIS
+<B><DD>	ENDOCRINOL EXP
+</B><DT>ENDOCRINOLOGIA JAPONICA
+<B><DD>	ENDOCRINOL JAPON
+</B><DT>ENDOCRINOLOGIST
+<B><DD>	ENDOCRINOLOGIST
+</B><DT>ENDOCRINOLOGY
+<B><DD>	ENDOCRINOLOGY
+</B><DT>ENDOCRINOLOGY AND METABOLISM
+<B><DD>	ENDOCRINOL METAB
+</B><DT>ENDOCRINOLOGY AND METABOLISM CLINICS OF NORTH AMERICA
+<B><DD>	ENDOCRIN METAB CLIN
+</B><DT>ENDOCYTOBIOSIS AND CELL RESEARCH
+<B><DD>	ENDOCYT CELL RES
+</B><DT>ENDODONTICS & DENTAL TRAUMATOLOGY
+<B><DD>	ENDOD DENT TRAUMATOL
+</B><DT>ENDOKRINOLOGIE
+<B><DD>	ENDOKRINOLOGIE
+</B><DT>ENDOSCOPY
+<B><DD>	ENDOSCOPY
+</B><DT>ENDOTHELIUM-NEW YORK
+<B><DD>	ENDOTHELIUM-NEW YORK
+</B><DT>ENERGIA ES ATOMTECHNIKA
+<B><DD>	ENERG ATOMTECH
+</B><DT>ENERGIETECHNIK
+<B><DD>	ENERGIETECHNIK
+</B><DT>ENERGY
+<B><DD>	ENERGY
+</B><DT>ENERGY & FUELS
+<B><DD>	ENERG FUEL
+</B><DT>ENERGY AND BUILDINGS
+<B><DD>	ENERG BUILDINGS
+</B><DT>ENERGY COMMUNICATIONS
+<B><DD>	ENERG COMMUN
+</B><DT>ENERGY CONVERSION AND MANAGEMENT
+<B><DD>	ENERG CONVERS MANAGE
+</B><DT>ENERGY ECONOMICS
+<B><DD>	ENERG ECON
+</B><DT>ENERGY ENGINEERING
+<B><DD>	ENERG ENG
+</B><DT>ENERGY EXPLORATION & EXPLOITATION
+<B><DD>	ENERG EXPLOR EXPLOIT
+</B><DT>ENERGY IN AGRICULTURE
+<B><DD>	ENERG AGR
+</B><DT>ENERGY JOURNAL
+<B><DD>	ENERGY J
+</B><DT>ENERGY POLICY
+<B><DD>	ENERG POLICY
+</B><DT>ENERGY SOURCES
+<B><DD>	ENERG SOURCE
+</B><DT>ENGINEER
+<B><DD>	ENGINEER-LONDON
+</B><DT>ENGINEERING
+<B><DD>	ENGINEERING-LONDON
+</B><DT>ENGINEERING ANALYSIS WITH BOUNDARY ELEMENTS
+<B><DD>	ENG ANAL BOUND ELEM
+</B><DT>ENGINEERING APPLICATIONS OF ARTIFICIAL INTELLIGENCE
+<B><DD>	ENG APPL ARTIF INTEL
+</B><DT>ENGINEERING COMPUTATIONS
+<B><DD>	ENG COMPUTATION
+</B><DT>ENGINEERING COSTS AND PRODUCTION ECONOMICS
+<B><DD>	ENG COST PROD ECON
+</B><DT>ENGINEERING CYBERNETICS
+<B><DD>	ENG CYBERN
+</B><DT>ENGINEERING DIGEST
+<B><DD>	ENG DIG
+</B><DT>ENGINEERING EDUCATION
+<B><DD>	ENG EDUC
+</B><DT>ENGINEERING FAILURE ANALYSIS
+<B><DD>	ENG FAIL ANAL
+</B><DT>ENGINEERING FRACTURE MECHANICS
+<B><DD>	ENG FRACT MECH
+</B><DT>ENGINEERING GEOLOGY
+<B><DD>	ENG GEOL
+</B><DT>ENGINEERING INTELLIGENT SYSTEMS FOR ELECTRICAL ENGINEERING AND COMMUNICATIONS
+<B><DD>	ENG INTELL SYST ELEC
+</B><DT>ENGINEERING JOURNAL
+<B><DD>	ENG J-CANADA
+</B><DT>ENGINEERING JOURNAL-AMERICAN INSTITUTE OF STEEL CONSTRUCTION INC
+<B><DD>	ENG J AISC
+</B><DT>ENGINEERING MANAGEMENT INTERNATIONAL
+<B><DD>	ENG MANAGE INT
+</B><DT>ENGINEERING NEWS-RECORD
+<B><DD>	ENG NEWS-REC
+</B><DT>ENGINEERING OPTIMIZATION
+<B><DD>	ENG OPTIMIZ
+</B><DT>ENGINEERING PLASTICS
+<B><DD>	ENG PLAST
+</B><DT>ENGINEERING STRUCTURES
+<B><DD>	ENG STRUCT
+</B><DT>ENGINEERING WITH COMPUTERS
+<B><DD>	ENG COMPUT
+</B><DT>ENGLISH
+<B><DD>	ENGLISH
+</B><DT>ENGLISH HISTORICAL REVIEW
+<B><DD>	ENGL HIST REV
+</B><DT>ENGLISH IN AFRICA
+<B><DD>	ENGL AFR
+</B><DT>ENGLISH LANGUAGE NOTES
+<B><DD>	ENGL LANG NOTES
+</B><DT>ENGLISH LITERARY RENAISSANCE
+<B><DD>	ENGL LITERARY RENAIS
+</B><DT>ENGLISH LITERATURE IN TRANSITION 1880-1920
+<B><DD>	ENGL LIT TRANSITION
+</B><DT>ENGLISH STUDIES
+<B><DD>	ENGL STUD
+</B><DT>ENGLISH STUDIES IN AFRICA
+<B><DD>	ENGL STUD AFR
+</B><DT>ENGLISH STUDIES IN CANADA
+<B><DD>	ENGL STUD CAN
+</B><DT>ENTERTAINMENT DESIGN
+<B><DD>	ENTERTAIN DES
+</B><DT>ENTOMOLOGIA EXPERIMENTALIS ET APPLICATA
+<B><DD>	ENTOMOL EXP APPL
+</B><DT>ENTOMOLOGIA GENERALIS
+<B><DD>	ENTOMOL GEN
+</B><DT>ENTOMOLOGICA FENNICA
+<B><DD>	ENTOMOL FENNICA
+</B><DT>ENTOMOLOGICA SCANDINAVICA
+<B><DD>	ENTOMOL SCAND
+</B><DT>ENTOMOLOGICAL NEWS
+<B><DD>	ENTOMOL NEWS
+</B><DT>ENTOMON
+<B><DD>	ENTOMON
+</B><DT>ENTOMOPHAGA
+<B><DD>	ENTOMOPHAGA
+</B><DT>ENVIRONMENT
+<B><DD>	ENVIRONMENT
+</B><DT>ENVIRONMENT AND BEHAVIOR
+<B><DD>	ENVIRON BEHAV
+</B><DT>ENVIRONMENT AND PLANNING A
+<B><DD>	ENVIRON PLANN A
+</B><DT>ENVIRONMENT AND PLANNING B-PLANNING & DESIGN
+<B><DD>	ENVIRON PLANN B
+</B><DT>ENVIRONMENT AND PLANNING C-GOVERNMENT AND POLICY
+<B><DD>	ENVIRON PLANN C
+</B><DT>ENVIRONMENT AND PLANNING D-SOCIETY & SPACE
+<B><DD>	ENVIRON PLANN D
+</B><DT>ENVIRONMENT AND URBANIZATION
+<B><DD>	ENVIRON URBAN
+</B><DT>ENVIRONMENT INTERNATIONAL
+<B><DD>	ENVIRON INT
+</B><DT>ENVIRONMENTAL & ENGINEERING GEOSCIENCE
+<B><DD>	ENVIRON ENG GEOSCI
+</B><DT>ENVIRONMENTAL & RESOURCE ECONOMICS
+<B><DD>	ENVIRON RESOUR ECON
+</B><DT>ENVIRONMENTAL AND ECOLOGICAL STATISTICS
+<B><DD>	ENVIRON ECOL STAT
+</B><DT>ENVIRONMENTAL AND EXPERIMENTAL BOTANY
+<B><DD>	ENVIRON EXP BOT
+</B><DT>ENVIRONMENTAL AND MOLECULAR MUTAGENESIS
+<B><DD>	ENVIRON MOL MUTAGEN
+</B><DT>ENVIRONMENTAL AND SOCIAL EFFECTS OF TRANSPORTATION
+<B><DD>	TRANSPORT RES REC
+</B><DT>ENVIRONMENTAL BIOLOGY OF FISHES
+<B><DD>	ENVIRON BIOL FISH
+</B><DT>ENVIRONMENTAL CARCINOGENESIS & ECOTOXICOLOGY REVIEWS-PART C OF JOURNAL OF ENVIRONMENTAL SCIENCE AND HEALTH
+<B><DD>	ENVIRON CARCIN ECO R
+</B><DT>ENVIRONMENTAL CARCINOGENESIS REVIEWS-PART C OF JOURNAL OF ENVIRONMENTAL SCIENCE AND HEALTH
+<B><DD>	ENVIRON CARCIN ECO R
+</B><DT>ENVIRONMENTAL CARCINOGENESIS REVIEWS-PART C OF JOURNAL OF ENVIRONMENTAL SCIENCE AND HEALTH
+<B><DD>	ENVIRON CARCINOG REV
+</B><DT>ENVIRONMENTAL CLAIMS JOURNAL
+<B><DD>	ENVIRON CLAIM J
+</B><DT>ENVIRONMENTAL CONSERVATION
+<B><DD>	ENVIRON CONSERV
+</B><DT>ENVIRONMENTAL ENGINEERING SCIENCE
+<B><DD>	ENVIRON ENG SCI
+</B><DT>ENVIRONMENTAL ENTOMOLOGY
+<B><DD>	ENVIRON ENTOMOL
+</B><DT>ENVIRONMENTAL ETHICS
+<B><DD>	ENVIRON ETHICS
+</B><DT>ENVIRONMENTAL GEOCHEMISTRY AND HEALTH
+<B><DD>	ENVIRON GEOCHEM HLTH
+</B><DT>ENVIRONMENTAL GEOLOGY
+<B><DD>	ENVIRON GEOL
+</B><DT>ENVIRONMENTAL GEOLOGY AND WATER SCIENCES
+<B><DD>	ENVIRON GEOL WATER S
+</B><DT>ENVIRONMENTAL HEALTH PERSPECTIVES
+<B><DD>	ENVIRON HEALTH PERSP
+</B><DT>ENVIRONMENTAL HISTORY
+<B><DD>	ENVIRON HIST
+</B><DT>ENVIRONMENTAL IMPACT ASSESSMENT REVIEW
+<B><DD>	ENVIRON IMPACT ASSES
+</B><DT>ENVIRONMENTAL MANAGEMENT
+<B><DD>	ENVIRON MANAGE
+</B><DT>ENVIRONMENTAL MICROBIOLOGY
+<B><DD>	ENVIRON MICROBIOL
+</B><DT>ENVIRONMENTAL MODELING & ASSESSMENT
+<B><DD>	ENVIRON MODEL ASSESS
+</B><DT>ENVIRONMENTAL MODELLING & SOFTWARE
+<B><DD>	ENVIRON MODELL SOFTW
+</B><DT>ENVIRONMENTAL MONITORING AND ASSESSMENT
+<B><DD>	ENVIRON MONIT ASSESS
+</B><DT>ENVIRONMENTAL MUTAGENESIS
+<B><DD>	ENVIRON MOL MUTAGEN
+</B><DT>ENVIRONMENTAL MUTAGENESIS
+<B><DD>	ENVIRON MUTAGEN
+</B><DT>ENVIRONMENTAL POLLUTION
+<B><DD>	ENVIRON POLLUT
+</B><DT>ENVIRONMENTAL POLLUTION SERIES A-ECOLOGICAL AND BIOLOGICAL
+<B><DD>	ENVIRON POLLUT A
+</B><DT>ENVIRONMENTAL POLLUTION SERIES B-CHEMICAL AND PHYSICAL
+<B><DD>	ENVIRON POLLUT B
+</B><DT>ENVIRONMENTAL PROGRESS
+<B><DD>	ENVIRON PROG
+</B><DT>ENVIRONMENTAL RESEARCH
+<B><DD>	ENVIRON RES
+</B><DT>ENVIRONMENTAL SCIENCE & TECHNOLOGY
+<B><DD>	ENVIRON SCI TECHNOL
+</B><DT>ENVIRONMENTAL SCIENCE AND POLLUTION RESEARCH
+<B><DD>	ENVIRON SCI POLLUT R
+</B><DT>ENVIRONMENTAL SOFTWARE
+<B><DD>	ENVIRON SOFTW
+</B><DT>ENVIRONMENTAL TECHNOLOGY
+<B><DD>	ENVIRON TECHNOL
+</B><DT>ENVIRONMENTAL TECHNOLOGY LETTERS
+<B><DD>	ENVIRON TECHNOL LETT
+</B><DT>ENVIRONMENTAL TOXICOLOGY
+<B><DD>	ENVIRON TOXICOL
+</B><DT>ENVIRONMENTAL TOXICOLOGY AND CHEMISTRY
+<B><DD>	ENVIRON TOXICOL CHEM
+</B><DT>ENVIRONMENTAL TOXICOLOGY AND PHARMACOLOGY
+<B><DD>	ENVIRON TOXICOL PHAR
+</B><DT>ENVIRONMENTAL TOXICOLOGY AND WATER QUALITY
+<B><DD>	ENVIRON TOXIC WATER
+</B><DT>ENVIRONMENTAL VALUES
+<B><DD>	ENVIRON VALUE
+</B><DT>ENVIRONMENTALIST
+<B><DD>	ENVIRONMENTALIST
+</B><DT>ENVIRONMETRICS
+<B><DD>	ENVIRONMETRICS
+</B><DT>ENZYME
+<B><DD>	ENZYME
+</B><DT>ENZYME & PROTEIN
+<B><DD>	ENZYME PROTEIN
+</B><DT>ENZYME AND MICROBIAL TECHNOLOGY
+<B><DD>	ENZYME MICROB TECH
+</B><DT>ENZYME ENGINEERING
+<B><DD>	ENZYME ENG
+</B><DT>EOS-RIVISTA DI IMMUNOLOGIA ED IMMUNOFARMACOLOGIA
+<B><DD>	EOS-RIV IMMUNOL
+</B><DT>EPIDEMIOLOGIC REVIEWS
+<B><DD>	EPIDEMIOL REV
+</B><DT>EPIDEMIOLOGY
+<B><DD>	EPIDEMIOLOGY
+</B><DT>EPIDEMIOLOGY AND INFECTION
+<B><DD>	EPIDEMIOL INFECT
+</B><DT>EPILEPSIA
+<B><DD>	EPILEPSIA
+</B><DT>EPILEPSY RESEARCH
+<B><DD>	EPILEPSY RES
+</B><DT>EPILEPTIC DISORDERS
+<B><DD>	EPILEPTIC DISORD
+</B><DT>EPISODES
+<B><DD>	EPISODES
+</B><DT>EPITHELIAL CELL BIOLOGY
+<B><DD>	EPITHELIAL CELL BIOL
+</B><DT>EPRI JOURNAL
+<B><DD>	EPRI J
+</B><DT>EQUINE ATHLETE
+<B><DD>	EQUINE ATHLETE
+</B><DT>EQUINE PRACTICE
+<B><DD>	EQUINE PRACT
+</B><DT>EQUINE VETERINARY EDUCATION
+<B><DD>	EQUINE VET EDUC
+</B><DT>EQUINE VETERINARY JOURNAL
+<B><DD>	EQUINE VET J
+</B><DT>ERDOL & KOHLE ERDGAS PETROCHEMIE
+<B><DD>	ERDOL KOHLE ERDGAS P
+</B><DT>ERGODIC THEORY AND DYNAMICAL SYSTEMS
+<B><DD>	ERGOD THEOR DYN SYST
+</B><DT>ERGONOMICS
+<B><DD>	ERGONOMICS
+</B><DT>ERICSSON REVIEW
+<B><DD>	ERICSSON REV
+</B><DT>ERNAHRUNGS-UMSCHAU
+<B><DD>	ERNAHRUNGS-UMSCHAU
+</B><DT>ESA BULLETIN-EUROPEAN SPACE AGENCY
+<B><DD>	ESA BULL-EUR SPACE
+</B><DT>ESA JOURNAL-EUROPEAN SPACE AGENCY
+<B><DD>	ESA J-EUR SPACE AGEN
+</B><DT>ESAIM-MATHEMATICAL MODELLING AND NUMERICAL ANALYSIS-MODELISATION MATHEMATIQUE ET ANALYSE NUMERIQUE
+<B><DD>	ESAIM-MATH MODEL NUM
+</B><DT>ESPRIT
+<B><DD>	ESPRIT
+</B><DT>ESPRIT CREATEUR
+<B><DD>	ESPRIT CREATEUR
+</B><DT>ESQ-A JOURNAL OF THE AMERICAN RENAISSANCE
+<B><DD>	ESQ-J AM RENAISSANCE
+</B><DT>ESSAYS IN BIOCHEMISTRY
+<B><DD>	ESSAYS BIOCHEM
+</B><DT>ESSAYS IN CRITICISM
+<B><DD>	ESSAYS CRITICISM
+</B><DT>ESSAYS IN LITERATURE
+<B><DD>	ESSAYS LITERATURE
+</B><DT>ESSAYS IN POETICS
+<B><DD>	ESSAYS POETICS
+</B><DT>ESSAYS IN THEATRE-ETUDES THEATRALES
+<B><DD>	ESSAYS THEAT
+</B><DT>ESSAYS ON CANADIAN WRITING
+<B><DD>	ESSAYS CAN WRIT
+</B><DT>ESTRENO-CUADERNOS DEL TEATRO ESPANOL CONTEMPORANEO
+<B><DD>	ESTRENO
+</B><DT>ESTUARIES
+<B><DD>	ESTUARIES
+</B><DT>ESTUARINE COASTAL AND SHELF SCIENCE
+<B><DD>	ESTUAR COAST SHELF S
+</B><DT>ESTUDIOS CLASICOS
+<B><DD>	ESTUD CLASICO
+</B><DT>ESTUDIOS FILOLOGICOS
+<B><DD>	ESTUD FILOL
+</B><DT>ESTUDOS IBERO-AMERICANOS
+<B><DD>	ESTUD IBERO-AM
+</B><DT>ETHICS
+<B><DD>	ETHICS
+</B><DT>ETHICS & BEHAVIOR
+<B><DD>	ETHICS BEHAV
+</B><DT>ETHIOPIAN MEDICAL JOURNAL
+<B><DD>	ETHIOPIAN MED J
+</B><DT>ETHNIC AND RACIAL STUDIES
+<B><DD>	ETHNIC RACIAL STUD
+</B><DT>ETHNOHISTORY
+<B><DD>	ETHNOHISTORY
+</B><DT>ETHNOLOGY
+<B><DD>	ETHNOLOGY
+</B><DT>ETHNOMUSICOLOGY
+<B><DD>	ETHNOMUSICOLOGY
+</B><DT>ETHOLOGY
+<B><DD>	ETHOLOGY
+</B><DT>ETHOLOGY AND SOCIOBIOLOGY
+<B><DD>	ETHOL SOCIOBIOL
+</B><DT>ETHOLOGY ECOLOGY & EVOLUTION
+<B><DD>	ETHOL ECOL EVOL
+</B><DT>ETHOS
+<B><DD>	ETHOS
+</B><DT>ETR&D-EDUCATIONAL TECHNOLOGY RESEARCH AND DEVELOPMENT
+<B><DD>	ETR&D-EDUC TECH RES
+</B><DT>ETRI JOURNAL
+<B><DD>	ETRI J
+</B><DT>ETUDES ANGLAISES
+<B><DD>	ETUD ANGLAISES
+</B><DT>ETUDES CINEMATOGRAPHIQUES
+<B><DD>	ETUD CINEMA
+</B><DT>ETUDES CLASSIQUES
+<B><DD>	ETUD CLASSIQUES
+</B><DT>ETUDES FRANCAISES
+<B><DD>	ETUD FR
+</B><DT>ETUDES GERMANIQUES
+<B><DD>	ETUD GER
+</B><DT>ETUDES IRLANDAISES
+<B><DD>	ETUD IRLANDAISES
+</B><DT>ETUDES LITTERAIRES
+<B><DD>	ETUD LITTERAIRES
+</B><DT>ETUDES PHILOSOPHIQUES
+<B><DD>	ETUD PHILOS
+</B><DT>ETUDES THEOLOGIQUES ET RELIGIEUSES
+<B><DD>	ETUD THEOL RELIG
+</B><DT>ETZ ARCHIV
+<B><DD>	ETZ ARCHIV
+</B><DT>EUPHORION-ZEITSCHRIFT FUR LITERATURGESCHICHTE
+<B><DD>	EUPHORION-Z LIT
+</B><DT>EUPHYTICA
+<B><DD>	EUPHYTICA
+</B><DT>EURASIAN SOIL SCIENCE
+<B><DD>	EURASIAN SOIL SCI+
+</B><DT>EUROPA ARCHIV
+<B><DD>	EUR ARCH
+</B><DT>EUROPACE
+<B><DD>	EUROPACE
+</B><DT>EUROPE-ASIA STUDIES
+<B><DD>	EUROPE-ASIA STUD
+</B><DT>EUROPE-REVUE LITTERAIRE MENSUELLE
+<B><DD>	EUROPE-REV LIT MENS
+</B><DT>EUROPEAN ADDICTION RESEARCH
+<B><DD>	EUR ADDICT RES
+</B><DT>EUROPEAN ARCHIVES OF OTO-RHINO-LARYNGOLOGY
+<B><DD>	EUR ARCH OTO-RHINO-L
+</B><DT>EUROPEAN ARCHIVES OF PSYCHIATRY AND CLINICAL NEUROSCIENCE
+<B><DD>	EUR ARCH PSY CLIN N
+</B><DT>EUROPEAN BIOPHYSICS JOURNAL
+<B><DD>	EUR BIOPHYS J
+</B><DT>EUROPEAN BIOPHYSICS JOURNAL WITH BIOPHYSICS LETTERS
+<B><DD>	EUR BIOPHYS J BIOPHY
+</B><DT>EUROPEAN CANCER NEWS
+<B><DD>	EUR CANC NEW
+</B><DT>EUROPEAN CANCER NEWS
+<B><DD>	EUR CANCER NEWS
+</B><DT>EUROPEAN CHEMICAL NEWS
+<B><DD>	EUR CHEM NEWS
+</B><DT>EUROPEAN CHILD & ADOLESCENT PSYCHIATRY
+<B><DD>	EUR CHILD ADOLES PSY
+</B><DT>EUROPEAN CYTOKINE NETWORK
+<B><DD>	EUR CYTOKINE NETW
+</B><DT>EUROPEAN EATING DISORDERS REVIEW
+<B><DD>	EUR EAT DISORD REV
+</B><DT>EUROPEAN ECONOMIC REVIEW
+<B><DD>	EUR ECON REV
+</B><DT>EUROPEAN FOOD RESEARCH AND TECHNOLOGY
+<B><DD>	EUR FOOD RES TECHNOL
+</B><DT>EUROPEAN HEART JOURNAL
+<B><DD>	EUR HEART J
+</B><DT>EUROPEAN HEART JOURNAL SUPPLEMENTS
+<B><DD>	EUR HEART J SUPPL
+</B><DT>EUROPEAN HISTORY QUARTERLY
+<B><DD>	EUR HIST Q
+</B><DT>EUROPEAN JOURNAL OF AGRONOMY
+<B><DD>	EUR J AGRON
+</B><DT>EUROPEAN JOURNAL OF ANAESTHESIOLOGY
+<B><DD>	EUR J ANAESTHESIOL
+</B><DT>EUROPEAN JOURNAL OF APPLIED MATHEMATICS
+<B><DD>	EUR J APPL MATH
+</B><DT>EUROPEAN JOURNAL OF APPLIED MICROBIOLOGY AND BIOTECHNOLOGY
+<B><DD>	EUR J APPL MICROBIOL
+</B><DT>EUROPEAN JOURNAL OF APPLIED PHYSIOLOGY
+<B><DD>	EUR J APPL PHYSIOL
+</B><DT>EUROPEAN JOURNAL OF APPLIED PHYSIOLOGY AND OCCUPATIONAL PHYSIOLOGY
+<B><DD>	EUR J APPL PHYSIOL O
+</B><DT>EUROPEAN JOURNAL OF BASIC AND APPLIED HISTOCHEMISTRY
+<B><DD>	EUR J BASIC APPL HIS
+</B><DT>EUROPEAN JOURNAL OF BIOCHEMISTRY
+<B><DD>	EUR J BIOCHEM
+</B><DT>EUROPEAN JOURNAL OF CANCER
+<B><DD>	EUR J CANCER
+</B><DT>EUROPEAN JOURNAL OF CANCER & CLINICAL ONCOLOGY
+<B><DD>	EUR J CANCER CLIN ON
+</B><DT>EUROPEAN JOURNAL OF CANCER CARE
+<B><DD>	EUR J CANCER CARE
+</B><DT>EUROPEAN JOURNAL OF CANCER PREVENTION
+<B><DD>	EUR J CANCER PREV
+</B><DT>EUROPEAN JOURNAL OF CARDIO-THORACIC SURGERY
+<B><DD>	EUR J CARDIO-THORAC
+</B><DT>EUROPEAN JOURNAL OF CELL BIOLOGY
+<B><DD>	EUR J CELL BIOL
+</B><DT>EUROPEAN JOURNAL OF CLINICAL CHEMISTRY AND CLINICAL BIOCHEMISTRY
+<B><DD>	EUR J CLIN CHEM CLIN
+</B><DT>EUROPEAN JOURNAL OF CLINICAL INVESTIGATION
+<B><DD>	EUR J CLIN INVEST
+</B><DT>EUROPEAN JOURNAL OF CLINICAL MICROBIOLOGY & INFECTIOUS DISEASES
+<B><DD>	EUR J CLIN MICROBIOL
+</B><DT>EUROPEAN JOURNAL OF CLINICAL NUTRITION
+<B><DD>	EUR J CLIN NUTR
+</B><DT>EUROPEAN JOURNAL OF CLINICAL PHARMACOLOGY
+<B><DD>	EUR J CLIN PHARMACOL
+</B><DT>EUROPEAN JOURNAL OF COGNITIVE PSYCHOLOGY
+<B><DD>	EUR J COGN PSYCHOL
+</B><DT>EUROPEAN JOURNAL OF COMBINATORICS
+<B><DD>	EUR J COMBIN
+</B><DT>EUROPEAN JOURNAL OF COMMUNICATION
+<B><DD>	EUR J COMMUN
+</B><DT>EUROPEAN JOURNAL OF CONTROL
+<B><DD>	EUR J CONTROL
+</B><DT>EUROPEAN JOURNAL OF DERMATOLOGY
+<B><DD>	EUR J DERMATOL
+</B><DT>EUROPEAN JOURNAL OF DISORDERS OF COMMUNICATION
+<B><DD>	EUR J DISORDER COMM
+</B><DT>EUROPEAN JOURNAL OF DRUG METABOLISM AND PHARMACOKINETICS
+<B><DD>	EUR J DRUG METAB PH
+</B><DT>EUROPEAN JOURNAL OF ENDOCRINOLOGY
+<B><DD>	EUR J ENDOCRINOL
+</B><DT>EUROPEAN JOURNAL OF ENTOMOLOGY
+<B><DD>	EUR J ENTOMOL
+</B><DT>EUROPEAN JOURNAL OF EPIDEMIOLOGY
+<B><DD>	EUR J EPIDEMIOL
+</B><DT>EUROPEAN JOURNAL OF FOREST PATHOLOGY
+<B><DD>	EUR J FOREST PATHOL
+</B><DT>EUROPEAN JOURNAL OF GASTROENTEROLOGY & HEPATOLOGY
+<B><DD>	EUR J GASTROEN HEPAT
+</B><DT>EUROPEAN JOURNAL OF GYNAECOLOGICAL ONCOLOGY
+<B><DD>	EUR J GYNAECOL ONCOL
+</B><DT>EUROPEAN JOURNAL OF HAEMATOLOGY
+<B><DD>	EUR J HAEMATOL
+</B><DT>EUROPEAN JOURNAL OF HEART FAILURE
+<B><DD>	EUR J HEART FAIL
+</B><DT>EUROPEAN JOURNAL OF HISTOCHEMISTRY
+<B><DD>	EUR J HISTOCHEM
+</B><DT>EUROPEAN JOURNAL OF HUMAN GENETICS
+<B><DD>	EUR J HUM GENET
+</B><DT>EUROPEAN JOURNAL OF IMMUNOGENETICS
+<B><DD>	EUR J IMMUNOGENET
+</B><DT>EUROPEAN JOURNAL OF IMMUNOLOGY
+<B><DD>	EUR J IMMUNOL
+</B><DT>EUROPEAN JOURNAL OF INDUSTRIAL RELATIONS
+<B><DD>	EUR J IND RELAT
+</B><DT>EUROPEAN JOURNAL OF INFORMATION SYSTEMS
+<B><DD>	EUR J INFORM SYST
+</B><DT>EUROPEAN JOURNAL OF INORGANIC CHEMISTRY
+<B><DD>	EUR J INORG CHEM
+</B><DT>EUROPEAN JOURNAL OF INTERNATIONAL RELATIONS
+<B><DD>	EUR J INT RELAT
+</B><DT>EUROPEAN JOURNAL OF LIPID SCIENCE AND TECHNOLOGY
+<B><DD>	EUR J LIPID SCI TECH
+</B><DT>EUROPEAN JOURNAL OF MECHANICS A-SOLIDS
+<B><DD>	EUR J MECH A-SOLID
+</B><DT>EUROPEAN JOURNAL OF MECHANICS B-FLUIDS
+<B><DD>	EUR J MECH B-FLUID
+</B><DT>EUROPEAN JOURNAL OF MEDICINAL CHEMISTRY
+<B><DD>	EUR J MED CHEM
+</B><DT>EUROPEAN JOURNAL OF MINERALOGY
+<B><DD>	EUR J MINERAL
+</B><DT>EUROPEAN JOURNAL OF MORPHOLOGY
+<B><DD>	EUR J MORPHOL
+</B><DT>EUROPEAN JOURNAL OF NEUROLOGY
+<B><DD>	EUR J NEUROL
+</B><DT>EUROPEAN JOURNAL OF NEUROSCIENCE
+<B><DD>	EUR J NEUROSCI
+</B><DT>EUROPEAN JOURNAL OF NUCLEAR MEDICINE
+<B><DD>	EUR J NUCL MED
+</B><DT>EUROPEAN JOURNAL OF NUTRITION
+<B><DD>	EUR J NUTR
+</B><DT>EUROPEAN JOURNAL OF OBSTETRICS GYNECOLOGY AND REPRODUCTIVE BIOLOGY
+<B><DD>	EUR J OBSTET GYN R B
+</B><DT>EUROPEAN JOURNAL OF OPERATIONAL RESEARCH
+<B><DD>	EUR J OPER RES
+</B><DT>EUROPEAN JOURNAL OF OPHTHALMOLOGY
+<B><DD>	EUR J OPHTHALMOL
+</B><DT>EUROPEAN JOURNAL OF ORAL SCIENCES
+<B><DD>	EUR J ORAL SCI
+</B><DT>EUROPEAN JOURNAL OF ORGANIC CHEMISTRY
+<B><DD>	EUR J ORG CHEM
+</B><DT>EUROPEAN JOURNAL OF ORTHODONTICS
+<B><DD>	EUR J ORTHODONT
+</B><DT>EUROPEAN JOURNAL OF PAIN-LONDON
+<B><DD>	EUR J PAIN-LONDON
+</B><DT>EUROPEAN JOURNAL OF PEDIATRIC SURGERY
+<B><DD>	EUR J PEDIATR SURG
+</B><DT>EUROPEAN JOURNAL OF PEDIATRICS
+<B><DD>	EUR J PEDIATR
+</B><DT>EUROPEAN JOURNAL OF PERSONALITY
+<B><DD>	EUR J PERSONALITY
+</B><DT>EUROPEAN JOURNAL OF PHARMACEUTICAL SCIENCES
+<B><DD>	EUR J PHARM SCI
+</B><DT>EUROPEAN JOURNAL OF PHARMACEUTICS AND BIOPHARMACEUTICS
+<B><DD>	EUR J PHARM BIOPHARM
+</B><DT>EUROPEAN JOURNAL OF PHARMACOLOGY
+<B><DD>	EUR J PHARMACOL
+</B><DT>EUROPEAN JOURNAL OF PHARMACOLOGY-ENVIRONMENTAL TOXICOLOGY AND PHARMACOLOGY SECTION
+<B><DD>	EUR J PHARM-ENVIRON
+</B><DT>EUROPEAN JOURNAL OF PHARMACOLOGY-MOLECULAR PHARMACOLOGY SECTION
+<B><DD>	EUR J PHARM-MOLEC PH
+</B><DT>EUROPEAN JOURNAL OF PHILOSOPHY
+<B><DD>	EUR J PHILOS
+</B><DT>EUROPEAN JOURNAL OF PHYCOLOGY
+<B><DD>	EUR J PHYCOL
+</B><DT>EUROPEAN JOURNAL OF PLANT PATHOLOGY
+<B><DD>	EUR J PLANT PATHOL
+</B><DT>EUROPEAN JOURNAL OF PLASTIC SURGERY
+<B><DD>	EUR J PLAST SURG
+</B><DT>EUROPEAN JOURNAL OF POLITICAL RESEARCH
+<B><DD>	EUR J POLIT RES
+</B><DT>EUROPEAN JOURNAL OF POPULATION-REVUE EUROPEENNE DE DEMOGRAPHIE
+<B><DD>	EUR J POPUL
+</B><DT>EUROPEAN JOURNAL OF PROTISTOLOGY
+<B><DD>	EUR J PROTISTOL
+</B><DT>EUROPEAN JOURNAL OF PSYCHIATRY
+<B><DD>	EUR J PSYCHIAT
+</B><DT>EUROPEAN JOURNAL OF PSYCHOLOGICAL ASSESSMENT
+<B><DD>	EUR J PSYCHOL ASSESS
+</B><DT>EUROPEAN JOURNAL OF PSYCHOLOGY OF EDUCATION
+<B><DD>	EUR J PSYCHOL EDUC
+</B><DT>EUROPEAN JOURNAL OF PUBLIC HEALTH
+<B><DD>	EUR J PUBLIC HEALTH
+</B><DT>EUROPEAN JOURNAL OF RADIOLOGY
+<B><DD>	EUR J RADIOL
+</B><DT>EUROPEAN JOURNAL OF RESPIRATORY DISEASES
+<B><DD>	EUR J RESPIR DIS
+</B><DT>EUROPEAN JOURNAL OF RHEUMATOLOGY AND INFLAMMATION
+<B><DD>	EUR J RHEUMATOL INFL
+</B><DT>EUROPEAN JOURNAL OF SEXUALLY TRANSMITTED DISEASES
+<B><DD>	EUR J SEX TRANSM DIS
+</B><DT>EUROPEAN JOURNAL OF SOCIAL PSYCHOLOGY
+<B><DD>	EUR J SOC PSYCHOL
+</B><DT>EUROPEAN JOURNAL OF SOIL BIOLOGY
+<B><DD>	EUR J SOIL BIOL
+</B><DT>EUROPEAN JOURNAL OF SOIL SCIENCE
+<B><DD>	EUR J SOIL SCI
+</B><DT>EUROPEAN JOURNAL OF SOLID STATE AND INORGANIC CHEMISTRY
+<B><DD>	EUR J SOL STATE INOR
+</B><DT>EUROPEAN JOURNAL OF SURGERY
+<B><DD>	EUR J SURG
+</B><DT>EUROPEAN JOURNAL OF SURGICAL ONCOLOGY
+<B><DD>	EUR J SURG ONCOL
+</B><DT>EUROPEAN JOURNAL OF VASCULAR AND ENDOVASCULAR SURGERY
+<B><DD>	EUR J VASC ENDOVASC
+</B><DT>EUROPEAN JOURNAL OF VASCULAR SURGERY
+<B><DD>	EUR J VASCULAR SURG
+</B><DT>EUROPEAN JOURNAL OF WOMENS STUDIES
+<B><DD>	EUR J WOMENS STUD
+</B><DT>EUROPEAN MASS SPECTROMETRY
+<B><DD>	EUR MASS SPECTROM
+</B><DT>EUROPEAN NEUROLOGY
+<B><DD>	EUR NEUROL
+</B><DT>EUROPEAN NEUROPSYCHOPHARMACOLOGY
+<B><DD>	EUR NEUROPSYCHOPHARM
+</B><DT>EUROPEAN PAEDIATRIC HAEMATOLOGY AND ONCOLOGY
+<B><DD>	EUR PAEDIATR HAEMAT
+</B><DT>EUROPEAN PHYSICAL JOURNAL A
+<B><DD>	EUR PHYS J A
+</B><DT>EUROPEAN PHYSICAL JOURNAL B
+<B><DD>	EUR PHYS J B
+</B><DT>EUROPEAN PHYSICAL JOURNAL C
+<B><DD>	EUR PHYS J C
+</B><DT>EUROPEAN PHYSICAL JOURNAL D
+<B><DD>	EUR PHYS J D
+</B><DT>EUROPEAN PHYSICAL JOURNAL-APPLIED PHYSICS
+<B><DD>	EUR PHYS J-APPL PHYS
+</B><DT>EUROPEAN POLYMER JOURNAL
+<B><DD>	EUR POLYM J
+</B><DT>EUROPEAN PSYCHIATRY
+<B><DD>	EUR PSYCHIAT
+</B><DT>EUROPEAN RADIOLOGY
+<B><DD>	EUR RADIOL
+</B><DT>EUROPEAN RESPIRATORY JOURNAL
+<B><DD>	EUR RESPIR J
+</B><DT>EUROPEAN REVIEW OF AGRICULTURAL ECONOMICS
+<B><DD>	EUR REV AGRIC ECON
+</B><DT>EUROPEAN REVIEW OF APPLIED PSYCHOLOGY-REVUE EUROPEENNE DE PSYCHOLOGIE APPLIQUEE
+<B><DD>	EUR REV APPL PSYCHOL
+</B><DT>EUROPEAN SOCIOLOGICAL REVIEW
+<B><DD>	EUR SOCIOL REV
+</B><DT>EUROPEAN SPECTROSCOPY NEWS
+<B><DD>	EUR SPECTROSC NEWS
+</B><DT>EUROPEAN SPINE JOURNAL
+<B><DD>	EUR SPINE J
+</B><DT>EUROPEAN SURGICAL RESEARCH
+<B><DD>	EUR SURG RES
+</B><DT>EUROPEAN TRANSACTIONS ON ELECTRICAL POWER
+<B><DD>	EUR T ELECTR POWER
+</B><DT>EUROPEAN TRANSACTIONS ON ELECTRICAL POWER ENGINEERING
+<B><DD>	EUR T ELECTR POW
+</B><DT>EUROPEAN TRANSACTIONS ON TELECOMMUNICATIONS
+<B><DD>	EUR T TELECOMMUN
+</B><DT>EUROPEAN URBAN AND REGIONAL STUDIES
+<B><DD>	EUR URBAN REG STUD
+</B><DT>EUROPEAN UROLOGY
+<B><DD>	EUR UROL
+</B><DT>EUROPHYSICS LETTERS
+<B><DD>	EUROPHYS LETT
+</B><DT>EVALUATION & THE HEALTH PROFESSIONS
+<B><DD>	EVAL HEALTH PROF
+</B><DT>EVALUATION AND PROGRAM PLANNING
+<B><DD>	EVAL PROGRAM PLANN
+</B><DT>EVALUATION PRACTICE
+<B><DD>	EVAL PRACT
+</B><DT>EVALUATION REVIEW
+<B><DD>	EVALUATION REV
+</B><DT>EVOKED POTENTIALS-ELECTROENCEPHALOGRAPHY AND CLINICAL NEUROPHYSIOLOGY
+<B><DD>	EVOKED POTENTIAL
+</B><DT>EVOLUTION
+<B><DD>	EVOLUTION
+</B><DT>EVOLUTION & DEVELOPMENT
+<B><DD>	EVOL DEV
+</B><DT>EVOLUTION AND HUMAN BEHAVIOR
+<B><DD>	EVOL HUM BEHAV
+</B><DT>EVOLUTION PSYCHIATRIQUE
+<B><DD>	EVOL PSYCHIATR
+</B><DT>EVOLUTIONARY ANTHROPOLOGY
+<B><DD>	EVOL ANTHROPOL
+</B><DT>EVOLUTIONARY BIOLOGY
+<B><DD>	EVOL BIOL
+</B><DT>EVOLUTIONARY ECOLOGY
+<B><DD>	EVOL ECOL
+</B><DT>EVOLUTIONARY ECOLOGY RESEARCH
+<B><DD>	EVOL ECOL RES
+</B><DT>EVOLUTIONARY THEORY
+<B><DD>	EVOL THEOR
+</B><DT>EVOLUTIONARY TRENDS IN PLANTS
+<B><DD>	EVOL TREND PLANT
+</B><DT>EXCEPTIONAL CHILDREN
+<B><DD>	EXCEPT CHILDREN
+</B><DT>EXCITED STATES
+<B><DD>	EXCITED STATES
+</B><DT>EXERCISE AND SPORT SCIENCES REVIEWS
+<B><DD>	EXERCISE SPORT SCI R
+</B><DT>EXERCISE AND SPORT SCIENCES REVIEWS, VOLUME 28, 1998
+<B><DD>	EXERCISE SPORT SCI R
+</B><DT>EXERCISE IMMUNOLOGY REVIEW
+<B><DD>	EXERC IMMUNOL REV
+</B><DT>EXERCISE STANDARDS AND MALPRACTICE REPORTER
+<B><DD>	EXERC STAND MALPRACT
+</B><DT>EXOTIC PET PRACTICE
+<B><DD>	EXOT PET PRACT
+</B><DT>EXPERIENTIA
+<B><DD>	EXPERIENTIA
+</B><DT>EXPERIMENTAL & APPLIED ACAROLOGY
+<B><DD>	EXP APPL ACAROL
+</B><DT>EXPERIMENTAL AGING RESEARCH
+<B><DD>	EXP AGING RES
+</B><DT>EXPERIMENTAL AGRICULTURE
+<B><DD>	EXP AGR
+</B><DT>EXPERIMENTAL AND APPLIED ACAROLOGY
+<B><DD>	EXP APPL ACAROL
+</B><DT>EXPERIMENTAL AND CLINICAL ENDOCRINOLOGY
+<B><DD>	EXP CLIN ENDOCRINOL
+</B><DT>EXPERIMENTAL AND CLINICAL ENDOCRINOLOGY & DIABETES
+<B><DD>	EXP CLIN ENDOCR DIAB
+</B><DT>EXPERIMENTAL AND CLINICAL IMMUNOGENETICS
+<B><DD>	EXP CLIN IMMUNOGENET
+</B><DT>EXPERIMENTAL AND CLINICAL PSYCHOPHARMACOLOGY
+<B><DD>	EXP CLIN PSYCHOPHARM
+</B><DT>EXPERIMENTAL AND MOLECULAR MEDICINE
+<B><DD>	EXP MOL MED
+</B><DT>EXPERIMENTAL AND MOLECULAR PATHOLOGY
+<B><DD>	EXP MOL PATHOL
+</B><DT>EXPERIMENTAL AND TOXICOLOGIC PATHOLOGY
+<B><DD>	EXP TOXICOL PATHOL
+</B><DT>EXPERIMENTAL ANIMALS
+<B><DD>	EXP ANIM TOKYO
+</B><DT>EXPERIMENTAL ASTRONOMY
+<B><DD>	EXP ASTRON
+</B><DT>EXPERIMENTAL BIOLOGY
+<B><DD>	EXP BIOL
+</B><DT>EXPERIMENTAL BRAIN RESEARCH
+<B><DD>	EXP BRAIN RES
+</B><DT>EXPERIMENTAL CELL BIOLOGY
+<B><DD>	EXP CELL BIOL
+</B><DT>EXPERIMENTAL CELL RESEARCH
+<B><DD>	EXP CELL RES
+</B><DT>EXPERIMENTAL DERMATOLOGY
+<B><DD>	EXP DERMATOL
+</B><DT>EXPERIMENTAL EYE RESEARCH
+<B><DD>	EXP EYE RES
+</B><DT>EXPERIMENTAL GERONTOLOGY
+<B><DD>	EXP GERONTOL
+</B><DT>EXPERIMENTAL HEAT TRANSFER
+<B><DD>	EXP HEAT TRANSFER
+</B><DT>EXPERIMENTAL HEMATOLOGY
+<B><DD>	EXP HEMATOL
+</B><DT>EXPERIMENTAL HORTICULTURE
+<B><DD>	EXP HORTIC
+</B><DT>EXPERIMENTAL LUNG RESEARCH
+<B><DD>	EXP LUNG RES
+</B><DT>EXPERIMENTAL MATHEMATICS
+<B><DD>	EXP MATH
+</B><DT>EXPERIMENTAL MECHANICS
+<B><DD>	EXP MECH
+</B><DT>EXPERIMENTAL MYCOLOGY
+<B><DD>	EXP MYCOL
+</B><DT>EXPERIMENTAL NEPHROLOGY
+<B><DD>	EXP NEPHROL
+</B><DT>EXPERIMENTAL NEUROLOGY
+<B><DD>	EXP NEUROL
+</B><DT>EXPERIMENTAL ONCOLOGY
+<B><DD>	EXP ONCOL
+</B><DT>EXPERIMENTAL PARASITOLOGY
+<B><DD>	EXP PARASITOL
+</B><DT>EXPERIMENTAL PATHOLOGY
+<B><DD>	EXP PATHOL-JENA
+</B><DT>EXPERIMENTAL PHYSIOLOGY
+<B><DD>	EXP PHYSIOL
+</B><DT>EXPERIMENTAL TECHNIQUES
+<B><DD>	EXP TECHNIQUES
+</B><DT>EXPERIMENTAL THERMAL AND FLUID SCIENCE
+<B><DD>	EXP THERM FLUID SCI
+</B><DT>EXPERIMENTS IN CATALYTIC REACTION ENGINEERING
+<B><DD>	STUD SURF SCI CATAL
+</B><DT>EXPERIMENTS IN FLUIDS
+<B><DD>	EXP FLUIDS
+</B><DT>EXPERT OPINION ON THERAPEUTIC PATENTS
+<B><DD>	EXPERT OPIN THER PAT
+</B><DT>EXPERT SYSTEMS
+<B><DD>	EXPERT SYST
+</B><DT>EXPERT SYSTEMS WITH APPLICATIONS
+<B><DD>	EXPERT SYST APPL
+</B><DT>EXPLICACION DE TEXTOS LITERARIOS
+<B><DD>	EXPL TEXTOS LIT
+</B><DT>EXPLICATOR
+<B><DD>	EXPLICATOR
+</B><DT>EXPLOITATION OF FINE-GRAIN PARALLELISM
+<B><DD>	LECT NOTES COMPUT SC
+</B><DT>EXPLORATION AND MINING GEOLOGY
+<B><DD>	EXPLOR MIN GEOL
+</B><DT>EXPLORATIONS IN ECONOMIC HISTORY
+<B><DD>	EXPLOR ECON HIST
+</B><DT>EXPOSITORY TIMES
+<B><DD>	EXPOSITORY TIMES
+</B><DT>EXTRAPOLATION
+<B><DD>	EXTRAPOLATION
+</B><DT>EXTREMOPHILES
+<B><DD>	EXTREMOPHILES
+</B><DT>EYE
+<B><DD>	EYE
+</B><DT>EYE-TRANSACTIONS OF THE OPHTHALMOLOGICAL SOCIETIES OF THE UNITED KINGDOM
+<B><DD>	EYE
+</B></DL>
+</BODY>
+</HTML>

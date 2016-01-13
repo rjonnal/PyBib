@@ -1,715 +1,551 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="H"></A><DT>HABITAT INTERNATIONAL
+<B><DD>	HABITAT INT
+</B><DT>HADRONIC JOURNAL
+<B><DD>	HADRONIC J
+</B><DT>HAEMATOLOGIA
+<B><DD>	HAEMATOLOGIA
+</B><DT>HAEMATOLOGICA
+<B><DD>	HAEMATOLOGICA
+</B><DT>HAEMOPHILIA
+<B><DD>	HAEMOPHILIA
+</B><DT>HAEMOSTASIS
+<B><DD>	HAEMOSTASIS
+</B><DT>HAKKOKOGAKU KAISHI-JOURNAL OF THE SOCIETY OF FERMENTATION TECHNOLOGY
+<B><DD>	HAKKOKOGAKU KAISHI
+</B><DT>HALON REPLACEMENTS
+<B><DD>	ACS SYM SER
+</B><DT>HAND
+<B><DD>	HAND
+</B><DT>HAND CLINICS
+<B><DD>	HAND CLIN
+</B><DT>HANDBOOK OF FEYNMAN PATH INTEGRALS
+<B><DD>	SPRINGER TR MOD PHYS
+</B><DT>HARVARD BUSINESS REVIEW
+<B><DD>	HARVARD BUS REV
+</B><DT>HARVARD CIVIL RIGHTS-CIVIL LIBERTIES LAW REVIEW
+<B><DD>	HARVARD CIVIL RIGHTS
+</B><DT>HARVARD EDUCATIONAL REVIEW
+<B><DD>	HARVARD EDUC REV
+</B><DT>HARVARD ENVIRONMENTAL LAW REVIEW
+<B><DD>	HARVARD ENVIRON LAW
+</B><DT>HARVARD INTERNATIONAL JOURNAL OF PRESS-POLITICS
+<B><DD>	HARV INT J PRESS-POL
+</B><DT>HARVARD INTERNATIONAL LAW JOURNAL
+<B><DD>	HARVARD INT LAW J
+</B><DT>HARVARD JOURNAL OF ASIATIC STUDIES
+<B><DD>	HARVARD J ASIAT STUD
+</B><DT>HARVARD JOURNAL OF LAW AND PUBLIC POLICY
+<B><DD>	HARVARD J LAW PUBL P
+</B><DT>HARVARD JOURNAL ON LEGISLATION
+<B><DD>	HARVARD J LEGIS
+</B><DT>HARVARD LAW REVIEW
+<B><DD>	HARVARD LAW REV
+</B><DT>HARVARD LIBRARY BULLETIN
+<B><DD>	HARVARD LIBR BULL
+</B><DT>HARVARD REVIEW OF PSYCHIATRY
+<B><DD>	HARVARD REV PSYCHIAT
+</B><DT>HARVARD STUDIES IN CLASSICAL PHILOLOGY
+<B><DD>	HARVARD STUD CLASS P
+</B><DT>HARVARD THEOLOGICAL REVIEW
+<B><DD>	HARVARD THEOL REV
+</B><DT>HARVEY LECTURES
+<B><DD>	HARVEY LECT
+</B><DT>HASELTONIA
+<B><DD>	HASELTONIA
+</B><DT>HASLER REVIEW
+<B><DD>	HASLER REV
+</B><DT>HASTINGS CENTER REPORT
+<B><DD>	HASTINGS CENT REP
+</B><DT>HASTINGS LAW JOURNAL
+<B><DD>	HASTINGS LAW J
+</B><DT>HAUTARZT
+<B><DD>	HAUTARZT
+</B><DT>HAWAII MEDICAL JOURNAL
+<B><DD>	HAWAII MED J
+</B><DT>HAZARDOUS WASTE & HAZARDOUS MATERIALS
+<B><DD>	HAZARD WASTE HAZARD
+</B><DT>HAZARDOUS WASTE CONSULTANT
+<B><DD>	HAZARDOUS WASTE CONS
+</B><DT>HEAD & NECK SURGERY
+<B><DD>	HEAD NECK SURG
+</B><DT>HEAD & NECK SURGERY
+<B><DD>	HEAD NECK-J SCI SPEC
+</B><DT>HEAD AND NECK-JOURNAL FOR THE SCIENCES AND SPECIALTIES OF THE HEAD AND NECK
+<B><DD>	HEAD NECK-J SCI SPEC
+</B><DT>HEADACHE
+<B><DD>	HEADACHE
+</B><DT>HEADACHE QUARTERLY-CURRENT TREATMENT AND RESEARCH
+<B><DD>	HEADACHE Q-CURR TREA
+</B><DT>HEALTH
+<B><DD>	HEALTH
+</B><DT>HEALTH & PLACE
+<B><DD>	HEALTH PLACE
+</B><DT>HEALTH & SOCIAL CARE IN THE COMMUNITY
+<B><DD>	HEALTH SOC CARE COMM
+</B><DT>HEALTH & SOCIAL WORK
+<B><DD>	HEALTH SOC WORK
+</B><DT>HEALTH AFFAIRS
+<B><DD>	HEALTH AFFAIR
+</B><DT>HEALTH CARE ANALYSIS
+<B><DD>	HEALTH CARE ANAL
+</B><DT>HEALTH CARE FINANCING REVIEW
+<B><DD>	HEALTH CARE FINANC R
+</B><DT>HEALTH CARE MANAGEMENT REVIEW
+<B><DD>	HEALTH CARE MANAGE R
+</B><DT>HEALTH COMMUNICATION
+<B><DD>	HEALTH COMMUN
+</B><DT>HEALTH ECONOMICS
+<B><DD>	HEALTH ECON
+</B><DT>HEALTH EDUCATION & BEHAVIOR
+<B><DD>	HEALTH EDUC BEHAV
+</B><DT>HEALTH EDUCATION QUARTERLY
+<B><DD>	HEALTH EDUC QUART
+</B><DT>HEALTH EDUCATION RESEARCH
+<B><DD>	HEALTH EDUC RES
+</B><DT>HEALTH FORUM JOURNAL
+<B><DD>	HEALTH FORUM J
+</B><DT>HEALTH PHYSICS
+<B><DD>	HEALTH PHYS
+</B><DT>HEALTH POLICY
+<B><DD>	HEALTH POLICY
+</B><DT>HEALTH POLICY AND PLANNING
+<B><DD>	HEALTH POLICY PLANN
+</B><DT>HEALTH PROMOTION INTERNATIONAL
+<B><DD>	HEALTH PROMOT INT
+</B><DT>HEALTH PSYCHOLOGY
+<B><DD>	HEALTH PSYCHOL
+</B><DT>HEALTH SERVICES RESEARCH
+<B><DD>	HEALTH SERV RES
+</B><DT>HEALTH VALUES
+<B><DD>	HEALTH VAL
+</B><DT>HEARING RESEARCH
+<B><DD>	HEARING RES
+</B><DT>HEART
+<B><DD>	HEART
+</B><DT>HEART & LUNG
+<B><DD>	HEART LUNG
+</B><DT>HEART AND VESSELS
+<B><DD>	HEART VESSELS
+</B><DT>HEARTWEB
+<B><DD>	HEARTWEB
+</B><DT>HEAT AND MASS TRANSFER
+<B><DD>	HEAT MASS TRANSFER
+</B><DT>HEAT RECOVERY SYSTEMS & CHP
+<B><DD>	HEAT RECOV SYST CHP
+</B><DT>HEAT TRANSFER ENGINEERING
+<B><DD>	HEAT TRANSFER ENG
+</B><DT>HEAT TREATMENT OF METALS
+<B><DD>	HEAT TREAT MET
+</B><DT>HEATING-PIPING-AIR CONDITIONING
+<B><DD>	HEAT-PIPING-AIR COND
+</B><DT>HEAVY VEHICLE SYSTEMS-INTERNATIONAL JOURNAL OF VEHICLE DESIGN
+<B><DD>	HEAVY VEH SYST
+</B><DT>HEBREW UNION COLLEGE ANNUAL
+<B><DD>	HEBREW UNION COLL AN
+</B><DT>HEBREW UNIVERSITY STUDIES IN LITERATURE AND THE ARTS
+<B><DD>	HEBREW U STUD LIT AR
+</B><DT>HEGEL-STUDIEN
+<B><DD>	HEGEL-STUD
+</B><DT>HELGOLAND MARINE RESEARCH
+<B><DD>	HELGOLAND MAR RES
+</B><DT>HELGOLANDER MEERESUNTERSUCHUNGEN
+<B><DD>	HELGOLANDER MEERESUN
+</B><DT>HELICOBACTER
+<B><DD>	HELICOBACTER
+</B><DT>HELIOS
+<B><DD>	HELIOS
+</B><DT>HELMINTHOLOGIA
+<B><DD>	HELMINTHOLOGIA
+</B><DT>HELVETICA CHIMICA ACTA
+<B><DD>	HELV CHIM ACTA
+</B><DT>HELVETICA CHIRURGICA ACTA
+<B><DD>	HELV CHIR ACTA
+</B><DT>HELVETICA PAEDIATRICA ACTA
+<B><DD>	HELV PAEDIATR ACTA
+</B><DT>HELVETICA PHYSICA ACTA
+<B><DD>	HELV PHYS ACTA
+</B><DT>HEMATOLOGIC PATHOLOGY
+<B><DD>	HEMATOL PATHOL
+</B><DT>HEMATOLOGICAL ONCOLOGY
+<B><DD>	HEMATOL ONCOL
+</B><DT>HEMATOLOGY AND CELL THERAPY
+<B><DD>	HEMATOL CELL THER
+</B><DT>HEMATOLOGY-ONCOLOGY CLINICS OF NORTH AMERICA
+<B><DD>	HEMATOL ONCOL CLIN N
+</B><DT>HEMATOPATHOLOGY AND MOLECULAR HEMATOLOGY
+<B><DD>	HEMATOPATHOL MOL HEM
+</B><DT>HEMOGLOBIN
+<B><DD>	HEMOGLOBIN
+</B><DT>HENRY JAMES REVIEW
+<B><DD>	HENRY JAMES REV
+</B><DT>HEPATO-GASTROENTEROLOGY
+<B><DD>	HEPATO-GASTROENTEROL
+</B><DT>HEPATOLOGY
+<B><DD>	HEPATOLOGY
+</B><DT>HEPATOLOGY RESEARCH
+<B><DD>	HEPATOL RES
+</B><DT>HERBA POLONICA
+<B><DD>	HERBA POL
+</B><DT>HEREDITAS
+<B><DD>	HEREDITAS
+</B><DT>HEREDITY
+<B><DD>	HEREDITY
+</B><DT>HERMATHENA
+<B><DD>	HERMATHENA
+</B><DT>HERMES-ZEITSCHRIFT FUR KLASSISCHE PHILOLOGIE
+<B><DD>	HERMES-Z KLASS PHILO
+</B><DT>HERPETOLOGICA
+<B><DD>	HERPETOLOGICA
+</B><DT>HERPETOLOGICAL JOURNAL
+<B><DD>	HERPETOL J
+</B><DT>HERPETOLOGICAL MONOGRAPHS
+<B><DD>	HERPETOL MONOGR
+</B><DT>HERZ
+<B><DD>	HERZ
+</B><DT>HERZ KREISLAUF
+<B><DD>	HERZ KREISLAUF
+</B><DT>HESPERIA
+<B><DD>	HESPERIA
+</B><DT>HETEROATOM CHEMISTRY
+<B><DD>	HETEROATOM CHEM
+</B><DT>HETEROCYCLES
+<B><DD>	HETEROCYCLES
+</B><DT>HETEROCYCLIC COMMUNICATIONS
+<B><DD>	HETEROCYCL COMMUN
+</B><DT>HETEROGENEOUS CHEMISTRY REVIEWS
+<B><DD>	HETEROGEN CHEM REV
+</B><DT>HETEROTRIMERIC G PROTEINS
+<B><DD>	METHOD ENZYMOL
+</B><DT>HETEROTRIMERIC G-PROTEIN EFFECTORS
+<B><DD>	METHOD ENZYMOL
+</B><DT>HEWLETT-PACKARD JOURNAL
+<B><DD>	HEWLETT-PACKARD J
+</B><DT>HEYTHROP JOURNAL-A QUARTERLY REVIEW OF PHILOSOPHY AND THEOLOGY
+<B><DD>	HEYTHROP J
+</B><DT>HIGH ENERGY CHEMISTRY
+<B><DD>	HIGH ENERG CHEM+
+</B><DT>HIGH ENERGY PHYSICS & NUCLEAR PHYSICS-ENGLISH EDITION
+<B><DD>	HIGH ENERG PHYS NUCL
+</B><DT>HIGH ENERGY PHYSICS AND NUCLEAR PHYSICS-CHINESE EDITION
+<B><DD>	HIGH ENERG PHYS NUC
+</B><DT>HIGH PERFORMANCE POLYMERS
+<B><DD>	HIGH PERFORM POLYM
+</B><DT>HIGH PERFORMANCE SYSTEMS-THE MAGAZINE FOR TECHNOLOGY CHAMPIONS
+<B><DD>	HIGH PERFORM SYST
+</B><DT>HIGH PRESSURE RESEARCH
+<B><DD>	HIGH PRESSURE RES
+</B><DT>HIGH TEMPERATURE
+<B><DD>	HIGH TEMP+
+</B><DT>HIGH TEMPERATURE AND MATERIALS SCIENCE
+<B><DD>	HIGH TEMP MAT SCI
+</B><DT>HIGH TEMPERATURE MATERIAL PROCESSES
+<B><DD>	HIGH TEMP MATER P-US
+</B><DT>HIGH TEMPERATURE MATERIALS AND PROCESSES
+<B><DD>	HIGH TEMP MATER PROC
+</B><DT>HIGH TEMPERATURE SCIENCE
+<B><DD>	HIGH TEMP SCI
+</B><DT>HIGH TEMPERATURE TECHNOLOGY
+<B><DD>	HIGH TEMP TECHNOL
+</B><DT>HIGH TEMPERATURES-HIGH PRESSURES
+<B><DD>	HIGH TEMP-HIGH PRESS
+</B><DT>HIGHER EDUCATION
+<B><DD>	HIGH EDUC
+</B><DT>HIGHWAY & HEAVY CONSTRUCTION
+<B><DD>	HIGHWAY HEAVY CONSTR
+</B><DT>HIGHWAY ENGINEER
+<B><DD>	HIGHWAY ENG
+</B><DT>HILGARDIA
+<B><DD>	HILGARDIA
+</B><DT>HIPPOCAMPUS
+<B><DD>	HIPPOCAMPUS
+</B><DT>HIROSHIMA JOURNAL OF MEDICAL SCIENCES
+<B><DD>	HIROSHIMA J MED SCI
+</B><DT>HISPAMERICA-REVISTA DE LITERATURA
+<B><DD>	HISPAMERICA-REV LIT
+</B><DT>HISPANIA-A JOURNAL DEVOTED TO THE TEACHING OF SPANISH AND PORTUGUESE
+<B><DD>	HISPANIA-J DEV INTER
+</B><DT>HISPANIA-REVISTA ESPANOLA DE HISTORIA
+<B><DD>	HISPANIA
+</B><DT>HISPANIC AMERICAN HISTORICAL REVIEW
+<B><DD>	HISPANIC AM HIST REV
+</B><DT>HISPANIC JOURNAL OF BEHAVIORAL SCIENCES
+<B><DD>	HISPANIC J BEHAV SCI
+</B><DT>HISPANIC REVIEW
+<B><DD>	HISPANIC REV
+</B><DT>HISPANOFILA
+<B><DD>	HISPANOFILA
+</B><DT>HISTOCHEMICAL JOURNAL
+<B><DD>	HISTOCHEM J
+</B><DT>HISTOCHEMISTRY
+<B><DD>	HISTOCHEMISTRY
+</B><DT>HISTOCHEMISTRY AND CELL BIOLOGY
+<B><DD>	HISTOCHEM CELL BIOL
+</B><DT>HISTOIRE
+<B><DD>	HISTOIRE
+</B><DT>HISTOIRE SOCIALE-SOCIAL HISTORY
+<B><DD>	HIST SOC/SOC HIST
+</B><DT>HISTOLOGY AND HISTOPATHOLOGY
+<B><DD>	HISTOL HISTOPATHOL
+</B><DT>HISTOPATHOLOGY
+<B><DD>	HISTOPATHOLOGY
+</B><DT>HISTORIA
+<B><DD>	HISTORIA
+</B><DT>HISTORIA MATHEMATICA
+<B><DD>	HIST MATH
+</B><DT>HISTORIA MEXICANA
+<B><DD>	HIST MEXICANA
+</B><DT>HISTORIA-ZEITSCHRIFT FUR ALTE GESCHICHTE
+<B><DD>	HISTORIA-Z ALTE GES
+</B><DT>HISTORIAN
+<B><DD>	HISTORIAN
+</B><DT>HISTORIC PRESERVATION
+<B><DD>	HIST PRESERVATION
+</B><DT>HISTORICA
+<B><DD>	HISTORICA
+</B><DT>HISTORICAL ARCHAEOLOGY
+<B><DD>	HIST ARCHAEOL
+</B><DT>HISTORICAL JOURNAL
+<B><DD>	HIST J
+</B><DT>HISTORICAL JOURNAL OF FILM RADIO AND TELEVISION
+<B><DD>	HIST J FILM RADIO TV
+</B><DT>HISTORICAL METHODS
+<B><DD>	HIST METHOD
+</B><DT>HISTORICAL REFLECTIONS-REFLEXIONS HISTORIQUES
+<B><DD>	HIST REFLECTIONS
+</B><DT>HISTORICAL RESEARCH
+<B><DD>	HIST RES
+</B><DT>HISTORICAL STUDIES IN THE PHYSICAL AND BIOLOGICAL SCIENCES
+<B><DD>	HIST STUD PHYS BIOL
+</B><DT>HISTORICKY CASOPIS
+<B><DD>	HIST CASOPIS
+</B><DT>HISTORIOGRAPHIA LINGUISTICA
+<B><DD>	HIST LING
+</B><DT>HISTORISCHE ZEITSCHRIFT
+<B><DD>	HIST Z
+</B><DT>HISTORISCHES JAHRBUCH
+<B><DD>	HIST JAHRB
+</B><DT>HISTORISK TIDSSKRIFT
+<B><DD>	HIST TIDSSKR
+</B><DT>HISTORY
+<B><DD>	HISTORY
+</B><DT>HISTORY AND PHILOSOPHY OF LOGIC
+<B><DD>	HIST PHILOS LOGIC
+</B><DT>HISTORY AND PHILOSOPHY OF THE LIFE SCIENCES
+<B><DD>	HIST PHIL LIFE SCI
+</B><DT>HISTORY AND THEORY
+<B><DD>	HIST THEORY
+</B><DT>HISTORY OF EDUCATION QUARTERLY
+<B><DD>	HIST EDUC QUART
+</B><DT>HISTORY OF EUROPEAN IDEAS
+<B><DD>	HIST EUR IDEA
+</B><DT>HISTORY OF PHOTOGRAPHY
+<B><DD>	HIST PHOTOGR
+</B><DT>HISTORY OF POLITICAL ECONOMY
+<B><DD>	HIST POLIT ECON
+</B><DT>HISTORY OF POLITICAL THOUGHT
+<B><DD>	HIST POLIT THOUGHT
+</B><DT>HISTORY OF PSYCHIATRY
+<B><DD>	HIST PSYCHIATR
+</B><DT>HISTORY OF RELIGIONS
+<B><DD>	HIST RELIGIONS
+</B><DT>HISTORY OF SCIENCE
+<B><DD>	HIST SCI
+</B><DT>HISTORY OF THE HUMAN SCIENCES
+<B><DD>	HIST HUM SCI
+</B><DT>HISTORY TODAY
+<B><DD>	HIST TODAY
+</B><DT>HISTORY WORKSHOP JOURNAL
+<B><DD>	HIST WORKSHOP
+</B><DT>HITOTSUBASHI JOURNAL OF ECONOMICS
+<B><DD>	HITOTSUB J ECON
+</B><DT>HNO
+<B><DD>	HNO
+</B><DT>HOLARCTIC ECOLOGY
+<B><DD>	HOLARCTIC ECOL
+</B><DT>HOLOCAUST AND GENOCIDE STUDIES
+<B><DD>	HOLOCAUST GENOCIDE S
+</B><DT>HOLOCENE
+<B><DD>	HOLOCENE
+</B><DT>HOLZ ALS ROH-UND WERKSTOFF
+<B><DD>	HOLZ ROH WERKST
+</B><DT>HOLZFORSCHUNG
+<B><DD>	HOLZFORSCHUNG
+</B><DT>HOLZFORSCHUNG UND HOLZVERWERTUNG
+<B><DD>	HOLZFORSCH HOLZVERW
+</B><DT>HOMEOSTASIS IN HEALTH AND DISEASE
+<B><DD>	HOMEOSTASIS HLTH DIS
+</B><DT>HOMME
+<B><DD>	HOMME
+</B><DT>HOMO
+<B><DD>	HOMO
+</B><DT>HOPPE-SEYLERS ZEITSCHRIFT FUR PHYSIOLOGISCHE CHEMIE
+<B><DD>	H-S Z PHYSIOL CHEM
+</B><DT>HORIZONS
+<B><DD>	HORIZONS
+</B><DT>HORMONE AND METABOLIC RESEARCH
+<B><DD>	HORM METAB RES
+</B><DT>HORMONE RESEARCH
+<B><DD>	HORM RES
+</B><DT>HORMONES AND BEHAVIOR
+<B><DD>	HORM BEHAV
+</B><DT>HORTICULTURE
+<B><DD>	HORTICULTURE
+</B><DT>HORTSCIENCE
+<B><DD>	HORTSCIENCE
+</B><DT>HOSPITAL & HEALTH SERVICES ADMINISTRATION
+<B><DD>	HOSP HEALTH SERV ADM
+</B><DT>HOSPITAL AND COMMUNITY PSYCHIATRY
+<B><DD>	HOSP COMMUNITY PSYCH
+</B><DT>HOSPITAL FORMULARY
+<B><DD>	HOSP FORMUL
+</B><DT>HOSPITAL MEDICINE
+<B><DD>	HOSP MED
+</B><DT>HOSPITAL PRACTICE
+<B><DD>	HOSP PRACT
+</B><DT>HOSPITALS
+<B><DD>	HOSPITALS
+</B><DT>HOSPITALS & HEALTH NETWORKS
+<B><DD>	HOSP HEALTH NETWORK
+</B><DT>HOUILLE BLANCHE-REVUE INTERNATIONALE DE L EAU
+<B><DD>	HOUILLE BLANCHE
+</B><DT>HOUSING POLICY DEBATE
+<B><DD>	HOUS POLICY DEBATE
+</B><DT>HOUSING STUDIES
+<B><DD>	HOUSING STUD
+</B><DT>HOUSING THEORY AND SOCIETY
+<B><DD>	HOUS THEORY SOC
+</B><DT>HOUSTON JOURNAL OF MATHEMATICS
+<B><DD>	HOUSTON J MATH
+</B><DT>HRC-JOURNAL OF HIGH RESOLUTION CHROMATOGRAPHY
+<B><DD>	HRC-J HIGH RES CHROM
+</B><DT>HUDEBNI VEDA
+<B><DD>	HUDEBNI VEDA
+</B><DT>HUDSON REVIEW
+<B><DD>	HUDSON REV
+</B><DT>HUMAN & EXPERIMENTAL TOXICOLOGY
+<B><DD>	HUM EXP TOXICOL
+</B><DT>HUMAN AND ECOLOGICAL RISK ASSESSMENT
+<B><DD>	HUM ECOL RISK ASSESS
+</B><DT>HUMAN BIOLOGY
+<B><DD>	HUM BIOL
+</B><DT>HUMAN BRAIN MAPPING
+<B><DD>	HUM BRAIN MAPP
+</B><DT>HUMAN COMMUNICATION RESEARCH
+<B><DD>	HUM COMMUN RES
+</B><DT>HUMAN DEVELOPMENT
+<B><DD>	HUM DEV
+</B><DT>HUMAN ECOLOGY
+<B><DD>	HUM ECOL
+</B><DT>HUMAN FACTORS
+<B><DD>	HUM FACTORS
+</B><DT>HUMAN FACTORS AND ERGONOMICS IN MANUFACTURING
+<B><DD>	HUM FACTOR ERGON MAN
+</B><DT>HUMAN GENE THERAPY
+<B><DD>	HUM GENE THER
+</B><DT>HUMAN GENETICS
+<B><DD>	HUM GENET
+</B><DT>HUMAN GENOME NEWS
+<B><DD>	HUM GENOME NEWS
+</B><DT>HUMAN HEREDITY
+<B><DD>	HUM HERED
+</B><DT>HUMAN IMMUNOLOGY
+<B><DD>	HUM IMMUNOL
+</B><DT>HUMAN LYMPHOCYTE DIFFERENTIATION
+<B><DD>	HUM LYMPHOCYTE DIFF
+</B><DT>HUMAN MOLECULAR GENETICS
+<B><DD>	HUM MOL GENET
+</B><DT>HUMAN MOVEMENT SCIENCE
+<B><DD>	HUM MOVEMENT SCI
+</B><DT>HUMAN MUTATION
+<B><DD>	HUM MUTAT
+</B><DT>HUMAN NATURE-AN INTERDISCIPLINARY BIOSOCIAL PERSPECTIVE
+<B><DD>	HUM NATURE-INT BIOS
+</B><DT>HUMAN NEUROBIOLOGY
+<B><DD>	HUM NEUROBIOL
+</B><DT>HUMAN NUTRITION-APPLIED NUTRITION
+<B><DD>	HUM NUTR-APPL NUTR
+</B><DT>HUMAN NUTRITION-CLINICAL NUTRITION
+<B><DD>	HUM NUTR-CLIN NUTR
+</B><DT>HUMAN ORGANIZATION
+<B><DD>	HUM ORGAN
+</B><DT>HUMAN PATHOLOGY
+<B><DD>	HUM PATHOL
+</B><DT>HUMAN PERFORMANCE
+<B><DD>	HUM PERFORM
+</B><DT>HUMAN PSYCHOPHARMACOLOGY-CLINICAL AND EXPERIMENTAL
+<B><DD>	HUM PSYCHOPHARM CLIN
+</B><DT>HUMAN RELATIONS
+<B><DD>	HUM RELAT
+</B><DT>HUMAN REPRODUCTION
+<B><DD>	HUM REPROD
+</B><DT>HUMAN REPRODUCTION UPDATE
+<B><DD>	HUM REPROD UPDATE
+</B><DT>HUMAN RESOURCE MANAGEMENT
+<B><DD>	HUM RESOURCE MANAGE
+</B><DT>HUMAN RESOURCE MANAGEMENT REVIEW
+<B><DD>	HUM RESOUR MANAGE R
+</B><DT>HUMAN RIGHTS
+<B><DD>	HUM RIGHTS
+</B><DT>HUMAN RIGHTS QUARTERLY
+<B><DD>	HUM RIGHTS QUART
+</B><DT>HUMAN STUDIES
+<B><DD>	HUM STUD
+</B><DT>HUMAN TOXICOLOGY
+<B><DD>	HUM TOXICOL
+</B><DT>HUMAN-COMPUTER INTERACTION
+<B><DD>	HUM-COMPUT INTERACT
+</B><DT>HUMANE MEDICINE
+<B><DD>	HUM MED
+</B><DT>HUMOR-INTERNATIONAL JOURNAL OF HUMOR RESEARCH
+<B><DD>	HUMOR
+</B><DT>HUNGARIAN JOURNAL OF INDUSTRIAL CHEMISTRY
+<B><DD>	HUNG J IND CHEM
+</B><DT>HUNGARIAN QUARTERLY
+<B><DD>	HUNG QUART
+</B><DT>HUNTINGTON LIBRARY QUARTERLY
+<B><DD>	HUNTINGTON LIBR Q
+</B><DT>HUSSERL STUDIES
+<B><DD>	HUSSERL STUD
+</B><DT>HVAC&R RESEARCH
+<B><DD>	HVAC&R RES
+</B><DT>HYBRIDOMA
+<B><DD>	HYBRIDOMA
+</B><DT>HYDRAULICS & PNEUMATICS
+<B><DD>	HYDRAULIC PNEUM
+</B><DT>HYDROBIOLOGIA
+<B><DD>	HYDROBIOLOGIA
+</B><DT>HYDROCARBON PROCESSING
+<B><DD>	HYDROCARB PROCESS
+</B><DT>HYDROGEOLOGY JOURNAL
+<B><DD>	HYDROGEOL J
+</B><DT>HYDROLOGICAL PROCESSES
+<B><DD>	HYDROL PROCESS
+</B><DT>HYDROLOGICAL SCIENCES JOURNAL-JOURNAL DES SCIENCES HYDROLOGIQUES
+<B><DD>	HYDROLOG SCI J
+</B><DT>HYDROLOGY AND EARTH SYSTEM SCIENCES
+<B><DD>	HYDROL EARTH SYST SC
+</B><DT>HYDROMETALLURGY
+<B><DD>	HYDROMETALLURGY
+</B><DT>HYPERFINE INTERACTIONS
+<B><DD>	HYPERFINE INTERACT
+</B><DT>HYPERTENSION
+<B><DD>	HYPERTENSION
+</B><DT>HYPERTENSION IN PREGNANCY
+<B><DD>	HYPERTENS PREGNANCY
+</B><DT>HYPERTENSION RESEARCH
+<B><DD>	HYPERTENS RES
+</B><DT>HYPERTENSION RESEARCH-CLINICAL AND EXPERIMENTAL
+<B><DD>	HYPERTENS RES-CLIN E
+</B></DL>
+</BODY>
+</HTML>

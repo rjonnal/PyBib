@@ -1,715 +1,1664 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="P"></A>
+<DT>PACE-PACING AND CLINICAL ELECTROPHYSIOLOGY
+<B><DD>	PACE
+</B><DT>PACIFIC AFFAIRS
+<B><DD>	PAC AFF
+</B><DT>PACIFIC HISTORICAL REVIEW
+<B><DD>	PAC HIST REV
+</B><DT>PACIFIC INSECTS
+<B><DD>	PAC INSECTS
+</B><DT>PACIFIC JOURNAL OF MATHEMATICS
+<B><DD>	PAC J MATH
+</B><DT>PACIFIC NORTHWEST QUARTERLY
+<B><DD>	PAC NORTHWEST QUART
+</B><DT>PACIFIC PHILOSOPHICAL QUARTERLY
+<B><DD>	PAC PHILOS QUART
+</B><DT>PACIFIC REVIEW
+<B><DD>	PAC REV
+</B><DT>PACIFIC SCIENCE
+<B><DD>	PAC SCI
+</B><DT>PACKAGE ENGINEERING
+<B><DD>	PACKAGE ENG
+</B><DT>PACKAGED SOFTWARE REPORTS
+<B><DD>	PACKAG SOFTWARE REP
+</B><DT>PACKAGING
+<B><DD>	PACKAGING
+</B><DT>PACKAGING TECHNOLOGY AND SCIENCE
+<B><DD>	PACKAG TECHNOL SCI
+</B><DT>PADIATRIE UND PADOLOGIE
+<B><DD>	PADIATR PADOL
+</B><DT>PAEDIATRIC ANAESTHESIA
+<B><DD>	PAEDIATR ANAESTH
+</B><DT>PAEDIATRIC AND PERINATAL EPIDEMIOLOGY
+<B><DD>	PAEDIATR PERINAT EP
+</B><DT>PAEDIATRICIAN
+<B><DD>	PAEDIATRICIAN
+</B><DT>PAIDEUMA-A JOURNAL DEVOTED TO EZRA POUND SCHOLARSHIP
+<B><DD>	PAIDEUMA
+</B><DT>PAIN
+<B><DD>	PAIN
+</B><DT>PAIN CLINIC
+<B><DD>	PAIN CLINIC
+</B><DT>PAIN FORUM
+<B><DD>	PAIN FORUM
+</B><DT>PAIN REVIEWS
+<B><DD>	PAIN REV
+</B><DT>PAJ-A JOURNAL OF PERFORMANCE AND ART
+<B><DD>	PAJ
+</B><DT>PAKISTAN JOURNAL OF BOTANY
+<B><DD>	PAKISTAN J BOT
+</B><DT>PAKISTAN JOURNAL OF NEMATOLOGY
+<B><DD>	PAKISTAN J NEMATOL
+</B><DT>PALAEOECOLOGY OF AFRICA
+<B><DD>	PALAEOECOL AFR
+</B><DT>PALAEOGEOGRAPHY PALAEOCLIMATOLOGY PALAEOECOLOGY
+<B><DD>	PALAEOGEOGR PALAEOCL
+</B><DT>PALAEONTOLOGY
+<B><DD>	PALAEONTOLOGY
+</B><DT>PALAIOS
+<B><DD>	PALAIOS
+</B><DT>PALEOBIOLOGY
+<B><DD>	PALEOBIOLOGY
+</B><DT>PALEOCEANOGRAPHY
+<B><DD>	PALEOCEANOGRAPHY
+</B><DT>PALEONTOLOGICHESKII ZHURNAL
+<B><DD>	PALEONTOL ZH
+</B><DT>PALLIATIVE MEDICINE
+<B><DD>	PALLIATIVE MED
+</B><DT>PAMIETNIK LITERACKI
+<B><DD>	PAMIETNIK LITERACKI
+</B><DT>PAN-PACIFIC ENTOMOLOGIST
+<B><DD>	PAN-PAC ENTOMOL
+</B><DT>PANCREAS
+<B><DD>	PANCREAS
+</B><DT>PANMINERVA MEDICA
+<B><DD>	PANMINERVA MED
+</B><DT>PANTHEON-INTERNATIONALE JAHRESZEITSCHRIFT FUR KUNST
+<B><DD>	PANTHEON-INT Z KUNST
+</B><DT>PAPERI JA PUU-PAPER AND TIMBER
+<B><DD>	PAP PUU-PAP TIM
+</B><DT>PAPERS IN METEOROLOGY AND GEOPHYSICS
+<B><DD>	PAP METEOROL GEOPHYS
+</B><DT>PAPERS IN REGIONAL SCIENCE
+<B><DD>	PAP REG SCI
+</B><DT>PAPERS OF THE BIBLIOGRAPHICAL SOCIETY OF AMERICA
+<B><DD>	PAP BIBLIOGR SOC AM
+</B><DT>PAPERS ON LANGUAGE AND LITERATURE
+<B><DD>	PAP LANG LIT
+</B><DT>PAPIER
+<B><DD>	PAPIER
+</B><DT>PAPUA NEW GUINEA MEDICAL JOURNAL
+<B><DD>	PAPUA NEW GUINEA MED
+</B><DT>PARABOLA-MYTH TRADITION AND THE SEARCH FOR MEANING
+<B><DD>	PARABOLA
+</B><DT>PARABOLA-THE MAGAZINE OF MYTH AND TRADITION
+<B><DD>	PARABOLA
+</B><DT>PARAGONE
+<B><DD>	PARAGONE
+</B><DT>PARAGRAPH
+<B><DD>	PARAGRAPH
+</B><DT>PARALLEL COMPUTING
+<B><DD>	PARALLEL COMPUT
+</B><DT>PARAPLEGIA
+<B><DD>	PARAPLEGIA
+</B><DT>PARASITE IMMUNOLOGY
+<B><DD>	PARASITE IMMUNOL
+</B><DT>PARASITE-JOURNAL DE LA SOCIETE FRANCAISE DE PARASITOLOGIE
+<B><DD>	PARASITE
+</B><DT>PARASITICA
+<B><DD>	PARASITICA
+</B><DT>PARASITOLOGY
+<B><DD>	PARASITOLOGY
+</B><DT>PARASITOLOGY RESEARCH
+<B><DD>	PARASITOL RES
+</B><DT>PARASITOLOGY TODAY
+<B><DD>	PARASITOL TODAY
+</B><DT>PARAZITOLOGIYA
+<B><DD>	PARAZITOLOGIYA+
+</B><DT>PARERGON
+<B><DD>	PARERGON
+</B><DT>PARIS REVIEW
+<B><DD>	PARIS REV
+</B><DT>PARKINSONISM & RELATED DISORDERS
+<B><DD>	PARKINSONISM RELAT D
+</B><DT>PARLIAMENTARY AFFAIRS
+<B><DD>	PARLIAMENT AFF
+</B><DT>PARNASSUS-POETRY IN REVIEW
+<B><DD>	PARNASSUS-POETRY REV
+</B><DT>PAROI ARTERIELLE-ARTERIAL WALL
+<B><DD>	PAROI ARTERIEL
+</B><DT>PARTICLE & PARTICLE SYSTEMS CHARACTERIZATION
+<B><DD>	PART PART SYST CHAR
+</B><DT>PARTICLE ACCELERATORS
+<B><DD>	PART ACCEL
+</B><DT>PARTICLE CHARACTERIZATION
+<B><DD>	PART PART SYST CHAR
+</B><DT>PARTICULATE SCIENCE AND TECHNOLOGY
+<B><DD>	PARTICUL SCI TECHNOL
+</B><DT>PARTISAN REVIEW
+<B><DD>	PARTISAN REV
+</B><DT>PARTY POLITICS
+<B><DD>	PARTY POLIT
+</B><DT>PAST & PRESENT
+<B><DD>	PAST PRESENT
+</B><DT>PATHOBIOLOGY
+<B><DD>	PATHOBIOLOGY
+</B><DT>PATHOBIOLOGY ANNUAL
+<B><DD>	PATHOBIOL ANN
+</B><DT>PATHOLOGE
+<B><DD>	PATHOLOGE
+</B><DT>PATHOLOGIE BIOLOGIE
+<B><DD>	PATHOL BIOL
+</B><DT>PATHOLOGY
+<B><DD>	PATHOLOGY
+</B><DT>PATHOLOGY AND IMMUNOPATHOLOGY RESEARCH
+<B><DD>	PATHOL IMMUNOPATH R
+</B><DT>PATHOLOGY ANNUAL
+<B><DD>	PATHOL ANNU
+</B><DT>PATHOLOGY INTERNATIONAL
+<B><DD>	PATHOL INT
+</B><DT>PATHOLOGY RESEARCH AND PRACTICE
+<B><DD>	PATHOL RES PRACT
+</B><DT>PATIENT EDUCATION AND COUNSELING
+<B><DD>	PATIENT EDUC COUNS
+</B><DT>PATTERN ANALYSIS AND APPLICATIONS
+<B><DD>	PATTERN ANAL APPL
+</B><DT>PATTERN RECOGNITION
+<B><DD>	PATTERN RECOGN
+</B><DT>PATTERN RECOGNITION LETTERS
+<B><DD>	PATTERN RECOGN LETT
+</B><DT>PATTERNS OF PREJUDICE
+<B><DD>	PATTERNS PREJUDICE
+</B><DT>PAVLOVIAN JOURNAL OF BIOLOGICAL SCIENCE
+<B><DD>	PAVLOVIAN J BIOL SCI
+</B><DT>PC PRODUCTS
+<B><DD>	PC PROD
+</B><DT>PCCP PHYSICAL CHEMISTRY CHEMICAL PHYSICS
+<B><DD>	PCCP PHYS CHEM CH PH
+</B><DT>PCI JOURNAL
+<B><DD>	PCI J
+</B><DT>PCPS-PROCEEDINGS OF THE CAMBRIDGE PHILOLOGICAL SOCIETY
+<B><DD>	PCPS-P CAMB PHILOL S
+</B><DT>PCR-METHODS AND APPLICATIONS
+<B><DD>	PCR METH APPL
+</B><DT>PDA JOURNAL OF PHARMACEUTICAL SCIENCE AND TECHNOLOGY
+<B><DD>	PDA J PHARM SCI TECH
+</B><DT>PEABODY ESSEX MUSEUM COLLECTIONS
+<B><DD>	PEABODY ESSEX MUS C
+</B><DT>PEDIATRIC AIDS AND HIV INFECTION-FETUS TO ADOLESCENT
+<B><DD>	PEDIATR AIDS HIV INF
+</B><DT>PEDIATRIC ALLERGY AND IMMUNOLOGY
+<B><DD>	PEDIATR ALLERGY IMMU
+</B><DT>PEDIATRIC AND ADOLESCENT MEDICINE
+<B><DD>	PEDIAT ADOL
+</B><DT>PEDIATRIC AND DEVELOPMENTAL PATHOLOGY
+<B><DD>	PEDIATR DEVEL PATHOL
+</B><DT>PEDIATRIC ANNALS
+<B><DD>	PEDIATR ANN
+</B><DT>PEDIATRIC ASTHMA ALLERGY & IMMUNOLOGY
+<B><DD>	PEDIATR ASTHMA ALLER
+</B><DT>PEDIATRIC CARDIOLOGY
+<B><DD>	PEDIATR CARDIOL
+</B><DT>PEDIATRIC CLINICS OF NORTH AMERICA
+<B><DD>	PEDIATR CLIN N AM
+</B><DT>PEDIATRIC DERMATOLOGY
+<B><DD>	PEDIATR DERMATOL
+</B><DT>PEDIATRIC EMERGENCY CARE
+<B><DD>	PEDIATR EMERG CARE
+</B><DT>PEDIATRIC EXERCISE SCIENCE
+<B><DD>	PEDIATR EXERC SCI
+</B><DT>PEDIATRIC HEMATOLOGY AND ONCOLOGY
+<B><DD>	PEDIATR HEMAT ONCOL
+</B><DT>PEDIATRIC INFECTIOUS DISEASE JOURNAL
+<B><DD>	PEDIATR INFECT DIS J
+</B><DT>PEDIATRIC NEPHROLOGY
+<B><DD>	PEDIATR NEPHROL
+</B><DT>PEDIATRIC NEUROLOGY
+<B><DD>	PEDIATR NEUROL
+</B><DT>PEDIATRIC NEUROSCIENCE
+<B><DD>	PEDIATR NEUROSCI
+</B><DT>PEDIATRIC NEUROSURGERY
+<B><DD>	PEDIATR NEUROSURG
+</B><DT>PEDIATRIC PATHOLOGY
+<B><DD>	PEDIATR PATHOL
+</B><DT>PEDIATRIC PATHOLOGY & LABORATORY MEDICINE
+<B><DD>	PEDIATR PATHOL LAB M
+</B><DT>PEDIATRIC PATHOLOGY & MOLECULAR MEDICINE
+<B><DD>	PEDIATR PATHOL MOL M
+</B><DT>PEDIATRIC PHARMACOLOGY
+<B><DD>	PEDIATR PHARMACOL
+</B><DT>PEDIATRIC PULMONOLOGY
+<B><DD>	PEDIATR PULM
+</B><DT>PEDIATRIC RADIOLOGY
+<B><DD>	PEDIATR RADIOL
+</B><DT>PEDIATRIC RESEARCH
+<B><DD>	PEDIATR RES
+</B><DT>PEDIATRIC SURGERY INTERNATIONAL
+<B><DD>	PEDIATR SURG INT
+</B><DT>PEDIATRICS
+<B><DD>	PEDIATRICS
+</B><DT>PEDIATRICS INTERNATIONAL
+<B><DD>	PEDIATR INT
+</B><DT>PEDIATRIE
+<B><DD>	PEDIATRIE
+</B><DT>PEDOBIOLOGIA
+<B><DD>	PEDOBIOLOGIA
+</B><DT>PENNSYLVANIA AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	PENN AES BULL
+</B><DT>PENNSYLVANIA AGRICULTURAL EXPERIMENT STATION PROGRESS REPORT
+<B><DD>	PENN AES PROGR REP
+</B><DT>PENNSYLVANIA MAGAZINE OF HISTORY AND BIOGRAPHY
+<B><DD>	PENN MAG HIST BIOG
+</B><DT>PENNSYLVANIA MEDICINE
+<B><DD>	PENN MED
+</B><DT>PENNSYLVANIA STATE UNIVERSITY EXTENSION SERVICE CIRCULAR
+<B><DD>	PENN ST UES CIRC
+</B><DT>PENNSYLVANIA STATE UNIVERSITY EXTENSION SERVICE SPECIAL CIRCULAR
+<B><DD>	PENN ST UES SPEC CIR
+</B><DT>PENSAMIENTO
+<B><DD>	PENSAMIENTO
+</B><DT>PENSEE
+<B><DD>	PENSEE
+</B><DT>PEPTIDE RESEARCH
+<B><DD>	PEPTIDE RES
+</B><DT>PEPTIDES
+<B><DD>	PEPTIDES
+</B><DT>PERCEPTION
+<B><DD>	PERCEPTION
+</B><DT>PERCEPTION & PSYCHOPHYSICS
+<B><DD>	PERCEPT PSYCHOPHYS
+</B><DT>PERCEPTUAL AND MOTOR SKILLS
+<B><DD>	PERCEPT MOTOR SKILL
+</B><DT>PERFORMANCE EVALUATION
+<B><DD>	PERFORM EVALUATION
+</B><DT>PERFORMING ARTS & ENTERTAINMENT IN CANADA
+<B><DD>	PERFORM ART ENT CAN
+</B><DT>PERFORMING ARTS JOURNAL
+<B><DD>	PERFORM ART J
+</B><DT>PERFUSION
+<B><DD>	PERFUSION
+</B><DT>PERFUSION-UK
+<B><DD>	PERFUSION-UK
+</B><DT>PERIODICA POLYTECHNICA-CHEMICAL ENGINEERING
+<B><DD>	PERIOD POLYTECH CHEM
+</B><DT>PERIODICA POLYTECHNICA-ELECTRICAL ENGINEERING
+<B><DD>	PERIOD POLYTECH ELEC
+</B><DT>PERIODICUM BIOLOGORUM
+<B><DD>	PERIOD BIOL
+</B><DT>PERIODONTOLOGY 2000
+<B><DD>	PERIODONTOL 2000
+</B><DT>PERIPHERAL AND SPINAL MECHANISMS IN THE NEURAL CONTROL OF MOVEMENT
+<B><DD>	PROG BRAIN RES
+</B><DT>PERITONEAL DIALYSIS BULLETIN
+<B><DD>	PERITON DIALYSIS B
+</B><DT>PERITONEAL DIALYSIS BULLETIN
+<B><DD>	PERITON DIALYSIS INT
+</B><DT>PERITONEAL DIALYSIS INTERNATIONAL
+<B><DD>	PERITON DIALYSIS INT
+</B><DT>PERMAFROST AND PERIGLACIAL PROCESSES
+<B><DD>	PERMAFROST PERIGLAC
+</B><DT>PERSONAL COMPUTING
+<B><DD>	PERS COMPUT
+</B><DT>PERSONAL RELATIONSHIPS
+<B><DD>	PERS RELATIONSHIP
+</B><DT>PERSONALITY AND INDIVIDUAL DIFFERENCES
+<B><DD>	PERS INDIV DIFFER
+</B><DT>PERSONALITY AND SOCIAL PSYCHOLOGY BULLETIN
+<B><DD>	PERS SOC PSYCHOL B
+</B><DT>PERSONALITY AND SOCIAL PSYCHOLOGY REVIEW
+<B><DD>	PERS SOC PSYCHOL REV
+</B><DT>PERSONNEL JOURNAL
+<B><DD>	PERS J
+</B><DT>PERSONNEL PSYCHOLOGY
+<B><DD>	PERS PSYCHOL
+</B><DT>PERSONNEL REVIEW
+<B><DD>	PERS REV
+</B><DT>PERSOONIA
+<B><DD>	PERSOONIA
+</B><DT>PERSPECTIVES IN BIOLOGY AND MEDICINE
+<B><DD>	PERSPECT BIOL MED
+</B><DT>PERSPECTIVES IN COMPUTING
+<B><DD>	PERSPECT COMPUT
+</B><DT>PERSPECTIVES IN DRUG DISCOVERY AND DESIGN
+<B><DD>	PERSPECT DRUG DISCOV
+</B><DT>PERSPECTIVES IN NEUROLOGICAL SURGERY
+<B><DD>	PERSPECT NEUROL SURG
+</B><DT>PERSPECTIVES IN PEDIATRIC PATHOLOGY
+<B><DD>	PERSPECT PEDIAT PATH
+</B><DT>PERSPECTIVES IN PSYCHIATRIC CARE
+<B><DD>	PERSPECT PSYCHIATR C
+</B><DT>PERSPECTIVES OF NEW MUSIC
+<B><DD>	PERSPECT NEW MUSIC
+</B><DT>PERSPECTIVES ON DEVELOPMENTAL NEUROBIOLOGY
+<B><DD>	PERSPECT DEV NEUROBI
+</B><DT>PERSPECTIVES-STUDIES IN TRANSLATOLOGY
+<B><DD>	PERSPECT STUD TRANSL
+</B><DT>PESQUISA AGROPECUARIA BRASILEIRA
+<B><DD>	PESQUI AGROPECU BRAS
+</B><DT>PESQUISA VETERINARIA BRASILEIRA
+<B><DD>	PESQUISA VET BRASIL
+</B><DT>PEST MANAGEMENT SCIENCE
+<B><DD>	PEST MANAG SCI
+</B><DT>PESTICIDE BIOCHEMISTRY AND PHYSIOLOGY
+<B><DD>	PESTIC BIOCHEM PHYS
+</B><DT>PESTICIDE SCIENCE
+<B><DD>	PESTIC SCI
+</B><DT>PESTICIDES MONITORING JOURNAL
+<B><DD>	PESTIC MONIT J
+</B><DT>PETROLEUM CHEMISTRY
+<B><DD>	PETROL CHEM+
+</B><DT>PETROLEUM ENGINEER INTERNATIONAL
+<B><DD>	PETROL ENG INT
+</B><DT>PETROLEUM GEOSCIENCE
+<B><DD>	PETROL GEOSCI
+</B><DT>PETROLEUM SCIENCE AND TECHNOLOGY
+<B><DD>	PET SCI TECHNOL
+</B><DT>PETROLEUM SCIENCE AND TECHNOLOGY
+<B><DD>	PETROL SCI TECHNOL
+</B><DT>PETROLOGY
+<B><DD>	PETROLOGY
+</B><DT>PFERDEHEILKUNDE
+<B><DD>	PFERDEHEILKUNDE
+</B><DT>PFLUGERS ARCHIV-EUROPEAN JOURNAL OF PHYSIOLOGY
+<B><DD>	PFLUG ARCH EUR J PHY
+</B><DT>PHARMACEUTICA ACTA HELVETIAE
+<B><DD>	PHARM ACTA HELV
+</B><DT>PHARMACEUTICAL BIOLOGY
+<B><DD>	PHARM BIOL
+</B><DT>PHARMACEUTICAL DEVELOPMENT AND TECHNOLOGY
+<B><DD>	PHARM DEV TECHNOL
+</B><DT>PHARMACEUTICAL RESEARCH
+<B><DD>	PHARMACEUT RES
+</B><DT>PHARMACEUTICAL SCIENCE & TECHNOLOGY TODAY
+<B><DD>	PHARM SCI TECHNOL TO
+</B><DT>PHARMACEUTISCH WEEKBLAD-SCIENTIFIC EDITION
+<B><DD>	PHARM WEEKBLAD
+</B><DT>PHARMACOECONOMICS
+<B><DD>	PHARMACOECONOMICS
+</B><DT>PHARMACOEPIDEMIOLOGY AND DRUG SAFETY
+<B><DD>	PHARMACOEPIDEM DR S
+</B><DT>PHARMACOGENETICS
+<B><DD>	PHARMACOGENETICS
+</B><DT>PHARMACOLOGICAL RESEARCH
+<B><DD>	PHARMACOL RES
+</B><DT>PHARMACOLOGICAL RESEARCH COMMUNICATIONS
+<B><DD>	PHARMACOL RES
+</B><DT>PHARMACOLOGICAL RESEARCH COMMUNICATIONS
+<B><DD>	PHARMACOL RES COMMUN
+</B><DT>PHARMACOLOGICAL REVIEWS
+<B><DD>	PHARMACOL REV
+</B><DT>PHARMACOLOGY
+<B><DD>	PHARMACOLOGY
+</B><DT>PHARMACOLOGY & THERAPEUTICS
+<B><DD>	PHARMACOL THERAPEUT
+</B><DT>PHARMACOLOGY & TOXICOLOGY
+<B><DD>	PHARMACOL TOXICOL
+</B><DT>PHARMACOLOGY BIOCHEMISTRY AND BEHAVIOR
+<B><DD>	PHARMACOL BIOCHEM BE
+</B><DT>PHARMACOPEIAL FORUM
+<B><DD>	PHARMACOPEIAL FORUM
+</B><DT>PHARMACOPSYCHIATRIA
+<B><DD>	PHARMACOPSYCHIATRIA
+</B><DT>PHARMACOPSYCHIATRY
+<B><DD>	PHARMACOPSYCHIATRY
+</B><DT>PHARMACOTHERAPY
+<B><DD>	PHARMACOTHERAPY
+</B><DT>PHARMACY INTERNATIONAL
+<B><DD>	PHARM INT
+</B><DT>PHARMACY WORLD & SCIENCE
+<B><DD>	PHARM WORLD SCI
+</B><DT>PHARMATHERAPEUTICA
+<B><DD>	PHARMATHERAPEUTICA
+</B><DT>PHARMAZEUTISCHE INDUSTRIE
+<B><DD>	PHARM IND
+</B><DT>PHARMAZIE
+<B><DD>	PHARMAZIE
+</B><DT>PHASE TRANSITIONS
+<B><DD>	PHASE TRANSIT
+</B><DT>PHI DELTA KAPPAN
+<B><DD>	PHI DELTA KAPPAN
+</B><DT>PHILIPPINE JOURNAL OF INTERNAL MEDICINE
+<B><DD>	PHILIPP J INTERN MED
+</B><DT>PHILIPPINE JOURNAL OF VETERINARY MEDICINE
+<B><DD>	PHILIPP J VET MED
+</B><DT>PHILIPS JOURNAL OF RESEARCH
+<B><DD>	PHILIPS J RES
+</B><DT>PHILIPS TECHNICAL REVIEW
+<B><DD>	PHILIPS TECH REV
+</B><DT>PHILIPS TELECOMMUNICATION REVIEW
+<B><DD>	PHILIPS TELECOMM REV
+</B><DT>PHILOLOGICAL QUARTERLY
+<B><DD>	PHILOLOGICAL QUART
+</B><DT>PHILOLOGUS
+<B><DD>	PHILOLOGUS
+</B><DT>PHILOSOPHIA
+<B><DD>	PHILOSOPHIA
+</B><DT>PHILOSOPHICAL FORUM
+<B><DD>	PHILOS FORUM
+</B><DT>PHILOSOPHICAL INVESTIGATIONS
+<B><DD>	PHILOS INVEST
+</B><DT>PHILOSOPHICAL MAGAZINE A-PHYSICS OF CONDENSED MATTER STRUCTURE DEFECTS AND MECHANICAL PROPERTIES
+<B><DD>	PHILOS MAG A
+</B><DT>PHILOSOPHICAL MAGAZINE B-PHYSICS OF CONDENSED MATTER STATISTICAL MECHANICS ELECTRONIC OPTICAL AND MAGNETIC PROPERTIES
+<B><DD>	PHILOS MAG B
+</B><DT>PHILOSOPHICAL MAGAZINE LETTERS
+<B><DD>	PHIL MAG LETT
+</B><DT>PHILOSOPHICAL PSYCHOLOGY
+<B><DD>	PHILOS PSYCHOL
+</B><DT>PHILOSOPHICAL QUARTERLY
+<B><DD>	PHILOS QUART
+</B><DT>PHILOSOPHICAL REVIEW
+<B><DD>	PHILOS REV
+</B><DT>PHILOSOPHICAL STUDIES
+<B><DD>	PHILOS STUD
+</B><DT>PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY OF LONDON SERIES A-MATHEMATICAL PHYSICAL AND ENGINEERING SCIENCES
+<B><DD>	PHILOS T ROY SOC A
+</B><DT>PHILOSOPHICAL TRANSACTIONS OF THE ROYAL SOCIETY OF LONDON SERIES B-BIOLOGICAL SCIENCES
+<B><DD>	PHILOS T ROY SOC B
+</B><DT>PHILOSOPHISCHE RUNDSCHAU
+<B><DD>	PHILOS RUNDSCH
+</B><DT>PHILOSOPHISCHES JAHRBUCH
+<B><DD>	PHILOS JAHRB
+</B><DT>PHILOSOPHY
+<B><DD>	PHILOSOPHY
+</B><DT>PHILOSOPHY & PUBLIC AFFAIRS
+<B><DD>	PHILOS PUBLIC AFF
+</B><DT>PHILOSOPHY AND LITERATURE
+<B><DD>	PHILOS LITERATURE
+</B><DT>PHILOSOPHY AND PHENOMENOLOGICAL RESEARCH
+<B><DD>	PHILOS PHENOMEN RES
+</B><DT>PHILOSOPHY AND RHETORIC
+<B><DD>	PHILOS RHETORIC
+</B><DT>PHILOSOPHY EAST & WEST
+<B><DD>	PHILOS EAST WEST
+</B><DT>PHILOSOPHY OF SCIENCE
+<B><DD>	PHILOS SCI
+</B><DT>PHILOSOPHY OF THE SOCIAL SCIENCES
+<B><DD>	PHILOS SOC SCI
+</B><DT>PHILOSOPHY TODAY
+<B><DD>	PHILOS TODAY
+</B><DT>PHLEBOLOGIE
+<B><DD>	PHLEBOLOGIE
+</B><DT>PHLEBOLOGY
+<B><DD>	PHLEBOLOGY
+</B><DT>PHOENIX-THE JOURNAL OF THE CLASSICAL ASSOCIATION OF CANADA
+<B><DD>	PHOENIX-J CLASS ASSN
+</B><DT>PHONETICA
+<B><DD>	PHONETICA
+</B><DT>PHOSPHORUS SULFUR AND SILICON AND THE RELATED ELEMENTS
+<B><DD>	PHOSPHORUS SULFUR
+</B><DT>PHOTOBIOCHEMISTRY AND PHOTOBIOPHYSICS
+<B><DD>	PHOTOBIOCH PHOTOBIOP
+</B><DT>PHOTOCHEMISTRY AND PHOTOBIOLOGY
+<B><DD>	PHOTOCHEM PHOTOBIOL
+</B><DT>PHOTODERMATOLOGY
+<B><DD>	PHOTODERMATOLOGY
+</B><DT>PHOTODERMATOLOGY PHOTOIMMUNOLOGY & PHOTOMEDICINE
+<B><DD>	PHOTODERMATOL PHOTO
+</B><DT>PHOTOGRAMMETRIA
+<B><DD>	PHOTOGRAMMETRIA
+</B><DT>PHOTOGRAMMETRIC ENGINEERING AND REMOTE SENSING
+<B><DD>	PHOTOGRAMM ENG REM S
+</B><DT>PHOTOGRAMMETRIC RECORD
+<B><DD>	PHOTOGRAMM REC
+</B><DT>PHOTOGRAPHIC SCIENCE AND ENGINEERING
+<B><DD>	PHOTOGR SCI ENG
+</B><DT>PHOTONIC NETWORK COMMUNICATIONS
+<B><DD>	PHOTONIC NETW COMMUN
+</B><DT>PHOTONICS SPECTRA
+<B><DD>	PHOTON SPECTRA
+</B><DT>PHOTOSYNTHESIS RESEARCH
+<B><DD>	PHOTOSYNTH RES
+</B><DT>PHOTOSYNTHETICA
+<B><DD>	PHOTOSYNTHETICA
+</B><DT>PHRONESIS-A JOURNAL FOR ANCIENT PHILOSOPHY
+<B><DD>	PHRONESIS
+</B><DT>PHYCOLOGIA
+<B><DD>	PHYCOLOGIA
+</B><DT>PHYSICA A
+<B><DD>	PHYSICA A
+</B><DT>PHYSICA B
+<B><DD>	PHYSICA B
+</B><DT>PHYSICA B & C
+<B><DD>	PHYSICA B & C
+</B><DT>PHYSICA C
+<B><DD>	PHYSICA C
+</B><DT>PHYSICA D
+<B><DD>	PHYSICA D
+</B><DT>PHYSICA E
+<B><DD>	PHYSICA E
+</B><DT>PHYSICA MEDICA
+<B><DD>	PHYS MEDICA
+</B><DT>PHYSICA SCRIPTA
+<B><DD>	PHYS SCRIPTA
+</B><DT>PHYSICA STATUS SOLIDI A-APPLIED RESEARCH
+<B><DD>	PHYS STATUS SOLIDI A
+</B><DT>PHYSICA STATUS SOLIDI B-BASIC RESEARCH
+<B><DD>	PHYS STATUS SOLIDI B
+</B><DT>PHYSICAL ACOUSTICS
+<B><DD>	PHYS ACOUSTICS
+</B><DT>PHYSICAL CHEMISTRY CHEMICAL PHYSICS
+<B><DD>	PHYS CHEM CHEM PHYS
+</B><DT>PHYSICAL GEOGRAPHY
+<B><DD>	PHYS GEOGR
+</B><DT>PHYSICAL REVIEW A
+<B><DD>	PHYS REV A
+</B><DT>PHYSICAL REVIEW B
+<B><DD>	PHYS REV B
+</B><DT>PHYSICAL REVIEW B-CONDENSED MATTER
+<B><DD>	PHYS REV B
+</B><DT>PHYSICAL REVIEW C-NUCLEAR PHYSICS
+<B><DD>	PHYS REV C
+</B><DT>PHYSICAL REVIEW D
+<B><DD>	PHYS REV D
+</B><DT>PHYSICAL REVIEW E
+<B><DD>	PHYS REV E
+</B><DT>PHYSICAL REVIEW LETTERS
+<B><DD>	PHYS REV LETT
+</B><DT>PHYSICAL STATUS: THE USE AND INTERPRETATION OF ANTHROPOMETRY
+<B><DD>	WHO TECH REP SER
+</B><DT>PHYSICAL THERAPY
+<B><DD>	PHYS THER
+</B><DT>PHYSICIAN AND SPORTSMEDICINE
+<B><DD>	PHYSICIAN SPORTSMED
+</B><DT>PHYSICOCHEMICAL HYDRODYNAMICS
+<B><DD>	PHYSICOCHEM HYDRODYN
+</B><DT>PHYSICS AND CHEMISTRY OF GLASSES
+<B><DD>	PHYS CHEM GLASSES
+</B><DT>PHYSICS AND CHEMISTRY OF LIQUIDS
+<B><DD>	PHYS CHEM LIQ
+</B><DT>PHYSICS AND CHEMISTRY OF MINERALS
+<B><DD>	PHYS CHEM MINER
+</B><DT>PHYSICS AND CHEMISTRY OF THE EARTH
+<B><DD>	PHYS CHEM EARTH
+</B><DT>PHYSICS AND CHEMISTRY OF THE EARTH PART A-SOLID EARTH AND GEODESY
+<B><DD>	PHYS CHEM EARTH PT A
+</B><DT>PHYSICS AND CHEMISTRY OF THE EARTH PART B-HYDROLOGY OCEANS AND ATMOSPHERE
+<B><DD>	PHYS CHEM EARTH PT B
+</B><DT>PHYSICS AND CHEMISTRY OF THE EARTH PART C-SOLAR-TERRESTIAL AND PLANETARY SCIENCE
+<B><DD>	PHYS CHEM EARTH PT C
+</B><DT>PHYSICS ESSAYS
+<B><DD>	PHYS ESSAYS
+</B><DT>PHYSICS IN MEDICINE AND BIOLOGY
+<B><DD>	PHYS MED BIOL
+</B><DT>PHYSICS IN TECHNOLOGY
+<B><DD>	PHYS TECHNOL
+</B><DT>PHYSICS LETTERS A
+<B><DD>	PHYS LETT A
+</B><DT>PHYSICS LETTERS B
+<B><DD>	PHYS LETT B
+</B><DT>PHYSICS OF ATOMIC NUCLEI
+<B><DD>	PHYS ATOM NUCL+
+</B><DT>PHYSICS OF FLUIDS
+<B><DD>	PHYS FLUIDS
+</B><DT>PHYSICS OF FLUIDS A-FLUID DYNAMICS
+<B><DD>	PHYS FLUIDS A-FLUID
+</B><DT>PHYSICS OF FLUIDS B-PLASMA PHYSICS
+<B><DD>	PHYS FLUIDS B-PLASMA
+</B><DT>PHYSICS OF LOW-DIMENSIONAL STRUCTURES
+<B><DD>	PHYS LOW-DIMENS STR
+</B><DT>PHYSICS OF METALS
+<B><DD>	PHYS MET+
+</B><DT>PHYSICS OF PARTICLES AND NUCLEI
+<B><DD>	PHYS PART NUCLEI
+</B><DT>PHYSICS OF PLASMAS
+<B><DD>	PHYS PLASMAS
+</B><DT>PHYSICS OF THE EARTH AND PLANETARY INTERIORS
+<B><DD>	PHYS EARTH PLANET IN
+</B><DT>PHYSICS OF THE SOLID STATE
+<B><DD>	PHYS SOLID STATE+
+</B><DT>PHYSICS REPORTS-REVIEW SECTION OF PHYSICS LETTERS
+<B><DD>	PHYS REP
+</B><DT>PHYSICS TEACHER
+<B><DD>	PHYS TEACH
+</B><DT>PHYSICS TODAY
+<B><DD>	PHYS TODAY
+</B><DT>PHYSICS WORLD
+<B><DD>	PHYS WORLD
+</B><DT>PHYSIKALISCHE MEDIZIN REHABILITATIONSMEDIZIN KURORTMEDIZIN
+<B><DD>	PHYS MED REHAB KUROR
+</B><DT>PHYSIOLOGIA BOHEMOSLOVACA
+<B><DD>	PHYSIOL BOHEMOSLOV
+</B><DT>PHYSIOLOGIA PLANTARUM
+<B><DD>	PHYSIOL PLANTARUM
+</B><DT>PHYSIOLOGICAL AND BIOCHEMICAL ZOOLOGY
+<B><DD>	PHYSIOL BIOCHEM ZOOL
+</B><DT>PHYSIOLOGICAL AND MOLECULAR PLANT PATHOLOGY
+<B><DD>	PHYSIOL MOL PLANT P
+</B><DT>PHYSIOLOGICAL CHEMISTRY AND PHYSICS
+<B><DD>	PHYSIOL CHEM PHYS M
+</B><DT>PHYSIOLOGICAL CHEMISTRY AND PHYSICS AND MEDICAL NMR
+<B><DD>	PHYSIOL CHEM PHYS
+</B><DT>PHYSIOLOGICAL CHEMISTRY AND PHYSICS AND MEDICAL NMR
+<B><DD>	PHYSIOL CHEM PHYS M
+</B><DT>PHYSIOLOGICAL CHEMISTRY AND PHYSICS AND MEDICAL NMR
+<B><DD>	PHYSIOL CHEM PHYS ME
+</B><DT>PHYSIOLOGICAL ENTOMOLOGY
+<B><DD>	PHYSIOL ENTOMOL
+</B><DT>PHYSIOLOGICAL GENOMICS
+<B><DD>	PHYSIOL GENOMICS
+</B><DT>PHYSIOLOGICAL MEASUREMENT
+<B><DD>	PHYSIOL MEAS
+</B><DT>PHYSIOLOGICAL PLANT PATHOLOGY
+<B><DD>	PHYSIOL PLANT PATHOL
+</B><DT>PHYSIOLOGICAL PSYCHOLOGY
+<B><DD>	PHYSIOL PSYCHOL
+</B><DT>PHYSIOLOGICAL RESEARCH
+<B><DD>	PHYSIOL RES
+</B><DT>PHYSIOLOGICAL REVIEWS
+<B><DD>	PHYSIOL REV
+</B><DT>PHYSIOLOGICAL ZOOLOGY
+<B><DD>	PHYSIOL ZOOL
+</B><DT>PHYSIOLOGIE VEGETALE
+<B><DD>	PHYSIOL VEG
+</B><DT>PHYSIOLOGY & BEHAVIOR
+<B><DD>	PHYSIOL BEHAV
+</B><DT>PHYTOCHEMICAL ANALYSIS
+<B><DD>	PHYTOCHEM ANALYSIS
+</B><DT>PHYTOCHEMISTRY
+<B><DD>	PHYTOCHEMISTRY
+</B><DT>PHYTOCOENOLOGIA
+<B><DD>	PHYTOCOENOLOGIA
+</B><DT>PHYTOMEDICINE
+<B><DD>	PHYTOMEDICINE
+</B><DT>PHYTON-ANNALES REI BOTANICAE
+<B><DD>	PHYTON-ANN REI BOT A
+</B><DT>PHYTON-INTERNATIONAL JOURNAL OF EXPERIMENTAL BOTANY
+<B><DD>	PHYTON-INT J EXP BOT
+</B><DT>PHYTOPARASITICA
+<B><DD>	PHYTOPARASITICA
+</B><DT>PHYTOPATHOLOGISCHE ZEITSCHRIFT-JOURNAL OF PHYTOPATHOLOGY
+<B><DD>	PHYTOPATHOL Z
+</B><DT>PHYTOPATHOLOGY
+<B><DD>	PHYTOPATHOLOGY
+</B><DT>PHYTOPROTECTION
+<B><DD>	PHYTOPROTECTION
+</B><DT>PHYTOTHERAPY RESEARCH
+<B><DD>	PHYTOTHER RES
+</B><DT>PIANO & KEYBOARD
+<B><DD>	PIANO KEYBOARD
+</B><DT>PIGMENT CELL RESEARCH
+<B><DD>	PIGM CELL RES
+</B><DT>PIMA MAGAZINE
+<B><DD>	PIMA MAG
+</B><DT>PIPE LINE INDUSTRY
+<B><DD>	PIPE LINE IND
+</B><DT>PIPELINE & GAS JOURNAL
+<B><DD>	PIPELINE GAS J
+</B><DT>PISMA V ZHURNAL TEKHNICHESKOI FIZIKI
+<B><DD>	PISMA ZH TEKH FIZ+
+</B><DT>PLACENTA
+<B><DD>	PLACENTA
+</B><DT>PLACES-A FORUM OF ENVIRONMENTAL DESIGN
+<B><DD>	PLACES-FORUM ENVIRON
+</B><DT>PLACES-A QUARTERLY JOURNAL OF ENVIRONMENTAL DESIGN
+<B><DD>	PLACES-Q J ENVIRON D
+</B><DT>PLAINS ANTHROPOLOGIST
+<B><DD>	PLAINS ANTHROPOL
+</B><DT>PLANETARY AND SPACE SCIENCE
+<B><DD>	PLANET SPACE SCI
+</B><DT>PLANT AND CELL PHYSIOLOGY
+<B><DD>	PLANT CELL PHYSIOL
+</B><DT>PLANT AND SOIL
+<B><DD>	PLANT SOIL
+</B><DT>PLANT BIOLOGY
+<B><DD>	PLANT BIOLOGY
+</B><DT>PLANT BREEDING
+<B><DD>	PLANT BREEDING
+</B><DT>PLANT CELL
+<B><DD>	PLANT CELL
+</B><DT>PLANT CELL AND ENVIRONMENT
+<B><DD>	PLANT CELL ENVIRON
+</B><DT>PLANT CELL REPORTS
+<B><DD>	PLANT CELL REP
+</B><DT>PLANT CELL TISSUE AND ORGAN CULTURE
+<B><DD>	PLANT CELL TISS ORG
+</B><DT>PLANT DISEASE
+<B><DD>	PLANT DIS
+</B><DT>PLANT ECOLOGY
+<B><DD>	PLANT ECOL
+</B><DT>PLANT ENGINEERING
+<B><DD>	PLANT ENG
+</B><DT>PLANT FOODS FOR HUMAN NUTRITION
+<B><DD>	PLANT FOOD HUM NUTR
+</B><DT>PLANT GROWTH REGULATION
+<B><DD>	PLANT GROWTH REGUL
+</B><DT>PLANT JOURNAL
+<B><DD>	PLANT J
+</B><DT>PLANT MOLECULAR BIOLOGY
+<B><DD>	PLANT MOL BIOL
+</B><DT>PLANT MOLECULAR BIOLOGY REPORTER
+<B><DD>	PLANT MOL BIOL REP
+</B><DT>PLANT PATHOLOGY
+<B><DD>	PLANT PATHOL
+</B><DT>PLANT PHYSIOLOGY
+<B><DD>	PLANT PHYSIOL
+</B><DT>PLANT PHYSIOLOGY AND BIOCHEMISTRY
+<B><DD>	PLANT PHYSIOL BIOCH
+</B><DT>PLANT SCIENCE
+<B><DD>	PLANT SCI
+</B><DT>PLANT SCIENCE LETTERS
+<B><DD>	PLANT SCI LETT
+</B><DT>PLANT SYSTEMATICS AND EVOLUTION
+<B><DD>	PLANT SYST EVOL
+</B><DT>PLANT VARIETIES AND SEEDS
+<B><DD>	PLANT VAR SEEDS
+</B><DT>PLANTA
+<B><DD>	PLANTA
+</B><DT>PLANTA MEDICA
+<B><DD>	PLANTA MED
+</B><DT>PLASMA CHEMISTRY AND PLASMA PROCESSING
+<B><DD>	PLASMA CHEM PLASMA P
+</B><DT>PLASMA DEVICES AND OPERATIONS
+<B><DD>	PLASMA DEVICES OPER
+</B><DT>PLASMA PHYSICS AND CONTROLLED FUSION
+<B><DD>	PLASMA PHYS CONTR F
+</B><DT>PLASMA PHYSICS REPORTS
+<B><DD>	PLASMA PHYS REP
+</B><DT>PLASMA PHYSICS REPORTS
+<B><DD>	PLASMA PHYS REP+
+</B><DT>PLASMA SOURCES SCIENCE & TECHNOLOGY
+<B><DD>	PLASMA SOURCES SCI T
+</B><DT>PLASMA THERAPY & TRANSFUSION TECHNOLOGY
+<B><DD>	PLASMA THER TRANSFUS
+</B><DT>PLASMID
+<B><DD>	PLASMID
+</B><DT>PLASTE UND KAUTSCHUK
+<B><DD>	PLASTE KAUTSCH
+</B><DT>PLASTIC AND RECONSTRUCTIVE SURGERY
+<B><DD>	PLAST RECONSTR SURG
+</B><DT>PLASTICS & RUBBER INTERNATIONAL
+<B><DD>	PLAST RUBBER INT
+</B><DT>PLASTICS AND RUBBER PROCESSING AND APPLICATIONS
+<B><DD>	PLAST RUB PROC APPL
+</B><DT>PLASTICS DESIGN & PROCESSING
+<B><DD>	PLAST DESIGN PROCESS
+</B><DT>PLASTICS ENGINEERING
+<B><DD>	PLAST ENG
+</B><DT>PLASTICS RUBBER AND COMPOSITES
+<B><DD>	PLAST RUBBER COMPOS
+</B><DT>PLASTICS RUBBER AND COMPOSITES PROCESSING AND APPLICATIONS
+<B><DD>	PLAST RUB COMPOS PRO
+</B><DT>PLASTICS TECHNOLOGY
+<B><DD>	PLAST TECHNOL
+</B><DT>PLASTICS WORLD
+<B><DD>	PLAST WORLD
+</B><DT>PLATELETS
+<B><DD>	PLATELETS
+</B><DT>PLATING AND SURFACE FINISHING
+<B><DD>	PLAT SURF FINISH
+</B><DT>PLOUGHSHARES
+<B><DD>	PLOUGHSHARES
+</B><DT>PMLA-PUBLICATIONS OF THE MODERN LANGUAGE ASSOCIATION OF AMERICA
+<B><DD>	PMLA
+</B><DT>PMM JOURNAL OF APPLIED MATHEMATICS AND MECHANICS
+<B><DD>	PMM-J APPL MATH MEC+
+</B><DT>POE STUDIES-DARK ROMANTICISM
+<B><DD>	POE STUD-DARK ROMAN
+</B><DT>POETICA-ZEITSCHRIFT FUR SPRACH-UND LITERATURWISSENSCHAFT
+<B><DD>	POETICA
+</B><DT>POETICS
+<B><DD>	POETICS
+</B><DT>POETICS TODAY
+<B><DD>	POETICS TODAY
+</B><DT>POETIQUE
+<B><DD>	POETIQUE
+</B><DT>POETRY
+<B><DD>	POETRY
+</B><DT>POETRY REVIEW
+<B><DD>	POETRY REV
+</B><DT>POETRY WALES
+<B><DD>	POETRY WALES
+</B><DT>POINT VETERINAIRE
+<B><DD>	POINT VET
+</B><DT>POLAR BIOLOGY
+<B><DD>	POLAR BIOL
+</B><DT>POLAR RESEARCH
+<B><DD>	POLAR RES
+</B><DT>POLICING-AN INTERNATIONAL JOURNAL OF POLICE STRATEGIES & MANAGEMENT
+<B><DD>	POLICING
+</B><DT>POLICY AND POLITICS
+<B><DD>	POLICY POLIT
+</B><DT>POLICY REVIEW
+<B><DD>	POLICY REV
+</B><DT>POLICY SCIENCES
+<B><DD>	POLICY SCI
+</B><DT>POLICY STUDIES JOURNAL
+<B><DD>	POLICY STUD J
+</B><DT>POLIMERY
+<B><DD>	POLIMERY-W
+</B><DT>POLISH JOURNAL OF CHEMISTRY
+<B><DD>	POL J CHEM
+</B><DT>POLISH JOURNAL OF ENVIRONMENTAL STUDIES
+<B><DD>	POL J ENVIRON STUD
+</B><DT>POLISH JOURNAL OF PHARMACOLOGY
+<B><DD>	POL J PHARMACOL
+</B><DT>POLISH JOURNAL OF PHARMACOLOGY AND PHARMACY
+<B><DD>	POL J PHARMACOL PHAR
+</B><DT>POLITICAL BEHAVIOR
+<B><DD>	POLIT BEHAV
+</B><DT>POLITICAL COMMUNICATION
+<B><DD>	POLIT COMMUN
+</B><DT>POLITICAL GEOGRAPHY
+<B><DD>	POLIT GEOGR
+</B><DT>POLITICAL PSYCHOLOGY
+<B><DD>	POLIT PSYCHOL
+</B><DT>POLITICAL QUARTERLY
+<B><DD>	POLIT QUART
+</B><DT>POLITICAL RESEARCH QUARTERLY
+<B><DD>	POLIT RES QUART
+</B><DT>POLITICAL SCIENCE
+<B><DD>	POLIT SCI
+</B><DT>POLITICAL SCIENCE QUARTERLY
+<B><DD>	POLIT SCI QUART
+</B><DT>POLITICAL STUDIES
+<B><DD>	POLIT STUD-LONDON
+</B><DT>POLITICAL THEORY
+<B><DD>	POLIT THEORY
+</B><DT>POLITICKA EKONOMIE
+<B><DD>	POLIT EKON
+</B><DT>POLITICS & SOCIETY
+<B><DD>	POLIT SOC
+</B><DT>POLITICS AND THE INDIVIDUAL
+<B><DD>	POLIT INDIVID
+</B><DT>POLITICS AND THE LIFE SCIENCES
+<B><DD>	POLIT LIFE SCI
+</B><DT>POLITISCHE VIERTELJAHRESSCHRIFT
+<B><DD>	POLIT VIERTELJAHR
+</B><DT>POLITY
+<B><DD>	POLITY
+</B><DT>POLLUTION ENGINEERING
+<B><DD>	POLLUT ENG
+</B><DT>POLYCYCLIC AROMATIC COMPOUNDS
+<B><DD>	POLYCYCL AROMAT COMP
+</B><DT>POLYHEDRON
+<B><DD>	POLYHEDRON
+</B><DT>POLYMER
+<B><DD>	POLYMER
+</B><DT>POLYMER BULLETIN
+<B><DD>	POLYM BULL
+</B><DT>POLYMER COMMUNICATIONS
+<B><DD>	POLYM COMMUN
+</B><DT>POLYMER COMPOSITES
+<B><DD>	POLYM COMPOSITE
+</B><DT>POLYMER DEGRADATION AND STABILITY
+<B><DD>	POLYM DEGRAD STABIL
+</B><DT>POLYMER ENGINEERING AND SCIENCE
+<B><DD>	POLYM ENG SCI
+</B><DT>POLYMER GELS AND NETWORKS
+<B><DD>	POLYM GELS NETW
+</B><DT>POLYMER INTERNATIONAL
+<B><DD>	POLYM INT
+</B><DT>POLYMER JOURNAL
+<B><DD>	POLYM J
+</B><DT>POLYMER NETWORKS & BLENDS
+<B><DD>	POLYM NETWORK BLEND
+</B><DT>POLYMER PHOTOCHEMISTRY
+<B><DD>	POLYM PHOTOCHEM
+</B><DT>POLYMER REACTION ENGINEERING
+<B><DD>	POLYM REACT ENG
+</B><DT>POLYMER TESTING
+<B><DD>	POLYM TEST
+</B><DT>POLYMER-KOREA
+<B><DD>	POLYM-KOREA
+</B><DT>POLYMER-PLASTICS TECHNOLOGY AND ENGINEERING
+<B><DD>	POLYM-PLAST TECHNOL
+</B><DT>POLYMERS & POLYMER COMPOSITES
+<B><DD>	POLYM POLYM COMPOS
+</B><DT>POLYMERS FOR ADVANCED TECHNOLOGIES
+<B><DD>	POLYM ADVAN TECHNOL
+</B><DT>PONTE
+<B><DD>	PONTE
+</B><DT>POPTRONICS
+<B><DD>	POPTRONICS
+</B><DT>POPULAR COMPUTING
+<B><DD>	POP COMPUT
+</B><DT>POPULAR MUSIC AND SOCIETY
+<B><DD>	POP MUSIC SOC
+</B><DT>POPULATION
+<B><DD>	POPULATION
+</B><DT>POPULATION AND DEVELOPMENT REVIEW
+<B><DD>	POPUL DEV REV
+</B><DT>POPULATION AND ENVIRONMENT
+<B><DD>	POPUL ENVIRON
+</B><DT>POPULATION BULLETIN
+<B><DD>	POPUL BULL
+</B><DT>POPULATION ECOLOGY
+<B><DD>	POPUL ECOL
+</B><DT>POPULATION INDEX
+<B><DD>	POPUL INDEX
+</B><DT>POPULATION RESEARCH AND POLICY REVIEW
+<B><DD>	POPUL RES POLICY REV
+</B><DT>POPULATION STUDIES-A JOURNAL OF DEMOGRAPHY
+<B><DD>	POP STUD-J DEMOG
+</B><DT>PORTUGUESE STUDIES
+<B><DD>	PORTUGUESE STUD
+</B><DT>POSITIF
+<B><DD>	POSITIF
+</B><DT>POSITIONS-EAST ASIA CULTURES CRITIQUE
+<B><DD>	POSITIONS-E ASIA CUL
+</B><DT>POSITIVITY
+<B><DD>	POSITIVITY
+</B><DT>POST OFFICE ELECTRICAL ENGINEERS JOURNAL
+<B><DD>	POST OFFICE ELEC ENG
+</B><DT>POST-COMMUNIST ECONOMIES
+<B><DD>	POST-COMMUNIST ECON
+</B><DT>POST-SOVIET AFFAIRS
+<B><DD>	POST-SOV AFF
+</B><DT>POST-SOVIET GEOGRAPHY
+<B><DD>	POST-SOV GEOGR
+</B><DT>POST-SOVIET GEOGRAPHY AND ECONOMICS
+<B><DD>	POST-SOV GEOGR ECON
+</B><DT>POSTEPY BIOCHEMII
+<B><DD>	POSTEPY BIOCHEM
+</B><DT>POSTGRADUATE MEDICAL JOURNAL
+<B><DD>	POSTGRAD MED J
+</B><DT>POSTGRADUATE MEDICINE
+<B><DD>	POSTGRAD MED
+</B><DT>POSTHARVEST BIOLOGY AND TECHNOLOGY
+<B><DD>	POSTHARVEST BIOL TEC
+</B><DT>POSTMODERN CULTURE
+<B><DD>	POSTMOD CULT
+</B><DT>POTATO RESEARCH
+<B><DD>	POTATO RES
+</B><DT>POTENTIAL ANALYSIS
+<B><DD>	POTENTIAL ANAL
+</B><DT>POULTRY AND AVIAN BIOLOGY REVIEWS
+<B><DD>	POULT AVIAN BIOL REV
+</B><DT>POULTRY SCIENCE
+<B><DD>	POULTRY SCI
+</B><DT>POWDER DIFFRACTION
+<B><DD>	POWDER DIFFR
+</B><DT>POWDER METALLURGY
+<B><DD>	POWDER METALL
+</B><DT>POWDER METALLURGY AND METAL CERAMICS
+<B><DD>	POWDER METALL MET C+
+</B><DT>POWDER METALLURGY INTERNATIONAL
+<B><DD>	POWDER METALL INT
+</B><DT>POWDER TECHNOLOGY
+<B><DD>	POWDER TECHNOL
+</B><DT>POWER
+<B><DD>	POWER
+</B><DT>POWER ENGINEERING
+<B><DD>	POWER ENG
+</B><DT>POWER ENGINEERING JOURNAL
+<B><DD>	POWER ENG J
+</B><DT>PRACE I MATERIALY ZOOTECHNICZNE
+<B><DD>	PRACE MATER ZOOTECH
+</B><DT>PRACE VULHM-REPORTS OF THE FORESTRY AND GAME MANAGEMENT RESEARCH INSTITUTE
+<B><DD>	PRACE VULHM
+</B><DT>PRACTICAL GASTROENTEROLOGY
+<B><DD>	PRACT GASTROENTEROL
+</B><DT>PRACTITIONER
+<B><DD>	PRACTITIONER
+</B><DT>PRAKTISCHE METALLOGRAPHIE-PRACTICAL METALLOGRAPHY
+<B><DD>	PRAKT METALLOGR-PR M
+</B><DT>PRAKTISCHE TIERARZT
+<B><DD>	PRAKT TIERARZT
+</B><DT>PRAMANA
+<B><DD>	PRAMANA
+</B><DT>PRAMANA-JOURNAL OF PHYSICS
+<B><DD>	PRAMANA-J PHYS
+</B><DT>PRATIQUE MEDICALE ET CHIRURGICALE DE L ANIMAL DE COMPAGNIE
+<B><DD>	PRAT MED CHIR ANIM
+</B><DT>PRAXIS DER KINDERPSYCHOLOGIE UND KINDERPSYCHIATRIE
+<B><DD>	PRAX KINDERPSYCHOL K
+</B><DT>PRAXIS DER PSYCHOTHERAPIE UND PSYCHOSOMATIK
+<B><DD>	PRAX PSYCHOTHER PSYC
+</B><DT>PRAXIS UND KLINIK DER PNEUMOLOGIE
+<B><DD>	PRAX KLIN PNEUMOL
+</B><DT>PRECAMBRIAN RESEARCH
+<B><DD>	PRECAMBRIAN RES
+</B><DT>PRECISION ENGINEERING-JOURNAL OF THE AMERICAN SOCIETY FOR PRECISION ENGINEERING
+<B><DD>	PRECIS ENG
+</B><DT>PREHRAMBENO-TEHNOLOSKA I BIOTEHNOLOSKA REVIJA
+<B><DD>	PREHRAM TEHNOL BIOT
+</B><DT>PRENATAL AND NEONATAL MEDICINE
+<B><DD>	PRENAT NEONAT MED
+</B><DT>PRENATAL DIAGNOSIS
+<B><DD>	PRENATAL DIAG
+</B><DT>PRENSA MEDICA ARGENTINA
+<B><DD>	PRENSA MED ARGENT
+</B><DT>PREPARATIVE BIOCHEMISTRY
+<B><DD>	PREP BIOCHEM
+</B><DT>PREPARATIVE BIOCHEMISTRY & BIOTECHNOLOGY
+<B><DD>	PREP BIOCHEM BIOTECH
+</B><DT>PRESENCE-TELEOPERATORS AND VIRTUAL ENVIRONMENTS
+<B><DD>	PRESENCE-TELEOP VIRT
+</B><DT>PRESERVATION
+<B><DD>	PRESERVATION
+</B><DT>PRESSE MEDICALE
+<B><DD>	PRESSE MED
+</B><DT>PREVENTIVE MEDICINE
+<B><DD>	PREV MED
+</B><DT>PREVENTIVE VETERINARY MEDICINE
+<B><DD>	PREV VET MED
+</B><DT>PRIMARY CARE
+<B><DD>	PRIMARY CARE
+</B><DT>PRIMATES
+<B><DD>	PRIMATES
+</B><DT>PRINT QUARTERLY
+<B><DD>	PRINT Q
+</B><DT>PROBABILISTIC ENGINEERING MECHANICS
+<B><DD>	PROBABILIST ENG MECH
+</B><DT>PROBABILITY IN THE ENGINEERING AND INFORMATIONAL SCIENCES
+<B><DD>	PROBAB ENG INFORM SC
+</B><DT>PROBABILITY THEORY AND RELATED FIELDS
+<B><DD>	PROBAB THEORY REL
+</B><DT>PROBLEMS IN GENERAL SURGERY
+<B><DD>	PROBL GEN SURG
+</B><DT>PROBLEMS OF CONTROL AND INFORMATION THEORY-PROBLEMY UPRAVLENIYA I TEORII INFORMATSII
+<B><DD>	PROBL CONTROL INFORM
+</B><DT>PROBLEMS OF ECONOMIC TRANSITION
+<B><DD>	PROBL ECON TRANSIT
+</B><DT>PROBLEMS OF POST-COMMUNISM
+<B><DD>	PROBL POST-COMMUNISM
+</B><DT>PROCEEDINGS : ANNUAL RELIABILITY AND MAINTAINABILITY SYMPOSIUM
+<B><DD>	P A REL MAI
+</B><DT>PROCEEDINGS ANNUAL RELIABILITY AND MAINTAINABILITY SYMPOSIUM
+<B><DD>	P ANNU REL MAINT SYM
+</B><DT>PROCEEDINGS ASTRONOMICAL SOCIETY OF AUSTRALIA
+<B><DD>	P ASTRON SOC AUST
+</B><DT>PROCEEDINGS OF LUNAR AND PLANETARY SCIENCE
+<B><DD>	P LUNAR PLANET SCI
+</B><DT>PROCEEDINGS OF SYMPOSIA IN PURE MATHEMATICS
+<B><DD>	P SYMP PURE MATH
+</B><DT>PROCEEDINGS OF THE ACADEMY OF NATURAL SCIENCES OF PHILADELPHIA
+<B><DD>	P ACAD NAT SCI PHILA
+</B><DT>PROCEEDINGS OF THE AMERICAN ANTIQUARIAN SOCIETY
+<B><DD>	P AM ANTIQUARIAN SOC
+</B><DT>PROCEEDINGS OF THE AMERICAN ASSOCIATION FOR CANCER RESEARCH
+<B><DD>	P AM ASSOC CANC RES
+</B><DT>PROCEEDINGS OF THE AMERICAN MATHEMATICAL SOCIETY
+<B><DD>	P AM MATH SOC
+</B><DT>PROCEEDINGS OF THE AMERICAN PHILOSOPHICAL SOCIETY
+<B><DD>	P AM PHILOS SOC
+</B><DT>PROCEEDINGS OF THE AMERICAN SOCIETY FOR INFORMATION SCIENCE
+<B><DD>	P AM SOC INFORM SCI
+</B><DT>PROCEEDINGS OF THE ANNUAL CONVENTION OF THE AMERICAN ASSOCIATION OF EQUINE PRACTITIONERS
+<B><DD>	P ANNU CONV AM EQUIN
+</B><DT>PROCEEDINGS OF THE ASIS ANNUAL MEETING
+<B><DD>	P ASIS ANNU MEET
+</B><DT>PROCEEDINGS OF THE ASSOCIATION OF AMERICAN PHYSICIANS
+<B><DD>	P ASSOC AM PHYSICIAN
+</B><DT>PROCEEDINGS OF THE AUSTRALIAN BIOCHEMICAL SOCIETY
+<B><DD>	P AUST BIOCHEM SOC
+</B><DT>PROCEEDINGS OF THE BIOLOGICAL SOCIETY OF WASHINGTON
+<B><DD>	P BIOL SOC WASH
+</B><DT>PROCEEDINGS OF THE BRITISH ACADEMY
+<B><DD>	P BRIT ACAD
+</B><DT>PROCEEDINGS OF THE BRITISH CERAMIC SOCIETY
+<B><DD>	P BRIT CERAMIC SOC
+</B><DT>PROCEEDINGS OF THE EDINBURGH MATHEMATICAL SOCIETY
+<B><DD>	P EDINBURGH MATH SOC
+</B><DT>PROCEEDINGS OF THE ENTOMOLOGICAL SOCIETY OF ONTARIO
+<B><DD>	P ENTOMOL SOC ONT
+</B><DT>PROCEEDINGS OF THE ENTOMOLOGICAL SOCIETY OF WASHINGTON
+<B><DD>	P ENTOMOL SOC WASH
+</B><DT>PROCEEDINGS OF THE EUROPEAN DIALYSIS AND TRANSPLANT ASSOCIATION
+<B><DD>	P EUR DIAL TRANS
+</B><DT>PROCEEDINGS OF THE FLORIDA STATE HORTICULTURAL SOCIETY
+<B><DD>	P FL ST HORTIC SOC
+</B><DT>PROCEEDINGS OF THE GEOLOGISTS ASSOCIATION
+<B><DD>	P GEOLOGIST ASSOC
+</B><DT>PROCEEDINGS OF THE HELMINTHOLOGICAL SOCIETY OF WASHINGTON
+<B><DD>	P HELM SOC WASH
+</B><DT>PROCEEDINGS OF THE IEEE
+<B><DD>	P IEEE
+</B><DT>PROCEEDINGS OF THE INDIAN ACADEMY OF SCIENCES-ANIMAL SCIENCES
+<B><DD>	P INDIAN AS-ANIM SCI
+</B><DT>PROCEEDINGS OF THE INDIAN ACADEMY OF SCIENCES-CHEMICAL SCIENCES
+<B><DD>	P INDIAN AS-CHEM SCI
+</B><DT>PROCEEDINGS OF THE INDIAN ACADEMY OF SCIENCES-EARTH AND PLANETARY SCIENCES
+<B><DD>	P INDIAN AS-EARTH
+</B><DT>PROCEEDINGS OF THE INDIAN ACADEMY OF SCIENCES-ENGINEERING SCIENCES
+<B><DD>	P INDIAN AS-ENG SCI
+</B><DT>PROCEEDINGS OF THE INDIAN ACADEMY OF SCIENCES-MATHEMATICAL SCIENCES
+<B><DD>	P INDIAN AS-MATH SCI
+</B><DT>PROCEEDINGS OF THE INDIAN ACADEMY OF SCIENCES-PLANT SCIENCES
+<B><DD>	P INDIAN AS-PLANT SC
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF CIVIL ENGINEERS PART 1-DESIGN AND CONSTRUCTION
+<B><DD>	P I CIVIL ENG PT 1
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF CIVIL ENGINEERS PART 2-RESEARCH AND THEORY
+<B><DD>	P I CIVIL ENG PT 2
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF CIVIL ENGINEERS-CIVIL ENGINEERING
+<B><DD>	P I CIVIL ENG-CIV EN
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF CIVIL ENGINEERS-GEOTECHNICAL ENGINEERING
+<B><DD>	P I CIVIL ENG-GEOTEC
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF CIVIL ENGINEERS-MUNICIPAL ENGINEER
+<B><DD>	P I CIVIL ENG-MUNIC
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF CIVIL ENGINEERS-STRUCTURES AND BUILDINGS
+<B><DD>	P I CIVIL ENG-STR B
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF CIVIL ENGINEERS-TRANSPORT
+<B><DD>	P I CIVIL ENG-TRANSP
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF CIVIL ENGINEERS-WATER MARITIME AND ENERGY
+<B><DD>	P I CIVIL ENG-WATER
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS
+<B><DD>	P I MECH ENG
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART A-JOURNAL OF POWER AND ENERGY
+<B><DD>	P I MECH ENG A-J POW
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART B-JOURNAL OF ENGINEERING MANUFACTURE
+<B><DD>	P I MECH ENG B-J ENG
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART C-JOURNAL OF MECHANICAL ENGINEERING SCIENCE
+<B><DD>	P I MECH ENG C-J MEC
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART D-JOURNAL OF AUTOMOBILE ENGINEERING
+<B><DD>	P I MECH ENG D-J AUT
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART E-JOURNAL OF PROCESS MECHANICAL ENGINEERING
+<B><DD>	P I MECH ENG E-J PRO
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART F-JOURNAL OF RAIL AND RAPID TRANSIT
+<B><DD>	P I MECH ENG F-J RAI
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART G-JOURNAL OF AEROSPACE ENGINEERING
+<B><DD>	P I MECH ENG G-J AER
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART H-JOURNAL OF ENGINEERING IN MEDICINE
+<B><DD>	P I MECH ENG H
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART I-JOURNAL OF SYSTEMS AND CONTROL ENGINEERING
+<B><DD>	P I MECH ENG I-J SYS
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART J-JOURNAL OF ENGINEERING TRIBOLOGY
+<B><DD>	P I MECH ENG J-J ENG
+</B><DT>PROCEEDINGS OF THE INSTITUTION OF MECHANICAL ENGINEERS PART J-JOURNAL OF ENGINEERING TRIBOLOGY
+<B><DD>	P I MECH ENG J-J-ENG
+</B><DT>PROCEEDINGS OF THE JAPAN ACADEMY SERIES A-MATHEMATICAL SCIENCES
+<B><DD>	P JPN ACAD A-MATH
+</B><DT>PROCEEDINGS OF THE JAPAN ACADEMY SERIES B-PHYSICAL AND BIOLOGICAL SCIENCES
+<B><DD>	P JPN ACAD B-PHYS
+</B><DT>PROCEEDINGS OF THE KONINKLIJKE NEDERLANDSE AKADEMIE VAN WETENSCHAPPEN
+<B><DD>	P K NED AKAD WETENSC
+</B><DT>PROCEEDINGS OF THE KONINKLIJKE NEDERLANDSE AKADEMIE VAN WETENSCHAPPEN SERIES A-MATHEMATICAL SCIENCES
+<B><DD>	P K NED AKAD A MATH
+</B><DT>PROCEEDINGS OF THE KONINKLIJKE NEDERLANDSE AKADEMIE VAN WETENSCHAPPEN SERIES B-PALAEONTOLOGY GEOLOGY PHYSICS CHEMISTRY ANTHROPOLOGY
+<B><DD>	P K NED AKAD B PHYS
+</B><DT>PROCEEDINGS OF THE KONINKLIJKE NEDERLANDSE AKADEMIE VAN WETENSCHAPPEN SERIES C-BIOLOGICAL AND MEDICAL SCIENCES
+<B><DD>	P K NED AKAD C BIOL
+</B><DT>PROCEEDINGS OF THE KONINKLIJKE NEDERLANDSE AKADEMIE VAN WETENSCHAPPEN-BIOLOGICAL CHEMICAL GEOLOGICAL PHYSICAL AND MEDICAL SCIENCES
+<B><DD>	P K NED AKAD WETENSC
+</B><DT>PROCEEDINGS OF THE LONDON MATHEMATICAL SOCIETY
+<B><DD>	P LOND MATH SOC
+</B><DT>PROCEEDINGS OF THE LUNAR AND PLANETARY SCIENCE CONFERENCE
+<B><DD>	P LUNAR PLANET SCI C
+</B><DT>PROCEEDINGS OF THE MEAT INDUSTRY RESEARCH CONFERENCE
+<B><DD>	P MEAT IND RES CONF
+</B><DT>PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA
+<B><DD>	P NATL ACAD SCI USA
+</B><DT>PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA-BIOLOGICAL SCIENCES
+<B><DD>	P NATL ACAD SCI-BIOL
+</B><DT>PROCEEDINGS OF THE NATIONAL ACADEMY OF SCIENCES OF THE UNITED STATES OF AMERICA-PHYSICAL SCIENCES
+<B><DD>	P NATL ACAD SCI USA
+</B><DT>PROCEEDINGS OF THE NEW ZEALAND SOCIETY OF ANIMAL PRODUCTION
+<B><DD>	PROC NEW ZEAL SOC AN
+</B><DT>PROCEEDINGS OF THE NUTRITION SOCIETY
+<B><DD>	P NUTR SOC
+</B><DT>PROCEEDINGS OF THE ROYAL IRISH ACADEMY SECTION A-MATHEMATICAL AND PHYSICAL SCIENCES
+<B><DD>	P ROY IRISH ACAD A
+</B><DT>PROCEEDINGS OF THE ROYAL IRISH ACADEMY SECTION B-BIOLOGICAL GEOLOGICAL AND CHEMICAL SCIENCE
+<B><DD>	P ROY IRISH ACAD B
+</B><DT>PROCEEDINGS OF THE ROYAL SOCIETY OF EDINBURGH SECTION A-MATHEMATICS
+<B><DD>	P ROY SOC EDINB A
+</B><DT>PROCEEDINGS OF THE ROYAL SOCIETY OF EDINBURGH SECTION B-BIOLOGICAL SCIENCES
+<B><DD>	P ROY SOC EDINB B
+</B><DT>PROCEEDINGS OF THE ROYAL SOCIETY OF LONDON SERIES A-MATHEMATICAL AND PHYSICAL SCIENCES
+<B><DD>	P ROY SOC LOND A MAT
+</B><DT>PROCEEDINGS OF THE ROYAL SOCIETY OF LONDON SERIES A-MATHEMATICAL PHYSICAL AND ENGINEERING SCIENCES
+<B><DD>	P ROY SOC LOND A MAT
+</B><DT>PROCEEDINGS OF THE ROYAL SOCIETY OF LONDON SERIES B-BIOLOGICAL SCIENCES
+<B><DD>	P ROY SOC LOND B BIO
+</B><DT>PROCEEDINGS OF THE SID
+<B><DD>	P SID
+</B><DT>PROCEEDINGS OF THE SOCIETY FOR EXPERIMENTAL BIOLOGY AND MEDICINE
+<B><DD>	P SOC EXP BIOL MED
+</B><DT>PROCEEDINGS OF THE SOCIETY OF PHOTO-OPTICAL INSTRUMENTATION ENGINEERS
+<B><DD>	P SOC PHOTO-OPT INST
+</B><DT>PROCEEDINGS OF THE UNIVERSITY OF OTAGO MEDICAL SCHOOL
+<B><DD>	P U OTAGO MED SCH
+</B><DT>PROCEEDINGS OF THE WESTERN PHARMACOLOGY SOCIETY
+<B><DD>	P W PHARMACOL SOC
+</B><DT>PROCEEDINGS OF THE YORKSHIRE GEOLOGICAL SOCIETY
+<B><DD>	P YORKS GEOL SOC
+</B><DT>PROCESS BIOCHEMISTRY
+<B><DD>	PROCESS BIOCHEM
+</B><DT>PROCESS CONTROL AND QUALITY
+<B><DD>	PROCESS CONTR QUAL
+</B><DT>PROCESS ENGINEERING
+<B><DD>	PROCESS ENG
+</B><DT>PROCESS SAFETY AND ENVIRONMENTAL PROTECTION
+<B><DD>	PROCESS SAF ENVIRON
+</B><DT>PROCESS SAFETY PROGRESS
+<B><DD>	PROCESS SAF PROG
+</B><DT>PROCESS STUDIES
+<B><DD>	PROCESS STUD
+</B><DT>PRODUCTION AND OPERATIONS MANAGEMENT
+<B><DD>	PROD OPER MANAG
+</B><DT>PRODUCTION ENGINEERING
+<B><DD>	PROD ENGINEER
+</B><DT>PRODUCTION PLANNING & CONTROL
+<B><DD>	PROD PLAN CONTROL
+</B><DT>PRODUCTIONS ANIMALES
+<B><DD>	PROD ANIM
+</B><DT>PROFESSIONAL ENGINEERING
+<B><DD>	PROF ENG
+</B><DT>PROFESSIONAL GEOGRAPHER
+<B><DD>	PROF GEOGR
+</B><DT>PROFESSIONAL PSYCHOLOGY-RESEARCH AND PRACTICE
+<B><DD>	PROF PSYCHOL-RES PR
+</B><DT>PROFESSIONAL SAFETY
+<B><DD>	PROF SAF
+</B><DT>PROGRAM-AUTOMATED LIBRARY AND INFORMATION SYSTEMS
+<B><DD>	PROGRAM-AUTOM LIBR
+</B><DT>PROGRAM-ELECTRONIC LIBRARY AND INFORMATION SYSTEMS
+<B><DD>	PROGRAM-ELECTRON LIB
+</B><DT>PROGRAMMING AND COMPUTER SOFTWARE
+<B><DD>	PROGRAM COMPUT SOFT+
+</B><DT>PROGRES EN UROLOGIE
+<B><DD>	PROG UROL
+</B><DT>PROGRESS IN AEROSPACE SCIENCES
+<B><DD>	PROG AEROSP SCI
+</B><DT>PROGRESS IN ALLERGY
+<B><DD>	PROG ALLERGY
+</B><DT>PROGRESS IN ANALYTICAL ATOMIC SPECTROSCOPY
+<B><DD>	PROG ANAL ATOM SPECT
+</B><DT>PROGRESS IN ANALYTICAL SPECTROSCOPY
+<B><DD>	PROG ANAL SPECTROSC
+</B><DT>PROGRESS IN BIOCHEMICAL PHARMACOLOGY
+<B><DD>	PROG BIOCHEM PHARM
+</B><DT>PROGRESS IN BIOCHEMISTRY AND BIOPHYSICS
+<B><DD>	PROG BIOCHEM BIOPHYS
+</B><DT>PROGRESS IN BIOPHYSICS & MOLECULAR BIOLOGY
+<B><DD>	PROG BIOPHYS MOL BIO
+</B><DT>PROGRESS IN BRAIN RESEARCH
+<B><DD>	PROG BRAIN RES
+</B><DT>PROGRESS IN CARDIOVASCULAR DISEASES
+<B><DD>	PROG CARDIOVASC DIS
+</B><DT>PROGRESS IN CLINICAL AND BIOLOGICAL RESEARCH
+<B><DD>	PROG CLIN BIOL RES
+</B><DT>PROGRESS IN CLINICAL NEUROPHYSIOLOGY
+<B><DD>	PROG CLIN NEUROPHYS
+</B><DT>PROGRESS IN COLLOID AND POLYMER SCIENCE
+<B><DD>	PROG COLL POL SCI S
+</B><DT>PROGRESS IN CRYSTAL GROWTH AND CHARACTERIZATION OF MATERIALS
+<B><DD>	PROG CRYST GROWTH CH
+</B><DT>PROGRESS IN DRUG METABOLISM
+<B><DD>	PROG DRUG METAB
+</B><DT>PROGRESS IN ENERGY AND COMBUSTION SCIENCE
+<B><DD>	PROG ENERG COMBUST
+</B><DT>PROGRESS IN EXPERIMENTAL TUMOR RESEARCH
+<B><DD>	PROG EXP TUMOR RES
+</B><DT>PROGRESS IN FOOD AND NUTRITION SCIENCE
+<B><DD>	PROG FOOD NUTR SCI
+</B><DT>PROGRESS IN HEMATOLOGY
+<B><DD>	PROG HEMATOL
+</B><DT>PROGRESS IN HEMOSTASIS AND THROMBOSIS
+<B><DD>	PROG HEMOST THROMB
+</B><DT>PROGRESS IN HISTOCHEMISTRY AND CYTOCHEMISTRY
+<B><DD>	PROG HISTOCHEM CYTOC
+</B><DT>PROGRESS IN HUMAN GEOGRAPHY
+<B><DD>	PROG HUM GEOG
+</B><DT>PROGRESS IN INORGANIC CHEMISTRY
+<B><DD>	PROG INORG CHEM
+</B><DT>PROGRESS IN LIPID RESEARCH
+<B><DD>	PROG LIPID RES
+</B><DT>PROGRESS IN LIVER DISEASES
+<B><DD>	PROG LIVER DIS
+</B><DT>PROGRESS IN MATERIALS SCIENCE
+<B><DD>	PROG MATER SCI
+</B><DT>PROGRESS IN MEDICAL GENETICS
+<B><DD>	PROG MED GENET
+</B><DT>PROGRESS IN MEDICAL VIROLOGY
+<B><DD>	PROG MED VIROL
+</B><DT>PROGRESS IN MEDICINAL CHEMISTRY
+<B><DD>	PROGR MED CHEM
+</B><DT>PROGRESS IN NATURAL SCIENCE
+<B><DD>	PROG NAT SCI
+</B><DT>PROGRESS IN NEURO-PSYCHOPHARMACOLOGY
+<B><DD>	PROG NEURO-PSYCHOPHA
+</B><DT>PROGRESS IN NEURO-PSYCHOPHARMACOLOGY & BIOLOGICAL PSYCHIATRY
+<B><DD>	PROG NEURO-PSYCHOPH
+</B><DT>PROGRESS IN NEUROBIOLOGY
+<B><DD>	PROG NEUROBIOL
+</B><DT>PROGRESS IN NEUROENDOCRINIMMUNOLOGY
+<B><DD>	PROG NEUROENDOCRINIM
+</B><DT>PROGRESS IN NEUROPATHOLOGY
+<B><DD>	PROG NEUROPATH
+</B><DT>PROGRESS IN NUCLEAR ENERGY
+<B><DD>	PROG NUCL ENERG
+</B><DT>PROGRESS IN NUCLEAR MAGNETIC RESONANCE SPECTROSCOPY
+<B><DD>	PROG NUCL MAG RES SP
+</B><DT>PROGRESS IN NUCLEIC ACID RESEARCH AND MOLECULAR BIOLOGY
+<B><DD>	PROG NUCLEIC ACID RE
+</B><DT>PROGRESS IN OCEANOGRAPHY
+<B><DD>	PROG OCEANOGR
+</B><DT>PROGRESS IN OPTICS
+<B><DD>	PROG OPTICS
+</B><DT>PROGRESS IN ORGANIC COATINGS
+<B><DD>	PROG ORG COAT
+</B><DT>PROGRESS IN PARTICLE AND NUCLEAR PHYSICS
+<B><DD>	PROG PART NUCL PHYS
+</B><DT>PROGRESS IN PEDIATRIC CARDIOLOGY
+<B><DD>	PROG PEDIATR CARDIOL
+</B><DT>PROGRESS IN PHOTOVOLTAICS
+<B><DD>	PROG PHOTOVOLTAICS
+</B><DT>PROGRESS IN PHYSICAL GEOGRAPHY
+<B><DD>	PROG PHYS GEOG
+</B><DT>PROGRESS IN PHYSICAL ORGANIC CHEMISTRY
+<B><DD>	PROG PHYS ORG CHEM
+</B><DT>PROGRESS IN PLANNING
+<B><DD>	PROG PLANN
+</B><DT>PROGRESS IN POLYMER SCIENCE
+<B><DD>	PROG POLYM SCI
+</B><DT>PROGRESS IN PSYCHOBIOLOGY AND PHYSIOLOGICAL PSYCHOLOGY
+<B><DD>	PROG PSYCHOB PHYSIOL
+</B><DT>PROGRESS IN QUANTUM ELECTRONICS
+<B><DD>	PROG QUANT ELECTRON
+</B><DT>PROGRESS IN REACTION KINETICS
+<B><DD>	PROG REACT KINET
+</B><DT>PROGRESS IN REACTION KINETICS AND MECHANISM
+<B><DD>	PROG REACT KINET MEC
+</B><DT>PROGRESS IN RESPIRATORY RESEARCH
+<B><DD>	PROG R RES
+</B><DT>PROGRESS IN RETINAL AND EYE RESEARCH
+<B><DD>	PROG RETIN EYE RES
+</B><DT>PROGRESS IN RETINAL RESEARCH
+<B><DD>	PROG RETIN RES
+</B><DT>PROGRESS IN SOLID STATE CHEMISTRY
+<B><DD>	PROG SOLID STATE CH
+</B><DT>PROGRESS IN SURFACE SCIENCE
+<B><DD>	PROG SURF SCI
+</B><DT>PROGRESS IN SURGERY
+<B><DD>	PROG SURG
+</B><DT>PROGRESS IN THE CHEMISTRY OF ORGANIC NATURAL PRODUCTS
+<B><DD>	PROG CH ORG NAT PROD
+</B><DT>PROGRESS IN THEORETICAL BIOLOGY
+<B><DD>	PROG THEOR BIOL
+</B><DT>PROGRESS IN VETERINARY NEUROLOGY
+<B><DD>	PROG VET NEUROL
+</B><DT>PROGRESS OF THEORETICAL PHYSICS
+<B><DD>	PROG THEOR PHYS
+</B><DT>PROGRESS OF THEORETICAL PHYSICS SUPPLEMENT
+<B><DD>	PROG THEOR PHYS SUPP
+</B><DT>PROGRESSIVE ARCHITECTURE
+<B><DD>	PROG ARCHIT
+</B><DT>PROGRESSIVE FISH-CULTURIST
+<B><DD>	PROG FISH CULT
+</B><DT>PROLOGUE-QUARTERLY OF THE NATIONAL ARCHIVES
+<B><DD>	PROLOGUE
+</B><DT>PROOFTEXTS-A JOURNAL OF JEWISH LITERARY HISTORY
+<B><DD>	PROOFTEXTS
+</B><DT>PROPELLANTS EXPLOSIVES PYROTECHNICS
+<B><DD>	PROPELL EXPLOS PYROT
+</B><DT>PROSPETTIVA-RIVISTA DI STORIA DELL ARTE ANTICA E MODERNA
+<B><DD>	PROSPETTIVA
+</B><DT>PROSTAGLANDINS
+<B><DD>	PROSTAGLANDINS
+</B><DT>PROSTAGLANDINS & OTHER LIPID MEDIATORS
+<B><DD>	PROSTAG OTH LIPID M
+</B><DT>PROSTAGLANDINS AND MEDICINE
+<B><DD>	PROSTAG LEUKOTR ESS
+</B><DT>PROSTAGLANDINS LEUKOTRIENES AND ESSENTIAL FATTY ACIDS
+<B><DD>	PROSTAG LEUKOTR ESS
+</B><DT>PROSTAGLANDINS LEUKOTRIENES AND MEDICINE
+<B><DD>	PROSTA LEUKOTR MED
+</B><DT>PROSTAGLANDINS LEUKOTRIENES AND MEDICINE
+<B><DD>	PROSTAG LEUKOTR ESS
+</B><DT>PROSTATE
+<B><DD>	PROSTATE
+</B><DT>PROSTATE CANCER AND PROSTATIC DISEASES
+<B><DD>	PROSTATE CANCER P D
+</B><DT>PROSTHETICS AND ORTHOTICS INTERNATIONAL
+<B><DD>	PROSTHET ORTHOT INT
+</B><DT>PROTECTION ECOLOGY
+<B><DD>	PROT ECOL
+</B><DT>PROTECTION OF METALS
+<B><DD>	PROT MET+
+</B><DT>PROTEIN AND PEPTIDE LETTERS
+<B><DD>	PROTEIN PEPTIDE LETT
+</B><DT>PROTEIN ENGINEERING
+<B><DD>	PROTEIN ENG
+</B><DT>PROTEIN EXPRESSION AND PURIFICATION
+<B><DD>	PROTEIN EXPRES PURIF
+</B><DT>PROTEIN PROFILE
+<B><DD>	PROTEIN PROFILE
+</B><DT>PROTEIN SCIENCE
+<B><DD>	PROTEIN SCI
+</B><DT>PROTEINS-STRUCTURE FUNCTION AND GENETICS
+<B><DD>	PROTEINS
+</B><DT>PROTEUS
+<B><DD>	PROTEUS
+</B><DT>PROTIST
+<B><DD>	PROTIST
+</B><DT>PROTISTOLOGICA
+<B><DD>	PROTISTOLOGICA
+</B><DT>PROTOPLASMA
+<B><DD>	PROTOPLASMA
+</B><DT>PRZEMYSL CHEMICZNY
+<B><DD>	PRZEM CHEM
+</B><DT>PS-POLITICAL SCIENCE & POLITICS
+<B><DD>	PS
+</B><DT>PSICOLOGIA CONDUCTUAL
+<B><DD>	PSICOL CONDUCT
+</B><DT>PSICOTHEMA
+<B><DD>	PSICOTHEMA
+</B><DT>PSIKHOLOGICHESKII ZHURNAL
+<B><DD>	PSIKHOL ZH
+</B><DT>PSYCHE-ZEITSCHRIFT FUR PSYCHOANALYSE UND IHRE ANWENDUNGEN
+<B><DD>	PSYCHE-Z PSYCHOANAL
+</B><DT>PSYCHIATRIA CLINICA
+<B><DD>	PSYCHIAT CLIN
+</B><DT>PSYCHIATRIC ANNALS
+<B><DD>	PSYCHIAT ANN
+</B><DT>PSYCHIATRIC CLINICS OF NORTH AMERICA
+<B><DD>	PSYCHIAT CLIN N AM
+</B><DT>PSYCHIATRIC DEVELOPMENTS
+<B><DD>	PSYCHIAT DEV
+</B><DT>PSYCHIATRIC GENETICS
+<B><DD>	PSYCHIATR GENET
+</B><DT>PSYCHIATRIC QUARTERLY
+<B><DD>	PSYCHIAT QUART
+</B><DT>PSYCHIATRIC REHABILITATION JOURNAL
+<B><DD>	PSYCHIATR REHABIL J
+</B><DT>PSYCHIATRIC SERVICES
+<B><DD>	PSYCHIATR SERV
+</B><DT>PSYCHIATRIE DE L ENFANT
+<B><DD>	PSYCHIAT ENFANT
+</B><DT>PSYCHIATRISCHE PRAXIS
+<B><DD>	PSYCHIAT PRAX
+</B><DT>PSYCHIATRY AND CLINICAL NEUROSCIENCES
+<B><DD>	PSYCHIAT CLIN NEUROS
+</B><DT>PSYCHIATRY RESEARCH
+<B><DD>	PSYCHIAT RES
+</B><DT>PSYCHIATRY RESEARCH-NEUROIMAGING
+<B><DD>	PSYCHIAT RES-NEUROIM
+</B><DT>PSYCHIATRY-INTERPERSONAL AND BIOLOGICAL PROCESSES
+<B><DD>	PSYCHIATRY
+</B><DT>PSYCHO-ONCOLOGY
+<B><DD>	PSYCHO-ONCOL
+</B><DT>PSYCHOANALYTIC DIALOGUES
+<B><DD>	PSYCHOANAL DIALOGUES
+</B><DT>PSYCHOANALYTIC INQUIRY
+<B><DD>	PSYCHOANAL INQ
+</B><DT>PSYCHOANALYTIC PSYCHOLOGY
+<B><DD>	PSYCHOANAL PSYCHOL
+</B><DT>PSYCHOANALYTIC QUARTERLY
+<B><DD>	PSYCHOANAL QUART
+</B><DT>PSYCHOANALYTIC REVIEW
+<B><DD>	PSYCHOANAL REV
+</B><DT>PSYCHOANALYTIC STUDY OF THE CHILD
+<B><DD>	PSYCHOANAL STUD CHIL
+</B><DT>PSYCHOBIOLOGY
+<B><DD>	PSYCHOBIOLOGY
+</B><DT>PSYCHOLOGIA
+<B><DD>	PSYCHOLOGIA
+</B><DT>PSYCHOLOGICA BELGICA
+<B><DD>	PSYCHOL BELG
+</B><DT>PSYCHOLOGICAL ASSESSMENT
+<B><DD>	PSYCHOL ASSESSMENT
+</B><DT>PSYCHOLOGICAL BULLETIN
+<B><DD>	PSYCHOL BULL
+</B><DT>PSYCHOLOGICAL INQUIRY
+<B><DD>	PSYCHOL INQ
+</B><DT>PSYCHOLOGICAL MEDICINE
+<B><DD>	PSYCHOL MED
+</B><DT>PSYCHOLOGICAL METHODS
+<B><DD>	PSYCHOL METHODS
+</B><DT>PSYCHOLOGICAL RECORD
+<B><DD>	PSYCHOL REC
+</B><DT>PSYCHOLOGICAL REPORTS
+<B><DD>	PSYCHOL REP
+</B><DT>PSYCHOLOGICAL RESEARCH-PSYCHOLOGISCHE FORSCHUNG
+<B><DD>	PSYCHOL RES-PSYCH FO
+</B><DT>PSYCHOLOGICAL REVIEW
+<B><DD>	PSYCHOL REV
+</B><DT>PSYCHOLOGICAL SCIENCE
+<B><DD>	PSYCHOL SCI
+</B><DT>PSYCHOLOGIE IN ERZIEHUNG UND UNTERRICHT
+<B><DD>	PSYCHOL ERZ UNTERR
+</B><DT>PSYCHOLOGISCHE RUNDSCHAU
+<B><DD>	PSYCHOL RUNDSCH
+</B><DT>PSYCHOLOGIST
+<B><DD>	PSYCHOLOGIST
+</B><DT>PSYCHOLOGY
+<B><DD>	PSYCHOLOGY
+</B><DT>PSYCHOLOGY & HEALTH
+<B><DD>	PSYCHOL HEALTH
+</B><DT>PSYCHOLOGY & MARKETING
+<B><DD>	PSYCHOL MARKET
+</B><DT>PSYCHOLOGY AND AGING
+<B><DD>	PSYCHOL AGING
+</B><DT>PSYCHOLOGY CRIME & LAW
+<B><DD>	PSYCHOL CRIME LAW
+</B><DT>PSYCHOLOGY IN THE SCHOOLS
+<B><DD>	PSYCHOL SCHOOLS
+</B><DT>PSYCHOLOGY OF ADDICTIVE BEHAVIORS
+<B><DD>	PSYCHOL ADDICT BEHAV
+</B><DT>PSYCHOLOGY OF LEARNING AND MOTIVATION-ADVANCES IN RESEARCH AND THEORY
+<B><DD>	PSYCHOL LEARN MOTIV
+</B><DT>PSYCHOLOGY OF WOMEN QUARTERLY
+<B><DD>	PSYCHOL WOMEN QUART
+</B><DT>PSYCHOLOGY PUBLIC POLICY AND LAW
+<B><DD>	PSYCHOL PUBLIC POL L
+</B><DT>PSYCHOLOGY TODAY
+<B><DD>	PSYCHOL TODAY
+</B><DT>PSYCHOMETRIKA
+<B><DD>	PSYCHOMETRIKA
+</B><DT>PSYCHONEUROENDOCRINOLOGY
+<B><DD>	PSYCHONEUROENDOCRINO
+</B><DT>PSYCHONOMIC BULLETIN & REVIEW
+<B><DD>	PSYCHON B REV
+</B><DT>PSYCHOPATHOLOGY
+<B><DD>	PSYCHOPATHOLOGY
+</B><DT>PSYCHOPHARMACOLOGY
+<B><DD>	PSYCHOPHARMACOLOGY
+</B><DT>PSYCHOPHARMACOLOGY BULLETIN
+<B><DD>	PSYCHOPHARMACOL BULL
+</B><DT>PSYCHOPHARMAKOTHERAPIE
+<B><DD>	PSYCHOPHARMAKOTHERAP
+</B><DT>PSYCHOPHYSIOLOGY
+<B><DD>	PSYCHOPHYSIOLOGY
+</B><DT>PSYCHOSOCIAL REHABILITATION JOURNAL
+<B><DD>	PSYCHOSOC REHABIL J
+</B><DT>PSYCHOSOMATIC MEDICINE
+<B><DD>	PSYCHOSOM MED
+</B><DT>PSYCHOSOMATICS
+<B><DD>	PSYCHOSOMATICS
+</B><DT>PSYCHOTHERAPEUT
+<B><DD>	PSYCHOTHERAPEUT
+</B><DT>PSYCHOTHERAPIE PSYCHOSOMATIK MEDIZINISCHE PSYCHOLOGIE
+<B><DD>	PSYCHOTHER PSYCH MED
+</B><DT>PSYCHOTHERAPY
+<B><DD>	PSYCHOTHER
+</B><DT>PSYCHOTHERAPY
+<B><DD>	PSYCHOTHERAPY
+</B><DT>PSYCHOTHERAPY AND PSYCHOSOMATICS
+<B><DD>	PSYCHOTHER PSYCHOSOM
+</B><DT>PSYCHOTHERAPY RESEARCH
+<B><DD>	PSYCHOTHER RES
+</B><DT>PTB-MITTEILUNGEN
+<B><DD>	PTB-MITT
+</B><DT>PTERIDINES
+<B><DD>	PTERIDINES
+</B><DT>PUBLIC ADMINISTRATION
+<B><DD>	PUBLIC ADMIN
+</B><DT>PUBLIC ADMINISTRATION AND DEVELOPMENT
+<B><DD>	PUBLIC ADMIN DEVELOP
+</B><DT>PUBLIC ADMINISTRATION REVIEW
+<B><DD>	PUBLIC ADMIN REV
+</B><DT>PUBLIC CHOICE
+<B><DD>	PUBLIC CHOICE
+</B><DT>PUBLIC CULTURE
+<B><DD>	PUBLIC CULTURE
+</B><DT>PUBLIC FINANCE QUARTERLY
+<B><DD>	PUBLIC FINANC QUART
+</B><DT>PUBLIC FINANCE REVIEW
+<B><DD>	PUBLIC FINANC REV
+</B><DT>PUBLIC FINANCE-FINANCES PUBLIQUES
+<B><DD>	PUBLIC FINANC
+</B><DT>PUBLIC HEALTH
+<B><DD>	PUBLIC HEALTH
+</B><DT>PUBLIC HEALTH NURSING
+<B><DD>	PUBLIC HEALTH NURS
+</B><DT>PUBLIC HEALTH REPORTS
+<B><DD>	PUBLIC HEALTH REP
+</B><DT>PUBLIC HISTORIAN
+<B><DD>	PUBL HISTORIAN
+</B><DT>PUBLIC INTEREST
+<B><DD>	PUBLIC INTEREST
+</B><DT>PUBLIC MONEY & MANAGEMENT
+<B><DD>	PUBLIC MONEY MANAGE
+</B><DT>PUBLIC OPINION QUARTERLY
+<B><DD>	PUBLIC OPIN QUART
+</B><DT>PUBLIC PERSONNEL MANAGEMENT
+<B><DD>	PUBLIC PERS MANAGE
+</B><DT>PUBLIC RELATIONS REVIEW
+<B><DD>	PUBLIC RELAT REV
+</B><DT>PUBLIC ROADS
+<B><DD>	PUBLIC ROADS
+</B><DT>PUBLIC UNDERSTANDING OF SCIENCE
+<B><DD>	PUBLIC UNDERST SCI
+</B><DT>PUBLIC WELFARE
+<B><DD>	PUBLIC WELFARE
+</B><DT>PUBLIC WORKS
+<B><DD>	PUBLIC WORKS
+</B><DT>PUBLICATIONES MATHEMATICAE-DEBRECEN
+<B><DD>	PUBL MATH-DEBRECEN
+</B><DT>PUBLICATIONS  OF THE ASTRONOMICAL SOCIETY OF AUSTRALIA
+<B><DD>	PUBL ASTRON SOC AUST
+</B><DT>PUBLICATIONS ASTRONOMICAL SOCIETY OF AUSTRALIA
+<B><DD>	PUBL ASTRON SOC AUST
+</B><DT>PUBLICATIONS MATHEMATIQUES
+<B><DD>	PUBL MATH-PARIS
+</B><DT>PUBLICATIONS OF THE ASTRONOMICAL SOCIETY OF AUSTRALIA
+<B><DD>	PUBL ASTRON SOC AUST
+</B><DT>PUBLICATIONS OF THE ASTRONOMICAL SOCIETY OF JAPAN
+<B><DD>	PUBL ASTRON SOC JPN
+</B><DT>PUBLICATIONS OF THE ASTRONOMICAL SOCIETY OF THE PACIFIC
+<B><DD>	PUBL ASTRON SOC PAC
+</B><DT>PUBLICATIONS OF THE RESEARCH INSTITUTE FOR MATHEMATICAL SCIENCES
+<B><DD>	PUBL RES I MATH SCI
+</B><DT>PUBLISHING HISTORY
+<B><DD>	PUBL HIST
+</B><DT>PUBLISHING RESEARCH QUARTERLY
+<B><DD>	PUBLISH RES Q
+</B><DT>PUBLIUS-THE JOURNAL OF FEDERALISM
+<B><DD>	PUBLIUS J FEDERALISM
+</B><DT>PULMONARY PHARMACOLOGY
+<B><DD>	PULM PHARMACOL
+</B><DT>PULMONARY PHARMACOLOGY & THERAPEUTICS
+<B><DD>	PULM PHARMACOL THER
+</B><DT>PULP & PAPER-CANADA
+<B><DD>	PULP PAP-CANADA
+</B><DT>PURE AND APPLIED CHEMISTRY
+<B><DD>	PURE APPL CHEM
+</B><DT>PURE AND APPLIED GEOPHYSICS
+<B><DD>	PURE APPL GEOPHYS
+</B><DT>PURE AND APPLIED OPTICS
+<B><DD>	PURE APPL OPT
+</B></DL>
+</BODY>
+</HTML>

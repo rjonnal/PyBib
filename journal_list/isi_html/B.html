@@ -1,715 +1,1085 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="B"></A><DT>B LYMPHOCYTES AND AUTOIMMUNITY
+<B><DD>	ANN NY ACAD SCI
+</B><DT>B'98: RECENT ADVANCES IN THE DEVELOPMENT AND USE OF THE B METHOD
+<B><DD>	LECT NOTES COMPUT SC
+</B><DT>BACH
+<B><DD>	BACH
+</B><DT>BACKER UND KONDITOR
+<B><DD>	BACKER KONDITOR
+</B><DT>BACTERIAL INFECTION: CLOSE ENCOUNTERS AT THE HOST PATHOGEN INTERFACE
+<B><DD>	CURR TOP MICROBIOL
+</B><DT>BACTERIAL INVASIVENESS
+<B><DD>	CURR TOP MICROBIOL
+</B><DT>BACTERIAL PATHOGENESIS, PT A
+<B><DD>	METHOD ENZYMOL
+</B><DT>BACTERIAL PATHOGENESIS, PT B
+<B><DD>	METHOD ENZYMOL
+</B><DT>BACTERIAL RESPONSE TO PH
+<B><DD>	NOVART FDN SYMP
+</B><DT>BAILLIERES CLINICAL ANAESTHESIOLOGY
+<B><DD>	BAILLIERE CLIN ANAES
+</B><DT>BAILLIERES CLINICAL ENDOCRINOLOGY AND METABOLISM
+<B><DD>	BAILLIERE CLIN ENDOC
+</B><DT>BAILLIERES CLINICAL GASTROENTEROLOGY
+<B><DD>	BAILLIERE CLIN GASTR
+</B><DT>BAILLIERES CLINICAL HAEMATOLOGY
+<B><DD>	BAILLIERE CLIN HAEM
+</B><DT>BAILLIERES CLINICAL HAEMATOLOGY-INTERNATIONAL PRACTICE AND RESEARCH
+<B><DD>	BAIL CL HAE
+</B><DT>BAILLIERES CLINICAL INFECTIOUS DISEASES
+<B><DD>	BAILLIERE CLIN INF D
+</B><DT>BAILLIERES CLINICAL NEUROLOGY
+<B><DD>	BAILLIERE CLIN NEUR
+</B><DT>BAILLIERES CLINICAL OBSTETRICS AND GYNAECOLOGY
+<B><DD>	BAILLIERE CLIN OB GY
+</B><DT>BAILLIERES CLINICAL RHEUMATOLOGY
+<B><DD>	BAILLIERE CLIN RHEUM
+</B><DT>BAKERS DIGEST
+<B><DD>	BAKERS DIG
+</B><DT>BALANCE CONTROL OF FLEXIBLE STRUCTURES
+<B><DD>	LECT NOTES CONTR INF
+</B><DT>BALLET REVIEW
+<B><DD>	BALLET REV
+</B><DT>BALLETT INTERNATIONAL
+<B><DD>	BALLETT INT
+</B><DT>BALLETT INTERNATIONAL-TANZ AKTUELL
+<B><DD>	BALLETT INT-TANZ AKT
+</B><DT>BALLOON TECHNOLOGY AND OBSERVATIONS
+<B><DD>	ADV SPACE RES
+</B><DT>BAMIDGEH
+<B><DD>	BAMIDGEH
+</B><DT>BANGLADESH JOURNAL OF BOTANY
+<B><DD>	BANGLADESH J BOTANY
+</B><DT>BANKING LAW JOURNAL
+<B><DD>	BANKING LAW J
+</B><DT>BARODA JOURNAL OF NUTRITION
+<B><DD>	BARODA J NUTR
+</B><DT>BASIC AND APPLIED HISTOCHEMISTRY
+<B><DD>	BASIC APPL HISTOCHEM
+</B><DT>BASIC AND APPLIED MYOLOGY
+<B><DD>	BASIC APPL MYOL
+</B><DT>BASIC AND APPLIED SOCIAL PSYCHOLOGY
+<B><DD>	BASIC APPL SOC PSYCH
+</B><DT>BASIC RESEARCH IN CARDIOLOGY
+<B><DD>	BASIC RES CARDIOL
+</B><DT>BASIN RESEARCH
+<B><DD>	BASIN RES
+</B><DT>BASIS FOR CANCER MANAGEMENT
+<B><DD>	ANN NY ACAD SCI
+</B><DT>BEE WORLD
+<B><DD>	BEE WORLD
+</B><DT>BEHAVIOR ANALYST
+<B><DD>	BEHAV ANALYST
+</B><DT>BEHAVIOR AND PHILOSOPHY
+<B><DD>	BEHAV PHILOS
+</B><DT>BEHAVIOR GENETICS
+<B><DD>	BEHAV GENET
+</B><DT>BEHAVIOR MODIFICATION
+<B><DD>	BEHAV MODIF
+</B><DT>BEHAVIOR RESEARCH METHODS INSTRUMENTS & COMPUTERS
+<B><DD>	BEHAV RES METH INS C
+</B><DT>BEHAVIOR RESEARCH METHODS INSTRUMENTS & COMPUTERS
+<B><DD>	BEHAV RES METH INSTR
+</B><DT>BEHAVIOR THERAPY
+<B><DD>	BEHAV THER
+</B><DT>BEHAVIORAL & SOCIAL SCIENCES LIBRARIAN
+<B><DD>	BEHAV SOC SCI LIBR
+</B><DT>BEHAVIORAL AND BRAIN SCIENCES
+<B><DD>	BEHAV BRAIN SCI
+</B><DT>BEHAVIORAL AND NEURAL BIOLOGY
+<B><DD>	BEHAV NEURAL BIOL
+</B><DT>BEHAVIORAL DISORDERS
+<B><DD>	BEHAV DISORDERS
+</B><DT>BEHAVIORAL ECOLOGY
+<B><DD>	BEHAV ECOL
+</B><DT>BEHAVIORAL ECOLOGY AND SOCIOBIOLOGY
+<B><DD>	BEHAV ECOL SOCIOBIOL
+</B><DT>BEHAVIORAL HEALTHCARE TOMORROW
+<B><DD>	BEHAV HEALTHC TOM
+</B><DT>BEHAVIORAL INTERVENTIONS
+<B><DD>	BEHAV INTERVENT
+</B><DT>BEHAVIORAL MEDICINE
+<B><DD>	BEHAV MED
+</B><DT>BEHAVIORAL NEUROSCIENCE
+<B><DD>	BEHAV NEUROSCI
+</B><DT>BEHAVIORAL SCIENCE
+<B><DD>	BEHAV SCI
+</B><DT>BEHAVIORAL SCIENCES & THE LAW
+<B><DD>	BEHAV SCI LAW
+</B><DT>BEHAVIOUR
+<B><DD>	BEHAVIOUR
+</B><DT>BEHAVIOUR & INFORMATION TECHNOLOGY
+<B><DD>	BEHAV INFORM TECHNOL
+</B><DT>BEHAVIOUR ANALYSIS LETTERS
+<B><DD>	BEHAV ANAL LETT
+</B><DT>BEHAVIOUR CHANGE
+<B><DD>	BEHAV CHANGE
+</B><DT>BEHAVIOUR RESEARCH AND THERAPY
+<B><DD>	BEHAV RES THER
+</B><DT>BEHAVIOURAL AND COGNITIVE PSYCHOTHERAPY
+<B><DD>	BEHAV COGN PSYCHOTH
+</B><DT>BEHAVIOURAL BRAIN RESEARCH
+<B><DD>	BEHAV BRAIN RES
+</B><DT>BEHAVIOURAL NEUROLOGY
+<B><DD>	BEHAV NEUROL
+</B><DT>BEHAVIOURAL PHARMACOLOGY
+<B><DD>	BEHAV PHARMACOL
+</B><DT>BEHAVIOURAL PROCESSES
+<B><DD>	BEHAV PROCESS
+</B><DT>BEITRAGE AUS DER PLASMAPHYSIK-CONTRIBUTIONS TO PLASMA PHYSICS
+<B><DD>	BEIT PLASMAPHYS-CONT
+</B><DT>BEITRAGE ZUR GESCHICHTE DER ARBEITERBEWEGUNG
+<B><DD>	BEITR GESCH ARBEIT
+</B><DT>BEITRAGE ZUR GESCHICHTE DER DEUTSCHEN SPRACHE UND LITERATUR
+<B><DD>	BEITR GESCH DEUT SPR
+</B><DT>BEITRAGE ZUR INFUSIONSTHERAPIE/CONTRIBUTIONS TO INFUSION THERAPY
+<B><DD>	BEITR INFUS
+</B><DT>BEITRAGE ZUR MUSIKWISSENSCHAFT
+<B><DD>	BEITR MUSIKWISS
+</B><DT>BEITRAGE ZUR TABAKFORSCHUNG INTERNATIONAL
+<B><DD>	BEITR TABAKFORSCH
+</B><DT>BEITRAGE ZUR TROPISCHEN LANDWIRTSCHAFT UND VETERINARMEDIZIN
+<B><DD>	BEITR TROP LANDWIRT
+</B><DT>BELFAGOR
+<B><DD>	BELFAGOR
+</B><DT>BELGIAN JOURNAL OF BOTANY
+<B><DD>	BELG J BOT
+</B><DT>BELGIAN JOURNAL OF ZOOLOGY
+<B><DD>	BELG J ZOOL
+</B><DT>BELL LABORATORIES RECORD
+<B><DD>	BELL LAB REC
+</B><DT>BELL LABS TECHNICAL JOURNAL
+<B><DD>	BELL LABS TECH J
+</B><DT>BELL SYSTEM TECHNICAL JOURNAL
+<B><DD>	AT&T TECH J
+</B><DT>BERICHTE DER BUNSEN-GESELLSCHAFT-PHYSICAL CHEMISTRY CHEMICAL PHYSICS
+<B><DD>	BER BUNSEN PHYS CHEM
+</B><DT>BERICHTE DER DEUTSCHEN BOTANISCHEN GESELLSCHAFT
+<B><DD>	BER DEUT BOT GES
+</B><DT>BERICHTE UBER LANDWIRTSCHAFT
+<B><DD>	BER LANDWIRTSCH
+</B><DT>BERLINER JOURNAL FUR SOZIOLOGIE
+<B><DD>	BERL J SOZIOL
+</B><DT>BERLINER UND MUNCHENER TIERARZTLICHE WOCHENSCHRIFT
+<B><DD>	BERL MUNCH TIERARZTL
+</B><DT>BERNOULLI
+<B><DD>	BERNOULLI
+</B><DT>BEST PRACTICE & RESEARCH CLINICAL ENDOCRINOLOGY & METABOLISM
+<B><DD>	BEST PRACT RES CL EN
+</B><DT>BEST PRACTICE & RESEARCH CLINICAL HAEMATOLOGY
+<B><DD>	BEST PRACT RES CL HA
+</B><DT>BEST PRACTICE & RESEARCH IN CLINICAL GASTROENTEROLOGY
+<B><DD>	BEST PRACT RES CL GA
+</B><DT>BEST PRACTICE & RESEARCH IN CLINICAL OBSTETRICS & GYNAECOLOGY
+<B><DD>	BEST PRACT RES CL OB
+</B><DT>BEST PRACTICE & RESEARCH IN CLINICAL RHEUMATOLOGY
+<B><DD>	BEST PRACT RES CL RH
+</B><DT>BETRIEBSWIRTSCHAFTLICHE FORSCHUNG UND PRAXIS
+<B><DD>	BETRIEB FORSCH PRAX
+</B><DT>BIBLICA
+<B><DD>	BIBLICA
+</B><DT>BIBLICAL ARCHAEOLOGIST
+<B><DD>	BIBLIC ARCHAEOL
+</B><DT>BIBLIOTHECA NUTRITIO ET DIETA
+<B><DD>	BIBL NUTR DIET
+</B><DT>BIBLIOTHECA PSYCHIATRICA
+<B><DD>	BIBL PSYCHIAT
+</B><DT>BIBLIOTHEQUE D HUMANISME ET RENAISSANCE
+<B><DD>	BIBL HUM RENAISSANCE
+</B><DT>BIBLIOTHEQUE DE L ECOLE DES CHARTES
+<B><DD>	BIBL EC CHARTES
+</B><DT>BIBLISCHE ZEITSCHRIFT
+<B><DD>	BIBLISCHE Z
+</B><DT>BIJDRAGEN TOT DE DIERKUNDE
+<B><DD>	BIJDR DIERKD
+</B><DT>BIJDRAGEN TOT DE TAAL- LAND- EN VOLKENKUNDE
+<B><DD>	BIJDR TAAL-LAND-V
+</B><DT>BIKEN JOURNAL
+<B><DD>	BIKEN J
+</B><DT>BINARY-COMPUTING IN MICROBIOLOGY
+<B><DD>	BINARY-COMPUT MICROB
+</B><DT>BIO-MEDICAL MATERIALS AND ENGINEERING
+<B><DD>	BIO-MED MATER ENG
+</B><DT>BIO-TECHNOLOGY
+<B><DD>	BIO-TECHNOL
+</B><DT>BIOCATALYSIS
+<B><DD>	BIOCATALYSIS
+</B><DT>BIOCATALYSIS AND BIOTRANSFORMATION
+<B><DD>	BIOCATAL BIOTRANSFOR
+</B><DT>BIOCELL
+<B><DD>	BIOCELL
+</B><DT>BIOCHEMICAL ACTIONS OF HORMONES
+<B><DD>	BIOCHEM ACTION HORM
+</B><DT>BIOCHEMICAL AND BIOPHYSICAL RESEARCH COMMUNICATIONS
+<B><DD>	BIOCHEM BIOPH RES CO
+</B><DT>BIOCHEMICAL AND MOLECULAR MEDICINE
+<B><DD>	BIOCHEM MOL MED
+</B><DT>BIOCHEMICAL ARCHIVES
+<B><DD>	BIOCHEM ARCH
+</B><DT>BIOCHEMICAL EDUCATION
+<B><DD>	BIOCHEM EDUC
+</B><DT>BIOCHEMICAL ENGINEERING JOURNAL
+<B><DD>	BIOCHEM ENG J
+</B><DT>BIOCHEMICAL GENETICS
+<B><DD>	BIOCHEM GENET
+</B><DT>BIOCHEMICAL JOURNAL
+<B><DD>	BIOCHEM J
+</B><DT>BIOCHEMICAL MEDICINE
+<B><DD>	BIOCHEM MED METAB B
+</B><DT>BIOCHEMICAL MEDICINE AND METABOLIC BIOLOGY
+<B><DD>	BIOCHEM MED METAB B
+</B><DT>BIOCHEMICAL PHARMACOLOGY
+<B><DD>	BIOCHEM PHARMACOL
+</B><DT>BIOCHEMICAL SOCIETY SYMPOSIUM
+<B><DD>	BIOCHEM SOC SYMP
+</B><DT>BIOCHEMICAL SOCIETY TRANSACTIONS
+<B><DD>	BIOCHEM SOC T
+</B><DT>BIOCHEMICAL SYSTEMATICS AND ECOLOGY
+<B><DD>	BIOCHEM SYST ECOL
+</B><DT>BIOCHEMIE UND PHYSIOLOGIE DER PFLANZEN
+<B><DD>	BIOCHEM PHYSIOL PFL
+</B><DT>BIOCHEMISTRY
+<B><DD>	BIOCHEMISTRY-US
+</B><DT>BIOCHEMISTRY AND CELL BIOLOGY-BIOCHIMIE ET BIOLOGIE CELLULAIRE
+<B><DD>	BIOCHEM CELL BIOL
+</B><DT>BIOCHEMISTRY AND MOLECULAR BIOLOGY INTERNATIONAL
+<B><DD>	BIOCHEM MOL BIOL INT
+</B><DT>BIOCHEMISTRY INTERNATIONAL
+<B><DD>	BIOCHEM INT
+</B><DT>BIOCHEMISTRY-MOSCOW
+<B><DD>	BIOCHEMISTRY-MOSCOW+
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA
+<B><DD>	BIOCHIM BIOPHYS ACTA
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-BIOENERGETICS
+<B><DD>	BBA-BIOENERGETICS
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-BIOMEMBRANES
+<B><DD>	BBA-BIOMEMBRANES
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-GENE STRUCTURE AND EXPRESSION
+<B><DD>	BBA-GENE STRUCT EXPR
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-GENERAL SUBJECTS
+<B><DD>	BBA-GEN SUBJECTS
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-LIPIDS AND LIPID METABOLISM
+<B><DD>	BBA-LIPID LIPID MET
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-MOLECULAR AND CELL BIOLOGY OF LIPIDS
+<B><DD>	BBA-MOL CELL BIOL L
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-MOLECULAR BASIS OF DISEASE
+<B><DD>	BBA-MOL BASIS DIS
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-MOLECULAR CELL RESEARCH
+<B><DD>	BBA-MOL CELL RES
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-PROTEIN STRUCTURE AND MOLECULAR ENZYMOLOGY
+<B><DD>	BBA-PROTEIN STRUCT M
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-REVIEWS ON BIOMEMBRANES
+<B><DD>	BBA-REV BIOMEMBRANES
+</B><DT>BIOCHIMICA ET BIOPHYSICA ACTA-REVIEWS ON CANCER
+<B><DD>	BBA-REV CANCER
+</B><DT>BIOCHIMIE
+<B><DD>	BIOCHIMIE
+</B><DT>BIOCONJUGATE CHEMISTRY
+<B><DD>	BIOCONJUGATE CHEM
+</B><DT>BIOCONTROL
+<B><DD>	BIOCONTROL
+</B><DT>BIOCONTROL SCIENCE AND TECHNOLOGY
+<B><DD>	BIOCONTROL SCI TECHN
+</B><DT>BIOCYCLE
+<B><DD>	BIOCYCLE
+</B><DT>BIODEGRADATION
+<B><DD>	BIODEGRADATION
+</B><DT>BIODIVERSITY AND CONSERVATION
+<B><DD>	BIODIVERS CONSERV
+</B><DT>BIODRUGS
+<B><DD>	BIODRUGS
+</B><DT>BIOELECTROCHEMISTRY AND BIOENERGETICS
+<B><DD>	BIOELECTROCH BIOENER
+</B><DT>BIOELECTROMAGNETICS
+<B><DD>	BIOELECTROMAGNETICS
+</B><DT>BIOESSAYS
+<B><DD>	BIOESSAYS
+</B><DT>BIOETHICS
+<B><DD>	BIOETHICS
+</B><DT>BIOFACTORS
+<B><DD>	BIOFACTORS
+</B><DT>BIOFEEDBACK AND SELF-REGULATION
+<B><DD>	BIOFEEDBACK SELF-REG
+</B><DT>BIOFIZIKA
+<B><DD>	BIOFIZIKA+
+</B><DT>BIOFOULING
+<B><DD>	BIOFOULING
+</B><DT>BIOFUTUR
+<B><DD>	BIOFUTUR
+</B><DT>BIOGENIC AMINES
+<B><DD>	BIOGENIC AMINES
+</B><DT>BIOGEOCHEMISTRY
+<B><DD>	BIOGEOCHEMISTRY
+</B><DT>BIOGRAPHY-AN INTERDISCIPLINARY QUARTERLY
+<B><DD>	BIOGRAPHY
+</B><DT>BIOIMAGING
+<B><DD>	BIOIMAGING
+</B><DT>BIOINFORMATICS
+<B><DD>	BIOINFORMATICS
+</B><DT>BIOLOGIA
+<B><DD>	BIOLOGIA
+</B><DT>BIOLOGIA PLANTARUM
+<B><DD>	BIOL PLANTARUM
+</B><DT>BIOLOGICAL & PHARMACEUTICAL BULLETIN
+<B><DD>	BIOL PHARM BULL
+</B><DT>BIOLOGICAL AGRICULTURE & HORTICULTURE
+<B><DD>	BIOL AGRIC HORTIC
+</B><DT>BIOLOGICAL BULLETIN
+<B><DD>	BIOL BULL
+</B><DT>BIOLOGICAL CHEMISTRY
+<B><DD>	BIOL CHEM
+</B><DT>BIOLOGICAL CHEMISTRY HOPPE-SEYLER
+<B><DD>	BIOL CHEM H-S
+</B><DT>BIOLOGICAL CONSERVATION
+<B><DD>	BIOL CONSERV
+</B><DT>BIOLOGICAL CONTROL
+<B><DD>	BIOL CONTROL
+</B><DT>BIOLOGICAL CYBERNETICS
+<B><DD>	BIOL CYBERN
+</B><DT>BIOLOGICAL JOURNAL OF THE LINNEAN SOCIETY
+<B><DD>	BIOL J LINN SOC
+</B><DT>BIOLOGICAL MASS SPECTROMETRY
+<B><DD>	BIOL MASS SPECTROM
+</B><DT>BIOLOGICAL MEMBRANES
+<B><DD>	BIOL MEMBR
+</B><DT>BIOLOGICAL PSYCHIATRY
+<B><DD>	BIOL PSYCHIAT
+</B><DT>BIOLOGICAL PSYCHOLOGY
+<B><DD>	BIOL PSYCHOL
+</B><DT>BIOLOGICAL RESEARCH
+<B><DD>	BIOL RES
+</B><DT>BIOLOGICAL RESEARCH IN PREGNANCY AND PERINATOLOGY
+<B><DD>	BIOL RES PREG PERIN
+</B><DT>BIOLOGICAL REVIEWS OF THE CAMBRIDGE PHILOSOPHICAL SOCIETY
+<B><DD>	BIOL REV
+</B><DT>BIOLOGICAL RHYTHM RESEARCH
+<B><DD>	BIOL RHYTHM RES
+</B><DT>BIOLOGICAL SIGNALS
+<B><DD>	BIOL SIGNAL
+</B><DT>BIOLOGICAL SIGNALS AND RECEPTORS
+<B><DD>	BIOL SIGNAL RECEPT
+</B><DT>BIOLOGICAL TRACE ELEMENT RESEARCH
+<B><DD>	BIOL TRACE ELEM RES
+</B><DT>BIOLOGICAL WASTES
+<B><DD>	BIOL WASTE
+</B><DT>BIOLOGICALS
+<B><DD>	BIOLOGICALS
+</B><DT>BIOLOGICHESKIE MEMBRANY
+<B><DD>	BIOL MEMBRANY
+</B><DT>BIOLOGISCHES ZENTRALBLATT
+<B><DD>	BIOL ZBL
+</B><DT>BIOLOGISKE SKRIFTER KONGELIGE DANSKE VIDENSKABERNES SELSKAB
+<B><DD>	BIOL SKR DAN VID SEL
+</B><DT>BIOLOGIST
+<B><DD>	BIOLOGIST
+</B><DT>BIOLOGIYA MORYA-MARINE BIOLOGY
+<B><DD>	BIOL MORYA-VLAD+
+</B><DT>BIOLOGIZACE A CHEMIZACE ZIVOCISNE VYROBY-VETERINARIA
+<B><DD>	BIOL CHEM ZIVOCISME
+</B><DT>BIOLOGY & PHILOSOPHY
+<B><DD>	BIOL PHILOS
+</B><DT>BIOLOGY AND ENVIRONMENT-PROCEEDINGS OF THE ROYAL IRISH ACADEMY
+<B><DD>	BIOL ENVIRON
+</B><DT>BIOLOGY AND FERTILITY OF SOILS
+<B><DD>	BIOL FERT SOILS
+</B><DT>BIOLOGY OF BEHAVIOUR
+<B><DD>	BIOL BEHAV
+</B><DT>BIOLOGY OF METALS
+<B><DD>	BIOL MET
+</B><DT>BIOLOGY OF REPRODUCTION
+<B><DD>	BIOL REPROD
+</B><DT>BIOLOGY OF SPORT
+<B><DD>	BIOL SPORT
+</B><DT>BIOLOGY OF THE CELL
+<B><DD>	BIOL CELL
+</B><DT>BIOLOGY OF THE NEONATE
+<B><DD>	BIOL NEONATE
+</B><DT>BIOMARKERS
+<B><DD>	BIOMARKERS
+</B><DT>BIOMASS
+<B><DD>	BIOMASS
+</B><DT>BIOMASS & BIOENERGY
+<B><DD>	BIOMASS BIOENERG
+</B><DT>BIOMATERIAL-LIVING SYSTEM INTERACTIONS
+<B><DD>	BIOMATER LIVING SYST
+</B><DT>BIOMATERIALS
+<B><DD>	BIOMATERIALS
+</B><DT>BIOMATERIALS ARTIFICIAL CELLS AND ARTIFICIAL ORGANS
+<B><DD>	BIOMATER ARTIF CELL
+</B><DT>BIOMATERIALS ARTIFICIAL CELLS AND IMMOBILIZATION BIOTECHNOLOGY
+<B><DD>	BIOMAT ARTIF CELL IM
+</B><DT>BIOMATERIALS MEDICAL DEVICES AND ARTIFICIAL ORGANS
+<B><DD>	BIOMATER ARTIF CELL
+</B><DT>BIOMEDICA BIOCHIMICA ACTA
+<B><DD>	BIOMED BIOCHIM ACTA
+</B><DT>BIOMEDICAL AND ENVIRONMENTAL MASS SPECTROMETRY
+<B><DD>	BIOMED ENVIRON MASS
+</B><DT>BIOMEDICAL AND ENVIRONMENTAL SCIENCES
+<B><DD>	BIOMED ENVIRON SCI
+</B><DT>BIOMEDICAL CHROMATOGRAPHY
+<B><DD>	BIOMED CHROMATOGR
+</B><DT>BIOMEDICAL ENGINEERING-APPLICATIONS BASIS COMMUNICATIONS
+<B><DD>	BIOMED ENG-APP BAS C
+</B><DT>BIOMEDICAL INSTRUMENTATION & TECHNOLOGY
+<B><DD>	BIOMED INSTRUM TECHN
+</B><DT>BIOMEDICAL LETTERS
+<B><DD>	BIOMED LETT
+</B><DT>BIOMEDICAL MASS SPECTROMETRY
+<B><DD>	BIOMED MASS SPECTROM
+</B><DT>BIOMEDICAL RESEARCH-TOKYO
+<B><DD>	BIOMED RES-TOKYO
+</B><DT>BIOMEDICINE
+<B><DD>	BIOMEDICINE
+</B><DT>BIOMEDICINE & PHARMACOTHERAPY
+<B><DD>	BIOMED PHARMACOTHER
+</B><DT>BIOMEDICINE EXPRESS
+<B><DD>	BIOMED EXPRESS
+</B><DT>BIOMEDIZINISCHE TECHNIK
+<B><DD>	BIOMED TECH
+</B><DT>BIOMEMBRANES
+<B><DD>	BIOMEMBRANE
+</B><DT>BIOMETALS
+<B><DD>	BIOMETALS
+</B><DT>BIOMETRICAL JOURNAL
+<B><DD>	BIOMETRICAL J
+</B><DT>BIOMETRICS
+<B><DD>	BIOMETRICS
+</B><DT>BIOMETRIKA
+<B><DD>	BIOMETRIKA
+</B><DT>BIOMOLECULAR ENGINEERING
+<B><DD>	BIOMOL ENG
+</B><DT>BIOORGANIC & MEDICINAL CHEMISTRY
+<B><DD>	BIOORGAN MED CHEM
+</B><DT>BIOORGANIC & MEDICINAL CHEMISTRY LETTERS
+<B><DD>	BIOORG MED CHEM LETT
+</B><DT>BIOORGANIC CHEMISTRY
+<B><DD>	BIOORG CHEM
+</B><DT>BIOORGANICHESKAYA KHIMIYA
+<B><DD>	BIOORG KHIM+
+</B><DT>BIOPHARM-JOURNAL OF VETERINARY PHARMACY
+<B><DD>	BIOPHARM-J VET PHARM
+</B><DT>BIOPHARM-THE APPLIED TECHNOLOGIES OF BIOPHARMACEUTICAL DEVELOPMENT
+<B><DD>	BIOPHARM-APPL T BIO
+</B><DT>BIOPHARM-THE TECHNOLOGY & BUSINESS OF BIOPHARMACEUTICALS
+<B><DD>	BIOPHARM-TECHNOL BUS
+</B><DT>BIOPHARMACEUTICS & DRUG DISPOSITION
+<B><DD>	BIOPHARM DRUG DISPOS
+</B><DT>BIOPHYSICAL CHEMISTRY
+<B><DD>	BIOPHYS CHEM
+</B><DT>BIOPHYSICAL JOURNAL
+<B><DD>	BIOPHYS J
+</B><DT>BIOPHYSICS OF STRUCTURE AND MECHANISM
+<B><DD>	BIOPHYS STRUCT MECH
+</B><DT>BIOPOLYMERS
+<B><DD>	BIOPOLYMERS
+</B><DT>BIOPROCESS ENGINEERING
+<B><DD>	BIOPROCESS ENG
+</B><DT>BIORECOVERY
+<B><DD>	BIORECOVERY
+</B><DT>BIORESOURCE TECHNOLOGY
+<B><DD>	BIORESOURCE TECHNOL
+</B><DT>BIORHEOLOGY
+<B><DD>	BIORHEOLOGY
+</B><DT>BIOSCIENCE
+<B><DD>	BIOSCIENCE
+</B><DT>BIOSCIENCE BIOTECHNOLOGY AND BIOCHEMISTRY
+<B><DD>	BIOSCI BIOTECH BIOCH
+</B><DT>BIOSCIENCE REPORTS
+<B><DD>	BIOSCIENCE REP
+</B><DT>BIOSENSORS
+<B><DD>	BIOSENSORS
+</B><DT>BIOSENSORS & BIOELECTRONICS
+<B><DD>	BIOSENS BIOELECTRON
+</B><DT>BIOSEPARATION
+<B><DD>	BIOSEPARATION
+</B><DT>BIOSPECTROSCOPY
+<B><DD>	BIOSPECTROSCOPY
+</B><DT>BIOSYSTEMS
+<B><DD>	BIOSYSTEMS
+</B><DT>BIOTECH FORUM EUROPE
+<B><DD>	BIOTECH FORUM EUROPE
+</B><DT>BIOTECHNIC & HISTOCHEMISTRY
+<B><DD>	BIOTECH HISTOCHEM
+</B><DT>BIOTECHNIQUES
+<B><DD>	BIOTECHNIQUES
+</B><DT>BIOTECHNOLOGY & BIOTECHNOLOGICAL EQUIPMENT
+<B><DD>	BIOTECHNOL BIOTEC EQ
+</B><DT>BIOTECHNOLOGY & GENETIC ENGINEERING REVIEWS
+<B><DD>	BIOTECHNOL GENET ENG
+</B><DT>BIOTECHNOLOGY & GENETIC ENGINEERING REVIEWS, VOL 14
+<B><DD>	BIOTECHNOL GENET ENG
+</B><DT>BIOTECHNOLOGY & GENETIC ENGINEERING REVIEWS, VOL. 15
+<B><DD>	BIOTECHNOL GENET ENG
+</B><DT>BIOTECHNOLOGY ADVANCES
+<B><DD>	BIOTECHNOL ADV
+</B><DT>BIOTECHNOLOGY AND APPLIED BIOCHEMISTRY
+<B><DD>	BIOTECHNOL APPL BIOC
+</B><DT>BIOTECHNOLOGY AND BIOENGINEERING
+<B><DD>	BIOTECHNOL BIOENG
+</B><DT>BIOTECHNOLOGY AND DEVELOPMENT MONITOR
+<B><DD>	BIOTECHNOL DEV MONIT
+</B><DT>BIOTECHNOLOGY AND GENETIC ENGINEERING REVIEWS, VOL 13
+<B><DD>	BIOTECHNOL GENET ENG
+</B><DT>BIOTECHNOLOGY AND GENETIC ENGINEERING REVIEWS, VOL 16
+<B><DD>	BIOTECHNOL GENET ENG
+</B><DT>BIOTECHNOLOGY EDUCATION
+<B><DD>	BIOTECHNOL EDUC
+</B><DT>BIOTECHNOLOGY LAW REPORT
+<B><DD>	BIOTECHNOL LAW REP
+</B><DT>BIOTECHNOLOGY LETTERS
+<B><DD>	BIOTECHNOL LETT
+</B><DT>BIOTECHNOLOGY PROGRESS
+<B><DD>	BIOTECHNOL PROGR
+</B><DT>BIOTECHNOLOGY SOFTWARE & INTERNET JOURNAL
+<B><DD>	BIOTECHNOL SOFTW I J
+</B><DT>BIOTECHNOLOGY SOFTWARE JOURNAL
+<B><DD>	BIOTECHNOL SOFTW J
+</B><DT>BIOTECHNOLOGY TECHNIQUES
+<B><DD>	BIOTECHNOL TECH
+</B><DT>BIOTECHNOLOGY THERAPEUTICS
+<B><DD>	BIOTECHNOL THER
+</B><DT>BIOTELEMETRY AND PATIENT MONITORING
+<B><DD>	BIOTELEM PAT MON
+</B><DT>BIOTHERAPY
+<B><DD>	BIOTHERAPY
+</B><DT>BIOTROPICA
+<B><DD>	BIOTROPICA
+</B><DT>BIOWORLD
+<B><DD>	BIOWORLD
+</B><DT>BIRD BEHAVIOUR
+<B><DD>	BIRD BEHAV
+</B><DT>BIRD CONSERVATION INTERNATIONAL
+<B><DD>	BIRD CONSERV INT
+</B><DT>BIRD STUDY
+<B><DD>	BIRD STUDY
+</B><DT>BIRTH DEFECTS-ORIGINAL ARTICLE SERIES
+<B><DD>	BIRTH DEFECTS-ORIG
+</B><DT>BIRTH-ISSUES IN PERINATAL CARE
+<B><DD>	BIRTH-ISS PERINAT C
+</B><DT>BIT
+<B><DD>	BIT
+</B><DT>BJU INTERNATIONAL
+<B><DD>	BJU INT
+</B><DT>BLACK MUSIC RESEARCH JOURNAL
+<B><DD>	BLACK MUSIC RES J
+</B><DT>BLACK SCHOLAR
+<B><DD>	BLACK SCHOLAR
+</B><DT>BLAKE-AN ILLUSTRATED QUARTERLY
+<B><DD>	BLAKE-ILLUSTRATED Q
+</B><DT>BLOOD
+<B><DD>	BLOOD
+</B><DT>BLOOD CELLS
+<B><DD>	BLOOD CELLS
+</B><DT>BLOOD CELLS MOLECULES AND DISEASES
+<B><DD>	BLOOD CELL MOL DIS
+</B><DT>BLOOD COAGULATION & FIBRINOLYSIS
+<B><DD>	BLOOD COAGUL FIBRIN
+</B><DT>BLOOD PRESSURE
+<B><DD>	BLOOD PRESSURE
+</B><DT>BLOOD PRESSURE MONITORING
+<B><DD>	BLOOD PRESS MONIT
+</B><DT>BLOOD PURIFICATION
+<B><DD>	BLOOD PURIFICAT
+</B><DT>BLOOD REVIEWS
+<B><DD>	BLOOD REV
+</B><DT>BLOOD VESSELS
+<B><DD>	BLOOD VESSELS
+</B><DT>BLUMEA
+<B><DD>	BLUMEA
+</B><DT>BLUT
+<B><DD>	BLUT
+</B><DT>BMR JOURNAL OF AUSTRALIAN GEOLOGY & GEOPHYSICS
+<B><DD>	BMR J AUST GEOL GEOP
+</B><DT>BODENKULTUR
+<B><DD>	BODENKULTUR
+</B><DT>BOLETIN DE LA REAL ACADEMIA ESPANOLA
+<B><DD>	B REAL ACAD ESPAN
+</B><DT>BOLETIN DE LA SOCIEDAD CHILENA DE QUIMICA
+<B><DD>	BOL SOC CHIL QUIM
+</B><DT>BOLETIN DE LA SOCIEDAD ESPANOLA DE CERAMICA Y VIDRIO
+<B><DD>	BOL SOC ESP CERAM V
+</B><DT>BOLETIN DE LA SOCIEDAD MATEMATICA MEXICANA
+<B><DD>	BOL SOC MAT MEX
+</B><DT>BOLLETTINO DELL ISTITUTO SIEROTERAPICO MILANESE
+<B><DD>	B I SIEROTER MILAN
+</B><DT>BOLLETTINO DELLA UNIONE MATEMATICA ITALIANA
+<B><DD>	B UNIONE MAT ITAL
+</B><DT>BOLLETTINO DI ZOOLOGIA
+<B><DD>	B ZOOL
+</B><DT>BONE
+<B><DD>	BONE
+</B><DT>BONE AND MINERAL
+<B><DD>	BONE MINER
+</B><DT>BONE MARROW TRANSPLANTATION
+<B><DD>	BONE MARROW TRANSPL
+</B><DT>BOOK COLLECTOR
+<B><DD>	BOOK COLLECT
+</B><DT>BOREAS
+<B><DD>	BOREAS
+</B><DT>BORGYOGYASZATI ES VENEROLOGIAI SZEMLE
+<B><DD>	BORGYOGY VENER SZLE
+</B><DT>BOSTON UNIVERSITY LAW REVIEW
+<B><DD>	BOSTON U LAW REV
+</B><DT>BOTANICA ACTA
+<B><DD>	BOT ACTA
+</B><DT>BOTANICA HELVETICA
+<B><DD>	BOT HELV
+</B><DT>BOTANICA MARINA
+<B><DD>	BOT MAR
+</B><DT>BOTANICAL BULLETIN OF ACADEMIA SINICA
+<B><DD>	BOT BULL ACAD SINICA
+</B><DT>BOTANICAL GAZETTE
+<B><DD>	BOT GAZ
+</B><DT>BOTANICAL JOURNAL OF THE LINNEAN SOCIETY
+<B><DD>	BOT J LINN SOC
+</B><DT>BOTANICAL MAGAZINE-TOKYO
+<B><DD>	BOT MAG TOKYO
+</B><DT>BOTANICAL REVIEW
+<B><DD>	BOT REV
+</B><DT>BOTANIKAI KOZLEMENYEK-BOTANICAL PUBLICATIONS
+<B><DD>	BOT KOZL
+</B><DT>BOTHALIA
+<B><DD>	BOTHALIA
+</B><DT>BOUNDARY 2-AN INTERNATIONAL JOURNAL OF LITERATURE AND CULTURE
+<B><DD>	BOUNDARY TWO
+</B><DT>BOUNDARY-LAYER METEOROLOGY
+<B><DD>	BOUND-LAY METEOROL
+</B><DT>BRAIN
+<B><DD>	BRAIN
+</B><DT>BRAIN & DEVELOPMENT
+<B><DD>	BRAIN DEV-JPN
+</B><DT>BRAIN AND COGNITION
+<B><DD>	BRAIN COGNITION
+</B><DT>BRAIN AND LANGUAGE
+<B><DD>	BRAIN LANG
+</B><DT>BRAIN BEHAVIOR AND EVOLUTION
+<B><DD>	BRAIN BEHAV EVOLUT
+</B><DT>BRAIN BEHAVIOR AND IMMUNITY
+<B><DD>	BRAIN BEHAV IMMUN
+</B><DT>BRAIN INJURY
+<B><DD>	BRAIN INJURY
+</B><DT>BRAIN PATHOLOGY
+<B><DD>	BRAIN PATHOL
+</B><DT>BRAIN RESEARCH
+<B><DD>	BRAIN RES
+</B><DT>BRAIN RESEARCH BULLETIN
+<B><DD>	BRAIN RES BULL
+</B><DT>BRAIN RESEARCH PROTOCOLS
+<B><DD>	BRAIN RES PROTOC
+</B><DT>BRAIN RESEARCH REVIEWS
+<B><DD>	BRAIN RES REV
+</B><DT>BRAIN TOPOGRAPHY
+<B><DD>	BRAIN TOPOGR
+</B><DT>BRAZILIAN ARCHIVES OF BIOLOGY AND TECHNOLOGY
+<B><DD>	BRAZ ARCH BIOL TECHN
+</B><DT>BRAZILIAN JOURNAL OF CHEMICAL ENGINEERING
+<B><DD>	BRAZ J CHEM ENG
+</B><DT>BRAZILIAN JOURNAL OF GENETICS
+<B><DD>	BRAZ J GENET
+</B><DT>BRAZILIAN JOURNAL OF MEDICAL AND BIOLOGICAL RESEARCH
+<B><DD>	BRAZ J MED BIOL RES
+</B><DT>BRAZILIAN JOURNAL OF PHYSICS
+<B><DD>	BRAZ J PHYS
+</B><DT>BREAST
+<B><DD>	BREAST
+</B><DT>BREAST CANCER RESEARCH AND TREATMENT
+<B><DD>	BREAST CANCER RES TR
+</B><DT>BREEDING SCIENCE
+<B><DD>	BREEDING SCI
+</B><DT>BRENNSTOFF-WARME-KRAFT
+<B><DD>	BRENNST-WARME-KRAFT
+</B><DT>BRIGHAM YOUNG UNIVERSITY STUDIES
+<B><DD>	BRIGHAM YOUNG U STUD
+</B><DT>BRIMLEYANA
+<B><DD>	BRIMLEYANA
+</B><DT>BRITISH ANTARCTIC SURVEY BULLETIN
+<B><DD>	BRIT ANTARCT SURV B
+</B><DT>BRITISH BIRDS
+<B><DD>	BRIT BIRDS
+</B><DT>BRITISH CERAMIC TRANSACTIONS
+<B><DD>	BRIT CERAM T
+</B><DT>BRITISH CERAMIC TRANSACTIONS AND JOURNAL
+<B><DD>	BRIT CERAM TRANS J
+</B><DT>BRITISH CORROSION JOURNAL
+<B><DD>	BRIT CORROS J
+</B><DT>BRITISH DENTAL JOURNAL
+<B><DD>	BRIT DENT J
+</B><DT>BRITISH EDUCATIONAL RESEARCH JOURNAL
+<B><DD>	BRIT EDUC RES J
+</B><DT>BRITISH HEART JOURNAL
+<B><DD>	BRIT HEART J
+</B><DT>BRITISH JOURNAL FOR THE HISTORY OF SCIENCE
+<B><DD>	BRIT J HIST SCI
+</B><DT>BRITISH JOURNAL FOR THE PHILOSOPHY OF SCIENCE
+<B><DD>	BRIT J PHILOS SCI
+</B><DT>BRITISH JOURNAL OF ADDICTION
+<B><DD>	BRIT J ADDICT
+</B><DT>BRITISH JOURNAL OF AESTHETICS
+<B><DD>	BRIT J AESTHET
+</B><DT>BRITISH JOURNAL OF ANAESTHESIA
+<B><DD>	BRIT J ANAESTH
+</B><DT>BRITISH JOURNAL OF AUDIOLOGY
+<B><DD>	BRIT J AUDIOL
+</B><DT>BRITISH JOURNAL OF BIOMEDICAL SCIENCE
+<B><DD>	BRIT J BIOMED SCI
+</B><DT>BRITISH JOURNAL OF CANCER
+<B><DD>	BRIT J CANCER
+</B><DT>BRITISH JOURNAL OF CLINICAL PHARMACOLOGY
+<B><DD>	BRIT J CLIN PHARMACO
+</B><DT>BRITISH JOURNAL OF CLINICAL PRACTICE
+<B><DD>	BRIT J CLIN PRACT
+</B><DT>BRITISH JOURNAL OF CLINICAL PSYCHOLOGY
+<B><DD>	BRIT J CLIN PSYCHOL
+</B><DT>BRITISH JOURNAL OF CRIMINOLOGY
+<B><DD>	BRIT J CRIMINOL
+</B><DT>BRITISH JOURNAL OF DERMATOLOGY
+<B><DD>	BRIT J DERMATOL
+</B><DT>BRITISH JOURNAL OF DEVELOPMENTAL DISABILITIES
+<B><DD>	BRIT J DEV DISABIL
+</B><DT>BRITISH JOURNAL OF DEVELOPMENTAL PSYCHOLOGY
+<B><DD>	BRIT J DEV PSYCHOL
+</B><DT>BRITISH JOURNAL OF DISEASES OF THE CHEST
+<B><DD>	BRIT J DIS CHEST
+</B><DT>BRITISH JOURNAL OF EDUCATIONAL PSYCHOLOGY
+<B><DD>	BRIT J EDUC PSYCHOL
+</B><DT>BRITISH JOURNAL OF EDUCATIONAL STUDIES
+<B><DD>	BRIT J EDUC STUD
+</B><DT>BRITISH JOURNAL OF EDUCATIONAL TECHNOLOGY
+<B><DD>	BRIT J EDUC TECHNOL
+</B><DT>BRITISH JOURNAL OF EXPERIMENTAL PATHOLOGY
+<B><DD>	BRIT J EXP PATHOL
+</B><DT>BRITISH JOURNAL OF FAMILY PLANNING
+<B><DD>	BRIT J FAM PLAN
+</B><DT>BRITISH JOURNAL OF GENERAL PRACTICE
+<B><DD>	BRIT J GEN PRACT
+</B><DT>BRITISH JOURNAL OF GUIDANCE & COUNSELLING
+<B><DD>	BRIT J GUID COUNS
+</B><DT>BRITISH JOURNAL OF HAEMATOLOGY
+<B><DD>	BRIT J HAEMATOL
+</B><DT>BRITISH JOURNAL OF HEALTH PSYCHOLOGY
+<B><DD>	BRIT J HEALTH PSYCH
+</B><DT>BRITISH JOURNAL OF HEALTHCARE COMPUTING & INFORMATION MANAGEMENT
+<B><DD>	BRIT J HEALTHC COMP
+</B><DT>BRITISH JOURNAL OF HERPETOLOGY
+<B><DD>	BRIT J HERPETOL
+</B><DT>BRITISH JOURNAL OF HOSPITAL MEDICINE
+<B><DD>	BRIT J HOSP MED
+</B><DT>BRITISH JOURNAL OF INDUSTRIAL MEDICINE
+<B><DD>	BRIT J IND MED
+</B><DT>BRITISH JOURNAL OF INDUSTRIAL RELATIONS
+<B><DD>	BRIT J IND RELAT
+</B><DT>BRITISH JOURNAL OF MANAGEMENT
+<B><DD>	BRIT J MANAGE
+</B><DT>BRITISH JOURNAL OF MATHEMATICAL & STATISTICAL PSYCHOLOGY
+<B><DD>	BRIT J MATH STAT PSY
+</B><DT>BRITISH JOURNAL OF MEDICAL PSYCHOLOGY
+<B><DD>	BRIT J MED PSYCHOL
+</B><DT>BRITISH JOURNAL OF NEUROSURGERY
+<B><DD>	BRIT J NEUROSURG
+</B><DT>BRITISH JOURNAL OF NON-DESTRUCTIVE TESTING
+<B><DD>	BRIT J NONDESTR TEST
+</B><DT>BRITISH JOURNAL OF NUTRITION
+<B><DD>	BRIT J NUTR
+</B><DT>BRITISH JOURNAL OF OBSTETRICS AND GYNAECOLOGY
+<B><DD>	BRIT J OBSTET GYNAEC
+</B><DT>BRITISH JOURNAL OF OPHTHALMOLOGY
+<B><DD>	BRIT J OPHTHALMOL
+</B><DT>BRITISH JOURNAL OF ORAL & MAXILLOFACIAL SURGERY
+<B><DD>	BRIT J ORAL MAX SURG
+</B><DT>BRITISH JOURNAL OF ORAL SURGERY
+<B><DD>	BRIT J ORAL SURG
+</B><DT>BRITISH JOURNAL OF PHARMACOLOGY
+<B><DD>	BRIT J PHARMACOL
+</B><DT>BRITISH JOURNAL OF PLASTIC SURGERY
+<B><DD>	BRIT J PLAST SURG
+</B><DT>BRITISH JOURNAL OF POLITICAL SCIENCE
+<B><DD>	BRIT J POLIT SCI
+</B><DT>BRITISH JOURNAL OF PSYCHIATRY
+<B><DD>	BRIT J PSYCHIAT
+</B><DT>BRITISH JOURNAL OF PSYCHOLOGY
+<B><DD>	BRIT J PSYCHOL
+</B><DT>BRITISH JOURNAL OF RADIOLOGY
+<B><DD>	BRIT J RADIOL
+</B><DT>BRITISH JOURNAL OF RHEUMATOLOGY
+<B><DD>	BRIT J RHEUMATOL
+</B><DT>BRITISH JOURNAL OF SOCIAL PSYCHOLOGY
+<B><DD>	BRIT J SOC PSYCHOL
+</B><DT>BRITISH JOURNAL OF SOCIAL WORK
+<B><DD>	BRIT J SOC WORK
+</B><DT>BRITISH JOURNAL OF SOCIOLOGY
+<B><DD>	BRIT J SOCIOL
+</B><DT>BRITISH JOURNAL OF SOCIOLOGY OF EDUCATION
+<B><DD>	BRIT J SOCIOL EDUC
+</B><DT>BRITISH JOURNAL OF SPORTS MEDICINE
+<B><DD>	BRIT J SPORT MED
+</B><DT>BRITISH JOURNAL OF SURGERY
+<B><DD>	BRIT J SURG
+</B><DT>BRITISH JOURNAL OF UROLOGY
+<B><DD>	BRIT J UROL
+</B><DT>BRITISH JOURNAL OF VENEREAL DISEASES
+<B><DD>	BRIT J VENER DIS
+</B><DT>BRITISH LIBRARY JOURNAL
+<B><DD>	BRIT LIBR J
+</B><DT>BRITISH MEDICAL BULLETIN
+<B><DD>	BRIT MED BULL
+</B><DT>BRITISH MEDICAL JOURNAL
+<B><DD>	BRIT MED J
+</B><DT>BRITISH PHYCOLOGICAL JOURNAL
+<B><DD>	BRIT PHYCOL J
+</B><DT>BRITISH POLYMER JOURNAL
+<B><DD>	BRIT POLYM J
+</B><DT>BRITISH POULTRY SCIENCE
+<B><DD>	BRIT POULTRY SCI
+</B><DT>BRITISH SUGAR BEET REVIEW
+<B><DD>	BRIT SUGAR BEET REV
+</B><DT>BRITISH TELECOM TECHNOLOGY JOURNAL
+<B><DD>	BRIT TELECOM TECHNOL
+</B><DT>BRITISH TELECOMMUNICATIONS ENGINEERING
+<B><DD>	BRIT TELECOMMUN ENG
+</B><DT>BRITISH VETERINARY JOURNAL
+<B><DD>	BRIT VET J
+</B><DT>BRITTONIA
+<B><DD>	BRITTONIA
+</B><DT>BROOKINGS PAPERS ON ECONOMIC ACTIVITY
+<B><DD>	BROOKINGS PAP ECO AC
+</B><DT>BROWN BOVERI REVIEW
+<B><DD>	BROWN BOVERI REV
+</B><DT>BRYOLOGIST
+<B><DD>	BRYOLOGIST
+</B><DT>BT TECHNOLOGY JOURNAL
+<B><DD>	BT TECHNOL J
+</B><DT>BUFFALO LAW REVIEW
+<B><DD>	BUFFALO LAW REV
+</B><DT>BUILDING AND ENVIRONMENT
+<B><DD>	BUILD ENVIRON
+</B><DT>BUILDING RESEARCH AND INFORMATION
+<B><DD>	BUILD RES INF
+</B><DT>BULGARIAN HISTORICAL REVIEW-REVUE BULGARE D HISTOIRE
+<B><DD>	BULG HIST REV-REV B
+</B><DT>BULLETIN D ECOLOGIE
+<B><DD>	B ECOL
+</B><DT>BULLETIN DE CORRESPONDANCE HELLENIQUE
+<B><DD>	B CORRESP HELLENIQUE
+</B><DT>BULLETIN DE L ACADEMIE NATIONALE DE MEDECINE
+<B><DD>	B ACAD NAT MED PARIS
+</B><DT>BULLETIN DE L ACADEMIE POLONAISE DES SCIENCES-SERIE DES SCIENCES CHIMIQUES
+<B><DD>	B ACAD POL SCI-CHIM
+</B><DT>BULLETIN DE L ACADEMIE POLONAISE DES SCIENCES-SERIE DES SCIENCES DE LA TERRE
+<B><DD>	B POL ACAD SCI-EARTH
+</B><DT>BULLETIN DE L ACADEMIE VETERINAIRE DE FRANCE
+<B><DD>	B ACAD VET FRANCE
+</B><DT>BULLETIN DE L INSTITUT PASTEUR
+<B><DD>	B I PASTEUR
+</B><DT>BULLETIN DE LA CLASSE DES SCIENCES ACADEMIE ROYALE DE BELGIQUE
+<B><DD>	B CL SCI AC ROY BELG
+</B><DT>BULLETIN DE LA SOCIETE BOTANIQUE DE FRANCE-ACTUALITES BOTANIQUES
+<B><DD>	B SOC BOT FR-ACTUAL
+</B><DT>BULLETIN DE LA SOCIETE BOTANIQUE DE FRANCE-LETTRES BOTANIQUES
+<B><DD>	B SOC BOT FR-LETT
+</B><DT>BULLETIN DE LA SOCIETE CHIMIQUE DE FRANCE
+<B><DD>	B SOC CHIM FR
+</B><DT>BULLETIN DE LA SOCIETE CHIMIQUE DE FRANCE PARTIE I-PHYSICOCHIMIE DES SYSTEMES LIQUIDES ELECTROCHIMIE CATALYSE GENIE CHIMIQUE
+<B><DD>	B SOC CHIM FR I-PHYS
+</B><DT>BULLETIN DE LA SOCIETE CHIMIQUE DE FRANCE PARTIE II-CHIMIE MOLECULAIRE ORGANIQUE ET BIOLOGIQUE
+<B><DD>	B SOC CHIM FR II-CH
+</B><DT>BULLETIN DE LA SOCIETE DE PATHOLOGIE EXOTIQUE
+<B><DD>	B SOC PATHOL EXOT
+</B><DT>BULLETIN DE LA SOCIETE GEOLOGIQUE DE FRANCE
+<B><DD>	B SOC GEOL FR
+</B><DT>BULLETIN DE LA SOCIETE MATHEMATIQUE DE FRANCE
+<B><DD>	B SOC MATH FR
+</B><DT>BULLETIN DE LA SOCIETE ROYALE DE BOTANIQUE DE BELGIQUE
+<B><DD>	B SOC ROY BOT BELG
+</B><DT>BULLETIN DE LA SOCIETE ZOOLOGIQUE DE FRANCE
+<B><DD>	B SOC ZOOL FR
+</B><DT>BULLETIN DE LA SOCIETE ZOOLOGIQUE DE FRANCE-EVOLUTION ET ZOOLOGIE
+<B><DD>	B SOC ZOOL FR
+</B><DT>BULLETIN DE MINERALOGIE
+<B><DD>	B MINERAL
+</B><DT>BULLETIN DES CENTRES DE RECHERCHES EXPLORATION-PRODUCTION ELF AQUITAINE
+<B><DD>	B CENT RECH EXPL
+</B><DT>BULLETIN DES SCIENCES MATHEMATIQUES
+<B><DD>	B SCI MATH
+</B><DT>BULLETIN DES SOCIETES CHIMIQUES BELGES
+<B><DD>	B SOC CHIM BELG
+</B><DT>BULLETIN DU CANCER
+<B><DD>	B CANCER
+</B><DT>BULLETIN DU CENTRE DE RECHERCHES ELF EXPLORATION PRODUCTION
+<B><DD>	BULL CENT RECH ELF E
+</B><DT>BULLETIN DU MUSEUM NATIONAL D HISTOIRE NATURELLE-SECTION B ADANSONIA
+<B><DD>	B MUS NATL HIST NAT
+</B><DT>BULLETIN EUROPEEN DE PHYSIOPATHOLOGIE RESPIRATOIRE-CLINICAL RESPIRATORY PHYSIOLOGY
+<B><DD>	B EUR PHYSIOPATH RES
+</B><DT>BULLETIN FRANCAIS DE LA PECHE ET DE LA PISCICULTURE
+<B><DD>	B FR PECHE PISCIC
+</B><DT>BULLETIN GEODESIQUE
+<B><DD>	B GEOD
+</B><DT>BULLETIN HISPANIQUE
+<B><DD>	B HISPANIQUE
+</B><DT>BULLETIN MONUMENTAL
+<B><DD>	B MONUMENTAL
+</B><DT>BULLETIN OF CANADIAN PETROLEUM GEOLOGY
+<B><DD>	B CAN PETROL GEOL
+</B><DT>BULLETIN OF CONCERNED ASIAN SCHOLARS
+<B><DD>	B CONCERN ASIA SCHOL
+</B><DT>BULLETIN OF ELECTROCHEMISTRY
+<B><DD>	B ELECTROCHEM
+</B><DT>BULLETIN OF ENTOMOLOGICAL RESEARCH
+<B><DD>	B ENTOMOL RES
+</B><DT>BULLETIN OF ENVIRONMENTAL CONTAMINATION AND TOXICOLOGY
+<B><DD>	B ENVIRON CONTAM TOX
+</B><DT>BULLETIN OF EQUINE RESEARCH INSTITUTE
+<B><DD>	B EQUINE RES INST
+</B><DT>BULLETIN OF EXPERIMENTAL BIOLOGY AND MEDICINE
+<B><DD>	B EXP BIOL MED+
+</B><DT>BULLETIN OF HISPANIC STUDIES
+<B><DD>	B HISPANIC STUD
+</B><DT>BULLETIN OF INDONESIAN ECONOMIC STUDIES
+<B><DD>	B INDONES ECON STUD
+</B><DT>BULLETIN OF MARINE SCIENCE
+<B><DD>	B MAR SCI
+</B><DT>BULLETIN OF MATERIALS SCIENCE
+<B><DD>	B MATER SCI
+</B><DT>BULLETIN OF MATHEMATICAL BIOLOGY
+<B><DD>	B MATH BIOL
+</B><DT>BULLETIN OF MOLECULAR BIOLOGY AND MEDICINE
+<B><DD>	B MOL BIOL MED
+</B><DT>BULLETIN OF SCIENCE TECHNOLOGY & SOCIETY
+<B><DD>	B SCI TECHNOL SOC
+</B><DT>BULLETIN OF SYMBOLIC LOGIC
+<B><DD>	B SYMB LOG
+</B><DT>BULLETIN OF THE ACADEMY OF SCIENCES OF THE USSR DIVISION OF CHEMICAL SCIENCE
+<B><DD>	B ACAD SCI USSR CH+
+</B><DT>BULLETIN OF THE AMERICAN ACADEMY OF PSYCHIATRY AND THE LAW
+<B><DD>	B AM ACAD PSYCH LAW
+</B><DT>BULLETIN OF THE AMERICAN MATHEMATICAL SOCIETY
+<B><DD>	B AM MATH SOC
+</B><DT>BULLETIN OF THE AMERICAN METEOROLOGICAL SOCIETY
+<B><DD>	B AM METEOROL SOC
+</B><DT>BULLETIN OF THE AMERICAN MUSEUM OF NATURAL HISTORY
+<B><DD>	B AM MUS NAT HIST
+</B><DT>BULLETIN OF THE AMERICAN SCHOOLS OF ORIENTAL RESEARCH
+<B><DD>	B AM SCH ORIENTAL RE
+</B><DT>BULLETIN OF THE AMERICAN SOCIETY FOR INFORMATION SCIENCE
+<B><DD>	B AM SOC INFORM INF
+</B><DT>BULLETIN OF THE AMERICAN SOCIETY OF PAPYROLOGISTS
+<B><DD>	B AM SOC PAPYROLOGIS
+</B><DT>BULLETIN OF THE ASTRONOMICAL INSTITUTES OF CZECHOSLOVAKIA
+<B><DD>	B ASTRON I CZECH
+</B><DT>BULLETIN OF THE ATOMIC SCIENTISTS
+<B><DD>	B ATOM SCI
+</B><DT>BULLETIN OF THE AUSTRALIAN MATHEMATICAL SOCIETY
+<B><DD>	B AUST MATH SOC
+</B><DT>BULLETIN OF THE BELGIAN MATHEMATICAL SOCIETY-SIMON STEVIN
+<B><DD>	B BELG MATH SOC-SIM
+</B><DT>BULLETIN OF THE CHEMICAL SOCIETY OF ETHIOPIA
+<B><DD>	B CHEM SOC ETHIOPIA
+</B><DT>BULLETIN OF THE CHEMICAL SOCIETY OF JAPAN
+<B><DD>	B CHEM SOC JPN
+</B><DT>BULLETIN OF THE CLEVELAND MUSEUM OF ART
+<B><DD>	B CLEVELAND MUS ART
+</B><DT>BULLETIN OF THE COMEDIANTES
+<B><DD>	B COMEDIANTES
+</B><DT>BULLETIN OF THE COUNCIL FOR RESEARCH IN MUSIC EDUCATION
+<B><DD>	B COUN RES MUSIC ED
+</B><DT>BULLETIN OF THE EARTHQUAKE RESEARCH INSTITUTE-UNIVERSITY OF TOKYO
+<B><DD>	B EARTHQ RES I TOKYO
+</B><DT>BULLETIN OF THE EUROPEAN ASSOCIATION OF FISH PATHOLOGISTS
+<B><DD>	BULL EUR ASSN FISH P
+</B><DT>BULLETIN OF THE HISTORY OF MEDICINE
+<B><DD>	B HIST MED
+</B><DT>BULLETIN OF THE HOSPITAL FOR JOINT DISEASES ORTHOPAEDIC INSTITUTE
+<B><DD>	B HOSP JOINT DIS ORT
+</B><DT>BULLETIN OF THE INSTITUTE OF CLASSICAL STUDIES
+<B><DD>	B I CLASS STUD
+</B><DT>BULLETIN OF THE INSTITUTE OF HISTORY AND PHILOLOGY ACADEMIA SINICA
+<B><DD>	B INST HIST PHILOL
+</B><DT>BULLETIN OF THE INSTITUTE OF ZOOLOGY ACADEMIA SINICA
+<B><DD>	B I ZOOL ACAD SINICA
+</B><DT>BULLETIN OF THE JAPAN SOCIETY OF PRECISION ENGINEERING
+<B><DD>	B JPN SOC PREC ENG
+</B><DT>BULLETIN OF THE JAPAN SOCIETY OF PRECISION ENGINEERING
+<B><DD>	INT J JPN S PREC ENG
+</B><DT>BULLETIN OF THE JAPANESE SOCIETY OF SCIENTIFIC FISHERIES
+<B><DD>	B JPN SOC SCI FISH
+</B><DT>BULLETIN OF THE JAPANESE SOCIETY OF SCIENTIFIC FISHERIES
+<B><DD>	NIPPON SUISAN GAKK
+</B><DT>BULLETIN OF THE JOHN RYLANDS UNIVERSITY LIBRARY OF MANCHESTER
+<B><DD>	B JOHN RYLANDS LIBR
+</B><DT>BULLETIN OF THE JSME-JAPAN SOCIETY OF MECHANICAL ENGINEERS
+<B><DD>	B JSME
+</B><DT>BULLETIN OF THE KOREAN CHEMICAL SOCIETY
+<B><DD>	B KOR CHEM SOC
+</B><DT>BULLETIN OF THE LONDON MATHEMATICAL SOCIETY
+<B><DD>	B LOND MATH SOC
+</B><DT>BULLETIN OF THE MEDICAL LIBRARY ASSOCIATION
+<B><DD>	B MED LIBR ASSOC
+</B><DT>BULLETIN OF THE MENNINGER CLINIC
+<B><DD>	B MENNINGER CLIN
+</B><DT>BULLETIN OF THE NEW YORK ACADEMY OF MEDICINE
+<B><DD>	B NEW YORK ACAD MED
+</B><DT>BULLETIN OF THE POLISH ACADEMY OF SCIENCES-CHEMISTRY
+<B><DD>	B POL ACAD SCI-CHEM
+</B><DT>BULLETIN OF THE POLISH ACADEMY OF SCIENCES-EARTH SCIENCES
+<B><DD>	B POL ACAD SCI-EARTH
+</B><DT>BULLETIN OF THE RUSSIAN ACADEMY OF SCIENCES-DIVISION OF CHEMICAL SCIENCE
+<B><DD>	B RUSS ACAD SCI CH+
+</B><DT>BULLETIN OF THE SCHOOL OF ORIENTAL AND AFRICAN STUDIES-UNIVERSITY OF LONDON
+<B><DD>	B SCH ORIENT AFR ST
+</B><DT>BULLETIN OF THE SEISMOLOGICAL SOCIETY OF AMERICA
+<B><DD>	B SEISMOL SOC AM
+</B><DT>BULLETIN OF THE TORREY BOTANICAL CLUB
+<B><DD>	B TORREY BOT CLUB
+</B><DT>BULLETIN OF THE VETERINARY INSTITUTE IN PULAWY
+<B><DD>	B VET I PULAWY
+</B><DT>BULLETIN OF THE WORLD HEALTH ORGANIZATION
+<B><DD>	B WORLD HEALTH ORGAN
+</B><DT>BULLETIN OF VOLCANOLOGY
+<B><DD>	B VOLCANOL
+</B><DT>BULLETIN ON NARCOTICS
+<B><DD>	B NARCOTICS
+</B><DT>BULLETIN ON THE RHEUMATIC DISEASES
+<B><DD>	B RHEUM DIS
+</B><DT>BULLETIN-PHILADELPHIA MUSEUM OF ART
+<B><DD>	B PHILA MUSEUM ART
+</B><DT>BUNSEKI KAGAKU
+<B><DD>	BUNSEKI KAGAKU
+</B><DT>BURLINGTON MAGAZINE
+<B><DD>	BURLINGTON MAG
+</B><DT>BURNS
+<B><DD>	BURNS
+</B><DT>BUSINESS AND COMMERCIAL AVIATION
+<B><DD>	BUS COMMER AVIAT
+</B><DT>BUSINESS HISTORY
+<B><DD>	BUS HIST
+</B><DT>BUSINESS HISTORY REVIEW
+<B><DD>	BUS HIST REV
+</B><DT>BUSINESS LAWYER
+<B><DD>	BUS LAWYER
+</B><DT>BUSINESS SOFTWARE REVIEW
+<B><DD>	BUS SOFTW REV
+</B><DT>BUSINESS WEEK
+<B><DD>	BUS WEEK
+</B><DT>BYRON JOURNAL
+<B><DD>	BYRON J
+</B><DT>BYTE
+<B><DD>	BYTE
+</B><DT>BYZANTINE AND MODERN GREEK STUDIES
+<B><DD>	BYZANTINE MOD GREEK
+</B><DT>BYZANTINISCHE ZEITSCHRIFT
+<B><DD>	BYZANTINISCHE Z
+</B><DT>BYZANTINOSLAVICA
+<B><DD>	BYZANTINOSLAVICA
+</B></DL>
+</BODY>
+</HTML>

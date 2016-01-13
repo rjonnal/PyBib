@@ -4,72 +4,62 @@ import sys,os
 from time import sleep
 import difflib
 import urllib2
-
+from bs4 import BeautifulSoup
 
 JOURNAL_LIST_FILENAME = './journal_list/jlist.csv'
 DATABASE_FILENAME = './db/pybib.db'
 BIBTEX_FILENAME = './bibtex/bibliography_full.bib'
 TITLE_KEY_FILENAME = './bibtex/longtitles.bib'
 VALID_ENTRY_MINIMUM_LENGTH = 10
+ISI_HTML_DIR = './journal_list/isi_html'
+LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+LOWER_CASE_WORDS = ['a', 'aboard', 'about', 'above', 'absent', 'across', 'after', 'against', 'along', 'alongside', 'amid', 'amidst', 'among', 'amongst', 'an', 'and', 'around', 'as', 'aslant', 'astride', 'at', 'athwart', 'atop', 'barring', 'before', 'behind', 'below', 'beneath', 'beside', 'besides', 'between', 'beyond', 'but', 'by', 'despite', 'down', 'during', 'except', 'failing', 'following', 'for', 'for', 'from', 'in', 'inside', 'into', 'like', 'mid', 'minus', 'near', 'next', 'nor', 'notwithstanding', 'of', 'off', 'on', 'onto', 'opposite', 'or', 'out', 'outside', 'over', 'past', 'per', 'plus', 'regarding', 'round', 'save', 'since', 'so', 'than', 'the', 'through', 'throughout', 'till', 'times', 'to', 'toward', 'towards', 'under', 'underneath', 'unlike', 'until', 'up', 'upon', 'via', 'vs.', 'when', 'with', 'within', 'without', 'worth', 'yet']
 
 class Journal:
 
-    def __init__(self,title,abbreviated_title,publisher,
-                 latest_issue,earliest_volume,open_access,url):
-        self.title = title
-        self.abbreviated_title = abbreviated_title
-        self.publisher = publisher
-        self.latest_issue = latest_issue
-        self.earliest_volume = earliest_volume
-        self.open_access = open_access
-        self.url = url
+    def __init__(self,long_title,short_title):
+        self.long_title = long_title
+        self.short_title = short_title
 
     def __str__(self):
-        return '%s (%s), published by %s (%s)'%(self.title,self.abbreviated_title,self.publisher,self.url)
+        return self.short_title
 
     def __repr__(self):
-        return self.abbreviated_title
+        return self.short_title
 
     def db_put(self,cursor):
-        cursor.execute('''INSERT INTO journals VALUES(?,?,?,?,?,?,?)''',(self.title,self.abbreviated_title,self.publisher,self.latest_issue,self.earliest_volume,self.open_access,self.url))
-
-
-
-class JournalListISI:
-
-    def __init__(self):
-        pass
-
-    def get_html(self):
-        template = 'http://www.efm.leeds.ac.uk/~mark/ISIabbr/%s_abrvjt.html'
-        letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        outdir = './journal_list/isi_html'
-        for letter in letters:
-            url = template%letter
-            response = urllib2.urlopen('http://pythonforbeginners.com/')
-            print letter,response.info()
-            html = response.read()
-            outfn = os.path.join(outdir,'%s.html'%letter)
-            with open(outfn,'w') as fid:
-                fid.write(html)
-            response.close()  # best practice to close the file
-
-    
-        
+        cursor.execute('''INSERT INTO journals VALUES(?,?)''',(self.long_title,self.short_title))
+                
 class JournalList:
 
-    def __init__(self,filename):
+    def __init__(self):
         self.journals = []
+        self.long_titles = []
+        self.short_titles = []
+
+    def write_db(self):
         self.conn = sqlite3.connect(DATABASE_FILENAME)
         c = self.conn.cursor()
 
         c.execute('''DROP TABLE IF EXISTS journals''')
-        c.execute('''CREATE TABLE journals (title text, abbreviated_title text, publisher text, latest_issue text, earliest_volume text, open_access text, url text)''')
-
-        self.all_titles = []
-        self.long_titles = []
-        self.short_titles = []
+        c.execute('''CREATE TABLE journals (title text, abbreviated_title text)''')
+        for j in self.journals:
+            j.db_put(self.conn.cursor())
+        self.conn.commit()
         
+    def get_html(self):
+        template = 'http://www.efm.leeds.ac.uk/~mark/ISIabbr/%s_abrvjt.html'
+        for letter in LETTERS:
+            url = template%letter
+            response = urllib2.urlopen(url)
+            print letter,response.info()
+            html = response.read()
+            outfn = os.path.join(ISI_HTML_DIR,'%s.html'%letter)
+            with open(outfn,'w') as fid:
+                fid.write(html)
+            response.close()
+
+    def populate_from_csv(self,filename):
         with open(filename,'rb') as csvfile:
             reader = csv.reader(csvfile)
             header_done = False
@@ -78,24 +68,59 @@ class JournalList:
                     header = row
                     header_done = True
                 else:
-                    title = row[0]
-                    abbreviated_title = row[1]
-                    publisher = row[4]
-                    latest_issue = row[6]
-                    earliest_volume = row[7]
-                    open_access = row[9]
-                    url = row[12]
-                    journal = Journal(title,abbreviated_title,publisher,
-                                      latest_issue,earliest_volume,open_access,url)
-                    journal.db_put(c)
-                    self.all_titles.append(title)
-                    self.all_titles.append(abbreviated_title)
-                    self.short_titles.append(abbreviated_title)
-                    self.long_titles.append(title)
-                    
-                    self.journals.append(journal)
-        self.conn.commit()
+                    long_title = row[0]
+                    short_title = row[1]
+                    journal = Journal(long_title,short_title)
+                    self.add(long_title,short_title)
 
+    def populate_from_html(self):
+        for letter in LETTERS:
+            fid = open(os.path.join(ISI_HTML_DIR,'%s.html'%letter))
+            html = fid.read()
+            fid.close()
+            while len(html)>VALID_ENTRY_MINIMUM_LENGTH:
+                dtidx = html.find('<DT>')
+                if dtidx==-1:
+                    break
+                html = html[dtidx+4:]
+                nlidx = html.find('\n')
+                long_title = html[:nlidx].strip()
+                ddidx = html.find('<DD>')
+                if ddidx==-1:
+                    break
+                html = html[ddidx+4:]
+                nlidx = html.find('\n')
+                short_title = html[:nlidx].strip()
+                self.add(long_title,short_title)
+                
+    def add(self,long_title,short_title):
+        long_title = self.title_case(long_title)
+        short_title = self.title_case(short_title)
+        journal = Journal(long_title,short_title)
+        self.short_titles.append(short_title)
+        self.long_titles.append(long_title)
+        self.journals.append(journal)
+        print journal
+        
+    def title_case(self,string):
+        word_list = string.split(' ')
+        output = [word_list[0].title()]
+        last_colon = False
+        for word in word_list[1:-1]:
+            word = word.strip()
+            if last_colon:
+                output.append(word.title())
+            elif word.lower() in LOWER_CASE_WORDS:
+                output.append(word.lower())
+                continue
+            else:
+                output.append(word.title())
+            try:
+                last_colon = word.strip()[-1]==':'
+            except:
+                last_colon = False
+        output.append(word_list[-1].title())
+        return ' '.join(output)
     def get_close_matches(self,test_string,n=3,cutoff=0.6):
         return difflib.get_close_matches(test_string,self.all_titles)
 
@@ -210,8 +235,10 @@ class BibtexBibliography:
                     item['journal'] = self.string_database[journal]
             except Exception as e:
                 continue
-jlist = JournalListISI()
-jlist.get_html()
+
+jlist = JournalList()
+jlist.populate_from_html()
+jlist.write_db()
 sys.exit()
 jlist = JournalList(JOURNAL_LIST_FILENAME)
 bb = BibtexBibliography(BIBTEX_FILENAME)

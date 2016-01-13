@@ -1,715 +1,1263 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="M"></A><DT>M D COMPUTING
+<B><DD>	M D COMPUT
+</B><DT>M S-MEDECINE SCIENCES
+<B><DD>	M S-MED SCI
+</B><DT>MAATSTAF
+<B><DD>	MAATSTAF
+</B><DT>MACHINE DESIGN
+<B><DD>	MACH DES
+</B><DT>MACHINE LEARNING
+<B><DD>	MACH LEARN
+</B><DT>MACHINE VISION AND APPLICATIONS
+<B><DD>	MACH VISION APPL
+</B><DT>MACHINING SCIENCE AND TECHNOLOGY
+<B><DD>	MACH SCI TECHNOL
+</B><DT>MACROECONOMIC DYNAMICS
+<B><DD>	MACROECON DYN
+</B><DT>MACROMOLECULAR CHEMISTRY AND PHYSICS
+<B><DD>	MACROMOL CHEM PHYSIC
+</B><DT>MACROMOLECULAR MATERIALS AND ENGINEERING
+<B><DD>	MACROMOL MATER ENG
+</B><DT>MACROMOLECULAR RAPID COMMUNICATIONS
+<B><DD>	MACROMOL RAPID COMM
+</B><DT>MACROMOLECULAR SYMPOSIA
+<B><DD>	MACROMOL SYMP
+</B><DT>MACROMOLECULAR THEORY AND SIMULATIONS
+<B><DD>	MACROMOL THEOR SIMUL
+</B><DT>MACROMOLECULES
+<B><DD>	MACROMOLECULES
+</B><DT>MAGAZINE ANTIQUES
+<B><DD>	MAG ANTIQUES
+</B><DT>MAGAZINE OF CONCRETE RESEARCH
+<B><DD>	MAG CONCRETE RES
+</B><DT>MAGNESIUM
+<B><DD>	MAGNESIUM
+</B><DT>MAGNESIUM AND TRACE ELEMENTS
+<B><DD>	MAGNESIUM TRACE ELEM
+</B><DT>MAGNESIUM RESEARCH
+<B><DD>	MAGNESIUM RES
+</B><DT>MAGNESIUM-BULLETIN
+<B><DD>	MAGNESIUM-B
+</B><DT>MAGNETIC RESONANCE IMAGING
+<B><DD>	MAGN RESON IMAGING
+</B><DT>MAGNETIC RESONANCE IN BIOLOGY
+<B><DD>	MAGNET RESON BIOL
+</B><DT>MAGNETIC RESONANCE IN CHEMISTRY
+<B><DD>	MAGN RESON CHEM
+</B><DT>MAGNETIC RESONANCE IN MEDICINE
+<B><DD>	MAGNET RESON MED
+</B><DT>MAGNETIC RESONANCE MATERIALS IN PHYSICS BIOLOGY AND MEDICINE
+<B><DD>	MAGN RESON MATER PHY
+</B><DT>MAGNETIC RESONANCE QUARTERLY
+<B><DD>	MAGN RESON QUART
+</B><DT>MAGYAR ALLATORVOSOK LAPJA
+<B><DD>	MAGY ALLATORVOSOK
+</B><DT>MAGYAR KEMIAI FOLYOIRAT
+<B><DD>	MAGY KEM FOLY
+</B><DT>MAIA-RIVISTA DI LETTERATURE CLASSICHE
+<B><DD>	MAIA-RIV LETT CLASS
+</B><DT>MAIN GROUP CHEMISTRY
+<B><DD>	MAIN GROUP CHEM
+</B><DT>MAIN GROUP METAL CHEMISTRY
+<B><DD>	MAIN GROUP MET CHEM
+</B><DT>MAINE AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	MAINE AES BULL
+</B><DT>MAINE AGRICULTURAL EXPERIMENT STATION TECHNICAL BULLETIN
+<B><DD>	MAINE AES TECH BULL
+</B><DT>MAINTENANCE MANAGEMENT INTERNATIONAL
+<B><DD>	MAINT MANAGE INT
+</B><DT>MAKROMOLEKULARE CHEMIE-MACROMOLECULAR CHEMISTRY AND PHYSICS
+<B><DD>	MAKROMOL CHEM
+</B><DT>MAKROMOLEKULARE CHEMIE-MACROMOLECULAR SYMPOSIA
+<B><DD>	MAKROMOL CHEM-M SYMP
+</B><DT>MAKROMOLEKULARE CHEMIE-RAPID COMMUNICATIONS
+<B><DD>	MAKROMOL CHEM-RAPID
+</B><DT>MAKROMOLEKULARE CHEMIE-THEORY AND SIMULATIONS
+<B><DD>	MAKROMOL CHEM-THEOR
+</B><DT>MALACOLOGIA
+<B><DD>	MALACOLOGIA
+</B><DT>MAMMAL REVIEW
+<B><DD>	MAMMAL REV
+</B><DT>MAMMALIA
+<B><DD>	MAMMALIA
+</B><DT>MAMMALIAN GENOME
+<B><DD>	MAMM GENOME
+</B><DT>MAN
+<B><DD>	MAN
+</B><DT>MAN AND WORLD-AN INTERNATIONAL PHILOSOPHICAL REVIEW
+<B><DD>	MAN WORLD
+</B><DT>MAN IN INDIA
+<B><DD>	MAN INDIA
+</B><DT>MANAGEMENT LEARNING
+<B><DD>	MANAGE LEARN
+</B><DT>MANAGEMENT OF WORLD WASTES
+<B><DD>	MANAGE WORLD WASTE
+</B><DT>MANAGEMENT REVIEW
+<B><DD>	MANAG REV
+</B><DT>MANAGEMENT SCIENCE
+<B><DD>	MANAGE SCI
+</B><DT>MANCHESTER SCHOOL
+<B><DD>	MANCH SCH
+</B><DT>MANCHESTER SCHOOL OF ECONOMIC AND SOCIAL STUDIES
+<B><DD>	MANCH SCH ECON SOC
+</B><DT>MANKIND QUARTERLY
+<B><DD>	MANKIND QUART
+</B><DT>MANUAL THERAPY
+<B><DD>	MANUAL THER
+</B><DT>MANUFACTURING CHEMIST
+<B><DD>	MANUF CHEMIST
+</B><DT>MANUFACTURING ENGINEERING
+<B><DD>	MANUF ENG
+</B><DT>MANUSCRIPTA
+<B><DD>	MANUSCRIPTA
+</B><DT>MANUSCRIPTA GEODAETICA
+<B><DD>	MANUSCR GEODAET
+</B><DT>MANUSCRIPTA MATHEMATICA
+<B><DD>	MANUSCRIPTA MATH
+</B><DT>MAPLETECH
+<B><DD>	MAPLETECH
+</B><DT>MARCONI REVIEW
+<B><DD>	MARCONI REV
+</B><DT>MARINE AND FRESHWATER BEHAVIOUR AND PHYSIOLOGY
+<B><DD>	MAR FRESHW BEHAV PHY
+</B><DT>MARINE AND FRESHWATER RESEARCH
+<B><DD>	MAR FRESHWATER RES
+</B><DT>MARINE AND PETROLEUM GEOLOGY
+<B><DD>	MAR PETROL GEOL
+</B><DT>MARINE BEHAVIOUR AND PHYSIOLOGY
+<B><DD>	MAR BEHAV PHYSIOL
+</B><DT>MARINE BIOLOGY
+<B><DD>	MAR BIOL
+</B><DT>MARINE BIOLOGY LETTERS
+<B><DD>	MAR BIOL LETT
+</B><DT>MARINE BIOTECHNOLOGY
+<B><DD>	MAR BIOTECHNOL
+</B><DT>MARINE CHEMISTRY
+<B><DD>	MAR CHEM
+</B><DT>MARINE ECOLOGY-PROGRESS SERIES
+<B><DD>	MAR ECOL-PROG SER
+</B><DT>MARINE ECOLOGY-PUBBLICAZIONI DELLA STAZIONE ZOOLOGICA DI NAPOLI I
+<B><DD>	MAR ECOL-P S Z N I
+</B><DT>MARINE ECOLOGY-PUBBLICAZIONI DELLA STAZIONE ZOOLOGICA DI NAPOLI I
+<B><DD>	PSZNI MAR ECOL
+</B><DT>MARINE ENGINEERING LOG
+<B><DD>	MAR ENG-LOG
+</B><DT>MARINE ENVIRONMENTAL RESEARCH
+<B><DD>	MAR ENVIRON RES
+</B><DT>MARINE FISHERIES REVIEW
+<B><DD>	MAR FISH REV
+</B><DT>MARINE GEODESY
+<B><DD>	MAR GEOD
+</B><DT>MARINE GEOLOGY
+<B><DD>	MAR GEOL
+</B><DT>MARINE GEOPHYSICAL RESEARCHES
+<B><DD>	MAR GEOPHYS RES
+</B><DT>MARINE GEORESOURCES & GEOTECHNOLOGY
+<B><DD>	MAR GEORESOUR GEOTEC
+</B><DT>MARINE GEOTECHNOLOGY
+<B><DD>	MAR GEOTECHNOL
+</B><DT>MARINE MAMMAL SCIENCE
+<B><DD>	MAR MAMMAL SCI
+</B><DT>MARINE MICROPALEONTOLOGY
+<B><DD>	MAR MICROPALEONTOL
+</B><DT>MARINE MINING
+<B><DD>	MAR MINING
+</B><DT>MARINE POLICY
+<B><DD>	MAR POLICY
+</B><DT>MARINE POLLUTION BULLETIN
+<B><DD>	MAR POLLUT BULL
+</B><DT>MARINE TECHNOLOGY AND SNAME NEWS
+<B><DD>	MAR TECHNOL SNAME N
+</B><DT>MARINE TECHNOLOGY SOCIETY JOURNAL
+<B><DD>	MAR TECHNOL SOC J
+</B><DT>MARINERS MIRROR
+<B><DD>	MARINERS MIRROR
+</B><DT>MARK TWAIN JOURNAL
+<B><DD>	MARK TWAIN J
+</B><DT>MARKETING SCIENCE
+<B><DD>	MARKET SCI
+</B><DT>MARRIAGE AND FAMILY REVIEW
+<B><DD>	MARRIAGE FAM REV
+</B><DT>MARYLAND AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	MARYLAND AES BULL
+</B><DT>MARYLAND AGRICULTURAL EXPERIMENT STATION MISCELLANEOUS PUBLICATION
+<B><DD>	MARYLAND AES MISC PU
+</B><DT>MARYLAND COOPERATIVE EXTENSION SERVICE BULLETIN
+<B><DD>	MARYLAND CES BULL
+</B><DT>MARYLAND STATE MEDICAL JOURNAL
+<B><DD>	MARYLAND STATE MED J
+</B><DT>MASS SPECTROMETRY REVIEWS
+<B><DD>	MASS SPECTROM REV
+</B><DT>MASS TRANSIT
+<B><DD>	MASS TRANSIT
+</B><DT>MASSACHUSETTS AGRICULTURAL EXPERIMENT STATION RESEARCH BULLETIN
+<B><DD>	MASS AGR EXP ST RE B
+</B><DT>MASSACHUSETTS REVIEW
+<B><DD>	MASS REV
+</B><DT>MASTER DRAWINGS
+<B><DD>	MASTER DRAWINGS
+</B><DT>MATCH-COMMUNICATIONS IN MATHEMATICAL AND IN COMPUTER CHEMISTRY
+<B><DD>	MATCH-COMMUN MATH CO
+</B><DT>MATEKON
+<B><DD>	MATEKON
+</B><DT>MATEMATICA APLICADA E COMPUTACIONAL
+<B><DD>	MAT APL COMPUT
+</B><DT>MATEMATISK-FYSISKE MEDDELELSER KONGELIGE DANSKE VIDENSKABERNES SELSKAB
+<B><DD>	MAT FYS MEDD DAN VID
+</B><DT>MATERIAL HANDLING ENGINEERING
+<B><DD>	MATER HANDL ENG
+</B><DT>MATERIAL UND ORGANISMEN
+<B><DD>	MATER ORGANISMEN
+</B><DT>MATERIALE PLASTICE
+<B><DD>	MATER PLAST
+</B><DT>MATERIALES DE CONSTRUCCION
+<B><DD>	MATER CONSTRUCC
+</B><DT>MATERIALPRUFUNG
+<B><DD>	MATERIALPRUFUNG
+</B><DT>MATERIALS & DESIGN
+<B><DD>	MATER DESIGN
+</B><DT>MATERIALS AND CORROSION-WERKSTOFFE UND KORROSION
+<B><DD>	MATER CORROS
+</B><DT>MATERIALS AND MANUFACTURING PROCESSES
+<B><DD>	MATER MANUF PROCESS
+</B><DT>MATERIALS AND STRUCTURES
+<B><DD>	MATER STRUCT
+</B><DT>MATERIALS AT HIGH TEMPERATURES
+<B><DD>	MATER HIGH TEMP
+</B><DT>MATERIALS CHARACTERIZATION
+<B><DD>	MATER CHARACT
+</B><DT>MATERIALS CHEMISTRY
+<B><DD>	MATER CHEM
+</B><DT>MATERIALS CHEMISTRY AND PHYSICS
+<B><DD>	MATER CHEM PHYS
+</B><DT>MATERIALS ENGINEERING
+<B><DD>	MATER ENG
+</B><DT>MATERIALS EVALUATION
+<B><DD>	MATER EVAL
+</B><DT>MATERIALS FORUM
+<B><DD>	MATER FORUM
+</B><DT>MATERIALS LETTERS
+<B><DD>	MATER LETT
+</B><DT>MATERIALS PERFORMANCE
+<B><DD>	MATER PERFORMANCE
+</B><DT>MATERIALS RESEARCH BULLETIN
+<B><DD>	MATER RES BULL
+</B><DT>MATERIALS RESEARCH INNOVATIONS
+<B><DD>	MATER RES INNOV
+</B><DT>MATERIALS SCIENCE
+<B><DD>	MATER SCI+
+</B><DT>MATERIALS SCIENCE & ENGINEERING C-BIOMIMETIC AND SUPRAMOLECULAR SYSTEMS
+<B><DD>	MAT SCI ENG C-BIO S
+</B><DT>MATERIALS SCIENCE & ENGINEERING C-BIOMIMETIC MATERIALS SENSORS AND SYSTEMS
+<B><DD>	MAT SCI ENG C-BIOMIM
+</B><DT>MATERIALS SCIENCE & ENGINEERING R-REPORTS
+<B><DD>	MAT SCI ENG R
+</B><DT>MATERIALS SCIENCE AND ENGINEERING
+<B><DD>	MATER SCI ENG
+</B><DT>MATERIALS SCIENCE AND ENGINEERING A-STRUCTURAL MATERIALS PROPERTIES MICROSTRUCTURE AND PROCESSING
+<B><DD>	MAT SCI ENG A-STRUCT
+</B><DT>MATERIALS SCIENCE AND ENGINEERING B-SOLID STATE MATERIALS FOR ADVANCED TECHNOLOGY
+<B><DD>	MAT SCI ENG B-SOLID
+</B><DT>MATERIALS SCIENCE AND TECHNOLOGY
+<B><DD>	MATER SCI TECH SER
+</B><DT>MATERIALS SCIENCE APPLICATIONS OF ION BEAM TECHNIQUES
+<B><DD>	MATER SCI FORUM
+</B><DT>MATERIALS SCIENCE FORUM
+<B><DD>	MATER SCI FORUM
+</B><DT>MATERIALS SCIENCE IN SEMICONDUCTOR PROCESSING
+<B><DD>	MAT SCI SEMICON PROC
+</B><DT>MATERIALS SCIENCE REPORTS
+<B><DD>	MATER SCI REP
+</B><DT>MATERIALS SCIENCE RESEARCH INTERNATIONAL
+<B><DD>	MATER SCI RES INT
+</B><DT>MATERIALS TECHNOLOGY
+<B><DD>	MATER TECHNOL
+</B><DT>MATERIALS TRANSACTIONS JIM
+<B><DD>	MATER T JIM
+</B><DT>MATERIALS WORLD
+<B><DD>	MATER WORLD
+</B><DT>MATERIALWISSENSCHAFT UND WERKSTOFFTECHNIK
+<B><DD>	MATERIALWISS WERKST
+</B><DT>MATHEMATICA SCANDINAVICA
+<B><DD>	MATH SCAND
+</B><DT>MATHEMATICAL AND COMPUTER MODELLING
+<B><DD>	MATH COMPUT MODEL
+</B><DT>MATHEMATICAL AND COMPUTER MODELLING OF DYNAMICAL SYSTEMS
+<B><DD>	MATH COMP MODEL DYN
+</B><DT>MATHEMATICAL BIOSCIENCES
+<B><DD>	MATH BIOSCI
+</B><DT>MATHEMATICAL ENGINEERING IN INDUSTRY
+<B><DD>	MATH ENG IND
+</B><DT>MATHEMATICAL FINANCE
+<B><DD>	MATH FINANC
+</B><DT>MATHEMATICAL GAZETTE
+<B><DD>	MATH GAZ
+</B><DT>MATHEMATICAL GEOLOGY
+<B><DD>	MATH GEOL
+</B><DT>MATHEMATICAL INEQUALITIES & APPLICATIONS
+<B><DD>	MATH INEQUAL APPL
+</B><DT>MATHEMATICAL INTELLIGENCER
+<B><DD>	MATH INTELL
+</B><DT>MATHEMATICAL LOGIC QUARTERLY
+<B><DD>	MATH LOGIC QUART
+</B><DT>MATHEMATICAL METHODS IN THE APPLIED SCIENCES
+<B><DD>	MATH METHOD APPL SCI
+</B><DT>MATHEMATICAL METHODS OF OPERATIONS RESEARCH
+<B><DD>	MATH METHOD OPER RES
+</B><DT>MATHEMATICAL MODELLING
+<B><DD>	MATH MODELLING
+</B><DT>MATHEMATICAL MODELS & METHODS IN APPLIED SCIENCES
+<B><DD>	MATH MOD METH APPL S
+</B><DT>MATHEMATICAL NOTES
+<B><DD>	MATH NOTES+
+</B><DT>MATHEMATICAL PROBLEMS IN ENGINEERING
+<B><DD>	MATH PROBL ENG
+</B><DT>MATHEMATICAL PROCEEDINGS OF THE CAMBRIDGE PHILOSOPHICAL SOCIETY
+<B><DD>	MATH PROC CAMBRIDGE
+</B><DT>MATHEMATICAL PROGRAMMING
+<B><DD>	MATH PROGRAM
+</B><DT>MATHEMATICAL PROGRAMMING STUDY
+<B><DD>	MATH PROGRAM STUD
+</B><DT>MATHEMATICAL RESEARCH LETTERS
+<B><DD>	MATH RES LETT
+</B><DT>MATHEMATICAL SOCIAL SCIENCES
+<B><DD>	MATH SOC SCI
+</B><DT>MATHEMATICAL SYSTEMS THEORY
+<B><DD>	MATH SYST THEORY
+</B><DT>MATHEMATICS AND COMPUTERS IN SIMULATION
+<B><DD>	MATH COMPUT SIMULAT
+</B><DT>MATHEMATICS AND MECHANICS OF SOLIDS
+<B><DD>	MATH MECH SOLIDS
+</B><DT>MATHEMATICS MAGAZINE
+<B><DD>	MATH MAG
+</B><DT>MATHEMATICS OF COMPUTATION
+<B><DD>	MATH COMPUT
+</B><DT>MATHEMATICS OF CONTROL SIGNALS AND SYSTEMS
+<B><DD>	MATH CONTROL SIGNAL
+</B><DT>MATHEMATICS OF OPERATIONS RESEARCH
+<B><DD>	MATH OPER RES
+</B><DT>MATHEMATICS OF THE USSR-IZVESTIYA
+<B><DD>	MATH USSR IZV+
+</B><DT>MATHEMATICS OF THE USSR-SBORNIK
+<B><DD>	MATH USSR SB+
+</B><DT>MATHEMATIKA
+<B><DD>	MATHEMATIKA
+</B><DT>MATHEMATISCHE ANNALEN
+<B><DD>	MATH ANN
+</B><DT>MATHEMATISCHE NACHRICHTEN
+<B><DD>	MATH NACHR
+</B><DT>MATHEMATISCHE ZEITSCHRIFT
+<B><DD>	MATH Z
+</B><DT>MATRIX
+<B><DD>	MATRIX
+</B><DT>MATRIX AND TENSOR QUARTERLY
+<B><DD>	MATRIX TENSOR QUART
+</B><DT>MATRIX BIOLOGY
+<B><DD>	MATRIX BIOL
+</B><DT>MATURITAS
+<B><DD>	MATURITAS
+</B><DT>MAYDICA
+<B><DD>	MAYDICA
+</B><DT>MAYO CLINIC PROCEEDINGS
+<B><DD>	MAYO CLIN PROC
+</B><DT>MEANJIN
+<B><DD>	MEANJIN
+</B><DT>MEASUREMENT
+<B><DD>	MEASUREMENT
+</B><DT>MEASUREMENT & CONTROL
+<B><DD>	MEAS CONTROL-UK
+</B><DT>MEASUREMENT AND EVALUATION IN COUNSELING AND DEVELOPMENT
+<B><DD>	MEAS EVAL COUNS DEV
+</B><DT>MEASUREMENT SCIENCE & TECHNOLOGY
+<B><DD>	MEAS SCI TECHNOL
+</B><DT>MEASUREMENT TECHNIQUES
+<B><DD>	MEAS TECH+
+</B><DT>MEASUREMENT TECHNIQUES USSR
+<B><DD>	MEAS TECH+
+</B><DT>MEASUREMENTS & CONTROL
+<B><DD>	MEAS CONTROL-US
+</B><DT>MEAT SCIENCE
+<B><DD>	MEAT SCI
+</B><DT>MECANIQUE INDUSTRIELLE ET MATERIAUX
+<B><DD>	MEC IND MATER
+</B><DT>MECCANICA
+<B><DD>	MECCANICA
+</B><DT>MECHANICAL ENGINEERING
+<B><DD>	MECH ENG
+</B><DT>MECHANICAL SYSTEMS AND SIGNAL PROCESSING
+<B><DD>	MECH SYST SIGNAL PR
+</B><DT>MECHANICS OF COHESIVE-FRICTIONAL MATERIALS
+<B><DD>	MECH COHES-FRICT MAT
+</B><DT>MECHANICS OF COMPOSITE MATERIALS
+<B><DD>	MECH COMPOS MATER
+</B><DT>MECHANICS OF COMPOSITE MATERIALS AND STRUCTURES
+<B><DD>	MECH COMPOS MATER ST
+</B><DT>MECHANICS OF MATERIALS
+<B><DD>	MECH MATER
+</B><DT>MECHANICS OF STRUCTURES AND MACHINES
+<B><DD>	MECH STRUCT MACH
+</B><DT>MECHANICS RESEARCH COMMUNICATIONS
+<B><DD>	MECH RES COMMUN
+</B><DT>MECHANIK MIESIECZNIK NAUKOWO-TECHNICZNY
+<B><DD>	MECH MIES NAUK TECH
+</B><DT>MECHANISM AND MACHINE THEORY
+<B><DD>	MECH MACH THEORY
+</B><DT>MECHANISMS OF AGEING AND DEVELOPMENT
+<B><DD>	MECH AGEING DEV
+</B><DT>MECHANISMS OF DEVELOPMENT
+<B><DD>	MECH DEVELOP
+</B><DT>MECHATRONICS
+<B><DD>	MECHATRONICS
+</B><DT>MEDECINE & CHIRURGIE DIGESTIVES
+<B><DD>	MED CHIR DIG
+</B><DT>MEDECINE ET ARMEES
+<B><DD>	MED ARMEES
+</B><DT>MEDECINE ET MALADIES INFECTIEUSES
+<B><DD>	MED MALADIES INFECT
+</B><DT>MEDECINE NUCLEAIRE
+<B><DD>	MED NUCL
+</B><DT>MEDIA CULTURE & SOCIETY
+<B><DD>	MEDIA CULT SOC
+</B><DT>MEDIA STUDIES JOURNAL
+<B><DD>	MEDIA STUD J
+</B><DT>MEDIATORS OF INFLAMMATION
+<B><DD>	MEDIAT INFLAMM
+</B><DT>MEDICAL & BIOLOGICAL ENGINEERING & COMPUTING
+<B><DD>	MED BIOL ENG COMPUT
+</B><DT>MEDICAL AND PEDIATRIC ONCOLOGY
+<B><DD>	MED PEDIATR ONCOL
+</B><DT>MEDICAL AND VETERINARY ENTOMOLOGY
+<B><DD>	MED VET ENTOMOL
+</B><DT>MEDICAL ANTHROPOLOGY QUARTERLY
+<B><DD>	MED ANTHROPOL Q
+</B><DT>MEDICAL BIOLOGY
+<B><DD>	MED BIOL
+</B><DT>MEDICAL CARE
+<B><DD>	MED CARE
+</B><DT>MEDICAL CARE RESEARCH AND REVIEW
+<B><DD>	MED CARE RES REV
+</B><DT>MEDICAL CLINICS OF NORTH AMERICA
+<B><DD>	MED CLIN N AM
+</B><DT>MEDICAL COLLEGE OF VIRGINIA QUARTERLY
+<B><DD>	MED COLL VA QUART
+</B><DT>MEDICAL DECISION MAKING
+<B><DD>	MED DECIS MAKING
+</B><DT>MEDICAL EDUCATION
+<B><DD>	MED EDUC
+</B><DT>MEDICAL ENGINEERING & PHYSICS
+<B><DD>	MED ENG PHYS
+</B><DT>MEDICAL HISTORY
+<B><DD>	MED HIST
+</B><DT>MEDICAL HYPOTHESES
+<B><DD>	MED HYPOTHESES
+</B><DT>MEDICAL INFORMATICS
+<B><DD>	MED INFORM
+</B><DT>MEDICAL INFORMATICS AND THE INTERNET IN MEDICINE
+<B><DD>	MED INFORM INTERNET
+</B><DT>MEDICAL INSTRUMENTATION
+<B><DD>	MED INSTRUM
+</B><DT>MEDICAL JOURNAL OF AUSTRALIA
+<B><DD>	MED J AUSTRALIA
+</B><DT>MEDICAL LABORATORY SCIENCES
+<B><DD>	MED LAB SCI
+</B><DT>MEDICAL LETTER ON DRUGS AND THERAPEUTICS
+<B><DD>	MED LETT DRUGS THER
+</B><DT>MEDICAL MICROBIOLOGY AND IMMUNOLOGY
+<B><DD>	MED MICROBIOL IMMUN
+</B><DT>MEDICAL MICROBIOLOGY LETTERS
+<B><DD>	MED MICROBIOL LETT
+</B><DT>MEDICAL MYCOLOGY
+<B><DD>	MED MYCOL
+</B><DT>MEDICAL ONCOLOGY
+<B><DD>	MED ONCOL
+</B><DT>MEDICAL ONCOLOGY AND TUMOR PHARMACOTHERAPY
+<B><DD>	MED ONCOL TUMOR PHAR
+</B><DT>MEDICAL PHYSICS
+<B><DD>	MED PHYS
+</B><DT>MEDICAL PRINCIPLES AND PRACTICE
+<B><DD>	MED PRIN PRACT
+</B><DT>MEDICAL PROBLEMS OF PERFORMING ARTISTS
+<B><DD>	MED PROBL PERFORM AR
+</B><DT>MEDICAL PROGRESS THROUGH TECHNOLOGY
+<B><DD>	MED PROG TECHNOL
+</B><DT>MEDICAL SCIENCE RESEARCH
+<B><DD>	MED SCI RES
+</B><DT>MEDICAL SCIENCE RESEARCH-BIOCHEMISTRY
+<B><DD>	MED SCI RES-BIOCHEM
+</B><DT>MEDICAL TEACHER
+<B><DD>	MED TEACH
+</B><DT>MEDICAL TOXICOLOGY AND ADVERSE DRUG EXPERIENCE
+<B><DD>	MED TOXICOL ADV DRUG
+</B><DT>MEDICAL ULTRASOUND
+<B><DD>	MED ULTRASOUND
+</B><DT>MEDICINA CLINICA
+<B><DD>	MED CLIN-BARCELONA
+</B><DT>MEDICINA DELLO SPORT
+<B><DD>	MED SPORT
+</B><DT>MEDICINA ESPANOLA
+<B><DD>	MED ESP
+</B><DT>MEDICINA-BUENOS AIRES
+<B><DD>	MEDICINA-BUENOS AIRE
+</B><DT>MEDICINA-RIVISTA DELLA ENCICLOPEDIA MEDICA ITALIANA
+<B><DD>	MED-RIV ENC MED ITAL
+</B><DT>MEDICINAL CHEMISTRY RESEARCH
+<B><DD>	MED CHEM RES
+</B><DT>MEDICINAL RESEARCH REVIEWS
+<B><DD>	MED RES REV
+</B><DT>MEDICINE
+<B><DD>	MEDICINE
+</B><DT>MEDICINE AND SCIENCE IN SPORTS AND EXERCISE
+<B><DD>	MED SCI SPORT EXER
+</B><DT>MEDICINE SCIENCE AND THE LAW
+<B><DD>	MED SCI LAW
+</B><DT>MEDIOEVO ROMANZO
+<B><DD>	MEDIOEVO ROMANZO
+</B><DT>MEDIUM AEVUM
+<B><DD>	MEDIUM AEVUM
+</B><DT>MEDIZINISCHE KLINIK
+<B><DD>	MED KLIN
+</B><DT>MEDIZINISCHE WELT
+<B><DD>	MED WELT
+</B><DT>MEDSCAPE WOMENS HEALTH
+<B><DD>	MEDSCAPE WOMENS HEAL
+</B><DT>MEDYCYNA WETERYNARYJNA
+<B><DD>	MED WETER
+</B><DT>MEERESFORSCHUNG-REPORTS ON MARINE RESEARCH
+<B><DD>	MEERESFORSCHUNG
+</B><DT>MELANOMA RESEARCH
+<B><DD>	MELANOMA RES
+</B><DT>MELDINGER FRA NORGES LANDBRUKSHOGSKOLE
+<B><DD>	MELD NORG LANDBRUKS
+</B><DT>MELLIAND TEXTILBERICHTE INTERNATIONAL TEXTILE REPORTS
+<B><DD>	MELLIAND TEXTIL INT
+</B><DT>MEMBRANE BIOCHEMISTRY
+<B><DD>	MEMBRANE BIOCHEM
+</B><DT>MEMOIRES ET ETUDES SCIENTIFIQUES DE LA REVUE DE METALLURGIE
+<B><DD>	MEM ETUD SCI REV MET
+</B><DT>MEMOIRS OF THE AMERICAN MATHEMATICAL SOCIETY
+<B><DD>	MEM AM MATH SOC
+</B><DT>MEMOIRS OF THE ENTOMOLOGICAL SOCIETY OF CANADA
+<B><DD>	MEM ENTOMOL SOC CAN
+</B><DT>MEMORIAS DO INSTITUTO OSWALDO CRUZ
+<B><DD>	MEM I OSWALDO CRUZ
+</B><DT>MEMORY
+<B><DD>	MEMORY
+</B><DT>MEMORY & COGNITION
+<B><DD>	MEM COGNITION
+</B><DT>MENDELEEV COMMUNICATIONS
+<B><DD>	MENDELEEV COMMUN
+</B><DT>MENOPAUSE-THE JOURNAL OF THE NORTH AMERICAN MENOPAUSE SOCIETY
+<B><DD>	MENOPAUSE
+</B><DT>MENTAL HANDICAP RESEARCH
+<B><DD>	MENT HANDICAP RES
+</B><DT>MENTAL RETARDATION
+<B><DD>	MENT RETARD
+</B><DT>MENTAL RETARDATION AND DEVELOPMENTAL DISABILITIES RESEARCH REVIEWS
+<B><DD>	MENT RETARD DEV D R
+</B><DT>MER-MARINE ENGINEERS REVIEW
+<B><DD>	MER-MAR ENG REV
+</B><DT>MERKUR-DEUTSCHE ZEITSCHRIFT FUR EUROPAISCHES DENKEN
+<B><DD>	MERKUR-DEUT Z EUR D
+</B><DT>MERRILL-PALMER QUARTERLY-JOURNAL OF DEVELOPMENTAL PSYCHOLOGY
+<B><DD>	MERRILL PALMER QUART
+</B><DT>MESTER
+<B><DD>	MESTER
+</B><DT>META
+<B><DD>	META
+</B><DT>METABOLIC BONE DISEASE & RELATED RESEARCH
+<B><DD>	METAB BONE DIS RELAT
+</B><DT>METABOLIC BRAIN DISEASE
+<B><DD>	METAB BRAIN DIS
+</B><DT>METABOLIC PEDIATRIC AND SYSTEMIC OPHTHALMOLOGY
+<B><DD>	METAB PEDIATR SYST O
+</B><DT>METABOLISM-CLINICAL AND EXPERIMENTAL
+<B><DD>	METABOLISM
+</B><DT>METAL FINISHING
+<B><DD>	MET FINISH
+</B><DT>METAL IONS IN BIOLOGICAL SYSTEMS
+<B><DD>	MET IONS BIOL SYST
+</B><DT>METAL PROGRESS
+<B><DD>	MET PROG
+</B><DT>METAL SCIENCE
+<B><DD>	MET SCI
+</B><DT>METAL SCIENCE AND HEAT TREATMENT
+<B><DD>	MET SCI HEAT TREAT+
+</B><DT>METALL
+<B><DD>	METALL
+</B><DT>METALLOBIOCHEMISTRY, PART C
+<B><DD>	METHOD ENZYMOL
+</B><DT>METALLOBIOCHEMISTRY, PT D
+<B><DD>	METHOD ENZYMOL
+</B><DT>METALLOFIZIKA I NOVEISHIE TEKHNOLOGII
+<B><DD>	METALLOFIZ NOV TEKH+
+</B><DT>METALLOFIZIKA I NOVEISHIE TEKHNOLOGII-METAL PHYSICS AND ADVANCED TECHNOLOGIES
+<B><DD>	METALLOFIZ NOV TEKH+
+</B><DT>METALLOGRAPHY
+<B><DD>	METALLOGRAPHY
+</B><DT>METALLURGIA
+<B><DD>	METALLURGIA
+</B><DT>METALLURGICAL AND MATERIALS TRANSACTIONS A-PHYSICAL METALLURGY AND MATERIALS SCIENCE
+<B><DD>	METALL MATER TRANS A
+</B><DT>METALLURGICAL AND MATERIALS TRANSACTIONS B-PROCESS METALLURGY AND MATERIALS PROCESSING SCIENCE
+<B><DD>	METALL MATER TRANS B
+</B><DT>METALLURGICAL TRANSACTIONS A-PHYSICAL METALLURGY AND MATERIALS SCIENCE
+<B><DD>	METALL TRANS A
+</B><DT>METALLURGICAL TRANSACTIONS B-PROCESS METALLURGY
+<B><DD>	METALL TRANS B
+</B><DT>METALLURGIST
+<B><DD>	METALLURGIST+
+</B><DT>METALS AND MATERIALS-KOREA
+<B><DD>	MET MATER-KOREA
+</B><DT>METALS FORUM
+<B><DD>	MET FORUM
+</B><DT>METALS MATERIALS AND PROCESSES
+<B><DD>	MET MATER PROCESS
+</B><DT>METALS TECHNOLOGY
+<B><DD>	MET TECHNOL
+</B><DT>METALURGIJA
+<B><DD>	METALURGIJA
+</B><DT>METAPHILOSOPHY
+<B><DD>	METAPHILOSOPHY
+</B><DT>METAPHOR AND SYMBOLIC ACTIVITY
+<B><DD>	METAPHOR SYMB ACT
+</B><DT>METASTABLE, MECHANICALLY ALLOYED AND NANOCRYSTALLINE MATERIALS, PTS 1 AND 2
+<B><DD>	MATER SCI FORUM
+</B><DT>METEORITICS
+<B><DD>	METEORITICS
+</B><DT>METEORITICS & PLANETARY SCIENCE
+<B><DD>	METEORIT PLANET SCI
+</B><DT>METEORITICS & PLANETARY SCIENCE
+<B><DD>	METORIT PLANET SCI
+</B><DT>METEOROLOGICAL APPLICATIONS
+<B><DD>	METEOROL APPL
+</B><DT>METEOROLOGICAL MAGAZINE
+<B><DD>	METEOROL MAG
+</B><DT>METEOROLOGISCHE RUNDSCHAU
+<B><DD>	METEOROL RUNDSCH
+</B><DT>METEOROLOGISCHE ZEITSCHRIFT
+<B><DD>	METEOROL Z
+</B><DT>METEOROLOGY AND ATMOSPHERIC PHYSICS
+<B><DD>	METEOROL ATMOS PHYS
+</B><DT>METHODS AND ASSOCIATED TOOLS FOR THE INFORMATION SYSTEMS LIFE CYCLE
+<B><DD>	IFIP TRANS A
+</B><DT>METHODS AND FINDINGS IN EXPERIMENTAL AND CLINICAL PHARMACOLOGY
+<B><DD>	METHOD FIND EXP CLIN
+</B><DT>METHODS FOR MONITORING AND DIAGNOSING THE EFFICIENCY OF CATALYTIC CONVERTERS: A PATENT-ORIENTED SURVEY
+<B><DD>	STUD SURF SCI CATAL
+</B><DT>METHODS IN CANCER RESEARCH
+<B><DD>	METHOD CANCER RES
+</B><DT>METHODS IN CELL BIOLOGY
+<B><DD>	METHOD CELL BIOL
+</B><DT>METHODS IN ENZYMOLOGY
+<B><DD>	METHOD ENZYMOL
+</B><DT>METHODS IN MICROBIOLOGY
+<B><DD>	METHOD MICROBIOL
+</B><DT>METHODS IN MOLECULAR AND CELLULAR BIOLOGY
+<B><DD>	METHOD MOL CELL BIOL
+</B><DT>METHODS OF BIOCHEMICAL ANALYSIS
+<B><DD>	METHOD BIOCHEM ANAL
+</B><DT>METHODS OF INFORMATION IN MEDICINE
+<B><DD>	METHOD INFORM MED
+</B><DT>METHODS-A COMPANION TO METHODS IN ENZYMOLOGY
+<B><DD>	METHODS
+</B><DT>METRIKA
+<B><DD>	METRIKA
+</B><DT>METROLOGIA
+<B><DD>	METROLOGIA
+</B><DT>METROPOLITAN MUSEUM JOURNAL
+<B><DD>	METROPOL MUSEUM J
+</B><DT>METROPOLITAN MUSEUM OF ART BULLETIN
+<B><DD>	METROPOL MUS ART B
+</B><DT>MEXICAN STUDIES-ESTUDIOS MEXICANOS
+<B><DD>	MEX STUD
+</B><DT>MICHIGAN AGRICULTURAL EXPERIMENT STATION RESEARCH REPORT
+<B><DD>	MICH AES RES REP
+</B><DT>MICHIGAN COOPERATIVE EXTENSION SERVICE EXTENSION BULLETIN
+<B><DD>	MICH CES EXT BULL
+</B><DT>MICHIGAN GERMANIC STUDIES
+<B><DD>	MICH GERMAN STUD
+</B><DT>MICHIGAN HISTORICAL REVIEW
+<B><DD>	MICH HIST REV
+</B><DT>MICHIGAN LAW REVIEW
+<B><DD>	MICH LAW REV
+</B><DT>MICHIGAN MATHEMATICAL JOURNAL
+<B><DD>	MICH MATH J
+</B><DT>MICHIGAN QUARTERLY REVIEW
+<B><DD>	MICH QUART REV
+</B><DT>MICRO
+<B><DD>	MICRO
+</B><DT>MICROBEAM ANALYSIS
+<B><DD>	MICROBEAM ANAL
+</B><DT>MICROBES AND INFECTION
+<B><DD>	MICROBES INFECT
+</B><DT>MICROBIAL DRUG RESISTANCE-MECHANISMS EPIDEMIOLOGY AND DISEASE
+<B><DD>	MICROB DRUG RESIST
+</B><DT>MICROBIAL ECOLOGY
+<B><DD>	MICROBIAL ECOL
+</B><DT>MICROBIAL ECOLOGY IN HEALTH AND DISEASE
+<B><DD>	MICROB ECOL HEALTH D
+</B><DT>MICROBIAL PATHOGENESIS
+<B><DD>	MICROB PATHOGENESIS
+</B><DT>MICROBIOLOGICA
+<B><DD>	MICROBIOLOGICA
+</B><DT>MICROBIOLOGICAL RESEARCH
+<B><DD>	MICROBIOL RES
+</B><DT>MICROBIOLOGICAL REVIEWS
+<B><DD>	MICROBIOL REV
+</B><DT>MICROBIOLOGICAL SCIENCES
+<B><DD>	MICROBIOL SCI
+</B><DT>MICROBIOLOGY
+<B><DD>	MICROBIOLOGY+
+</B><DT>MICROBIOLOGY AND IMMUNOLOGY
+<B><DD>	MICROBIOL IMMUNOL
+</B><DT>MICROBIOLOGY AND MOLECULAR BIOLOGY REVIEWS
+<B><DD>	MICROBIOL MOL BIOL R
+</B><DT>MICROBIOLOGY-UK
+<B><DD>	MICROBIOL-UK
+</B><DT>MICROBIOS
+<B><DD>	MICROBIOS
+</B><DT>MICROCHEMICAL JOURNAL
+<B><DD>	MICROCHEM J
+</B><DT>MICROCIRCULATION
+<B><DD>	MICROCIRCULATION
+</B><DT>MICROCIRCULATION ENDOTHELIUM AND LYMPHATICS
+<B><DD>	MICROCIRC ENDOTH LYM
+</B><DT>MICROCIRCULATION-LONDON
+<B><DD>	MICROCIRCULATION-LON
+</B><DT>MICROCOMPUTING
+<B><DD>	MICROCOMPUTING
+</B><DT>MICROCONTAMINATION
+<B><DD>	MICROCONTAMINATION
+</B><DT>MICROELECTRONIC ENGINEERING
+<B><DD>	MICROELECTRON ENG
+</B><DT>MICROELECTRONICS AND RELIABILITY
+<B><DD>	MICROELECTRON RELIAB
+</B><DT>MICROELECTRONICS JOURNAL
+<B><DD>	MICROELECTR J
+</B><DT>MICROELECTRONICS RELIABILITY
+<B><DD>	MICROELECTRON RELIAB
+</B><DT>MICROGRAVITY SCIENCE AND TECHNOLOGY
+<B><DD>	MICROGRAVITY SCI TEC
+</B><DT>MICRON
+<B><DD>	MICRON
+</B><DT>MICRON AND MICROSCOPICA ACTA
+<B><DD>	MICRON MICROSC ACTA
+</B><DT>MICROPALEONTOLOGY
+<B><DD>	MICROPALEONTOLOGY
+</B><DT>MICROPOROUS AND MESOPOROUS MATERIALS
+<B><DD>	MICROPOR MESOPOR MAT
+</B><DT>MICROPOROUS MATERIALS
+<B><DD>	MICROPOROUS MATER
+</B><DT>MICROPROCESSING AND MICROPROGRAMMING
+<B><DD>	MICROPROC MICROPROG
+</B><DT>MICROPROCESSORS AND MICROSYSTEMS
+<B><DD>	MICROPROCESS MICROSY
+</B><DT>MICROSCALE THERMOPHYSICAL ENGINEERING
+<B><DD>	MICROSCALE THERM ENG
+</B><DT>MICROSCOPE
+<B><DD>	MICROSCOPE
+</B><DT>MICROSCOPIA ELECTRONICA Y BIOLOGIA CELULAR
+<B><DD>	MICROSC ELECTRON BIO
+</B><DT>MICROSCOPICA ACTA
+<B><DD>	MICROSC ACTA
+</B><DT>MICROSCOPY AND MICROANALYSIS
+<B><DD>	MICROSC MICROANAL
+</B><DT>MICROSCOPY MICROANALYSIS MICROSTRUCTURES
+<B><DD>	MICROSC MICROANAL M
+</B><DT>MICROSCOPY RESEARCH AND TECHNIQUE
+<B><DD>	MICROSC RES TECHNIQ
+</B><DT>MICROSURGERY
+<B><DD>	MICROSURG
+</B><DT>MICROSYSTEM TECHNOLOGIES
+<B><DD>	MICROSYST TECHNOL
+</B><DT>MICROTECNIC
+<B><DD>	MICROTECNIC
+</B><DT>MICROVASCULAR RESEARCH
+<B><DD>	MICROVASC RES
+</B><DT>MICROWAVE AND OPTICAL TECHNOLOGY LETTERS
+<B><DD>	MICROW OPT TECHN LET
+</B><DT>MICROWAVE JOURNAL
+<B><DD>	MICROWAVE J
+</B><DT>MICROWAVES
+<B><DD>	MICROWAVES
+</B><DT>MICROWAVES & RF
+<B><DD>	MICROWAVES RF
+</B><DT>MID-AMERICA-AN HISTORICAL REVIEW
+<B><DD>	MID-AM-HIST REV
+</B><DT>MIDDLE EAST JOURNAL
+<B><DD>	MIDDLE EAST J
+</B><DT>MIDDLE EAST POLICY
+<B><DD>	MIDDLE EAST POLICY
+</B><DT>MIDDLE EASTERN STUDIES
+<B><DD>	MIDDLE EASTERN STUD
+</B><DT>MIDWEST QUARTERLY-A JOURNAL OF CONTEMPORARY THOUGHT
+<B><DD>	MIDWEST QUART
+</B><DT>MIDWIFERY
+<B><DD>	MIDWIFERY
+</B><DT>MIKOLOGIYA I FITOPATOLOGIYA
+<B><DD>	MIKOL FITOPATOL
+</B><DT>MIKROCHIMICA ACTA
+<B><DD>	MIKROCHIM ACTA
+</B><DT>MIKROSKOPIE
+<B><DD>	MIKROSKOPIE
+</B><DT>MILBANK QUARTERLY
+<B><DD>	MILBANK Q
+</B><DT>MILCHWISSENSCHAFT-MILK SCIENCE INTERNATIONAL
+<B><DD>	MILCHWISSENSCHAFT
+</B><DT>MILITARGESCHICHTLICHE MITTEILUNGEN
+<B><DD>	MILITARGESCH MITT
+</B><DT>MILITARY LAW REVIEW
+<B><DD>	MIL LAW REV
+</B><DT>MILITARY MEDICINE
+<B><DD>	MIL MED
+</B><DT>MILITARY PSYCHOLOGY
+<B><DD>	MIL PSYCHOL
+</B><DT>MILK INDUSTRY
+<B><DD>	MILK IND
+</B><DT>MILLENNIUM FILM JOURNAL
+<B><DD>	MILLENNIUM FILM J
+</B><DT>MILLENNIUM-JOURNAL OF INTERNATIONAL STUDIES
+<B><DD>	MILLENNIUM-J INT ST
+</B><DT>MILLING
+<B><DD>	MILLING
+</B><DT>MILLING FEED AND FERTILISER
+<B><DD>	MILL FEED FERTIL
+</B><DT>MILTON QUARTERLY
+<B><DD>	MILTON QUART
+</B><DT>MILTON STUDIES
+<B><DD>	MILTON STUD
+</B><DT>MIND
+<B><DD>	MIND
+</B><DT>MIND & LANGUAGE
+<B><DD>	MIND LANG
+</B><DT>MINDS AND MACHINES
+<B><DD>	MIND MACH
+</B><DT>MINERAL AND ELECTROLYTE METABOLISM
+<B><DD>	MINER ELECTROL METAB
+</B><DT>MINERALIUM DEPOSITA
+<B><DD>	MINER DEPOSITA
+</B><DT>MINERALOGICAL MAGAZINE
+<B><DD>	MINERAL MAG
+</B><DT>MINERALOGICAL RECORD
+<B><DD>	MINERAL REC
+</B><DT>MINERALOGY AND PETROLOGY
+<B><DD>	MINER PETROL
+</B><DT>MINERALS & METALLURGICAL PROCESSING
+<B><DD>	MINER METALL PROC
+</B><DT>MINERALS AND METALLURGICAL PROCESSING
+<B><DD>	MINER METALL PROC
+</B><DT>MINERALS AND THE ENVIRONMENT
+<B><DD>	MINER ENVIRON
+</B><DT>MINERALS ENGINEERING
+<B><DD>	MINER ENG
+</B><DT>MINERVA
+<B><DD>	MINERVA
+</B><DT>MINERVA BIOTECNOLOGICA
+<B><DD>	MINERVA BIOTECNOL
+</B><DT>MINERVA CARDIOANGIOLOGICA
+<B><DD>	MINERVA CARDIOANGIOL
+</B><DT>MINERVA MEDICA
+<B><DD>	MINERVA MED
+</B><DT>MINERVA PEDIATRICA
+<B><DD>	MINERVA PEDIATR
+</B><DT>MINI-MICRO SYSTEMS
+<B><DD>	MINI-MICRO SYST
+</B><DT>MINIMALLY INVASIVE NEUROSURGERY
+<B><DD>	MINIM INVAS NEUROSUR
+</B><DT>MINIMALLY INVASIVE THERAPY
+<B><DD>	MINIMAL INVASIV THER
+</B><DT>MINIMALLY INVASIVE THERAPY & ALLIED TECHNOLOGIES
+<B><DD>	MINIM INVASIV THER
+</B><DT>MINING CONGRESS JOURNAL
+<B><DD>	MIN CONGR J
+</B><DT>MINING ENGINEERING
+<B><DD>	MIN ENG-LITTLETON
+</B><DT>MINNESOTA AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	MINN AES BULL
+</B><DT>MINNESOTA AGRICULTURAL EXPERIMENT STATION MISCELLANEOUS REPORT
+<B><DD>	MINN AES MISC REP
+</B><DT>MINNESOTA AGRICULTURAL EXPERIMENT STATION TECHNICAL BULLETIN
+<B><DD>	MINN AES TECH BULL
+</B><DT>MINNESOTA AGRICULTURAL EXTENSION SERVICE EXTENSION BULLETIN
+<B><DD>	MINN AES EXT BULL
+</B><DT>MINNESOTA LAW REVIEW
+<B><DD>	MINN LAW REV
+</B><DT>MINNESOTA MEDICINE
+<B><DD>	MINN MED
+</B><DT>MINNESOTA REVIEW
+<B><DD>	MINN REV
+</B><DT>MINNESOTA SYMPOSIA ON CHILD PSYCHOLOGY
+<B><DD>	MINN SYM CHILD PSYCH
+</B><DT>MIRCEN-JOURNAL OF APPLIED MICROBIOLOGY AND BIOTECHNOLOGY
+<B><DD>	MIRCEN J APPL MICROB
+</B><DT>MIS QUARTERLY
+<B><DD>	MIS QUART
+</B><DT>MISSISSIPPI AGRICULTURAL & FORESTRY EXPERIMENT STATION BULLETIN
+<B><DD>	MISS AFES BULL
+</B><DT>MISSISSIPPI AGRICULTURAL & FORESTRY EXPERIMENT STATION INFORMATION SHEET
+<B><DD>	MISS AFES INFO SHEET
+</B><DT>MISSISSIPPI AGRICULTURAL & FORESTRY EXPERIMENT STATION RESEARCH REPORT
+<B><DD>	MISS AFES RES REP
+</B><DT>MISSISSIPPI AGRICULTURAL & FORESTRY EXPERIMENT STATION TECHNICAL BULLETIN
+<B><DD>	MISS AFES TECH BULL
+</B><DT>MISSISSIPPI QUARTERLY
+<B><DD>	MISS QUART
+</B><DT>MISSOURI AGRICULTURAL EXPERIMENT STATION RESEARCH BULLETIN
+<B><DD>	MO AES RES BULL
+</B><DT>MISSOURI MEDICINE
+<B><DD>	MO MED
+</B><DT>MITSUBISHI ELECTRIC ADVANCE
+<B><DD>	MITSUBISHI ELECTR AD
+</B><DT>MITTEILUNGEN DER OSTERREICHISCHEN GEOGRAPHISCHEN GESELLSCHAFT
+<B><DD>	MITT OSTERR GEOGR G
+</B><DT>MITTEILUNGEN DES KUNSTHISTORISCHEN INSTITUTES IN FLORENZ
+<B><DD>	MITT KUNSTHIST I FLO
+</B><DT>MLN-MODERN LANGUAGE NOTES
+<B><DD>	MLN-MOD LANG NOTES
+</B><DT>MNEMOSYNE
+<B><DD>	MNEMOSYNE
+</B><DT>MOBILE NETWORK & APPLICATIONS
+<B><DD>	MOBILE NETW APPL
+</B><DT>MOBILE NETWORKS & APPLICATIONS
+<B><DD>	MOBILE NETW APPL
+</B><DT>MODAL ANALYSIS-THE INTERNATIONAL JOURNAL OF ANALYTICAL AND EXPERIMENTAL MODAL ANALYSIS
+<B><DD>	MODAL ANAL
+</B><DT>MODELING IDENTIFICATION AND CONTROL
+<B><DD>	MODEL IDENT CONTROL
+</B><DT>MODELLING AND SIMULATION IN MATERIALS SCIENCE AND ENGINEERING
+<B><DD>	MODEL SIMUL MATER SC
+</B><DT>MODERN ASIAN STUDIES
+<B><DD>	MOD ASIAN STUD
+</B><DT>MODERN ASPECTS OF ELECTROCHEMISTRY
+<B><DD>	MOD ASPECT ELECTROC
+</B><DT>MODERN AUSTRIAN LITERATURE
+<B><DD>	MOD AUSTRIAN LIT
+</B><DT>MODERN CASTING
+<B><DD>	MOD CAST
+</B><DT>MODERN CHINA
+<B><DD>	MOD CHINA
+</B><DT>MODERN CONCEPTS OF CARDIOVASCULAR DISEASE
+<B><DD>	MOD CONC CARDIOV DIS
+</B><DT>MODERN DRAMA
+<B><DD>	MOD DRAMA
+</B><DT>MODERN FICTION STUDIES
+<B><DD>	MOD FICTION STUD
+</B><DT>MODERN HEBREW LITERATURE
+<B><DD>	MOD HEBREW LIT
+</B><DT>MODERN INTERNATIONAL DRAMA
+<B><DD>	MOD INT DRAMA
+</B><DT>MODERN JUDAISM
+<B><DD>	MOD JUDAISM
+</B><DT>MODERN LANGUAGE JOURNAL
+<B><DD>	MOD LANG J
+</B><DT>MODERN LANGUAGE QUARTERLY
+<B><DD>	MOD LANG QUART
+</B><DT>MODERN LANGUAGE REVIEW
+<B><DD>	MOD LANG REV
+</B><DT>MODERN MACHINE SHOP
+<B><DD>	MOD MACH SHOP
+</B><DT>MODERN MATERIALS HANDLING
+<B><DD>	MOD MATER HANDL
+</B><DT>MODERN METALS
+<B><DD>	MOD MET
+</B><DT>MODERN PAINT AND COATINGS
+<B><DD>	MOD PAINT COATING
+</B><DT>MODERN PATHOLOGY
+<B><DD>	MODERN PATHOL
+</B><DT>MODERN PHILOLOGY
+<B><DD>	MOD PHILOLOGY
+</B><DT>MODERN PHYSICS LETTERS A
+<B><DD>	MOD PHYS LETT A
+</B><DT>MODERN PHYSICS LETTERS B
+<B><DD>	MOD PHYS LETT B
+</B><DT>MODERN PLASTICS
+<B><DD>	MOD PLAST
+</B><DT>MODERN PROBLEMS OF PHARMACOPSYCHIATRY
+<B><DD>	MOD PROBL PHARM
+</B><DT>MODERN SCHOOLMAN
+<B><DD>	MOD SCHOOLMAN
+</B><DT>MODERN VETERINARY PRACTICE
+<B><DD>	MOD VET PRACT
+</B><DT>MODERNA SPRAK
+<B><DD>	MOD SPRAK
+</B><DT>MODERNISM-MODERNITY
+<B><DD>	MODERNISM-MODERNITY
+</B><DT>MOKUZAI GAKKAISHI
+<B><DD>	MOKUZAI GAKKAISHI
+</B><DT>MOLDING SYSTEMS
+<B><DD>	MOLDING SYST
+</B><DT>MOLECULAR & GENERAL GENETICS
+<B><DD>	MOL GEN GENET
+</B><DT>MOLECULAR AND BIOCHEMICAL PARASITOLOGY
+<B><DD>	MOL BIOCHEM PARASIT
+</B><DT>MOLECULAR AND CELLULAR BIOCHEMISTRY
+<B><DD>	MOL CELL BIOCHEM
+</B><DT>MOLECULAR AND CELLULAR BIOLOGY
+<B><DD>	MOL CELL BIOL
+</B><DT>MOLECULAR AND CELLULAR DIFFERENTIATION
+<B><DD>	MOL CELL DIFFER
+</B><DT>MOLECULAR AND CELLULAR ENDOCRINOLOGY
+<B><DD>	MOL CELL ENDOCRINOL
+</B><DT>MOLECULAR AND CELLULAR NEUROSCIENCE
+<B><DD>	MOL CELL NEUROSCI
+</B><DT>MOLECULAR AND CELLULAR PROBES
+<B><DD>	MOL CELL PROBE
+</B><DT>MOLECULAR AND CHEMICAL NEUROPATHOLOGY
+<B><DD>	MOL CHEM NEUROPATHOL
+</B><DT>MOLECULAR AND GENERAL GENETICS
+<B><DD>	MOL GEN GENET
+</B><DT>MOLECULAR ASPECTS OF MEDICINE
+<B><DD>	MOL ASPECTS MED
+</B><DT>MOLECULAR BIOLOGY
+<B><DD>	MOL BIOL+
+</B><DT>MOLECULAR BIOLOGY & MEDICINE
+<B><DD>	MOL BIOL MED
+</B><DT>MOLECULAR BIOLOGY AND EVOLUTION
+<B><DD>	MOL BIOL EVOL
+</B><DT>MOLECULAR BIOLOGY OF THE CELL
+<B><DD>	MOL BIOL CELL
+</B><DT>MOLECULAR BIOLOGY REPORTS
+<B><DD>	MOL BIOL REP
+</B><DT>MOLECULAR BIOTECHNOLOGY
+<B><DD>	MOL BIOTECHNOL
+</B><DT>MOLECULAR BIOTHERAPY
+<B><DD>	MOL BIOTHER
+</B><DT>MOLECULAR BRAIN RESEARCH
+<B><DD>	MOL BRAIN RES
+</B><DT>MOLECULAR BREEDING
+<B><DD>	MOL BREEDING
+</B><DT>MOLECULAR CARCINOGENESIS
+<B><DD>	MOL CARCINOGEN
+</B><DT>MOLECULAR CELL
+<B><DD>	MOL CELL
+</B><DT>MOLECULAR CHAPERONES
+<B><DD>	METHOD ENZYMOL
+</B><DT>MOLECULAR CRYSTALS AND LIQUID CRYSTALS
+<B><DD>	MOL CRYST LIQ CRYST
+</B><DT>MOLECULAR CRYSTALS AND LIQUID CRYSTALS SCIENCE AND TECHNOLOGY SECTION A-MOLECULAR CRYSTALS AND LIQUID CRYSTALS
+<B><DD>	MOL CRYST LIQ CRYS A
+</B><DT>MOLECULAR CRYSTALS AND LIQUID CRYSTALS SCIENCE AND TECHNOLOGY SECTION C-MOLECULAR MATERIALS
+<B><DD>	MOL CRYST LIQ CRYS C
+</B><DT>MOLECULAR DIAGNOSIS
+<B><DD>	MOL DIAGN
+</B><DT>MOLECULAR DIVERSITY
+<B><DD>	MOL DIVERS
+</B><DT>MOLECULAR ECOLOGY
+<B><DD>	MOL ECOL
+</B><DT>MOLECULAR ENDOCRINOLOGY
+<B><DD>	MOL ENDOCRINOL
+</B><DT>MOLECULAR GENETICS AND METABOLISM
+<B><DD>	MOL GENET METAB
+</B><DT>MOLECULAR HUMAN REPRODUCTION
+<B><DD>	MOL HUM REPROD
+</B><DT>MOLECULAR IMMUNOLOGY
+<B><DD>	MOL IMMUNOL
+</B><DT>MOLECULAR MARINE BIOLOGY AND BIOTECHNOLOGY
+<B><DD>	MOL MAR BIOL BIOTECH
+</B><DT>MOLECULAR MEDICINE
+<B><DD>	MOL MED
+</B><DT>MOLECULAR MEDICINE TODAY
+<B><DD>	MOL MED TODAY
+</B><DT>MOLECULAR MEMBRANE BIOLOGY
+<B><DD>	MOL MEMBR BIOL
+</B><DT>MOLECULAR MICROBIOLOGY
+<B><DD>	MOL MICROBIOL
+</B><DT>MOLECULAR NEUROBIOLOGY
+<B><DD>	MOL NEUROBIOL
+</B><DT>MOLECULAR PHARMACOLOGY
+<B><DD>	MOL PHARMACOL
+</B><DT>MOLECULAR PHYLOGENETICS AND EVOLUTION
+<B><DD>	MOL PHYLOGENET EVOL
+</B><DT>MOLECULAR PHYSICS
+<B><DD>	MOL PHYS
+</B><DT>MOLECULAR PHYSIOLOGY
+<B><DD>	MOL PHYSIOL
+</B><DT>MOLECULAR PLANT-MICROBE INTERACTIONS
+<B><DD>	MOL PLANT MICROBE IN
+</B><DT>MOLECULAR PSYCHIATRY
+<B><DD>	MOL PSYCHIATR
+</B><DT>MOLECULAR REPRODUCTION AND DEVELOPMENT
+<B><DD>	MOL REPROD DEV
+</B><DT>MOLECULAR SIMULATION
+<B><DD>	MOL SIMULAT
+</B><DT>MOLECULAR UROLOGY
+<B><DD>	MOL UROL
+</B><DT>MOLECULAR VISION
+<B><DD>	MOL VIS
+</B><DT>MOLECULES
+<B><DD>	MOLECULES
+</B><DT>MOLECULES AND CELLS
+<B><DD>	MOL CELLS
+</B><DT>MONATSHEFTE FUR CHEMIE
+<B><DD>	MONATSH CHEM
+</B><DT>MONATSHEFTE FUR MATHEMATIK
+<B><DD>	MONATSH MATH
+</B><DT>MONATSHEFTE FUR VETERINARMEDIZIN
+<B><DD>	MONATSH VETERINARMED
+</B><DT>MONATSSCHRIFT FUR BRAUEREI
+<B><DD>	MONAT BRAUEREI
+</B><DT>MONATSSCHRIFT FUR BRAUWISSENSCHAFT
+<B><DD>	MONATSSCHR BRAUWISS
+</B><DT>MONATSSCHRIFT KINDERHEILKUNDE
+<B><DD>	MONATSSCHR KINDERH
+</B><DT>MONIST
+<B><DD>	MONIST
+</B><DT>MONITORE ZOOLOGICO ITALIANO-ITALIAN JOURNAL OF ZOOLOGY
+<B><DD>	MONIT ZOOL ITAL
+</B><DT>MONOGRAPHS IN ALLERGY
+<B><DD>	MONOGR ALLERGY
+</B><DT>MONOGRAPHS IN CLINICAL CYTOLOGY
+<B><DD>	MG CLIN CYT
+</B><DT>MONOGRAPHS IN PAEDIATRICS
+<B><DD>	MONOGR PAEDIATR
+</B><DT>MONOGRAPHS OF THE SOCIETY FOR RESEARCH IN CHILD DEVELOPMENT
+<B><DD>	MONOGR SOC RES CHILD
+</B><DT>MONTANA AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	MONT AES BULL
+</B><DT>MONTANA-THE MAGAZINE OF WESTERN HISTORY
+<B><DD>	MONTANA
+</B><DT>MONTHLY LABOR REVIEW
+<B><DD>	MON LABOR REV
+</B><DT>MONTHLY NOTICES OF THE ROYAL ASTRONOMICAL SOCIETY
+<B><DD>	MON NOT R ASTRON SOC
+</B><DT>MONTHLY REVIEW-AN INDEPENDENT SOCIALIST MAGAZINE
+<B><DD>	MON REV
+</B><DT>MONTHLY WEATHER REVIEW
+<B><DD>	MON WEATHER REV
+</B><DT>MONUMENTA NIPPONICA
+<B><DD>	MONUM NIPPON
+</B><DT>MONUMENTS HISTORIQUES
+<B><DD>	MONUMENT HIST
+</B><DT>MOON AND THE PLANETS
+<B><DD>	MOON PLANETS
+</B><DT>MOREANA
+<B><DD>	MOREANA
+</B><DT>MORFOLOGIA NORMAL Y PATOLOGICA SECCION A-HISTOLOGIA
+<B><DD>	MORFOL NORM PATOL A
+</B><DT>MORFOLOGIA NORMAL Y PATOLOGICA SECCION B-ANATOMIA PATOLOGICA
+<B><DD>	MORFOL NORM PATOL B
+</B><DT>MOSAIC-A JOURNAL FOR THE INTERDISCIPLINARY STUDY OF LITERATURE
+<B><DD>	MOSAIC
+</B><DT>MOSQUITO NEWS
+<B><DD>	MOSQ NEWS
+</B><DT>MOTIVATION AND EMOTION
+<B><DD>	MOTIV EMOTION
+</B><DT>MOTOR CONTROL
+<B><DD>	MOTOR CONTROL
+</B><DT>MOUNT SINAI JOURNAL OF MEDICINE
+<B><DD>	MT SINAI J MED
+</B><DT>MOUNTAIN RESEARCH AND DEVELOPMENT
+<B><DD>	MT RES DEV
+</B><DT>MOUVEMENT SOCIAL
+<B><DD>	MOUVEMENT SOC
+</B><DT>MOVEMENT DISORDERS
+<B><DD>	MOVEMENT DISORD
+</B><DT>MOYEN AGE
+<B><DD>	MOYEN AGE
+</B><DT>MRS BULLETIN
+<B><DD>	MRS BULL
+</B><DT>MRS INTERNET JOURNAL OF NITRIDE SEMICONDUCTOR RESEARCH
+<B><DD>	MRS INTERNET J N S R
+</B><DT>MULTIBODY SYSTEM DYNAMICS
+<B><DD>	MULTIBODY SYST DYN
+</B><DT>MULTIDIMENSIONAL SYSTEMS AND SIGNAL PROCESSING
+<B><DD>	MULTIDIM SYST SIGN P
+</B><DT>MULTIMEDIA SYSTEMS
+<B><DD>	MULTIMEDIA SYST
+</B><DT>MULTIMEDIA TOOLS AND APPLICATIONS
+<B><DD>	MULTIMED TOOLS APPL
+</B><DT>MULTINATIONAL MONITOR
+<B><DD>	MULTINATL MONIT
+</B><DT>MULTIPLE SCLEROSIS
+<B><DD>	MULT SCLER
+</B><DT>MULTIVARIATE BEHAVIORAL RESEARCH
+<B><DD>	MULTIVAR BEHAV RES
+</B><DT>MUNCHENER MEDIZINISCHE WOCHENSCHRIFT
+<B><DD>	MUNCHEN MED WOCHEN
+</B><DT>MUSCLE & NERVE
+<B><DD>	MUSCLE NERVE
+</B><DT>MUSEUM INTERNATIONAL
+<B><DD>	MUSEUM INT
+</B><DT>MUSEUM NEWS
+<B><DD>	MUSEUM NEWS
+</B><DT>MUSIC & LETTERS
+<B><DD>	MUSIC LETT
+</B><DT>MUSIC ANALYSIS
+<B><DD>	MUSIC ANAL
+</B><DT>MUSIC PERCEPTION
+<B><DD>	MUSIC PERCEPT
+</B><DT>MUSIC THEORY SPECTRUM
+<B><DD>	MUSIC THEOR SPECTRUM
+</B><DT>MUSICA
+<B><DD>	MUSICA
+</B><DT>MUSICAL QUARTERLY
+<B><DD>	MUSIC QUART
+</B><DT>MUSICAL TIMES
+<B><DD>	MUSIC TIMES
+</B><DT>MUSIK IN BAYERN
+<B><DD>	MUSIK BAYERN
+</B><DT>MUSIK UND KIRCHE
+<B><DD>	MUSIK KIRCHE
+</B><DT>MUSIKFORSCHUNG
+<B><DD>	MUSIKFORSCHUNG
+</B><DT>MUSIKTHEORIE
+<B><DD>	MUSIKTHEORIE
+</B><DT>MUSLIM WORLD
+<B><DD>	MUSLIM WORLD
+</B><DT>MUTAGENESIS
+<B><DD>	MUTAGENESIS
+</B><DT>MUTATION RESEARCH
+<B><DD>	MUTAT RES
+</B><DT>MUTATION RESEARCH LETTERS
+<B><DD>	MUTAT RES LETT
+</B><DT>MUTATION RESEARCH-DNA REPAIR
+<B><DD>	MUTAT RES-DNA REPAIR
+</B><DT>MUTATION RESEARCH-DNAGING GENETIC INSTABILITY AND AGING
+<B><DD>	MUTAT RES-DNAGING G
+</B><DT>MUTATION RESEARCH-ENVIRONMENTAL MUTAGENESIS AND RELATED SUBJECTS
+<B><DD>	MUTAT RES-ENVIR MUTA
+</B><DT>MUTATION RESEARCH-FUNDAMENTAL AND MOLECULAR MECHANISMS OF MUTAGENESIS
+<B><DD>	MUTAT RES-FUND MOL M
+</B><DT>MUTATION RESEARCH-GENETIC TOXICOLOGY
+<B><DD>	MUTAT RES-GENET TOX
+</B><DT>MUTATION RESEARCH-GENETIC TOXICOLOGY AND ENVIRONMENTAL MUTAGENESIS
+<B><DD>	MUTAT RES-GEN TOX EN
+</B><DT>MUTATION RESEARCH-GENOMICS
+<B><DD>	MUTAT RES-GENOMICS
+</B><DT>MUTATION RESEARCH-REVIEWS IN GENETIC TOXICOLOGY
+<B><DD>	MUTAT RES-REV GENET
+</B><DT>MUTATION RESEARCH-REVIEWS IN MUTATION RESEARCH
+<B><DD>	MUTAT RES-REV MUTAT
+</B><DT>MUTTERSPRACHE
+<B><DD>	MUTTERSPRACHE
+</B><DT>MYCOLOGIA
+<B><DD>	MYCOLOGIA
+</B><DT>MYCOLOGICAL RESEARCH
+<B><DD>	MYCOL RES
+</B><DT>MYCOPATHOLOGIA
+<B><DD>	MYCOPATHOLOGIA
+</B><DT>MYCORRHIZA
+<B><DD>	MYCORRHIZA
+</B><DT>MYCOSES
+<B><DD>	MYCOSES
+</B><DT>MYCOTAXON
+<B><DD>	MYCOTAXON
+</B><DT>MYKOSEN
+<B><DD>	MYCOSES
+</B><DT>MYKOSEN
+<B><DD>	MYKOSEN
+</B><DT>MYSORE JOURNAL OF AGRICULTURAL SCIENCES
+<B><DD>	MYSORE J AGR SCI
+</B></DL>
+</BODY>
+</HTML>

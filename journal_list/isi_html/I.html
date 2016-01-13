@@ -1,715 +1,1753 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="I"></A><DT>I&CS-CONTROL TECHNOLOGY FOR ENGINEERS AND ENGINEERING MANAGEMENT
+<B><DD>	I&CS-CONTROL TECH EN
+</B><DT>I&CS-INDUSTRIAL AND PROCESS CONTROL MAGAZINE
+<B><DD>	I&CS-CONTROL TECH EN
+</B><DT>I&CS-INSTRUMENTATION & CONTROL SYSTEMS
+<B><DD>	I&CS-INSTR CON SYST
+</B><DT>I-S ANALYZER
+<B><DD>	I-S ANAL
+</B><DT>IARC PUBLICATIONS
+<B><DD>	IARC PUBL
+</B><DT>IARC SCIENTIFIC PUBLICATIONS
+<B><DD>	IARC SCI PUBL
+</B><DT>IAU SYMPOSIA
+<B><DD>	IAU SYMP
+</B><DT>IAWA BULLETIN
+<B><DD>	IAWA BULL
+</B><DT>IAWA JOURNAL
+<B><DD>	IAWA J
+</B><DT>IBEROROMANIA
+<B><DD>	IBEROROMANIA
+</B><DT>IBIS
+<B><DD>	IBIS
+</B><DT>IBM JOURNAL OF RESEARCH AND DEVELOPMENT
+<B><DD>	IBM J RES DEV
+</B><DT>IBM SYSTEMS JOURNAL
+<B><DD>	IBM SYST J
+</B><DT>ICARUS
+<B><DD>	ICARUS
+</B><DT>ICCA JOURNAL
+<B><DD>	ICCA J
+</B><DT>ICES JOURNAL OF MARINE SCIENCE
+<B><DD>	ICES J MAR SCI
+</B><DT>ICGA JOURNAL
+<B><DD>	ICGA J
+</B><DT>ICHTHYOLOGICAL RESEARCH
+<B><DD>	ICHTHYOL RES
+</B><DT>ICID JOURNAL
+<B><DD>	ICID J
+</B><DT>ICP BUSINESS SOFTWARE REVIEW
+<B><DD>	ICP BUS SOFTW REV
+</B><DT>ICP SOFTWARE BUSINESS REVIEW
+<B><DD>	ICP BUS SOFTW REV
+</B><DT>IDEALISTIC STUDIES
+<B><DD>	IDEALISTIC STUD
+</B><DT>IDENTITIES-GLOBAL STUDIES IN CULTURE AND POWER
+<B><DD>	IDENTITIES-GLOB STUD
+</B><DT>IDS BULLETIN-INSTITUTE OF DEVELOPMENT STUDIES
+<B><DD>	IDS BULL-I DEV STUD
+</B><DT>IEE PROCEEDINGS-A-SCIENCE MEASUREMENT AND TECHNOLOGY
+<B><DD>	IEE PROC-A
+</B><DT>IEE PROCEEDINGS-B ELECTRIC POWER APPLICATIONS
+<B><DD>	IEE PROC-B
+</B><DT>IEE PROCEEDINGS-C GENERATION TRANSMISSION AND DISTRIBUTION
+<B><DD>	IEE PROC-C
+</B><DT>IEE PROCEEDINGS-CIRCUITS DEVICES AND SYSTEMS
+<B><DD>	IEE P-CIRC DEV SYST
+</B><DT>IEE PROCEEDINGS-COMMUNICATIONS
+<B><DD>	IEE P-COMMUN
+</B><DT>IEE PROCEEDINGS-COMPUTERS AND DIGITAL TECHNIQUES
+<B><DD>	IEE P-COMPUT DIG T
+</B><DT>IEE PROCEEDINGS-CONTROL THEORY AND APPLICATIONS
+<B><DD>	IEE P-CONTR THEOR AP
+</B><DT>IEE PROCEEDINGS-D CONTROL THEORY AND APPLICATIONS
+<B><DD>	IEE PROC-D
+</B><DT>IEE PROCEEDINGS-E COMPUTERS AND DIGITAL TECHNIQUES
+<B><DD>	IEE PROC-E
+</B><DT>IEE PROCEEDINGS-ELECTRIC POWER APPLICATIONS
+<B><DD>	IEE P-ELECT POW APPL
+</B><DT>IEE PROCEEDINGS-F RADAR AND SIGNAL PROCESSING
+<B><DD>	IEE PROC-F
+</B><DT>IEE PROCEEDINGS-G CIRCUITS DEVICES AND SYSTEMS
+<B><DD>	IEE PROC-G
+</B><DT>IEE PROCEEDINGS-GENERATION TRANSMISSION AND DISTRIBUTION
+<B><DD>	IEE P-GENER TRANSM D
+</B><DT>IEE PROCEEDINGS-H MICROWAVES ANTENNAS AND PROPAGATION
+<B><DD>	IEE PROC-H
+</B><DT>IEE PROCEEDINGS-I COMMUNICATIONS SPEECH AND VISION
+<B><DD>	IEE PROC-I
+</B><DT>IEE PROCEEDINGS-J OPTOELECTRONICS
+<B><DD>	IEE PROC-J
+</B><DT>IEE PROCEEDINGS-MICROWAVES ANTENNAS AND PROPAGATION
+<B><DD>	IEE P-MICROW ANTEN P
+</B><DT>IEE PROCEEDINGS-OPTOELECTRONICS
+<B><DD>	IEE P-OPTOELECTRON
+</B><DT>IEE PROCEEDINGS-RADAR SONAR AND NAVIGATION
+<B><DD>	IEE P-RADAR SON NAV
+</B><DT>IEE PROCEEDINGS-SCIENCE MEASUREMENT AND TECHNOLOGY
+<B><DD>	IEE P-SCI MEAS TECH
+</B><DT>IEE PROCEEDINGS-VISION IMAGE AND SIGNAL PROCESSING
+<B><DD>	IEE P-VIS IMAGE SIGN
+</B><DT>IEE REVIEW
+<B><DD>	IEE REVIEW
+</B><DT>IEEE AEROSPACE AND ELECTRONIC SYSTEMS MAGAZINE
+<B><DD>	IEEE AERO EL SYS MAG
+</B><DT>IEEE ANNALS OF THE HISTORY OF COMPUTING
+<B><DD>	IEEE ANN HIST COMPUT
+</B><DT>IEEE ANTENNAS AND PROPAGATION MAGAZINE
+<B><DD>	IEEE ANTENNAS PROPAG
+</B><DT>IEEE CIRCUITS & DEVICES
+<B><DD>	IEEE CIRCUITS DEVICE
+</B><DT>IEEE CIRCUITS AND DEVICES MAGAZINE
+<B><DD>	IEEE CIRCUIT DEVIC
+</B><DT>IEEE COMMUNICATIONS LETTERS
+<B><DD>	IEEE COMMUN LETT
+</B><DT>IEEE COMMUNICATIONS MAGAZINE
+<B><DD>	IEEE COMMUN MAG
+</B><DT>IEEE COMPUTATIONAL SCIENCE & ENGINEERING
+<B><DD>	IEEE COMPUT SCI ENG
+</B><DT>IEEE COMPUTER APPLICATIONS IN POWER
+<B><DD>	IEEE COMPUT APPL POW
+</B><DT>IEEE COMPUTER GRAPHICS AND APPLICATIONS
+<B><DD>	IEEE COMPUT GRAPH
+</B><DT>IEEE CONCURRENCY
+<B><DD>	IEEE CONCURR
+</B><DT>IEEE CONTROL SYSTEMS MAGAZINE
+<B><DD>	IEEE CONTR SYST MAG
+</B><DT>IEEE DESIGN & TEST OF COMPUTERS
+<B><DD>	IEEE DES TEST COMPUT
+</B><DT>IEEE ELECTRICAL INSULATION MAGAZINE
+<B><DD>	IEEE ELECTR INSUL M
+</B><DT>IEEE ELECTRON DEVICE LETTERS
+<B><DD>	IEEE ELECTR DEVICE L
+</B><DT>IEEE ENGINEERING IN MEDICINE AND BIOLOGY MAGAZINE
+<B><DD>	IEEE ENG MED BIOL
+</B><DT>IEEE EXPERT-INTELLIGENT SYSTEMS & THEIR APPLICATIONS
+<B><DD>	IEEE EXPERT
+</B><DT>IEEE INDUSTRY APPLICATIONS MAGAZINE
+<B><DD>	IEEE IND APPL MAG
+</B><DT>IEEE INSTRUMENTATION & MEASUREMENT MAGAZINE
+<B><DD>	IEEE INSTRU MEAS MAG
+</B><DT>IEEE INTELLIGENT SYSTEMS & THEIR APPLICATIONS
+<B><DD>	IEEE INTELL SYST APP
+</B><DT>IEEE INTERNET COMPUTING
+<B><DD>	IEEE INTERNET COMPUT
+</B><DT>IEEE JOURNAL OF OCEANIC ENGINEERING
+<B><DD>	IEEE J OCEANIC ENG
+</B><DT>IEEE JOURNAL OF QUANTUM ELECTRONICS
+<B><DD>	IEEE J QUANTUM ELECT
+</B><DT>IEEE JOURNAL OF ROBOTICS AND AUTOMATION
+<B><DD>	IEEE T ROBOTIC AUTOM
+</B><DT>IEEE JOURNAL OF SELECTED TOPICS IN QUANTUM ELECTRONICS
+<B><DD>	IEEE J SEL TOP QUANT
+</B><DT>IEEE JOURNAL OF SOLID-STATE CIRCUITS
+<B><DD>	IEEE J SOLID-ST CIRC
+</B><DT>IEEE JOURNAL ON SELECTED AREAS IN COMMUNICATIONS
+<B><DD>	IEEE J SEL AREA COMM
+</B><DT>IEEE MICRO
+<B><DD>	IEEE MICRO
+</B><DT>IEEE MICROWAVE AND GUIDED WAVE LETTERS
+<B><DD>	IEEE MICROW GUIDED W
+</B><DT>IEEE MULTIMEDIA
+<B><DD>	IEEE MULTIMEDIA
+</B><DT>IEEE NETWORK
+<B><DD>	IEEE NETWORK
+</B><DT>IEEE PARALLEL & DISTRIBUTED TECHNOLOGY
+<B><DD>	IEEE PARALL DISTRIB
+</B><DT>IEEE PERSONAL COMMUNICATIONS
+<B><DD>	IEEE PERS COMMUN
+</B><DT>IEEE PHOTONICS TECHNOLOGY LETTERS
+<B><DD>	IEEE PHOTONIC TECH L
+</B><DT>IEEE ROBOTICS & AUTOMATION MAGAZINE
+<B><DD>	IEEE ROBOT AUTOM MAG
+</B><DT>IEEE SIGNAL PROCESSING LETTERS
+<B><DD>	IEEE SIGNAL PROC LET
+</B><DT>IEEE SIGNAL PROCESSING MAGAZINE
+<B><DD>	IEEE SIGNAL PROC MAG
+</B><DT>IEEE SOFTWARE
+<B><DD>	IEEE SOFTWARE
+</B><DT>IEEE SPECTRUM
+<B><DD>	IEEE SPECTRUM
+</B><DT>IEEE TECHNOLOGY AND SOCIETY MAGAZINE
+<B><DD>	IEEE TECHNOL SOC MAG
+</B><DT>IEEE TRANSACTIONS ON ACOUSTICS SPEECH AND SIGNAL PROCESSING
+<B><DD>	IEEE T ACOUST SPEECH
+</B><DT>IEEE TRANSACTIONS ON ADVANCED PACKAGING
+<B><DD>	IEEE TRANS ADV PACK
+</B><DT>IEEE TRANSACTIONS ON AEROSPACE AND ELECTRONIC SYSTEMS
+<B><DD>	IEEE T AERO ELEC SYS
+</B><DT>IEEE TRANSACTIONS ON ANTENNAS AND PROPAGATION
+<B><DD>	IEEE T ANTENN PROPAG
+</B><DT>IEEE TRANSACTIONS ON APPLIED SUPERCONDUCTIVITY
+<B><DD>	IEEE T APPL SUPERCON
+</B><DT>IEEE TRANSACTIONS ON AUTOMATIC CONTROL
+<B><DD>	IEEE T AUTOMAT CONTR
+</B><DT>IEEE TRANSACTIONS ON BIOMEDICAL ENGINEERING
+<B><DD>	IEEE T BIO-MED ENG
+</B><DT>IEEE TRANSACTIONS ON BROADCASTING
+<B><DD>	IEEE T BROADCAST
+</B><DT>IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS
+<B><DD>	IEEE T CIRCUITS SYST
+</B><DT>IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS FOR VIDEO TECHNOLOGY
+<B><DD>	IEEE T CIRC SYST VID
+</B><DT>IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS I-FUNDAMENTAL THEORY AND APPLICATIONS
+<B><DD>	IEEE T CIRCUITS-I
+</B><DT>IEEE TRANSACTIONS ON CIRCUITS AND SYSTEMS II-ANALOG AND DIGITAL SIGNAL PROCESSING
+<B><DD>	IEEE T CIRCUITS-II
+</B><DT>IEEE TRANSACTIONS ON COMMUNICATIONS
+<B><DD>	IEEE T COMMUN
+</B><DT>IEEE TRANSACTIONS ON COMPONENTS AND PACKAGING TECHNOLOGIES
+<B><DD>	IEEE T COMPON PACK T
+</B><DT>IEEE TRANSACTIONS ON COMPONENTS HYBRIDS AND MANUFACTURING TECHNOLOGY
+<B><DD>	IEEE T COMPON HYBR
+</B><DT>IEEE TRANSACTIONS ON COMPONENTS PACKAGING AND MANUFACTURING TECHNOLOGY PART A
+<B><DD>	IEEE T COMPON PACK A
+</B><DT>IEEE TRANSACTIONS ON COMPONENTS PACKAGING AND MANUFACTURING TECHNOLOGY PART B-ADVANCED PACKAGING
+<B><DD>	IEEE T COMPON PACK B
+</B><DT>IEEE TRANSACTIONS ON COMPUTER-AIDED DESIGN OF INTEGRATED CIRCUITS AND SYSTEMS
+<B><DD>	IEEE T COMPUT AID D
+</B><DT>IEEE TRANSACTIONS ON COMPUTERS
+<B><DD>	IEEE T COMPUT
+</B><DT>IEEE TRANSACTIONS ON CONSUMER ELECTRONICS
+<B><DD>	IEEE T CONSUM ELECTR
+</B><DT>IEEE TRANSACTIONS ON CONTROL SYSTEMS TECHNOLOGY
+<B><DD>	IEEE T CONTR SYST T
+</B><DT>IEEE TRANSACTIONS ON DIELECTRICS AND ELECTRICAL INSULATION
+<B><DD>	IEEE T DIELECT EL IN
+</B><DT>IEEE TRANSACTIONS ON EDUCATION
+<B><DD>	IEEE T EDUC
+</B><DT>IEEE TRANSACTIONS ON ELECTRICAL INSULATION
+<B><DD>	IEEE T ELECTR INSUL
+</B><DT>IEEE TRANSACTIONS ON ELECTROMAGNETIC COMPATIBILITY
+<B><DD>	IEEE T ELECTROMAGN C
+</B><DT>IEEE TRANSACTIONS ON ELECTRON DEVICES
+<B><DD>	IEEE T ELECTRON DEV
+</B><DT>IEEE TRANSACTIONS ON ELECTRONICS PACKAGING MANUFACTURING
+<B><DD>	IEEE T ELECTRON PA M
+</B><DT>IEEE TRANSACTIONS ON ENERGY CONVERSION
+<B><DD>	IEEE T ENERGY CONVER
+</B><DT>IEEE TRANSACTIONS ON ENGINEERING MANAGEMENT
+<B><DD>	IEEE T ENG MANAGE
+</B><DT>IEEE TRANSACTIONS ON EVOLUTIONARY COMPUTATION
+<B><DD>	IEEE T EVOLUT COMPUT
+</B><DT>IEEE TRANSACTIONS ON FUZZY SYSTEMS
+<B><DD>	IEEE T FUZZY SYST
+</B><DT>IEEE TRANSACTIONS ON GEOSCIENCE AND REMOTE SENSING
+<B><DD>	IEEE T GEOSCI REMOTE
+</B><DT>IEEE TRANSACTIONS ON IMAGE PROCESSING
+<B><DD>	IEEE T IMAGE PROCESS
+</B><DT>IEEE TRANSACTIONS ON INDUSTRIAL ELECTRONICS
+<B><DD>	IEEE T IND ELECTRON
+</B><DT>IEEE TRANSACTIONS ON INDUSTRY APPLICATIONS
+<B><DD>	IEEE T IND APPL
+</B><DT>IEEE TRANSACTIONS ON INFORMATION TECHNOLOGY IN BIOMEDICINE
+<B><DD>	IEEE T INF TECHNOL B
+</B><DT>IEEE TRANSACTIONS ON INFORMATION THEORY
+<B><DD>	IEEE T INFORM THEORY
+</B><DT>IEEE TRANSACTIONS ON INSTRUMENTATION AND MEASUREMENT
+<B><DD>	IEEE T INSTRUM MEAS
+</B><DT>IEEE TRANSACTIONS ON KNOWLEDGE AND DATA ENGINEERING
+<B><DD>	IEEE T KNOWL DATA EN
+</B><DT>IEEE TRANSACTIONS ON MAGNETICS
+<B><DD>	IEEE T MAGN
+</B><DT>IEEE TRANSACTIONS ON MEDICAL IMAGING
+<B><DD>	IEEE T MED IMAGING
+</B><DT>IEEE TRANSACTIONS ON MICROWAVE THEORY AND TECHNIQUES
+<B><DD>	IEEE T MICROW THEORY
+</B><DT>IEEE TRANSACTIONS ON NEURAL NETWORKS
+<B><DD>	IEEE T NEURAL NETWOR
+</B><DT>IEEE TRANSACTIONS ON NUCLEAR SCIENCE
+<B><DD>	IEEE T NUCL SCI
+</B><DT>IEEE TRANSACTIONS ON PARALLEL AND DISTRIBUTED SYSTEMS
+<B><DD>	IEEE T PARALL DISTR
+</B><DT>IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE
+<B><DD>	IEEE T PATTERN ANAL
+</B><DT>IEEE TRANSACTIONS ON PLASMA SCIENCE
+<B><DD>	IEEE T PLASMA SCI
+</B><DT>IEEE TRANSACTIONS ON POWER APPARATUS AND SYSTEMS
+<B><DD>	IEEE T POWER AP SYST
+</B><DT>IEEE TRANSACTIONS ON POWER DELIVERY
+<B><DD>	IEEE T POWER DELIVER
+</B><DT>IEEE TRANSACTIONS ON POWER ELECTRONICS
+<B><DD>	IEEE T POWER ELECTR
+</B><DT>IEEE TRANSACTIONS ON POWER SYSTEMS
+<B><DD>	IEEE T POWER SYST
+</B><DT>IEEE TRANSACTIONS ON PROFESSIONAL COMMUNICATION
+<B><DD>	IEEE T PROF COMMUN
+</B><DT>IEEE TRANSACTIONS ON REHABILITATION ENGINEERING
+<B><DD>	IEEE T REHABIL ENG
+</B><DT>IEEE TRANSACTIONS ON RELIABILITY
+<B><DD>	IEEE T RELIAB
+</B><DT>IEEE TRANSACTIONS ON ROBOTICS AND AUTOMATION
+<B><DD>	IEEE T ROBOTIC AUTOM
+</B><DT>IEEE TRANSACTIONS ON SEMICONDUCTOR MANUFACTURING
+<B><DD>	IEEE T SEMICONDUCT M
+</B><DT>IEEE TRANSACTIONS ON SIGNAL PROCESSING
+<B><DD>	IEEE T SIGNAL PROCES
+</B><DT>IEEE TRANSACTIONS ON SOFTWARE ENGINEERING
+<B><DD>	IEEE T SOFTWARE ENG
+</B><DT>IEEE TRANSACTIONS ON SONICS AND ULTRASONICS
+<B><DD>	IEEE T SON ULTRASON
+</B><DT>IEEE TRANSACTIONS ON SPEECH AND AUDIO PROCESSING
+<B><DD>	IEEE T SPEECH AUDI P
+</B><DT>IEEE TRANSACTIONS ON SYSTEMS MAN AND CYBERNETICS
+<B><DD>	IEEE T SYST MAN CYB
+</B><DT>IEEE TRANSACTIONS ON SYSTEMS MAN AND CYBERNETICS PART A-SYSTEMS AND HUMANS
+<B><DD>	IEEE T SYST MAN CY A
+</B><DT>IEEE TRANSACTIONS ON SYSTEMS MAN AND CYBERNETICS PART B-CYBERNETICS
+<B><DD>	IEEE T SYST MAN CY B
+</B><DT>IEEE TRANSACTIONS ON SYSTEMS MAN AND CYBERNETICS PART C-APPLICATIONS AND REVIEWS
+<B><DD>	IEEE T SYST MAN CY C
+</B><DT>IEEE TRANSACTIONS ON ULTRASONICS FERROELECTRICS AND FREQUENCY CONTROL
+<B><DD>	IEEE T ULTRASON FERR
+</B><DT>IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY
+<B><DD>	IEEE T VEH TECHNOL
+</B><DT>IEEE TRANSACTIONS ON VERY LARGE SCALE INTEGRATION VLSI SYSTEMS
+<B><DD>	IEEE T VLSI SYST
+</B><DT>IEEE TRANSACTIONS ON VISUALIZATION AND COMPUTER GRAPHICS
+<B><DD>	IEEE T VIS COMPUT GR
+</B><DT>IEEE-ACM TRANSACTIONS ON NETWORKING
+<B><DD>	IEEE ACM T NETWORK
+</B><DT>IEEE-ASME TRANSACTIONS ON MECHATRONICS
+<B><DD>	IEEE-ASME T MECH
+</B><DT>IEICE TRANSACTIONS ON COMMUNICATIONS
+<B><DD>	IEICE T COMMUN
+</B><DT>IEICE TRANSACTIONS ON COMMUNICATIONS ELECTRONICS INFORMATION AND SYSTEMS
+<B><DD>	IEICE TRANS COMMUN
+</B><DT>IEICE TRANSACTIONS ON ELECTRONICS
+<B><DD>	IEICE T ELECTRON
+</B><DT>IEICE TRANSACTIONS ON FUNDAMENTALS OF ELECTRONICS COMMUNICATIONS AND COMPUTER SCIENCES
+<B><DD>	IEICE T FUND ELECTR
+</B><DT>IEICE TRANSACTIONS ON INFORMATION AND SYSTEMS
+<B><DD>	IEICE T INF SYST
+</B><DT>IETE JOURNAL OF RESEARCH
+<B><DD>	IETE J RES
+</B><DT>IETE TECHNICAL REVIEW
+<B><DD>	IETE TECH REV
+</B><DT>IFIP TRANSACTIONS A-COMPUTER SCIENCE AND TECHNOLOGY
+<B><DD>	IFIP TRANS A
+</B><DT>IFIP TRANSACTIONS B-APPLICATIONS IN TECHNOLOGY
+<B><DD>	IFIP TRANS B
+</B><DT>IFIP TRANSACTIONS C-COMMUNICATION SYSTEMS
+<B><DD>	IFIP TRANS C
+</B><DT>IFLA JOURNAL-INTERNATIONAL FEDERATION OF LIBRARY ASSOCIATIONS
+<B><DD>	IFLA J-INT FED LIBR
+</B><DT>IIC-INTERNATIONAL REVIEW OF INDUSTRIAL PROPERTY AND COPYRIGHT LAW
+<B><DD>	IIC-INT REV IND PROP
+</B><DT>IIE SOLUTIONS
+<B><DD>	IIE SOLUTIONS
+</B><DT>IIE TRANSACTIONS
+<B><DD>	IIE TRANS
+</B><DT>ILLAHEE-JOURNAL FOR THE NORTHWEST ENVIRONMENT
+<B><DD>	ILLAHEE
+</B><DT>ILLINOIS AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	ILLINOIS AES BULL
+</B><DT>ILLINOIS JOURNAL OF MATHEMATICS
+<B><DD>	ILLINOIS J MATH
+</B><DT>ILLINOIS MEDICAL JOURNAL
+<B><DD>	ILLINOIS MED J
+</B><DT>ILLINOIS RESEARCH
+<B><DD>	ILLINOIS RES
+</B><DT>IMA JOURNAL OF APPLIED MATHEMATICS
+<B><DD>	IMA J APPL MATH
+</B><DT>IMA JOURNAL OF MATHEMATICAL CONTROL AND INFORMATION
+<B><DD>	IMA J MATH CONTROL I
+</B><DT>IMA JOURNAL OF MATHEMATICS APPLIED IN MEDICINE AND BIOLOGY
+<B><DD>	IMA J MATH APPL MED
+</B><DT>IMA JOURNAL OF NUMERICAL ANALYSIS
+<B><DD>	IMA J NUMER ANAL
+</B><DT>IMAGE
+<B><DD>	IMAGE
+</B><DT>IMAGE AND VISION COMPUTING
+<B><DD>	IMAGE VISION COMPUT
+</B><DT>IMAGING SCIENCE JOURNAL
+<B><DD>	IMAGING SCI J
+</B><DT>IMMANUEL
+<B><DD>	IMMANUEL
+</B><DT>IMMUNITAT UND INFEKTION
+<B><DD>	IMMUN INFEKT
+</B><DT>IMMUNITY
+<B><DD>	IMMUNITY
+</B><DT>IMMUNOBIOLOGY
+<B><DD>	IMMUNOBIOLOGY
+</B><DT>IMMUNOGENETICS
+<B><DD>	IMMUNOGENETICS
+</B><DT>IMMUNOLOGIC RESEARCH
+<B><DD>	IMMUNOL RES
+</B><DT>IMMUNOLOGICAL COMMUNICATIONS
+<B><DD>	IMMUNOL COMMUN
+</B><DT>IMMUNOLOGICAL INVESTIGATIONS
+<B><DD>	IMMUNOL INVEST
+</B><DT>IMMUNOLOGICAL REVIEWS
+<B><DD>	IMMUNOL REV
+</B><DT>IMMUNOLOGIST
+<B><DD>	IMMUNOLOGIST
+</B><DT>IMMUNOLOGY
+<B><DD>	IMMUNOLOGY
+</B><DT>IMMUNOLOGY AND ALLERGY CLINICS OF NORTH AMERICA
+<B><DD>	IMMUNOL ALLERGY CLIN
+</B><DT>IMMUNOLOGY AND CELL BIOLOGY
+<B><DD>	IMMUNOL CELL BIOL
+</B><DT>IMMUNOLOGY LETTERS
+<B><DD>	IMMUNOL LETT
+</B><DT>IMMUNOLOGY TODAY
+<B><DD>	IMMUNOL TODAY
+</B><DT>IMMUNOPARASITOLOGY TODAY-A COMBINED ISSUE OF IMMUNOLOGY TODAY AND PARASITOLOGY TODAY
+<B><DD>	IMMUNOPARASITOL TOD
+</B><DT>IMMUNOPHARMACOLOGY
+<B><DD>	IMMUNOPHARMACOLOGY
+</B><DT>IMMUNOPHARMACOLOGY AND IMMUNOTOXICOLOGY
+<B><DD>	IMMUNOPHARM IMMUNOT
+</B><DT>IMMUNOTECHNOLOGY
+<B><DD>	IMMUNOTECHNOLOGY
+</B><DT>IMPACT OF SCIENCE ON SOCIETY
+<B><DD>	IMPACT SCI SOC
+</B><DT>IN PRACTICE
+<B><DD>	IN PRACTICE
+</B><DT>IN SESSION-PSYCHOTHERAPY IN PRACTICE
+<B><DD>	IN SESSION-PSYCHOTH
+</B><DT>IN SITU
+<B><DD>	IN SITU
+</B><DT>IN VITRO & MOLECULAR TOXICOLOGY-A JOURNAL OF BASIC AND APPLIED RESEARCH
+<B><DD>	IN VITRO MOL TOXICOL
+</B><DT>IN VITRO CELLULAR & DEVELOPMENTAL BIOLOGY
+<B><DD>	IN VITRO CELL DEV B
+</B><DT>IN VITRO CELLULAR & DEVELOPMENTAL BIOLOGY-ANIMAL
+<B><DD>	IN VITRO CELL DEV-AN
+</B><DT>IN VITRO CELLULAR & DEVELOPMENTAL BIOLOGY-PLANT
+<B><DD>	IN VITRO CELL DEV-PL
+</B><DT>IN VITRO TOXICOLOGY
+<B><DD>	IN VITRO TOXICOL
+</B><DT>IN VITRO-JOURNAL OF THE TISSUE CULTURE ASSOCIATION
+<B><DD>	IN VITRO CELL DEV B
+</B><DT>IN VIVO
+<B><DD>	IN VIVO
+</B><DT>INDAGATIONES MATHEMATICAE-NEW SERIES
+<B><DD>	INDAGAT MATH NEW SER
+</B><DT>INDEX ON CENSORSHIP
+<B><DD>	INDEX CENSORSHIP
+</B><DT>INDIAN ECONOMIC AND SOCIAL HISTORY REVIEW
+<B><DD>	INDIAN ECON SOC HIST
+</B><DT>INDIAN HORIZONS
+<B><DD>	INDIAN HORIZONS
+</B><DT>INDIAN JOURNAL OF AGRICULTURAL RESEARCH
+<B><DD>	INDIAN J AGR RES
+</B><DT>INDIAN JOURNAL OF AGRICULTURAL SCIENCES
+<B><DD>	INDIAN J AGR SCI
+</B><DT>INDIAN JOURNAL OF AGRONOMY
+<B><DD>	INDIAN J AGRON
+</B><DT>INDIAN JOURNAL OF ANIMAL SCIENCES
+<B><DD>	INDIAN J ANIM SCI
+</B><DT>INDIAN JOURNAL OF BIOCHEMISTRY & BIOPHYSICS
+<B><DD>	INDIAN J BIOCHEM BIO
+</B><DT>INDIAN JOURNAL OF CHEMICAL TECHNOLOGY
+<B><DD>	INDIAN J CHEM TECHN
+</B><DT>INDIAN JOURNAL OF CHEMISTRY SECTION A-INORGANIC BIO-INORGANIC PHYSICAL THEORETICAL & ANALYTICAL CHEMISTRY
+<B><DD>	INDIAN J CHEM A
+</B><DT>INDIAN JOURNAL OF CHEMISTRY SECTION B-ORGANIC CHEMISTRY INCLUDING MEDICINAL CHEMISTRY
+<B><DD>	INDIAN J CHEM B
+</B><DT>INDIAN JOURNAL OF ENGINEERING AND MATERIALS SCIENCES
+<B><DD>	INDIAN J ENG MATER S
+</B><DT>INDIAN JOURNAL OF EXPERIMENTAL BIOLOGY
+<B><DD>	INDIAN J EXP BIOL
+</B><DT>INDIAN JOURNAL OF FIBRE & TEXTILE RESEARCH
+<B><DD>	INDIAN J FIBRE TEXT
+</B><DT>INDIAN JOURNAL OF GENETICS AND PLANT BREEDING
+<B><DD>	INDIAN J GENET PL BR
+</B><DT>INDIAN JOURNAL OF HETEROCYCLIC CHEMISTRY
+<B><DD>	INDIAN J HETEROCY CH
+</B><DT>INDIAN JOURNAL OF MARINE SCIENCES
+<B><DD>	INDIAN J MAR SCI
+</B><DT>INDIAN JOURNAL OF MEDICAL RESEARCH
+<B><DD>	INDIAN J MED RES
+</B><DT>INDIAN JOURNAL OF MEDICAL RESEARCH SECTION A-INFECTIOUS DISEASES
+<B><DD>	INDIAN J MED RES-A
+</B><DT>INDIAN JOURNAL OF MEDICAL RESEARCH SECTION B-BIOMEDICAL RESEARCH OTHER THAN INFECTIOUS DISEASES
+<B><DD>	INDIAN J MED RES-B
+</B><DT>INDIAN JOURNAL OF PLANT PHYSIOLOGY
+<B><DD>	INDIAN J PLANT PHYSI
+</B><DT>INDIAN JOURNAL OF PURE & APPLIED MATHEMATICS
+<B><DD>	INDIAN J PURE AP MAT
+</B><DT>INDIAN JOURNAL OF PURE & APPLIED PHYSICS
+<B><DD>	INDIAN J PURE AP PHY
+</B><DT>INDIAN JOURNAL OF RADIO & SPACE PHYSICS
+<B><DD>	INDIAN J RADIO SPACE
+</B><DT>INDIAN JOURNAL OF SOCIAL WORK
+<B><DD>	INDIAN J SOC WORK
+</B><DT>INDIAN JOURNAL OF TECHNOLOGY
+<B><DD>	INDIAN J TECHNOL
+</B><DT>INDIAN VETERINARY JOURNAL
+<B><DD>	INDIAN VET J
+</B><DT>INDIANA AGRICULTURAL EXPERIMENT STATION BULLETIN
+<B><DD>	INDIANA AES BULL
+</B><DT>INDIANA AGRICULTURAL EXPERIMENT STATION INSPECTION REPORT
+<B><DD>	INDIANA AES INSP REP
+</B><DT>INDIANA AGRICULTURAL EXPERIMENT STATION RESEARCH BULLETIN
+<B><DD>	INDIANA AES RES BULL
+</B><DT>INDIANA LAW JOURNAL
+<B><DD>	INDIANA LAW J
+</B><DT>INDIANA UNIVERSITY MATHEMATICS JOURNAL
+<B><DD>	INDIANA U MATH J
+</B><DT>INDIVIDUAL PSYCHOLOGY-THE JOURNAL OF ADLERIAN THEORY RESEARCH & PRACTICE
+<B><DD>	INDIV PSYCHOL
+</B><DT>INDO-IRANIAN JOURNAL
+<B><DD>	INDO-IRAN J
+</B><DT>INDOGERMANISCHE FORSCHUNGEN
+<B><DD>	INDOGER FORSCH
+</B><DT>INDOOR AIR-INTERNATIONAL JOURNAL OF INDOOR AIR QUALITY AND CLIMATE
+<B><DD>	INDOOR AIR
+</B><DT>INDOOR AND BUILT ENVIRONMENT
+<B><DD>	INDOOR BUILT ENVIRON
+</B><DT>INDOOR ENVIRONMENT
+<B><DD>	INDOOR ENVIRON
+</B><DT>INDUSTRIA CONSERVE
+<B><DD>	IND CONSERVE
+</B><DT>INDUSTRIAL & ENGINEERING CHEMISTRY FUNDAMENTALS
+<B><DD>	IND ENG CHEM FUND
+</B><DT>INDUSTRIAL & ENGINEERING CHEMISTRY PROCESS DESIGN AND DEVELOPMENT
+<B><DD>	IND ENG CHEM PROC DD
+</B><DT>INDUSTRIAL & ENGINEERING CHEMISTRY PRODUCT RESEARCH AND DEVELOPMENT
+<B><DD>	IND ENG CHEM PROD RD
+</B><DT>INDUSTRIAL & ENGINEERING CHEMISTRY RESEARCH
+<B><DD>	IND ENG CHEM RES
+</B><DT>INDUSTRIAL & LABOR RELATIONS REVIEW
+<B><DD>	IND LABOR RELAT REV
+</B><DT>INDUSTRIAL CERAMICS
+<B><DD>	IND CERAM
+</B><DT>INDUSTRIAL CROPS AND PRODUCTS
+<B><DD>	IND CROP PROD
+</B><DT>INDUSTRIAL DESIGN MAGAZINE
+<B><DD>	IND DESIGN MAG
+</B><DT>INDUSTRIAL DIAMOND REVIEW
+<B><DD>	IND DIAMOND REV
+</B><DT>INDUSTRIAL ENGINEERING
+<B><DD>	IND ENG
+</B><DT>INDUSTRIAL FINISHING
+<B><DD>	IND FINISH
+</B><DT>INDUSTRIAL HEALTH
+<B><DD>	IND HEALTH
+</B><DT>INDUSTRIAL LABORATORY
+<B><DD>	IND LAB+
+</B><DT>INDUSTRIAL LUBRICATION AND TRIBOLOGY
+<B><DD>	IND LUBR TRIBOL
+</B><DT>INDUSTRIAL MANAGEMENT & DATA SYSTEMS
+<B><DD>	IND MANAGE DATA SYST
+</B><DT>INDUSTRIAL MARKETING MANAGEMENT
+<B><DD>	IND MARKET MANAG
+</B><DT>INDUSTRIAL PHOTOGRAPHY
+<B><DD>	IND PHOTOGR
+</B><DT>INDUSTRIAL RELATIONS
+<B><DD>	IND RELAT
+</B><DT>INDUSTRIAL RESEARCH & DEVELOPMENT
+<B><DD>	RES DEV
+</B><DT>INDUSTRIAL ROBOT
+<B><DD>	IND ROBOT
+</B><DT>INDUSTRIAL WASTES
+<B><DD>	IND WASTE
+</B><DT>INDUSTRIE ALIMENTARI
+<B><DD>	IND ALIMENT-ITALY
+</B><DT>INDUSTRY WEEK
+<B><DD>	IND WEEK
+</B><DT>INFANT AND CHILD DEVELOPMENT
+<B><DD>	INFANT CHILD DEV
+</B><DT>INFANT BEHAVIOR & DEVELOPMENT
+<B><DD>	INFANT BEHAV DEV
+</B><DT>INFANT MENTAL HEALTH JOURNAL
+<B><DD>	INF MENTAL HLTH J
+</B><DT>INFANTS AND YOUNG CHILDREN
+<B><DD>	INFANT YOUNG CHILD
+</B><DT>INFECTION
+<B><DD>	INFECTION
+</B><DT>INFECTION AND IMMUNITY
+<B><DD>	INFECT IMMUN
+</B><DT>INFECTION CONTROL AND HOSPITAL EPIDEMIOLOGY
+<B><DD>	INFECT CONT HOSP EP
+</B><DT>INFECTIONS IN MEDICINE
+<B><DD>	INFECT MED
+</B><DT>INFECTIONS IN SURGERY
+<B><DD>	INFECT SURG
+</B><DT>INFECTIONS IN UROLOGY
+<B><DD>	INFECT UROL
+</B><DT>INFECTIOUS AGENTS AND DISEASE-REVIEWS ISSUES AND COMMENTARY
+<B><DD>	INFECT AGENT DIS
+</B><DT>INFECTIOUS DISEASE CLINICS OF NORTH AMERICA
+<B><DD>	INFECT DIS CLIN N AM
+</B><DT>INFECTIOUS DISEASES IN CLINICAL PRACTICE
+<B><DD>	INFECT DIS CLIN PRAC
+</B><DT>INFINI
+<B><DD>	INFINI
+</B><DT>INFINITE DIMENSIONAL ANALYSIS QUANTUM PROBABILITY AND RELATED TOPICS
+<B><DD>	INFIN DIMENS ANAL QU
+</B><DT>INFLAMMATION
+<B><DD>	INFLAMMATION
+</B><DT>INFLAMMATION RESEARCH
+<B><DD>	INFLAMM RES
+</B><DT>INFLAMMATORY BOWEL DISEASES
+<B><DD>	INFLAMM BOWEL DIS
+</B><DT>INFOR
+<B><DD>	INFOR
+</B><DT>INFORMACIJE MIDEM-JOURNAL OF MICROELECTRONICS ELECTRONIC COMPONENTS AND MATERIALS
+<B><DD>	INFORM MIDEM
+</B><DT>INFORMATION & MANAGEMENT
+<B><DD>	INFORM MANAGE
+</B><DT>INFORMATION & RECORDS MANAGEMENT
+<B><DD>	INFORM REC MANAGE
+</B><DT>INFORMATION AGE
+<B><DD>	INFORM AGE
+</B><DT>INFORMATION AND COMPUTATION
+<B><DD>	INFORM COMPUT
+</B><DT>INFORMATION AND CONTROL
+<B><DD>	INFORM COMPUT
+</B><DT>INFORMATION AND CONTROL
+<B><DD>	INFORM CONTROL
+</B><DT>INFORMATION AND DECISION TECHNOLOGIES
+<B><DD>	INFORM DECIS TECHNOL
+</B><DT>INFORMATION AND SOFTWARE TECHNOLOGY
+<B><DD>	INFORM SOFTWARE TECH
+</B><DT>INFORMATION MANAGEMENT
+<B><DD>	INFORM MANAGE
+</B><DT>INFORMATION PROCESSING & MANAGEMENT
+<B><DD>	INFORM PROCESS MANAG
+</B><DT>INFORMATION PROCESSING LETTERS
+<B><DD>	INFORM PROCESS LETT
+</B><DT>INFORMATION RESEARCH AND RESOURCE REPORTS
+<B><DD>	INFORM RES RESOUR R
+</B><DT>INFORMATION SCIENCES
+<B><DD>	INFORM SCIENCES
+</B><DT>INFORMATION SCIENCES-APPLICATIONS
+<B><DD>	INFORM SCI-APPL
+</B><DT>INFORMATION SOCIETY
+<B><DD>	INFORM SOC
+</B><DT>INFORMATION SYSTEMS
+<B><DD>	INFORM SYST
+</B><DT>INFORMATION SYSTEMS JOURNAL
+<B><DD>	INFORM SYST J
+</B><DT>INFORMATION SYSTEMS MANAGEMENT
+<B><DD>	INFORM SYST MANAGE
+</B><DT>INFORMATION SYSTEMS RESEARCH
+<B><DD>	INFORM SYST RES
+</B><DT>INFORMATION TECHNOLOGY AND LIBRARIES
+<B><DD>	INFORM TECHNOL LIBR
+</B><DT>INFORMATION TECHNOLOGY-RESEARCH DEVELOPMENT APPLICATIONS
+<B><DD>	INFORM TECHNOL R & D
+</B><DT>INFORMS JOURNAL ON COMPUTING
+<B><DD>	INFORMS J COMPUT
+</B><DT>INFOSYSTEMS
+<B><DD>	INFOSYSTEMS
+</B><DT>INFRARED PHYSICS
+<B><DD>	INFRARED PHYS
+</B><DT>INFRARED PHYSICS & TECHNOLOGY
+<B><DD>	INFRARED PHYS TECHN
+</B><DT>INFRARED SOLAR PHYSICS
+<B><DD>	IAU SYMP
+</B><DT>INFUSION THERAPY AND TRANSFUSION MEDICINE-INFUSIONSTHERAPIE UND TRANSFUSIONSMEDIZIN
+<B><DD>	INFUS THER TRANSFUS
+</B><DT>INFUSIONSTHERAPIE UND KLINISCHE ERNAHRUNG
+<B><DD>	INFUS KLIN ERN
+</B><DT>INFUSIONSTHERAPIE UND KLINISCHE ERNAHRUNG
+<B><DD>	INFUSIONSTHERAPIE
+</B><DT>INFUSIONSTHERAPIE UND TRANSFUSIONSMEDIZIN
+<B><DD>	INFUSIONSTHERAPIE
+</B><DT>INGENIERIA HIDRAULICA EN MEXICO
+<B><DD>	ING HIDRAUL MEX
+</B><DT>INGENIERIA QUIMICA
+<B><DD>	ING QUIM
+</B><DT>INGENIEUR ARCHIV
+<B><DD>	ING ARCH
+</B><DT>INHALATION TOXICOLOGY
+<B><DD>	INHAL TOXICOL
+</B><DT>INITIAL REPORTS OF THE DEEP SEA DRILLING PROJECT
+<B><DD>	INITIAL REP DEEP SEA
+</B><DT>INJURY-INTERNATIONAL JOURNAL OF THE CARE OF THE INJURED
+<B><DD>	INJURY
+</B><DT>INMUNOLOGIA
+<B><DD>	INMUNOLOGIA
+</B><DT>INNERE MEDIZIN
+<B><DD>	INN MED
+</B><DT>INNOVATION ET TECHNOLOGIE EN BIOLOGIE ET MEDECINE
+<B><DD>	INNOV TECH BIOL MED
+</B><DT>INNOVATIONS IN EDUCATION AND TRAINING INTERNATIONAL
+<B><DD>	INNOV EDUC TRAIN INT
+</B><DT>INORGANIC BIOCHEMISTRY
+<B><DD>	INORG BIOCHEM
+</B><DT>INORGANIC CHEMISTRY
+<B><DD>	INORG CHEM
+</B><DT>INORGANIC CHEMISTRY COMMUNICATIONS
+<B><DD>	INORG CHEM COMMUN
+</B><DT>INORGANIC MATERIALS
+<B><DD>	INORG MATER+
+</B><DT>INORGANIC SYNTHESES
+<B><DD>	INORG SYN
+</B><DT>INORGANICA CHIMICA ACTA
+<B><DD>	INORG CHIM ACTA
+</B><DT>INORGANICA CHIMICA ACTA-ARTICLES
+<B><DD>	INORG CHIM A-ARTICLE
+</B><DT>INORGANICA CHIMICA ACTA-ARTICLES AND LETTERS
+<B><DD>	INORG CHIM A-ART LET
+</B><DT>INORGANICA CHIMICA ACTA-BIOINORGANIC CHEMISTRY
+<B><DD>	INORG CHIM A-BIOINOR
+</B><DT>INORGANICA CHIMICA ACTA-F-BLOCK ELEMENTS ARTICLES AND LETTERS
+<B><DD>	INORG CHIM A-F-BLOCK
+</B><DT>INORGANICA CHIMICA ACTA-LETTERS
+<B><DD>	INORG CHIM A-LETT
+</B><DT>INQUIRY-AN INTERDISCIPLINARY JOURNAL OF PHILOSOPHY
+<B><DD>	INQUIRY
+</B><DT>INQUIRY-THE JOURNAL OF HEALTH CARE ORGANIZATION PROVISION AND FINANCING
+<B><DD>	INQUIRY-J HEALTH CAR
+</B><DT>INSECT BIOCHEMISTRY
+<B><DD>	INSECT BIOCHEM
+</B><DT>INSECT BIOCHEMISTRY AND MOLECULAR BIOLOGY
+<B><DD>	INSECT BIOCHEM MOLEC
+</B><DT>INSECT MOLECULAR BIOLOGY
+<B><DD>	INSECT MOL BIOL
+</B><DT>INSECT SCIENCE AND ITS APPLICATION
+<B><DD>	INSECT SCI APPL
+</B><DT>INSECTES SOCIAUX
+<B><DD>	INSECT SOC
+</B><DT>INSIGHT
+<B><DD>	INSIGHT
+</B><DT>INSTITUTE OF PHYSICS CONFERENCE SERIES
+<B><DD>	INST PHYS CONF SER
+</B><DT>INSTRUCTIONAL SCIENCE
+<B><DD>	INSTR SCI
+</B><DT>INSTRUMENTATION SCIENCE & TECHNOLOGY
+<B><DD>	INSTRUM SCI TECHNOL
+</B><DT>INSTRUMENTATION TECHNOLOGY
+<B><DD>	INSTR TECHNOL
+</B><DT>INSTRUMENTATION TECHNOLOGY
+<B><DD>	INTECH
+</B><DT>INSTRUMENTS & CONTROL SYSTEMS
+<B><DD>	I&CS-CONTROL TECH EN
+</B><DT>INSTRUMENTS AND EXPERIMENTAL TECHNIQUES
+<B><DD>	INSTRUM EXP TECH+
+</B><DT>INSULA-REVISTA DE LETRAS Y CIENCIAS HUMANAS
+<B><DD>	INSULA
+</B><DT>INSURANCE MATHEMATICS & ECONOMICS
+<B><DD>	INSUR MATH ECON
+</B><DT>INTECH
+<B><DD>	INTECH
+</B><DT>INTEGRAL EQUATIONS AND OPERATOR THEORY
+<B><DD>	INTEGR EQUAT OPER TH
+</B><DT>INTEGRAL TRANSFORMS AND SPECIAL FUNCTIONS
+<B><DD>	INTEGR TRANSF SPEC F
+</B><DT>INTEGRATED COMPUTER-AIDED ENGINEERING
+<B><DD>	INTEGR COMPUT-AID E
+</B><DT>INTEGRATED FERROELECTRICS
+<B><DD>	INTEGR FERROELECTR
+</B><DT>INTEGRATION-THE VLSI JOURNAL
+<B><DD>	INTEGRATION
+</B><DT>INTEGRATIVE PHYSIOLOGICAL AND BEHAVIORAL SCIENCE
+<B><DD>	INTEGR PHYS BEH SCI
+</B><DT>INTEGRATIVE PSYCHIATRY
+<B><DD>	INTEGRATIVE PSYCHIAT
+</B><DT>INTELLIGENCE
+<B><DD>	INTELLIGENCE
+</B><DT>INTELLIGENT AUTOMATION AND SOFT COMPUTING
+<B><DD>	INTELL AUTOM SOFT CO
+</B><DT>INTENSIVBEHANDLUNG
+<B><DD>	INTENSIVBEHANDLUNG
+</B><DT>INTENSIVE CARE MEDICINE
+<B><DD>	INTENS CARE MED
+</B><DT>INTERACTING WITH COMPUTERS
+<B><DD>	INTERACT COMPUT
+</B><DT>INTERCHANGE
+<B><DD>	INTERCHANGE
+</B><DT>INTERCIENCIA
+<B><DD>	INTERCIENCIA
+</B><DT>INTERCONNECTION TECHNOLOGY
+<B><DD>	INTERCONNECT TECHNOL
+</B><DT>INTERDISCIPLINARY SCIENCE REVIEWS
+<B><DD>	INTERDISCIPL SCI REV
+</B><DT>INTERFACE AGE
+<B><DD>	INTERF AGE-COMPUT B
+</B><DT>INTERFACE AGE-COMPUTING FOR BUSINESS
+<B><DD>	INTERF AGE-COMPUT B
+</B><DT>INTERFACE SCIENCE
+<B><DD>	INTERFACE SCI
+</B><DT>INTERFACE-JOURNAL OF NEW MUSIC RESEARCH
+<B><DD>	INTERFACE-J NEW MUS
+</B><DT>INTERFACES
+<B><DD>	INTERFACES
+</B><DT>INTERFACES IN COMPUTING
+<B><DD>	INTERFACE COMPUT
+</B><DT>INTERFERON Y BIOTECNOLOGIA
+<B><DD>	INTERFERON BIOTECNOL
+</B><DT>INTERLENDING & DOCUMENT SUPPLY
+<B><DD>	INTERLEND DOC SUPPLY
+</B><DT>INTERMETALLICS
+<B><DD>	INTERMETALLICS
+</B><DT>INTERNAL MEDICINE
+<B><DD>	INTERNAL MED
+</B><DT>INTERNASJONAL POLITIKK
+<B><DD>	INT POLIT-OSLO
+</B><DT>INTERNATIONAL AFFAIRS
+<B><DD>	INT AFF
+</B><DT>INTERNATIONAL AND COMPARATIVE LAW QUARTERLY
+<B><DD>	INT COMP LAW Q
+</B><DT>INTERNATIONAL ANESTHESIOLOGY CLINICS
+<B><DD>	INT ANESTHESIOL CLIN
+</B><DT>INTERNATIONAL ANGIOLOGY
+<B><DD>	INT ANGIOL
+</B><DT>INTERNATIONAL APPLIED MECHANICS
+<B><DD>	INT APPL MECH+
+</B><DT>INTERNATIONAL ARCHIVES OF ALLERGY AND APPLIED IMMUNOLOGY
+<B><DD>	INT ARCH ALLER A IMM
+</B><DT>INTERNATIONAL ARCHIVES OF ALLERGY AND IMMUNOLOGY
+<B><DD>	INT ARCH ALLERGY IMM
+</B><DT>INTERNATIONAL ARCHIVES OF OCCUPATIONAL AND ENVIRONMENTAL HEALTH
+<B><DD>	INT ARCH OCC ENV HEA
+</B><DT>INTERNATIONAL BIODETERIORATION
+<B><DD>	INT BIODETERIOR
+</B><DT>INTERNATIONAL BIODETERIORATION & BIODEGRADATION
+<B><DD>	INT BIODETER BIODEGR
+</B><DT>INTERNATIONAL BIODETERIORATION BULLETIN
+<B><DD>	INT BIODETERIOR
+</B><DT>INTERNATIONAL CAST METALS JOURNAL
+<B><DD>	INT CAST MET J
+</B><DT>INTERNATIONAL CLINICAL PSYCHOPHARMACOLOGY
+<B><DD>	INT CLIN PSYCHOPHARM
+</B><DT>INTERNATIONAL COMMUNICATIONS IN HEAT AND MASS TRANSFER
+<B><DD>	INT COMMUN HEAT MASS
+</B><DT>INTERNATIONAL DAIRY JOURNAL
+<B><DD>	INT DAIRY J
+</B><DT>INTERNATIONAL DENTAL JOURNAL
+<B><DD>	INT DENT J
+</B><DT>INTERNATIONAL ECONOMIC REVIEW
+<B><DD>	INT ECON REV
+</B><DT>INTERNATIONAL ENDODONTIC JOURNAL
+<B><DD>	INT ENDOD J
+</B><DT>INTERNATIONAL ENVIRONMENTAL AFFAIRS
+<B><DD>	INT ENVIRON AFFAIR
+</B><DT>INTERNATIONAL FAMILY PLANNING PERSPECTIVES
+<B><DD>	INT FAM PLAN PERSPEC
+</B><DT>INTERNATIONAL FICTION REVIEW
+<B><DD>	INT FICTION REV
+</B><DT>INTERNATIONAL FORUM ON INFORMATION AND DOCUMENTATION
+<B><DD>	INT FORUM INFORM DOC
+</B><DT>INTERNATIONAL GAS ENGINEERING AND MANAGEMENT
+<B><DD>	INT GAS ENG MANAGE
+</B><DT>INTERNATIONAL GEOLOGY REVIEW
+<B><DD>	INT GEOL REV
+</B><DT>INTERNATIONAL HEPATOLOGY COMMUNICATIONS
+<B><DD>	INT HEPATOL COMMUN
+</B><DT>INTERNATIONAL HISTORY REVIEW
+<B><DD>	INT HIST REV
+</B><DT>INTERNATIONAL HYDROGRAPHIC REVIEW
+<B><DD>	INT HYDROGR REV
+</B><DT>INTERNATIONAL IMMUNOLOGY
+<B><DD>	INT IMMUNOL
+</B><DT>INTERNATIONAL INFORMATION & LIBRARY REVIEW
+<B><DD>	INT INF LIBR REV
+</B><DT>INTERNATIONAL INTERACTIONS
+<B><DD>	INT INTERACT
+</B><DT>INTERNATIONAL JOURNAL
+<B><DD>	INT J
+</B><DT>INTERNATIONAL JOURNAL FOR NUMERICAL AND ANALYTICAL METHODS IN GEOMECHANICS
+<B><DD>	INT J NUMER ANAL MET
+</B><DT>INTERNATIONAL JOURNAL FOR NUMERICAL METHODS IN ENGINEERING
+<B><DD>	INT J NUMER METH ENG
+</B><DT>INTERNATIONAL JOURNAL FOR NUMERICAL METHODS IN FLUIDS
+<B><DD>	INT J NUMER METH FL
+</B><DT>INTERNATIONAL JOURNAL FOR PARASITOLOGY
+<B><DD>	INT J PARASITOL
+</B><DT>INTERNATIONAL JOURNAL FOR PHILOSOPHY OF RELIGION
+<B><DD>	INT J PHILOS RELIG
+</B><DT>INTERNATIONAL JOURNAL FOR QUALITY IN HEALTH CARE
+<B><DD>	INT J QUAL HEALTH C
+</B><DT>INTERNATIONAL JOURNAL FOR THE ADVANCEMENT OF COUNSELLING
+<B><DD>	INT J ADV COUNS
+</B><DT>INTERNATIONAL JOURNAL FOR THE SEMIOTICS OF LAW-REVUE INTERNATIONALE DE SEMIOTIQUE JURIDIQUE
+<B><DD>	INT J SEMIOTIC LAW
+</B><DT>INTERNATIONAL JOURNAL FOR THE STUDY OF ANIMAL PROBLEMS
+<B><DD>	INT J STUD ANIM PROB
+</B><DT>INTERNATIONAL JOURNAL FOR VITAMIN AND NUTRITION RESEARCH
+<B><DD>	INT J VITAM NUTR RES
+</B><DT>INTERNATIONAL JOURNAL OF ADAPTIVE CONTROL AND SIGNAL PROCESSING
+<B><DD>	INT J ADAPT CONTROL
+</B><DT>INTERNATIONAL JOURNAL OF ADHESION AND ADHESIVES
+<B><DD>	INT J ADHES ADHES
+</B><DT>INTERNATIONAL JOURNAL OF ADVANCED MANUFACTURING TECHNOLOGY
+<B><DD>	INT J ADV MANUF TECH
+</B><DT>INTERNATIONAL JOURNAL OF AFRICAN HISTORICAL STUDIES
+<B><DD>	INT J AFR HIST STUD
+</B><DT>INTERNATIONAL JOURNAL OF AGING & HUMAN DEVELOPMENT
+<B><DD>	INT J AGING HUM DEV
+</B><DT>INTERNATIONAL JOURNAL OF ALGEBRA AND COMPUTATION
+<B><DD>	INT J ALGEBR COMPUT
+</B><DT>INTERNATIONAL JOURNAL OF AMERICAN LINGUISTICS
+<B><DD>	INT J AM LINGUIST
+</B><DT>INTERNATIONAL JOURNAL OF ANDROLOGY
+<B><DD>	INT J ANDROL
+</B><DT>INTERNATIONAL JOURNAL OF ANTIMICROBIAL AGENTS
+<B><DD>	INT J ANTIMICROB AG
+</B><DT>INTERNATIONAL JOURNAL OF APPLIED ELECTROMAGNETICS AND MECHANICS
+<B><DD>	INT J APPL ELECTROM
+</B><DT>INTERNATIONAL JOURNAL OF APPLIED RADIATION AND ISOTOPES
+<B><DD>	INT J APPL RADIAT IS
+</B><DT>INTERNATIONAL JOURNAL OF APPROXIMATE REASONING
+<B><DD>	INT J APPROX REASON
+</B><DT>INTERNATIONAL JOURNAL OF ARTIFICIAL ORGANS
+<B><DD>	INT J ARTIF ORGANS
+</B><DT>INTERNATIONAL JOURNAL OF AVIATION PSYCHOLOGY
+<B><DD>	INT J AVIAT PSYCHOL
+</B><DT>INTERNATIONAL JOURNAL OF BEHAVIORAL DEVELOPMENT
+<B><DD>	INT J BEHAV DEV
+</B><DT>INTERNATIONAL JOURNAL OF BEHAVIORAL MEDICINE
+<B><DD>	INT J BEHAV MED
+</B><DT>INTERNATIONAL JOURNAL OF BIFURCATION AND CHAOS
+<B><DD>	INT J BIFURCAT CHAOS
+</B><DT>INTERNATIONAL JOURNAL OF BIO-MEDICAL COMPUTING
+<B><DD>	INT J BIOMED COMPUT
+</B><DT>INTERNATIONAL JOURNAL OF BIOCHEMISTRY
+<B><DD>	INT J BIOCHEM
+</B><DT>INTERNATIONAL JOURNAL OF BIOCHEMISTRY & CELL BIOLOGY
+<B><DD>	INT J BIOCHEM CELL B
+</B><DT>INTERNATIONAL JOURNAL OF BIOLOGICAL MACROMOLECULES
+<B><DD>	INT J BIOL MACROMOL
+</B><DT>INTERNATIONAL JOURNAL OF BIOLOGICAL MARKERS
+<B><DD>	INT J BIOL MARKER
+</B><DT>INTERNATIONAL JOURNAL OF BIOLOGICAL RESEARCH IN PREGNANCY
+<B><DD>	INT J BIOL RES PREG
+</B><DT>INTERNATIONAL JOURNAL OF BIOMETEOROLOGY
+<B><DD>	INT J BIOMETEOROL
+</B><DT>INTERNATIONAL JOURNAL OF CANCER
+<B><DD>	INT J CANCER
+</B><DT>INTERNATIONAL JOURNAL OF CARDIAC IMAGING
+<B><DD>	INT J CARDIAC IMAG
+</B><DT>INTERNATIONAL JOURNAL OF CARDIOLOGY
+<B><DD>	INT J CARDIOL
+</B><DT>INTERNATIONAL JOURNAL OF CAST METALS RESEARCH
+<B><DD>	INT J CAST METAL RES
+</B><DT>INTERNATIONAL JOURNAL OF CELL CLONING
+<B><DD>	INT J CELL CLONING
+</B><DT>INTERNATIONAL JOURNAL OF CHEMICAL KINETICS
+<B><DD>	INT J CHEM KINET
+</B><DT>INTERNATIONAL JOURNAL OF CIRCUIT THEORY AND APPLICATIONS
+<B><DD>	INT J CIRC THEOR APP
+</B><DT>INTERNATIONAL JOURNAL OF CLIMATOLOGY
+<B><DD>	INT J CLIMATOL
+</B><DT>INTERNATIONAL JOURNAL OF CLINICAL & LABORATORY RESEARCH
+<B><DD>	INT J CLIN LAB RES
+</B><DT>INTERNATIONAL JOURNAL OF CLINICAL AND EXPERIMENTAL HYPNOSIS
+<B><DD>	INT J CLIN EXP HYP
+</B><DT>INTERNATIONAL JOURNAL OF CLINICAL MONITORING AND COMPUTING
+<B><DD>	INT J CLIN MONIT COM
+</B><DT>INTERNATIONAL JOURNAL OF CLINICAL NEUROPSYCHOLOGY
+<B><DD>	INT J CLIN NEUROPSYC
+</B><DT>INTERNATIONAL JOURNAL OF CLINICAL PHARMACOLOGY AND THERAPEUTICS
+<B><DD>	INT J CLIN PHARM TH
+</B><DT>INTERNATIONAL JOURNAL OF CLINICAL PHARMACOLOGY RESEARCH
+<B><DD>	INT J CLIN PHARM RES
+</B><DT>INTERNATIONAL JOURNAL OF CLINICAL PRACTICE
+<B><DD>	INT J CLIN PRACT
+</B><DT>INTERNATIONAL JOURNAL OF COAL GEOLOGY
+<B><DD>	INT J COAL GEOL
+</B><DT>INTERNATIONAL JOURNAL OF COLORECTAL DISEASE
+<B><DD>	INT J COLORECTAL DIS
+</B><DT>INTERNATIONAL JOURNAL OF COMMUNICATION SYSTEMS
+<B><DD>	INT J COMMUN SYST
+</B><DT>INTERNATIONAL JOURNAL OF COMPARATIVE SOCIOLOGY
+<B><DD>	INT J COMP SOCIOL
+</B><DT>INTERNATIONAL JOURNAL OF COMPUTATIONAL FLUID DYNAMICS
+<B><DD>	INT J COMPUT FLUID D
+</B><DT>INTERNATIONAL JOURNAL OF COMPUTATIONAL GEOMETRY & APPLICATIONS
+<B><DD>	INT J COMPUT GEOM AP
+</B><DT>INTERNATIONAL JOURNAL OF COMPUTER & INFORMATION SCIENCES
+<B><DD>	INT J COMPUT INF SCI
+</B><DT>INTERNATIONAL JOURNAL OF COMPUTER APPLICATIONS IN TECHNOLOGY
+<B><DD>	INT J COMPUT APPL T
+</B><DT>INTERNATIONAL JOURNAL OF COMPUTER INTEGRATED MANUFACTURING
+<B><DD>	INT J COMP INTEG M
+</B><DT>INTERNATIONAL JOURNAL OF COMPUTER MATHEMATICS
+<B><DD>	INT J COMPUT MATH
+</B><DT>INTERNATIONAL JOURNAL OF COMPUTER VISION
+<B><DD>	INT J COMPUT VISION
+</B><DT>INTERNATIONAL JOURNAL OF CONFLICT MANAGEMENT
+<B><DD>	INT J CONFL MANAGE
+</B><DT>INTERNATIONAL JOURNAL OF CONTROL
+<B><DD>	INT J CONTROL
+</B><DT>INTERNATIONAL JOURNAL OF COOPERATIVE INFORMATION SYSTEMS
+<B><DD>	INT J COOP INF SYST
+</B><DT>INTERNATIONAL JOURNAL OF COSMETIC SCIENCE
+<B><DD>	INT J COSMETIC SCI
+</B><DT>INTERNATIONAL JOURNAL OF DAIRY TECHNOLOGY
+<B><DD>	INT J DAIRY TECHNOL
+</B><DT>INTERNATIONAL JOURNAL OF DAMAGE MECHANICS
+<B><DD>	INT J DAMAGE MECH
+</B><DT>INTERNATIONAL JOURNAL OF DERMATOLOGY
+<B><DD>	INT J DERMATOL
+</B><DT>INTERNATIONAL JOURNAL OF DEVELOPMENTAL BIOLOGY
+<B><DD>	INT J DEV BIOL
+</B><DT>INTERNATIONAL JOURNAL OF DEVELOPMENTAL NEUROSCIENCE
+<B><DD>	INT J DEV NEUROSCI
+</B><DT>INTERNATIONAL JOURNAL OF EARTH SCIENCES
+<B><DD>	INT J EARTH SCI
+</B><DT>INTERNATIONAL JOURNAL OF EATING DISORDERS
+<B><DD>	INT J EAT DISORDER
+</B><DT>INTERNATIONAL JOURNAL OF EDUCATIONAL DEVELOPMENT
+<B><DD>	INT J EDUC DEV
+</B><DT>INTERNATIONAL JOURNAL OF ELECTRICAL ENGINEERING EDUCATION
+<B><DD>	INT J ELEC ENG EDUC
+</B><DT>INTERNATIONAL JOURNAL OF ELECTRICAL POWER & ENERGY SYSTEMS
+<B><DD>	INT J ELEC POWER
+</B><DT>INTERNATIONAL JOURNAL OF ELECTRONIC COMMERCE
+<B><DD>	INT J ELECTRON COMM
+</B><DT>INTERNATIONAL JOURNAL OF ELECTRONICS
+<B><DD>	INT J ELECTRON
+</B><DT>INTERNATIONAL JOURNAL OF ENERGY RESEARCH
+<B><DD>	INT J ENERG RES
+</B><DT>INTERNATIONAL JOURNAL OF ENGINEERING FLUID MECHANICS
+<B><DD>	INT J ENG FLUID MECH
+</B><DT>INTERNATIONAL JOURNAL OF ENGINEERING SCIENCE
+<B><DD>	INT J ENG SCI
+</B><DT>INTERNATIONAL JOURNAL OF ENTOMOLOGY
+<B><DD>	INT J ENTOMOL
+</B><DT>INTERNATIONAL JOURNAL OF ENVIRONMENT AND POLLUTION
+<B><DD>	INT J ENVIRON POLLUT
+</B><DT>INTERNATIONAL JOURNAL OF ENVIRONMENTAL ANALYTICAL CHEMISTRY
+<B><DD>	INT J ENVIRON AN CH
+</B><DT>INTERNATIONAL JOURNAL OF ENVIRONMENTAL HEALTH RESEARCH
+<B><DD>	INT J ENVIRON HEAL R
+</B><DT>INTERNATIONAL JOURNAL OF ENVIRONMENTAL STUDIES
+<B><DD>	INT J ENVIRON STUD
+</B><DT>INTERNATIONAL JOURNAL OF EPIDEMIOLOGY
+<B><DD>	INT J EPIDEMIOL
+</B><DT>INTERNATIONAL JOURNAL OF EXPERIMENTAL PATHOLOGY
+<B><DD>	INT J EXP PATHOL
+</B><DT>INTERNATIONAL JOURNAL OF EXPERT SYSTEMS
+<B><DD>	INT J EXPERT SYST
+</B><DT>INTERNATIONAL JOURNAL OF FATIGUE
+<B><DD>	INT J FATIGUE
+</B><DT>INTERNATIONAL JOURNAL OF FERTILITY
+<B><DD>	INT J FERTIL
+</B><DT>INTERNATIONAL JOURNAL OF FERTILITY AND MENOPAUSAL STUDIES
+<B><DD>	INT J FERTIL MENOP S
+</B><DT>INTERNATIONAL JOURNAL OF FERTILITY AND WOMENS MEDICINE
+<B><DD>	INT J FERTIL WOMEN M
+</B><DT>INTERNATIONAL JOURNAL OF FINANCE & ECONOMICS
+<B><DD>	INT J FINANC ECON
+</B><DT>INTERNATIONAL JOURNAL OF FLEXIBLE MANUFACTURING SYSTEMS
+<B><DD>	INT J FLEX MANUF SYS
+</B><DT>INTERNATIONAL JOURNAL OF FOOD MICROBIOLOGY
+<B><DD>	INT J FOOD MICROBIOL
+</B><DT>INTERNATIONAL JOURNAL OF FOOD SCIENCE AND TECHNOLOGY
+<B><DD>	INT J FOOD SCI TECH
+</B><DT>INTERNATIONAL JOURNAL OF FOOD SCIENCES AND NUTRITION
+<B><DD>	INT J FOOD SCI NUTR
+</B><DT>INTERNATIONAL JOURNAL OF FORECASTING
+<B><DD>	INT J FORECASTING
+</B><DT>INTERNATIONAL JOURNAL OF FRACTURE
+<B><DD>	INT J FRACTURE
+</B><DT>INTERNATIONAL JOURNAL OF GAME THEORY
+<B><DD>	INT J GAME THEORY
+</B><DT>INTERNATIONAL JOURNAL OF GENERAL SYSTEMS
+<B><DD>	INT J GEN SYST
+</B><DT>INTERNATIONAL JOURNAL OF GEOGRAPHICAL INFORMATION SCIENCE
+<B><DD>	INT J GEOGR INF SCI
+</B><DT>INTERNATIONAL JOURNAL OF GEOGRAPHICAL INFORMATION SYSTEMS
+<B><DD>	INT J GEOGR INF SYST
+</B><DT>INTERNATIONAL JOURNAL OF GERIATRIC PSYCHIATRY
+<B><DD>	INT J GERIATR PSYCH
+</B><DT>INTERNATIONAL JOURNAL OF GLOBAL ENERGY ISSUES
+<B><DD>	INT J GLOBAL ENERGY
+</B><DT>INTERNATIONAL JOURNAL OF GROUP PSYCHOTHERAPY
+<B><DD>	INT J GROUP PSYCHOTH
+</B><DT>INTERNATIONAL JOURNAL OF GYNECOLOGICAL CANCER
+<B><DD>	INT J GYNECOL CANCER
+</B><DT>INTERNATIONAL JOURNAL OF GYNECOLOGICAL PATHOLOGY
+<B><DD>	INT J GYNECOL PATHOL
+</B><DT>INTERNATIONAL JOURNAL OF GYNECOLOGY & OBSTETRICS
+<B><DD>	INT J GYNECOL OBSTET
+</B><DT>INTERNATIONAL JOURNAL OF HEALTH PLANNING AND MANAGEMENT
+<B><DD>	INT J HEALTH PLAN M
+</B><DT>INTERNATIONAL JOURNAL OF HEALTH SERVICES
+<B><DD>	INT J HEALTH SERV
+</B><DT>INTERNATIONAL JOURNAL OF HEAT AND FLUID FLOW
+<B><DD>	INT J HEAT FLUID FL
+</B><DT>INTERNATIONAL JOURNAL OF HEAT AND MASS TRANSFER
+<B><DD>	INT J HEAT MASS TRAN
+</B><DT>INTERNATIONAL JOURNAL OF HEMATOLOGY
+<B><DD>	INT J HEMATOL
+</B><DT>INTERNATIONAL JOURNAL OF HIGH PERFORMANCE COMPUTING APPLICATIONS
+<B><DD>	INT J HIGH PERFORM C
+</B><DT>INTERNATIONAL JOURNAL OF HIGH SPEED COMPUTING
+<B><DD>	INT J HIGH SPEED COM
+</B><DT>INTERNATIONAL JOURNAL OF HUMAN FACTORS IN MANUFACTURING
+<B><DD>	INT J HUM FACTOR MAN
+</B><DT>INTERNATIONAL JOURNAL OF HUMAN RESOURCE MANAGEMENT
+<B><DD>	INT J HUM RESOUR MAN
+</B><DT>INTERNATIONAL JOURNAL OF HUMAN-COMPUTER INTERACTION
+<B><DD>	INT J HUM-COMPUT INT
+</B><DT>INTERNATIONAL JOURNAL OF HUMAN-COMPUTER STUDIES
+<B><DD>	INT J HUM-COMPUT ST
+</B><DT>INTERNATIONAL JOURNAL OF HYDROGEN ENERGY
+<B><DD>	INT J HYDROGEN ENERG
+</B><DT>INTERNATIONAL JOURNAL OF HYGIENE AND ENVIRONMENTAL HEALTH
+<B><DD>	INT J HYG ENVIR HEAL
+</B><DT>INTERNATIONAL JOURNAL OF HYPERTHERMIA
+<B><DD>	INT J HYPERTHER
+</B><DT>INTERNATIONAL JOURNAL OF IMAGING SYSTEMS AND TECHNOLOGY
+<B><DD>	INT J IMAG SYST TECH
+</B><DT>INTERNATIONAL JOURNAL OF IMMUNOPATHOLOGY AND PHARMACOLOGY
+<B><DD>	INT J IMMUNOPATH PH
+</B><DT>INTERNATIONAL JOURNAL OF IMMUNOPHARMACOLOGY
+<B><DD>	INT J IMMUNOPHARMACO
+</B><DT>INTERNATIONAL JOURNAL OF IMMUNOTHERAPY
+<B><DD>	INT J IMMUNOTHER
+</B><DT>INTERNATIONAL JOURNAL OF IMPACT ENGINEERING
+<B><DD>	INT J IMPACT ENG
+</B><DT>INTERNATIONAL JOURNAL OF IMPOTENCE RESEARCH
+<B><DD>	INT J IMPOT RES
+</B><DT>INTERNATIONAL JOURNAL OF INDUSTRIAL ENGINEERING-APPLICATIONS AND PRACTICE
+<B><DD>	INT J IND ENG-APPL P
+</B><DT>INTERNATIONAL JOURNAL OF INDUSTRIAL ENGINEERING-THEORY APPLICATIONS AND PRACTICE
+<B><DD>	INT J IND ENG-THEORY
+</B><DT>INTERNATIONAL JOURNAL OF INDUSTRIAL ERGONOMICS
+<B><DD>	INT J IND ERGONOM
+</B><DT>INTERNATIONAL JOURNAL OF INDUSTRIAL ORGANIZATION
+<B><DD>	INT J IND ORGAN
+</B><DT>INTERNATIONAL JOURNAL OF INFORMATION MANAGEMENT
+<B><DD>	INT J INFORM MANAGE
+</B><DT>INTERNATIONAL JOURNAL OF INFRARED AND MILLIMETER WAVES
+<B><DD>	INT J INFRARED MILLI
+</B><DT>INTERNATIONAL JOURNAL OF INORGANIC MATERIALS
+<B><DD>	INT J INORG MATER
+</B><DT>INTERNATIONAL JOURNAL OF INSECT MORPHOLOGY & EMBRYOLOGY
+<B><DD>	INT J INSECT MORPHOL
+</B><DT>INTERNATIONAL JOURNAL OF INTELLIGENT & COOPERATIVE INFORMATION SYSTEMS
+<B><DD>	INT J INTELL COOP I
+</B><DT>INTERNATIONAL JOURNAL OF INTELLIGENT SYSTEMS
+<B><DD>	INT J INTELL SYST
+</B><DT>INTERNATIONAL JOURNAL OF INTERCULTURAL RELATIONS
+<B><DD>	INT J INTERCULT REL
+</B><DT>INTERNATIONAL JOURNAL OF INVERTEBRATE REPRODUCTION
+<B><DD>	INT J INVER REP DEV
+</B><DT>INTERNATIONAL JOURNAL OF INVERTEBRATE REPRODUCTION AND DEVELOPMENT
+<B><DD>	INT J INVER REP DEV
+</B><DT>INTERNATIONAL JOURNAL OF LANGUAGE & COMMUNICATION DISORDERS
+<B><DD>	INT J LANG COMM DIS
+</B><DT>INTERNATIONAL JOURNAL OF LAW AND PSYCHIATRY
+<B><DD>	INT J LAW PSYCHIAT
+</B><DT>INTERNATIONAL JOURNAL OF LEGAL MEDICINE
+<B><DD>	INT J LEGAL MED
+</B><DT>INTERNATIONAL JOURNAL OF LEPROSY
+<B><DD>	INT J LEPROSY
+</B><DT>INTERNATIONAL JOURNAL OF LEPROSY AND OTHER MYCOBACTERIAL DISEASES
+<B><DD>	INT J LEPROSY
+</B><DT>INTERNATIONAL JOURNAL OF MACHINE TOOLS & MANUFACTURE
+<B><DD>	INT J MACH TOOL MANU
+</B><DT>INTERNATIONAL JOURNAL OF MAN-MACHINE STUDIES
+<B><DD>	INT J MAN MACH STUD
+</B><DT>INTERNATIONAL JOURNAL OF MANPOWER
+<B><DD>	INT J MANPOWER
+</B><DT>INTERNATIONAL JOURNAL OF MARKET RESEARCH
+<B><DD>	INT J MARKET RES
+</B><DT>INTERNATIONAL JOURNAL OF MASS SPECTROMETRY
+<B><DD>	INT J MASS SPECTROM
+</B><DT>INTERNATIONAL JOURNAL OF MASS SPECTROMETRY AND ION PROCESSES
+<B><DD>	INT J MASS SPECTROM
+</B><DT>INTERNATIONAL JOURNAL OF MATERIALS & PRODUCT TECHNOLOGY
+<B><DD>	INT J MATER PROD TEC
+</B><DT>INTERNATIONAL JOURNAL OF MATHEMATICS
+<B><DD>	INT J MATH
+</B><DT>INTERNATIONAL JOURNAL OF MECHANICAL SCIENCES
+<B><DD>	INT J MECH SCI
+</B><DT>INTERNATIONAL JOURNAL OF MEDICAL INFORMATICS
+<B><DD>	INT J MED INFORM
+</B><DT>INTERNATIONAL JOURNAL OF MEDICAL MICROBIOLOGY
+<B><DD>	INT J MED MICROBIOL
+</B><DT>INTERNATIONAL JOURNAL OF MENTAL HEALTH
+<B><DD>	INT J MENT HEALTH
+</B><DT>INTERNATIONAL JOURNAL OF METHODS IN PSYCHIATRIC RESEARCH
+<B><DD>	INT J METHOD PSYCH
+</B><DT>INTERNATIONAL JOURNAL OF MICROCIRCULATION-CLINICAL AND EXPERIMENTAL
+<B><DD>	INT J MICROCIRC
+</B><DT>INTERNATIONAL JOURNAL OF MICROGRAPHICS & OPTICAL TECHNOLOGY
+<B><DD>	INT J MICROGR OPT T
+</B><DT>INTERNATIONAL JOURNAL OF MICROWAVE AND MILLIMETER-WAVE COMPUTER-AIDED ENGINEERING
+<B><DD>	INT J MICROWAVE MILL
+</B><DT>INTERNATIONAL JOURNAL OF MIDDLE EAST STUDIES
+<B><DD>	INT J MIDDLE E STUD
+</B><DT>INTERNATIONAL JOURNAL OF MINERAL PROCESSING
+<B><DD>	INT J MINER PROCESS
+</B><DT>INTERNATIONAL JOURNAL OF MINING ENGINEERING
+<B><DD>	INT J MINING ENG
+</B><DT>INTERNATIONAL JOURNAL OF MODERN PHYSICS A
+<B><DD>	INT J MOD PHYS A
+</B><DT>INTERNATIONAL JOURNAL OF MODERN PHYSICS B
+<B><DD>	INT J MOD PHYS B
+</B><DT>INTERNATIONAL JOURNAL OF MODERN PHYSICS C
+<B><DD>	INT J MOD PHYS C
+</B><DT>INTERNATIONAL JOURNAL OF MODERN PHYSICS C-PHYSICS AND COMPUTERS
+<B><DD>	INT J MOD PHYS C
+</B><DT>INTERNATIONAL JOURNAL OF MODERN PHYSICS D
+<B><DD>	INT J MOD PHYS D
+</B><DT>INTERNATIONAL JOURNAL OF MODERN PHYSICS E-NUCLEAR PHYSICS
+<B><DD>	INT J MOD PHYS E
+</B><DT>INTERNATIONAL JOURNAL OF MOLECULAR MEDICINE
+<B><DD>	INT J MOL MED
+</B><DT>INTERNATIONAL JOURNAL OF MULTIPHASE FLOW
+<B><DD>	INT J MULTIPHAS FLOW
+</B><DT>INTERNATIONAL JOURNAL OF NAUTICAL ARCHAEOLOGY
+<B><DD>	INT J NAUT ARCHAEOL
+</B><DT>INTERNATIONAL JOURNAL OF NEURAL SYSTEMS
+<B><DD>	INT J NEURAL SYST
+</B><DT>INTERNATIONAL JOURNAL OF NEUROPSYCHOPHARMACOLOGY
+<B><DD>	INT J NEUROPSYCHOP
+</B><DT>INTERNATIONAL JOURNAL OF NEUROPSYCHOPHARMACOLOGY
+<B><DD>	INT J NEUROPSYCHOPH
+</B><DT>INTERNATIONAL JOURNAL OF NEURORADIOLOGY
+<B><DD>	INT J NEURORADIOL
+</B><DT>INTERNATIONAL JOURNAL OF NEUROSCIENCE
+<B><DD>	INT J NEUROSCI
+</B><DT>INTERNATIONAL JOURNAL OF NON-EQUILIBRIUM PROCESSING
+<B><DD>	INT J NON-EQUILIB PR
+</B><DT>INTERNATIONAL JOURNAL OF NON-LINEAR MECHANICS
+<B><DD>	INT J NONLINEAR MECH
+</B><DT>INTERNATIONAL JOURNAL OF NONLINEAR OPTICAL PHYSICS
+<B><DD>	INT J NONLINEAR OPT
+</B><DT>INTERNATIONAL JOURNAL OF NUCLEAR MEDICINE & BIOLOGY
+<B><DD>	INT J NUCL MED BIOL
+</B><DT>INTERNATIONAL JOURNAL OF NUMERICAL METHODS FOR HEAT & FLUID FLOW
+<B><DD>	INT J NUMER METHOD H
+</B><DT>INTERNATIONAL JOURNAL OF NUMERICAL MODELLING-ELECTRONIC NETWORKS DEVICES AND FIELDS
+<B><DD>	INT J NUMER MODEL EL
+</B><DT>INTERNATIONAL JOURNAL OF NURSING STUDIES
+<B><DD>	INT J NURS STUD
+</B><DT>INTERNATIONAL JOURNAL OF OBESITY
+<B><DD>	INT J OBESITY
+</B><DT>INTERNATIONAL JOURNAL OF OBSTETRIC ANESTHESIA
+<B><DD>	INT J OBSTET ANESTH
+</B><DT>INTERNATIONAL JOURNAL OF OCCUPATIONAL MEDICINE AND TOXICOLOGY
+<B><DD>	INT J OCCUP MED TOX
+</B><DT>INTERNATIONAL JOURNAL OF OCCUPATIONAL MEDICINE IMMUNOLOGY AND TOXICOLOGY
+<B><DD>	INT J OCCUP MED I T
+</B><DT>INTERNATIONAL JOURNAL OF OFFENDER THERAPY AND COMPARATIVE CRIMINOLOGY
+<B><DD>	INT J OFFENDER THER
+</B><DT>INTERNATIONAL JOURNAL OF ONCOLOGY
+<B><DD>	INT J ONCOL
+</B><DT>INTERNATIONAL JOURNAL OF OPERATIONS & PRODUCTION MANAGEMENT
+<B><DD>	INT J OPER PROD MAN
+</B><DT>INTERNATIONAL JOURNAL OF OPTOELECTRONICS
+<B><DD>	INT J OPTOELECTRON
+</B><DT>INTERNATIONAL JOURNAL OF ORAL & MAXILLOFACIAL IMPLANTS
+<B><DD>	INT J ORAL MAX IMPL
+</B><DT>INTERNATIONAL JOURNAL OF ORAL AND MAXILLOFACIAL SURGERY
+<B><DD>	INT J ORAL MAX SURG
+</B><DT>INTERNATIONAL JOURNAL OF ORAL SURGERY
+<B><DD>	INT J ORAL MAXILLOF
+</B><DT>INTERNATIONAL JOURNAL OF OSTEOARCHAEOLOGY
+<B><DD>	INT J OSTEOARCHAEOL
+</B><DT>INTERNATIONAL JOURNAL OF PANCREATOLOGY
+<B><DD>	INT J PANCREATOL
+</B><DT>INTERNATIONAL JOURNAL OF PARALLEL PROGRAMMING
+<B><DD>	INT J PARALLEL PROG
+</B><DT>INTERNATIONAL JOURNAL OF PATTERN RECOGNITION AND ARTIFICIAL INTELLIGENCE
+<B><DD>	INT J PATTERN RECOGN
+</B><DT>INTERNATIONAL JOURNAL OF PEDIATRIC HEMATOLOGY/ONCOLOGY
+<B><DD>	INT J PEDIAT HEM ONC
+</B><DT>INTERNATIONAL JOURNAL OF PEDIATRIC NEPHROLOGY
+<B><DD>	INT J PED NEPHROL
+</B><DT>INTERNATIONAL JOURNAL OF PEDIATRIC OTORHINOLARYNGOLOGY
+<B><DD>	INT J PEDIATR OTORHI
+</B><DT>INTERNATIONAL JOURNAL OF PEPTIDE AND PROTEIN RESEARCH
+<B><DD>	INT J PEPT PROT RES
+</B><DT>INTERNATIONAL JOURNAL OF PERIODONTICS & RESTORATIVE DENTISTRY
+<B><DD>	INT J PERIODONT REST
+</B><DT>INTERNATIONAL JOURNAL OF PEST MANAGEMENT
+<B><DD>	INT J PEST MANAGE
+</B><DT>INTERNATIONAL JOURNAL OF PHARMACEUTICS
+<B><DD>	INT J PHARM
+</B><DT>INTERNATIONAL JOURNAL OF PHARMACOGNOSY
+<B><DD>	INT J PHARMACOGN
+</B><DT>INTERNATIONAL JOURNAL OF PHILOSOPHICAL STUDIES
+<B><DD>	INT J PHILOS STUD
+</B><DT>INTERNATIONAL JOURNAL OF PLANT SCIENCES
+<B><DD>	INT J PLANT SCI
+</B><DT>INTERNATIONAL JOURNAL OF PLASTICITY
+<B><DD>	INT J PLASTICITY
+</B><DT>INTERNATIONAL JOURNAL OF POLYMER ANALYSIS AND CHARACTERIZATION
+<B><DD>	INT J POLYM ANAL CH
+</B><DT>INTERNATIONAL JOURNAL OF POLYMERIC MATERIALS
+<B><DD>	INT J POLYM MATER
+</B><DT>INTERNATIONAL JOURNAL OF POWDER METALLURGY
+<B><DD>	INT J POWDER METALL
+</B><DT>INTERNATIONAL JOURNAL OF PRESSURE VESSELS AND PIPING
+<B><DD>	INT J PRES VES PIP
+</B><DT>INTERNATIONAL JOURNAL OF PRIMATOLOGY
+<B><DD>	INT J PRIMATOL
+</B><DT>INTERNATIONAL JOURNAL OF PRODUCTION ECONOMICS
+<B><DD>	INT J PROD ECON
+</B><DT>INTERNATIONAL JOURNAL OF PRODUCTION RESEARCH
+<B><DD>	INT J PROD RES
+</B><DT>INTERNATIONAL JOURNAL OF PROSTHODONTICS
+<B><DD>	INT J PROSTHODONT
+</B><DT>INTERNATIONAL JOURNAL OF PSYCHIATRY IN MEDICINE
+<B><DD>	INT J PSYCHIAT MED
+</B><DT>INTERNATIONAL JOURNAL OF PSYCHO-ANALYSIS
+<B><DD>	INT J PSYCHOANAL
+</B><DT>INTERNATIONAL JOURNAL OF PSYCHOANALYSIS
+<B><DD>	INT J PSYCHOANAL
+</B><DT>INTERNATIONAL JOURNAL OF PSYCHOLOGY
+<B><DD>	INT J PSYCHOL
+</B><DT>INTERNATIONAL JOURNAL OF PSYCHOPHYSIOLOGY
+<B><DD>	INT J PSYCHOPHYSIOL
+</B><DT>INTERNATIONAL JOURNAL OF PUBLIC OPINION RESEARCH
+<B><DD>	INT J PUBLIC OPIN R
+</B><DT>INTERNATIONAL JOURNAL OF QUANTUM CHEMISTRY
+<B><DD>	INT J QUANTUM CHEM
+</B><DT>INTERNATIONAL JOURNAL OF RADIATION BIOLOGY
+<B><DD>	INT J RADIAT BIOL
+</B><DT>INTERNATIONAL JOURNAL OF RADIATION ONCOLOGY BIOLOGY PHYSICS
+<B><DD>	INT J RADIAT ONCOL
+</B><DT>INTERNATIONAL JOURNAL OF RAPID SOLIDIFICATION
+<B><DD>	INT J RAPID SOLIDIF
+</B><DT>INTERNATIONAL JOURNAL OF REFRACTORY METALS & HARD MATERIALS
+<B><DD>	INT J REFRACT MET H
+</B><DT>INTERNATIONAL JOURNAL OF REFRIGERATION-REVUE INTERNATIONALE DU FROID
+<B><DD>	INT J REFRIG
+</B><DT>INTERNATIONAL JOURNAL OF REHABILITATION RESEARCH
+<B><DD>	INT J REHABIL RES
+</B><DT>INTERNATIONAL JOURNAL OF REMOTE SENSING
+<B><DD>	INT J REMOTE SENS
+</B><DT>INTERNATIONAL JOURNAL OF RESEARCH IN MARKETING
+<B><DD>	INT J RES MARK
+</B><DT>INTERNATIONAL JOURNAL OF RF AND MICROWAVE COMPUTER-AIDED ENGINEERING
+<B><DD>	INT J RF MICROW C E
+</B><DT>INTERNATIONAL JOURNAL OF ROBOTICS & AUTOMATION
+<B><DD>	INT J ROBOT AUTOM
+</B><DT>INTERNATIONAL JOURNAL OF ROBOTICS RESEARCH
+<B><DD>	INT J ROBOT RES
+</B><DT>INTERNATIONAL JOURNAL OF ROBUST AND NONLINEAR CONTROL
+<B><DD>	INT J ROBUST NONLIN
+</B><DT>INTERNATIONAL JOURNAL OF ROCK MECHANICS AND MINING SCIENCES
+<B><DD>	INT J ROCK MECH MIN
+</B><DT>INTERNATIONAL JOURNAL OF ROCK MECHANICS AND MINING SCIENCES & GEOMECHANICS ABSTRACTS
+<B><DD>	INT J ROCK MECH MIN
+</B><DT>INTERNATIONAL JOURNAL OF SATELLITE COMMUNICATIONS
+<B><DD>	INT J SATELL COMMUN
+</B><DT>INTERNATIONAL JOURNAL OF SCIENCE EDUCATION
+<B><DD>	INT J SCI EDUC
+</B><DT>INTERNATIONAL JOURNAL OF SELECTION AND ASSESSMENT
+<B><DD>	INT J SELECT ASSESS
+</B><DT>INTERNATIONAL JOURNAL OF SERVICE INDUSTRY MANAGEMENT
+<B><DD>	INT J SERV IND MANAG
+</B><DT>INTERNATIONAL JOURNAL OF SOCIAL ECONOMICS
+<B><DD>	INT J SOC ECON
+</B><DT>INTERNATIONAL JOURNAL OF SOCIAL PSYCHIATRY
+<B><DD>	INT J SOC PSYCHIATR
+</B><DT>INTERNATIONAL JOURNAL OF SOCIAL WELFARE
+<B><DD>	INT J SOC WELF
+</B><DT>INTERNATIONAL JOURNAL OF SOFTWARE ENGINEERING AND KNOWLEDGE ENGINEERING
+<B><DD>	INT J SOFTW ENG KNOW
+</B><DT>INTERNATIONAL JOURNAL OF SOLIDS AND STRUCTURES
+<B><DD>	INT J SOLIDS STRUCT
+</B><DT>INTERNATIONAL JOURNAL OF SPORT BIOMECHANICS
+<B><DD>	INT J SPORT BIOMECH
+</B><DT>INTERNATIONAL JOURNAL OF SPORT NUTRITION
+<B><DD>	INT J SPORT NUTR
+</B><DT>INTERNATIONAL JOURNAL OF SPORT PSYCHOLOGY
+<B><DD>	INT J SPORT PSYCHOL
+</B><DT>INTERNATIONAL JOURNAL OF SPORTS MEDICINE
+<B><DD>	INT J SPORTS MED
+</B><DT>INTERNATIONAL JOURNAL OF STD & AIDS
+<B><DD>	INT J STD AIDS
+</B><DT>INTERNATIONAL JOURNAL OF STRESS MANAGEMENT
+<B><DD>	INT J STRESS MANAGE
+</B><DT>INTERNATIONAL JOURNAL OF SUPERCOMPUTER APPLICATIONS AND HIGH PERFORMANCE COMPUTING
+<B><DD>	INT J SUPERCOMPUT AP
+</B><DT>INTERNATIONAL JOURNAL OF SURGICAL PATHOLOGY
+<B><DD>	INT J SURG PATHOL
+</B><DT>INTERNATIONAL JOURNAL OF SUSTAINABLE DEVELOPMENT AND WORLD ECOLOGY
+<B><DD>	INT J SUST DEV WORLD
+</B><DT>INTERNATIONAL JOURNAL OF SYSTEMATIC AND EVOLUTIONARY MICROBIOLOGY
+<B><DD>	INT J SYST EVOL MICR
+</B><DT>INTERNATIONAL JOURNAL OF SYSTEMATIC BACTERIOLOGY
+<B><DD>	INT J SYST BACTERIOL
+</B><DT>INTERNATIONAL JOURNAL OF SYSTEMS SCIENCE
+<B><DD>	INT J SYST SCI
+</B><DT>INTERNATIONAL JOURNAL OF TECHNOLOGY ASSESSMENT IN HEALTH CARE
+<B><DD>	INT J TECHNOL ASSESS
+</B><DT>INTERNATIONAL JOURNAL OF TECHNOLOGY MANAGEMENT
+<B><DD>	INT J TECHNOL MANAGE
+</B><DT>INTERNATIONAL JOURNAL OF THE ADDICTIONS
+<B><DD>	INT J ADDICT
+</B><DT>INTERNATIONAL JOURNAL OF THE JAPAN SOCIETY FOR PRECISION ENGINEERING
+<B><DD>	INT J JPN S PREC ENG
+</B><DT>INTERNATIONAL JOURNAL OF THE SOCIOLOGY OF LANGUAGE
+<B><DD>	INT J SOCIOL LANG
+</B><DT>INTERNATIONAL JOURNAL OF THE SOCIOLOGY OF LAW
+<B><DD>	INT J SOCIOL LAW
+</B><DT>INTERNATIONAL JOURNAL OF THEORETICAL PHYSICS
+<B><DD>	INT J THEOR PHYS
+</B><DT>INTERNATIONAL JOURNAL OF THERMAL SCIENCES
+<B><DD>	INT J THERM SCI
+</B><DT>INTERNATIONAL JOURNAL OF THERMOPHYSICS
+<B><DD>	INT J THERMOPHYS
+</B><DT>INTERNATIONAL JOURNAL OF TISSUE REACTIONS-EXPERIMENTAL AND CLINICAL ASPECTS
+<B><DD>	INT J TISSUE REACT
+</B><DT>INTERNATIONAL JOURNAL OF TOXICOLOGY
+<B><DD>	INT J TOXICOL
+</B><DT>INTERNATIONAL JOURNAL OF TROPICAL AGRICULTURE
+<B><DD>	INT J TROP AGRIC
+</B><DT>INTERNATIONAL JOURNAL OF TUBERCULOSIS AND LUNG DISEASE
+<B><DD>	INT J TUBERC LUNG D
+</B><DT>INTERNATIONAL JOURNAL OF TURBO & JET-ENGINES
+<B><DD>	INT J TURBO JET ENG
+</B><DT>INTERNATIONAL JOURNAL OF UNCERTAINTY FUZZINESS AND KNOWLEDGE-BASED SYSTEMS
+<B><DD>	INT J UNCERTAIN FUZZ
+</B><DT>INTERNATIONAL JOURNAL OF URBAN AND REGIONAL RESEARCH
+<B><DD>	INT J URBAN REGIONAL
+</B><DT>INTERNATIONAL JOURNAL OF UROLOGY
+<B><DD>	INT J UROL
+</B><DT>INTERNATIONAL JOURNAL OF VEHICLE DESIGN
+<B><DD>	INT J VEHICLE DES
+</B><DT>INTERNATIONAL JOURNAL OF WILDLAND FIRE
+<B><DD>	INT J WILDLAND FIRE
+</B><DT>INTERNATIONAL JOURNAL OF ZOONOSES
+<B><DD>	INT J ZOONOSES
+</B><DT>INTERNATIONAL JOURNAL ON WORLD PEACE
+<B><DD>	INT J WORLD PEACE
+</B><DT>INTERNATIONAL LABOR AND WORKING-CLASS HISTORY
+<B><DD>	INT LABOR WORK-CLASS
+</B><DT>INTERNATIONAL LABORATORY
+<B><DD>	INT LAB
+</B><DT>INTERNATIONAL LABOUR REVIEW
+<B><DD>	INT LABOUR REV
+</B><DT>INTERNATIONAL MARKETING REVIEW
+<B><DD>	INT MARKET REV
+</B><DT>INTERNATIONAL MATERIALS REVIEWS
+<B><DD>	INT MATER REV
+</B><DT>INTERNATIONAL MATHEMATICS RESEARCH NOTICES
+<B><DD>	INT MATH RES NOTICES
+</B><DT>INTERNATIONAL METALS REVIEWS
+<B><DD>	INT MATER REV
+</B><DT>INTERNATIONAL MIGRATION
+<B><DD>	INT MIGR
+</B><DT>INTERNATIONAL MIGRATION REVIEW
+<B><DD>	INT MIGR REV
+</B><DT>INTERNATIONAL MONETARY FUND STAFF PAPERS
+<B><DD>	INT MONET FUND S PAP
+</B><DT>INTERNATIONAL OPHTHALMOLOGY
+<B><DD>	INT OPHTHALMOL
+</B><DT>INTERNATIONAL OPHTHALMOLOGY CLINICS
+<B><DD>	INT OPHTHALMOL CLIN
+</B><DT>INTERNATIONAL ORGANIZATION
+<B><DD>	INT ORGAN
+</B><DT>INTERNATIONAL ORTHOPAEDICS
+<B><DD>	INT ORTHOP
+</B><DT>INTERNATIONAL PHARMACOPSYCHIATRY
+<B><DD>	INT PHARMACOPSYCHIAT
+</B><DT>INTERNATIONAL PHILOSOPHICAL QUARTERLY
+<B><DD>	INT PHILOS QUART
+</B><DT>INTERNATIONAL POLITICAL SCIENCE REVIEW
+<B><DD>	INT POLIT SCI REV
+</B><DT>INTERNATIONAL POLYMER PROCESSING
+<B><DD>	INT POLYM PROC
+</B><DT>INTERNATIONAL REGIONAL SCIENCE REVIEW
+<B><DD>	INT REGIONAL SCI REV
+</B><DT>INTERNATIONAL REVIEW OF ADMINISTRATIVE SCIENCES
+<B><DD>	INT REV ADM SCI
+</B><DT>INTERNATIONAL REVIEW OF AFRICAN AMERICAN ART
+<B><DD>	INT REV AFR AM ART
+</B><DT>INTERNATIONAL REVIEW OF CONNECTIVE TISSUE RESEARCH
+<B><DD>	INT REV CONNECT TISS
+</B><DT>INTERNATIONAL REVIEW OF CYTOLOGY-A SURVEY OF CELL BIOLOGY
+<B><DD>	INT REV CYTOL
+</B><DT>INTERNATIONAL REVIEW OF EDUCATION
+<B><DD>	INT REV EDUC
+</B><DT>INTERNATIONAL REVIEW OF EXPERIMENTAL PATHOLOGY
+<B><DD>	INT REV EXP PATHOL
+</B><DT>INTERNATIONAL REVIEW OF HYDROBIOLOGY
+<B><DD>	INT REV HYDROBIOL
+</B><DT>INTERNATIONAL REVIEW OF LAW AND ECONOMICS
+<B><DD>	INT REV LAW ECON
+</B><DT>INTERNATIONAL REVIEW OF NEUROBIOLOGY
+<B><DD>	INT REV NEUROBIOL
+</B><DT>INTERNATIONAL REVIEW OF PHYSIOLOGY
+<B><DD>	INT REV PHYSIOL
+</B><DT>INTERNATIONAL REVIEW OF PSYCHIATRY
+<B><DD>	INT REV PSYCHIATR
+</B><DT>INTERNATIONAL REVIEW OF RESEARCH IN MENTAL RETARDATION
+<B><DD>	INT REV RES MENT RET
+</B><DT>INTERNATIONAL REVIEW OF SOCIAL HISTORY
+<B><DD>	INT REV SOC HIST
+</B><DT>INTERNATIONAL REVIEW OF THE AESTHETICS AND SOCIOLOGY OF MUSIC
+<B><DD>	INT REV AESTHET SOC
+</B><DT>INTERNATIONAL REVIEWS IN PHYSICAL CHEMISTRY
+<B><DD>	INT REV PHYS CHEM
+</B><DT>INTERNATIONAL REVIEWS OF ERGONOMICS
+<B><DD>	INT REV ERGON
+</B><DT>INTERNATIONAL SECURITY
+<B><DD>	INT SECURITY
+</B><DT>INTERNATIONAL SOCIAL SCIENCE JOURNAL
+<B><DD>	INT SOC SCI J
+</B><DT>INTERNATIONAL SOCIAL WORK
+<B><DD>	INT SOC WORK
+</B><DT>INTERNATIONAL SOCIOLOGY
+<B><DD>	INT SOCIOL
+</B><DT>INTERNATIONAL STATISTICAL REVIEW
+<B><DD>	INT STAT REV
+</B><DT>INTERNATIONAL STUDIES IN PHILOSOPHY
+<B><DD>	INT STUD PHILOS
+</B><DT>INTERNATIONAL STUDIES QUARTERLY
+<B><DD>	INT STUD QUART
+</B><DT>INTERNATIONAL SUGAR JOURNAL
+<B><DD>	INT SUGAR J
+</B><DT>INTERNATIONAL SURGERY
+<B><DD>	INT SURG
+</B><DT>INTERNATIONAL TAX AND PUBLIC FINANCE
+<B><DD>	INT TAX PUBLIC FINAN
+</B><DT>INTERNATIONAL UROGYNECOLOGY JOURNAL AND PELVIC FLOOR DYSFUNCTION
+<B><DD>	INT UROGYNECOL J PEL
+</B><DT>INTERNATIONAL WILDLIFE
+<B><DD>	INT WILDLIFE
+</B><DT>INTERNATIONAL YEARBOOK OF NEPHROLOGY
+<B><DD>	INT YEARBOOK NEPHROL
+</B><DT>INTERNATIONALE POLITIK
+<B><DD>	INT POLITIK
+</B><DT>INTERNATIONALE REVUE DER GESAMTEN HYDROBIOLOGIE
+<B><DD>	INT REV GES HYDROBIO
+</B><DT>INTERNATIONALES ARCHIV FUR SOZIALGESCHICHTE DER DEUTSCHEN LITERATUR
+<B><DD>	INT ARCH SOZIALGESCH
+</B><DT>INTERNET JOURNAL OF CHEMISTRY
+<B><DD>	INTERNET J CHEM
+</B><DT>INTERNET RESEARCH-ELECTRONIC NETWORKING APPLICATIONS AND POLICY
+<B><DD>	INTERNET RES
+</B><DT>INTERNET WORLD
+<B><DD>	INTERNET WORLD
+</B><DT>INTERNETWORKING-RESEARCH AND EXPERIENCE
+<B><DD>	INTERNETWORKING
+</B><DT>INTERNIST
+<B><DD>	INTERNIST
+</B><DT>INTERPRETATION-A JOURNAL OF BIBLE AND THEOLOGY
+<B><DD>	INTERPRETATION
+</B><DT>INTERPRETATION-A JOURNAL OF POLITICAL PHILOSOPHY
+<B><DD>	INTERPRETATION-J POL
+</B><DT>INTERVENTION IN SCHOOL AND CLINIC
+<B><DD>	INTERV SCH CLIN
+</B><DT>INTERVENTIONAL NEURORADIOLOGY
+<B><DD>	INTERV NEURORADIOL
+</B><DT>INTERVIROLOGY
+<B><DD>	INTERVIROLOGY
+</B><DT>INVASION & METASTASIS
+<B><DD>	INVAS METAST
+</B><DT>INVENTIONES MATHEMATICAE
+<B><DD>	INVENT MATH
+</B><DT>INVERSE PROBLEMS
+<B><DD>	INVERSE PROBL
+</B><DT>INVERSE PROBLEMS IN ENGINEERING
+<B><DD>	INVERSE PROBL ENG
+</B><DT>INVERTEBRATE BIOLOGY
+<B><DD>	INVERTEBR BIOL
+</B><DT>INVERTEBRATE NEUROSCIENCE
+<B><DD>	INVERTEBR NEUROSCI
+</B><DT>INVERTEBRATE REPRODUCTION & DEVELOPMENT
+<B><DD>	INVERTEBR REPROD DEV
+</B><DT>INVERTEBRATE TAXONOMY
+<B><DD>	INVERTEBR TAXON
+</B><DT>INVESTIGACION CLINICA
+<B><DD>	INVEST CLIN
+</B><DT>INVESTIGACION MEDICA INTERNACIONAL
+<B><DD>	INVEST MED INT
+</B><DT>INVESTIGACION PESQUERA
+<B><DD>	INVEST PESQ
+</B><DT>INVESTIGATIONAL NEW DRUGS
+<B><DD>	INVEST NEW DRUG
+</B><DT>INVESTIGATIVE OPHTHALMOLOGY & VISUAL SCIENCE
+<B><DD>	INVEST OPHTH VIS SCI
+</B><DT>INVESTIGATIVE RADIOLOGY
+<B><DD>	INVEST RADIOL
+</B><DT>INZYNIERIA CHEMICZNA I PROCESOWA
+<B><DD>	INZ CHEM PROCESOWA
+</B><DT>ION-SELECTIVE ELECTRODE REVIEWS
+<B><DD>	ION SEL ELECTRODE R
+</B><DT>IOWA AGRICULTURAL AND HOME ECONOMICS EXPERIMENT STATION RESEARCH BULLETIN
+<B><DD>	IOWA AHEES RES BULL
+</B><DT>IOWA AGRICULTURAL AND HOME ECONOMICS EXPERIMENT STATION SPECIAL REPORT
+<B><DD>	IOWA AHEES SPEC REP
+</B><DT>IOWA LAW REVIEW
+<B><DD>	IOWA LAW REV
+</B><DT>IOWA STATE JOURNAL OF RESEARCH
+<B><DD>	IOWA STATE J RES
+</B><DT>IRAL-INTERNATIONAL REVIEW OF APPLIED LINGUISTICS IN LANGUAGE TEACHING
+<B><DD>	IRAL-INT REV APPL LI
+</B><DT>IRANIAN JOURNAL OF CHEMISTRY & CHEMICAL ENGINEERING-INTERNATIONAL ENGLISH EDITION
+<B><DD>	IRAN J CHEM CHEM ENG
+</B><DT>IRANIAN JOURNAL OF SCIENCE AND TECHNOLOGY
+<B><DD>	IRAN J SCI TECHNOL
+</B><DT>IRANIAN POLYMER JOURNAL
+<B><DD>	IRAN POLYM J
+</B><DT>IRCS MEDICAL SCIENCE-BIOCHEMISTRY
+<B><DD>	IRCS MED SCI-BIOCHEM
+</B><DT>IRISH HISTORICAL STUDIES
+<B><DD>	IRISH HIST STUD
+</B><DT>IRISH JOURNAL OF AGRICULTURAL AND FOOD RESEARCH
+<B><DD>	IRISH J AGR FOOD RES
+</B><DT>IRISH JOURNAL OF AGRICULTURAL RESEARCH
+<B><DD>	IRISH J AGR RES
+</B><DT>IRISH JOURNAL OF EARTH SCIENCES
+<B><DD>	IRISH J EARTH SCI
+</B><DT>IRISH JOURNAL OF FOOD SCIENCE AND TECHNOLOGY
+<B><DD>	IRISH J FOOD SCI TEC
+</B><DT>IRISH JOURNAL OF MEDICAL SCIENCE
+<B><DD>	IRISH J MED SCI
+</B><DT>IRISH JOURNAL OF PSYCHOLOGICAL MEDICINE
+<B><DD>	IRISH J PSYCHOL MED
+</B><DT>IRISH JOURNAL OF PSYCHOLOGY
+<B><DD>	IRISH J PSYCHOL
+</B><DT>IRISH MEDICAL JOURNAL
+<B><DD>	IRISH MED J
+</B><DT>IRISH UNIVERSITY REVIEW
+<B><DD>	IRISH UNIV REV
+</B><DT>IRISH VETERINARY JOURNAL
+<B><DD>	IRISH VET J
+</B><DT>IRON AGE
+<B><DD>	IRON AGE
+</B><DT>IRON AND STEEL ENGINEER
+<B><DD>	IRON STEEL ENG
+</B><DT>IRON AND STEEL INTERNATIONAL
+<B><DD>	IRON STEEL INT
+</B><DT>IRONMAKING & STEELMAKING
+<B><DD>	IRONMAK STEELMAK
+</B><DT>IRRIGATION SCIENCE
+<B><DD>	IRRIGATION SCI
+</B><DT>ISA TRANSACTIONS
+<B><DD>	ISA T
+</B><DT>ISI ATLAS OF SCIENCE-ANIMAL & PLANT SCIENCES
+<B><DD>	ISI ATL SCI-ANIM PL
+</B><DT>ISI ATLAS OF SCIENCE-BIOCHEMISTRY
+<B><DD>	ISI ATLAS-BIOCHEM
+</B><DT>ISI ATLAS OF SCIENCE-IMMUNOLOGY
+<B><DD>	ISI ATLAS-IMMUNOL
+</B><DT>ISI ATLAS OF SCIENCE-PHARMACOLOGY
+<B><DD>	ISI ATLAS-PHARMACOL
+</B><DT>ISIJ INTERNATIONAL
+<B><DD>	ISIJ INT
+</B><DT>ISIS
+<B><DD>	ISIS
+</B><DT>ISLA-A JOURNAL OF MICRONESIAN STUDIES
+<B><DD>	ISLA-J MICRONES STUD
+</B><DT>ISLAM-ZEITSCHRIFT FUR GESCHICHTE UND KULTUR DES ISLAMISCHEN ORIENTS
+<B><DD>	ISLAM
+</B><DT>ISLAND ARC
+<B><DD>	ISL ARC
+</B><DT>ISOKINETICS AND EXERCISE SCIENCE
+<B><DD>	ISOKINET EXERC SCI
+</B><DT>ISOTOPE GEOSCIENCE
+<B><DD>	ISOT GEOSCI
+</B><DT>ISOTOPENPRAXIS
+<B><DD>	ISOTOPENPRAXIS
+</B><DT>ISOTOPES IN ENVIRONMENTAL AND HEALTH STUDIES
+<B><DD>	ISOT ENVIRON HEALT S
+</B><DT>ISOZYMES-CURRENT TOPICS IN BIOLOGICAL AND MEDICAL RESEARCH
+<B><DD>	ISOZYMES-CURR T BIOL
+</B><DT>ISPRS JOURNAL OF PHOTOGRAMMETRY AND REMOTE SENSING
+<B><DD>	ISPRS J PHOTOGRAMM
+</B><DT>ISRAEL EXPLORATION JOURNAL
+<B><DD>	ISRAEL EXPLOR J
+</B><DT>ISRAEL JOURNAL OF BOTANY
+<B><DD>	ISRAEL J BOT
+</B><DT>ISRAEL JOURNAL OF CHEMISTRY
+<B><DD>	ISRAEL J CHEM
+</B><DT>ISRAEL JOURNAL OF EARTH SCIENCES
+<B><DD>	ISRAEL J EARTH SCI
+</B><DT>ISRAEL JOURNAL OF MATHEMATICS
+<B><DD>	ISRAEL J MATH
+</B><DT>ISRAEL JOURNAL OF MEDICAL SCIENCES
+<B><DD>	ISRAEL J MED SCI
+</B><DT>ISRAEL JOURNAL OF PLANT SCIENCES
+<B><DD>	ISRAEL J PLANT SCI
+</B><DT>ISRAEL JOURNAL OF PSYCHIATRY AND RELATED SCIENCES
+<B><DD>	ISRAEL J PSYCHIAT
+</B><DT>ISRAEL JOURNAL OF TECHNOLOGY
+<B><DD>	ISRAEL J TECHNOL
+</B><DT>ISRAEL JOURNAL OF ZOOLOGY
+<B><DD>	ISRAEL J ZOOL
+</B><DT>ISRAEL MEDICAL ASSOCIATION JOURNAL
+<B><DD>	ISRAEL MED ASSOC J
+</B><DT>ISRAELI JOURNAL OF AQUACULTURE-BAMIDGEH
+<B><DD>	ISR J AQUACULT-BAMID
+</B><DT>ISSCC DIGEST OF TECHNICAL PAPERS
+<B><DD>	ISSCC DIG TECH PAP I
+</B><DT>ISSUES & STUDIES
+<B><DD>	ISSUES STUD
+</B><DT>ISSUES IN LAW & MEDICINE
+<B><DD>	ISSUES LAW MED
+</B><DT>ISSUES IN SCIENCE AND TECHNOLOGY
+<B><DD>	ISSUES SCI TECHNOL
+</B><DT>ITALIAN JOURNAL OF BIOCHEMISTRY
+<B><DD>	ITAL J BIOCHEM
+</B><DT>ITALIAN JOURNAL OF FOOD SCIENCE
+<B><DD>	ITAL J FOOD SCI
+</B><DT>ITALIAN JOURNAL OF GASTROENTEROLOGY
+<B><DD>	ITAL J GASTROENTEROL
+</B><DT>ITALIAN JOURNAL OF GASTROENTEROLOGY AND HEPATOLOGY
+<B><DD>	ITAL J GASTROENTEROL
+</B><DT>ITALIAN JOURNAL OF MINERAL & ELECTROLYTE METABOLISM
+<B><DD>	ITAL J MINER ELECT M
+</B><DT>ITALIAN JOURNAL OF NEUROLOGICAL SCIENCES
+<B><DD>	ITAL J NEUROL SCI
+</B><DT>ITALIAN JOURNAL OF ZOOLOGY
+<B><DD>	ITAL J ZOOL
+</B><DT>ITE JOURNAL-INSTITUTE OF TRANSPORTATION ENGINEERS
+<B><DD>	ITE J
+</B><DT>ITS JOURNAL
+<B><DD>	ITS J
+</B><DT>IUBMB LIFE
+<B><DD>	IUBMB LIFE
+</B><DT>IUGOSLAVICA PHYSIOLOGICA ET PHARMACOLOGICA ACTA
+<B><DD>	IUGOSL PHYSL PHARM A
+</B><DT>IVHS JOURNAL
+<B><DD>	IVHS J
+</B><DT>IZVESTIYA AKADEMII NAUK AZERBAIDZHANSKOI SSR SERIYA FIZIKO-TEKHNICHESKIKH I MATEMATICHESKIKH NAUK
+<B><DD>	IZV AN AZERB SSR
+</B><DT>IZVESTIYA AKADEMII NAUK FIZIKA ATMOSFERY I OKEANA
+<B><DD>	IZV AN FIZ ATMOS OK+
+</B><DT>IZVESTIYA AKADEMII NAUK SERIYA BIOLOGICHESKAYA
+<B><DD>	IZV AKAD NAUK BIOL+
+</B><DT>IZVESTIYA AKADEMII NAUK SERIYA FIZICHESKAYA
+<B><DD>	IZV AKAD NAUK FIZ+
+</B><DT>IZVESTIYA AKADEMII NAUK SERIYA GEOLOGICHESKAYA
+<B><DD>	IZV AKAD NAUK GEOL+
+</B><DT>IZVESTIYA AKADEMII NAUK SSSR FIZIKA ATMOSFERY I OKEANA
+<B><DD>	IZV AN SSSR FIZ ATM+
+</B><DT>IZVESTIYA AKADEMII NAUK SSSR FIZIKA ZEMLI
+<B><DD>	IZV AN SSSR FIZ ZEM+
+</B><DT>IZVESTIYA AKADEMII NAUK SSSR SERIYA BIOLOGICHESKAYA
+<B><DD>	IZV AN SSSR BIOL+
+</B><DT>IZVESTIYA AKADEMII NAUK SSSR SERIYA FIZICHESKAYA
+<B><DD>	IZV AN SSSR FIZ+
+</B><DT>IZVESTIYA AKADEMII NAUK SSSR SERIYA GEOLOGICHESKAYA
+<B><DD>	IZV AN SSSR GEOL+
+</B><DT>IZVESTIYA MATHEMATICS
+<B><DD>	IZV MATH+
+</B><DT>IZVESTIYA SIBIRSKOGO OTDELENIYA AKADEMII NAUK SSSR SERIYA KHIMICHESKIKH NAUK
+<B><DD>	IZV SIB OTD AN KHIM+
+</B><DT>IZVESTIYA VYSSHIKH UCHEBNYKH ZAVEDENII AVIATSIONAYA TEKHNIKA
+<B><DD>	IZV VUZ AVIATS TEKH+
+</B><DT>IZVESTIYA VYSSHIKH UCHEBNYKH ZAVEDENII FIZIKA
+<B><DD>	IZV VUZ FIZ+
+</B><DT>IZVESTIYA VYSSHIKH UCHEBNYKH ZAVEDENII KHIMIYA I KHIMICHESKAYA TEKHNOLOGIYA
+<B><DD>	IZV VUZ KHIM KH TEKH
+</B><DT>IZVESTIYA VYSSHIKH UCHEBNYKH ZAVEDENII MATEMATIKA
+<B><DD>	IZV VUZ MAT+
+</B><DT>IZVESTIYA VYSSHIKH UCHEBNYKH ZAVEDENII PISHCHEVAYA TEKHNOLOGIYA
+<B><DD>	IZV VUZ PISHCH TEKH
+</B><DT>IZVESTIYA VYSSHIKH UCHEBNYKH ZAVEDENII RADIOELEKTRONIKA
+<B><DD>	IZV VUZ RADIOELEKTR+
+</B><DT>IZVESTIYA VYSSHIKH UCHEBNYKH ZAVEDENII RADIOFIZIKA
+<B><DD>	IZV VUZ RADIOFIZ+
+</B></DL>
+</BODY>
+</HTML>

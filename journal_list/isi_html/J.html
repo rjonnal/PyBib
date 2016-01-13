@@ -1,715 +1,3925 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="J"></A><DT>JADERNA ENERGIE
+<B><DD>	JAD ENERG
+</B><DT>JAHRBUCH DER BERLINER MUSEEN
+<B><DD>	JAHRB BERLIN MUSEEN
+</B><DT>JAHRBUCH FUR INTERNATIONALE GERMANISTIK
+<B><DD>	JAHRB INT GERMAN
+</B><DT>JAHRBUCH FUR SOZIALWISSENSCHAFT
+<B><DD>	JAHRB SOZIALWISSENSC
+</B><DT>JAHRBUCH FUR VOLKSLIEDFORSCHUNG
+<B><DD>	JAHRB VOLKSLIEDFORSC
+</B><DT>JAHRBUCHER FUR GESCHICHTE OSTEUROPAS
+<B><DD>	JAHRB GESCH OSTEUR
+</B><DT>JAHRBUCHER FUR NATIONALOKONOMIE UND STATISTIK
+<B><DD>	JAHRB NATL STAT
+</B><DT>JAMA-JOURNAL OF THE AMERICAN MEDICAL ASSOCIATION
+<B><DD>	JAMA-J AM MED ASSOC
+</B><DT>JAMES JOYCE QUARTERLY
+<B><DD>	JAMES JOYCE QUART
+</B><DT>JAPAN AND THE WORLD ECONOMY
+<B><DD>	JPN WORLD ECON
+</B><DT>JAPAN ANNUAL REVIEWS IN ELECTRONICS COMPUTERS & TELECOMMUNICATIONS
+<B><DD>	JPN ANNU REV ELECTR
+</B><DT>JAPAN ARCHITECT
+<B><DD>	JPN ARCHIT
+</B><DT>JAPAN JOURNAL OF INDUSTRIAL AND APPLIED MATHEMATICS
+<B><DD>	JPN J IND APPL MATH
+</B><DT>JAPAN QUARTERLY
+<B><DD>	JPN QUART
+</B><DT>JAPAN TELECOMMUNICATIONS REVIEW
+<B><DD>	JPN TELECOMMUN REV
+</B><DT>JAPANESE CIRCULATION JOURNAL-ENGLISH EDITION
+<B><DD>	JPN CIRC J
+</B><DT>JAPANESE ECONOMIC REVIEW
+<B><DD>	JPN ECON REV
+</B><DT>JAPANESE ECONOMIC STUDIES
+<B><DD>	JPN ECON STUD
+</B><DT>JAPANESE ECONOMY
+<B><DD>	JPN ECON
+</B><DT>JAPANESE HEART JOURNAL
+<B><DD>	JPN HEART J
+</B><DT>JAPANESE JOURNAL OF APPLIED ENTOMOLOGY AND ZOOLOGY
+<B><DD>	JPN J APPL ENTOMOL Z
+</B><DT>JAPANESE JOURNAL OF APPLIED PHYSICS
+<B><DD>	JPN J APPL PHYS
+</B><DT>JAPANESE JOURNAL OF APPLIED PHYSICS PART 1-REGULAR PAPERS SHORT NOTES & REVIEW PAPERS
+<B><DD>	JPN J APPL PHYS 1
+</B><DT>JAPANESE JOURNAL OF APPLIED PHYSICS PART 2-LETTERS
+<B><DD>	JPN J APPL PHYS 2
+</B><DT>JAPANESE JOURNAL OF BREEDING
+<B><DD>	JPN J BREED
+</B><DT>JAPANESE JOURNAL OF CANCER RESEARCH
+<B><DD>	JPN J CANCER RES
+</B><DT>JAPANESE JOURNAL OF CLINICAL ONCOLOGY
+<B><DD>	JPN J CLIN ONCOL
+</B><DT>JAPANESE JOURNAL OF CROP SCIENCE
+<B><DD>	JPN J CROP SCI
+</B><DT>JAPANESE JOURNAL OF EDUCATIONAL PSYCHOLOGY
+<B><DD>	JPN J EDUC PSYCHOL
+</B><DT>JAPANESE JOURNAL OF EXPERIMENTAL MEDICINE
+<B><DD>	JPN J EXP MED
+</B><DT>JAPANESE JOURNAL OF GENETICS
+<B><DD>	JPN J GENET
+</B><DT>JAPANESE JOURNAL OF HUMAN GENETICS
+<B><DD>	JPN J HUM GENET
+</B><DT>JAPANESE JOURNAL OF ICHTHYOLOGY
+<B><DD>	JPN J ICHTHYOL
+</B><DT>JAPANESE JOURNAL OF INFECTIOUS DISEASES
+<B><DD>	JPN J INFECT DIS
+</B><DT>JAPANESE JOURNAL OF MEDICAL SCIENCE & BIOLOGY
+<B><DD>	JPN J MED SCI BIOL
+</B><DT>JAPANESE JOURNAL OF MEDICINE
+<B><DD>	JPN J MED
+</B><DT>JAPANESE JOURNAL OF NEUROPSYCHOPHARMACOLOGY
+<B><DD>	JPN J NEUROPSYCHOPH
+</B><DT>JAPANESE JOURNAL OF OPHTHALMOLOGY
+<B><DD>	JPN J OPHTHALMOL
+</B><DT>JAPANESE JOURNAL OF PHARMACOLOGY
+<B><DD>	JPN J PHARMACOL
+</B><DT>JAPANESE JOURNAL OF PHYSICAL FITNESS AND SPORTS MEDICINE
+<B><DD>	JPN J PHYS FIT SPORT
+</B><DT>JAPANESE JOURNAL OF PHYSIOLOGY
+<B><DD>	JPN J PHYSIOL
+</B><DT>JAPANESE JOURNAL OF PSYCHIATRY AND NEUROLOGY
+<B><DD>	JPN J PSYCHIAT NEUR
+</B><DT>JAPANESE JOURNAL OF PSYCHOLOGY
+<B><DD>	JPN J PSYCHOL
+</B><DT>JAPANESE JOURNAL OF SURGERY
+<B><DD>	JPN J SURG
+</B><DT>JAPANESE JOURNAL OF TOXICOLOGY AND ENVIRONMENTAL HEALTH
+<B><DD>	JPN J TOX ENV HEALTH
+</B><DT>JAPANESE JOURNAL OF TRANSPLANTATION
+<B><DD>	JPN J TRANSPLANT
+</B><DT>JAPANESE JOURNAL OF TROPICAL AGRICULTURE
+<B><DD>	JPN J TROP AGR
+</B><DT>JAPANESE JOURNAL OF VETERINARY RESEARCH
+<B><DD>	JPN J VET RES
+</B><DT>JAPANESE JOURNAL OF VETERINARY SCIENCE
+<B><DD>	JPN J VET SCI
+</B><DT>JAPANESE PSYCHOLOGICAL RESEARCH
+<B><DD>	JPN PSYCHOL RES
+</B><DT>JAPCA-THE INTERNATIONAL JOURNAL OF AIR POLLUTION CONTROL AND HAZARDOUS WASTE MANAGEMENT
+<B><DD>	JAPCA J AIR WASTE MA
+</B><DT>JAPCA-THE JOURNAL OF THE AIR & WASTE MANAGEMENT ASSOCIATION
+<B><DD>	JAPCA J AIR WASTE MA
+</B><DT>JARQ-JAPAN AGRICULTURAL RESEARCH QUARTERLY
+<B><DD>	JARQ-JPN AGR RES Q
+</B><DT>JAVNOST-THE PUBLIC
+<B><DD>	JAVNOST-PUBLIC
+</B><DT>JCR-JOURNAL OF CLINICAL RHEUMATOLOGY
+<B><DD>	JCR-J CLIN RHEUMATOL
+</B><DT>JETP LETTERS
+<B><DD>	JETP LETT+
+</B><DT>JEWISH ART
+<B><DD>	JEWISH ART
+</B><DT>JEWISH JOURNAL OF SOCIOLOGY
+<B><DD>	JEWISH J SOCIOL
+</B><DT>JEWISH QUARTERLY REVIEW
+<B><DD>	JEWISH QUART REV
+</B><DT>JKA-JERNKONTORETS ANNALER
+<B><DD>	JKA-JERNKONTORET ANN
+</B><DT>JMRI-JOURNAL OF MAGNETIC RESONANCE IMAGING
+<B><DD>	JMRI-J MAGN RESON IM
+</B><DT>JNMS-JOURNAL OF THE NEUROMUSCULOSKELETAL SYSTEM
+<B><DD>	JNMS-J NEUROMUSC SYS
+</B><DT>JNT-JOURNAL OF NARRATIVE THEORY
+<B><DD>	J NARRATIVE THEORY
+</B><DT>JOCCA-SURFACE COATINGS INTERNATIONAL
+<B><DD>	JOCCA-SURF COAT INT
+</B><DT>JOHNS HOPKINS APL TECHNICAL DIGEST
+<B><DD>	J HOPKINS APL TECH D
+</B><DT>JOHNS HOPKINS MEDICAL JOURNAL
+<B><DD>	JOHNS HOPKINS MED J
+</B><DT>JOINT BONE SPINE
+<B><DD>	JOINT BONE SPINE
+</B><DT>JOINT COMMISSION JOURNAL ON QUALITY IMPROVEMENT
+<B><DD>	JOINT COMM J QUAL IM
+</B><DT>JOM-JOURNAL OF THE MINERALS METALS & MATERIALS SOCIETY
+<B><DD>	JOM-J MIN MET MAT S
+</B><DT>JOURNAL AMERICAN POMOLOGICAL SOCIETY
+<B><DD>	J AMER POMOLOG SOC
+</B><DT>JOURNAL AMERICAN WATER WORKS ASSOCIATION
+<B><DD>	J AM WATER WORKS ASS
+</B><DT>JOURNAL BELGE DE RADIOLOGIE
+<B><DD>	J BELG RADIOL
+</B><DT>JOURNAL D ANALYSE MATHEMATIQUE
+<B><DD>	J ANAL MATH
+</B><DT>JOURNAL D UROLOGIE
+<B><DD>	J UROLOGIE
+</B><DT>JOURNAL DE BIOLOGIE BUCCALE
+<B><DD>	J BIOL BUCCALE
+</B><DT>JOURNAL DE BIOPHYSIQUE & MEDECINE NUCLEAIRE
+<B><DD>	J BIOPHYS BIOMEC
+</B><DT>JOURNAL DE BIOPHYSIQUE ET DE BIOMECANIQUE
+<B><DD>	J BIOPHYS BIOMEC
+</B><DT>JOURNAL DE CHIMIE PHYSIQUE ET DE PHYSICO-CHIMIE BIOLOGIQUE
+<B><DD>	J CHIM PHYS PCB
+</B><DT>JOURNAL DE CHIRURGIE
+<B><DD>	J CHIR-PARIS
+</B><DT>JOURNAL DE GENETIQUE HUMAINE
+<B><DD>	J GENET HUM
+</B><DT>JOURNAL DE GYNECOLOGIE OBSTETRIQUE ET BIOLOGIE DE LA REPRODUCTION
+<B><DD>	J GYNECOL OBST BIO R
+</B><DT>JOURNAL DE MATHEMATIQUES PURES ET APPLIQUEES
+<B><DD>	J MATH PURE APPL
+</B><DT>JOURNAL DE MECANIQUE
+<B><DD>	J MECANIQUE
+</B><DT>JOURNAL DE MECANIQUE APPLIQUEE
+<B><DD>	J MEC APPL
+</B><DT>JOURNAL DE MECANIQUE THEORIQUE ET APPLIQUEE
+<B><DD>	J MEC THEOR APPL
+</B><DT>JOURNAL DE MEDECINE DE STRASBOURG
+<B><DD>	J MED STRASBOURG
+</B><DT>JOURNAL DE MEDECINE LEGALE DROIT MEDICAL
+<B><DD>	J MED LEG DROIT MED
+</B><DT>JOURNAL DE MEDECINE NUCLEAIRE ET BIOPHYSIQUE
+<B><DD>	J MED NUCL BIOPHYS
+</B><DT>JOURNAL DE MICROSCOPIE ET DE SPECTROSCOPIE ELECTRONIQUES
+<B><DD>	J MICROSC SPECT ELEC
+</B><DT>JOURNAL DE MYCOLOGIE MEDICALE
+<B><DD>	J MYCOL MED
+</B><DT>JOURNAL DE PHARMACIE DE BELGIQUE
+<B><DD>	J PHARM BELG
+</B><DT>JOURNAL DE PHARMACOLOGIE
+<B><DD>	J PHARMACOL-PARIS
+</B><DT>JOURNAL DE PHYSIOLOGIE
+<B><DD>	J PHYSIOL-PARIS
+</B><DT>JOURNAL DE PHYSIQUE
+<B><DD>	J PHYS-PARIS
+</B><DT>JOURNAL DE PHYSIQUE I
+<B><DD>	J PHYS I
+</B><DT>JOURNAL DE PHYSIQUE II
+<B><DD>	J PHYS II
+</B><DT>JOURNAL DE PHYSIQUE II
+<B><DD>	J PHYS IV
+</B><DT>JOURNAL DE PHYSIQUE III
+<B><DD>	J PHYS III
+</B><DT>JOURNAL DE PHYSIQUE III
+<B><DD>	J PHYS IV
+</B><DT>JOURNAL DE PHYSIQUE IV
+<B><DD>	J PHYS IV
+</B><DT>JOURNAL DE PHYSIQUE LETTRES
+<B><DD>	J PHYS LETT-PARIS
+</B><DT>JOURNAL DE RADIOLOGIE
+<B><DD>	J RADIOL
+</B><DT>JOURNAL DE TOXICOLOGIE CLINIQUE ET EXPERIMENTALE
+<B><DD>	J TOXICOL CLIN EXPER
+</B><DT>JOURNAL DE TOXICOLOGIE MEDICALE
+<B><DD>	J TOXICOL CLIN EXPER
+</B><DT>JOURNAL DES MALADIES VASCULAIRES
+<B><DD>	J MAL VASCUL
+</B><DT>JOURNAL DU CONSEIL
+<B><DD>	J CONSEIL
+</B><DT>JOURNAL EUROPEEN DE RADIOTHERAPIE
+<B><DD>	J EUR RADIOTHER
+</B><DT>JOURNAL FOR RESEARCH IN MATHEMATICS EDUCATION
+<B><DD>	J RES MATH EDUC
+</B><DT>JOURNAL FOR THE EDUCATION OF THE GIFTED
+<B><DD>	J EDUC GIFTED
+</B><DT>JOURNAL FOR THE SCIENTIFIC STUDY OF RELIGION
+<B><DD>	J SCI STUD RELIG
+</B><DT>JOURNAL FOR THE THEORY OF SOCIAL BEHAVIOUR
+<B><DD>	J THEOR SOC BEHAV
+</B><DT>JOURNAL FRANCAIS D OPHTALMOLOGIE
+<B><DD>	J FR OPHTALMOL
+</B><DT>JOURNAL FRANCAIS D OTO-RHINO-LARYNGOLOGIE
+<B><DD>	J FR OTORHINOLARYNG
+</B><DT>JOURNAL FUR DIE REINE UND ANGEWANDTE MATHEMATIK
+<B><DD>	J REINE ANGEW MATH
+</B><DT>JOURNAL FUR HIRNFORSCHUNG
+<B><DD>	J HIRNFORSCH
+</B><DT>JOURNAL FUR ORNITHOLOGIE
+<B><DD>	J ORNITHOL
+</B><DT>JOURNAL FUR PRAKTISCHE CHEMIE
+<B><DD>	J PRAKT CHEM
+</B><DT>JOURNAL FUR PRAKTISCHE CHEMIE-CHEMIKER-ZEITUNG
+<B><DD>	J PRAK CHEM-CHEM ZTG
+</B><DT>JOURNAL FUR SIGNALAUFZEICHNUNGSMATERIALIEN
+<B><DD>	J INFORM REC MATER
+</B><DT>JOURNAL OF AAPOS
+<B><DD>	J AAPOS
+</B><DT>JOURNAL OF ABNORMAL CHILD PSYCHOLOGY
+<B><DD>	J ABNORM CHILD PSYCH
+</B><DT>JOURNAL OF ABNORMAL PSYCHOLOGY
+<B><DD>	J ABNORM PSYCHOL
+</B><DT>JOURNAL OF ACADEMIC LIBRARIANSHIP
+<B><DD>	J ACAD LIBR
+</B><DT>JOURNAL OF ACCIDENT & EMERGENCY MEDICINE
+<B><DD>	J ACCID EMERG MED
+</B><DT>JOURNAL OF ACCOUNTANCY
+<B><DD>	J ACCOUNTANCY
+</B><DT>JOURNAL OF ACCOUNTING & ECONOMICS
+<B><DD>	J ACCOUNT ECON
+</B><DT>JOURNAL OF ACCOUNTING AND PUBLIC POLICY
+<B><DD>	J ACCOUNT PUBLIC POL
+</B><DT>JOURNAL OF ACCOUNTING RESEARCH
+<B><DD>	J ACCOUNTING RES
+</B><DT>JOURNAL OF ACQUIRED IMMUNE DEFICIENCY SYNDROMES
+<B><DD>	J ACQ IMMUN DEF SYND
+</B><DT>JOURNAL OF ACQUIRED IMMUNE DEFICIENCY SYNDROMES AND HUMAN RETROVIROLOGY
+<B><DD>	J ACQ IMMUN DEF SYND
+</B><DT>JOURNAL OF ADDICTIVE DISEASES
+<B><DD>	J ADDICT DIS
+</B><DT>JOURNAL OF ADHESION
+<B><DD>	J ADHESION
+</B><DT>JOURNAL OF ADHESION SCIENCE AND TECHNOLOGY
+<B><DD>	J ADHES SCI TECHNOL
+</B><DT>JOURNAL OF ADOLESCENCE
+<B><DD>	J ADOLESCENCE
+</B><DT>JOURNAL OF ADOLESCENT & ADULT LITERACY
+<B><DD>	J ADOLESC ADULT LIT
+</B><DT>JOURNAL OF ADOLESCENT HEALTH
+<B><DD>	J ADOLESCENT HEALTH
+</B><DT>JOURNAL OF ADOLESCENT RESEARCH
+<B><DD>	J ADOLESCENT RES
+</B><DT>JOURNAL OF ADULT DEVELOPMENT
+<B><DD>	J ADULT DEV
+</B><DT>JOURNAL OF ADVANCED MATERIALS
+<B><DD>	J ADV MATER
+</B><DT>JOURNAL OF ADVANCED NURSING
+<B><DD>	J ADV NURS
+</B><DT>JOURNAL OF ADVANCED TRANSPORTATION
+<B><DD>	J ADV TRANSPORT
+</B><DT>JOURNAL OF ADVANCED ZOOLOGY
+<B><DD>	J ADV ZOOL
+</B><DT>JOURNAL OF ADVERTISING
+<B><DD>	J ADVERTISING
+</B><DT>JOURNAL OF ADVERTISING RESEARCH
+<B><DD>	J ADVERTISING RES
+</B><DT>JOURNAL OF AEROSOL MEDICINE-DEPOSITION CLEARANCE AND EFFECTS IN THE LUNG
+<B><DD>	J AEROSOL MED
+</B><DT>JOURNAL OF AEROSOL SCIENCE
+<B><DD>	J AEROSOL SCI
+</B><DT>JOURNAL OF AEROSPACE ENGINEERING
+<B><DD>	J AEROSPACE ENG
+</B><DT>JOURNAL OF AESTHETIC EDUCATION
+<B><DD>	J AESTHET EDUC
+</B><DT>JOURNAL OF AESTHETICS AND ART CRITICISM
+<B><DD>	J AESTHET ART CRITIC
+</B><DT>JOURNAL OF AFFECTIVE DISORDERS
+<B><DD>	J AFFECT DISORDERS
+</B><DT>JOURNAL OF AFRICAN EARTH SCIENCES
+<B><DD>	J AFR EARTH SCI
+</B><DT>JOURNAL OF AFRICAN ECONOMIES
+<B><DD>	J AFR ECON
+</B><DT>JOURNAL OF AFRICAN HISTORY
+<B><DD>	J AFR HIST
+</B><DT>JOURNAL OF AGING AND HEALTH
+<B><DD>	J AGING HEALTH
+</B><DT>JOURNAL OF AGING AND PHYSICAL ACTIVITY
+<B><DD>	J AGING PHYS ACTIV
+</B><DT>JOURNAL OF AGING STUDIES
+<B><DD>	J AGING STUD
+</B><DT>JOURNAL OF AGRICULTURAL & ENVIRONMENTAL ETHICS
+<B><DD>	J AGR ENVIRON ETHIC
+</B><DT>JOURNAL OF AGRICULTURAL AND FOOD CHEMISTRY
+<B><DD>	J AGR FOOD CHEM
+</B><DT>JOURNAL OF AGRICULTURAL AND RESOURCE ECONOMICS
+<B><DD>	J AGR RESOUR ECON
+</B><DT>JOURNAL OF AGRICULTURAL AND URBAN ENTOMOLOGY
+<B><DD>	J AGR URBAN ENTOMOL
+</B><DT>JOURNAL OF AGRICULTURAL BIOLOGICAL AND ENVIRONMENTAL STATISTICS
+<B><DD>	J AGRIC BIOL ENVIR S
+</B><DT>JOURNAL OF AGRICULTURAL ECONOMICS
+<B><DD>	J AGR ECON
+</B><DT>JOURNAL OF AGRICULTURAL ECONOMICS RESEARCH
+<B><DD>	J AGR ECON RES
+</B><DT>JOURNAL OF AGRICULTURAL ENGINEERING RESEARCH
+<B><DD>	J AGR ENG RES
+</B><DT>JOURNAL OF AGRICULTURAL ENTOMOLOGY
+<B><DD>	J AGR ENTOMOL
+</B><DT>JOURNAL OF AGRICULTURAL SCIENCE
+<B><DD>	J AGR SCI
+</B><DT>JOURNAL OF AGRICULTURAL SCIENCE IN FINLAND
+<B><DD>	J AGR SCI FINLAND
+</B><DT>JOURNAL OF AGRICULTURE OF THE UNIVERSITY OF PUERTO RICO
+<B><DD>	J AGR U PUERTO RICO
+</B><DT>JOURNAL OF AGRONOMY AND CROP SCIENCE-ZEITSCHRIFT FUR ACKER UND PFLANZENBAU
+<B><DD>	J AGRON CROP SCI
+</B><DT>JOURNAL OF AIRCRAFT
+<B><DD>	J AIRCRAFT
+</B><DT>JOURNAL OF ALCOHOL AND DRUG EDUCATION
+<B><DD>	J ALCOHOL DRUG EDUC
+</B><DT>JOURNAL OF ALGEBRA
+<B><DD>	J ALGEBRA
+</B><DT>JOURNAL OF ALGEBRAIC COMBINATORICS
+<B><DD>	J ALGEBR COMB
+</B><DT>JOURNAL OF ALGEBRAIC GEOMETRY
+<B><DD>	J ALGEBRAIC GEOM
+</B><DT>JOURNAL OF ALGORITHMS
+<B><DD>	J ALGORITHM
+</B><DT>JOURNAL OF ALLERGY AND CLINICAL IMMUNOLOGY
+<B><DD>	J ALLERGY CLIN IMMUN
+</B><DT>JOURNAL OF ALLOYS AND COMPOUNDS
+<B><DD>	J ALLOY COMPD
+</B><DT>JOURNAL OF ALTERNATIVE AND COMPLEMENTARY MEDICINE
+<B><DD>	J ALTERN COMPLEM MED
+</B><DT>JOURNAL OF AMERICAN COLLEGE HEALTH
+<B><DD>	J AM COLL HEALTH
+</B><DT>JOURNAL OF AMERICAN CULTURE
+<B><DD>	J AM CULTURE
+</B><DT>JOURNAL OF AMERICAN ETHNIC HISTORY
+<B><DD>	J AM ETHNIC HIST
+</B><DT>JOURNAL OF AMERICAN FOLKLORE
+<B><DD>	J AM FOLKLORE
+</B><DT>JOURNAL OF AMERICAN HEALTH CARE
+<B><DD>	J AM HEALTH CARE
+</B><DT>JOURNAL OF AMERICAN HEALTH POLICY
+<B><DD>	J AM HEALTH POLICY
+</B><DT>JOURNAL OF AMERICAN HISTORY
+<B><DD>	J AM HIST
+</B><DT>JOURNAL OF AMERICAN STUDIES
+<B><DD>	J AM STUD
+</B><DT>JOURNAL OF ANALYTICAL AND APPLIED PYROLYSIS
+<B><DD>	J ANAL APPL PYROL
+</B><DT>JOURNAL OF ANALYTICAL ATOMIC SPECTROMETRY
+<B><DD>	J ANAL ATOM SPECTROM
+</B><DT>JOURNAL OF ANALYTICAL CHEMISTRY
+<B><DD>	J ANAL CHEM+
+</B><DT>JOURNAL OF ANALYTICAL CHEMISTRY OF THE USSR
+<B><DD>	J ANAL CHEM-USSR+
+</B><DT>JOURNAL OF ANALYTICAL PSYCHOLOGY
+<B><DD>	J ANAL PSYCHOL
+</B><DT>JOURNAL OF ANALYTICAL TOXICOLOGY
+<B><DD>	J ANAL TOXICOL
+</B><DT>JOURNAL OF ANATOMY
+<B><DD>	J ANAT
+</B><DT>JOURNAL OF ANDROLOGY
+<B><DD>	J ANDROL
+</B><DT>JOURNAL OF ANIMAL AND FEED SCIENCES
+<B><DD>	J ANIM FEED SCI
+</B><DT>JOURNAL OF ANIMAL BREEDING AND GENETICS-ZEITSCHRIFT FUR TIERZUCHTUNG UND ZUCHTUNGSBIOLOGIE
+<B><DD>	J ANIM BREED GENET
+</B><DT>JOURNAL OF ANIMAL ECOLOGY
+<B><DD>	J ANIM ECOL
+</B><DT>JOURNAL OF ANIMAL PHYSIOLOGY AND ANIMAL NUTRITION-ZEITSCHRIFT FUR TIERPHYSIOLOGIE TIERERNAHRUNG UND FUTTERMITTELKUNDE
+<B><DD>	J ANIM PHYSIOL AN N
+</B><DT>JOURNAL OF ANIMAL SCIENCE
+<B><DD>	J ANIM SCI
+</B><DT>JOURNAL OF ANTHROPOLOGICAL ARCHAEOLOGY
+<B><DD>	J ANTHROPOL ARCHAEOL
+</B><DT>JOURNAL OF ANTHROPOLOGICAL RESEARCH
+<B><DD>	J ANTHROPOL RES
+</B><DT>JOURNAL OF ANTIBIOTICS
+<B><DD>	J ANTIBIOT
+</B><DT>JOURNAL OF ANTIMICROBIAL CHEMOTHERAPY
+<B><DD>	J ANTIMICROB CHEMOTH
+</B><DT>JOURNAL OF ANXIETY DISORDERS
+<B><DD>	J ANXIETY DISORD
+</B><DT>JOURNAL OF AOAC INTERNATIONAL
+<B><DD>	J AOAC INT
+</B><DT>JOURNAL OF APICULTURAL RESEARCH
+<B><DD>	J APICULT RES
+</B><DT>JOURNAL OF APPLIED ANIMAL RESEARCH
+<B><DD>	J APPL ANIM RES
+</B><DT>JOURNAL OF APPLIED BACTERIOLOGY
+<B><DD>	J APPL BACTERIOL
+</B><DT>JOURNAL OF APPLIED BEHAVIOR ANALYSIS
+<B><DD>	J APPL BEHAV ANAL
+</B><DT>JOURNAL OF APPLIED BIOMATERIALS
+<B><DD>	J APPL BIOMATER
+</B><DT>JOURNAL OF APPLIED BIOMECHANICS
+<B><DD>	J APPL BIOMECH
+</B><DT>JOURNAL OF APPLIED BOTANY-ANGEWANDTE BOTANIK
+<B><DD>	J APPL BOT-ANGEW BOT
+</B><DT>JOURNAL OF APPLIED CARDIOLOGY
+<B><DD>	J APPL CARDIOL
+</B><DT>JOURNAL OF APPLIED CHEMISTRY OF THE USSR
+<B><DD>	J APPL CHEM-USSR+
+</B><DT>JOURNAL OF APPLIED COMMUNICATION RESEARCH
+<B><DD>	J APPL COMMUN RES
+</B><DT>JOURNAL OF APPLIED CRYSTALLOGRAPHY
+<B><DD>	J APPL CRYSTALLOGR
+</B><DT>JOURNAL OF APPLIED DEVELOPMENTAL PSYCHOLOGY
+<B><DD>	J APPL DEV PSYCHOL
+</B><DT>JOURNAL OF APPLIED ECOLOGY
+<B><DD>	J APPL ECOL
+</B><DT>JOURNAL OF APPLIED ECONOMETRICS
+<B><DD>	J APPL ECONOM
+</B><DT>JOURNAL OF APPLIED ELECTROCHEMISTRY
+<B><DD>	J APPL ELECTROCHEM
+</B><DT>JOURNAL OF APPLIED ENTOMOLOGY-ZEITSCHRIFT FUR ANGEWANDTE ENTOMOLOGIE
+<B><DD>	J APPL ENTOMOL
+</B><DT>JOURNAL OF APPLIED GEOPHYSICS
+<B><DD>	J APPL GEOPHYS
+</B><DT>JOURNAL OF APPLIED GERONTOLOGY
+<B><DD>	J APPL GERONTOL
+</B><DT>JOURNAL OF APPLIED ICHTHYOLOGY-ZEITSCHRIFT FUR ANGEWANDTE ICHTHYOLOGIE
+<B><DD>	J APPL ICHTHYOL
+</B><DT>JOURNAL OF APPLIED MECHANICS-TRANSACTIONS OF THE ASME
+<B><DD>	J APPL MECH-T ASME
+</B><DT>JOURNAL OF APPLIED METEOROLOGY
+<B><DD>	J APPL METEOROL
+</B><DT>JOURNAL OF APPLIED MICROBIOLOGY
+<B><DD>	J APPL MICROBIOL
+</B><DT>JOURNAL OF APPLIED PHOTOGRAPHIC ENGINEERING
+<B><DD>	J APPL PHOTOGR ENG
+</B><DT>JOURNAL OF APPLIED PHYCOLOGY
+<B><DD>	J APPL PHYCOL
+</B><DT>JOURNAL OF APPLIED PHYSICS
+<B><DD>	J APPL PHYS
+</B><DT>JOURNAL OF APPLIED PHYSIOLOGY
+<B><DD>	J APPL PHYSIOL
+</B><DT>JOURNAL OF APPLIED POLYMER SCIENCE
+<B><DD>	J APPL POLYM SCI
+</B><DT>JOURNAL OF APPLIED POULTRY RESEARCH
+<B><DD>	J APPL POULTRY RES
+</B><DT>JOURNAL OF APPLIED PROBABILITY
+<B><DD>	J APPL PROBAB
+</B><DT>JOURNAL OF APPLIED PSYCHOLOGY
+<B><DD>	J APPL PSYCHOL
+</B><DT>JOURNAL OF APPLIED RESEARCH IN INTELLECTUAL DISABILITIES
+<B><DD>	J APPL RES INTELLECT
+</B><DT>JOURNAL OF APPLIED SOCIAL PSYCHOLOGY
+<B><DD>	J APPL SOC PSYCHOL
+</B><DT>JOURNAL OF APPLIED SPORT PSYCHOLOGY
+<B><DD>	J APPL SPORT PSYCHOL
+</B><DT>JOURNAL OF APPLIED STATISTICS
+<B><DD>	J APPL STAT
+</B><DT>JOURNAL OF APPLIED TOXICOLOGY
+<B><DD>	J APPL TOXICOL
+</B><DT>JOURNAL OF APPROXIMATION THEORY
+<B><DD>	J APPROX THEORY
+</B><DT>JOURNAL OF AQUATIC ANIMAL HEALTH
+<B><DD>	J AQUAT ANIM HEALTH
+</B><DT>JOURNAL OF AQUATIC PLANT MANAGEMENT
+<B><DD>	J AQUAT PLANT MANAGE
+</B><DT>JOURNAL OF ARAB AFFAIRS
+<B><DD>	J ARAB AFF
+</B><DT>JOURNAL OF ARABIC LITERATURE
+<B><DD>	J ARABIC LIT
+</B><DT>JOURNAL OF ARACHNOLOGY
+<B><DD>	J ARACHNOL
+</B><DT>JOURNAL OF ARCHAEOLOGICAL METHOD AND THEORY
+<B><DD>	J ARCHAEOL METHOD TH
+</B><DT>JOURNAL OF ARCHAEOLOGICAL RESEARCH
+<B><DD>	J ARCHAEOL RES
+</B><DT>JOURNAL OF ARCHAEOLOGICAL SCIENCE
+<B><DD>	J ARCHAEOL SCI
+</B><DT>JOURNAL OF ARCHITECTURAL AND PLANNING RESEARCH
+<B><DD>	J ARCHIT PLAN RES
+</B><DT>JOURNAL OF ARCHITECTURAL EDUCATION
+<B><DD>	J ARCHIT EDUC
+</B><DT>JOURNAL OF ARID ENVIRONMENTS
+<B><DD>	J ARID ENVIRON
+</B><DT>JOURNAL OF ART & DESIGN EDUCATION
+<B><DD>	J ART DESIGN EDUC
+</B><DT>JOURNAL OF ARTHROPLASTY
+<B><DD>	J ARTHROPLASTY
+</B><DT>JOURNAL OF ARTIFICIAL INTELLIGENCE RESEARCH
+<B><DD>	J ARTIF INTELL RES
+</B><DT>JOURNAL OF ARTS MANAGEMENT LAW AND SOCIETY
+<B><DD>	J ART MANAG LAW SOC
+</B><DT>JOURNAL OF ASIAN AND AFRICAN STUDIES
+<B><DD>	J ASIAN AFR STUD
+</B><DT>JOURNAL OF ASIAN EARTH SCIENCES
+<B><DD>	J ASIAN EARTH SCI
+</B><DT>JOURNAL OF ASIAN HISTORY
+<B><DD>	J ASIAN HIST
+</B><DT>JOURNAL OF ASIAN STUDIES
+<B><DD>	J ASIAN STUD
+</B><DT>JOURNAL OF ASSISTED REPRODUCTION AND GENETICS
+<B><DD>	J ASSIST REPROD GEN
+</B><DT>JOURNAL OF ASTHMA
+<B><DD>	J ASTHMA
+</B><DT>JOURNAL OF ASTROPHYSICS AND ASTRONOMY
+<B><DD>	J ASTROPHYS ASTRON
+</B><DT>JOURNAL OF ATHLETIC TRAINING
+<B><DD>	J ATHL TRAINING
+</B><DT>JOURNAL OF ATMOSPHERIC AND OCEANIC TECHNOLOGY
+<B><DD>	J ATMOS OCEAN TECH
+</B><DT>JOURNAL OF ATMOSPHERIC AND SOLAR-TERRESTRIAL PHYSICS
+<B><DD>	J ATMOS SOL-TERR PHY
+</B><DT>JOURNAL OF ATMOSPHERIC AND TERRESTRIAL PHYSICS
+<B><DD>	J ATMOS TERR PHYS
+</B><DT>JOURNAL OF ATMOSPHERIC CHEMISTRY
+<B><DD>	J ATMOS CHEM
+</B><DT>JOURNAL OF AUDIOVISUAL MEDIA IN MEDICINE
+<B><DD>	J AUDIOV MEDIA MED
+</B><DT>JOURNAL OF AUTISM AND DEVELOPMENTAL DISORDERS
+<B><DD>	J AUTISM DEV DISORD
+</B><DT>JOURNAL OF AUTOIMMUNITY
+<B><DD>	J AUTOIMMUN
+</B><DT>JOURNAL OF AUTOMATED METHODS & MANAGEMENT IN CHEMISTRY
+<B><DD>	J AUTOM METHOD MANAG
+</B><DT>JOURNAL OF AUTOMATED REASONING
+<B><DD>	J AUTOM REASONING
+</B><DT>JOURNAL OF AUTOMATIC CHEMISTRY
+<B><DD>	J AUTOM CHEM
+</B><DT>JOURNAL OF AUTONOMIC PHARMACOLOGY
+<B><DD>	J AUTON PHARMACOL
+</B><DT>JOURNAL OF AVIAN BIOLOGY
+<B><DD>	J AVIAN BIOL
+</B><DT>JOURNAL OF AVIAN MEDICINE AND SURGERY
+<B><DD>	J AVIAN MED SURG
+</B><DT>JOURNAL OF BACK AND MUSCULOSKELETAL REHABILITATION
+<B><DD>	J BACK MUSCULOSKELET
+</B><DT>JOURNAL OF BACTERIOLOGY
+<B><DD>	J BACTERIOL
+</B><DT>JOURNAL OF BALTIC STUDIES
+<B><DD>	J BALTIC STUD
+</B><DT>JOURNAL OF BAND RESEARCH
+<B><DD>	J BAND RES
+</B><DT>JOURNAL OF BANKING & FINANCE
+<B><DD>	J BANK FINANC
+</B><DT>JOURNAL OF BASIC MICROBIOLOGY
+<B><DD>	J BASIC MICROB
+</B><DT>JOURNAL OF BEHAVIOR THERAPY AND EXPERIMENTAL PSYCHIATRY
+<B><DD>	J BEHAV THER EXP PSY
+</B><DT>JOURNAL OF BEHAVIORAL DECISION MAKING
+<B><DD>	J BEHAV DECIS MAKING
+</B><DT>JOURNAL OF BEHAVIORAL HEALTH SERVICES & RESEARCH
+<B><DD>	J BEHAV HEALTH SER R
+</B><DT>JOURNAL OF BEHAVIORAL MEDICINE
+<B><DD>	J BEHAV MED
+</B><DT>JOURNAL OF BIBLICAL LITERATURE
+<B><DD>	J BIBLICAL LIT
+</B><DT>JOURNAL OF BIOACTIVE AND COMPATIBLE POLYMERS
+<B><DD>	J BIOACT COMPAT POL
+</B><DT>JOURNAL OF BIOCHEMICAL AND BIOPHYSICAL METHODS
+<B><DD>	J BIOCHEM BIOPH METH
+</B><DT>JOURNAL OF BIOCHEMICAL AND MOLECULAR TOXICOLOGY
+<B><DD>	J BIOCHEM MOL TOXIC
+</B><DT>JOURNAL OF BIOCHEMICAL TOXICOLOGY
+<B><DD>	J BIOCHEM TOXICOL
+</B><DT>JOURNAL OF BIOCHEMISTRY
+<B><DD>	J BIOCHEM-TOKYO
+</B><DT>JOURNAL OF BIOCHEMISTRY AND MOLECULAR BIOLOGY
+<B><DD>	J BIOCHEM MOL BIOL
+</B><DT>JOURNAL OF BIOELECTRICITY
+<B><DD>	J BIOELECTRICITY
+</B><DT>JOURNAL OF BIOENERGETICS AND BIOMEMBRANES
+<B><DD>	J BIOENERG BIOMEMBR
+</B><DT>JOURNAL OF BIOGEOGRAPHY
+<B><DD>	J BIOGEOGR
+</B><DT>JOURNAL OF BIOLOGICAL CHEMISTRY
+<B><DD>	J BIOL CHEM
+</B><DT>JOURNAL OF BIOLOGICAL EDUCATION
+<B><DD>	J BIOL EDUC
+</B><DT>JOURNAL OF BIOLOGICAL INORGANIC CHEMISTRY
+<B><DD>	J BIOL INORG CHEM
+</B><DT>JOURNAL OF BIOLOGICAL PHYSICS
+<B><DD>	J BIOL PHYS
+</B><DT>JOURNAL OF BIOLOGICAL REGULATORS AND HOMEOSTATIC AGENTS
+<B><DD>	J BIOL REG HOMEOS AG
+</B><DT>JOURNAL OF BIOLOGICAL RESPONSE MODIFIERS
+<B><DD>	J BIOL RESP MODIF
+</B><DT>JOURNAL OF BIOLOGICAL RHYTHMS
+<B><DD>	J BIOL RHYTHM
+</B><DT>JOURNAL OF BIOLOGICAL STANDARDIZATION
+<B><DD>	J BIOL STAND
+</B><DT>JOURNAL OF BIOLOGICAL SYSTEMS
+<B><DD>	J BIOL SYST
+</B><DT>JOURNAL OF BIOLUMINESCENCE AND CHEMILUMINESCENCE
+<B><DD>	J BIOLUM CHEMILUM
+</B><DT>JOURNAL OF BIOMATERIALS APPLICATIONS
+<B><DD>	J BIOMATER APPL
+</B><DT>JOURNAL OF BIOMATERIALS SCIENCE-POLYMER EDITION
+<B><DD>	J BIOMAT SCI-POLYM E
+</B><DT>JOURNAL OF BIOMECHANICAL ENGINEERING-TRANSACTIONS OF THE ASME
+<B><DD>	J BIOMECH ENG-T ASME
+</B><DT>JOURNAL OF BIOMECHANICS
+<B><DD>	J BIOMECH
+</B><DT>JOURNAL OF BIOMEDICAL ENGINEERING
+<B><DD>	J BIOMED ENG
+</B><DT>JOURNAL OF BIOMEDICAL MATERIALS RESEARCH
+<B><DD>	J BIOMED MATER RES
+</B><DT>JOURNAL OF BIOMEDICAL MATERIALS RESEARCH-APPLIED BIOMATERIALS
+<B><DD>	J BIOMED MATER RES-A
+</B><DT>JOURNAL OF BIOMEDICAL OPTICS
+<B><DD>	J BIOMED OPT
+</B><DT>JOURNAL OF BIOMEDICAL SCIENCE
+<B><DD>	J BIOMED SCI
+</B><DT>JOURNAL OF BIOMOLECULAR NMR
+<B><DD>	J BIOMOL NMR
+</B><DT>JOURNAL OF BIOMOLECULAR SCREENING
+<B><DD>	J BIOMOL SCREEN
+</B><DT>JOURNAL OF BIOMOLECULAR STRUCTURE & DYNAMICS
+<B><DD>	J BIOMOL STRUCT DYN
+</B><DT>JOURNAL OF BIOSCIENCE AND BIOENGINEERING
+<B><DD>	J BIOSCI BIOENG
+</B><DT>JOURNAL OF BIOSCIENCES
+<B><DD>	J BIOSCIENCE
+</B><DT>JOURNAL OF BIOSOCIAL SCIENCE
+<B><DD>	J BIOSOC SCI
+</B><DT>JOURNAL OF BIOTECHNOLOGY
+<B><DD>	J BIOTECHNOL
+</B><DT>JOURNAL OF BLACK STUDIES
+<B><DD>	J BLACK STUD
+</B><DT>JOURNAL OF BLACKS IN HIGHER EDUCATION
+<B><DD>	J BLACKS HIGH EDUC
+</B><DT>JOURNAL OF BONE AND JOINT SURGERY-AMERICAN VOLUME
+<B><DD>	J BONE JOINT SURG AM
+</B><DT>JOURNAL OF BONE AND JOINT SURGERY-BRITISH VOLUME
+<B><DD>	J BONE JOINT SURG BR
+</B><DT>JOURNAL OF BONE AND MINERAL METABOLISM
+<B><DD>	J BONE MINER METAB
+</B><DT>JOURNAL OF BONE AND MINERAL RESEARCH
+<B><DD>	J BONE MINER RES
+</B><DT>JOURNAL OF BRAIN RESEARCH-JOURNAL FUR HIRNFORSCHUNG
+<B><DD>	J BRAIN RES
+</B><DT>JOURNAL OF BRAIN SCIENCE
+<B><DD>	J BRAIN SCI
+</B><DT>JOURNAL OF BRITISH STUDIES
+<B><DD>	J BRIT STUD
+</B><DT>JOURNAL OF BROADCASTING & ELECTRONIC MEDIA
+<B><DD>	J BROADCAST ELECTRON
+</B><DT>JOURNAL OF BRYOLOGY
+<B><DD>	J BRYOL
+</B><DT>JOURNAL OF BURN CARE & REHABILITATION
+<B><DD>	J BURN CARE REHABIL
+</B><DT>JOURNAL OF BUSINESS
+<B><DD>	J BUS
+</B><DT>JOURNAL OF BUSINESS & ECONOMIC STATISTICS
+<B><DD>	J BUS ECON STAT
+</B><DT>JOURNAL OF BUSINESS AND PSYCHOLOGY
+<B><DD>	J BUS PSYCHOL
+</B><DT>JOURNAL OF BUSINESS AND TECHNICAL COMMUNICATION
+<B><DD>	J BUS TECH COMMUN
+</B><DT>JOURNAL OF BUSINESS ETHICS
+<B><DD>	J BUS ETHICS
+</B><DT>JOURNAL OF BUSINESS RESEARCH
+<B><DD>	J BUS RES
+</B><DT>JOURNAL OF BUSINESS VENTURING
+<B><DD>	J BUS VENTURING
+</B><DT>JOURNAL OF CAMEL PRACTICE AND RESEARCH
+<B><DD>	J CAMEL PRACT RES
+</B><DT>JOURNAL OF CANADIAN ART HISTORY-ANNALES D HISTOIRE DE L ART CANADIEN
+<B><DD>	J CAN ART HIST
+</B><DT>JOURNAL OF CANADIAN PETROLEUM TECHNOLOGY
+<B><DD>	J CAN PETROL TECHNOL
+</B><DT>JOURNAL OF CANADIAN STUDIES-REVUE D ETUDES CANADIENNES
+<B><DD>	J CAN STUD
+</B><DT>JOURNAL OF CANCER EDUCATION
+<B><DD>	J CANCER EDUC
+</B><DT>JOURNAL OF CANCER RESEARCH AND CLINICAL ONCOLOGY
+<B><DD>	J CANCER RES CLIN
+</B><DT>JOURNAL OF CAPILLARY ELECTROPHORESIS
+<B><DD>	J CAPILLARY ELECTROP
+</B><DT>JOURNAL OF CARBOHYDRATE CHEMISTRY
+<B><DD>	J CARBOHYD CHEM
+</B><DT>JOURNAL OF CARBOHYDRATES-NUCLEOSIDES-NUCLEOTIDES
+<B><DD>	J CARB-NUCLEOS-NUCL
+</B><DT>JOURNAL OF CARDIAC FAILURE
+<B><DD>	J CARD FAIL
+</B><DT>JOURNAL OF CARDIAC SURGERY
+<B><DD>	J CARDIAC SURG
+</B><DT>JOURNAL OF CARDIOTHORACIC AND VASCULAR ANESTHESIA
+<B><DD>	J CARDIOTHOR VASC AN
+</B><DT>JOURNAL OF CARDIOVASCULAR DIAGNOSIS AND PROCEDURES
+<B><DD>	J CARDIOVASC DIAGN P
+</B><DT>JOURNAL OF CARDIOVASCULAR ELECTROPHYSIOLOGY
+<B><DD>	J CARDIOVASC ELECTR
+</B><DT>JOURNAL OF CARDIOVASCULAR MAGNETIC RESONANCE
+<B><DD>	J CARDIOV MAGN RESON
+</B><DT>JOURNAL OF CARDIOVASCULAR MEDICINE
+<B><DD>	J CARDIOVASC MED
+</B><DT>JOURNAL OF CARDIOVASCULAR PHARMACOLOGY
+<B><DD>	J CARDIOVASC PHARM
+</B><DT>JOURNAL OF CARDIOVASCULAR RISK
+<B><DD>	J CARDIOVASC RISK
+</B><DT>JOURNAL OF CARDIOVASCULAR SURGERY
+<B><DD>	J CARDIOVASC SURG
+</B><DT>JOURNAL OF CARDIOVASCULAR TECHNOLOGY
+<B><DD>	J CARDIOVASC TECHNOL
+</B><DT>JOURNAL OF CARDIOVASCULAR ULTRASONOGRAPHY
+<B><DD>	J CARDIOVASC ULTRAS
+</B><DT>JOURNAL OF CAREER ASSESSMENT
+<B><DD>	J CAREER ASSESSMENT
+</B><DT>JOURNAL OF CAREER DEVELOPMENT
+<B><DD>	J CAREER DEV
+</B><DT>JOURNAL OF CARIBBEAN HISTORY
+<B><DD>	J CARIBBEAN HIST
+</B><DT>JOURNAL OF CATALYSIS
+<B><DD>	J CATAL
+</B><DT>JOURNAL OF CATARACT AND REFRACTIVE SURGERY
+<B><DD>	J CATARACT REFR SURG
+</B><DT>JOURNAL OF CELL BIOLOGY
+<B><DD>	J CELL BIOL
+</B><DT>JOURNAL OF CELL SCIENCE
+<B><DD>	J CELL SCI
+</B><DT>JOURNAL OF CELLULAR BIOCHEMISTRY
+<B><DD>	J CELL BIOCHEM
+</B><DT>JOURNAL OF CELLULAR PHYSIOLOGY
+<B><DD>	J CELL PHYSIOL
+</B><DT>JOURNAL OF CELLULAR PLASTICS
+<B><DD>	J CELL PLAST
+</B><DT>JOURNAL OF CEREAL SCIENCE
+<B><DD>	J CEREAL SCI
+</B><DT>JOURNAL OF CEREBRAL BLOOD FLOW AND METABOLISM
+<B><DD>	J CEREBR BLOOD F MET
+</B><DT>JOURNAL OF CHEMICAL AND ENGINEERING DATA
+<B><DD>	J CHEM ENG DATA
+</B><DT>JOURNAL OF CHEMICAL CRYSTALLOGRAPHY
+<B><DD>	J CHEM CRYSTALLOGR
+</B><DT>JOURNAL OF CHEMICAL ECOLOGY
+<B><DD>	J CHEM ECOL
+</B><DT>JOURNAL OF CHEMICAL EDUCATION
+<B><DD>	J CHEM EDUC
+</B><DT>JOURNAL OF CHEMICAL ENGINEERING OF JAPAN
+<B><DD>	J CHEM ENG JPN
+</B><DT>JOURNAL OF CHEMICAL INFORMATION AND COMPUTER SCIENCES
+<B><DD>	J CHEM INF COMP SCI
+</B><DT>JOURNAL OF CHEMICAL NEUROANATOMY
+<B><DD>	J CHEM NEUROANAT
+</B><DT>JOURNAL OF CHEMICAL PHYSICS
+<B><DD>	J CHEM PHYS
+</B><DT>JOURNAL OF CHEMICAL RESEARCH-S
+<B><DD>	J CHEM RES-S
+</B><DT>JOURNAL OF CHEMICAL TECHNOLOGY AND BIOTECHNOLOGY
+<B><DD>	J CHEM TECHNOL BIOT
+</B><DT>JOURNAL OF CHEMICAL TECHNOLOGY AND BIOTECHNOLOGY A-CHEMICAL TECHNOLOGY
+<B><DD>	J CHEM TECH BIOT A
+</B><DT>JOURNAL OF CHEMICAL TECHNOLOGY AND BIOTECHNOLOGY A-CHEMICAL TECHNOLOGY
+<B><DD>	J CHEM TECHNOL BIOT
+</B><DT>JOURNAL OF CHEMICAL TECHNOLOGY AND BIOTECHNOLOGY B-BIOTECHNOLOGY
+<B><DD>	J CHEM TECH BIOT B
+</B><DT>JOURNAL OF CHEMICAL TECHNOLOGY AND BIOTECHNOLOGY B-BIOTECHNOLOGY
+<B><DD>	J CHEM TECHNOL BIOT
+</B><DT>JOURNAL OF CHEMICAL THERMODYNAMICS
+<B><DD>	J CHEM THERMODYN
+</B><DT>JOURNAL OF CHEMOMETRICS
+<B><DD>	J CHEMOMETR
+</B><DT>JOURNAL OF CHEMOTHERAPY
+<B><DD>	J CHEMOTHERAPY
+</B><DT>JOURNAL OF CHILD & ADOLESCENT SUBSTANCE ABUSE
+<B><DD>	J CHILD ADOLES SUBST
+</B><DT>JOURNAL OF CHILD AND ADOLESCENT PSYCHOPHARMACOLOGY
+<B><DD>	J CHILD ADOL PSYCHOP
+</B><DT>JOURNAL OF CHILD LANGUAGE
+<B><DD>	J CHILD LANG
+</B><DT>JOURNAL OF CHILD NEUROLOGY
+<B><DD>	J CHILD NEUROL
+</B><DT>JOURNAL OF CHILD PSYCHOLOGY AND PSYCHIATRY AND ALLIED DISCIPLINES
+<B><DD>	J CHILD PSYCHOL PSYC
+</B><DT>JOURNAL OF CHINESE LINGUISTICS
+<B><DD>	J CHINESE LINGUIST
+</B><DT>JOURNAL OF CHINESE PHILOSOPHY
+<B><DD>	J CHINESE PHILOS
+</B><DT>JOURNAL OF CHROMATOGRAPHIC SCIENCE
+<B><DD>	J CHROMATOGR SCI
+</B><DT>JOURNAL OF CHROMATOGRAPHY
+<B><DD>	J CHROMATOGR
+</B><DT>JOURNAL OF CHROMATOGRAPHY A
+<B><DD>	J CHROMATOGR A
+</B><DT>JOURNAL OF CHROMATOGRAPHY B
+<B><DD>	J CHROMATOGR B
+</B><DT>JOURNAL OF CHROMATOGRAPHY B-BIOMEDICAL APPLICATIONS
+<B><DD>	J CHROMATOGR B
+</B><DT>JOURNAL OF CHROMATOGRAPHY-BIOMEDICAL APPLICATIONS
+<B><DD>	J CHROMATOGR-BIOMED
+</B><DT>JOURNAL OF CHRONIC DISEASES
+<B><DD>	J CHRON DIS
+</B><DT>JOURNAL OF CHURCH AND STATE
+<B><DD>	J CHURCH STATE
+</B><DT>JOURNAL OF CIRCUITS SYSTEMS AND COMPUTERS
+<B><DD>	J CIRCUIT SYST COMP
+</B><DT>JOURNAL OF CLASSIFICATION
+<B><DD>	J CLASSIF
+</B><DT>JOURNAL OF CLEAN TECHNOLOGY AND ENVIRONMENTAL SCIENCES
+<B><DD>	J CLEAN TECHNOL ENV
+</B><DT>JOURNAL OF CLEAN TECHNOLOGY ENVIRONMENTAL TOXICOLOGY AND OCCUPATIONAL MEDICINE
+<B><DD>	J CLEAN TECHNOL E T
+</B><DT>JOURNAL OF CLIMATE
+<B><DD>	J CLIMATE
+</B><DT>JOURNAL OF CLIMATE AND APPLIED METEOROLOGY
+<B><DD>	J CLIM APPL METEOROL
+</B><DT>JOURNAL OF CLIMATOLOGY
+<B><DD>	J CLIMATOL
+</B><DT>JOURNAL OF CLINICAL & LABORATORY IMMUNOLOGY
+<B><DD>	J CLIN LAB IMMUNOL
+</B><DT>JOURNAL OF CLINICAL AND EXPERIMENTAL GERONTOLOGY
+<B><DD>	J CLIN EXP GERONTOL
+</B><DT>JOURNAL OF CLINICAL AND EXPERIMENTAL NEUROPSYCHOLOGY
+<B><DD>	J CLIN EXP NEUROPSYC
+</B><DT>JOURNAL OF CLINICAL AND HOSPITAL PHARMACY
+<B><DD>	J CLIN HOSP PHARM
+</B><DT>JOURNAL OF CLINICAL ANESTHESIA
+<B><DD>	J CLIN ANESTH
+</B><DT>JOURNAL OF CLINICAL APHERESIS
+<B><DD>	J CLIN APHERESIS
+</B><DT>JOURNAL OF CLINICAL BIOCHEMISTRY AND NUTRITION
+<B><DD>	J CLIN BIOCHEM NUTR
+</B><DT>JOURNAL OF CLINICAL CHEMISTRY AND CLINICAL BIOCHEMISTRY
+<B><DD>	J CLIN CHEM CLIN BIO
+</B><DT>JOURNAL OF CLINICAL CHILD PSYCHOLOGY
+<B><DD>	J CLIN CHILD PSYCHOL
+</B><DT>JOURNAL OF CLINICAL DENSITOMETRY
+<B><DD>	J CLIN DENSITOM
+</B><DT>JOURNAL OF CLINICAL DENTISTRY
+<B><DD>	J CLIN DENT
+</B><DT>JOURNAL OF CLINICAL ENDOCRINOLOGY AND METABOLISM
+<B><DD>	J CLIN ENDOCR METAB
+</B><DT>JOURNAL OF CLINICAL EPIDEMIOLOGY
+<B><DD>	J CLIN EPIDEMIOL
+</B><DT>JOURNAL OF CLINICAL ETHICS
+<B><DD>	J CLIN ETHIC
+</B><DT>JOURNAL OF CLINICAL GASTROENTEROLOGY
+<B><DD>	J CLIN GASTROENTEROL
+</B><DT>JOURNAL OF CLINICAL HEMATOLOGY AND ONCOLOGY
+<B><DD>	J CLIN HEMATOL ONCOL
+</B><DT>JOURNAL OF CLINICAL HYPERTENSION
+<B><DD>	J CLIN HYPERTENS
+</B><DT>JOURNAL OF CLINICAL IMMUNOASSAY
+<B><DD>	J CLIN IMMUNOASSAY
+</B><DT>JOURNAL OF CLINICAL IMMUNOLOGY
+<B><DD>	J CLIN IMMUNOL
+</B><DT>JOURNAL OF CLINICAL INVESTIGATION
+<B><DD>	J CLIN INVEST
+</B><DT>JOURNAL OF CLINICAL LABORATORY ANALYSIS
+<B><DD>	J CLIN LAB ANAL
+</B><DT>JOURNAL OF CLINICAL LABORATORY AUTOMATION
+<B><DD>	J CLIN LAB AUTOMAT
+</B><DT>JOURNAL OF CLINICAL LASER MEDICINE & SURGERY
+<B><DD>	J CLIN LASER MED SUR
+</B><DT>JOURNAL OF CLINICAL LIGAND ASSAY
+<B><DD>	J CLIN LIGAND ASSAY
+</B><DT>JOURNAL OF CLINICAL MICROBIOLOGY
+<B><DD>	J CLIN MICROBIOL
+</B><DT>JOURNAL OF CLINICAL MONITORING
+<B><DD>	J CLIN MONITOR
+</B><DT>JOURNAL OF CLINICAL MONITORING AND COMPUTING
+<B><DD>	J CLIN MONITOR COMP
+</B><DT>JOURNAL OF CLINICAL NEURO-OPHTHALMOLOGY
+<B><DD>	J CLIN NEURO-OPHTHAL
+</B><DT>JOURNAL OF CLINICAL NEUROPHYSIOLOGY
+<B><DD>	J CLIN NEUROPHYSIOL
+</B><DT>JOURNAL OF CLINICAL NEUROPSYCHOLOGY
+<B><DD>	J CLIN NEUROPSYCHOL
+</B><DT>JOURNAL OF CLINICAL NEUROSCIENCE
+<B><DD>	J CLIN NEUROSCI
+</B><DT>JOURNAL OF CLINICAL NURSING
+<B><DD>	J CLIN NURS
+</B><DT>JOURNAL OF CLINICAL ONCOLOGY
+<B><DD>	J CLIN ONCOL
+</B><DT>JOURNAL OF CLINICAL PATHOLOGY
+<B><DD>	J CLIN PATHOL
+</B><DT>JOURNAL OF CLINICAL PATHOLOGY-CLINICAL MOLECULAR PATHOLOGY EDITION
+<B><DD>	J CLIN PATHOL-CL MOL
+</B><DT>JOURNAL OF CLINICAL PATHOLOGY-MOLECULAR PATHOLOGY
+<B><DD>	J CLIN PATHOL-MOL PA
+</B><DT>JOURNAL OF CLINICAL PERIODONTOLOGY
+<B><DD>	J CLIN PERIODONTOL
+</B><DT>JOURNAL OF CLINICAL PHARMACOLOGY
+<B><DD>	J CLIN PHARMACOL
+</B><DT>JOURNAL OF CLINICAL PHARMACY AND THERAPEUTICS
+<B><DD>	J CLIN PHARM THER
+</B><DT>JOURNAL OF CLINICAL PSYCHIATRY
+<B><DD>	J CLIN PSYCHIAT
+</B><DT>JOURNAL OF CLINICAL PSYCHOLOGY
+<B><DD>	J CLIN PSYCHOL
+</B><DT>JOURNAL OF CLINICAL PSYCHOLOGY IN MEDICAL SETTINGS
+<B><DD>	J CLIN PSYCHOL MED S
+</B><DT>JOURNAL OF CLINICAL PSYCHOPHARMACOLOGY
+<B><DD>	J CLIN PSYCHOPHARM
+</B><DT>JOURNAL OF CLINICAL SURGERY-APPLIED PHYSIOLOGY & METABOLISM
+<B><DD>	J CLIN SURG-APPL PHY
+</B><DT>JOURNAL OF CLINICAL ULTRASOUND
+<B><DD>	J CLIN ULTRASOUND
+</B><DT>JOURNAL OF CLINICAL VIROLOGY
+<B><DD>	J CLIN VIROL
+</B><DT>JOURNAL OF CLUSTER SCIENCE
+<B><DD>	J CLUST SCI
+</B><DT>JOURNAL OF COASTAL RESEARCH
+<B><DD>	J COASTAL RES
+</B><DT>JOURNAL OF COATED FABRICS
+<B><DD>	J COATED FABRICS
+</B><DT>JOURNAL OF COATINGS TECHNOLOGY
+<B><DD>	J COATING TECHNOL
+</B><DT>JOURNAL OF COGNITIVE NEUROSCIENCE
+<B><DD>	J COGNITIVE NEUROSCI
+</B><DT>JOURNAL OF COLD REGIONS ENGINEERING
+<B><DD>	J COLD REG ENG
+</B><DT>JOURNAL OF COLLECTIVE NEGOTIATIONS IN THE PUBLIC SECTOR
+<B><DD>	J COLLECT NEG PUB SE
+</B><DT>JOURNAL OF COLLEGE STUDENT DEVELOPMENT
+<B><DD>	J COLL STUDENT DEV
+</B><DT>JOURNAL OF COLLOID AND INTERFACE SCIENCE
+<B><DD>	J COLLOID INTERF SCI
+</B><DT>JOURNAL OF COMBINATORIAL CHEMISTRY
+<B><DD>	J COMB CHEM
+</B><DT>JOURNAL OF COMBINATORIAL DESIGNS
+<B><DD>	J COMB DES
+</B><DT>JOURNAL OF COMBINATORIAL OPTIMIZATION
+<B><DD>	J COMB OPTIM
+</B><DT>JOURNAL OF COMBINATORIAL THEORY SERIES A
+<B><DD>	J COMB THEORY A
+</B><DT>JOURNAL OF COMBINATORIAL THEORY SERIES B
+<B><DD>	J COMB THEORY B
+</B><DT>JOURNAL OF COMBUSTION TOXICOLOGY
+<B><DD>	J COMBUST TOXICOL
+</B><DT>JOURNAL OF COMMON MARKET STUDIES
+<B><DD>	J COMMON MARK STUD
+</B><DT>JOURNAL OF COMMONWEALTH & COMPARATIVE POLITICS
+<B><DD>	J COMMONW COMP POLIT
+</B><DT>JOURNAL OF COMMONWEALTH LITERATURE
+<B><DD>	J COMMONW LIT
+</B><DT>JOURNAL OF COMMUNICATION
+<B><DD>	J COMMUN
+</B><DT>JOURNAL OF COMMUNICATION DISORDERS
+<B><DD>	J COMMUN DISORD
+</B><DT>JOURNAL OF COMMUNICATIONS TECHNOLOGY AND ELECTRONICS
+<B><DD>	J COMMUN TECHNOL EL+
+</B><DT>JOURNAL OF COMMUNITY & APPLIED SOCIAL PSYCHOLOGY
+<B><DD>	J COMMUNITY APPL SOC
+</B><DT>JOURNAL OF COMMUNITY HEALTH
+<B><DD>	J COMMUN HEALTH
+</B><DT>JOURNAL OF COMMUNITY PSYCHOLOGY
+<B><DD>	J COMMUNITY PSYCHOL
+</B><DT>JOURNAL OF COMPARATIVE AND PHYSIOLOGICAL PSYCHOLOGY
+<B><DD>	J COMP PHYSIOL PSYCH
+</B><DT>JOURNAL OF COMPARATIVE ECONOMICS
+<B><DD>	J COMP ECON
+</B><DT>JOURNAL OF COMPARATIVE FAMILY STUDIES
+<B><DD>	J COMP FAM STUD
+</B><DT>JOURNAL OF COMPARATIVE NEUROLOGY
+<B><DD>	J COMP NEUROL
+</B><DT>JOURNAL OF COMPARATIVE PATHOLOGY
+<B><DD>	J COMP PATHOL
+</B><DT>JOURNAL OF COMPARATIVE PHYSIOLOGY
+<B><DD>	J COMP PHYSIOL
+</B><DT>JOURNAL OF COMPARATIVE PHYSIOLOGY A-SENSORY NEURAL AND BEHAVIORAL PHYSIOLOGY
+<B><DD>	J COMP PHYSIOL A
+</B><DT>JOURNAL OF COMPARATIVE PHYSIOLOGY B-BIOCHEMICAL SYSTEMIC AND ENVIRONMENTAL PHYSIOLOGY
+<B><DD>	J COMP PHYSIOL B
+</B><DT>JOURNAL OF COMPARATIVE PSYCHOLOGY
+<B><DD>	J COMP PSYCHOL
+</B><DT>JOURNAL OF COMPLEXITY
+<B><DD>	J COMPLEXITY
+</B><DT>JOURNAL OF COMPOSITE MATERIALS
+<B><DD>	J COMPOS MATER
+</B><DT>JOURNAL OF COMPOSITES TECHNOLOGY & RESEARCH
+<B><DD>	J COMPOS TECH RES
+</B><DT>JOURNAL OF COMPUTATIONAL ACOUSTICS
+<B><DD>	J COMPUT ACOUST
+</B><DT>JOURNAL OF COMPUTATIONAL AND APPLIED MATHEMATICS
+<B><DD>	J COMPUT APPL MATH
+</B><DT>JOURNAL OF COMPUTATIONAL AND GRAPHICAL STATISTICS
+<B><DD>	J COMPUT GRAPH STAT
+</B><DT>JOURNAL OF COMPUTATIONAL BIOLOGY
+<B><DD>	J COMPUT BIOL
+</B><DT>JOURNAL OF COMPUTATIONAL CHEMISTRY
+<B><DD>	J COMPUT CHEM
+</B><DT>JOURNAL OF COMPUTATIONAL MATHEMATICS
+<B><DD>	J COMPUT MATH
+</B><DT>JOURNAL OF COMPUTATIONAL NEUROSCIENCE
+<B><DD>	J COMPUT NEUROSCI
+</B><DT>JOURNAL OF COMPUTATIONAL PHYSICS
+<B><DD>	J COMPUT PHYS
+</B><DT>JOURNAL OF COMPUTER AND SYSTEM SCIENCES
+<B><DD>	J COMPUT SYST SCI
+</B><DT>JOURNAL OF COMPUTER AND SYSTEMS SCIENCES INTERNATIONAL
+<B><DD>	J COMPUT SYS SC INT+
+</B><DT>JOURNAL OF COMPUTER ASSISTED LEARNING
+<B><DD>	J COMPUT ASSIST LEAR
+</B><DT>JOURNAL OF COMPUTER ASSISTED TOMOGRAPHY
+<B><DD>	J COMPUT ASSIST TOMO
+</B><DT>JOURNAL OF COMPUTER INFORMATION SYSTEMS
+<B><DD>	J COMPUT INFORM SYST
+</B><DT>JOURNAL OF COMPUTER-AIDED MOLECULAR DESIGN
+<B><DD>	J COMPUT AID MOL DES
+</B><DT>JOURNAL OF COMPUTER-BASED INSTRUCTION
+<B><DD>	J COMPUT-BASE INSTR
+</B><DT>JOURNAL OF COMPUTING IN CIVIL ENGINEERING
+<B><DD>	J COMPUT CIVIL ENG
+</B><DT>JOURNAL OF CONCHOLOGY
+<B><DD>	J CONCHOL
+</B><DT>JOURNAL OF CONFLICT RESOLUTION
+<B><DD>	J CONFLICT RESOLUT
+</B><DT>JOURNAL OF CONSTRUCTION ENGINEERING AND MANAGEMENT-ASCE
+<B><DD>	J CONSTR ENG M ASCE
+</B><DT>JOURNAL OF CONSTRUCTIONAL STEEL RESEARCH
+<B><DD>	J CONSTR STEEL RES
+</B><DT>JOURNAL OF CONSTRUCTIVIST PSYCHOLOGY
+<B><DD>	J CONSTR PSYCHOL
+</B><DT>JOURNAL OF CONSULTING AND CLINICAL PSYCHOLOGY
+<B><DD>	J CONSULT CLIN PSYCH
+</B><DT>JOURNAL OF CONSUMER AFFAIRS
+<B><DD>	J CONSUM AFF
+</B><DT>JOURNAL OF CONSUMER PRODUCT FLAMMABILITY
+<B><DD>	J CONSUM PROD FLAMMA
+</B><DT>JOURNAL OF CONSUMER PSYCHOLOGY
+<B><DD>	J CONSUM PSYCHOL
+</B><DT>JOURNAL OF CONSUMER RESEARCH
+<B><DD>	J CONSUM RES
+</B><DT>JOURNAL OF CONTAMINANT HYDROLOGY
+<B><DD>	J CONTAM HYDROL
+</B><DT>JOURNAL OF CONTEMPORARY ASIA
+<B><DD>	J CONTEMP ASIA
+</B><DT>JOURNAL OF CONTEMPORARY ETHNOGRAPHY
+<B><DD>	J CONTEMP ETHNOGR
+</B><DT>JOURNAL OF CONTEMPORARY HISTORY
+<B><DD>	J CONTEMP HIST
+</B><DT>JOURNAL OF CONTROLLED RELEASE
+<B><DD>	J CONTROL RELEASE
+</B><DT>JOURNAL OF COORDINATION CHEMISTRY
+<B><DD>	J COORD CHEM
+</B><DT>JOURNAL OF CORPORATE TAXATION
+<B><DD>	J CORP TAX
+</B><DT>JOURNAL OF COSMETIC SCIENCE
+<B><DD>	J COSMET SCI
+</B><DT>JOURNAL OF COUNSELING AND DEVELOPMENT
+<B><DD>	J COUNS DEV
+</B><DT>JOURNAL OF COUNSELING PSYCHOLOGY
+<B><DD>	J COUNS PSYCHOL
+</B><DT>JOURNAL OF COUNTRY MUSIC
+<B><DD>	J COUNTRY MUSIC
+</B><DT>JOURNAL OF CRANIO-MAXILLO-FACIAL SURGERY
+<B><DD>	J CRANIO MAXILL SURG
+</B><DT>JOURNAL OF CRANIO-MAXILLOFACIAL SURGERY
+<B><DD>	J CRANIO MAXILL SURG
+</B><DT>JOURNAL OF CRANIOFACIAL GENETICS AND DEVELOPMENTAL BIOLOGY
+<B><DD>	J CRAN GENET DEV BIO
+</B><DT>JOURNAL OF CRANIOFACIAL SURGERY
+<B><DD>	J CRANIOFAC SURG
+</B><DT>JOURNAL OF CREATIVE BEHAVIOR
+<B><DD>	J CREATIVE BEHAV
+</B><DT>JOURNAL OF CRIMINAL JUSTICE
+<B><DD>	J CRIM JUST
+</B><DT>JOURNAL OF CRIMINAL LAW & CRIMINOLOGY
+<B><DD>	J CRIM LAW CRIM
+</B><DT>JOURNAL OF CRITICAL CARE
+<B><DD>	J CRIT CARE
+</B><DT>JOURNAL OF CROSS-CULTURAL PSYCHOLOGY
+<B><DD>	J CROSS CULT PSYCHOL
+</B><DT>JOURNAL OF CRUSTACEAN BIOLOGY
+<B><DD>	J CRUSTACEAN BIOL
+</B><DT>JOURNAL OF CRYPTOLOGY
+<B><DD>	J CRYPTOL
+</B><DT>JOURNAL OF CRYSTAL AND MOLECULAR STRUCTURE
+<B><DD>	J CRYST MOL STRUCT
+</B><DT>JOURNAL OF CRYSTAL GROWTH
+<B><DD>	J CRYST GROWTH
+</B><DT>JOURNAL OF CRYSTALLOGRAPHIC AND SPECTROSCOPIC RESEARCH
+<B><DD>	J CRYST SPECTROSC
+</B><DT>JOURNAL OF CURRICULUM STUDIES
+<B><DD>	J CURRICULUM STUD
+</B><DT>JOURNAL OF CUTANEOUS PATHOLOGY
+<B><DD>	J CUTAN PATHOL
+</B><DT>JOURNAL OF CYCLIC NUCLEOTIDE AND PROTEIN PHOSPHORYLATION RESEARCH
+<B><DD>	J CYCLIC NUCL PROT
+</B><DT>JOURNAL OF CYCLIC NUCLEOTIDE RESEARCH
+<B><DD>	J CYCLIC NUCL PROT
+</B><DT>JOURNAL OF CYTOLOGY AND GENETICS
+<B><DD>	J CYTOL GENET
+</B><DT>JOURNAL OF DAIRY RESEARCH
+<B><DD>	J DAIRY RES
+</B><DT>JOURNAL OF DAIRY SCIENCE
+<B><DD>	J DAIRY SCI
+</B><DT>JOURNAL OF DEMOCRACY
+<B><DD>	J DEMOCR
+</B><DT>JOURNAL OF DENTAL RESEARCH
+<B><DD>	J DENT RES
+</B><DT>JOURNAL OF DENTISTRY
+<B><DD>	J DENT
+</B><DT>JOURNAL OF DENTISTRY FOR CHILDREN
+<B><DD>	J DENT CHILD
+</B><DT>JOURNAL OF DERMATOLOGIC SURGERY AND ONCOLOGY
+<B><DD>	J DERMATOL SURG ONC
+</B><DT>JOURNAL OF DERMATOLOGICAL SCIENCE
+<B><DD>	J DERMATOL SCI
+</B><DT>JOURNAL OF DERMATOLOGICAL TREATMENT
+<B><DD>	J DERMATOL TREAT
+</B><DT>JOURNAL OF DEVELOPING AREAS
+<B><DD>	J DEV AREAS
+</B><DT>JOURNAL OF DEVELOPMENT ECONOMICS
+<B><DD>	J DEV ECON
+</B><DT>JOURNAL OF DEVELOPMENT STUDIES
+<B><DD>	J DEV STUD
+</B><DT>JOURNAL OF DEVELOPMENTAL AND BEHAVIORAL PEDIATRICS
+<B><DD>	J DEV BEHAV PEDIATR
+</B><DT>JOURNAL OF DEVELOPMENTAL AND PHYSICAL DISABILITIES
+<B><DD>	J DEV PHYS DISABIL
+</B><DT>JOURNAL OF DEVELOPMENTAL PHYSIOLOGY
+<B><DD>	J DEV PHYSIOL
+</B><DT>JOURNAL OF DHARMA
+<B><DD>	J DHARMA
+</B><DT>JOURNAL OF DIABETES AND ITS COMPLICATIONS
+<B><DD>	J DIABETES COMPLICAT
+</B><DT>JOURNAL OF DIAGNOSTIC MEDICAL SONOGRAPHY
+<B><DD>	J DIAGN MED SONOG
+</B><DT>JOURNAL OF DIARRHOEAL DISEASES RESEARCH
+<B><DD>	J DIARRHOEAL DIS RES
+</B><DT>JOURNAL OF DIFFERENCE EQUATIONS AND APPLICATIONS
+<B><DD>	J DIFFER EQU APPL
+</B><DT>JOURNAL OF DIFFERENTIAL EQUATIONS
+<B><DD>	J DIFFER EQUATIONS
+</B><DT>JOURNAL OF DIFFERENTIAL GEOMETRY
+<B><DD>	J DIFFER GEOM
+</B><DT>JOURNAL OF DIGITAL IMAGING
+<B><DD>	J DIGIT IMAGING
+</B><DT>JOURNAL OF DIGITAL SYSTEMS
+<B><DD>	J DIGITAL SYST
+</B><DT>JOURNAL OF DISPERSION SCIENCE AND TECHNOLOGY
+<B><DD>	J DISPER SCI TECHNOL
+</B><DT>JOURNAL OF DIVORCE & REMARRIAGE
+<B><DD>	J DIVORCE REMARRIAGE
+</B><DT>JOURNAL OF DOCUMENTATION
+<B><DD>	J DOC
+</B><DT>JOURNAL OF DRUG DEVELOPMENT
+<B><DD>	J DRUG DEV
+</B><DT>JOURNAL OF DRUG DEVELOPMENT AND CLINICAL PRACTICE
+<B><DD>	J DRUG DEV CLIN PR
+</B><DT>JOURNAL OF DRUG EDUCATION
+<B><DD>	J DRUG EDUC
+</B><DT>JOURNAL OF DRUG ISSUES
+<B><DD>	J DRUG ISSUES
+</B><DT>JOURNAL OF DRUG TARGETING
+<B><DD>	J DRUG TARGET
+</B><DT>JOURNAL OF DYNAMIC SYSTEMS MEASUREMENT AND CONTROL-TRANSACTIONS OF THE ASME
+<B><DD>	J DYN SYST-T ASME
+</B><DT>JOURNAL OF EARLY ADOLESCENCE
+<B><DD>	J EARLY ADOLESCENCE
+</B><DT>JOURNAL OF EARLY CHRISTIAN STUDIES
+<B><DD>	J EARLY CHRISTIAN ST
+</B><DT>JOURNAL OF EARLY INTERVENTION
+<B><DD>	J EARLY INTERVENTION
+</B><DT>JOURNAL OF EARTH SCIENCES ROYAL DUBLIN SOCIETY
+<B><DD>	J EARTH SCI-DUBLIN
+</B><DT>JOURNAL OF EARTHQUAKE ENGINEERING
+<B><DD>	J EARTHQUAKE ENG
+</B><DT>JOURNAL OF EAST ASIAN LINGUISTICS
+<B><DD>	J EAST ASIAN LINGUIS
+</B><DT>JOURNAL OF ECCLESIASTICAL HISTORY
+<B><DD>	J ECCLESIAST HIST
+</B><DT>JOURNAL OF ECOLOGY
+<B><DD>	J ECOL
+</B><DT>JOURNAL OF ECONOMETRICS
+<B><DD>	J ECONOMETRICS
+</B><DT>JOURNAL OF ECONOMIC BEHAVIOR & ORGANIZATION
+<B><DD>	J ECON BEHAV ORGAN
+</B><DT>JOURNAL OF ECONOMIC DYNAMICS & CONTROL
+<B><DD>	J ECON DYN CONTROL
+</B><DT>JOURNAL OF ECONOMIC EDUCATION
+<B><DD>	J ECON EDUC
+</B><DT>JOURNAL OF ECONOMIC ENTOMOLOGY
+<B><DD>	J ECON ENTOMOL
+</B><DT>JOURNAL OF ECONOMIC GROWTH
+<B><DD>	J ECON GROWTH
+</B><DT>JOURNAL OF ECONOMIC HISTORY
+<B><DD>	J ECON HIST
+</B><DT>JOURNAL OF ECONOMIC ISSUES
+<B><DD>	J ECON ISSUES
+</B><DT>JOURNAL OF ECONOMIC LITERATURE
+<B><DD>	J ECON LIT
+</B><DT>JOURNAL OF ECONOMIC PERSPECTIVES
+<B><DD>	J ECON PERSPECT
+</B><DT>JOURNAL OF ECONOMIC PSYCHOLOGY
+<B><DD>	J ECON PSYCHOL
+</B><DT>JOURNAL OF ECONOMIC THEORY
+<B><DD>	J ECON THEORY
+</B><DT>JOURNAL OF ECONOMICS & MANAGEMENT STRATEGY
+<B><DD>	J ECON MANAGE STRAT
+</B><DT>JOURNAL OF ECONOMICS-ZEITSCHRIFT FUR NATIONALOKONOMIE
+<B><DD>	J ECON
+</B><DT>JOURNAL OF ECT
+<B><DD>	J ECT
+</B><DT>JOURNAL OF ECUMENICAL STUDIES
+<B><DD>	J ECUMENICAL STUD
+</B><DT>JOURNAL OF EDUCATION FOR LIBRARY AND INFORMATION SCIENCE
+<B><DD>	J EDUC LIBR INF SCI
+</B><DT>JOURNAL OF EDUCATION FOR TEACHING
+<B><DD>	J EDUC TEACHING
+</B><DT>JOURNAL OF EDUCATION POLICY
+<B><DD>	J EDUC POLICY
+</B><DT>JOURNAL OF EDUCATIONAL AND BEHAVIORAL STATISTICS
+<B><DD>	J EDUC BEHAV STAT
+</B><DT>JOURNAL OF EDUCATIONAL AND PSYCHOLOGICAL CONSULTATION
+<B><DD>	J EDUC PSYCHOL CONS
+</B><DT>JOURNAL OF EDUCATIONAL COMPUTING RESEARCH
+<B><DD>	J EDUC COMPUT RES
+</B><DT>JOURNAL OF EDUCATIONAL MEASUREMENT
+<B><DD>	J EDUC MEAS
+</B><DT>JOURNAL OF EDUCATIONAL PSYCHOLOGY
+<B><DD>	J EDUC PSYCHOL
+</B><DT>JOURNAL OF EDUCATIONAL RESEARCH
+<B><DD>	J EDUC RES
+</B><DT>JOURNAL OF EDUCATIONAL STATISTICS
+<B><DD>	J EDUC STAT
+</B><DT>JOURNAL OF EDUCATIONAL TELEVISION
+<B><DD>	J EDUC TV
+</B><DT>JOURNAL OF EGYPTIAN ARCHAEOLOGY
+<B><DD>	J EGYPT ARCHAEOL
+</B><DT>JOURNAL OF ELASTICITY
+<B><DD>	J ELASTICITY
+</B><DT>JOURNAL OF ELASTOMERS AND PLASTICS
+<B><DD>	J ELASTOM PLAST
+</B><DT>JOURNAL OF ELDER ABUSE & NEGLECT
+<B><DD>	J ELDER ABUSE NEGL
+</B><DT>JOURNAL OF ELECTROANALYTICAL CHEMISTRY
+<B><DD>	J ELECTROANAL CHEM
+</B><DT>JOURNAL OF ELECTROCARDIOLOGY
+<B><DD>	J ELECTROCARDIOL
+</B><DT>JOURNAL OF ELECTROCERAMICS
+<B><DD>	J ELECTROCERAM
+</B><DT>JOURNAL OF ELECTROMAGNETIC WAVES AND APPLICATIONS
+<B><DD>	J ELECTROMAGNET WAVE
+</B><DT>JOURNAL OF ELECTROMYOGRAPHY AND KINESIOLOGY
+<B><DD>	J ELECTROMYOGR KINES
+</B><DT>JOURNAL OF ELECTRON MICROSCOPY
+<B><DD>	J ELECTRON MICROSC
+</B><DT>JOURNAL OF ELECTRON MICROSCOPY TECHNIQUE
+<B><DD>	J ELECTRON MICR TECH
+</B><DT>JOURNAL OF ELECTRON SPECTROSCOPY AND RELATED PHENOMENA
+<B><DD>	J ELECTRON SPECTROSC
+</B><DT>JOURNAL OF ELECTRONIC IMAGING
+<B><DD>	J ELECTRON IMAGING
+</B><DT>JOURNAL OF ELECTRONIC MATERIALS
+<B><DD>	J ELECTRON MATER
+</B><DT>JOURNAL OF ELECTRONIC PACKAGING
+<B><DD>	J ELECTRON PACKAGING
+</B><DT>JOURNAL OF ELECTRONIC TESTING-THEORY AND APPLICATIONS
+<B><DD>	J ELECTRON TEST
+</B><DT>JOURNAL OF ELECTRONICS MANUFACTURING
+<B><DD>	J ELECTRON MANUF
+</B><DT>JOURNAL OF ELECTROPHYSIOLOGICAL TECHNIQUES
+<B><DD>	J ELECTROPHYSIOL TEC
+</B><DT>JOURNAL OF ELECTROSTATICS
+<B><DD>	J ELECTROSTAT
+</B><DT>JOURNAL OF EMBRYOLOGY AND EXPERIMENTAL MORPHOLOGY
+<B><DD>	J EMBRYOL EXP MORPH
+</B><DT>JOURNAL OF EMERGENCY MEDICINE
+<B><DD>	J EMERG MED
+</B><DT>JOURNAL OF EMOTIONAL AND BEHAVIORAL DISORDERS
+<B><DD>	J EMOT BEHAV DISORD
+</B><DT>JOURNAL OF EMPLOYMENT COUNSELING
+<B><DD>	J EMPLOYMENT COUNS
+</B><DT>JOURNAL OF ENDOCRINOLOGICAL INVESTIGATION
+<B><DD>	J ENDOCRINOL INVEST
+</B><DT>JOURNAL OF ENDOCRINOLOGY
+<B><DD>	J ENDOCRINOL
+</B><DT>JOURNAL OF ENDODONTICS
+<B><DD>	J ENDODONT
+</B><DT>JOURNAL OF ENDOTOXIN RESEARCH
+<B><DD>	J ENDOTOXIN RES
+</B><DT>JOURNAL OF ENDOUROLOGY
+<B><DD>	J ENDOUROL
+</B><DT>JOURNAL OF ENDOVASCULAR SURGERY
+<B><DD>	J ENDOVASC SURG
+</B><DT>JOURNAL OF ENDOVASCULAR THERAPY
+<B><DD>	J ENDOVASC THER
+</B><DT>JOURNAL OF ENERGY
+<B><DD>	J ENERGY
+</B><DT>JOURNAL OF ENERGY AND DEVELOPMENT
+<B><DD>	J ENERGY DEV
+</B><DT>JOURNAL OF ENERGY ENGINEERING-ASCE
+<B><DD>	J ENERG ENG-ASCE
+</B><DT>JOURNAL OF ENERGY RESOURCES TECHNOLOGY-TRANSACTIONS OF THE ASME
+<B><DD>	J ENERG RESOUR-ASME
+</B><DT>JOURNAL OF ENGINEERING AND APPLIED SCIENCES
+<B><DD>	J ENG APPL SCI
+</B><DT>JOURNAL OF ENGINEERING AND TECHNOLOGY MANAGEMENT
+<B><DD>	J ENG TECHNOL MANAGE
+</B><DT>JOURNAL OF ENGINEERING DESIGN
+<B><DD>	J ENG DESIGN
+</B><DT>JOURNAL OF ENGINEERING FOR GAS TURBINES AND POWER-TRANSACTIONS OF THE ASME
+<B><DD>	J ENG GAS TURB POWER
+</B><DT>JOURNAL OF ENGINEERING FOR INDUSTRY-TRANSACTIONS OF THE ASME
+<B><DD>	J ENG IND-T ASME
+</B><DT>JOURNAL OF ENGINEERING FOR POWER-TRANSACTIONS OF THE ASME
+<B><DD>	J ENG POWER-T ASME
+</B><DT>JOURNAL OF ENGINEERING MATERIALS AND TECHNOLOGY-TRANSACTIONS OF THE ASME
+<B><DD>	J ENG MATER-T ASME
+</B><DT>JOURNAL OF ENGINEERING MATHEMATICS
+<B><DD>	J ENG MATH
+</B><DT>JOURNAL OF ENGINEERING MECHANICS-ASCE
+<B><DD>	J ENG MECH-ASCE
+</B><DT>JOURNAL OF ENGINEERING SCIENCES
+<B><DD>	J ENG SCI
+</B><DT>JOURNAL OF ENGINEERING TECHNOLOGY
+<B><DD>	J ENG TECHNOL
+</B><DT>JOURNAL OF ENGLISH AND GERMANIC PHILOLOGY
+<B><DD>	J ENGL GER PHILOL
+</B><DT>JOURNAL OF ENHANCED HEAT TRANSFER
+<B><DD>	J ENHANC HEAT TRANSF
+</B><DT>JOURNAL OF ENTOMOLOGICAL SCIENCE
+<B><DD>	J ENTOMOL SCI
+</B><DT>JOURNAL OF ENVIRONMENTAL BIOLOGY
+<B><DD>	J ENVIRON BIOL
+</B><DT>JOURNAL OF ENVIRONMENTAL ECONOMICS AND MANAGEMENT
+<B><DD>	J ENVIRON ECON MANAG
+</B><DT>JOURNAL OF ENVIRONMENTAL EDUCATION
+<B><DD>	J ENVIRON EDUC
+</B><DT>JOURNAL OF ENVIRONMENTAL ENGINEERING-ASCE
+<B><DD>	J ENVIRON ENG-ASCE
+</B><DT>JOURNAL OF ENVIRONMENTAL HEALTH
+<B><DD>	J ENVIRON HEALTH
+</B><DT>JOURNAL OF ENVIRONMENTAL LAW
+<B><DD>	J ENVIRON LAW
+</B><DT>JOURNAL OF ENVIRONMENTAL MANAGEMENT
+<B><DD>	J ENVIRON MANAGE
+</B><DT>JOURNAL OF ENVIRONMENTAL MONITORING
+<B><DD>	J ENVIRON MONITOR
+</B><DT>JOURNAL OF ENVIRONMENTAL PATHOLOGY AND TOXICOLOGY
+<B><DD>	J ENVIRON PATHOL TOX
+</B><DT>JOURNAL OF ENVIRONMENTAL PATHOLOGY TOXICOLOGY AND ONCOLOGY
+<B><DD>	J ENVIRON PATHOL TOX
+</B><DT>JOURNAL OF ENVIRONMENTAL PERMITTING
+<B><DD>	J ENVIRON PERMITTING
+</B><DT>JOURNAL OF ENVIRONMENTAL POLYMER DEGRADATION
+<B><DD>	J ENVIRON POLYM DEGR
+</B><DT>JOURNAL OF ENVIRONMENTAL PSYCHOLOGY
+<B><DD>	J ENVIRON PSYCHOL
+</B><DT>JOURNAL OF ENVIRONMENTAL QUALITY
+<B><DD>	J ENVIRON QUAL
+</B><DT>JOURNAL OF ENVIRONMENTAL RADIOACTIVITY
+<B><DD>	J ENVIRON RADIOACTIV
+</B><DT>JOURNAL OF ENVIRONMENTAL SCIENCE AND HEALTH PART A-ENVIRONMENTAL SCIENCE AND ENGINEERING & TOXIC AND HAZARDOUS SUBSTANCE CONTROL
+<B><DD>	J ENVIRON SCI HEAL A
+</B><DT>JOURNAL OF ENVIRONMENTAL SCIENCE AND HEALTH PART A-TOXIC/HAZARDOUS SUBSTANCES & ENVIRONMENTAL ENGINEERING
+<B><DD>	J ENVIRON SCI HEAL A
+</B><DT>JOURNAL OF ENVIRONMENTAL SCIENCE AND HEALTH PART B-PESTICIDES FOOD CONTAMINANTS AND AGRICULTURAL WASTES
+<B><DD>	J ENVIRON SCI HEAL B
+</B><DT>JOURNAL OF ENVIRONMENTAL SCIENCE AND HEALTH PART C-ENVIRONMENTAL CARCINOGENESIS REVIEWS
+<B><DD>	J ENVIRON SCI HEAL C
+</B><DT>JOURNAL OF ENVIRONMENTAL SCIENCES
+<B><DD>	J ENVIRON SCI
+</B><DT>JOURNAL OF ENVIRONMENTAL SYSTEMS
+<B><DD>	J ENVIRON SYST
+</B><DT>JOURNAL OF ENZYME INHIBITION
+<B><DD>	J ENZYM INHIB
+</B><DT>JOURNAL OF EPIDEMIOLOGY AND COMMUNITY HEALTH
+<B><DD>	J EPIDEMIOL COMMUN H
+</B><DT>JOURNAL OF EPILEPSY
+<B><DD>	J EPILEPSY
+</B><DT>JOURNAL OF EQUINE VETERINARY SCIENCE
+<B><DD>	J EQUINE VET SCI
+</B><DT>JOURNAL OF ETHNOPHARMACOLOGY
+<B><DD>	J ETHNOPHARMACOL
+</B><DT>JOURNAL OF ETHOLOGY
+<B><DD>	J ETHOL
+</B><DT>JOURNAL OF EUKARYOTIC MICROBIOLOGY
+<B><DD>	J EUKARYOT MICROBIOL
+</B><DT>JOURNAL OF EUROPEAN PUBLIC POLICY
+<B><DD>	J EUR PUBLIC POLICY
+</B><DT>JOURNAL OF EUROPEAN SOCIAL POLICY
+<B><DD>	J EUR SOC POLICY
+</B><DT>JOURNAL OF EUROPEAN STUDIES
+<B><DD>	J EUR STUD
+</B><DT>JOURNAL OF EVALUATION IN CLINICAL PRACTICE
+<B><DD>	J EVAL CLIN PRACT
+</B><DT>JOURNAL OF EVOLUTIONARY BIOCHEMISTRY AND PHYSIOLOGY
+<B><DD>	J EVOL BIOCHEM PHYS+
+</B><DT>JOURNAL OF EVOLUTIONARY BIOLOGY
+<B><DD>	J EVOLUTION BIOL
+</B><DT>JOURNAL OF EVOLUTIONARY ECONOMICS
+<B><DD>	J EVOL ECON
+</B><DT>JOURNAL OF EXPERIMENTAL & CLINICAL CANCER RESEARCH
+<B><DD>	J EXP CLIN CANC RES
+</B><DT>JOURNAL OF EXPERIMENTAL & THEORETICAL ARTIFICIAL INTELLIGENCE
+<B><DD>	J EXP THEOR ARTIF IN
+</B><DT>JOURNAL OF EXPERIMENTAL AND THEORETICAL PHYSICS
+<B><DD>	J EXP THEOR PHYS+
+</B><DT>JOURNAL OF EXPERIMENTAL ANIMAL SCIENCE
+<B><DD>	J EXP ANIM SCI
+</B><DT>JOURNAL OF EXPERIMENTAL BIOLOGY
+<B><DD>	J EXP BIOL
+</B><DT>JOURNAL OF EXPERIMENTAL BOTANY
+<B><DD>	J EXP BOT
+</B><DT>JOURNAL OF EXPERIMENTAL CHILD PSYCHOLOGY
+<B><DD>	J EXP CHILD PSYCHOL
+</B><DT>JOURNAL OF EXPERIMENTAL EDUCATION
+<B><DD>	J EXP EDUC
+</B><DT>JOURNAL OF EXPERIMENTAL MARINE BIOLOGY AND ECOLOGY
+<B><DD>	J EXP MAR BIOL ECOL
+</B><DT>JOURNAL OF EXPERIMENTAL MEDICINE
+<B><DD>	J EXP MED
+</B><DT>JOURNAL OF EXPERIMENTAL PATHOLOGY
+<B><DD>	J EXP PATHOL
+</B><DT>JOURNAL OF EXPERIMENTAL PSYCHOLOGY-ANIMAL BEHAVIOR PROCESSES
+<B><DD>	J EXP PSYCHOL ANIM B
+</B><DT>JOURNAL OF EXPERIMENTAL PSYCHOLOGY-APPLIED
+<B><DD>	J EXP PSYCHOL-APPL
+</B><DT>JOURNAL OF EXPERIMENTAL PSYCHOLOGY-GENERAL
+<B><DD>	J EXP PSYCHOL GEN
+</B><DT>JOURNAL OF EXPERIMENTAL PSYCHOLOGY-HUMAN PERCEPTION AND PERFORMANCE
+<B><DD>	J EXP PSYCHOL HUMAN
+</B><DT>JOURNAL OF EXPERIMENTAL PSYCHOLOGY-LEARNING MEMORY AND COGNITION
+<B><DD>	J EXP PSYCHOL LEARN
+</B><DT>JOURNAL OF EXPERIMENTAL SOCIAL PSYCHOLOGY
+<B><DD>	J EXP SOC PSYCHOL
+</B><DT>JOURNAL OF EXPERIMENTAL ZOOLOGY
+<B><DD>	J EXP ZOOL
+</B><DT>JOURNAL OF EXPOSURE ANALYSIS AND ENVIRONMENTAL EPIDEMIOLOGY
+<B><DD>	J EXPO ANAL ENV EPID
+</B><DT>JOURNAL OF FAMILY HISTORY
+<B><DD>	J FAM HIST
+</B><DT>JOURNAL OF FAMILY ISSUES
+<B><DD>	J FAM ISSUES
+</B><DT>JOURNAL OF FAMILY PRACTICE
+<B><DD>	J FAM PRACTICE
+</B><DT>JOURNAL OF FAMILY PSYCHOLOGY
+<B><DD>	J FAM PSYCHOL
+</B><DT>JOURNAL OF FAMILY THERAPY
+<B><DD>	J FAM THER
+</B><DT>JOURNAL OF FAMILY VIOLENCE
+<B><DD>	J FAM VIOLENCE
+</B><DT>JOURNAL OF FAMILY WELFARE
+<B><DD>	J FAM WELFARE
+</B><DT>JOURNAL OF FEMINIST STUDIES IN RELIGION
+<B><DD>	J FEMINIST STUD REL
+</B><DT>JOURNAL OF FERMENTATION AND BIOENGINEERING
+<B><DD>	J FERMENT BIOENG
+</B><DT>JOURNAL OF FERMENTATION TECHNOLOGY
+<B><DD>	J FERMENT BIOENG
+</B><DT>JOURNAL OF FERMENTATION TECHNOLOGY
+<B><DD>	J FERMENT TECHNOL
+</B><DT>JOURNAL OF FERROCEMENT-BANGKOK
+<B><DD>	J FERROCEMENT
+</B><DT>JOURNAL OF FERTILIZER ISSUES
+<B><DD>	J FERT ISSUES
+</B><DT>JOURNAL OF FIELD ARCHAEOLOGY
+<B><DD>	J FIELD ARCHAEOL
+</B><DT>JOURNAL OF FIELD ORNITHOLOGY
+<B><DD>	J FIELD ORNITHOL
+</B><DT>JOURNAL OF FILM AND VIDEO
+<B><DD>	J FILM VIDEO
+</B><DT>JOURNAL OF FILM AND VIDEO
+<B><DD>	J UNIV FILM VIDEO AS
+</B><DT>JOURNAL OF FINANCE
+<B><DD>	J FINANC
+</B><DT>JOURNAL OF FINANCIAL AND QUANTITATIVE ANALYSIS
+<B><DD>	J FINANC QUANT ANAL
+</B><DT>JOURNAL OF FINANCIAL ECONOMICS
+<B><DD>	J FINANC ECON
+</B><DT>JOURNAL OF FINANCIAL INTERMEDIATION
+<B><DD>	J FINANC INTERMED
+</B><DT>JOURNAL OF FINANCIAL RESEARCH
+<B><DD>	J FINANC RES
+</B><DT>JOURNAL OF FINANCIAL SERVICES RESEARCH
+<B><DD>	J FINANC SERV RES
+</B><DT>JOURNAL OF FIRE & FLAMMABILITY
+<B><DD>	J FIRE FLAMMABILITY
+</B><DT>JOURNAL OF FIRE RETARDANT CHEMISTRY
+<B><DD>	J FIRE RETARD CHEM
+</B><DT>JOURNAL OF FIRE SCIENCES
+<B><DD>	J FIRE SCI
+</B><DT>JOURNAL OF FISH BIOLOGY
+<B><DD>	J FISH BIOL
+</B><DT>JOURNAL OF FISH DISEASES
+<B><DD>	J FISH DIS
+</B><DT>JOURNAL OF FLUENCY DISORDERS
+<B><DD>	J FLUENCY DISORD
+</B><DT>JOURNAL OF FLUID MECHANICS
+<B><DD>	J FLUID MECH
+</B><DT>JOURNAL OF FLUIDS AND STRUCTURES
+<B><DD>	J FLUID STRUCT
+</B><DT>JOURNAL OF FLUIDS ENGINEERING-TRANSACTIONS OF THE ASME
+<B><DD>	J FLUID ENG-T ASME
+</B><DT>JOURNAL OF FLUORESCENCE
+<B><DD>	J FLUORESC
+</B><DT>JOURNAL OF FLUORINE CHEMISTRY
+<B><DD>	J FLUORINE CHEM
+</B><DT>JOURNAL OF FOLKLORE RESEARCH
+<B><DD>	J FOLKLORE RES
+</B><DT>JOURNAL OF FOOD & NUTRITION
+<B><DD>	J FOOD NUTR
+</B><DT>JOURNAL OF FOOD AND DRUG ANALYSIS
+<B><DD>	J FOOD DRUG ANAL
+</B><DT>JOURNAL OF FOOD BIOCHEMISTRY
+<B><DD>	J FOOD BIOCHEM
+</B><DT>JOURNAL OF FOOD ENGINEERING
+<B><DD>	J FOOD ENG
+</B><DT>JOURNAL OF FOOD LIPIDS
+<B><DD>	J FOOD LIPIDS
+</B><DT>JOURNAL OF FOOD PROCESS ENGINEERING
+<B><DD>	J FOOD PROCESS ENG
+</B><DT>JOURNAL OF FOOD PROCESSING AND PRESERVATION
+<B><DD>	J FOOD PROCESS PRES
+</B><DT>JOURNAL OF FOOD PROTECTION
+<B><DD>	J FOOD PROTECT
+</B><DT>JOURNAL OF FOOD QUALITY
+<B><DD>	J FOOD QUALITY
+</B><DT>JOURNAL OF FOOD SAFETY
+<B><DD>	J FOOD SAFETY
+</B><DT>JOURNAL OF FOOD SCIENCE
+<B><DD>	J FOOD SCI
+</B><DT>JOURNAL OF FOOD SCIENCE AND TECHNOLOGY-MYSORE
+<B><DD>	J FOOD SCI TECH MYS
+</B><DT>JOURNAL OF FOOD TECHNOLOGY
+<B><DD>	J FOOD TECHNOL
+</B><DT>JOURNAL OF FORAMINIFERAL RESEARCH
+<B><DD>	J FORAMIN RES
+</B><DT>JOURNAL OF FORECASTING
+<B><DD>	J FORECASTING
+</B><DT>JOURNAL OF FORENSIC PSYCHIATRY
+<B><DD>	J FORENSIC PSYCHIATR
+</B><DT>JOURNAL OF FORENSIC SCIENCES
+<B><DD>	J FORENSIC SCI
+</B><DT>JOURNAL OF FORESTRY
+<B><DD>	J FOREST
+</B><DT>JOURNAL OF FOURIER ANALYSIS AND APPLICATIONS
+<B><DD>	J FOURIER ANAL APPL
+</B><DT>JOURNAL OF FRESHWATER ECOLOGY
+<B><DD>	J FRESHWATER ECOL
+</B><DT>JOURNAL OF FUNCTIONAL ANALYSIS
+<B><DD>	J FUNCT ANAL
+</B><DT>JOURNAL OF FUSION ENERGY
+<B><DD>	J FUSION ENERG
+</B><DT>JOURNAL OF FUTURES MARKETS
+<B><DD>	J FUTURES MARKETS
+</B><DT>JOURNAL OF GARDEN HISTORY
+<B><DD>	J GARDEN HIST
+</B><DT>JOURNAL OF GASTROENTEROLOGY
+<B><DD>	J GASTROENTEROL
+</B><DT>JOURNAL OF GASTROENTEROLOGY AND HEPATOLOGY
+<B><DD>	J GASTROEN HEPATOL
+</B><DT>JOURNAL OF GASTROINTESTINAL MOTILITY
+<B><DD>	J GASTROINTEST MOTIL
+</B><DT>JOURNAL OF GASTROINTESTINAL SURGERY
+<B><DD>	J GASTROINTEST SURG
+</B><DT>JOURNAL OF GENDER STUDIES
+<B><DD>	J GENDER STUD
+</B><DT>JOURNAL OF GENE MEDICINE
+<B><DD>	J GENE MED
+</B><DT>JOURNAL OF GENERAL AND APPLIED MICROBIOLOGY
+<B><DD>	J GEN APPL MICROBIOL
+</B><DT>JOURNAL OF GENERAL INTERNAL MEDICINE
+<B><DD>	J GEN INTERN MED
+</B><DT>JOURNAL OF GENERAL MICROBIOLOGY
+<B><DD>	J GEN MICROBIOL
+</B><DT>JOURNAL OF GENERAL PHYSIOLOGY
+<B><DD>	J GEN PHYSIOL
+</B><DT>JOURNAL OF GENERAL PSYCHOLOGY
+<B><DD>	J GEN PSYCHOL
+</B><DT>JOURNAL OF GENERAL VIROLOGY
+<B><DD>	J GEN VIROL
+</B><DT>JOURNAL OF GENETIC PSYCHOLOGY
+<B><DD>	J GENET PSYCHOL
+</B><DT>JOURNAL OF GENETICS
+<B><DD>	J GENET
+</B><DT>JOURNAL OF GEOCHEMICAL EXPLORATION
+<B><DD>	J GEOCHEM EXPLOR
+</B><DT>JOURNAL OF GEODESY
+<B><DD>	J GEODESY
+</B><DT>JOURNAL OF GEODYNAMICS
+<B><DD>	J GEODYN
+</B><DT>JOURNAL OF GEOGRAPHY
+<B><DD>	J GEOGR
+</B><DT>JOURNAL OF GEOGRAPHY IN HIGHER EDUCATION
+<B><DD>	J GEOGR HIGHER EDUC
+</B><DT>JOURNAL OF GEOLOGICAL EDUCATION
+<B><DD>	J GEOL EDUC
+</B><DT>JOURNAL OF GEOLOGY
+<B><DD>	J GEOL
+</B><DT>JOURNAL OF GEOMAGNETISM AND GEOELECTRICITY
+<B><DD>	J GEOMAGN GEOELECTR
+</B><DT>JOURNAL OF GEOMETRIC ANALYSIS
+<B><DD>	J GEOM ANAL
+</B><DT>JOURNAL OF GEOMETRY AND PHYSICS
+<B><DD>	J GEOM PHYS
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH
+<B><DD>	J GEOPHYS RES
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH-ATMOSPHERES
+<B><DD>	J GEOPHYS RES-ATMOS
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH-OCEANS
+<B><DD>	J GEOPHYS RES-OCEANS
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH-OCEANS AND ATMOSPHERES
+<B><DD>	J GEOPHYS RES-OC ATM
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH-PLANETS
+<B><DD>	J GEOPHYS RES-PLANET
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH-SOLID EARTH
+<B><DD>	J GEOPHYS RES-SOL EA
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH-SOLID EARTH AND PLANETS
+<B><DD>	J GEOPHYS RES-SOLID
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH-SPACE PHYSICS
+<B><DD>	J GEOPHYS RES
+</B><DT>JOURNAL OF GEOPHYSICAL RESEARCH-SPACE PHYSICS
+<B><DD>	J GEOPHYS RES-SPACE
+</B><DT>JOURNAL OF GEOPHYSICS-ZEITSCHRIFT FUR GEOPHYSIK
+<B><DD>	J GEOPHYS-Z GEOPHYS
+</B><DT>JOURNAL OF GEOTECHNICAL AND GEOENVIRONMENTAL ENGINEERING
+<B><DD>	J GEOTECH GEOENVIRON
+</B><DT>JOURNAL OF GEOTECHNICAL ENGINEERING-ASCE
+<B><DD>	J GEOTECH ENG-ASCE
+</B><DT>JOURNAL OF GERIATRIC PSYCHIATRY
+<B><DD>	J GERIATR PSYCHIAT
+</B><DT>JOURNAL OF GERIATRIC PSYCHIATRY AND NEUROLOGY
+<B><DD>	J GERIATR PSYCH NEUR
+</B><DT>JOURNAL OF GERONTOLOGICAL SOCIAL WORK
+<B><DD>	J GERONTOL SOC WORK
+</B><DT>JOURNAL OF GLACIOLOGY
+<B><DD>	J GLACIOL
+</B><DT>JOURNAL OF GLASS STUDIES
+<B><DD>	J GLASS STUD
+</B><DT>JOURNAL OF GLAUCOMA
+<B><DD>	J GLAUCOMA
+</B><DT>JOURNAL OF GLOBAL OPTIMIZATION
+<B><DD>	J GLOBAL OPTIM
+</B><DT>JOURNAL OF GOVERNMENT INFORMATION
+<B><DD>	J GOV INFORM
+</B><DT>JOURNAL OF GRAPH THEORY
+<B><DD>	J GRAPH THEOR
+</B><DT>JOURNAL OF GREAT LAKES RESEARCH
+<B><DD>	J GREAT LAKES RES
+</B><DT>JOURNAL OF GROUP THEORY
+<B><DD>	J GROUP THEORY
+</B><DT>JOURNAL OF GUIDANCE CONTROL AND DYNAMICS
+<B><DD>	J GUID CONTROL DYNAM
+</B><DT>JOURNAL OF GYNECOLOGIC SURGERY
+<B><DD>	J GYNECOL SURG
+</B><DT>JOURNAL OF HAND SURGERY-AMERICAN VOLUME
+<B><DD>	J HAND SURG-AM
+</B><DT>JOURNAL OF HAND SURGERY-BRITISH AND EUROPEAN VOLUME
+<B><DD>	J HAND SURG-BRIT EUR
+</B><DT>JOURNAL OF HARD MATERIALS
+<B><DD>	J HARD MATER
+</B><DT>JOURNAL OF HAZARDOUS MATERIALS
+<B><DD>	J HAZARD MATER
+</B><DT>JOURNAL OF HEAD TRAUMA REHABILITATION
+<B><DD>	J HEAD TRAUMA REHAB
+</B><DT>JOURNAL OF HEALTH AND SOCIAL BEHAVIOR
+<B><DD>	J HEALTH SOC BEHAV
+</B><DT>JOURNAL OF HEALTH CARE FOR THE POOR AND UNDERSERVED
+<B><DD>	J HEALTH CARE POOR U
+</B><DT>JOURNAL OF HEALTH COMMUNICATION
+<B><DD>	J HEALTH COMMUN
+</B><DT>JOURNAL OF HEALTH ECONOMICS
+<B><DD>	J HEALTH ECON
+</B><DT>JOURNAL OF HEALTH POLITICS POLICY AND LAW
+<B><DD>	J HEALTH POLIT POLIC
+</B><DT>JOURNAL OF HEALTH SCIENCE
+<B><DD>	J HEALTH SCI
+</B><DT>JOURNAL OF HEALTHCARE MANAGEMENT
+<B><DD>	J HEALTHC MANAG
+</B><DT>JOURNAL OF HEART AND LUNG TRANSPLANTATION
+<B><DD>	J HEART LUNG TRANSPL
+</B><DT>JOURNAL OF HEART TRANSPLANTATION
+<B><DD>	J HEART TRANSPLANT
+</B><DT>JOURNAL OF HEART VALVE DISEASE
+<B><DD>	J HEART VALVE DIS
+</B><DT>JOURNAL OF HEAT RECOVERY SYSTEMS
+<B><DD>	J HEAT RECOV SYST
+</B><DT>JOURNAL OF HEAT TRANSFER-TRANSACTIONS OF THE ASME
+<B><DD>	J HEAT TRANS-T ASME
+</B><DT>JOURNAL OF HELLENIC STUDIES
+<B><DD>	J HELLENIC STUD
+</B><DT>JOURNAL OF HELMINTHOLOGY
+<B><DD>	J HELMINTHOL
+</B><DT>JOURNAL OF HEMATOTHERAPY
+<B><DD>	J HEMATOTHER
+</B><DT>JOURNAL OF HEMATOTHERAPY & STEM CELL RESEARCH
+<B><DD>	J HEMATOTH STEM CELL
+</B><DT>JOURNAL OF HEPATOLOGY
+<B><DD>	J HEPATOL
+</B><DT>JOURNAL OF HEREDITY
+<B><DD>	J HERED
+</B><DT>JOURNAL OF HERPETOLOGY
+<B><DD>	J HERPETOL
+</B><DT>JOURNAL OF HETEROCYCLIC CHEMISTRY
+<B><DD>	J HETEROCYCLIC CHEM
+</B><DT>JOURNAL OF HEURISTICS
+<B><DD>	J HEURISTICS
+</B><DT>JOURNAL OF HIGH ENERGY PHYSICS
+<B><DD>	J HIGH ENERGY PHYS
+</B><DT>JOURNAL OF HIGH RESOLUTION CHROMATOGRAPHY & CHROMATOGRAPHY COMMUNICATIONS
+<B><DD>	J HIGH RES CHROMATOG
+</B><DT>JOURNAL OF HIGH SPEED NETWORKS
+<B><DD>	J HIGH SPEED NETW
+</B><DT>JOURNAL OF HIGHER EDUCATION
+<B><DD>	J HIGH EDUC
+</B><DT>JOURNAL OF HISPANIC PHILOLOGY
+<B><DD>	J HISPAN PHILOLOGY
+</B><DT>JOURNAL OF HISTOCHEMISTRY & CYTOCHEMISTRY
+<B><DD>	J HISTOCHEM CYTOCHEM
+</B><DT>JOURNAL OF HISTORICAL GEOGRAPHY
+<B><DD>	J HIST GEOGR
+</B><DT>JOURNAL OF HISTORICAL SOCIOLOGY
+<B><DD>	J HIST SOCIOL
+</B><DT>JOURNAL OF HISTOTECHNOLOGY
+<B><DD>	J HISTOTECHNOL
+</B><DT>JOURNAL OF HOMOSEXUALITY
+<B><DD>	J HOMOSEXUAL
+</B><DT>JOURNAL OF HORTICULTURAL SCIENCE
+<B><DD>	J HORTIC SCI
+</B><DT>JOURNAL OF HORTICULTURAL SCIENCE & BIOTECHNOLOGY
+<B><DD>	J HORTIC SCI BIOTECH
+</B><DT>JOURNAL OF HOSPITAL INFECTION
+<B><DD>	J HOSP INFECT
+</B><DT>JOURNAL OF HOUSING ECONOMICS
+<B><DD>	J HOUS ECON
+</B><DT>JOURNAL OF HUMAN EVOLUTION
+<B><DD>	J HUM EVOL
+</B><DT>JOURNAL OF HUMAN GENETICS
+<B><DD>	J HUM GENET
+</B><DT>JOURNAL OF HUMAN HYPERTENSION
+<B><DD>	J HUM HYPERTENS
+</B><DT>JOURNAL OF HUMAN MOVEMENT STUDIES
+<B><DD>	J HUM MOVEMENT STUD
+</B><DT>JOURNAL OF HUMAN NUTRITION
+<B><DD>	J HUM NUTR
+</B><DT>JOURNAL OF HUMAN NUTRITION AND DIETETICS
+<B><DD>	J HUM NUTR DIET
+</B><DT>JOURNAL OF HUMAN RESOURCES
+<B><DD>	J HUM RESOUR
+</B><DT>JOURNAL OF HUMAN STRESS
+<B><DD>	J HUM STRESS
+</B><DT>JOURNAL OF HUMAN VIROLOGY
+<B><DD>	J HUMAN VIROL
+</B><DT>JOURNAL OF HUMANISTIC PSYCHOLOGY
+<B><DD>	J HUMANIST PSYCHOL
+</B><DT>JOURNAL OF HYDRAULIC ENGINEERING-ASCE
+<B><DD>	J HYDRAUL ENG-ASCE
+</B><DT>JOURNAL OF HYDRAULIC RESEARCH
+<B><DD>	J HYDRAUL RES
+</B><DT>JOURNAL OF HYDROLOGY
+<B><DD>	J HYDROL
+</B><DT>JOURNAL OF HYGIENE
+<B><DD>	J HYG-CAMBRIDGE
+</B><DT>JOURNAL OF HYGIENE EPIDEMIOLOGY MICROBIOLOGY AND IMMUNOLOGY
+<B><DD>	J HYG EPID MICROB IM
+</B><DT>JOURNAL OF HYPERTENSION
+<B><DD>	J HYPERTENS
+</B><DT>JOURNAL OF IMAGING SCIENCE
+<B><DD>	J IMAGING SCI
+</B><DT>JOURNAL OF IMAGING SCIENCE AND TECHNOLOGY
+<B><DD>	J IMAGING SCI TECHN
+</B><DT>JOURNAL OF IMAGING TECHNOLOGY
+<B><DD>	J IMAGING TECHNOL
+</B><DT>JOURNAL OF IMMUNOASSAY
+<B><DD>	J IMMUNOASSAY
+</B><DT>JOURNAL OF IMMUNOGENETICS
+<B><DD>	J IMMUNOGENET
+</B><DT>JOURNAL OF IMMUNOLOGICAL METHODS
+<B><DD>	J IMMUNOL METHODS
+</B><DT>JOURNAL OF IMMUNOLOGICAL RESEARCH
+<B><DD>	J IMMUNOL RES
+</B><DT>JOURNAL OF IMMUNOLOGY
+<B><DD>	J IMMUNOL
+</B><DT>JOURNAL OF IMMUNOPHARMACOLOGY
+<B><DD>	J IMMUNOPHARMACOL
+</B><DT>JOURNAL OF IMMUNOTHERAPY
+<B><DD>	J IMMUNOTHER
+</B><DT>JOURNAL OF IMPERIAL AND COMMONWEALTH HISTORY
+<B><DD>	J IMP COMMONW HIST
+</B><DT>JOURNAL OF IN VITRO FERTILIZATION AND EMBRYO TRANSFER
+<B><DD>	J IN VITRO FERTIL EM
+</B><DT>JOURNAL OF INCLUSION PHENOMENA
+<B><DD>	J INCLUSION PHENOM
+</B><DT>JOURNAL OF INCLUSION PHENOMENA AND MACROCYCLIC CHEMISTRY
+<B><DD>	J INCL PHENOM MACRO
+</B><DT>JOURNAL OF INCLUSION PHENOMENA AND MOLECULAR RECOGNITION IN CHEMISTRY
+<B><DD>	J INCLUS PHENOM MOL
+</B><DT>JOURNAL OF INDIAN PHILOSOPHY
+<B><DD>	J INDIAN PHILOS
+</B><DT>JOURNAL OF INDO-EUROPEAN STUDIES
+<B><DD>	J INDO-EUR STUD
+</B><DT>JOURNAL OF INDUSTRIAL AND ENGINEERING CHEMISTRY
+<B><DD>	J IND ENG CHEM
+</B><DT>JOURNAL OF INDUSTRIAL ECONOMICS
+<B><DD>	J IND ECON
+</B><DT>JOURNAL OF INDUSTRIAL MICROBIOLOGY
+<B><DD>	J IND MICROBIOL
+</B><DT>JOURNAL OF INDUSTRIAL MICROBIOLOGY & BIOTECHNOLOGY
+<B><DD>	J IND MICROBIOL BIOT
+</B><DT>JOURNAL OF INEQUALITIES AND APPLICATIONS
+<B><DD>	J INEQUAL APPL
+</B><DT>JOURNAL OF INFECTION
+<B><DD>	J INFECTION
+</B><DT>JOURNAL OF INFECTIOUS DISEASES
+<B><DD>	J INFECT DIS
+</B><DT>JOURNAL OF INFLAMMATION
+<B><DD>	J INFLAMM
+</B><DT>JOURNAL OF INFORMATION ETHICS
+<B><DD>	J INFORM ETHICS
+</B><DT>JOURNAL OF INFORMATION RECORDING
+<B><DD>	J INFORM REC
+</B><DT>JOURNAL OF INFORMATION RECORDING MATERIALS
+<B><DD>	J INFORM REC MATER
+</B><DT>JOURNAL OF INFORMATION SCIENCE
+<B><DD>	J INFORM SCI
+</B><DT>JOURNAL OF INFORMATION SCIENCE AND ENGINEERING
+<B><DD>	J INF SCI ENG
+</B><DT>JOURNAL OF INFORMATION STORAGE AND PROCESSING SYSTEMS
+<B><DD>	J INF STOR PROC SYST
+</B><DT>JOURNAL OF INFORMATION TECHNOLOGY
+<B><DD>	J INFORM TECHNOL
+</B><DT>JOURNAL OF INFRARED AND MILLIMETER WAVES
+<B><DD>	J INFRARED MILLIM W
+</B><DT>JOURNAL OF INHERITED METABOLIC DISEASE
+<B><DD>	J INHERIT METAB DIS
+</B><DT>JOURNAL OF INORGANIC & NUCLEAR CHEMISTRY
+<B><DD>	J INORG NUCL CHEM
+</B><DT>JOURNAL OF INORGANIC AND ORGANOMETALLIC POLYMERS
+<B><DD>	J INORG ORGANOMET P
+</B><DT>JOURNAL OF INORGANIC BIOCHEMISTRY
+<B><DD>	J INORG BIOCHEM
+</B><DT>JOURNAL OF INORGANIC MATERIALS
+<B><DD>	J INORG MATER
+</B><DT>JOURNAL OF INSECT BEHAVIOR
+<B><DD>	J INSECT BEHAV
+</B><DT>JOURNAL OF INSECT PHYSIOLOGY
+<B><DD>	J INSECT PHYSIOL
+</B><DT>JOURNAL OF INSTITUTIONAL AND THEORETICAL ECONOMICS-ZEITSCHRIFT FUR DIE GESAMTE STAATSWISSENSCHAFT
+<B><DD>	J INST THEOR ECON
+</B><DT>JOURNAL OF INTEGRAL EQUATIONS
+<B><DD>	J INTEGRAL EQUAT
+</B><DT>JOURNAL OF INTELLECTUAL DISABILITY RESEARCH
+<B><DD>	J INTELL DISABIL RES
+</B><DT>JOURNAL OF INTELLIGENT & FUZZY SYSTEMS
+<B><DD>	J INTELL FUZZY SYST
+</B><DT>JOURNAL OF INTELLIGENT & ROBOTIC SYSTEMS
+<B><DD>	J INTELL ROBOT SYST
+</B><DT>JOURNAL OF INTELLIGENT INFORMATION SYSTEMS
+<B><DD>	J INTELL INF SYST
+</B><DT>JOURNAL OF INTELLIGENT MANUFACTURING
+<B><DD>	J INTELL MANUF
+</B><DT>JOURNAL OF INTELLIGENT MATERIAL SYSTEMS AND STRUCTURES
+<B><DD>	J INTEL MAT SYST STR
+</B><DT>JOURNAL OF INTENSIVE CARE MEDICINE
+<B><DD>	J INTENSIVE CARE MED
+</B><DT>JOURNAL OF INTERAMERICAN STUDIES AND WORLD AFFAIRS
+<B><DD>	J INTERAM STUD WORLD
+</B><DT>JOURNAL OF INTERDISCIPLINARY CYCLE RESEARCH
+<B><DD>	J INTERDISCIPL CYCLE
+</B><DT>JOURNAL OF INTERDISCIPLINARY HISTORY
+<B><DD>	J INTERDISCIPL HIST
+</B><DT>JOURNAL OF INTERFERON AND CYTOKINE RESEARCH
+<B><DD>	J INTERF CYTOK RES
+</B><DT>JOURNAL OF INTERFERON RESEARCH
+<B><DD>	J INTERFERON RES
+</B><DT>JOURNAL OF INTERNAL MEDICINE
+<B><DD>	J INTERN MED
+</B><DT>JOURNAL OF INTERNATIONAL BIOMEDICAL INFORMATION AND DATA-IBID
+<B><DD>	J INT BIOMED INF DAT
+</B><DT>JOURNAL OF INTERNATIONAL BUSINESS STUDIES
+<B><DD>	J INT BUS STUD
+</B><DT>JOURNAL OF INTERNATIONAL ECONOMICS
+<B><DD>	J INT ECON
+</B><DT>JOURNAL OF INTERNATIONAL MARKETING
+<B><DD>	J INT MARKETING
+</B><DT>JOURNAL OF INTERNATIONAL MEDICAL RESEARCH
+<B><DD>	J INT MED RES
+</B><DT>JOURNAL OF INTERNATIONAL MONEY AND FINANCE
+<B><DD>	J INT MONEY FINANC
+</B><DT>JOURNAL OF INTERPERSONAL VIOLENCE
+<B><DD>	J INTERPERS VIOLENCE
+</B><DT>JOURNAL OF INTERVENTIONAL CARDIAC ELECTROPHYSIOLOGY
+<B><DD>	J INTERV CARD ELECTR
+</B><DT>JOURNAL OF INTERVENTIONAL CARDIOLOGY
+<B><DD>	J INTERV CARDIOL
+</B><DT>JOURNAL OF INTERVENTIONAL RADIOLOGY
+<B><DD>	J INTERVENT RADIOL
+</B><DT>JOURNAL OF INVASIVE CARDIOLOGY
+<B><DD>	J INVASIVE CARDIOL
+</B><DT>JOURNAL OF INVERTEBRATE PATHOLOGY
+<B><DD>	J INVERTEBR PATHOL
+</B><DT>JOURNAL OF INVESTIGATIONAL ALLERGOLOGY & CLINICAL IMMUNOLOGY
+<B><DD>	J INVEST ALLERG CLIN
+</B><DT>JOURNAL OF INVESTIGATIVE DERMATOLOGY
+<B><DD>	J INVEST DERMATOL
+</B><DT>JOURNAL OF INVESTIGATIVE DERMATOLOGY SYMPOSIUM PROCEEDINGS
+<B><DD>	J INVEST DERM SYMP P
+</B><DT>JOURNAL OF INVESTIGATIVE MEDICINE
+<B><DD>	J INVEST MED
+</B><DT>JOURNAL OF INVESTIGATIVE SURGERY
+<B><DD>	J INVEST SURG
+</B><DT>JOURNAL OF IRISH LITERATURE
+<B><DD>	J IRISH LITERATURE
+</B><DT>JOURNAL OF IRON AND STEEL RESEARCH INTERNATIONAL
+<B><DD>	J IRON STEEL RES INT
+</B><DT>JOURNAL OF IRRIGATION AND DRAINAGE ENGINEERING-ASCE
+<B><DD>	J IRRIG DRAIN E-ASCE
+</B><DT>JOURNAL OF JAPAN SOCIETY OF LUBRICATION ENGINEERS
+<B><DD>	J JPN SOC LUBR ENG
+</B><DT>JOURNAL OF JAPANESE SOCIETY OF TRIBOLOGISTS
+<B><DD>	J JPN SOC TRIBOLOGIS
+</B><DT>JOURNAL OF JAPANESE STUDIES
+<B><DD>	J JPN STUD
+</B><DT>JOURNAL OF JEWISH STUDIES
+<B><DD>	J JEWISH STUD
+</B><DT>JOURNAL OF JEWISH THOUGHT & PHILOSOPHY
+<B><DD>	J JEWISH THOUGHT PH
+</B><DT>JOURNAL OF KNOT THEORY AND ITS RAMIFICATIONS
+<B><DD>	J KNOT THEOR RAMIF
+</B><DT>JOURNAL OF KOREAN MEDICAL SCIENCE
+<B><DD>	J KOREAN MED SCI
+</B><DT>JOURNAL OF LABELLED COMPOUNDS & RADIOPHARMACEUTICALS
+<B><DD>	J LABELLED COMPD RAD
+</B><DT>JOURNAL OF LABOR ECONOMICS
+<B><DD>	J LABOR ECON
+</B><DT>JOURNAL OF LABOR RESEARCH
+<B><DD>	J LABOR RES
+</B><DT>JOURNAL OF LABORATORY AND CLINICAL MEDICINE
+<B><DD>	J LAB CLIN MED
+</B><DT>JOURNAL OF LANGUAGE AND SOCIAL PSYCHOLOGY
+<B><DD>	J LANG SOC PSYCHOL
+</B><DT>JOURNAL OF LAPAROENDOSCOPIC & ADVANCED SURGICAL TECHNIQUES-PART A
+<B><DD>	J LAPAROENDOSC ADV A
+</B><DT>JOURNAL OF LAPAROENDOSCOPIC SURGERY
+<B><DD>	J LAPAROENDOSC SURG
+</B><DT>JOURNAL OF LARYNGOLOGY AND OTOLOGY
+<B><DD>	J LARYNGOL OTOL
+</B><DT>JOURNAL OF LASER APPLICATIONS
+<B><DD>	J LASER APPL
+</B><DT>JOURNAL OF LATIN AMERICAN STUDIES
+<B><DD>	J LAT AM STUD
+</B><DT>JOURNAL OF LAW & ECONOMICS
+<B><DD>	J LAW ECON
+</B><DT>JOURNAL OF LAW & EDUCATION
+<B><DD>	J LAW EDUC
+</B><DT>JOURNAL OF LAW AND SOCIETY
+<B><DD>	J LAW SOC
+</B><DT>JOURNAL OF LAW ECONOMICS & ORGANIZATION
+<B><DD>	J LAW ECON ORGAN
+</B><DT>JOURNAL OF LAW MEDICINE & ETHICS
+<B><DD>	J LAW MED ETHICS
+</B><DT>JOURNAL OF LEARNING DISABILITIES
+<B><DD>	J LEARN DISABIL
+</B><DT>JOURNAL OF LEARNING DISABILITIES
+<B><DD>	J LEARN DISABIL-US
+</B><DT>JOURNAL OF LEGAL EDUCATION
+<B><DD>	J LEGAL EDUC
+</B><DT>JOURNAL OF LEGAL MEDICINE
+<B><DD>	J LEGAL MED
+</B><DT>JOURNAL OF LEGAL STUDIES
+<B><DD>	J LEGAL STUD
+</B><DT>JOURNAL OF LEISURE RESEARCH
+<B><DD>	J LEISURE RES
+</B><DT>JOURNAL OF LEUKOCYTE BIOLOGY
+<B><DD>	J LEUKOCYTE BIOL
+</B><DT>JOURNAL OF LIBRARIANSHIP AND INFORMATION SCIENCE
+<B><DD>	J LIBR INF SCI
+</B><DT>JOURNAL OF LIBRARY AUTOMATION
+<B><DD>	J LIBR AUTOMAT
+</B><DT>JOURNAL OF LIE THEORY
+<B><DD>	J LIE THEORY
+</B><DT>JOURNAL OF LIFE SCIENCES ROYAL DUBLIN SOCIETY
+<B><DD>	J LIFE SCI R DUBL S
+</B><DT>JOURNAL OF LIGHTWAVE TECHNOLOGY
+<B><DD>	J LIGHTWAVE TECHNOL
+</B><DT>JOURNAL OF LINGUISTICS
+<B><DD>	J LINGUIST
+</B><DT>JOURNAL OF LIPID MEDIATORS
+<B><DD>	J LIPID MEDIATOR
+</B><DT>JOURNAL OF LIPID MEDIATORS AND CELL SIGNALLING
+<B><DD>	J LIPID MEDIAT CELL
+</B><DT>JOURNAL OF LIPID RESEARCH
+<B><DD>	J LIPID RES
+</B><DT>JOURNAL OF LIPOSOME RESEARCH
+<B><DD>	J LIPOS RES
+</B><DT>JOURNAL OF LIPOSOME RESEARCH
+<B><DD>	J LIPOSOME RES
+</B><DT>JOURNAL OF LIQUID CHROMATOGRAPHY
+<B><DD>	J LIQ CHROMATOGR
+</B><DT>JOURNAL OF LIQUID CHROMATOGRAPHY & RELATED TECHNOLOGIES
+<B><DD>	J LIQ CHROMATOGR R T
+</B><DT>JOURNAL OF LITERACY RESEARCH
+<B><DD>	J LIT RES
+</B><DT>JOURNAL OF LITERARY SEMANTICS
+<B><DD>	J LITERARY SEMANTICS
+</B><DT>JOURNAL OF LITHOTRIPSY & STONE DISEASE
+<B><DD>	J LITHOTR STONE DIS
+</B><DT>JOURNAL OF LOGIC AND COMPUTATION
+<B><DD>	J LOGIC COMPUT
+</B><DT>JOURNAL OF LOGIC PROGRAMMING
+<B><DD>	J LOGIC PROGRAM
+</B><DT>JOURNAL OF LONG-TERM EFFECTS OF MEDICAL IMPLANTS
+<B><DD>	J LONG-TERM EFF MED
+</B><DT>JOURNAL OF LOSS PREVENTION IN THE PROCESS INDUSTRIES
+<B><DD>	J LOSS PREVENT PROC
+</B><DT>JOURNAL OF LOW FREQUENCY NOISE & VIBRATION
+<B><DD>	J LOW FREQ NOISE VIB
+</B><DT>JOURNAL OF LOW FREQUENCY NOISE VIBRATION AND ACTIVE CONTROL
+<B><DD>	J LOW FREQ NOISE V A
+</B><DT>JOURNAL OF LOW TEMPERATURE PHYSICS
+<B><DD>	J LOW TEMP PHYS
+</B><DT>JOURNAL OF LUBRICATION TECHNOLOGY-TRANSACTIONS OF THE ASME
+<B><DD>	J LUBRIC TECH-T ASME
+</B><DT>JOURNAL OF LUMINESCENCE
+<B><DD>	J LUMIN
+</B><DT>JOURNAL OF MACROECONOMICS
+<B><DD>	J MACROECON
+</B><DT>JOURNAL OF MACROMOLECULAR SCIENCE-CHEMISTRY
+<B><DD>	J MACROMOL SCI CHEM
+</B><DT>JOURNAL OF MACROMOLECULAR SCIENCE-PHYSICS
+<B><DD>	J MACROMOL SCI PHYS
+</B><DT>JOURNAL OF MACROMOLECULAR SCIENCE-PURE AND APPLIED CHEMISTRY
+<B><DD>	J MACROMOL SCI PURE
+</B><DT>JOURNAL OF MACROMOLECULAR SCIENCE-REVIEWS IN MACROMOLECULAR CHEMISTRY AND PHYSICS
+<B><DD>	J MACROMOL SCI R M C
+</B><DT>JOURNAL OF MAGNETIC RESONANCE
+<B><DD>	J MAGN RESON
+</B><DT>JOURNAL OF MAGNETIC RESONANCE SERIES A
+<B><DD>	J MAGN RESON SER A
+</B><DT>JOURNAL OF MAGNETIC RESONANCE SERIES B
+<B><DD>	J MAGN RESON SER B
+</B><DT>JOURNAL OF MAGNETISM AND MAGNETIC MATERIALS
+<B><DD>	J MAGN MAGN MATER
+</B><DT>JOURNAL OF MAMMALOGY
+<B><DD>	J MAMMAL
+</B><DT>JOURNAL OF MAMMARY GLAND BIOLOGY AND NEOPLASIA
+<B><DD>	J MAMMARY GLAND BIOL
+</B><DT>JOURNAL OF MANAGEMENT
+<B><DD>	J MANAGE
+</B><DT>JOURNAL OF MANAGEMENT IN ENGINEERING
+<B><DD>	J MANAGE ENG
+</B><DT>JOURNAL OF MANAGEMENT INFORMATION SYSTEMS
+<B><DD>	J MANAGE INFORM SYST
+</B><DT>JOURNAL OF MANAGEMENT INQUIRY
+<B><DD>	J MANAGE INQUIRY
+</B><DT>JOURNAL OF MANAGEMENT STUDIES
+<B><DD>	J MANAGE STUD
+</B><DT>JOURNAL OF MANIPULATIVE AND PHYSIOLOGICAL THERAPEUTICS
+<B><DD>	J MANIP PHYSIOL THER
+</B><DT>JOURNAL OF MANUFACTURING
+<B><DD>	J MANUF
+</B><DT>JOURNAL OF MANUFACTURING SCIENCE AND ENGINEERING-TRANSACTIONS OF THE ASME
+<B><DD>	J MANUF SCI E-T ASME
+</B><DT>JOURNAL OF MANUFACTURING SYSTEMS
+<B><DD>	J MANUF SYST
+</B><DT>JOURNAL OF MARINE BIOTECHNOLOGY
+<B><DD>	J MAR BIOTECHNOL
+</B><DT>JOURNAL OF MARINE RESEARCH
+<B><DD>	J MAR RES
+</B><DT>JOURNAL OF MARINE SYSTEMS
+<B><DD>	J MARINE SYST
+</B><DT>JOURNAL OF MARITAL AND FAMILY THERAPY
+<B><DD>	J MARITAL FAM THER
+</B><DT>JOURNAL OF MARITIME LAW AND COMMERCE
+<B><DD>	J MARIT LAW COMMER
+</B><DT>JOURNAL OF MARKETING
+<B><DD>	J MARKETING
+</B><DT>JOURNAL OF MARKETING RESEARCH
+<B><DD>	J MARKETING RES
+</B><DT>JOURNAL OF MARRIAGE AND THE FAMILY
+<B><DD>	J MARRIAGE FAM
+</B><DT>JOURNAL OF MASS SPECTROMETRY
+<B><DD>	J MASS SPECTROM
+</B><DT>JOURNAL OF MATERIAL CULTURE
+<B><DD>	J MAT CULT
+</B><DT>JOURNAL OF MATERIALS CHEMISTRY
+<B><DD>	J MATER CHEM
+</B><DT>JOURNAL OF MATERIALS ENGINEERING
+<B><DD>	J MATER ENG
+</B><DT>JOURNAL OF MATERIALS ENGINEERING AND PERFORMANCE
+<B><DD>	J MATER ENG PERFORM
+</B><DT>JOURNAL OF MATERIALS FOR ENERGY SYSTEMS
+<B><DD>	J MATER ENG
+</B><DT>JOURNAL OF MATERIALS IN CIVIL ENGINEERING
+<B><DD>	J MATER CIVIL ENG
+</B><DT>JOURNAL OF MATERIALS PROCESSING & MANUFACTURING SCIENCE
+<B><DD>	J MATER PROCESS MANU
+</B><DT>JOURNAL OF MATERIALS PROCESSING TECHNOLOGY
+<B><DD>	J MATER PROCESS TECH
+</B><DT>JOURNAL OF MATERIALS RESEARCH
+<B><DD>	J MATER RES
+</B><DT>JOURNAL OF MATERIALS SCIENCE
+<B><DD>	J MATER SCI
+</B><DT>JOURNAL OF MATERIALS SCIENCE & TECHNOLOGY
+<B><DD>	J MATER SCI TECHNOL
+</B><DT>JOURNAL OF MATERIALS SCIENCE LETTERS
+<B><DD>	J MATER SCI LETT
+</B><DT>JOURNAL OF MATERIALS SCIENCE-MATERIALS IN ELECTRONICS
+<B><DD>	J MATER SCI-MATER EL
+</B><DT>JOURNAL OF MATERIALS SCIENCE-MATERIALS IN MEDICINE
+<B><DD>	J MATER SCI-MATER M
+</B><DT>JOURNAL OF MATERIALS SYNTHESIS AND PROCESSING
+<B><DD>	J MATER SYNTH PROCES
+</B><DT>JOURNAL OF MATERNAL-FETAL INVESTIGATION
+<B><DD>	J MATERN-FETAL INVES
+</B><DT>JOURNAL OF MATHEMATICAL ANALYSIS AND APPLICATIONS
+<B><DD>	J MATH ANAL APPL
+</B><DT>JOURNAL OF MATHEMATICAL BIOLOGY
+<B><DD>	J MATH BIOL
+</B><DT>JOURNAL OF MATHEMATICAL CHEMISTRY
+<B><DD>	J MATH CHEM
+</B><DT>JOURNAL OF MATHEMATICAL ECONOMICS
+<B><DD>	J MATH ECON
+</B><DT>JOURNAL OF MATHEMATICAL IMAGING AND VISION
+<B><DD>	J MATH IMAGING VIS
+</B><DT>JOURNAL OF MATHEMATICAL PHYSICS
+<B><DD>	J MATH PHYS
+</B><DT>JOURNAL OF MATHEMATICAL PSYCHOLOGY
+<B><DD>	J MATH PSYCHOL
+</B><DT>JOURNAL OF MATHEMATICAL SOCIOLOGY
+<B><DD>	J MATH SOCIOL
+</B><DT>JOURNAL OF MATHEMATICS OF KYOTO UNIVERSITY
+<B><DD>	J MATH KYOTO U
+</B><DT>JOURNAL OF MAXILLOFACIAL SURGERY
+<B><DD>	J MAXILLOFAC SURG
+</B><DT>JOURNAL OF MECHANICAL DESIGN
+<B><DD>	J MECH DESIGN
+</B><DT>JOURNAL OF MECHANICAL DESIGN-TRANSACTIONS OF THE ASME
+<B><DD>	J MECH DES-T ASME
+</B><DT>JOURNAL OF MECHANICAL ENGINEERING LABORATORY
+<B><DD>	J MECH ENG LAB
+</B><DT>JOURNAL OF MECHANICAL ENGINEERING SCIENCE
+<B><DD>	J MECH ENG SCI
+</B><DT>JOURNAL OF MECHANICAL WORKING TECHNOLOGY
+<B><DD>	J MECH WORK TECHNOL
+</B><DT>JOURNAL OF MECHANISMS TRANSMISSIONS AND AUTOMATION IN DESIGN-TRANSACTIONS OF THE ASME
+<B><DD>	J MECH TRANSM-T ASME
+</B><DT>JOURNAL OF MEDIA ECONOMICS
+<B><DD>	J MEDIA ECON
+</B><DT>JOURNAL OF MEDICAL AND VETERINARY MYCOLOGY
+<B><DD>	J MED VET MYCOL
+</B><DT>JOURNAL OF MEDICAL EDUCATION
+<B><DD>	J MED EDUC
+</B><DT>JOURNAL OF MEDICAL ENGINEERING & TECHNOLOGY
+<B><DD>	J MED ENG TECHNOL
+</B><DT>JOURNAL OF MEDICAL ENTOMOLOGY
+<B><DD>	J MED ENTOMOL
+</B><DT>JOURNAL OF MEDICAL ETHICS
+<B><DD>	J MED ETHICS
+</B><DT>JOURNAL OF MEDICAL GENETICS
+<B><DD>	J MED GENET
+</B><DT>JOURNAL OF MEDICAL MICROBIOLOGY
+<B><DD>	J MED MICROBIOL
+</B><DT>JOURNAL OF MEDICAL PRIMATOLOGY
+<B><DD>	J MED PRIMATOL
+</B><DT>JOURNAL OF MEDICAL SCREENING
+<B><DD>	J MED SCREEN
+</B><DT>JOURNAL OF MEDICAL SPEECH-LANGUAGE PATHOLOGY
+<B><DD>	J MED SPEECH-LANG PA
+</B><DT>JOURNAL OF MEDICAL SYSTEMS
+<B><DD>	J MED SYST
+</B><DT>JOURNAL OF MEDICAL TECHNOLOGY
+<B><DD>	J MED TECHNOL
+</B><DT>JOURNAL OF MEDICAL VIROLOGY
+<B><DD>	J MED VIROL
+</B><DT>JOURNAL OF MEDICINAL CHEMISTRY
+<B><DD>	J MED CHEM
+</B><DT>JOURNAL OF MEDICINE
+<B><DD>	J MED
+</B><DT>JOURNAL OF MEDICINE AND PHILOSOPHY
+<B><DD>	J MED PHILOS
+</B><DT>JOURNAL OF MEDIEVAL AND EARLY MODERN STUDIES
+<B><DD>	J MEDIEV EARLY MOD S
+</B><DT>JOURNAL OF MEDIEVAL AND RENAISSANCE STUDIES
+<B><DD>	J MEDIEVAL RENAISS
+</B><DT>JOURNAL OF MEDIEVAL HISTORY
+<B><DD>	J MEDIEVAL HIST
+</B><DT>JOURNAL OF MEDITERRANEAN STUDIES
+<B><DD>	J MEDITERR STUD
+</B><DT>JOURNAL OF MEMBRANE BIOLOGY
+<B><DD>	J MEMBRANE BIOL
+</B><DT>JOURNAL OF MEMBRANE SCIENCE
+<B><DD>	J MEMBRANE SCI
+</B><DT>JOURNAL OF MEMORY AND LANGUAGE
+<B><DD>	J MEM LANG
+</B><DT>JOURNAL OF MENTAL DEFICIENCY RESEARCH
+<B><DD>	J MENT DEFIC RES
+</B><DT>JOURNAL OF MENTAL HEALTH ADMINISTRATION
+<B><DD>	J MENT HEALTH ADMIN
+</B><DT>JOURNAL OF METALS
+<B><DD>	JOM-J MIN MET MAT S
+</B><DT>JOURNAL OF METAMORPHIC GEOLOGY
+<B><DD>	J METAMORPH GEOL
+</B><DT>JOURNAL OF MICROBIAL BIOTECHNOLOGY
+<B><DD>	J MICROBIAL BIOTECH
+</B><DT>JOURNAL OF MICROBIOLOGICAL METHODS
+<B><DD>	J MICROBIOL METH
+</B><DT>JOURNAL OF MICROBIOLOGY
+<B><DD>	J MICROBIOL
+</B><DT>JOURNAL OF MICROBIOLOGY AND BIOTECHNOLOGY
+<B><DD>	J MICROBIOL BIOTECHN
+</B><DT>JOURNAL OF MICROCOLUMN SEPARATIONS
+<B><DD>	J MICROCOLUMN SEP
+</B><DT>JOURNAL OF MICROCOMPUTER APPLICATIONS
+<B><DD>	J MICROCOMPUT APPL
+</B><DT>JOURNAL OF MICROELECTROMECHANICAL SYSTEMS
+<B><DD>	J MICROELECTROMECH S
+</B><DT>JOURNAL OF MICROENCAPSULATION
+<B><DD>	J MICROENCAPSUL
+</B><DT>JOURNAL OF MICROMECHANICS AND MICROENGINEERING
+<B><DD>	J MICROMECH MICROENG
+</B><DT>JOURNAL OF MICRONUTRIENT ANALYSIS
+<B><DD>	J MICRONUTR ANAL
+</B><DT>JOURNAL OF MICROPALAEONTOLOGY
+<B><DD>	J MICROPALAEONTOL
+</B><DT>JOURNAL OF MICROSCOPY-OXFORD
+<B><DD>	J MICROSC-OXFORD
+</B><DT>JOURNAL OF MICROWAVE POWER AND ELECTROMAGNETIC ENERGY
+<B><DD>	J MICROWAVE POWER EE
+</B><DT>JOURNAL OF MIDWIFERY & WOMENS HEALTH
+<B><DD>	J MIDWIFERY WOM HEAL
+</B><DT>JOURNAL OF MILITARY HISTORY
+<B><DD>	J MILITARY HIST
+</B><DT>JOURNAL OF MIND AND BEHAVIOR
+<B><DD>	J MIND BEHAV
+</B><DT>JOURNAL OF MINING SCIENCE
+<B><DD>	J MIN SCI+
+</B><DT>JOURNAL OF MODERN AFRICAN STUDIES
+<B><DD>	J MOD AFR STUD
+</B><DT>JOURNAL OF MODERN GREEK STUDIES
+<B><DD>	J MOD GREEK STUD
+</B><DT>JOURNAL OF MODERN HISTORY
+<B><DD>	J MOD HIST
+</B><DT>JOURNAL OF MODERN ITALIAN STUDIES
+<B><DD>	J MOD ITAL STUD
+</B><DT>JOURNAL OF MODERN LITERATURE
+<B><DD>	J MOD LITERATURE
+</B><DT>JOURNAL OF MODERN OPTICS
+<B><DD>	J MOD OPTIC
+</B><DT>JOURNAL OF MOLECULAR AND APPLIED GENETICS
+<B><DD>	J MOL APPL GENET
+</B><DT>JOURNAL OF MOLECULAR AND CELLULAR CARDIOLOGY
+<B><DD>	J MOL CELL CARDIOL
+</B><DT>JOURNAL OF MOLECULAR AND CELLULAR IMMUNOLOGY
+<B><DD>	J MOL CELL IMMUNOL
+</B><DT>JOURNAL OF MOLECULAR BIOLOGY
+<B><DD>	J MOL BIOL
+</B><DT>JOURNAL OF MOLECULAR CATALYSIS
+<B><DD>	J MOL CATAL
+</B><DT>JOURNAL OF MOLECULAR CATALYSIS A-CHEMICAL
+<B><DD>	J MOL CATAL A-CHEM
+</B><DT>JOURNAL OF MOLECULAR CATALYSIS B-ENZYMATIC
+<B><DD>	J MOL CATAL B-ENZYM
+</B><DT>JOURNAL OF MOLECULAR ELECTRONICS
+<B><DD>	J MOL ELECTRON
+</B><DT>JOURNAL OF MOLECULAR ENDOCRINOLOGY
+<B><DD>	J MOL ENDOCRINOL
+</B><DT>JOURNAL OF MOLECULAR EVOLUTION
+<B><DD>	J MOL EVOL
+</B><DT>JOURNAL OF MOLECULAR GRAPHICS
+<B><DD>	J MOL GRAPHICS
+</B><DT>JOURNAL OF MOLECULAR GRAPHICS & MODELLING
+<B><DD>	J MOL GRAPH MODEL
+</B><DT>JOURNAL OF MOLECULAR LIQUIDS
+<B><DD>	J MOL LIQ
+</B><DT>JOURNAL OF MOLECULAR MEDICINE-JMM
+<B><DD>	J MOL MED-JMM
+</B><DT>JOURNAL OF MOLECULAR MODELING
+<B><DD>	J MOL MODEL
+</B><DT>JOURNAL OF MOLECULAR NEUROSCIENCE
+<B><DD>	J MOL NEUROSCI
+</B><DT>JOURNAL OF MOLECULAR RECOGNITION
+<B><DD>	J MOL RECOGNIT
+</B><DT>JOURNAL OF MOLECULAR SPECTROSCOPY
+<B><DD>	J MOL SPECTROSC
+</B><DT>JOURNAL OF MOLECULAR STRUCTURE
+<B><DD>	J MOL STRUCT
+</B><DT>JOURNAL OF MOLECULAR STRUCTURE-THEOCHEM
+<B><DD>	J MOL STRUC-THEOCHEM
+</B><DT>JOURNAL OF MOLLUSCAN STUDIES
+<B><DD>	J MOLLUS STUD
+</B><DT>JOURNAL OF MONETARY ECONOMICS
+<B><DD>	J MONETARY ECON
+</B><DT>JOURNAL OF MONEY CREDIT AND BANKING
+<B><DD>	J MONEY CREDIT BANK
+</B><DT>JOURNAL OF MORAL EDUCATION
+<B><DD>	J MORAL EDUC
+</B><DT>JOURNAL OF MORPHOLOGY
+<B><DD>	J MORPHOL
+</B><DT>JOURNAL OF MOTOR BEHAVIOR
+<B><DD>	J MOTOR BEHAV
+</B><DT>JOURNAL OF MULTICULTURAL COUNSELING AND DEVELOPMENT
+<B><DD>	J MULTICULT COUNS D
+</B><DT>JOURNAL OF MULTIVARIATE ANALYSIS
+<B><DD>	J MULTIVARIATE ANAL
+</B><DT>JOURNAL OF MUSCLE FOODS
+<B><DD>	J MUSCLE FOODS
+</B><DT>JOURNAL OF MUSCLE RESEARCH AND CELL MOTILITY
+<B><DD>	J MUSCLE RES CELL M
+</B><DT>JOURNAL OF MUSCULOSKELETAL PAIN
+<B><DD>	J MUSCULOSKELET PAIN
+</B><DT>JOURNAL OF MUSIC THEORY
+<B><DD>	J MUSIC THEORY
+</B><DT>JOURNAL OF MUSIC THERAPY
+<B><DD>	J MUSIC THER
+</B><DT>JOURNAL OF MUSICOLOGICAL RESEARCH
+<B><DD>	J MUSICOL RES
+</B><DT>JOURNAL OF MUSICOLOGY
+<B><DD>	J MUSICOLOGY
+</B><DT>JOURNAL OF NARRATIVE AND LIFE HISTORY
+<B><DD>	J NARRAT LIFE HIST
+</B><DT>JOURNAL OF NARRATIVE TECHNIQUE
+<B><DD>	J NARRATIVE TECH
+</B><DT>JOURNAL OF NATURAL HISTORY
+<B><DD>	J NAT HIST
+</B><DT>JOURNAL OF NATURAL PRODUCTS
+<B><DD>	J NAT PROD
+</B><DT>JOURNAL OF NATURAL PRODUCTS-LLOYDIA
+<B><DD>	J NAT PRODUCTS
+</B><DT>JOURNAL OF NATURAL TOXINS
+<B><DD>	J NAT TOXINS
+</B><DT>JOURNAL OF NAVIGATION
+<B><DD>	J NAVIGATION
+</B><DT>JOURNAL OF NEAR EASTERN STUDIES
+<B><DD>	J NEAR EASTERN STUD
+</B><DT>JOURNAL OF NEAR INFRARED SPECTROSCOPY
+<B><DD>	J NEAR INFRARED SPEC
+</B><DT>JOURNAL OF NEGRO EDUCATION
+<B><DD>	J NEGRO EDUC
+</B><DT>JOURNAL OF NEMATOLOGY
+<B><DD>	J NEMATOL
+</B><DT>JOURNAL OF NEPHROLOGY
+<B><DD>	J NEPHROL
+</B><DT>JOURNAL OF NERVOUS AND MENTAL DISEASE
+<B><DD>	J NERV MENT DIS
+</B><DT>JOURNAL OF NETWORK AND COMPUTER APPLICATIONS
+<B><DD>	J NETW COMPUT APPL
+</B><DT>JOURNAL OF NEURAL TRANSMISSION
+<B><DD>	J NEURAL TRANSM
+</B><DT>JOURNAL OF NEURAL TRANSMISSION-GENERAL SECTION
+<B><DD>	J NEURAL TRANSM-GEN
+</B><DT>JOURNAL OF NEURAL TRANSMISSION-PARKINSONS DISEASE AND DEMENTIA SECTION
+<B><DD>	J NEURAL TRANSM-PARK
+</B><DT>JOURNAL OF NEURAL TRANSMISSION-SUPPLEMENT
+<B><DD>	J NEURAL TRANSM-SUPP
+</B><DT>JOURNAL OF NEURAL TRANSPLANTATION & PLASTICITY
+<B><DD>	J NEURAL TRANSP PLAS
+</B><DT>JOURNAL OF NEURO-ONCOLOGY
+<B><DD>	J NEURO-ONCOL
+</B><DT>JOURNAL OF NEURO-OPHTHALMOLOGY
+<B><DD>	J NEURO-OPHTHALMOL
+</B><DT>JOURNAL OF NEUROBIOLOGY
+<B><DD>	J NEUROBIOL
+</B><DT>JOURNAL OF NEUROCHEMISTRY
+<B><DD>	J NEUROCHEM
+</B><DT>JOURNAL OF NEUROCYTOLOGY
+<B><DD>	J NEUROCYTOL
+</B><DT>JOURNAL OF NEUROENDOCRINOLOGY
+<B><DD>	J NEUROENDOCRINOL
+</B><DT>JOURNAL OF NEUROGENETICS
+<B><DD>	J NEUROGENET
+</B><DT>JOURNAL OF NEUROIMAGING
+<B><DD>	J NEUROIMAGING
+</B><DT>JOURNAL OF NEUROIMMUNOLOGY
+<B><DD>	J NEUROIMMUNOL
+</B><DT>JOURNAL OF NEUROLINGUISTICS
+<B><DD>	J NEUROLINGUIST
+</B><DT>JOURNAL OF NEUROLOGIC REHABILITATION
+<B><DD>	J NEUROL REHABIL
+</B><DT>JOURNAL OF NEUROLOGICAL AND ORTHOPAEDIC MEDICINE AND SURGERY
+<B><DD>	J NEUROL ORTH MED S
+</B><DT>JOURNAL OF NEUROLOGY
+<B><DD>	J NEUROL
+</B><DT>JOURNAL OF NEUROLOGY NEUROSURGERY AND PSYCHIATRY
+<B><DD>	J NEUROL NEUROSUR PS
+</B><DT>JOURNAL OF NEUROPATHOLOGY AND EXPERIMENTAL NEUROLOGY
+<B><DD>	J NEUROPATH EXP NEUR
+</B><DT>JOURNAL OF NEUROPHYSIOLOGY
+<B><DD>	J NEUROPHYSIOL
+</B><DT>JOURNAL OF NEUROPSYCHIATRY AND CLINICAL NEUROSCIENCES
+<B><DD>	J NEUROPSYCH CLIN N
+</B><DT>JOURNAL OF NEURORADIOLOGY
+<B><DD>	J NEURORADIOLOGY
+</B><DT>JOURNAL OF NEUROSCIENCE
+<B><DD>	J NEUROSCI
+</B><DT>JOURNAL OF NEUROSCIENCE METHODS
+<B><DD>	J NEUROSCI METH
+</B><DT>JOURNAL OF NEUROSCIENCE RESEARCH
+<B><DD>	J NEUROSCI RES
+</B><DT>JOURNAL OF NEUROSURGERY
+<B><DD>	J NEUROSURG
+</B><DT>JOURNAL OF NEUROSURGICAL ANESTHESIOLOGY
+<B><DD>	J NEUROSURG ANESTH
+</B><DT>JOURNAL OF NEUROTRAUMA
+<B><DD>	J NEUROTRAUM
+</B><DT>JOURNAL OF NEUROVIROLOGY
+<B><DD>	J NEUROVIROL
+</B><DT>JOURNAL OF NEW MATERIALS FOR ELECTROCHEMICAL SYSTEMS
+<B><DD>	J NEW MAT ELECT SYST
+</B><DT>JOURNAL OF NEW MUSIC RESEARCH
+<B><DD>	J NEW MUSIC RES
+</B><DT>JOURNAL OF NON-CRYSTALLINE SOLIDS
+<B><DD>	J NON-CRYST SOLIDS
+</B><DT>JOURNAL OF NON-EQUILIBRIUM THERMODYNAMICS
+<B><DD>	J NON-EQUIL THERMODY
+</B><DT>JOURNAL OF NON-NEWTONIAN FLUID MECHANICS
+<B><DD>	J NON-NEWTON FLUID
+</B><DT>JOURNAL OF NONDESTRUCTIVE EVALUATION
+<B><DD>	J NONDESTRUCT EVAL
+</B><DT>JOURNAL OF NONLINEAR MATHEMATICAL PHYSICS
+<B><DD>	J NONLINEAR MATH PHY
+</B><DT>JOURNAL OF NONLINEAR OPTICAL PHYSICS & MATERIALS
+<B><DD>	J NONLINEAR OPT PHYS
+</B><DT>JOURNAL OF NONLINEAR SCIENCE
+<B><DD>	J NONLINEAR SCI
+</B><DT>JOURNAL OF NONPARAMETRIC STATISTICS
+<B><DD>	J NONPARAMETR STAT
+</B><DT>JOURNAL OF NONVERBAL BEHAVIOR
+<B><DD>	J NONVERBAL BEHAV
+</B><DT>JOURNAL OF NUCLEAR CARDIOLOGY
+<B><DD>	J NUCL CARDIOL
+</B><DT>JOURNAL OF NUCLEAR MATERIALS
+<B><DD>	J NUCL MATER
+</B><DT>JOURNAL OF NUCLEAR MEDICINE
+<B><DD>	J NUCL MED
+</B><DT>JOURNAL OF NUCLEAR MEDICINE AND ALLIED SCIENCES
+<B><DD>	J NUCL MED ALLIED S
+</B><DT>JOURNAL OF NUCLEAR SCIENCE AND TECHNOLOGY
+<B><DD>	J NUCL SCI TECHNOL
+</B><DT>JOURNAL OF NUMBER THEORY
+<B><DD>	J NUMBER THEORY
+</B><DT>JOURNAL OF NURSE-MIDWIFERY
+<B><DD>	J NURSE-MIDWIFERY
+</B><DT>JOURNAL OF NURSING ADMINISTRATION
+<B><DD>	J NURS ADMIN
+</B><DT>JOURNAL OF NURSING CARE QUALITY
+<B><DD>	J NURS CARE QUAL
+</B><DT>JOURNAL OF NURSING EDUCATION
+<B><DD>	J NURS EDUC
+</B><DT>JOURNAL OF NURSING SCHOLARSHIP
+<B><DD>	J NURS SCHOLARSHIP
+</B><DT>JOURNAL OF NUTRITION
+<B><DD>	J NUTR
+</B><DT>JOURNAL OF NUTRITION EDUCATION
+<B><DD>	J NUTR EDUC
+</B><DT>JOURNAL OF NUTRITIONAL BIOCHEMISTRY
+<B><DD>	J NUTR BIOCHEM
+</B><DT>JOURNAL OF NUTRITIONAL SCIENCE AND VITAMINOLOGY
+<B><DD>	J NUTR SCI VITAMINOL
+</B><DT>JOURNAL OF OBJECT-ORIENTED PROGRAMMING
+<B><DD>	J OBJECT-ORIENT PROG
+</B><DT>JOURNAL OF OBSTETRICS AND GYNAECOLOGY
+<B><DD>	J OBSTET GYNAECOL
+</B><DT>JOURNAL OF OCCUPATIONAL ACCIDENTS
+<B><DD>	J OCCUP ACCID
+</B><DT>JOURNAL OF OCCUPATIONAL AND ENVIRONMENTAL MEDICINE
+<B><DD>	J OCCUP ENVIRON MED
+</B><DT>JOURNAL OF OCCUPATIONAL AND ORGANIZATIONAL PSYCHOLOGY
+<B><DD>	J OCCUP ORGAN PSYCH
+</B><DT>JOURNAL OF OCCUPATIONAL HEALTH
+<B><DD>	J OCCUP HEALTH
+</B><DT>JOURNAL OF OCCUPATIONAL REHABILITATION
+<B><DD>	J OCCUP REHABIL
+</B><DT>JOURNAL OF OCULAR PHARMACOLOGY
+<B><DD>	J OCUL PHARMACOL
+</B><DT>JOURNAL OF OCULAR PHARMACOLOGY AND THERAPEUTICS
+<B><DD>	J OCUL PHARMACOL TH
+</B><DT>JOURNAL OF OFFSHORE MECHANICS AND ARCTIC ENGINEERING-TRANSACTIONS OF THE ASME
+<B><DD>	J OFFSHORE MECH ARCT
+</B><DT>JOURNAL OF OPERATIONS MANAGEMENT
+<B><DD>	J OPER MANAG
+</B><DT>JOURNAL OF OPERATOR THEORY
+<B><DD>	J OPERAT THEOR
+</B><DT>JOURNAL OF OPTICAL TECHNOLOGY
+<B><DD>	J OPT TECHNOL+
+</B><DT>JOURNAL OF OPTICS A-PURE AND APPLIED OPTICS
+<B><DD>	J OPT A-PURE APPL OP
+</B><DT>JOURNAL OF OPTICS B-QUANTUM AND SEMICLASSICAL OPTICS
+<B><DD>	J OPT B-QUANTUM S O
+</B><DT>JOURNAL OF OPTICS-NOUVELLE REVUE D OPTIQUE
+<B><DD>	J OPT
+</B><DT>JOURNAL OF OPTIMIZATION THEORY AND APPLICATIONS
+<B><DD>	J OPTIMIZ THEORY APP
+</B><DT>JOURNAL OF OPTOELECTRONICS AND ADVANCED MATERIALS
+<B><DD>	J OPTOELECTRON ADV M
+</B><DT>JOURNAL OF ORAL AND MAXILLOFACIAL SURGERY
+<B><DD>	J ORAL MAXIL SURG
+</B><DT>JOURNAL OF ORAL PATHOLOGY & MEDICINE
+<B><DD>	J ORAL PATHOL MED
+</B><DT>JOURNAL OF ORAL REHABILITATION
+<B><DD>	J ORAL REHABIL
+</B><DT>JOURNAL OF ORAL SURGERY
+<B><DD>	J ORAL SURG
+</B><DT>JOURNAL OF ORGANIC CHEMISTRY
+<B><DD>	J ORG CHEM
+</B><DT>JOURNAL OF ORGANIZATIONAL BEHAVIOR
+<B><DD>	J ORGAN BEHAV
+</B><DT>JOURNAL OF ORGANIZATIONAL BEHAVIOR MANAGEMENT
+<B><DD>	J ORGAN BEHAV MANAGE
+</B><DT>JOURNAL OF ORGANIZATIONAL CHANGE MANAGEMENT
+<B><DD>	J ORGAN CHANGE MANAG
+</B><DT>JOURNAL OF ORGANIZATIONAL COMPUTING AND ELECTRONIC COMMERCE
+<B><DD>	J ORG COMP ELECT COM
+</B><DT>JOURNAL OF ORGANOMETALLIC CHEMISTRY
+<B><DD>	J ORGANOMET CHEM
+</B><DT>JOURNAL OF OROFACIAL PAIN
+<B><DD>	J OROFAC PAIN
+</B><DT>JOURNAL OF ORTHOMOLECULAR MEDICINE
+<B><DD>	J ORTHOMOL MED
+</B><DT>JOURNAL OF ORTHOMOLECULAR PSYCHIATRY
+<B><DD>	J ORTHOMOL MED
+</B><DT>JOURNAL OF ORTHOPAEDIC & SPORTS PHYSICAL THERAPY
+<B><DD>	J ORTHOP SPORT PHYS
+</B><DT>JOURNAL OF ORTHOPAEDIC RESEARCH
+<B><DD>	J ORTHOPAED RES
+</B><DT>JOURNAL OF ORTHOPAEDIC RHEUMATOLOGY
+<B><DD>	J ORTHOP RHEUMATOL
+</B><DT>JOURNAL OF ORTHOPAEDIC TRAUMA
+<B><DD>	J ORTHOP TRAUMA
+</B><DT>JOURNAL OF OTOLARYNGOLOGY
+<B><DD>	J OTOLARYNGOL
+</B><DT>JOURNAL OF PACIFIC HISTORY
+<B><DD>	J PAC HIST
+</B><DT>JOURNAL OF PAEDIATRICS AND CHILD HEALTH
+<B><DD>	J PAEDIATR CHILD H
+</B><DT>JOURNAL OF PAIN AND SYMPTOM MANAGEMENT
+<B><DD>	J PAIN SYMPTOM MANAG
+</B><DT>JOURNAL OF PALEOLIMNOLOGY
+<B><DD>	J PALEOLIMNOL
+</B><DT>JOURNAL OF PALEONTOLOGY
+<B><DD>	J PALEONTOL
+</B><DT>JOURNAL OF PALESTINE STUDIES
+<B><DD>	J PALESTINE STUD
+</B><DT>JOURNAL OF PALLIATIVE CARE
+<B><DD>	J PALLIATIVE CARE
+</B><DT>JOURNAL OF PARALLEL AND DISTRIBUTED COMPUTING
+<B><DD>	J PARALLEL DISTR COM
+</B><DT>JOURNAL OF PARAPSYCHOLOGY
+<B><DD>	J PARAPSYCHOL
+</B><DT>JOURNAL OF PARASITOLOGY
+<B><DD>	J PARASITOL
+</B><DT>JOURNAL OF PARENTERAL AND ENTERAL NUTRITION
+<B><DD>	JPEN-PARENTER ENTER
+</B><DT>JOURNAL OF PARENTERAL SCIENCE AND TECHNOLOGY
+<B><DD>	J PARENT SCI TECHN
+</B><DT>JOURNAL OF PATHOLOGY
+<B><DD>	J PATHOL
+</B><DT>JOURNAL OF PEACE RESEARCH
+<B><DD>	J PEACE RES
+</B><DT>JOURNAL OF PEASANT STUDIES
+<B><DD>	J PEASANT STUD
+</B><DT>JOURNAL OF PEDIATRIC ENDOCRINOLOGY
+<B><DD>	J PEDIATR ENDOCRINOL
+</B><DT>JOURNAL OF PEDIATRIC ENDOCRINOLOGY & METABOLISM
+<B><DD>	J PEDIATR ENDOCR MET
+</B><DT>JOURNAL OF PEDIATRIC GASTROENTEROLOGY AND NUTRITION
+<B><DD>	J PEDIATR GASTR NUTR
+</B><DT>JOURNAL OF PEDIATRIC HEMATOLOGY ONCOLOGY
+<B><DD>	J PEDIAT HEMATOL ONC
+</B><DT>JOURNAL OF PEDIATRIC OPHTHALMOLOGY & STRABISMUS
+<B><DD>	J PEDIAT OPHTH STRAB
+</B><DT>JOURNAL OF PEDIATRIC OPHTHALMOLOGY & STRABISMUS
+<B><DD>	J PEDIATR OPHTHALMOL
+</B><DT>JOURNAL OF PEDIATRIC ORTHOPAEDICS
+<B><DD>	J PEDIATR ORTHOPED
+</B><DT>JOURNAL OF PEDIATRIC ORTHOPAEDICS-PART B
+<B><DD>	J PEDIATR ORTHOP B
+</B><DT>JOURNAL OF PEDIATRIC PSYCHOLOGY
+<B><DD>	J PEDIATR PSYCHOL
+</B><DT>JOURNAL OF PEDIATRIC SURGERY
+<B><DD>	J PEDIATR SURG
+</B><DT>JOURNAL OF PEDIATRICS
+<B><DD>	J PEDIATR
+</B><DT>JOURNAL OF PEPTIDE RESEARCH
+<B><DD>	J PEPT RES
+</B><DT>JOURNAL OF PEPTIDE SCIENCE
+<B><DD>	J PEPT SCI
+</B><DT>JOURNAL OF PERINATAL & NEONATAL NURSING
+<B><DD>	J PERINAT NEONAT NUR
+</B><DT>JOURNAL OF PERINATAL MEDICINE
+<B><DD>	J PERINAT MED
+</B><DT>JOURNAL OF PERIODONTAL RESEARCH
+<B><DD>	J PERIODONTAL RES
+</B><DT>JOURNAL OF PERIODONTOLOGY
+<B><DD>	J PERIODONTOL
+</B><DT>JOURNAL OF PERSONAL & INTERPERSONAL LOSS
+<B><DD>	J PERS INTERPERS LOS
+</B><DT>JOURNAL OF PERSONALITY
+<B><DD>	J PERS
+</B><DT>JOURNAL OF PERSONALITY AND SOCIAL PSYCHOLOGY
+<B><DD>	J PERS SOC PSYCHOL
+</B><DT>JOURNAL OF PERSONALITY ASSESSMENT
+<B><DD>	J PERS ASSESS
+</B><DT>JOURNAL OF PERSONALITY DISORDERS
+<B><DD>	J PERS DISORD
+</B><DT>JOURNAL OF PESTICIDE SCIENCE
+<B><DD>	J PESTIC SCI
+</B><DT>JOURNAL OF PETROLEUM GEOLOGY
+<B><DD>	J PETROL GEOL
+</B><DT>JOURNAL OF PETROLEUM SCIENCE AND ENGINEERING
+<B><DD>	J PETROL SCI ENG
+</B><DT>JOURNAL OF PETROLEUM TECHNOLOGY
+<B><DD>	J PETROL TECHNOL
+</B><DT>JOURNAL OF PETROLOGY
+<B><DD>	J PETROL
+</B><DT>JOURNAL OF PHARMACEUTICAL AND BIOMEDICAL ANALYSIS
+<B><DD>	J PHARMACEUT BIOMED
+</B><DT>JOURNAL OF PHARMACEUTICAL SCIENCES
+<B><DD>	J PHARM SCI
+</B><DT>JOURNAL OF PHARMACOBIO-DYNAMICS
+<B><DD>	J PHARMACOBIO-DYNAM
+</B><DT>JOURNAL OF PHARMACOKINETICS AND BIOPHARMACEUTICS
+<B><DD>	J PHARMACOKINET BIOP
+</B><DT>JOURNAL OF PHARMACOLOGICAL AND TOXICOLOGICAL METHODS
+<B><DD>	J PHARMACOL TOXICOL
+</B><DT>JOURNAL OF PHARMACOLOGICAL METHODS
+<B><DD>	J PHARMACOL METHOD
+</B><DT>JOURNAL OF PHARMACOLOGY AND EXPERIMENTAL THERAPEUTICS
+<B><DD>	J PHARMACOL EXP THER
+</B><DT>JOURNAL OF PHARMACY AND PHARMACEUTICAL SCIENCES
+<B><DD>	J PHARM PHARM SCI
+</B><DT>JOURNAL OF PHARMACY AND PHARMACOLOGY
+<B><DD>	J PHARM PHARMACOL
+</B><DT>JOURNAL OF PHASE EQUILIBRIA
+<B><DD>	J PHASE EQUILIB
+</B><DT>JOURNAL OF PHENOMENOLOGICAL PSYCHOLOGY
+<B><DD>	J PHENOMENOL PSYCHOL
+</B><DT>JOURNAL OF PHILOSOPHICAL LOGIC
+<B><DD>	J PHILOS LOGIC
+</B><DT>JOURNAL OF PHILOSOPHY
+<B><DD>	J PHILOS
+</B><DT>JOURNAL OF PHILOSOPHY OF EDUCATION
+<B><DD>	J PHILOS EDUC
+</B><DT>JOURNAL OF PHONETICS
+<B><DD>	J PHONETICS
+</B><DT>JOURNAL OF PHOTOCHEMISTRY
+<B><DD>	J PHOTOCHEM
+</B><DT>JOURNAL OF PHOTOCHEMISTRY AND PHOTOBIOLOGY A-CHEMISTRY
+<B><DD>	J PHOTOCH PHOTOBIO A
+</B><DT>JOURNAL OF PHOTOCHEMISTRY AND PHOTOBIOLOGY B-BIOLOGY
+<B><DD>	J PHOTOCH PHOTOBIO B
+</B><DT>JOURNAL OF PHOTOGRAPHIC SCIENCE
+<B><DD>	J PHOTOGR SCI
+</B><DT>JOURNAL OF PHYCOLOGY
+<B><DD>	J PHYCOL
+</B><DT>JOURNAL OF PHYSICAL AND CHEMICAL REFERENCE DATA
+<B><DD>	J PHYS CHEM REF DATA
+</B><DT>JOURNAL OF PHYSICAL CHEMISTRY
+<B><DD>	J PHYS CHEM-US
+</B><DT>JOURNAL OF PHYSICAL CHEMISTRY A
+<B><DD>	J PHYS CHEM A
+</B><DT>JOURNAL OF PHYSICAL CHEMISTRY B
+<B><DD>	J PHYS CHEM B
+</B><DT>JOURNAL OF PHYSICAL OCEANOGRAPHY
+<B><DD>	J PHYS OCEANOGR
+</B><DT>JOURNAL OF PHYSICAL ORGANIC CHEMISTRY
+<B><DD>	J PHYS ORG CHEM
+</B><DT>JOURNAL OF PHYSICS A-MATHEMATICAL AND GENERAL
+<B><DD>	J PHYS A-MATH GEN
+</B><DT>JOURNAL OF PHYSICS AND CHEMISTRY OF SOLIDS
+<B><DD>	J PHYS CHEM SOLIDS
+</B><DT>JOURNAL OF PHYSICS B-ATOMIC MOLECULAR AND OPTICAL PHYSICS
+<B><DD>	J PHYS B-AT MOL OPT
+</B><DT>JOURNAL OF PHYSICS C-SOLID STATE PHYSICS
+<B><DD>	J PHYS C SOLID STATE
+</B><DT>JOURNAL OF PHYSICS D-APPLIED PHYSICS
+<B><DD>	J PHYS D APPL PHYS
+</B><DT>JOURNAL OF PHYSICS E-SCIENTIFIC INSTRUMENTS
+<B><DD>	J PHYS E SCI INSTRUM
+</B><DT>JOURNAL OF PHYSICS F-METAL PHYSICS
+<B><DD>	J PHYS F MET PHYS
+</B><DT>JOURNAL OF PHYSICS G-NUCLEAR AND PARTICLE PHYSICS
+<B><DD>	J PHYS G NUCL PARTIC
+</B><DT>JOURNAL OF PHYSICS OF THE EARTH
+<B><DD>	J PHYS EARTH
+</B><DT>JOURNAL OF PHYSICS-CONDENSED MATTER
+<B><DD>	J PHYS-CONDENS MAT
+</B><DT>JOURNAL OF PHYSIOLOGY AND BIOCHEMISTRY
+<B><DD>	J PHYSIOL BIOCHEM
+</B><DT>JOURNAL OF PHYSIOLOGY AND PHARMACOLOGY
+<B><DD>	J PHYSIOL PHARMACOL
+</B><DT>JOURNAL OF PHYSIOLOGY-LONDON
+<B><DD>	J PHYSIOL-LONDON
+</B><DT>JOURNAL OF PHYSIOLOGY-PARIS
+<B><DD>	J PHYSIOLOGY-PARIS
+</B><DT>JOURNAL OF PHYTOPATHOLOGY-PHYTOPATHOLOGISCHE ZEITSCHRIFT
+<B><DD>	J PHYTOPATHOL
+</B><DT>JOURNAL OF PIDGIN AND CREOLE LANGUAGES
+<B><DD>	J PIDGIN CREOLE LANG
+</B><DT>JOURNAL OF PINEAL RESEARCH
+<B><DD>	J PINEAL RES
+</B><DT>JOURNAL OF PIPELINES
+<B><DD>	J PIPELINE
+</B><DT>JOURNAL OF PLANKTON RESEARCH
+<B><DD>	J PLANKTON RES
+</B><DT>JOURNAL OF PLANNING EDUCATION AND RESEARCH
+<B><DD>	J PLAN EDUC RES
+</B><DT>JOURNAL OF PLANT BIOCHEMISTRY AND BIOTECHNOLOGY
+<B><DD>	J PLANT BIOCHEM BIOT
+</B><DT>JOURNAL OF PLANT GROWTH REGULATION
+<B><DD>	J PLANT GROWTH REGUL
+</B><DT>JOURNAL OF PLANT NUTRITION
+<B><DD>	J PLANT NUTR
+</B><DT>JOURNAL OF PLANT NUTRITION AND SOIL SCIENCE-ZEITSCHRIFT FUR PFLANZENERNAHRUNG UND BODENKUNDE
+<B><DD>	J PLANT NUTR SOIL SC
+</B><DT>JOURNAL OF PLANT PHYSIOLOGY
+<B><DD>	J PLANT PHYSIOL
+</B><DT>JOURNAL OF PLANT RESEARCH
+<B><DD>	J PLANT RES
+</B><DT>JOURNAL OF PLANTATION CROPS
+<B><DD>	J PLANTATION CROPS
+</B><DT>JOURNAL OF PLASMA PHYSICS
+<B><DD>	J PLASMA PHYS
+</B><DT>JOURNAL OF PLASTIC FILM & SHEETING
+<B><DD>	J PLAST FILM SHEET
+</B><DT>JOURNAL OF POLICY ANALYSIS AND MANAGEMENT
+<B><DD>	J POLICY ANAL MANAG
+</B><DT>JOURNAL OF POLICY MODELING
+<B><DD>	J POLICY MODEL
+</B><DT>JOURNAL OF POLITICAL & MILITARY SOCIOLOGY
+<B><DD>	J POLIT MIL SOCIOL
+</B><DT>JOURNAL OF POLITICAL ECONOMY
+<B><DD>	J POLIT ECON
+</B><DT>JOURNAL OF POLITICAL PHILOSOPHY
+<B><DD>	J POLIT PHILOS
+</B><DT>JOURNAL OF POLITICS
+<B><DD>	J POLIT
+</B><DT>JOURNAL OF POLYMER ENGINEERING
+<B><DD>	J POLYM ENG
+</B><DT>JOURNAL OF POLYMER MATERIALS
+<B><DD>	J POLYM MATER
+</B><DT>JOURNAL OF POLYMER RESEARCH-TAIWAN
+<B><DD>	J POLYM RES-TAIWAN
+</B><DT>JOURNAL OF POLYMER SCIENCE PART A-POLYMER CHEMISTRY
+<B><DD>	J POLYM SCI POL CHEM
+</B><DT>JOURNAL OF POLYMER SCIENCE PART B-POLYMER PHYSICS
+<B><DD>	J POLYM SCI POL PHYS
+</B><DT>JOURNAL OF POLYMER SCIENCE PART C-POLYMER LETTERS
+<B><DD>	J POLYM SCI POL LETT
+</B><DT>JOURNAL OF POLYMER SCIENCE-POLYMER SYMPOSIA
+<B><DD>	J POLYM SCI POL SYM
+</B><DT>JOURNAL OF POPULAR CULTURE
+<B><DD>	J POP CULT
+</B><DT>JOURNAL OF POPULAR FILM AND TELEVISION
+<B><DD>	J POP FILM TV
+</B><DT>JOURNAL OF POPULATION ECONOMICS
+<B><DD>	J POPUL ECON
+</B><DT>JOURNAL OF POROUS MATERIALS
+<B><DD>	J POROUS MAT
+</B><DT>JOURNAL OF POROUS MEDIA
+<B><DD>	J POROUS MEDIA
+</B><DT>JOURNAL OF PORPHYRINS AND PHTHALOCYANINES
+<B><DD>	J PORPHYR PHTHALOCYA
+</B><DT>JOURNAL OF PORTFOLIO MANAGEMENT
+<B><DD>	J PORTFOLIO MANAGE
+</B><DT>JOURNAL OF POST KEYNESIAN ECONOMICS
+<B><DD>	J POST KEYNESIAN EC
+</B><DT>JOURNAL OF POWER SOURCES
+<B><DD>	J POWER SOURCES
+</B><DT>JOURNAL OF PRAGMATICS
+<B><DD>	J PRAGMATICS
+</B><DT>JOURNAL OF PRE-RAPHAELITE STUDIES-NEW SERIES
+<B><DD>	J PRE-RAPHAELITE ST
+</B><DT>JOURNAL OF PRESBYTERIAN HISTORY
+<B><DD>	J PRESBYTERIAN HIST
+</B><DT>JOURNAL OF PRESSURE VESSEL TECHNOLOGY-TRANSACTIONS OF THE ASME
+<B><DD>	J PRESS VESS-T ASME
+</B><DT>JOURNAL OF PROCESS CONTROL
+<B><DD>	J PROCESS CONTR
+</B><DT>JOURNAL OF PRODUCT INNOVATION MANAGEMENT
+<B><DD>	J PROD INNOVAT MANAG
+</B><DT>JOURNAL OF PRODUCTION AGRICULTURE
+<B><DD>	J PROD AGRIC
+</B><DT>JOURNAL OF PRODUCTIVITY ANALYSIS
+<B><DD>	J PROD ANAL
+</B><DT>JOURNAL OF PRODUCTS LIABILITY
+<B><DD>	J PROD LIABILITY
+</B><DT>JOURNAL OF PROFESSIONAL ISSUES IN ENGINEERING EDUCATION AND PRACTICE
+<B><DD>	J PROF ISS ENG ED PR
+</B><DT>JOURNAL OF PROFESSIONAL ISSUES IN ENGINEERING-ASCE
+<B><DD>	J PROF ISS ENG-ASCE
+</B><DT>JOURNAL OF PROFESSIONAL NURSING
+<B><DD>	J PROF NURS
+</B><DT>JOURNAL OF PROGRAMMING LANGUAGES
+<B><DD>	J PROGRAM LANG
+</B><DT>JOURNAL OF PROPULSION AND POWER
+<B><DD>	J PROPUL POWER
+</B><DT>JOURNAL OF PROSTHETIC DENTISTRY
+<B><DD>	J PROSTHET DENT
+</B><DT>JOURNAL OF PROSTHETICS AND ORTHOTICS
+<B><DD>	J PROSTHET ORTHOT
+</B><DT>JOURNAL OF PROTEIN CHEMISTRY
+<B><DD>	J PROTEIN CHEM
+</B><DT>JOURNAL OF PROTOZOOLOGY
+<B><DD>	J PROTOZOOL
+</B><DT>JOURNAL OF PROTOZOOLOGY RESEARCH
+<B><DD>	J PROTOZOOL RES
+</B><DT>JOURNAL OF PSYCHIATRIC RESEARCH
+<B><DD>	J PSYCHIAT RES
+</B><DT>JOURNAL OF PSYCHIATRIC TREATMENT AND EVALUATION
+<B><DD>	J PSYCHIAT TREAT EV
+</B><DT>JOURNAL OF PSYCHIATRY & NEUROSCIENCE
+<B><DD>	J PSYCHIATR NEUROSCI
+</B><DT>JOURNAL OF PSYCHOACTIVE DRUGS
+<B><DD>	J PSYCHOACTIVE DRUGS
+</B><DT>JOURNAL OF PSYCHOEDUCATIONAL ASSESSMENT
+<B><DD>	J PSYCHOEDUC ASSESS
+</B><DT>JOURNAL OF PSYCHOHISTORY
+<B><DD>	J PSYCHOHIST
+</B><DT>JOURNAL OF PSYCHOLINGUISTIC RESEARCH
+<B><DD>	J PSYCHOLINGUIST RES
+</B><DT>JOURNAL OF PSYCHOLOGY
+<B><DD>	J PSYCHOL
+</B><DT>JOURNAL OF PSYCHOLOGY AND THEOLOGY
+<B><DD>	J PSYCHOL THEOL
+</B><DT>JOURNAL OF PSYCHOPATHOLOGY AND BEHAVIORAL ASSESSMENT
+<B><DD>	J PSYCHOPATHOL BEHAV
+</B><DT>JOURNAL OF PSYCHOPHARMACOLOGY
+<B><DD>	J PSYCHOPHARMACOL
+</B><DT>JOURNAL OF PSYCHOPHYSIOLOGY
+<B><DD>	J PSYCHOPHYSIOL
+</B><DT>JOURNAL OF PSYCHOSOCIAL ONCOLOGY
+<B><DD>	J PSYCHOSOC ONCOL
+</B><DT>JOURNAL OF PSYCHOSOMATIC OBSTETRICS AND GYNECOLOGY
+<B><DD>	J PSYCHOSOM OBST GYN
+</B><DT>JOURNAL OF PSYCHOSOMATIC RESEARCH
+<B><DD>	J PSYCHOSOM RES
+</B><DT>JOURNAL OF PSYCHOTHERAPY INTEGRATION
+<B><DD>	J PSYCHOTHER INTEGR
+</B><DT>JOURNAL OF PUBLIC ECONOMICS
+<B><DD>	J PUBLIC ECON
+</B><DT>JOURNAL OF PUBLIC HEALTH DENTISTRY
+<B><DD>	J PUBLIC HEALTH DENT
+</B><DT>JOURNAL OF PUBLIC HEALTH MEDICINE
+<B><DD>	J PUBLIC HEALTH MED
+</B><DT>JOURNAL OF PUBLIC HEALTH POLICY
+<B><DD>	J PUBLIC HEALTH POL
+</B><DT>JOURNAL OF PUBLIC POLICY & MARKETING
+<B><DD>	J PUBLIC POLICY MARK
+</B><DT>JOURNAL OF PULP AND PAPER SCIENCE
+<B><DD>	J PULP PAP SCI
+</B><DT>JOURNAL OF PURE AND APPLIED ALGEBRA
+<B><DD>	J PURE APPL ALGEBRA
+</B><DT>JOURNAL OF QUALITY TECHNOLOGY
+<B><DD>	J QUAL TECHNOL
+</B><DT>JOURNAL OF QUANTITATIVE CRIMINOLOGY
+<B><DD>	J QUANT CRIMINOL
+</B><DT>JOURNAL OF QUANTITATIVE SPECTROSCOPY & RADIATIVE TRANSFER
+<B><DD>	J QUANT SPECTROSC RA
+</B><DT>JOURNAL OF QUATERNARY SCIENCE
+<B><DD>	J QUATERNARY SCI
+</B><DT>JOURNAL OF RADIATION RESEARCH
+<B><DD>	J RADIAT RES
+</B><DT>JOURNAL OF RADIOANALYTICAL AND NUCLEAR CHEMISTRY
+<B><DD>	J RADIOANAL NUCL CH
+</B><DT>JOURNAL OF RADIOANALYTICAL AND NUCLEAR CHEMISTRY-ARTICLES
+<B><DD>	J RADIOAN NUCL CH AR
+</B><DT>JOURNAL OF RADIOANALYTICAL AND NUCLEAR CHEMISTRY-LETTERS
+<B><DD>	J RADIOAN NUCL CH LE
+</B><DT>JOURNAL OF RADIOANALYTICAL CHEMISTRY
+<B><DD>	J RADIOANAL CHEM
+</B><DT>JOURNAL OF RAMAN SPECTROSCOPY
+<B><DD>	J RAMAN SPECTROSC
+</B><DT>JOURNAL OF RANGE MANAGEMENT
+<B><DD>	J RANGE MANAGE
+</B><DT>JOURNAL OF RAPID METHODS AND AUTOMATION IN MICROBIOLOGY
+<B><DD>	J RAPID METH AUT MIC
+</B><DT>JOURNAL OF RAPTOR RESEARCH
+<B><DD>	J RAPTOR RES
+</B><DT>JOURNAL OF RARE EARTHS
+<B><DD>	J RARE EARTH
+</B><DT>JOURNAL OF READING
+<B><DD>	J READING
+</B><DT>JOURNAL OF READING BEHAVIOR
+<B><DD>	J READING BEHAV
+</B><DT>JOURNAL OF REAL ESTATE FINANCE AND ECONOMICS
+<B><DD>	J REAL ESTATE FINANC
+</B><DT>JOURNAL OF REAL ESTATE TAXATION
+<B><DD>	J REAL ESTATE TAX
+</B><DT>JOURNAL OF RECEPTOR AND SIGNAL TRANSDUCTION RESEARCH
+<B><DD>	J RECEPT SIGNAL TR R
+</B><DT>JOURNAL OF RECEPTOR RESEARCH
+<B><DD>	J RECEPTOR RES
+</B><DT>JOURNAL OF RECONSTRUCTIVE MICROSURGERY
+<B><DD>	J RECONSTR MICROSURG
+</B><DT>JOURNAL OF REFRACTIVE AND CORNEAL SURGERY
+<B><DD>	J REFRACT CORNEAL S
+</B><DT>JOURNAL OF REFRACTIVE SURGERY
+<B><DD>	J REFRACT SURG
+</B><DT>JOURNAL OF REGIONAL SCIENCE
+<B><DD>	J REGIONAL SCI
+</B><DT>JOURNAL OF REGULATORY ECONOMICS
+<B><DD>	J REGUL ECON
+</B><DT>JOURNAL OF REHABILITATION
+<B><DD>	J REHABIL
+</B><DT>JOURNAL OF REHABILITATION RESEARCH AND DEVELOPMENT
+<B><DD>	J REHABIL RES DEV
+</B><DT>JOURNAL OF REINFORCED PLASTICS AND COMPOSITES
+<B><DD>	J REINF PLAST COMP
+</B><DT>JOURNAL OF RELIGION
+<B><DD>	J RELIG
+</B><DT>JOURNAL OF RELIGION & HEALTH
+<B><DD>	J RELIG HEALTH
+</B><DT>JOURNAL OF RELIGIOUS ETHICS
+<B><DD>	J RELIG ETHICS
+</B><DT>JOURNAL OF RELIGIOUS HISTORY
+<B><DD>	J RELIG HIST
+</B><DT>JOURNAL OF REPRODUCTION AND FERTILITY
+<B><DD>	J REPROD FERTIL
+</B><DT>JOURNAL OF REPRODUCTIVE AND INFANT PSYCHOLOGY
+<B><DD>	J REPROD INFANT PSYC
+</B><DT>JOURNAL OF REPRODUCTIVE IMMUNOLOGY
+<B><DD>	J REPROD IMMUNOL
+</B><DT>JOURNAL OF REPRODUCTIVE MEDICINE
+<B><DD>	J REPROD MED
+</B><DT>JOURNAL OF RESEARCH AND PRACTICE IN INFORMATION TECHNOLOGY
+<B><DD>	J RES PRACT INF TECH
+</B><DT>JOURNAL OF RESEARCH IN CRIME AND DELINQUENCY
+<B><DD>	J RES CRIME DELINQ
+</B><DT>JOURNAL OF RESEARCH IN MUSIC EDUCATION
+<B><DD>	J RES MUSIC EDUC
+</B><DT>JOURNAL OF RESEARCH IN PERSONALITY
+<B><DD>	J RES PERS
+</B><DT>JOURNAL OF RESEARCH IN SCIENCE TEACHING
+<B><DD>	J RES SCI TEACH
+</B><DT>JOURNAL OF RESEARCH OF THE NATIONAL BUREAU OF STANDARDS
+<B><DD>	J RES NAT BUR STAND
+</B><DT>JOURNAL OF RESEARCH OF THE NATIONAL BUREAU OF STANDARDS
+<B><DD>	J RES NATL INST STAN
+</B><DT>JOURNAL OF RESEARCH OF THE NATIONAL INSTITUTE OF STANDARDS AND TECHNOLOGY
+<B><DD>	J RES NATL INST STAN
+</B><DT>JOURNAL OF RESEARCH ON ADOLESCENCE
+<B><DD>	J RES ADOLESCENCE
+</B><DT>JOURNAL OF RETAILING
+<B><DD>	J RETAILING
+</B><DT>JOURNAL OF RHEOLOGY
+<B><DD>	J RHEOL
+</B><DT>JOURNAL OF RHEUMATOLOGY
+<B><DD>	J RHEUMATOL
+</B><DT>JOURNAL OF RISK AND INSURANCE
+<B><DD>	J RISK INSUR
+</B><DT>JOURNAL OF RISK AND UNCERTAINTY
+<B><DD>	J RISK UNCERTAINTY
+</B><DT>JOURNAL OF ROBOTIC SYSTEMS
+<B><DD>	J ROBOTIC SYST
+</B><DT>JOURNAL OF ROMAN STUDIES
+<B><DD>	J ROMAN STUD
+</B><DT>JOURNAL OF RURAL DEVELOPMENT
+<B><DD>	J RURAL DEVELOP
+</B><DT>JOURNAL OF RURAL HEALTH
+<B><DD>	J RURAL HEALTH
+</B><DT>JOURNAL OF RURAL STUDIES
+<B><DD>	J RURAL STUD
+</B><DT>JOURNAL OF RUSSIAN LASER RESEARCH
+<B><DD>	J RUSS LASER RES
+</B><DT>JOURNAL OF SAFETY RESEARCH
+<B><DD>	J SAFETY RES
+</B><DT>JOURNAL OF SCHOLARLY PUBLISHING
+<B><DD>	J SCHOLARLY PUBL
+</B><DT>JOURNAL OF SCHOOL HEALTH
+<B><DD>	J SCHOOL HEALTH
+</B><DT>JOURNAL OF SCHOOL PSYCHOLOGY
+<B><DD>	J SCHOOL PSYCHOL
+</B><DT>JOURNAL OF SCIENTIFIC & INDUSTRIAL RESEARCH
+<B><DD>	J SCI IND RES INDIA
+</B><DT>JOURNAL OF SEA RESEARCH
+<B><DD>	J SEA RES
+</B><DT>JOURNAL OF SEDIMENTARY PETROLOGY
+<B><DD>	J SEDIMENT PETROL
+</B><DT>JOURNAL OF SEDIMENTARY RESEARCH
+<B><DD>	J SEDIMENT RES
+</B><DT>JOURNAL OF SEDIMENTARY RESEARCH SECTION A-SEDIMENTARY PETROLOGY AND PROCESSES
+<B><DD>	J SEDIMENT RES A
+</B><DT>JOURNAL OF SEDIMENTARY RESEARCH SECTION B-STRATIGRAPHY AND GLOBAL STUDIES
+<B><DD>	J SEDIMENT RES B
+</B><DT>JOURNAL OF SEED TECHNOLOGY
+<B><DD>	J SEED TECHNOL
+</B><DT>JOURNAL OF SEISMIC EXPLORATION
+<B><DD>	J SEISM EXPLOR
+</B><DT>JOURNAL OF SEISMOLOGY
+<B><DD>	J SEISMOL
+</B><DT>JOURNAL OF SEMITIC STUDIES
+<B><DD>	J SEMITIC STUD
+</B><DT>JOURNAL OF SENSORY STUDIES
+<B><DD>	J SENS STUD
+</B><DT>JOURNAL OF SEX & MARITAL THERAPY
+<B><DD>	J SEX MARITAL THER
+</B><DT>JOURNAL OF SEX EDUCATION & THERAPY
+<B><DD>	J SEX EDUC THER
+</B><DT>JOURNAL OF SEX RESEARCH
+<B><DD>	J SEX RES
+</B><DT>JOURNAL OF SHELLFISH RESEARCH
+<B><DD>	J SHELLFISH RES
+</B><DT>JOURNAL OF SHIP RESEARCH
+<B><DD>	J SHIP RES
+</B><DT>JOURNAL OF SHOULDER AND ELBOW SURGERY
+<B><DD>	J SHOULDER ELB SURG
+</B><DT>JOURNAL OF SLEEP RESEARCH
+<B><DD>	J SLEEP RES
+</B><DT>JOURNAL OF SMALL ANIMAL PRACTICE
+<B><DD>	J SMALL ANIM PRACT
+</B><DT>JOURNAL OF SMALL BUSINESS MANAGEMENT
+<B><DD>	J SMALL BUS MANAGE
+</B><DT>JOURNAL OF SOCIAL AND CLINICAL PSYCHOLOGY
+<B><DD>	J SOC CLIN PSYCHOL
+</B><DT>JOURNAL OF SOCIAL AND EVOLUTIONARY SYSTEMS
+<B><DD>	J SOC EVOL SYST
+</B><DT>JOURNAL OF SOCIAL AND PERSONAL RELATIONSHIPS
+<B><DD>	J SOC PERS RELAT
+</B><DT>JOURNAL OF SOCIAL BEHAVIOR AND PERSONALITY
+<B><DD>	J SOC BEHAV PERS
+</B><DT>JOURNAL OF SOCIAL DISTRESS AND THE HOMELESS
+<B><DD>	J SOC DISTRESS HOMEL
+</B><DT>JOURNAL OF SOCIAL HISTORY
+<B><DD>	J SOC HIST
+</B><DT>JOURNAL OF SOCIAL ISSUES
+<B><DD>	J SOC ISSUES
+</B><DT>JOURNAL OF SOCIAL POLICY
+<B><DD>	J SOC POLICY
+</B><DT>JOURNAL OF SOCIAL POLITICAL AND ECONOMIC STUDIES
+<B><DD>	J SOC POLIT ECON ST
+</B><DT>JOURNAL OF SOCIAL PSYCHOLOGY
+<B><DD>	J SOC PSYCHOL
+</B><DT>JOURNAL OF SOCIAL SERVICE RESEARCH
+<B><DD>	J SOC SERV RES
+</B><DT>JOURNAL OF SOCIAL WORK EDUCATION
+<B><DD>	J SOC WORK EDUC
+</B><DT>JOURNAL OF SOCIAL WORK PRACTICE
+<B><DD>	J SOC WORK PRACT
+</B><DT>JOURNAL OF SOCIOLOGY
+<B><DD>	J SOCIOL
+</B><DT>JOURNAL OF SOCIOLOGY AND SOCIAL WELFARE
+<B><DD>	J SOCIOL SOC WELFARE
+</B><DT>JOURNAL OF SOFTWARE MAINTENANCE-RESEARCH AND PRACTICE
+<B><DD>	J SOFTW MAINT-RES PR
+</B><DT>JOURNAL OF SOIL AND WATER CONSERVATION
+<B><DD>	J SOIL WATER CONSERV
+</B><DT>JOURNAL OF SOIL CONTAMINATION
+<B><DD>	J SOIL CONTAM
+</B><DT>JOURNAL OF SOIL SCIENCE
+<B><DD>	J SOIL SCI
+</B><DT>JOURNAL OF SOL-GEL SCIENCE AND TECHNOLOGY
+<B><DD>	J SOL-GEL SCI TECHN
+</B><DT>JOURNAL OF SOLAR ENERGY ENGINEERING-TRANSACTIONS OF THE ASME
+<B><DD>	J SOL ENERG-T ASME
+</B><DT>JOURNAL OF SOLID STATE CHEMISTRY
+<B><DD>	J SOLID STATE CHEM
+</B><DT>JOURNAL OF SOLID STATE ELECTROCHEMISTRY
+<B><DD>	J SOLID STATE ELECTR
+</B><DT>JOURNAL OF SOLUTION CHEMISTRY
+<B><DD>	J SOLUTION CHEM
+</B><DT>JOURNAL OF SOUND AND VIBRATION
+<B><DD>	J SOUND VIB
+</B><DT>JOURNAL OF SOUTH AMERICAN EARTH SCIENCES
+<B><DD>	J S AM EARTH SCI
+</B><DT>JOURNAL OF SOUTHEAST ASIAN EARTH SCIENCES
+<B><DD>	J SOUTHE ASIAN EARTH
+</B><DT>JOURNAL OF SOUTHEAST ASIAN STUDIES
+<B><DD>	J SOUTHE ASIAN STUD
+</B><DT>JOURNAL OF SOUTHERN AFRICAN STUDIES
+<B><DD>	J S AFR STUD
+</B><DT>JOURNAL OF SOUTHERN HISTORY
+<B><DD>	J SOUTHERN HIST
+</B><DT>JOURNAL OF SPACECRAFT AND ROCKETS
+<B><DD>	J SPACECRAFT ROCKETS
+</B><DT>JOURNAL OF SPECIAL EDUCATION
+<B><DD>	J SPEC EDUC
+</B><DT>JOURNAL OF SPEECH AND HEARING DISORDERS
+<B><DD>	J SPEECH HEAR DISORD
+</B><DT>JOURNAL OF SPEECH AND HEARING RESEARCH
+<B><DD>	J SPEECH HEAR RES
+</B><DT>JOURNAL OF SPEECH LANGUAGE AND HEARING RESEARCH
+<B><DD>	J SPEECH LANG HEAR R
+</B><DT>JOURNAL OF SPINAL DISORDERS
+<B><DD>	J SPINAL DISORD
+</B><DT>JOURNAL OF SPORT & EXERCISE PSYCHOLOGY
+<B><DD>	J SPORT EXERCISE PSY
+</B><DT>JOURNAL OF SPORT HISTORY
+<B><DD>	J SPORT HIST
+</B><DT>JOURNAL OF SPORT MANAGEMENT
+<B><DD>	J SPORT MANAGE
+</B><DT>JOURNAL OF SPORT REHABILITATION
+<B><DD>	J SPORT REHABIL
+</B><DT>JOURNAL OF SPORTS CHIROPRACTIC & REHABILITATION
+<B><DD>	J SPORT CHIROPR REH
+</B><DT>JOURNAL OF SPORTS MEDICINE AND PHYSICAL FITNESS
+<B><DD>	J SPORT MED PHYS FIT
+</B><DT>JOURNAL OF SPORTS SCIENCES
+<B><DD>	J SPORT SCI
+</B><DT>JOURNAL OF SPORTS TRAUMATOLOGY AND RELATED RESEARCH
+<B><DD>	J SPORT TRAUMATOL
+</B><DT>JOURNAL OF STATISTICAL COMPUTATION AND SIMULATION
+<B><DD>	J STAT COMPUT SIM
+</B><DT>JOURNAL OF STATISTICAL PHYSICS
+<B><DD>	J STAT PHYS
+</B><DT>JOURNAL OF STATISTICAL PLANNING AND INFERENCE
+<B><DD>	J STAT PLAN INFER
+</B><DT>JOURNAL OF STEROID BIOCHEMISTRY AND MOLECULAR BIOLOGY
+<B><DD>	J STEROID BIOCHEM
+</B><DT>JOURNAL OF STONE DISEASE
+<B><DD>	J STONE DIS
+</B><DT>JOURNAL OF STORED PRODUCTS RESEARCH
+<B><DD>	J STORED PROD RES
+</B><DT>JOURNAL OF STRAIN ANALYSIS FOR ENGINEERING DESIGN
+<B><DD>	J STRAIN ANAL ENG
+</B><DT>JOURNAL OF STRATEGIC INFORMATION SYSTEMS
+<B><DD>	J STRATEGIC INF SYST
+</B><DT>JOURNAL OF STRATEGIC STUDIES
+<B><DD>	J STRATEGIC STUD
+</B><DT>JOURNAL OF STRENGTH AND CONDITIONING RESEARCH
+<B><DD>	J STRENGTH COND RES
+</B><DT>JOURNAL OF STRUCTURAL BIOLOGY
+<B><DD>	J STRUCT BIOL
+</B><DT>JOURNAL OF STRUCTURAL CHEMISTRY
+<B><DD>	J STRUCT CHEM+
+</B><DT>JOURNAL OF STRUCTURAL ENGINEERING-ASCE
+<B><DD>	J STRUCT ENG-ASCE
+</B><DT>JOURNAL OF STRUCTURAL GEOLOGY
+<B><DD>	J STRUCT GEOL
+</B><DT>JOURNAL OF STRUCTURAL MECHANICS
+<B><DD>	J STRUCT MECH
+</B><DT>JOURNAL OF STUDIES ON ALCOHOL
+<B><DD>	J STUD ALCOHOL
+</B><DT>JOURNAL OF SUBMICROSCOPIC CYTOLOGY AND PATHOLOGY
+<B><DD>	J SUBMICR CYTOL PATH
+</B><DT>JOURNAL OF SUBSTANCE ABUSE
+<B><DD>	J SUBST ABUSE
+</B><DT>JOURNAL OF SUBSTANCE ABUSE TREATMENT
+<B><DD>	J SUBST ABUSE TREAT
+</B><DT>JOURNAL OF SUPERCOMPUTING
+<B><DD>	J SUPERCOMPUT
+</B><DT>JOURNAL OF SUPERCONDUCTIVITY
+<B><DD>	J SUPERCOND
+</B><DT>JOURNAL OF SUPERCRITICAL FLUIDS
+<B><DD>	J SUPERCRIT FLUID
+</B><DT>JOURNAL OF SUPRAMOLECULAR STRUCTURE AND CELLULAR BIOCHEMISTRY
+<B><DD>	J SUPRAMOL STR CELL
+</B><DT>JOURNAL OF SURFACTANTS AND DETERGENTS
+<B><DD>	J SURFACTANTS DETERG
+</B><DT>JOURNAL OF SURGICAL ONCOLOGY
+<B><DD>	J SURG ONCOL
+</B><DT>JOURNAL OF SURGICAL RESEARCH
+<B><DD>	J SURG RES
+</B><DT>JOURNAL OF SURVEYING ENGINEERING-ASCE
+<B><DD>	J SURV ENG-ASCE
+</B><DT>JOURNAL OF SUSTAINABLE AGRICULTURE
+<B><DD>	J SUSTAIN AGR
+</B><DT>JOURNAL OF SYMBOLIC COMPUTATION
+<B><DD>	J SYMB COMPUT
+</B><DT>JOURNAL OF SYMBOLIC LOGIC
+<B><DD>	J SYMBOLIC LOGIC
+</B><DT>JOURNAL OF SYNCHROTRON RADIATION
+<B><DD>	J SYNCHROTRON RADIAT
+</B><DT>JOURNAL OF SYNTHETIC ORGANIC CHEMISTRY JAPAN
+<B><DD>	J SYN ORG CHEM JPN
+</B><DT>JOURNAL OF SYSTEMS AND SOFTWARE
+<B><DD>	J SYST SOFTWARE
+</B><DT>JOURNAL OF SYSTEMS ARCHITECTURE
+<B><DD>	J SYST ARCHITECT
+</B><DT>JOURNAL OF SYSTEMS ENGINEERING
+<B><DD>	J SYST ENG
+</B><DT>JOURNAL OF SYSTEMS MANAGEMENT
+<B><DD>	J SYST MANAGE
+</B><DT>JOURNAL OF TAXATION
+<B><DD>	J TAX
+</B><DT>JOURNAL OF TEACHER EDUCATION
+<B><DD>	J TEACH EDUC
+</B><DT>JOURNAL OF TEACHING IN PHYSICAL EDUCATION
+<B><DD>	J TEACH PHYS EDUC
+</B><DT>JOURNAL OF TECHNICAL TOPICS IN CIVIL ENGINEERING-ASCE
+<B><DD>	J TECH TOP CIV-ASCE
+</B><DT>JOURNAL OF TECHNICAL WRITING AND COMMUNICATION
+<B><DD>	J TECH WRIT COMMUN
+</B><DT>JOURNAL OF TECHNOLOGY TRANSFER
+<B><DD>	J TECHNOL TRANSFER
+</B><DT>JOURNAL OF TELECOMMUNICATION NETWORKS
+<B><DD>	J TELECOMMUN NETWORK
+</B><DT>JOURNAL OF TELEMEDICINE AND TELECARE
+<B><DD>	J TELEMED TELECARE
+</B><DT>JOURNAL OF TERRAMECHANICS
+<B><DD>	J TERRAMECHANICS
+</B><DT>JOURNAL OF TESTING AND EVALUATION
+<B><DD>	J TEST EVAL
+</B><DT>JOURNAL OF TEXTURE STUDIES
+<B><DD>	J TEXTURE STUD
+</B><DT>JOURNAL OF THE ACADEMY OF MARKETING SCIENCE
+<B><DD>	J ACAD MARKET SCI
+</B><DT>JOURNAL OF THE ACM
+<B><DD>	J ACM
+</B><DT>JOURNAL OF THE ACOUSTICAL SOCIETY OF AMERICA
+<B><DD>	J ACOUST SOC AM
+</B><DT>JOURNAL OF THE AGRICULTURAL ASSOCIATION OF CHINA
+<B><DD>	J AGR ASSOC CHINA
+</B><DT>JOURNAL OF THE AGRICULTURAL CHEMICAL SOCIETY OF JAPAN
+<B><DD>	J AGR CHEM SOC JPN
+</B><DT>JOURNAL OF THE AGRICULTURAL CHEMICAL SOCIETY OF JAPAN
+<B><DD>	NIPPON NOGEIK KAISHI
+</B><DT>JOURNAL OF THE AGRICULTURAL SOCIETY OF TRINIDAD & TOBAGO
+<B><DD>	J AGR SOC TRINID TOB
+</B><DT>JOURNAL OF THE AIR & WASTE MANAGEMENT ASSOCIATION
+<B><DD>	J AIR WASTE MANAGE
+</B><DT>JOURNAL OF THE AIR POLLUTION CONTROL ASSOCIATION
+<B><DD>	JAPCA J AIR WASTE MA
+</B><DT>JOURNAL OF THE AMERICAN ACADEMY OF CHILD AND ADOLESCENT PSYCHIATRY
+<B><DD>	J AM ACAD CHILD PSY
+</B><DT>JOURNAL OF THE AMERICAN ACADEMY OF DERMATOLOGY
+<B><DD>	J AM ACAD DERMATOL
+</B><DT>JOURNAL OF THE AMERICAN ACADEMY OF PSYCHIATRY AND THE LAW
+<B><DD>	J AM ACAD PSYCHIATRY
+</B><DT>JOURNAL OF THE AMERICAN ACADEMY OF RELIGION
+<B><DD>	J AM ACAD RELIG
+</B><DT>JOURNAL OF THE AMERICAN ANIMAL HOSPITAL ASSOCIATION
+<B><DD>	J AM ANIM HOSP ASSOC
+</B><DT>JOURNAL OF THE AMERICAN ASSOCIATION OF GYNECOLOGIC LAPAROSCOPISTS
+<B><DD>	J AM ASSOC GYN LAP
+</B><DT>JOURNAL OF THE AMERICAN CERAMIC SOCIETY
+<B><DD>	J AM CERAM SOC
+</B><DT>JOURNAL OF THE AMERICAN CHEMICAL SOCIETY
+<B><DD>	J AM CHEM SOC
+</B><DT>JOURNAL OF THE AMERICAN COLLEGE OF CARDIOLOGY
+<B><DD>	J AM COLL CARDIOL
+</B><DT>JOURNAL OF THE AMERICAN COLLEGE OF NUTRITION
+<B><DD>	J AM COLL NUTR
+</B><DT>JOURNAL OF THE AMERICAN COLLEGE OF SURGEONS
+<B><DD>	J AM COLL SURGEONS
+</B><DT>JOURNAL OF THE AMERICAN COLLEGE OF TOXICOLOGY
+<B><DD>	J AM COLL TOXICOL
+</B><DT>JOURNAL OF THE AMERICAN CONCRETE INSTITUTE
+<B><DD>	J AM CONCRETE I
+</B><DT>JOURNAL OF THE AMERICAN DENTAL ASSOCIATION
+<B><DD>	J AM DENT ASSOC
+</B><DT>JOURNAL OF THE AMERICAN DIETETIC ASSOCIATION
+<B><DD>	J AM DIET ASSOC
+</B><DT>JOURNAL OF THE AMERICAN GERIATRICS SOCIETY
+<B><DD>	J AM GERIATR SOC
+</B><DT>JOURNAL OF THE AMERICAN HELICOPTER SOCIETY
+<B><DD>	J AM HELICOPTER SOC
+</B><DT>JOURNAL OF THE AMERICAN INSTITUTE FOR CONSERVATION
+<B><DD>	J AM INST CONSERV
+</B><DT>JOURNAL OF THE AMERICAN LEATHER CHEMISTS ASSOCIATION
+<B><DD>	J AM LEATHER CHEM AS
+</B><DT>JOURNAL OF THE AMERICAN MATHEMATICAL SOCIETY
+<B><DD>	J AM MATH SOC
+</B><DT>JOURNAL OF THE AMERICAN MEDICAL INFORMATICS ASSOCIATION
+<B><DD>	J AM MED INFORM ASSN
+</B><DT>JOURNAL OF THE AMERICAN MEDICAL TECHNOLOGISTS
+<B><DD>	J AM MED TECHNOL
+</B><DT>JOURNAL OF THE AMERICAN MOSQUITO CONTROL ASSOCIATION
+<B><DD>	J AM MOSQUITO CONTR
+</B><DT>JOURNAL OF THE AMERICAN MUSICAL INSTRUMENT SOCIETY
+<B><DD>	J AM MUSIC INSTRUM S
+</B><DT>JOURNAL OF THE AMERICAN MUSICOLOGICAL SOCIETY
+<B><DD>	J AM MUSIC SOC
+</B><DT>JOURNAL OF THE AMERICAN OIL CHEMISTS SOCIETY
+<B><DD>	J AM OIL CHEM SOC
+</B><DT>JOURNAL OF THE AMERICAN OPTOMETRIC ASSOCIATION
+<B><DD>	J AM OPTOM ASSOC
+</B><DT>JOURNAL OF THE AMERICAN ORIENTAL SOCIETY
+<B><DD>	J AM ORIENTAL SOC
+</B><DT>JOURNAL OF THE AMERICAN OSTEOPATHIC ASSOCIATION
+<B><DD>	J AM OSTEOPATH ASSOC
+</B><DT>JOURNAL OF THE AMERICAN PLANNING ASSOCIATION
+<B><DD>	J AM PLANN ASSOC
+</B><DT>JOURNAL OF THE AMERICAN PODIATRIC MEDICAL ASSOCIATION
+<B><DD>	J AM PODIAT MED ASSN
+</B><DT>JOURNAL OF THE AMERICAN PODIATRY ASSOCIATION
+<B><DD>	J AM POD ASSOC
+</B><DT>JOURNAL OF THE AMERICAN PSYCHOANALYTIC ASSOCIATION
+<B><DD>	J AM PSYCHOANAL ASS
+</B><DT>JOURNAL OF THE AMERICAN REAL ESTATE AND URBAN ECONOMICS ASSOCIATION
+<B><DD>	J AM REAL ESTATE URB
+</B><DT>JOURNAL OF THE AMERICAN SOCIETY FOR HORTICULTURAL SCIENCE
+<B><DD>	J AM SOC HORTIC SCI
+</B><DT>JOURNAL OF THE AMERICAN SOCIETY FOR INFORMATION SCIENCE
+<B><DD>	J AM SOC INFORM SCI
+</B><DT>JOURNAL OF THE AMERICAN SOCIETY FOR MASS SPECTROMETRY
+<B><DD>	J AM SOC MASS SPECTR
+</B><DT>JOURNAL OF THE AMERICAN SOCIETY FOR PSYCHICAL RESEARCH
+<B><DD>	J AM SOC PSYCHICAL R
+</B><DT>JOURNAL OF THE AMERICAN SOCIETY OF BREWING CHEMISTS
+<B><DD>	J AM SOC BREW CHEM
+</B><DT>JOURNAL OF THE AMERICAN SOCIETY OF ECHOCARDIOGRAPHY
+<B><DD>	J AM SOC ECHOCARDIOG
+</B><DT>JOURNAL OF THE AMERICAN SOCIETY OF NEPHROLOGY
+<B><DD>	J AM SOC NEPHROL
+</B><DT>JOURNAL OF THE AMERICAN STATISTICAL ASSOCIATION
+<B><DD>	J AM STAT ASSOC
+</B><DT>JOURNAL OF THE AMERICAN VETERINARY MEDICAL ASSOCIATION
+<B><DD>	J AM VET MED ASSOC
+</B><DT>JOURNAL OF THE AMERICAN WATER RESOURCES ASSOCIATION
+<B><DD>	J AM WATER RESOUR AS
+</B><DT>JOURNAL OF THE ARNOLD ARBORETUM
+<B><DD>	J ARNOLD ARBORETUM
+</B><DT>JOURNAL OF THE ARNOLD SCHOENBERG INSTITUTE
+<B><DD>	J ARNOLD SCHOENBERG
+</B><DT>JOURNAL OF THE ASSOCIATION FOR COMPUTING MACHINERY
+<B><DD>	J ASSOC COMPUT MACH
+</B><DT>JOURNAL OF THE ASSOCIATION FOR PERSONS WITH SEVERE HANDICAPS
+<B><DD>	J ASSOC PERS SEVERE
+</B><DT>JOURNAL OF THE ASSOCIATION OF OFFICIAL ANALYTICAL CHEMISTS
+<B><DD>	J ASSOC OFF ANA CHEM
+</B><DT>JOURNAL OF THE ASSOCIATION OF PUBLIC ANALYSTS
+<B><DD>	J ASSOC PUBLIC ANAL
+</B><DT>JOURNAL OF THE ASTRONAUTICAL SCIENCES
+<B><DD>	J ASTRONAUT SCI
+</B><DT>JOURNAL OF THE ATMOSPHERIC SCIENCES
+<B><DD>	J ATMOS SCI
+</B><DT>JOURNAL OF THE ATOMIC ENERGY SOCIETY OF JAPAN
+<B><DD>	J ATOM ENERG SOC JPN
+</B><DT>JOURNAL OF THE AUDIO ENGINEERING SOCIETY
+<B><DD>	J AUDIO ENG SOC
+</B><DT>JOURNAL OF THE AUSTRALASIAN CERAMIC SOCIETY
+<B><DD>	J AUST CERAM SOC
+</B><DT>JOURNAL OF THE AUSTRALIAN ENTOMOLOGICAL SOCIETY
+<B><DD>	J AUST ENTOMOL SOC
+</B><DT>JOURNAL OF THE AUSTRALIAN INSTITUTE OF AGRICULTURAL SCIENCE
+<B><DD>	J AUST I AGR SCI
+</B><DT>JOURNAL OF THE AUSTRALIAN MATHEMATICAL SOCIETY SERIES A-PURE MATHEMATICS AND STATISTICS
+<B><DD>	J AUST MATH SOC A
+</B><DT>JOURNAL OF THE AUSTRALIAN MATHEMATICAL SOCIETY SERIES B-APPLIED MATHEMATICS
+<B><DD>	J AUST MATH SOC B
+</B><DT>JOURNAL OF THE AUTONOMIC NERVOUS SYSTEM
+<B><DD>	J AUTONOM NERV SYST
+</B><DT>JOURNAL OF THE BRAZILIAN CHEMICAL SOCIETY
+<B><DD>	J BRAZIL CHEM SOC
+</B><DT>JOURNAL OF THE BRITISH ASSOCIATION OF TEACHERS OF THE DEAF
+<B><DD>	TEACH DEAF
+</B><DT>JOURNAL OF THE BRITISH SOCIETY FOR PHENOMENOLOGY
+<B><DD>	J BRIT SOC PHENOMEN
+</B><DT>JOURNAL OF THE CANADIAN ASSOCIATION OF RADIOLOGISTS-JOURNAL DE L ASSOCIATION CANADIENNE DES RADIOLOGISTES
+<B><DD>	J CAN ASSOC RADIOL
+</B><DT>JOURNAL OF THE CANADIAN CERAMIC SOCIETY
+<B><DD>	J CAN CERAM SOC
+</B><DT>JOURNAL OF THE CANADIAN DIETETIC ASSOCIATION-REVUE DE L ASSOCIATION CANADIENNE DES DIETETISTES
+<B><DD>	J CAN DIET ASSOC
+</B><DT>JOURNAL OF THE CANADIAN HISTORICAL ASSOCIATION-REVUE DE LA SOCIETE HISTORIQUE DU CANADA
+<B><DD>	J CAN HIST ASSOC
+</B><DT>JOURNAL OF THE CERAMIC SOCIETY OF JAPAN
+<B><DD>	J CERAM SOC JPN
+</B><DT>JOURNAL OF THE CHARTERED INSTITUTION OF WATER AND ENVIRONMENTAL MANAGEMENT
+<B><DD>	J CHART INST WATER E
+</B><DT>JOURNAL OF THE CHEMICAL SOCIETY OF PAKISTAN
+<B><DD>	J CHEM SOC PAKISTAN
+</B><DT>JOURNAL OF THE CHEMICAL SOCIETY-CHEMICAL COMMUNICATIONS
+<B><DD>	J CHEM SOC CHEM COMM
+</B><DT>JOURNAL OF THE CHEMICAL SOCIETY-DALTON TRANSACTIONS
+<B><DD>	J CHEM SOC DALTON
+</B><DT>JOURNAL OF THE CHEMICAL SOCIETY-FARADAY TRANSACTIONS
+<B><DD>	J CHEM SOC FARADAY T
+</B><DT>JOURNAL OF THE CHEMICAL SOCIETY-FARADAY TRANSACTIONS I
+<B><DD>	J CHEM SOC FARAD T 1
+</B><DT>JOURNAL OF THE CHEMICAL SOCIETY-FARADAY TRANSACTIONS II
+<B><DD>	J CHEM SOC FARAD T 2
+</B><DT>JOURNAL OF THE CHEMICAL SOCIETY-PERKIN TRANSACTIONS 1
+<B><DD>	J CHEM SOC PERK T 1
+</B><DT>JOURNAL OF THE CHEMICAL SOCIETY-PERKIN TRANSACTIONS 2
+<B><DD>	J CHEM SOC PERK T 2
+</B><DT>JOURNAL OF THE CHINESE CHEMICAL SOCIETY
+<B><DD>	J CHIN CHEM SOC-TAIP
+</B><DT>JOURNAL OF THE CHINESE INSTITUTE OF CHEMICAL ENGINEERS
+<B><DD>	J CHIN INST CHEM ENG
+</B><DT>JOURNAL OF THE CHINESE INSTITUTE OF ENGINEERS
+<B><DD>	J CHIN INST ENG
+</B><DT>JOURNAL OF THE COMMUNICATIONS RESEARCH LABORATORY
+<B><DD>	J COMMUN RES LAB
+</B><DT>JOURNAL OF THE CONSTRUCTION DIVISION-ASCE
+<B><DD>	J CONSTRUCT DIV-ASCE
+</B><DT>JOURNAL OF THE COPYRIGHT SOCIETY OF THE USA
+<B><DD>	J COPYRIGHT SOC USA
+</B><DT>JOURNAL OF THE EARLY REPUBLIC
+<B><DD>	J EARLY REPUBL
+</B><DT>JOURNAL OF THE ELECTROCHEMICAL SOCIETY
+<B><DD>	J ELECTROCHEM SOC
+</B><DT>JOURNAL OF THE ELISHA MITCHELL SCIENTIFIC SOCIETY
+<B><DD>	J ELISHA MITCH SCI S
+</B><DT>JOURNAL OF THE ENERGY DIVISION-ASCE
+<B><DD>	J ENERG DIV-ASCE
+</B><DT>JOURNAL OF THE ENGINEERING MECHANICS DIVISION-ASCE
+<B><DD>	J ENG MECH DIV-ASCE
+</B><DT>JOURNAL OF THE ENTOMOLOGICAL SOCIETY OF SOUTHERN AFRICA
+<B><DD>	J ENTOMOL SOC S AFR
+</B><DT>JOURNAL OF THE ENVIRONMENTAL ENGINEERING DIVISION-ASCE
+<B><DD>	J ENV ENG DIV-ASCE
+</B><DT>JOURNAL OF THE EUROPEAN ACADEMY OF DERMATOLOGY AND VENEREOLOGY
+<B><DD>	J EUR ACAD DERMATOL
+</B><DT>JOURNAL OF THE EUROPEAN CERAMIC SOCIETY
+<B><DD>	J EUR CERAM SOC
+</B><DT>JOURNAL OF THE EXPERIMENTAL ANALYSIS OF BEHAVIOR
+<B><DD>	J EXP ANAL BEHAV
+</B><DT>JOURNAL OF THE FACULTY OF AGRICULTURE KYUSHU UNIVERSITY
+<B><DD>	J FAC AGR KYUSHU U
+</B><DT>JOURNAL OF THE FLORIDA MEDICAL ASSOCIATION
+<B><DD>	J FLA MED ASSOC
+</B><DT>JOURNAL OF THE FOOD HYGIENIC SOCIETY OF JAPAN
+<B><DD>	J FOOD HYG SOC JPN
+</B><DT>JOURNAL OF THE FORENSIC SCIENCE SOCIETY
+<B><DD>	J FORENSIC SCI SOC
+</B><DT>JOURNAL OF THE FORMOSAN MEDICAL ASSOCIATION
+<B><DD>	J FORMOS MED ASSOC
+</B><DT>JOURNAL OF THE FRANKLIN INSTITUTE-ENGINEERING AND APPLIED MATHEMATICS
+<B><DD>	J FRANKLIN I
+</B><DT>JOURNAL OF THE GEOLOGICAL SOCIETY
+<B><DD>	J GEOL SOC LONDON
+</B><DT>JOURNAL OF THE GEOLOGICAL SOCIETY OF AUSTRALIA
+<B><DD>	J GEOL SOC AUST
+</B><DT>JOURNAL OF THE GEOLOGICAL SOCIETY OF INDIA
+<B><DD>	J GEOL SOC INDIA
+</B><DT>JOURNAL OF THE GEORGIA ENTOMOLOGICAL SOCIETY
+<B><DD>	J GEORGIA ENTOMOL SO
+</B><DT>JOURNAL OF THE GEOTECHNICAL ENGINEERING DIVISION-ASCE
+<B><DD>	J GEOTECH ENG-ASCE
+</B><DT>JOURNAL OF THE HELMINTHOLOGICAL SOCIETY OF WASHINGTON
+<B><DD>	J HELMINTHOL SOC W
+</B><DT>JOURNAL OF THE HISTORY OF BIOLOGY
+<B><DD>	J HIST BIOL
+</B><DT>JOURNAL OF THE HISTORY OF IDEAS
+<B><DD>	J HIST IDEAS
+</B><DT>JOURNAL OF THE HISTORY OF MEDICINE AND ALLIED SCIENCES
+<B><DD>	J HIST MED ALL SCI
+</B><DT>JOURNAL OF THE HISTORY OF PHILOSOPHY
+<B><DD>	J HIST PHILOS
+</B><DT>JOURNAL OF THE HISTORY OF SEXUALITY
+<B><DD>	J HIST SEXUALITY
+</B><DT>JOURNAL OF THE HISTORY OF THE BEHAVIORAL SCIENCES
+<B><DD>	J HIST BEHAV SCI
+</B><DT>JOURNAL OF THE HYDRAULICS DIVISION-ASCE
+<B><DD>	J HYDR ENG DIV-ASCE
+</B><DT>JOURNAL OF THE IES
+<B><DD>	J IES
+</B><DT>JOURNAL OF THE IEST
+<B><DD>	J IEST
+</B><DT>JOURNAL OF THE ILLUMINATING ENGINEERING SOCIETY
+<B><DD>	J ILLUM ENG SOC
+</B><DT>JOURNAL OF THE INDIAN CHEMICAL SOCIETY
+<B><DD>	J INDIAN CHEM SOC
+</B><DT>JOURNAL OF THE INDIAN INSTITUTE OF SCIENCE SECTION A-ENGINEERING & TECHNOLOGY
+<B><DD>	J INDIAN I SCI A-ENG
+</B><DT>JOURNAL OF THE INDIAN INSTITUTE OF SCIENCE SECTION B-PHYSICAL & CHEMICAL SCIENCES
+<B><DD>	J INDIAN I SCI B-PHY
+</B><DT>JOURNAL OF THE INDIAN INSTITUTE OF SCIENCE SECTION C-BIOLOGICAL SCIENCES
+<B><DD>	J INDIAN I SCI C-BIO
+</B><DT>JOURNAL OF THE INSTITUTE OF BREWING
+<B><DD>	J I BREWING
+</B><DT>JOURNAL OF THE INSTITUTE OF ENERGY
+<B><DD>	J I ENERGY
+</B><DT>JOURNAL OF THE INSTITUTE OF ENVIRONMENTAL SCIENCES
+<B><DD>	J INST ENVIRON SCI
+</B><DT>JOURNAL OF THE INSTITUTE OF WOOD SCIENCE
+<B><DD>	J I WOOD SCI
+</B><DT>JOURNAL OF THE INSTITUTION OF ELECTRONIC AND RADIO ENGINEERS
+<B><DD>	J I ELECTRON RAD ENG
+</B><DT>JOURNAL OF THE INSTITUTION OF ELECTRONICS AND TELECOMMUNICATION ENGINEERS
+<B><DD>	J I EL TELECOM ENG
+</B><DT>JOURNAL OF THE INSTITUTION OF WATER AND ENVIRONMENTAL MANAGEMENT
+<B><DD>	J INST WATER ENV MAN
+</B><DT>JOURNAL OF THE INTERNATIONAL ASSOCIATION FOR MATHEMATICAL GEOLOGY
+<B><DD>	J INT ASS MATH GEOL
+</B><DT>JOURNAL OF THE INTERNATIONAL NEUROPSYCHOLOGICAL SOCIETY
+<B><DD>	J INT NEUROPSYCH SOC
+</B><DT>JOURNAL OF THE IRISH COLLEGES OF PHYSICIANS AND SURGEONS
+<B><DD>	J IRISH COLL PHYS S
+</B><DT>JOURNAL OF THE IRRIGATION AND DRAINAGE DIVISION-ASCE
+<B><DD>	J IRR DRAIN DIV-ASCE
+</B><DT>JOURNAL OF THE JAPAN INSTITUTE OF METALS
+<B><DD>	J JPN I MET
+</B><DT>JOURNAL OF THE JAPANESE AND INTERNATIONAL ECONOMIES
+<B><DD>	J JPN INT ECON
+</B><DT>JOURNAL OF THE JAPANESE SOCIETY FOR FOOD SCIENCE AND TECHNOLOGY-NIPPON SHOKUHIN KAGAKU KOGAKU KAISHI
+<B><DD>	J JPN SOC FOOD SCI
+</B><DT>JOURNAL OF THE JAPANESE SOCIETY FOR HORTICULTURAL SCIENCE
+<B><DD>	J JPN SOC HORTIC SCI
+</B><DT>JOURNAL OF THE KANSAS ENTOMOLOGICAL SOCIETY
+<B><DD>	J KANSAS ENTOMOL SOC
+</B><DT>JOURNAL OF THE KENTUCKY MEDICAL ASSOCIATION
+<B><DD>	J KENTUCKY MED ASSOC
+</B><DT>JOURNAL OF THE KOREAN PHYSICAL SOCIETY
+<B><DD>	J KOREAN PHYS SOC
+</B><DT>JOURNAL OF THE KUWAIT MEDICAL ASSOCIATION
+<B><DD>	J KUWAIT MED ASSOC
+</B><DT>JOURNAL OF THE LEARNING SCIENCES
+<B><DD>	J LEARN SCI
+</B><DT>JOURNAL OF THE LESS-COMMON METALS
+<B><DD>	J LESS-COMMON MET
+</B><DT>JOURNAL OF THE LIMNOLOGICAL SOCIETY OF SOUTHERN AFRICA
+<B><DD>	J LIMNOL SOC S AFR
+</B><DT>JOURNAL OF THE LONDON MATHEMATICAL SOCIETY-SECOND SERIES
+<B><DD>	J LOND MATH SOC
+</B><DT>JOURNAL OF THE MARINE BIOLOGICAL ASSOCIATION OF THE UNITED KINGDOM
+<B><DD>	J MAR BIOL ASSOC UK
+</B><DT>JOURNAL OF THE MARKET RESEARCH SOCIETY
+<B><DD>	J MARKET RES SOC
+</B><DT>JOURNAL OF THE MATHEMATICAL SOCIETY OF JAPAN
+<B><DD>	J MATH SOC JPN
+</B><DT>JOURNAL OF THE MECHANICS AND PHYSICS OF SOLIDS
+<B><DD>	J MECH PHYS SOLIDS
+</B><DT>JOURNAL OF THE MEDICAL ASSOCIATION OF THAILAND
+<B><DD>	J MED ASSOC THAILAND
+</B><DT>JOURNAL OF THE METEOROLOGICAL SOCIETY OF JAPAN
+<B><DD>	J METEOROL SOC JPN
+</B><DT>JOURNAL OF THE MIDWEST MODERN LANGUAGE ASSOCIATION
+<B><DD>	J MIDWEST MOD LANG
+</B><DT>JOURNAL OF THE NATIONAL CANCER INSTITUTE
+<B><DD>	J NATL CANCER I
+</B><DT>JOURNAL OF THE NATIONAL MEDICAL ASSOCIATION
+<B><DD>	J NATL MED ASSOC
+</B><DT>JOURNAL OF THE NEUROLOGICAL SCIENCES
+<B><DD>	J NEUROL SCI
+</B><DT>JOURNAL OF THE NEW YORK ENTOMOLOGICAL SOCIETY
+<B><DD>	J NEW YORK ENTOMOL S
+</B><DT>JOURNAL OF THE NORTH AMERICAN BENTHOLOGICAL SOCIETY
+<B><DD>	J N AM BENTHOL SOC
+</B><DT>JOURNAL OF THE OIL & COLOUR CHEMISTS ASSOCIATION
+<B><DD>	J OIL COLOUR CHEM AS
+</B><DT>JOURNAL OF THE OPERATIONAL RESEARCH SOCIETY
+<B><DD>	J OPER RES SOC
+</B><DT>JOURNAL OF THE OPERATIONS RESEARCH SOCIETY OF JAPAN
+<B><DD>	J OPER RES SOC JPN
+</B><DT>JOURNAL OF THE OPTICAL SOCIETY OF AMERICA
+<B><DD>	J OPT SOC AM
+</B><DT>JOURNAL OF THE OPTICAL SOCIETY OF AMERICA A-OPTICS IMAGE SCIENCE AND VISION
+<B><DD>	J OPT SOC AM A
+</B><DT>JOURNAL OF THE OPTICAL SOCIETY OF AMERICA B-OPTICAL PHYSICS
+<B><DD>	J OPT SOC AM B
+</B><DT>JOURNAL OF THE PERIPHERAL NERVOUS SYSTEM
+<B><DD>	J PERIPHER NERV SYST
+</B><DT>JOURNAL OF THE PHILOSOPHY OF SPORT
+<B><DD>	J PHILOS SPORT
+</B><DT>JOURNAL OF THE PHYSICAL SOCIETY OF JAPAN
+<B><DD>	J PHYS SOC JPN
+</B><DT>JOURNAL OF THE POLYNESIAN SOCIETY
+<B><DD>	J POLYNESIAN SOC
+</B><DT>JOURNAL OF THE PROFESSIONAL ASSOCIATION FOR CACTUS DEVELOPMENT
+<B><DD>	J PROF ASSOC CACTUS
+</B><DT>JOURNAL OF THE RADIO RESEARCH LABORATORY
+<B><DD>	J RADIO RES LAB
+</B><DT>JOURNAL OF THE RETICULOENDOTHELIAL SOCIETY
+<B><DD>	J RETICULOENDOTH SOC
+</B><DT>JOURNAL OF THE ROYAL ANTHROPOLOGICAL INSTITUTE
+<B><DD>	J ROY ANTHROPOL INST
+</B><DT>JOURNAL OF THE ROYAL ASIATIC SOCIETY
+<B><DD>	J ROY ASIATIC SOC
+</B><DT>JOURNAL OF THE ROYAL ASTRONOMICAL SOCIETY OF CANADA
+<B><DD>	J ROY ASTRON SOC CAN
+</B><DT>JOURNAL OF THE ROYAL COLLEGE OF GENERAL PRACTITIONERS
+<B><DD>	J ROY COLL GEN PRACT
+</B><DT>JOURNAL OF THE ROYAL COLLEGE OF PHYSICIANS OF LONDON
+<B><DD>	J ROY COLL PHYS LOND
+</B><DT>JOURNAL OF THE ROYAL COLLEGE OF SURGEONS OF EDINBURGH
+<B><DD>	J ROY COLL SURG EDIN
+</B><DT>JOURNAL OF THE ROYAL MUSICAL ASSOCIATION
+<B><DD>	J ROY MUSIC ASSN
+</B><DT>JOURNAL OF THE ROYAL SOCIETY FOR THE PROMOTION OF HEALTH
+<B><DD>	J R SOC PROMO HEALTH
+</B><DT>JOURNAL OF THE ROYAL SOCIETY OF HEALTH
+<B><DD>	J ROY SOC HEALTH
+</B><DT>JOURNAL OF THE ROYAL SOCIETY OF MEDICINE
+<B><DD>	J ROY SOC MED
+</B><DT>JOURNAL OF THE ROYAL SOCIETY OF NEW ZEALAND
+<B><DD>	J ROY SOC NEW ZEAL
+</B><DT>JOURNAL OF THE ROYAL STATISTICAL SOCIETY SERIES A-STATISTICS IN SOCIETY
+<B><DD>	J ROY STAT SOC A STA
+</B><DT>JOURNAL OF THE ROYAL STATISTICAL SOCIETY SERIES B-METHODOLOGICAL
+<B><DD>	J ROY STAT SOC B MET
+</B><DT>JOURNAL OF THE ROYAL STATISTICAL SOCIETY SERIES B-STATISTICAL METHODOLOGY
+<B><DD>	J ROY STAT SOC B
+</B><DT>JOURNAL OF THE ROYAL STATISTICAL SOCIETY SERIES C-APPLIED STATISTICS
+<B><DD>	J ROY STAT SOC C-APP
+</B><DT>JOURNAL OF THE ROYAL STATISTICAL SOCIETY SERIES D-THE STATISTICIAN
+<B><DD>	J ROY STAT SOC D-STA
+</B><DT>JOURNAL OF THE RUBBER RESEARCH INSTITUTE OF MALAYSIA
+<B><DD>	J RUBBER RES I MALAY
+</B><DT>JOURNAL OF THE SCIENCE OF FOOD AND AGRICULTURE
+<B><DD>	J SCI FOOD AGR
+</B><DT>JOURNAL OF THE SCIENCE SOCIETY OF THAILAND
+<B><DD>	J SCI SOC THAILAND
+</B><DT>JOURNAL OF THE SCIENTIFIC AGRICULTURAL SOCIETY OF FINLAND
+<B><DD>	J AGR SCI FINLAND
+</B><DT>JOURNAL OF THE SERBIAN CHEMICAL SOCIETY
+<B><DD>	J SERB CHEM SOC
+</B><DT>JOURNAL OF THE SOCIETY FOR GYNECOLOGIC INVESTIGATION
+<B><DD>	J SOC GYNECOL INVEST
+</B><DT>JOURNAL OF THE SOCIETY OF ARCHITECTURAL HISTORIANS
+<B><DD>	J SOC ARCHIT HIST
+</B><DT>JOURNAL OF THE SOCIETY OF ARCHIVISTS
+<B><DD>	J SOC ARCHIVISTS
+</B><DT>JOURNAL OF THE SOCIETY OF COSMETIC CHEMISTS
+<B><DD>	J SOC COSMET CHEM
+</B><DT>JOURNAL OF THE SOCIETY OF DAIRY TECHNOLOGY
+<B><DD>	J SOC DAIRY TECHNOL
+</B><DT>JOURNAL OF THE SOCIETY OF DYERS AND COLOURISTS
+<B><DD>	J SOC DYERS COLOUR
+</B><DT>JOURNAL OF THE SOCIETY OF LEATHER TECHNOLOGISTS AND CHEMISTS
+<B><DD>	J SOC LEATH TECH CH
+</B><DT>JOURNAL OF THE SOCIETY OF OCCUPATIONAL MEDICINE
+<B><DD>	J SOC OCCUP MED
+</B><DT>JOURNAL OF THE SOUTH AFRICAN INSTITUTE OF MINING AND METALLURGY
+<B><DD>	J S AFR I MIN METALL
+</B><DT>JOURNAL OF THE SOUTH AFRICAN VETERINARY ASSOCIATION-TYDSKRIF VAN DIE SUID-AFRIKAANSE VETERINERE VERENIGING
+<B><DD>	J S AFR VET ASSOC
+</B><DT>JOURNAL OF THE SOUTHWEST
+<B><DD>	J SOUTHWEST
+</B><DT>JOURNAL OF THE STRUCTURAL DIVISION-ASCE
+<B><DD>	J STRUCT DIV-ASCE
+</B><DT>JOURNAL OF THE SURVEYING AND MAPPING DIVISION-ASCE
+<B><DD>	J SURV ENG DIV-ASCE
+</B><DT>JOURNAL OF THE TENNESSEE MEDICAL ASSOCIATION
+<B><DD>	J TENNESSEE MED ASS
+</B><DT>JOURNAL OF THE TEXTILE INSTITUTE
+<B><DD>	J TEXT I
+</B><DT>JOURNAL OF THE TORREY BOTANICAL SOCIETY
+<B><DD>	J TORREY BOT SOC
+</B><DT>JOURNAL OF THE UNIVERSITY OF KUWAIT-SCIENCE
+<B><DD>	J U KUWAIT-SCI
+</B><DT>JOURNAL OF THE URBAN PLANNING & DEVELOPMENT DIVISION-ASCE
+<B><DD>	J URBAN PLAN DEV DIV
+</B><DT>JOURNAL OF THE WARBURG AND COURTAULD INSTITUTES
+<B><DD>	J WARBURG COURTAULD
+</B><DT>JOURNAL OF THE WATERWAY PORT COASTAL AND OCEAN DIVISION-ASCE
+<B><DD>	J WATERW PORT C DIV
+</B><DT>JOURNAL OF THE WEST
+<B><DD>	J WEST
+</B><DT>JOURNAL OF THE WORLD AQUACULTURE SOCIETY
+<B><DD>	J WORLD AQUACULT SOC
+</B><DT>JOURNAL OF THEOLOGICAL STUDIES
+<B><DD>	J THEOL STUD
+</B><DT>JOURNAL OF THEORETICAL BIOLOGY
+<B><DD>	J THEOR BIOL
+</B><DT>JOURNAL OF THEORETICAL NEUROBIOLOGY
+<B><DD>	J THEOR NEUROBIOL
+</B><DT>JOURNAL OF THEORETICAL POLITICS
+<B><DD>	J THEOR POLIT
+</B><DT>JOURNAL OF THEORETICAL PROBABILITY
+<B><DD>	J THEOR PROBAB
+</B><DT>JOURNAL OF THERMAL ANALYSIS
+<B><DD>	J THERM ANAL
+</B><DT>JOURNAL OF THERMAL ANALYSIS AND CALORIMETRY
+<B><DD>	J THERM ANAL CALORIM
+</B><DT>JOURNAL OF THERMAL BIOLOGY
+<B><DD>	J THERM BIOL
+</B><DT>JOURNAL OF THERMAL SPRAY TECHNOLOGY
+<B><DD>	J THERM SPRAY TECHN
+</B><DT>JOURNAL OF THERMAL STRESSES
+<B><DD>	J THERM STRESSES
+</B><DT>JOURNAL OF THERMOPHYSICS AND HEAT TRANSFER
+<B><DD>	J THERMOPHYS HEAT TR
+</B><DT>JOURNAL OF THERMOPLASTIC COMPOSITE MATERIALS
+<B><DD>	J THERMOPLAST COMPOS
+</B><DT>JOURNAL OF THORACIC AND CARDIOVASCULAR SURGERY
+<B><DD>	J THORAC CARDIOV SUR
+</B><DT>JOURNAL OF THORACIC IMAGING
+<B><DD>	J THORAC IMAG
+</B><DT>JOURNAL OF THROMBOSIS AND THROMBOLYSIS
+<B><DD>	J THROMB THROMBOLYS
+</B><DT>JOURNAL OF TOXICOLOGY AND ENVIRONMENTAL HEALTH
+<B><DD>	J TOXICOL ENV HEALTH
+</B><DT>JOURNAL OF TOXICOLOGY AND ENVIRONMENTAL HEALTH-PART A
+<B><DD>	J TOXICOL ENV HEAL A
+</B><DT>JOURNAL OF TOXICOLOGY AND ENVIRONMENTAL HEALTH-PART B-CRITICAL REVIEWS
+<B><DD>	J TOXICOL ENV HEAL B
+</B><DT>JOURNAL OF TOXICOLOGY-CLINICAL TOXICOLOGY
+<B><DD>	J TOXICOL-CLIN TOXIC
+</B><DT>JOURNAL OF TOXICOLOGY-CUTANEOUS AND OCULAR TOXICOLOGY
+<B><DD>	J TOXICOL-CUTAN OCUL
+</B><DT>JOURNAL OF TOXICOLOGY-TOXIN REVIEWS
+<B><DD>	J TOXICOL-TOXIN REV
+</B><DT>JOURNAL OF TRACE AND MICROPROBE TECHNIQUES
+<B><DD>	J TRACE MICROPROBE T
+</B><DT>JOURNAL OF TRACE ELEMENTS AND ELECTROLYTES IN HEALTH AND DISEASE
+<B><DD>	J TRACE ELEM ELECT H
+</B><DT>JOURNAL OF TRACE ELEMENTS IN EXPERIMENTAL MEDICINE
+<B><DD>	J TRACE ELEM EXP MED
+</B><DT>JOURNAL OF TRACE ELEMENTS IN MEDICINE AND BIOLOGY
+<B><DD>	J TRACE ELEM MED BIO
+</B><DT>JOURNAL OF TRANSPERSONAL PSYCHOLOGY
+<B><DD>	J TRANSPERSONAL PSY
+</B><DT>JOURNAL OF TRANSPORT ECONOMICS AND POLICY
+<B><DD>	J TRANSP ECON POLICY
+</B><DT>JOURNAL OF TRANSPORTATION ENGINEERING-ASCE
+<B><DD>	J TRANSP ENG-ASCE
+</B><DT>JOURNAL OF TRAUMA-INJURY INFECTION AND CRITICAL CARE
+<B><DD>	J TRAUMA
+</B><DT>JOURNAL OF TRAUMATIC STRESS
+<B><DD>	J TRAUMA STRESS
+</B><DT>JOURNAL OF TRAVEL MEDICINE
+<B><DD>	J TRAVEL MED
+</B><DT>JOURNAL OF TRIBOLOGY-TRANSACTIONS OF THE ASME
+<B><DD>	J TRIBOL-T ASME
+</B><DT>JOURNAL OF TROPICAL ECOLOGY
+<B><DD>	J TROP ECOL
+</B><DT>JOURNAL OF TROPICAL MEDICINE AND HYGIENE
+<B><DD>	J TROP MED HYG
+</B><DT>JOURNAL OF TROPICAL PEDIATRICS
+<B><DD>	J TROP PEDIATRICS
+</B><DT>JOURNAL OF TUMOR MARKER ONCOLOGY
+<B><DD>	J TUMOR MARKER ONCOL
+</B><DT>JOURNAL OF TURBOMACHINERY-TRANSACTIONS OF THE ASME
+<B><DD>	J TURBOMACH
+</B><DT>JOURNAL OF ULTRASOUND IN MEDICINE
+<B><DD>	J ULTRAS MED
+</B><DT>JOURNAL OF ULTRASTRUCTURE AND MOLECULAR STRUCTURE RESEARCH
+<B><DD>	J ULTRA MOL STRUCT R
+</B><DT>JOURNAL OF ULTRASTRUCTURE RESEARCH
+<B><DD>	J ULTRA MOL STRUCT R
+</B><DT>JOURNAL OF UNIVERSITY OF SCIENCE AND TECHNOLOGY BEIJING
+<B><DD>	J UNIV SCI TECHNOL B
+</B><DT>JOURNAL OF URBAN AFFAIRS
+<B><DD>	J URBAN AFF
+</B><DT>JOURNAL OF URBAN ECONOMICS
+<B><DD>	J URBAN ECON
+</B><DT>JOURNAL OF URBAN HEALTH-BULLETIN OF THE NEW YORK ACADEMY OF MEDICINE
+<B><DD>	J URBAN HEALTH
+</B><DT>JOURNAL OF URBAN HISTORY
+<B><DD>	J URBAN HIST
+</B><DT>JOURNAL OF URBAN PLANNING AND DEVELOPMENT-ASCE
+<B><DD>	J URBAN PLAN D-ASCE
+</B><DT>JOURNAL OF URBAN TECHNOLOGY
+<B><DD>	J URBAN TECHNOL
+</B><DT>JOURNAL OF UROLOGY
+<B><DD>	J UROLOGY
+</B><DT>JOURNAL OF VACUUM SCIENCE & TECHNOLOGY
+<B><DD>	J VAC SCI TECHNOL
+</B><DT>JOURNAL OF VACUUM SCIENCE & TECHNOLOGY A-VACUUM SURFACES AND FILMS
+<B><DD>	J VAC SCI TECHNOL A
+</B><DT>JOURNAL OF VACUUM SCIENCE & TECHNOLOGY B
+<B><DD>	J VAC SCI TECHNOL B
+</B><DT>JOURNAL OF VALUE INQUIRY
+<B><DD>	J VALUE INQUIRY
+</B><DT>JOURNAL OF VASCULAR AND INTERVENTIONAL RADIOLOGY
+<B><DD>	J VASC INTERV RADIOL
+</B><DT>JOURNAL OF VASCULAR RESEARCH
+<B><DD>	J VASC RES
+</B><DT>JOURNAL OF VASCULAR SURGERY
+<B><DD>	J VASC SURG
+</B><DT>JOURNAL OF VECTOR ECOLOGY
+<B><DD>	J VECTOR ECOL
+</B><DT>JOURNAL OF VEGETATION SCIENCE
+<B><DD>	J VEG SCI
+</B><DT>JOURNAL OF VERTEBRATE PALEONTOLOGY
+<B><DD>	J VERTEBR PALEONTOL
+</B><DT>JOURNAL OF VESTIBULAR RESEARCH-EQUILIBRIUM & ORIENTATION
+<B><DD>	J VESTIBUL RES-EQUIL
+</B><DT>JOURNAL OF VETERINARY DIAGNOSTIC INVESTIGATION
+<B><DD>	J VET DIAGN INVEST
+</B><DT>JOURNAL OF VETERINARY INTERNAL MEDICINE
+<B><DD>	J VET INTERN MED
+</B><DT>JOURNAL OF VETERINARY MEDICAL EDUCATION
+<B><DD>	J VET MED EDUC
+</B><DT>JOURNAL OF VETERINARY MEDICAL SCIENCE
+<B><DD>	J VET MED SCI
+</B><DT>JOURNAL OF VETERINARY MEDICINE SERIES A-PHYSIOLOGY PATHOLOGY CLINICAL MEDICINE
+<B><DD>	J VET MED A
+</B><DT>JOURNAL OF VETERINARY MEDICINE SERIES A-ZENTRALBLATT FUR VETERINARMEDIZIN REIHE A-PHYSIOLOGY PATHOLOGY CLINICAL MEDICINE
+<B><DD>	J VET MED A
+</B><DT>JOURNAL OF VETERINARY MEDICINE SERIES B-INFECTIOUS DISEASES AND VETERINARY PUBLIC HEALTH
+<B><DD>	J VET MED B
+</B><DT>JOURNAL OF VETERINARY MEDICINE SERIES B-ZENTRALBLATT FUR VETERINARMEDIZIN REIHE B-INFECTIOUS DISEASES AND VETERINARY PUBLIC HEALTH
+<B><DD>	J VET MED B
+</B><DT>JOURNAL OF VETERINARY PHARMACOLOGY AND THERAPEUTICS
+<B><DD>	J VET PHARMACOL THER
+</B><DT>JOURNAL OF VIBRATION ACOUSTICS STRESS AND RELIABILITY IN DESIGN-TRANSACTIONS OF THE ASME
+<B><DD>	J VIB ACOUST
+</B><DT>JOURNAL OF VIBRATION ACOUSTICS STRESS AND RELIABILITY IN DESIGN-TRANSACTIONS OF THE ASME
+<B><DD>	J VIB ACOUST STRESS
+</B><DT>JOURNAL OF VIBRATION AND ACOUSTICS-TRANSACTIONS OF THE ASME
+<B><DD>	J VIB ACOUST
+</B><DT>JOURNAL OF VIBRATION AND CONTROL
+<B><DD>	J VIB CONTROL
+</B><DT>JOURNAL OF VINYL & ADDITIVE TECHNOLOGY
+<B><DD>	J VINYL ADDIT TECHN
+</B><DT>JOURNAL OF VIRAL HEPATITIS
+<B><DD>	J VIRAL HEPATITIS
+</B><DT>JOURNAL OF VIROLOGICAL METHODS
+<B><DD>	J VIROL METHODS
+</B><DT>JOURNAL OF VIROLOGY
+<B><DD>	J VIROL
+</B><DT>JOURNAL OF VISUAL COMMUNICATION AND IMAGE REPRESENTATION
+<B><DD>	J VIS COMMUN IMAGE R
+</B><DT>JOURNAL OF VISUAL IMPAIRMENT & BLINDNESS
+<B><DD>	J VISUAL IMPAIR BLIN
+</B><DT>JOURNAL OF VISUAL LANGUAGES AND COMPUTING
+<B><DD>	J VISUAL LANG COMPUT
+</B><DT>JOURNAL OF VISUALIZATION AND COMPUTER ANIMATION
+<B><DD>	J VISUAL COMP ANIMAT
+</B><DT>JOURNAL OF VLSI AND COMPUTER SYSTEMS
+<B><DD>	J VLSI COMPUT SYST
+</B><DT>JOURNAL OF VLSI SIGNAL PROCESSING
+<B><DD>	J VLSI SIGNAL PROC
+</B><DT>JOURNAL OF VLSI SIGNAL PROCESSING SYSTEMS FOR SIGNAL IMAGE AND VIDEO TECHNOLOGY
+<B><DD>	J VLSI SIG PROCESS S
+</B><DT>JOURNAL OF VOCATIONAL BEHAVIOR
+<B><DD>	J VOCAT BEHAV
+</B><DT>JOURNAL OF VOICE
+<B><DD>	J VOICE
+</B><DT>JOURNAL OF VOLCANOLOGY AND GEOTHERMAL RESEARCH
+<B><DD>	J VOLCANOL GEOTH RES
+</B><DT>JOURNAL OF WATER RESOURCES PLANNING AND MANAGEMENT-ASCE
+<B><DD>	J WATER RES PL-ASCE
+</B><DT>JOURNAL OF WATER SERVICES RESEARCH AND TECHNOLOGY-AQUA
+<B><DD>	J WATER SERV RES TEC
+</B><DT>JOURNAL OF WATER SUPPLY RESEARCH AND TECHNOLOGY-AQUA
+<B><DD>	J WATER SUPPLY RES T
+</B><DT>JOURNAL OF WATERWAY PORT COASTAL AND OCEAN ENGINEERING-ASCE
+<B><DD>	J WATERW PORT C-ASCE
+</B><DT>JOURNAL OF WILDERNESS MEDICINE
+<B><DD>	J WILDERNESS MED
+</B><DT>JOURNAL OF WILDLIFE DISEASES
+<B><DD>	J WILDLIFE DIS
+</B><DT>JOURNAL OF WILDLIFE MANAGEMENT
+<B><DD>	J WILDLIFE MANAGE
+</B><DT>JOURNAL OF WILDLIFE REHABILITATION
+<B><DD>	J WILDLIFE REHABIL
+</B><DT>JOURNAL OF WIND ENGINEERING AND INDUSTRIAL AERODYNAMICS
+<B><DD>	J WIND ENG IND AEROD
+</B><DT>JOURNAL OF WOMEN & AGING
+<B><DD>	J WOMEN AGING
+</B><DT>JOURNAL OF WOMENS HEALTH
+<B><DD>	J WOMENS HEALTH
+</B><DT>JOURNAL OF WOMENS HEALTH & GENDER-BASED MEDICINE
+<B><DD>	J WOMEN HEALTH GEN-B
+</B><DT>JOURNAL OF WOMENS HISTORY
+<B><DD>	J WOMENS HIST
+</B><DT>JOURNAL OF WOOD CHEMISTRY AND TECHNOLOGY
+<B><DD>	J WOOD CHEM TECHNOL
+</B><DT>JOURNAL OF WOOD SCIENCE
+<B><DD>	J WOOD SCI
+</B><DT>JOURNAL OF WORLD BUSINESS
+<B><DD>	J WORLD BUS
+</B><DT>JOURNAL OF WORLD HISTORY
+<B><DD>	J WORLD HIST
+</B><DT>JOURNAL OF WORLD PREHISTORY
+<B><DD>	J WORLD PREHIST
+</B><DT>JOURNAL OF WORLD TRADE
+<B><DD>	J WORLD TRADE
+</B><DT>JOURNAL OF WUHAN UNIVERSITY OF TECHNOLOGY-MATERIALS SCIENCE EDITION
+<B><DD>	J WUHAN UNIV TECHNOL
+</B><DT>JOURNAL OF YOUTH AND ADOLESCENCE
+<B><DD>	J YOUTH ADOLESCENCE
+</B><DT>JOURNAL OF ZOO AND WILDLIFE MEDICINE
+<B><DD>	J ZOO WILDLIFE MED
+</B><DT>JOURNAL OF ZOO ANIMAL MEDICINE
+<B><DD>	J ZOO ANIM MED
+</B><DT>JOURNAL OF ZOO ANIMAL MEDICINE
+<B><DD>	J ZOO WILDLIFE MED
+</B><DT>JOURNAL OF ZOOLOGICAL SYSTEMATICS AND EVOLUTIONARY RESEARCH
+<B><DD>	J ZOOL SYST EVOL RES
+</B><DT>JOURNAL OF ZOOLOGY
+<B><DD>	J ZOOL
+</B><DT>JOURNAL PRESTRESSED CONCRETE INSTITUTE
+<B><DD>	J PRESTR CONCRETE I
+</B><DT>JOURNAL WATER POLLUTION CONTROL FEDERATION
+<B><DD>	J WATER POLLUT CON F
+</B><DT>JOURNALISM & MASS COMMUNICATION QUARTERLY
+<B><DD>	JOURNALISM MASS COMM
+</B><DT>JOURNALISM QUARTERLY
+<B><DD>	JOURNALISM QUART
+</B><DT>JOURNALS OF GERONTOLOGY
+<B><DD>	J GERONTOL
+</B><DT>JOURNALS OF GERONTOLOGY SERIES A-BIOLOGICAL SCIENCES AND MEDICAL SCIENCES
+<B><DD>	J GERONTOL A-BIOL
+</B><DT>JOURNALS OF GERONTOLOGY SERIES B-PSYCHOLOGICAL SCIENCES AND SOCIAL SCIENCES
+<B><DD>	J GERONTOL B-PSYCHOL
+</B><DT>JPC-JOURNAL OF PLANAR CHROMATOGRAPHY-MODERN TLC
+<B><DD>	JPC-J PLANAR CHROMAT
+</B><DT>JSAE REVIEW
+<B><DD>	JSAE REV
+</B><DT>JSME INTERNATIONAL JOURNAL
+<B><DD>	JSME INT J
+</B><DT>JSME INTERNATIONAL JOURNAL SERIES A-MECHANICS AND MATERIAL ENGINEERING
+<B><DD>	JSME INT J A-MECH M
+</B><DT>JSME INTERNATIONAL JOURNAL SERIES A-SOLID MECHANICS AND MATERIAL ENGINEERING
+<B><DD>	JSME INT J A-SOLID M
+</B><DT>JSME INTERNATIONAL JOURNAL SERIES B-FLUIDS AND THERMAL ENGINEERING
+<B><DD>	JSME INT J B-FLUID T
+</B><DT>JSME INTERNATIONAL JOURNAL SERIES C-DYNAMICS CONTROL ROBOTICS DESIGN AND MANUFACTURING
+<B><DD>	JSME INT J C-DYN CON
+</B><DT>JSME INTERNATIONAL JOURNAL SERIES C-MECHANICAL SYSTEMS MACHINE ELEMENTS AND MANUFACTURING
+<B><DD>	JSME INT J C-MECH SY
+</B><DT>JSME INTERNATIONAL JOURNAL SERIES I-SOLID MECHANICS STRENGTH OF MATERIALS
+<B><DD>	JSME INT J I-SOLID M
+</B><DT>JSME INTERNATIONAL JOURNAL SERIES II-FLUIDS ENGINEERING HEAT TRANSFER POWER COMBUSTION THERMOPHYSICAL PROPERTIES
+<B><DD>	JSME INT J II-FLUID
+</B><DT>JSME INTERNATIONAL JOURNAL SERIES III-VIBRATION CONTROL ENGINEERING ENGINEERING FOR INDUSTRY
+<B><DD>	JSME INT J III-VIB C
+</B><DT>JUDAISM
+<B><DD>	JUDAISM
+</B><DT>JUDICATURE
+<B><DD>	JUDICATURE
+</B><DT>JUGOSLOVENSKA MEDICINSKA BIOHEMIJA-YUGOSLAV MEDICAL BIOCHEMISTRY
+<B><DD>	JUGOSLAV MED BIOHEM
+</B><DT>JUSTICE QUARTERLY
+<B><DD>	JUSTICE Q
+</B><DT>JUSTICE SYSTEM JOURNAL
+<B><DD>	JUSTICE SYST J
+</B><DT>JUVENILE & FAMILY COURT JOURNAL
+<B><DD>	JUVENILE FAM COURT J
+</B><DT>JUVENILE AND FAMILY COURT JOURNAL
+<B><DD>	JUVENILE FAM COURT J
+</B></DL>
+</BODY>
+</HTML>

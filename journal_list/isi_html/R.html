@@ -1,715 +1,895 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="R"></A><DT>R & D MANAGEMENT
+<B><DD>	R&D MANAGE
+</B><DT>R&D MAGAZINE
+<B><DD>	R&D MAG
+</B><DT>RACAR-REVUE D ART CANADIENNE-CANADIAN ART REVIEW
+<B><DD>	RACAR
+</B><DT>RACE & CLASS
+<B><DD>	RACE CLASS
+</B><DT>RADIATION AND ENVIRONMENTAL BIOPHYSICS
+<B><DD>	RADIAT ENVIRON BIOPH
+</B><DT>RADIATION EFFECTS AND DEFECTS IN SOLIDS
+<B><DD>	RADIAT EFF DEFECT S
+</B><DT>RADIATION EFFECTS LETTERS
+<B><DD>	RADIAT EFF LETT
+</B><DT>RADIATION MEASUREMENTS
+<B><DD>	RADIAT MEAS
+</B><DT>RADIATION ONCOLOGY INVESTIGATIONS
+<B><DD>	RADIAT ONCOL INVESTI
+</B><DT>RADIATION PHYSICS AND CHEMISTRY
+<B><DD>	RADIAT PHYS CHEM
+</B><DT>RADIATION PROTECTION DOSIMETRY
+<B><DD>	RADIAT PROT DOSIM
+</B><DT>RADIATION RESEARCH
+<B><DD>	RADIAT RES
+</B><DT>RADICAL HISTORY REVIEW
+<B><DD>	RADICAL HIST REV
+</B><DT>RADICAL PHILOSOPHY
+<B><DD>	RADICAL PHILOS
+</B><DT>RADIO AND ELECTRONIC ENGINEER
+<B><DD>	J I ELECTRON RAD ENG
+</B><DT>RADIO SCIENCE
+<B><DD>	RADIO SCI
+</B><DT>RADIO-ELECTRONICS
+<B><DD>	RADIO-ELECTRON
+</B><DT>RADIOACTIVE WASTE MANAGEMENT AND ENVIRONMENTAL RESTORATION
+<B><DD>	RADIOACT WASTE MANAG
+</B><DT>RADIOCARBON
+<B><DD>	RADIOCARBON
+</B><DT>RADIOCHEMICAL AND RADIOANALYTICAL LETTERS
+<B><DD>	RADIOCHEM RADIOA LET
+</B><DT>RADIOCHEMISTRY
+<B><DD>	RADIOCHEMISTRY+
+</B><DT>RADIOCHIMICA ACTA
+<B><DD>	RADIOCHIM ACTA
+</B><DT>RADIOGRAPHICS
+<B><DD>	RADIOGRAPHICS
+</B><DT>RADIOLOGE
+<B><DD>	RADIOLOGE
+</B><DT>RADIOLOGIA
+<B><DD>	RADIOLOGIA-MADRID
+</B><DT>RADIOLOGIC CLINICS OF NORTH AMERICA
+<B><DD>	RADIOL CLIN N AM
+</B><DT>RADIOLOGY
+<B><DD>	RADIOLOGY
+</B><DT>RADIOPROTECTION
+<B><DD>	RADIOPROTECTION
+</B><DT>RADIOTEKHNIKA I ELEKTRONIKA
+<B><DD>	RADIOTEKH ELEKTRON+
+</B><DT>RADIOTHERAPY AND ONCOLOGY
+<B><DD>	RADIOTHER ONCOL
+</B><DT>RAFFLES BULLETIN OF ZOOLOGY
+<B><DD>	RAFFLES B ZOOL
+</B><DT>RAIRO-ANALYSE NUMERIQUE-NUMERICAL ANALYSIS
+<B><DD>	RAIRO-ANAL NUMER-NUM
+</B><DT>RAIRO-AUTOMATIQUE-PRODUCTIQUE INFORMATIQUE INDUSTRIELLE-AUTOMATIC CONTROL PRODUCTION SYSTEMS
+<B><DD>	RAIRO-AUTOM PROD INF
+</B><DT>RAIRO-AUTOMATIQUE-SYSTEMS ANALYSIS AND CONTROL
+<B><DD>	RAIRO-AUTOM-SYST ANA
+</B><DT>RAIRO-INFORMATIQUE THEORIQUE ET APPLICATIONS-THEORETICAL INFORMATICS AND APPLICATIONS
+<B><DD>	RAIRO-INF THEOR APPL
+</B><DT>RAIRO-INFORMATIQUE-COMPUTER SCIENCE
+<B><DD>	RAIRO-INF-COMPUT SCI
+</B><DT>RAIRO-MATHEMATICAL MODELLING AND NUMERICAL ANALYSIS-MODELISATION MATHEMATIQUE ET ANALYSE NUMERIQUE
+<B><DD>	RAIRO-MATH MODEL NUM
+</B><DT>RAIRO-RECHERCHE OPERATIONNELLE-OPERATIONS RESEARCH
+<B><DD>	RAIRO-RECH OPER
+</B><DT>RAMANUJAN JOURNAL
+<B><DD>	RAMANUJAN J
+</B><DT>RAMUS-CRITICAL STUDIES IN GREEK AND ROMAN LITERATURE
+<B><DD>	RAMUS
+</B><DT>RAND JOURNAL OF ECONOMICS
+<B><DD>	RAND J ECON
+</B><DT>RANDOM STRUCTURES & ALGORITHMS
+<B><DD>	RANDOM STRUCT ALGOR
+</B><DT>RANGELAND JOURNAL
+<B><DD>	RANGELAND J
+</B><DT>RAPID COMMUNICATIONS IN MASS SPECTROMETRY
+<B><DD>	RAPID COMMUN MASS SP
+</B><DT>RARE METAL MATERIALS AND ENGINEERING
+<B><DD>	RARE METAL MAT ENG
+</B><DT>RARE METALS
+<B><DD>	RARE METALS
+</B><DT>RARITAN-A QUARTERLY REVIEW
+<B><DD>	RARITAN
+</B><DT>RASSEGNA DELLA LETTERATURA ITALIANA
+<B><DD>	RASS LETT ITAL
+</B><DT>RASSEGNA STORICA DEL RISORGIMENTO
+<B><DD>	RASS STOR RISORGIMEN
+</B><DT>RATIO-NEW SERIES
+<B><DD>	RATIO
+</B><DT>RATIONALITY AND SOCIETY
+<B><DD>	RATION SOC
+</B><DT>RBC-CELL BIOLOGY REVIEWS
+<B><DD>	RBC-CELL BIOL REV
+</B><DT>RCA REVIEW
+<B><DD>	RCA REV
+</B><DT>REACTION KINETICS AND CATALYSIS LETTERS
+<B><DD>	REACT KINET CATAL L
+</B><DT>REACTIVE & FUNCTIONAL POLYMERS
+<B><DD>	REACT FUNCT POLYM
+</B><DT>REACTIVE POLYMERS
+<B><DD>	REACT POLYM
+</B><DT>REACTIVITY OF SOLIDS
+<B><DD>	REACT SOLID
+</B><DT>READING AND WRITING
+<B><DD>	READ WRIT
+</B><DT>READING RESEARCH AND INSTRUCTION
+<B><DD>	READ RES INSTRUCT
+</B><DT>READING RESEARCH QUARTERLY
+<B><DD>	READ RES QUART
+</B><DT>READING TEACHER
+<B><DD>	READ TEACH
+</B><DT>REAL ESTATE ECONOMICS
+<B><DD>	REAL ESTATE ECON
+</B><DT>REAL ESTATE REVIEW
+<B><DD>	REAL ESTATE REV
+</B><DT>REAL-TIME IMAGING
+<B><DD>	REAL-TIME IMAGING
+</B><DT>REAL-TIME SYSTEMS
+<B><DD>	REAL-TIME SYST
+</B><DT>RECENT ADVANCES IN PHYTOCHEMISTRY
+<B><DD>	RECENT ADV PHYTOCHEM
+</B><DT>RECENT PROGRESS IN HORMONE RESEARCH
+<B><DD>	RECENT PROG HORM RES
+</B><DT>RECENT RESULTS IN CANCER RESEARCH
+<B><DD>	RECENT RES CANCER
+</B><DT>RECEPTOR
+<B><DD>	RECEPTOR
+</B><DT>RECEPTORS & CHANNELS
+<B><DD>	RECEPTOR CHANNEL
+</B><DT>RECEPTORS & SIGNAL TRANSDUCTION
+<B><DD>	RECEPT SIGNAL TRANS
+</B><DT>RECEPTORS AND RECOGNITION SERIES B
+<B><DD>	RECEPTOR RECOG SER B
+</B><DT>RECHERCHE
+<B><DD>	RECHERCHE
+</B><DT>RECHERCHE AEROSPATIALE
+<B><DD>	RECH AEROSPATIALE
+</B><DT>RECLAMATION & REVEGETATION RESEARCH
+<B><DD>	RECLAM REVEG RES
+</B><DT>RECORD-AT&T BELL LABORATORIES
+<B><DD>	RECORD-AT&T BELL LAB
+</B><DT>RECUEIL DE MEDECINE VETERINAIRE
+<B><DD>	RECL MED VET
+</B><DT>RECUEIL DES TRAVAUX CHIMIQUES DES PAYS-BAS-JOURNAL OF THE ROYAL NETHERLANDS CHEMICAL SOCIETY
+<B><DD>	RECL TRAV CHIM PAY B
+</B><DT>REDOX REPORT
+<B><DD>	REDOX REP
+</B><DT>REFERENCE & USER SERVICES QUARTERLY
+<B><DD>	REF USER SERV Q
+</B><DT>REFRACTIVE AND CORNEAL SURGERY
+<B><DD>	REFRACT CORNEAL SURG
+</B><DT>REFRACTORIES
+<B><DD>	REFRACTORIES-USSR+
+</B><DT>REFRACTORIES AND INDUSTRIAL CERAMICS
+<B><DD>	REFRACT IND CERAM+
+</B><DT>REFRACTORIES JOURNAL
+<B><DD>	REFRACT J
+</B><DT>REGIONAL ANESTHESIA
+<B><DD>	REGION ANESTH
+</B><DT>REGIONAL ANESTHESIA AND PAIN MEDICINE
+<B><DD>	REGION ANESTH PAIN M
+</B><DT>REGIONAL SCIENCE AND URBAN ECONOMICS
+<B><DD>	REG SCI URBAN ECON
+</B><DT>REGIONAL STUDIES
+<B><DD>	REG STUD
+</B><DT>REGULATED RIVERS-RESEARCH & MANAGEMENT
+<B><DD>	REGUL RIVER
+</B><DT>REGULATORY PEPTIDES
+<B><DD>	REGUL PEPTIDES
+</B><DT>REGULATORY TOXICOLOGY AND PHARMACOLOGY
+<B><DD>	REGUL TOXICOL PHARM
+</B><DT>REHABILITATION COUNSELING BULLETIN
+<B><DD>	REHABIL COUNS BULL
+</B><DT>REHABILITATION PSYCHOLOGY
+<B><DD>	REHABIL PSYCHOL
+</B><DT>RELATIONS INDUSTRIELLES-INDUSTRIAL RELATIONS
+<B><DD>	RELAT IND-IND RELAT
+</B><DT>RELIABILITY ENGINEERING & SYSTEM SAFETY
+<B><DD>	RELIAB ENG SYST SAFE
+</B><DT>RELIGION
+<B><DD>	RELIGION
+</B><DT>RELIGION & LITERATURE
+<B><DD>	RELIG LIT
+</B><DT>RELIGION AND AMERICAN CULTURE-A JOURNAL OF INTERPRETATION
+<B><DD>	RELIG AM CULT
+</B><DT>RELIGIOUS EDUCATION
+<B><DD>	RELIG EDUC
+</B><DT>RELIGIOUS HUMANISM
+<B><DD>	RELIG HUMANISM
+</B><DT>RELIGIOUS STUDIES
+<B><DD>	RELIG STUD
+</B><DT>REMEDIAL AND SPECIAL EDUCATION
+<B><DD>	REM SPEC EDUC
+</B><DT>REMOTE SENSING OF ENVIRONMENT
+<B><DD>	REMOTE SENS ENVIRON
+</B><DT>RENAISSANCE AND REFORMATION
+<B><DD>	RENAISSANCE REFORM
+</B><DT>RENAISSANCE QUARTERLY
+<B><DD>	RENAISSANCE QUART
+</B><DT>RENAL FAILURE
+<B><DD>	RENAL FAILURE
+</B><DT>RENAL PHYSIOLOGY AND BIOCHEMISTRY
+<B><DD>	RENAL PHYSIOL BIOCH
+</B><DT>RENASCENCE-ESSAYS ON VALUES IN LITERATURE
+<B><DD>	RENASCENCE
+</B><DT>RENEWABLE & SUSTAINABLE ENERGY REVIEWS
+<B><DD>	RENEW SUST ENERG REV
+</B><DT>RENEWABLE ENERGY
+<B><DD>	RENEW ENERG
+</B><DT>REPORTS FROM THE KEVO SUBARCTIC RESEARCH STATION
+<B><DD>	REP KEVO SUBARCTIC
+</B><DT>REPORTS ON MATHEMATICAL PHYSICS
+<B><DD>	REP MATH PHYS
+</B><DT>REPORTS ON PROGRESS IN PHYSICS
+<B><DD>	REP PROG PHYS
+</B><DT>REPRESENTATIONS
+<B><DD>	REPRESENTATIONS
+</B><DT>REPRODUCTION FERTILITY AND DEVELOPMENT
+<B><DD>	REPROD FERT DEVELOP
+</B><DT>REPRODUCTION IN DOMESTIC ANIMALS
+<B><DD>	REPROD DOMEST ANIM
+</B><DT>REPRODUCTION NUTRITION DEVELOPMENT
+<B><DD>	REPROD NUTR DEV
+</B><DT>REPRODUCTIVE TOXICOLOGY
+<B><DD>	REPROD TOXICOL
+</B><DT>RERIC INTERNATIONAL ENERGY JOURNAL
+<B><DD>	RERIC INT ENERG J
+</B><DT>RES MECHANICA
+<B><DD>	RES MECH
+</B><DT>RESEARCH & DEVELOPMENT
+<B><DD>	RES DEV
+</B><DT>RESEARCH & EXPLORATION
+<B><DD>	RES EXPLOR
+</B><DT>RESEARCH AND DEVELOPMENT IN AGRICULTURE
+<B><DD>	RES DEV AGRIC
+</B><DT>RESEARCH AND INDUSTRY
+<B><DD>	RES IND
+</B><DT>RESEARCH COMMUNICATIONS IN ALCOHOL AND SUBSTANCES OF ABUSE
+<B><DD>	RES COMMUN ALCOHOL S
+</B><DT>RESEARCH COMMUNICATIONS IN CHEMICAL PATHOLOGY AND PHARMACOLOGY
+<B><DD>	RES COMMUN CHEM PATH
+</B><DT>RESEARCH COMMUNICATIONS IN MOLECULAR PATHOLOGY AND PHARMACOLOGY
+<B><DD>	RES COMMUN MOL PATH
+</B><DT>RESEARCH COMMUNICATIONS IN PSYCHOLOGY PSYCHIATRY AND BEHAVIOR
+<B><DD>	RES COMMUN PSYCH PSY
+</B><DT>RESEARCH COMMUNICATIONS IN SUBSTANCES OF ABUSE
+<B><DD>	RES COMMUN SUBSTANCE
+</B><DT>RESEARCH IN AFRICAN LITERATURES
+<B><DD>	RES AFR LITERATURES
+</B><DT>RESEARCH IN CLINIC AND LABORATORY
+<B><DD>	RES CLIN LAB
+</B><DT>RESEARCH IN DEVELOPMENTAL DISABILITIES
+<B><DD>	RES DEV DISABIL
+</B><DT>RESEARCH IN ENGINEERING DESIGN-THEORY APPLICATIONS AND CONCURRENT ENGINEERING
+<B><DD>	RES ENG DES
+</B><DT>RESEARCH IN EXPERIMENTAL MEDICINE
+<B><DD>	RES EXP MED
+</B><DT>RESEARCH IN HIGHER EDUCATION
+<B><DD>	RES HIGH EDUC
+</B><DT>RESEARCH IN IMMUNOLOGY
+<B><DD>	RES IMMUNOL
+</B><DT>RESEARCH IN MICROBIOLOGY
+<B><DD>	RES MICROBIOL
+</B><DT>RESEARCH IN NONDESTRUCTIVE EVALUATION
+<B><DD>	RES NONDESTRUCT EVAL
+</B><DT>RESEARCH IN NURSING & HEALTH
+<B><DD>	RES NURS HEALTH
+</B><DT>RESEARCH IN ORGANIZATIONAL BEHAVIOR
+<B><DD>	RES ORGAN BEHAV
+</B><DT>RESEARCH IN PHENOMENOLOGY
+<B><DD>	RES PHENOMENOL
+</B><DT>RESEARCH IN THE TEACHING OF ENGLISH
+<B><DD>	RES TEACH ENGL
+</B><DT>RESEARCH IN VETERINARY SCIENCE
+<B><DD>	RES VET SCI
+</B><DT>RESEARCH IN VIROLOGY
+<B><DD>	RES VIROLOGY
+</B><DT>RESEARCH JOURNAL OF THE WATER POLLUTION CONTROL FEDERATION
+<B><DD>	RES J WATER POLLUT C
+</B><DT>RESEARCH MANAGEMENT
+<B><DD>	RES MANAGE
+</B><DT>RESEARCH ON AGING
+<B><DD>	RES AGING
+</B><DT>RESEARCH ON CHEMICAL INTERMEDIATES
+<B><DD>	RES CHEM INTERMEDIAT
+</B><DT>RESEARCH ON LANGUAGE AND SOCIAL INTERACTION
+<B><DD>	RES LANG SOC INTERAC
+</B><DT>RESEARCH ON SOCIAL WORK PRACTICE
+<B><DD>	RES SOCIAL WORK PRAC
+</B><DT>RESEARCH POLICY
+<B><DD>	RES POLICY
+</B><DT>RESEARCH PUBLICATIONS-ASSOCIATION FOR RESEARCH IN NERVOUS AND MENTAL DISEASE
+<B><DD>	RES PUBL ASSOC RES N
+</B><DT>RESEARCH QUARTERLY FOR EXERCISE AND SPORT
+<B><DD>	RES Q EXERCISE SPORT
+</B><DT>RESEARCH-TECHNOLOGY MANAGEMENT
+<B><DD>	RES TECHNOL MANAGE
+</B><DT>RESEARCHES ON POPULATION ECOLOGY
+<B><DD>	RES POPUL ECOL
+</B><DT>RESIDUE REVIEWS
+<B><DD>	RESIDUE REV
+</B><DT>RESOURCE AND ENERGY ECONOMICS
+<B><DD>	RESOUR ENERGY ECON
+</B><DT>RESOURCE GEOLOGY
+<B><DD>	RESOUR GEOL
+</B><DT>RESOURCE MANAGEMENT AND OPTIMIZATION
+<B><DD>	RESOUR MANAGE OPT
+</B><DT>RESOURCES AND CONSERVATION
+<B><DD>	RESOUR CONSERV
+</B><DT>RESOURCES AND ENERGY
+<B><DD>	RESOUR ENERG
+</B><DT>RESOURCES CONSERVATION AND RECYCLING
+<B><DD>	RESOUR CONSERV RECY
+</B><DT>RESOURCES FOR AMERICAN LITERARY STUDY
+<B><DD>	RESOUR AM LIT STUD
+</B><DT>RESOURCES POLICY
+<B><DD>	RESOUR POLICY
+</B><DT>RESPIRATION
+<B><DD>	RESPIRATION
+</B><DT>RESPIRATION PHYSIOLOGY
+<B><DD>	RESP PHYSIOL
+</B><DT>RESPIRATORY MEDICINE
+<B><DD>	RESP MED
+</B><DT>RESPONSIVE COMMUNITY
+<B><DD>	RESPONSIVE COMMUNITY
+</B><DT>RESTAURATOR-INTERNATIONAL JOURNAL FOR THE PRESERVATION OF LIBRARY AND ARCHIVAL MATERIAL
+<B><DD>	RESTAURATOR
+</B><DT>RESTORATION ECOLOGY
+<B><DD>	RESTOR ECOL
+</B><DT>RESTORATIVE NEUROLOGY AND NEUROSCIENCE
+<B><DD>	RESTOR NEUROL NEUROS
+</B><DT>RESUSCITATION
+<B><DD>	RESUSCITATION
+</B><DT>RETHINKING HISTORY
+<B><DD>	RETHINK HIST
+</B><DT>RETINA-THE JOURNAL OF RETINAL AND VITREOUS DISEASES
+<B><DD>	RETINA-J RET VIT DIS
+</B><DT>REVIEW OF BLACK POLITICAL ECONOMY
+<B><DD>	REV BLACK POLIT ECON
+</B><DT>REVIEW OF ECONOMIC CONDITIONS IN ITALY
+<B><DD>	REV ECON COND ITALY
+</B><DT>REVIEW OF ECONOMIC STUDIES
+<B><DD>	REV ECON STUD
+</B><DT>REVIEW OF ECONOMICS AND STATISTICS
+<B><DD>	REV ECON STAT
+</B><DT>REVIEW OF EDUCATIONAL RESEARCH
+<B><DD>	REV EDUC RES
+</B><DT>REVIEW OF ENGLISH STUDIES
+<B><DD>	REV ENGL STUD
+</B><DT>REVIEW OF FINANCIAL STUDIES
+<B><DD>	REV FINANC STUD
+</B><DT>REVIEW OF HIGHER EDUCATION
+<B><DD>	REV HIGH EDUC
+</B><DT>REVIEW OF INCOME AND WEALTH
+<B><DD>	REV INCOME WEALTH
+</B><DT>REVIEW OF INDUSTRIAL ORGANIZATION
+<B><DD>	REV IND ORGAN
+</B><DT>REVIEW OF INTERNATIONAL POLITICAL ECONOMY
+<B><DD>	REV INT POLIT ECON
+</B><DT>REVIEW OF INTERNATIONAL STUDIES
+<B><DD>	REV INT STUD
+</B><DT>REVIEW OF METAPHYSICS
+<B><DD>	REV METAPHYS
+</B><DT>REVIEW OF PALAEOBOTANY AND PALYNOLOGY
+<B><DD>	REV PALAEOBOT PALYNO
+</B><DT>REVIEW OF RELIGIOUS RESEARCH
+<B><DD>	REV RELIG RES
+</B><DT>REVIEW OF RESEARCH IN EDUCATION
+<B><DD>	REV RES EDUC
+</B><DT>REVIEW OF RESEARCH IN EDUCATION 22, 1997
+<B><DD>	REV RES EDUC
+</B><DT>REVIEW OF RESEARCH IN EDUCATION, 20, 1994
+<B><DD>	REV RES EDUC
+</B><DT>REVIEW OF RESEARCH IN EDUCATION, 21
+<B><DD>	REV RES EDUC
+</B><DT>REVIEW OF RESEARCH IN EDUCATION, 23, 1998
+<B><DD>	REV RES EDUC
+</B><DT>REVIEW OF RESEARCH IN EDUCATION, 24 1999
+<B><DD>	REV RES EDUC
+</B><DT>REVIEW OF SCIENTIFIC INSTRUMENTS
+<B><DD>	REV SCI INSTRUM
+</B><DT>REVIEW OF SOCIAL ECONOMY
+<B><DD>	REV SOC ECON
+</B><DT>REVIEW OF THE ELECTRICAL COMMUNICATIONS LABORATORIES
+<B><DD>	REV ELEC COMMUN LAB
+</B><DT>REVIEW-LATIN AMERICAN LITERATURE AND ARTS
+<B><DD>	REVIEW-LAT AM LIT
+</B><DT>REVIEWS IN AMERICAN HISTORY
+<B><DD>	REV AM HIST
+</B><DT>REVIEWS IN ANALYTICAL CHEMISTRY
+<B><DD>	REV ANAL CHEM
+</B><DT>REVIEWS IN AQUATIC SCIENCES
+<B><DD>	REV AQUAT SCI
+</B><DT>REVIEWS IN BIOCHEMICAL TOXICOLOGY
+<B><DD>	REV BIOCHEM TOXICOL
+</B><DT>REVIEWS IN CHEMICAL ENGINEERING
+<B><DD>	REV CHEM ENG
+</B><DT>REVIEWS IN COMPUTATIONAL CHEMISTRY
+<B><DD>	REV COMP CH
+</B><DT>REVIEWS IN CONTEMPORARY PHARMACOTHERAPY
+<B><DD>	REV CONTEMP PHARMACO
+</B><DT>REVIEWS IN FISH BIOLOGY AND FISHERIES
+<B><DD>	REV FISH BIOL FISHER
+</B><DT>REVIEWS IN INORGANIC CHEMISTRY
+<B><DD>	REV INORG CHEM
+</B><DT>REVIEWS IN MATHEMATICAL PHYSICS
+<B><DD>	REV MATH PHYS
+</B><DT>REVIEWS IN MEDICAL MICROBIOLOGY
+<B><DD>	REV MED MICROBIOL
+</B><DT>REVIEWS IN MEDICAL VIROLOGY
+<B><DD>	REV MED VIROL
+</B><DT>REVIEWS IN MINERALOGY
+<B><DD>	REV MINERAL
+</B><DT>REVIEWS IN PARTICULATE MATERIALS
+<B><DD>	REV PARTICUL MATER
+</B><DT>REVIEWS IN PERINATAL MEDICINE
+<B><DD>	REV PERINATAL MED
+</B><DT>REVIEWS IN THE NEUROSCIENCES
+<B><DD>	REV NEUROSCIENCE
+</B><DT>REVIEWS OF CHEMICAL INTERMEDIATES
+<B><DD>	REV CHEM INTERMED
+</B><DT>REVIEWS OF ENVIRONMENTAL CONTAMINATION AND TOXICOLOGY
+<B><DD>	REV ENVIRON CONTAM T
+</B><DT>REVIEWS OF GEOPHYSICS
+<B><DD>	REV GEOPHYS
+</B><DT>REVIEWS OF INFECTIOUS DISEASES
+<B><DD>	REV INFECT DIS
+</B><DT>REVIEWS OF MODERN PHYSICS
+<B><DD>	REV MOD PHYS
+</B><DT>REVIEWS OF PHYSIOLOGY BIOCHEMISTRY AND PHARMACOLOGY
+<B><DD>	REV PHYSIOL BIOCH P
+</B><DT>REVIEWS OF PHYSIOLOGY, BIOCHEMISTRY AND PHARMACOLOGY
+<B><DD>	REV PHYSIOL BIOCH P
+</B><DT>REVIEWS OF REPRODUCTION
+<B><DD>	REV REPROD
+</B><DT>REVIEWS ON ENVIRONMENTAL HEALTH
+<B><DD>	REV ENVIRON HEALTH
+</B><DT>REVIEWS ON HETEROATOM CHEMISTRY
+<B><DD>	REV HETEROATOM CHEM
+</B><DT>REVISTA BRASILEIRA DE GENETICA
+<B><DD>	BRAZ J GENET
+</B><DT>REVISTA BRASILEIRA DE GENETICA
+<B><DD>	REV BRAS GENET
+</B><DT>REVISTA BRASILEIRA DE MEDICINA
+<B><DD>	REV BRAS MED
+</B><DT>REVISTA BRASILEIRA DE ZOOTECNIA-BRAZILIAN JOURNAL OF ANIMAL SCIENCE
+<B><DD>	REV BRAS ZOOTECN
+</B><DT>REVISTA CHILENA DE HISTORIA NATURAL
+<B><DD>	REV CHIL HIST NAT
+</B><DT>REVISTA CHILENA DE LITERATURA
+<B><DD>	REV CHIL LIT
+</B><DT>REVISTA CIENTIFICA-FACULTAD DE CIENCIAS VETERINARIAS
+<B><DD>	REV CIENT-FAC CIEN V
+</B><DT>REVISTA CLINICA ESPANOLA
+<B><DD>	REV CLIN ESP
+</B><DT>REVISTA DA SOCIEDADE BRASILEIRA DE ZOOTECNIA-JOURNAL OF THE BRAZILIAN SOCIETY OF ANIMAL SCIENCE
+<B><DD>	REV SOC BRAS ZOOTECN
+</B><DT>REVISTA DE AGROQUIMICA Y TECNOLOGIA DE ALIMENTOS
+<B><DD>	REV AGROQUIM TECNOL
+</B><DT>REVISTA DE BIOLOGIA TROPICAL
+<B><DD>	REV BIOL TROP
+</B><DT>REVISTA DE CHIMIE
+<B><DD>	REV CHIM-BUCHAREST
+</B><DT>REVISTA DE CRITICA LITERARIA LATINOAMERICANA
+<B><DD>	REV CRIT LIT LATINO
+</B><DT>REVISTA DE DIALECTOLOGIA Y TRADICIONES POPULARES
+<B><DD>	REV DIALECT TRAD POP
+</B><DT>REVISTA DE ESTUDIOS HISPANICOS
+<B><DD>	REV ESTUD HISPAN
+</B><DT>REVISTA DE FILOLOGIA ESPANOLA
+<B><DD>	REV FILOL ESPAN
+</B><DT>REVISTA DE HISTORIA DE AMERICA
+<B><DD>	REV HIST AM
+</B><DT>REVISTA DE INDIAS
+<B><DD>	REV INDIAS
+</B><DT>REVISTA DE INFORMATICA Y AUTOMATICA
+<B><DD>	REV INFORM AUTOMAT
+</B><DT>REVISTA DE INVESTIGACION CLINICA
+<B><DD>	REV INVEST CLIN
+</B><DT>REVISTA DE LITERATURA
+<B><DD>	REV LITERATURA
+</B><DT>REVISTA DE METALURGIA
+<B><DD>	REV METAL MADRID
+</B><DT>REVISTA DE MICROBIOLOGIA
+<B><DD>	REV MICROBIOL
+</B><DT>REVISTA DE NEUROLOGIA
+<B><DD>	REV NEUROLOGIA
+</B><DT>REVISTA DE OCCIDENTE
+<B><DD>	REV OCCIDENTE
+</B><DT>REVISTA DE SAUDE PUBLICA
+<B><DD>	REV SAUDE PUBL
+</B><DT>REVISTA DO INSTITUTO DE MEDICINA TROPICAL DE SAO PAULO
+<B><DD>	REV I MED TROP
+</B><DT>REVISTA DOYMA DE INMUNOLOGIA
+<B><DD>	REV DOYMA INMUN
+</B><DT>REVISTA ECUATORIANA DE NEUROLOGIA
+<B><DD>	REV ECUAT NEUROL
+</B><DT>REVISTA ESPANOLA DE CARDIOLOGIA
+<B><DD>	REV ESP CARDIOL
+</B><DT>REVISTA ESPANOLA DE CIENCIA Y TECNOLOGIA DE ALIMENTOS
+<B><DD>	REV ESP CIEN TEC ALI
+</B><DT>REVISTA ESPANOLA DE ENFERMEDADES DIGESTIVAS
+<B><DD>	REV ESP ENFERM DIG
+</B><DT>REVISTA ESPANOLA DE FISIOLOGIA
+<B><DD>	REV ESP FISIOL
+</B><DT>REVISTA ESPANOLA DE LAS ENFERMEDADES DEL APARATO DIGESTIVO
+<B><DD>	REV ESP ENFERM APAR
+</B><DT>REVISTA GEOLOGICA DE CHILE
+<B><DD>	REV GEOL CHILE
+</B><DT>REVISTA IBEROAMERICANA
+<B><DD>	REV IBEROAMERICANA
+</B><DT>REVISTA INTERAMERICANA DE PSICOLOGIA
+<B><DD>	REV INTERAM PSICOL
+</B><DT>REVISTA LATINOAMERICANA DE INGENIERIA QUIMICA Y QUIMICA APLICADA-LATIN AMERICAN JOURNAL OF CHEMICAL ENGINEERING AND APPLIED CHEMISTRY
+<B><DD>	REV LAT AM ING QUIM
+</B><DT>REVISTA LATINOAMERICANA DE PSICOLOGIA
+<B><DD>	REV LAT AM PSICOL
+</B><DT>REVISTA MATEMATICA IBEROAMERICANA
+<B><DD>	REV MAT IBEROAM
+</B><DT>REVISTA MEDICA DE CHILE
+<B><DD>	REV MED CHILE
+</B><DT>REVISTA MEXICANA DE ASTRONOMIA Y ASTROFISICA
+<B><DD>	REV MEX ASTRON ASTR
+</B><DT>REVISTA MEXICANA DE FISICA
+<B><DD>	REV MEX FIS
+</B><DT>REVISTA MEXICANA DE PSICOLOGIA
+<B><DD>	REV MEX PSICOL
+</B><DT>REVISTA MEXICANA DE RADIOLOGIA
+<B><DD>	REV MEX RADIOL
+</B><DT>REVISTA TECNICA INTEVEP
+<B><DD>	REV TEC INTEVEP
+</B><DT>REVUE BELGE DE PHILOLOGIE ET D HISTOIRE
+<B><DD>	REV BELGE PHILOL HIS
+</B><DT>REVUE BIBLIQUE
+<B><DD>	REV BIBLIQUE
+</B><DT>REVUE CANADIENNE D ETUDES DU DEVELOPPEMENT-CANADIAN JOURNAL OF DEVELOPMENT STUDIES
+<B><DD>	REV CAN ETUD DEV
+</B><DT>REVUE CANADIENNE DE BIOLOGIE
+<B><DD>	REV CAN BIOL EXPTL
+</B><DT>REVUE CANADIENNE DE BIOLOGIE EXPERIMENTALE
+<B><DD>	REV CAN BIOL EXPTL
+</B><DT>REVUE CANADIENNE DES SCIENCES DE L ADMINISTRATION-CANADIAN JOURNAL OF ADMINISTRATIVE SCIENCES
+<B><DD>	REV CAN SCI ADMIN
+</B><DT>REVUE D ECOLOGIE ET DE BIOLOGIE DU SOL
+<B><DD>	REV ECOL BIOL SOL
+</B><DT>REVUE D ECOLOGIE-LA TERRE ET LA VIE
+<B><DD>	REV ECOL-TERRE VIE
+</B><DT>REVUE D ELEVAGE ET DE MEDECINE VETERINAIRE DES PAYS TROPICAUX
+<B><DD>	REV ELEV MED VET PAY
+</B><DT>REVUE D EPIDEMIOLOGIE ET DE SANTE PUBLIQUE
+<B><DD>	REV EPIDEMIOL SANTE
+</B><DT>REVUE D ESTHETIQUE
+<B><DD>	REV ESTHET
+</B><DT>REVUE D ETUDES COMPARATIVES EST-OUEST
+<B><DD>	REV ETUD COMP EST-Q
+</B><DT>REVUE D HISTOIRE DE L AMERIQUE FRANCAISE
+<B><DD>	REV HIST AM FR
+</B><DT>REVUE D HISTOIRE DU THEATRE
+<B><DD>	REV HIST THEATRE
+</B><DT>REVUE D HISTOIRE ECCLESIASTIQUE
+<B><DD>	REV HIST ECCLESIAST
+</B><DT>REVUE D HISTOIRE LITTERAIRE DE LA FRANCE
+<B><DD>	REV HIST LIT FR
+</B><DT>REVUE D HISTOIRE MODERNE ET CONTEMPORAINE
+<B><DD>	REV HIST MOD CONTEMP
+</B><DT>REVUE DE CHIMIE MINERALE
+<B><DD>	REV CHIM MINER
+</B><DT>REVUE DE CHIRURGIE ORTHOPEDIQUE ET REPARATRICE DE L APPAREIL MOTEUR
+<B><DD>	REV CHIR ORTHOP
+</B><DT>REVUE DE GEOLOGIE DYNAMIQUE ET DE GEOGRAPHIE PHYSIQUE
+<B><DD>	REV GEOL DYN GEOGR
+</B><DT>REVUE DE L AGRICULTURE
+<B><DD>	REV AGR-BRUSSELS
+</B><DT>REVUE DE L ART
+<B><DD>	REV ART
+</B><DT>REVUE DE L HISTOIRE DES RELIGIONS
+<B><DD>	REV HIST RELIG
+</B><DT>REVUE DE L INSTITUT FRANCAIS DU PETROLE
+<B><DD>	REV I FR PETROL
+</B><DT>REVUE DE LINGUISTIQUE ROMANE
+<B><DD>	REV LINGUIST ROMAN
+</B><DT>REVUE DE MEDECINE
+<B><DD>	REV MED-PARIS
+</B><DT>REVUE DE MEDECINE DE TOULOUSE
+<B><DD>	REV MED TOULOUSE
+</B><DT>REVUE DE MEDECINE INTERNE
+<B><DD>	REV MED INTERNE
+</B><DT>REVUE DE MEDECINE VETERINAIRE
+<B><DD>	REV MED VET-TOULOUSE
+</B><DT>REVUE DE METALLURGIE-CAHIERS D INFORMATIONS TECHNIQUES
+<B><DD>	REV METALL-PARIS
+</B><DT>REVUE DE METAPHYSIQUE ET DE MORALE
+<B><DD>	REV METAPHYS MORALE
+</B><DT>REVUE DE MUSICOLOGIE
+<B><DD>	REV MUSICOL
+</B><DT>REVUE DE NEUROPSYCHOLOGIE
+<B><DD>	REV NEUROPSYCHOL
+</B><DT>REVUE DE PHILOLOGIE DE LITTERATURE ET D HISTOIRE ANCIENNES
+<B><DD>	REV PHILOL LIT HIST
+</B><DT>REVUE DE PHYSIQUE APPLIQUEE
+<B><DD>	REV PHYS APPL
+</B><DT>REVUE DE STOMATOLOGIE ET DE CHIRURGIE MAXILLO-FACIALE
+<B><DD>	REV STOMATOL CHIR
+</B><DT>REVUE DES ETUDES ITALIENNES
+<B><DD>	REV ETUD ITAL
+</B><DT>REVUE DES ETUDES JUIVES
+<B><DD>	REV ETUD JUIVES
+</B><DT>REVUE DES ETUDES LATINES
+<B><DD>	REV ETUD LATIN
+</B><DT>REVUE DES FERMENTATIONS ET DES INDUSTRIES ALIMENTAIRES
+<B><DD>	REV FERMENT IND ALIM
+</B><DT>REVUE DES LANGUES ROMANES
+<B><DD>	REV LANGUES ROMANES
+</B><DT>REVUE DES MALADIES RESPIRATOIRES
+<B><DD>	REV MAL RESPIR
+</B><DT>REVUE DES SCIENCES HUMAINES
+<B><DD>	REV SCI HUMAINES
+</B><DT>REVUE DES SCIENCES PHILOSOPHIQUES ET THEOLOGIQUES
+<B><DD>	REV SCI PHILOS THEOL
+</B><DT>REVUE DU LOUVRE-LA REVUE DES MUSEES DE FRANCE
+<B><DD>	REV LOUVRE
+</B><DT>REVUE DU NORD
+<B><DD>	REV NORD
+</B><DT>REVUE DU PRATICIEN
+<B><DD>	REV PRATICIEN
+</B><DT>REVUE DU RHUMATISME
+<B><DD>	REV RHUM
+</B><DT>REVUE ECONOMIQUE
+<B><DD>	REV ECON
+</B><DT>REVUE FRANCAISE D ALLERGOLOGIE ET D IMMUNOLOGIE CLINIQUE
+<B><DD>	REV FR ALLERGOL
+</B><DT>REVUE FRANCAISE D ETUDES AMERICAINES
+<B><DD>	REV FR ETUD AMER
+</B><DT>REVUE FRANCAISE DE PSYCHANALYSE
+<B><DD>	REV FR PSYCHANAL
+</B><DT>REVUE FRANCAISE DE SOCIOLOGIE
+<B><DD>	REV FR SOCIOL
+</B><DT>REVUE FRANCAISE DE TRANSFUSION ET D HEMOBIOLOGIE
+<B><DD>	REV FR TRANSFUS HEM
+</B><DT>REVUE FRANCAISE DE TRANSFUSION ET IMMUNO-HEMATOLOGIE
+<B><DD>	REV FR TRANSFUS IMMU
+</B><DT>REVUE FRANCAISE DES CORPS GRAS
+<B><DD>	REV FR CORPS GRAS
+</B><DT>REVUE FRANCAISE DES MALADIES RESPIRATOIRES
+<B><DD>	REV FR MAL RESPIR
+</B><DT>REVUE GENERALE DE THERMIQUE
+<B><DD>	REV GEN THERM
+</B><DT>REVUE HISTORIQUE
+<B><DD>	REV HISTORIQUE
+</B><DT>REVUE INTERNATIONALE DE PHILOSOPHIE
+<B><DD>	REV INT PHILOS
+</B><DT>REVUE INTERNATIONALE DES HAUTES TEMPERATURES ET DES REFRACTAIRES
+<B><DD>	REV INT HAUTES TEMP
+</B><DT>REVUE MAROCAINE DE MEDECINE ET SANTE
+<B><DD>	REV MAROC MED SANTE
+</B><DT>REVUE NEUROLOGIQUE
+<B><DD>	REV NEUROL
+</B><DT>REVUE PHILOSOPHIQUE DE LA FRANCE ET DE L ETRANGER
+<B><DD>	REV PHILOS FR ETRANG
+</B><DT>REVUE PHILOSOPHIQUE DE LOUVAIN
+<B><DD>	REV PHILOS LOUVAIN
+</B><DT>REVUE ROMANE
+<B><DD>	REV ROMANE
+</B><DT>REVUE ROUMAINE D HISTOIRE
+<B><DD>	REV ROUM HIST
+</B><DT>REVUE ROUMAINE DE BIOCHIMIE
+<B><DD>	REV ROUM BIOCHIM
+</B><DT>REVUE ROUMAINE DE CHIMIE
+<B><DD>	REV ROUM CHIM
+</B><DT>REVUE ROUMAINE DE MATHEMATIQUES PURES ET APPLIQUEES
+<B><DD>	REV ROUM MATH PURE A
+</B><DT>REVUE ROUMAINE DE MEDECINE-MEDECINE INTERNE
+<B><DD>	REV ROUM MED-MED INT
+</B><DT>REVUE ROUMAINE DE PHYSIQUE
+<B><DD>	REV ROUM PHYS
+</B><DT>REVUE SCIENTIFIQUE ET TECHNIQUE DE L OFFICE INTERNATIONAL DES EPIZOOTIES
+<B><DD>	REV SCI TECH OIE
+</B><DT>REVUE SUISSE DE ZOOLOGIE
+<B><DD>	REV SUISSE ZOOL
+</B><DT>REVUE TECHNIQUE THOMSON-CSF
+<B><DD>	REV TECH THOMSON
+</B><DT>REVUE THEOLOGIQUE DE LOUVAIN
+<B><DD>	REV THEOL LOUVAIN
+</B><DT>RHEOLOGICA ACTA
+<B><DD>	RHEOL ACTA
+</B><DT>RHEOLOGY
+<B><DD>	RHEOLOGY
+</B><DT>RHETORICA-A JOURNAL OF THE HISTORY OF RHETORIC
+<B><DD>	RHETORICA
+</B><DT>RHEUMATIC DISEASE CLINICS OF NORTH AMERICA
+<B><DD>	RHEUM DIS CLIN N AM
+</B><DT>RHEUMATOLOGY
+<B><DD>	RHEUMATOLOGY
+</B><DT>RHEUMATOLOGY AND REHABILITATION
+<B><DD>	RHEUMATOL REHABIL
+</B><DT>RHEUMATOLOGY INTERNATIONAL
+<B><DD>	RHEUMATOL INT
+</B><DT>RHODE ISLAND MEDICAL JOURNAL
+<B><DD>	R I MED J
+</B><DT>RHODIUM EXPRESS
+<B><DD>	RHODIUM EXPRESS
+</B><DT>RHODORA
+<B><DD>	RHODORA
+</B><DT>RICE JOURNAL
+<B><DD>	RICE J
+</B><DT>RICERCA IN CLINICA E IN LABORATORIO
+<B><DD>	RES CLIN LAB
+</B><DT>RICERCHE DI MATEMATICA
+<B><DD>	RIC MAT
+</B><DT>RICERCHE DI STORIA DELL ARTE
+<B><DD>	RIC STOR ARTE
+</B><DT>RINASCIMENTO
+<B><DD>	RINASCIMENTO
+</B><DT>RISK ANALYSIS
+<B><DD>	RISK ANAL
+</B><DT>RISORGIMENTO
+<B><DD>	RISORGIMENTO
+</B><DT>RIVERS-STUDIES IN THE SCIENCE ENVIRONMENTAL POLICY AND LAW OF INSTREAM FLOW
+<B><DD>	RIVERS-STUD SCI ENV
+</B><DT>RIVISTA AERONAUTICA
+<B><DD>	RIV AERONAUT
+</B><DT>RIVISTA DEL NUOVO CIMENTO
+<B><DD>	RIV NUOVO CIMENTO
+</B><DT>RIVISTA DI AGRICOLTURA SUBTROPICALE E TROPICALE
+<B><DD>	RIV AGR SUBTROP TROP
+</B><DT>RIVISTA DI BIOLOGIA-BIOLOGY FORUM
+<B><DD>	RIV BIOL-BIOL FORUM
+</B><DT>RIVISTA DI ECONOMIA AGRARIA
+<B><DD>	RIV ECON AGR
+</B><DT>RIVISTA DI FILOSOFIA NEO-SCOLASTICA
+<B><DD>	RIV FILOS NEO-SCOLAS
+</B><DT>RIVISTA DI LETTERATURE MODERNE E COMPARATE
+<B><DD>	RIV LETT MOD COMP
+</B><DT>RIVISTA DI METEOROLOGIA AERONAUTICA
+<B><DD>	RIV METEOROL AERONAU
+</B><DT>RIVISTA DI NEURORADIOLOGIA
+<B><DD>	RIV NEURORADIOL
+</B><DT>RIVISTA DI PATOLOGIA VEGETALE
+<B><DD>	RIV PATOL VEG
+</B><DT>RIVISTA DI STORIA CONTEMPORANEA
+<B><DD>	RIV STORIA CONTEMP
+</B><DT>RIVISTA DI STORIA DELLA FILOSOFIA
+<B><DD>	RIV STOR FILOS
+</B><DT>RIVISTA DI STORIA E LETTERATURA RELIGIOSA
+<B><DD>	RIV STOR LETT RELIG
+</B><DT>RIVISTA ITALIANA DI MUSICOLOGIA
+<B><DD>	RIV ITAL MUSIC
+</B><DT>RIVISTA ITALIANA DI PALEONTOLOGIA E STRATIGRAFIA
+<B><DD>	RIV ITAL PALEONTOL S
+</B><DT>RIVISTA ITALIANA DI PEDIATRIA-ITALIAN JOURNAL OF PEDIATRICS
+<B><DD>	RIV ITAL PED
+</B><DT>RIVISTA STORICA ITALIANA
+<B><DD>	RIV STORICA ITAL
+</B><DT>RLC-REVUE DE LITTERATURE COMPAREE
+<B><DD>	RLC-REV LIT COMP
+</B><DT>RN MAGAZINE
+<B><DD>	RN MAG
+</B><DT>RNA-A PUBLICATION OF THE RNA SOCIETY
+<B><DD>	RNA
+</B><DT>ROBOTERSYSTEME
+<B><DD>	ROBOTERSYSTEME
+</B><DT>ROBOTICA
+<B><DD>	ROBOTICA
+</B><DT>ROBOTICS AGE
+<B><DD>	ROBOTIC AGE
+</B><DT>ROBOTICS AND AUTONOMOUS SYSTEMS
+<B><DD>	ROBOT AUTON SYST
+</B><DT>ROBOTICS AND COMPUTER-INTEGRATED MANUFACTURING
+<B><DD>	ROBOT CIM-INT MANUF
+</B><DT>ROCK MECHANICS
+<B><DD>	ROCK MECH
+</B><DT>ROCK MECHANICS AND ROCK ENGINEERING
+<B><DD>	ROCK MECH ROCK ENG
+</B><DT>ROCK PRODUCTS
+<B><DD>	ROCK PROD
+</B><DT>ROCKY MOUNTAIN INSTITUTE NEWSLETTER
+<B><DD>	ROCKY MT INST NEWSL
+</B><DT>ROCKY MOUNTAIN JOURNAL OF MATHEMATICS
+<B><DD>	ROCKY MT J MATH
+</B><DT>ROFO-FORTSCHRITTE AUF DEM GEBIET DER RONTGENSTRAHLEN UND DER BILDGEBENDEN VERFAHREN
+<B><DD>	ROFO-FORTSCHR RONTG
+</B><DT>ROMANCE NOTES
+<B><DD>	ROMANCE NOTES
+</B><DT>ROMANCE PHILOLOGY
+<B><DD>	ROMANCE PHILOL
+</B><DT>ROMANCE QUARTERLY
+<B><DD>	ROMANCE QUART
+</B><DT>ROMANISCHE FORSCHUNGEN
+<B><DD>	ROMAN FORSCH
+</B><DT>ROMANISTISCHE ZEITSCHRIFT FUR LITERATURGESCHICHTE-CAHIERS D HISTOIRE DES LITTERATURES ROMANES
+<B><DD>	ROMAN Z LIT-CAH HIST
+</B><DT>ROMANTISME
+<B><DD>	ROMANTISME
+</B><DT>ROSTLINNA VYROBA
+<B><DD>	ROST VYROBA
+</B><DT>ROUXS ARCHIVES OF DEVELOPMENTAL BIOLOGY
+<B><DD>	ROUX ARCH DEV BIOL
+</B><DT>ROYAL SOCIETY OF HEALTH JOURNAL
+<B><DD>	ROY SOC HEALTH J
+</B><DT>RQ
+<B><DD>	RQ
+</B><DT>RUBBER CHEMISTRY AND TECHNOLOGY
+<B><DD>	RUBBER CHEM TECHNOL
+</B><DT>RURAL SOCIOLOGY
+<B><DD>	RURAL SOCIOL
+</B><DT>RUSSELL-THE JOURNAL OF THE BERTRAND RUSSELL ARCHIVES
+<B><DD>	RUSSELL
+</B><DT>RUSSIAN ACADEMY OF SCIENCES IZVESTIYA MATHEMATICS
+<B><DD>	RUSS AC SC IZV MATH+
+</B><DT>RUSSIAN ACADEMY OF SCIENCES SBORNIK MATHEMATICS
+<B><DD>	RUSS AC SC SB MATH+
+</B><DT>RUSSIAN AND EAST EUROPEAN FINANCE AND TRADE
+<B><DD>	RUSS E EUR FINANC TR
+</B><DT>RUSSIAN CHEMICAL BULLETIN
+<B><DD>	RUSS CHEM B+
+</B><DT>RUSSIAN EDUCATION AND SOCIETY
+<B><DD>	RUSS EDUC SOC
+</B><DT>RUSSIAN ELECTROCHEMISTRY
+<B><DD>	RUSS ELECTROCHEM+
+</B><DT>RUSSIAN HISTORY-HISTOIRE RUSSE
+<B><DD>	RUSS HIST-HIST RUSS
+</B><DT>RUSSIAN JOURNAL OF APPLIED CHEMISTRY
+<B><DD>	RUSS J APPL CHEM+
+</B><DT>RUSSIAN JOURNAL OF COORDINATION CHEMISTRY
+<B><DD>	RUSS J COORD CHEM+
+</B><DT>RUSSIAN JOURNAL OF ECOLOGY
+<B><DD>	RUSS J ECOL+
+</B><DT>RUSSIAN JOURNAL OF ELECTROCHEMISTRY
+<B><DD>	RUSS J ELECTROCHEM+
+</B><DT>RUSSIAN JOURNAL OF GENERAL CHEMISTRY
+<B><DD>	RUSS J GEN CHEM
+</B><DT>RUSSIAN JOURNAL OF GENETICS
+<B><DD>	RUSS J GENET+
+</B><DT>RUSSIAN JOURNAL OF MATHEMATICAL PHYSICS
+<B><DD>	RUSS J MATH PHYS
+</B><DT>RUSSIAN JOURNAL OF NEMATOLOGY
+<B><DD>	RUSS J NEMATOL
+</B><DT>RUSSIAN JOURNAL OF NONDESTRUCTIVE TESTING
+<B><DD>	RUSS J NONDESTRUCT+
+</B><DT>RUSSIAN JOURNAL OF NUMERICAL ANALYSIS AND MATHEMATICAL MODELLING
+<B><DD>	RUSS J NUMER ANAL M
+</B><DT>RUSSIAN JOURNAL OF PHYSICAL CHEMISTRY
+<B><DD>	RUSS J PHYS CH
+</B><DT>RUSSIAN JOURNAL OF PHYSICAL CHEMISTRY
+<B><DD>	RUSS J PHYS CHEM+
+</B><DT>RUSSIAN JOURNAL OF PLANT PHYSIOLOGY
+<B><DD>	RUSS J PLANT PHYSL+
+</B><DT>RUSSIAN LINGUISTICS
+<B><DD>	RUSS LINGUIST
+</B><DT>RUSSIAN LITERATURE
+<B><DD>	RUSS LITERATURE
+</B><DT>RUSSIAN MATHEMATICAL SURVEYS
+<B><DD>	RUSS MATH SURV+
+</B><DT>RUSSIAN METALLURGY
+<B><DD>	RUSS METALL+
+</B><DT>RUSSIAN PLANT PHYSIOLOGY
+<B><DD>	RUSS PLANT PHYSIOL+
+</B><DT>RUSSIAN POLITICS AND LAW
+<B><DD>	RUSS POLIT LAW
+</B><DT>RUSSIAN REVIEW
+<B><DD>	RUSS REV
+</B><DT>RUSSIAN STUDIES IN LITERATURE
+<B><DD>	RUSS STUD LIT
+</B><DT>RUSSIAN STUDIES IN PHILOSOPHY
+<B><DD>	RUSS STUD PHILOS
+</B><DT>RUSSIAN ULTRASONICS
+<B><DD>	RUSS ULTRASON
+</B><DT>RUSSKAIA LITERATURA
+<B><DD>	RUSS LITERATURA
+</B><DT>RUTGERS LAW REVIEW
+<B><DD>	RUTGERS LAW REV
+</B></DL>
+</BODY>
+</HTML>

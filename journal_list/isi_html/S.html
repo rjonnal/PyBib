@@ -1,715 +1,1421 @@
-<!DOCTYPE html>
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title> Pythonforbeginners.com - Learn Python by Example </title>
-        <link rel="profile" href="http://gmpg.org/xfn/11" />
-        <link rel="canonical" href="http://www.pythonforbeginners.com/" />        
-        <meta property="og:locale" content="en_US"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content=" Pythonforbeginners.com - Learn Python by Example "/>
-        <meta property="og:url" content="http://www.pythonforbeginners.com/"/>
-        <meta property="og:site_name" content="Python For Beginners"/>        
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Feed" href="http://www.pythonforbeginners.com/feed/" />
-        <link rel="alternate" type="application/rss+xml" title="Python For Beginners &raquo; Comments Feed" href="http://www.pythonforbeginners.com/comments/feed/" />        
-        <meta name="description" lang="en-US" content="__str__ vs. __repr__,The del Statement,Break and Continue Statements,Numeric Types in Python,DNS Lookup With Python,Encoding JSON with Python,How to Use MySQL Connector/Python,PostGen,Getting the most popular pages from your Apache logfile,Make your life easier with Virtualenvwrapper," />
-        <meta name="keywords" content="" />
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="http://s.pythonforbeginners.com/static/img/favicon.ico" type="image/x-icon" />
-        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeDefault.min.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="http://s.pythonforbeginners.com/static/css/p4b.css" >
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-        
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-64708426-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-<script type="text/javascript" src="//s.ntv.io/serve/load.js" async></script>
-    </head>
-    <body>
-        <div id="fb-root"></div>
-
-        <div id="wrapper">
-            
-<div class="container navigation">  <div class="navbar navbar-inverse">  
-<script>
-function reloadMe() {
-	window.location.reload();
-}
-function getInterval(){
-	var lowerBound = 420;
-	var upperBound = 840;
-	
-	var randNum = Math.floor((upperBound-lowerBound+1)*Math.random()+lowerBound) * 1000;
-	return randNum;
-}
-var interval = getInterval();
-var srcInterval = setInterval("reloadMe()",interval);
-</script> 
-<script async type="text/javascript" src="//cdn.fancybar.net/ac/fancybar.js?zoneid=1502&serve=C6ADVKE&placement=pythonforbeginners" id="_fancybar_js"></script>
-  
-     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="glyphicon glyphicon-chevron-down"></span>
-        </button>        
-        <a class="navbar-brand" href="/" title="pythonforbeginners.com">
-          <span class="first-part">python</span> for beginners
-          <!-- <img src="http://s.pythonforbeginners.com/static/img/logo.png" alt="pythonforbeginners.com">-->
-        </a>
-      </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          
-          <li><a href="/basics/" title="Basics">basics</a></li>
-          <li><a href="/lists/" title="lists">lists</a></li>
-          <li><a href="/dictionary-data-structure-in-python/" title="dictionary">dictionary</a></li>
-          <li><a href="/code-snippets-source-code/" title="code snippets">code snippets</a></li>
-          <li><a href="/modules-in-python/" title="modules">modules</a></li>
-         </ul>          
-      </div>
-  </div>
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254422");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;background: #073648;"><div style="padding-bottom: 0px;width: 730px; margin: 0 auto;"><a href="https://goo.gl/W6uHvh"><img src="/media/uploads/pfb_728.png"></div></div>'); 
-}
- 
-</script>
-
-
-
-
-<style>
-#right_bottom_ad {
-	position: fixed;
-	right: -325px;
-	bottom: 0;
-z-index: 1000;
-	width: 320px;
-	height: 270px;
-	
-	transition: all 0.5s;
-	-webkit-transition: all 0.8s;
-	-moz-transition: all 0.8s;
-	-o-transition: all 0.8s;
-}
-#right_bottom_ad.slide-in {
-	right: 0 !important;
-}
-#right_bottom_ad_close_box {
-	position: absolute;
-	top: 0px;
-	right: 15px;
-margin-top: -30px;
-background: #fff;
-padding: 0px 4px;
-}
-</style>
-
-<script>
-window.onload = function() {
-	document.getElementById('right_bottom_ad').setAttribute('class', 'slide-in');
-	
-	document.getElementById('close-button').addEventListener('click', function(event){
-    	event.preventDefault();
-    	document.getElementById('right_bottom_ad').removeAttribute('class', 'slide-in');
-	});
-
-var close = document.getElementById('close-button');
-var counter = 10;
-var newElement = document.getElementById('countdown');
-newElement.innerHTML = 10;
-var id;
-
-close.parentNode.replaceChild(newElement, close);
-
-id = setInterval(function() {
-    counter--;
-    if(counter < 0) {
-        newElement.parentNode.replaceChild(close, newElement);
-        clearInterval(id);
-    } else {
-        newElement.innerHTML = counter.toString();
-    }
-}, 1000);
-
-};
-</script>
-
-<div id="right_bottom_ad">
-<div id="right_bottom_ad_close_box"><div id="countdown">10</div><a href="#" id="close-button">X</a></div>
-<div class="ad_box">
-
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=315227&u=theeighth&width=300&height=250"></script>
-</div>
-</div> 
-
-
-</div>
-            
-   
-    <div class="container content">
-        <div class="col-md-7 col-lg-8">
-        
-    <div class="ads">
-
-</div>
-     
-    <ul class="nav nav-list">
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="__str__ vs. __repr__" href="/basics/__str__-vs-__repr"
-                            title="__str__ vs. __repr__">__str__ vs. __repr__</a>
-                        <a class="comment-bubble" title="Comment on __str__ vs. __repr__" href="__str__-vs-__repr#disqus_thread" data-disqus-identifier="6749 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        According to the official Python documentation, __repr__ is a built-in function used to compute the &quot;official&quot; string reputation of an object, while __str__ is a built-in function that computes the &quot;informal&quot; string representations of an object. So both __repr__ and __str__ are used to represent objects, but in different ways. ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/__str__-vs-__repr" title="__str__ vs. __repr__">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="The del Statement" href="/basics/del-statement"
-                            title="The del Statement">The del Statement</a>
-                        <a class="comment-bubble" title="Comment on The del Statement" href="del-statement#disqus_thread" data-disqus-identifier="6748 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The del statement can be used to remove an item from a list by referring to its index, rather than its value. For example, if you have a list with five values, like this: a = [1, 2, 3, 4, 5] and you want to remove the second listed value ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/del-statement" title="The del Statement">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Break and Continue Statements" href="/basics/break-and-continue-statements"
-                            title="Break and Continue Statements">Break and Continue Statements</a>
-                        <a class="comment-bubble" title="Comment on Break and Continue Statements" href="break-and-continue-statements#disqus_thread" data-disqus-identifier="6747 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Break statements exist in Python to exit or &quot;break&quot; a for or while conditional loop. When the loop ends, the code picks up from and executes the next line immediately following the loop that was broken.&amp;nbsp; numbers = (1, 2, 3) num_sum = 0 count = 0 for x in ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/break-and-continue-statements" title="Break and Continue Statements">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Numeric Types in Python" href="/code/numeric-types-python"
-                            title="Numeric Types in Python">Numeric Types in Python</a>
-                        <a class="comment-bubble" title="Comment on Numeric Types in Python" href="numeric-types-python#disqus_thread" data-disqus-identifier="6745 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        In any OOP language, there are many different data types. In Python, number data types are used to store numeric values. There are four different numerical types in Python: int (plain integers): this one is pretty standard -- plain integers are just positive or negative whole numbers. long (long integers): ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code/numeric-types-python" title="Numeric Types in Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code/" title="Code"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="DNS Lookup With Python" href="/python/dns-lookup-python"
-                            title="DNS Lookup With Python">DNS Lookup With Python</a>
-                        <a class="comment-bubble" title="Comment on DNS Lookup With Python" href="dns-lookup-python#disqus_thread" data-disqus-identifier="6744 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        The sockets module provides an easy way to look up a host name&#39;s ip address. import socket addr1 = socket.gethostbyname(&#39;google.com&#39;) addr2 = socket.gethostbyname(&#39;yahoo.com&#39;) print(addr1, addr2) Which will output the following ip addresses: 173.194.121.9 98.138.253.109
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/python/dns-lookup-python" title="DNS Lookup With Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                                <li><a href="/sockets/" title="Sockets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Sockets</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Encoding JSON with Python" href="/dictionary/parsing-json-python"
-                            title="Encoding JSON with Python">Encoding JSON with Python</a>
-                        <a class="comment-bubble" title="Comment on Encoding JSON with Python" href="parsing-json-python#disqus_thread" data-disqus-identifier="6743 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        Python comes pre-equipped with a JSON encoder and decoder to make it very simple to play nice with JSON in your applications The simplest way to encode JSON is with a dictionary. This basic dictionary holds random values of various datatypes. data = { a: 0, b: 9.6, c: &quot;Hello ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/dictionary/parsing-json-python" title="Encoding JSON with Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/dictionary/" title="Dictionary"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Dictionary</a></li>
-                            
-                                <li><a href="/json/" title="Json"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Json</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="How to Use MySQL Connector/Python" href="/mysql/how-use-mysql-connectorpython"
-                            title="How to Use MySQL Connector/Python">How to Use MySQL Connector/Python</a>
-                        <a class="comment-bubble" title="Comment on How to Use MySQL Connector/Python" href="how-use-mysql-connectorpython#disqus_thread" data-disqus-identifier="6742 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        MySQL Connector/Python is a driver released by Oracle themselves to make it easier to connect to a MySQL database with Python. MySQL Connecter/Python supports all versions of Python 2.0 and later, also including versions 3.3 and later. To install MySQL Connector/Python simply use pip to install the package. pip install ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/mysql/how-use-mysql-connectorpython" title="How to Use MySQL Connector/Python">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/mysql/" title="MySQL"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;MySQL</a></li>
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/python/" title="Python"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Python</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="PostGen" href="/basics/postgen"
-                            title="PostGen">PostGen</a>
-                        <a class="comment-bubble" title="Comment on PostGen" href="postgen#disqus_thread" data-disqus-identifier="6741 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/basics/postgen" title="PostGen">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/basics/" title="Basics"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Basics</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Getting the most popular pages from your Apache logfile" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile"
-                            title="Getting the most popular pages from your Apache logfile">Getting the most popular pages from your Apache logfile</a>
-                        <a class="comment-bubble" title="Comment on Getting the most popular pages from your Apache logfile" href="getting-most-popular-pages-your-apache-logfile#disqus_thread" data-disqus-identifier="6740 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        An Apache logfile can be huge and hard to read. Here is a way to get a list of the most visited pages (or files) from an Apache logfile. In this example, we only want to know the URLs from GET requests. We will use the wonderful Counter which is ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/code-snippets-source-code/getting-most-popular-pages-your-apache-logfile" title="Getting the most popular pages from your Apache logfile">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/code-snippets-source-code/" title="Code snippets"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Code snippets</a></li>
-                            
-                                <li><a href="/collection/" title="collection"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;collection</a></li>
-                            
-                                <li><a href="/io/" title="IO"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;IO</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-                
-                <li class="hentry"><h2>
-                        <span class="post-format"></span>
-                        <a rel="bookmark" title="Make your life easier with Virtualenvwrapper" href="/pip/make-your-life-easier-virtualenvwrapper"
-                            title="Make your life easier with Virtualenvwrapper">Make your life easier with Virtualenvwrapper</a>
-                        <a class="comment-bubble" title="Comment on Make your life easier with Virtualenvwrapper" href="make-your-life-easier-virtualenvwrapper#disqus_thread" data-disqus-identifier="6739 http://www.pythonforbeginners.com/?p="></a>
-                    </h2>
-                    <div class="post-bodycopy cf">
-                        When you do a lot of Python programming, you can make a mess of your system with Pip. Different apps need different requirements. One app needs version 1.2 of a package and another one needs 1.5. And then... you&#39;re in trouble. When you want to know what packages have been ...
-                    </div>
-                    <div class="post-footer">
-                        <a class="post-readmore" href="/pip/make-your-life-easier-virtualenvwrapper" title="Make your life easier with Virtualenvwrapper">
-                        read more &rarr;</a>
-                         <ul class="nav nav-pills">
-                            
-                                <li><a href="/pip/" title="Pip"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Pip</a></li>
-                            
-                                <li><a href="/virtualenv/" title="Virtualenv"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Virtualenv</a></li>
-                            
-                            </ul>
-                    </div>
-                    
-                </li>
-            
-            
-<ul class="pagination">
-
-     <li class="disabled">
-        <a title="First Page" href="?page=1">&laquo;</a>
-     </li>
-
-
-    <li class="disabled">
-        <a title="Previous Page" href="#">&larr;</a>
-    </li>
-
-
-    
-        <li class="active">
-            <a title="Current Page" href="#">1</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 2 of 20" href="?page=2">2</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 3 of 20" href="?page=3">3</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 4 of 20" href="?page=4">4</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 5 of 20" href="?page=5">5</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 6 of 20" href="?page=6">6</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 7 of 20" href="?page=7">7</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 8 of 20" href="?page=8">8</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 9 of 20" href="?page=9">9</a>
-        </li>
-    
-
-    
-        <li>
-            <a title="Page 10 of 20" href="?page=10">10</a>
-        </li>
-    
-
-
-    <li >
-        <a title="Next Page" href="?page=2">&rarr;</a>
-    </li>
-
-
-    <li >
-        <a title="Last Page" href="?page=20">&raquo;</a>
-    </li>
-
-</ul>
-        </ul>
-<div id="crtoTextBanner">
-<script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=255292");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script>
-</div>
-
-        </div>
-       
-<div class="col-md-5 col-lg-4">
-    <form role="form" id="search" method="get" action="/search/"> 
-      <div class="input-group">
-          <input type="text" placeholder="Search" id="q" name="q" class="form-control">
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">SEARCH</button>
-          </span>               
-      </div>
-    </form>
-    <aside>
-<div style="padding: 8px 8px;">
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/gHvv2C"><img src="/media/uploads/pfb_300.png"></div></div>'); 
-}
- 
-</script> 
-
-
-<!-- BuySellAds Ad Code -->
-<script type="text/javascript">
-(function(){
-  var bsa = document.createElement('script');
-     bsa.type = 'text/javascript';
-     bsa.async = true;
-     bsa.src = '//s3.buysellads.com/ac/bsa.js';
-  (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-})();
-</script>
-<!-- End BuySellAds Ad Code -->
-<!-- BuySellAds Zone Code -->
-<div id="bsap_1303531" class="bsarocks bsap_d9686a1e7fd5c4eaea6cc68d37c9bce9"></div>
-<!-- End BuySellAds Zone Code -->
-</div>
-
-
-
-
-<!--/*
-  *
-  * Revive Adserver Javascript Tag
-  * - Generated with Revive Adserver v3.1.0
-  *
-  */-->
-
-<!--/*
-  * The backup image section of this tag has been generated for use on a
-  * non-SSL page. If this tag is to be placed on an SSL page, change the
-  *   'http://ads.egrappler.com/www/delivery/...'
-  * to
-  *   'https://ads.egrappler.com/www/delivery/...'
-  *
-  * This noscript section of this tag only shows image banners. There
-  * is no width or height in these banners, so if you want these tags to
-  * allocate space for the ad before it shows, you will need to add this
-  * information to the <img> tag.
-  *
-  * If you do not want to deal with the intricities of the noscript
-  * section, delete the tag (from <noscript>... to </noscript>). On
-  * average, the noscript tag is called from less than 1% of internet
-  * users.
-  */-->
-
-<script type='text/javascript'><!--//<![CDATA[
-   var m3_u = (location.protocol=='https:'?'https://ads.egrappler.com/www/delivery/ajs.php':'http://ads.egrappler.com/www/delivery/ajs.php');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   if (!document.MAX_used) document.MAX_used = ',';
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("?zoneid=18");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location));
-   if (document.referrer) document.write ("&amp;referer=" + escape(document.referrer));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'><\/scr"+"ipt>");
-//]]>--></script><noscript><a href='http://ads.egrappler.com/www/delivery/ck.php?n=a905b6c4&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ads.egrappler.com/www/delivery/avw.php?zoneid=18&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a905b6c4' border='0' alt='' /></a></noscript>
-
-
-
-
-
-
-       <div style="padding: 8px 0px;"><script type='text/javascript'>
-<!--//<![CDATA[
-   document.MAX_ct0 ='';
-   var m3_u = (location.protocol=='https:'?'https://cas.criteo.com/delivery/ajs.php?':'http://cas.criteo.com/delivery/ajs.php?');
-   var m3_r = Math.floor(Math.random()*99999999999);
-   document.write ("<scr"+"ipt type='text/javascript' src='"+m3_u);
-   document.write ("zoneid=254421");document.write("&amp;nodis=1");
-   document.write ('&amp;cb=' + m3_r);
-   if (document.MAX_used != ',') document.write ("&amp;exclude=" + document.MAX_used);
-   document.write (document.charset ? '&amp;charset='+document.charset : (document.characterSet ? '&amp;charset='+document.characterSet : ''));
-   document.write ("&amp;loc=" + escape(window.location).substring(0,1600));
-   if (document.context) document.write ("&context=" + escape(document.context));
-   if ((typeof(document.MAX_ct0) != 'undefined') && (document.MAX_ct0.substring(0,4) == 'http')) {
-       document.write ("&amp;ct0=" + escape(document.MAX_ct0));
-   }
-   if (document.mmm_fo) document.write ("&amp;mmm_fo=1");
-   document.write ("'></scr"+"ipt>");
-//]]>--></script></div>
-          <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fwww.pythonforbeginners.com%2F&region=follow_link&screen_name=pythonbeginners&tw_p=followbutton" class="btn btn-lg btn-success" data-show-count="false" data-size="large"><span class="fa fa-twitter on fa-square-o"></span> follow @pythonbeginners</a><br/><br/>
-        <div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296859&u=theeighth&width=300&height=250"></script></div>
-
-
-
-<script type="text/javascript" src="http://cssdeck.com/assets/js/advert.js"></script>
-<script type="text/javascript">
-if (document.getElementById("tester") == undefined) 
-{ 
-document.write('<div class="adblock" style="padding: 5px;border: 1px solid #ddd;margin: 10px 5px;"><div style="padding-bottom: 10px;"><a href="https://goo.gl/YrIEfw"><img src="/media/uploads/slide_online.png"></div></div>'); 
-}
- 
-</script> 
-
-        <div class="categories">
-          <h3>Categories</h3>
-          <ul class="nav nav-pills nav-stacked">
-              <li><a href="/basics/">Basics</a></li>
-              <li><a href="/cheatsheet/">Cheatsheet</a></li>
-              <li><a href="/code-snippets-source-code/">Code snippets</a></li>
-              <li><a href="/development/">Development</a></li>
-              <li><a href="/dictionary/">Dictionary</a></li>
-              <li><a href="/error-handling/">Error Handling</a></li>
-              <li><a href="/lists/">Lists</a></li>
-              <li><a href="/loops/">Loops</a></li>
-              <li><a href="/modules-in-python/">Modules</a></li>
-              <li><a href="/python-strings/">Strings</a></li>
-              <li><a href="/systems-programming/">System &amp; OS</a></li>
-              <li><a href="/uncategorized/">Uncategorized</a></li>
-              <li><a href="/python-on-the-web/">Web &amp; Internet</a></li>
-          </ul>
-        </div>
-<div style="padding: 8px 0px;"><script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296876&u=theeighth&width=160&height=600"></script></div>
-      <div class="textwidget"><script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-        <g:page href="https://plus.google.com/102177732314069091949"></g:page>
-      </div>
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296864&u=theeighth&width=300&height=250"></script>
-    </aside>
-</div>
-    </div>
-
-            <div class="push"></div>
-        </div>
-       
-
-
-<div class="container container-footer">
-    <div id="footer">
-<script type="text/javascript" src="http://ap.lijit.com/www/delivery/fpi.js?z=296872&u=theeighth&width=728&height=90"></script><br>
-          &copy; <a href="http://pythonforbeginners.com" title="Perceptive Minds">Python For Beginners</a> 2012-2015  |  <a href="/privacy-policy/">Privacy Policy</a>
-    
-
-
-
-</div>
-</div>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=doxy"></script>
-
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=1474940332733250";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-        
-    </body>
-</html>
+<HTML>
+<HEAD>
+<TITLE>Journal Title Abbreviations</TITLE>
+</HEAD>
+<BODY BGCOLOR=#FFFFFF>
+<h2>ISI Journal Title Abbreviations</h2>
+<hr size=1 noshade><b>Browse by letter:</b>
+ <A HREF="A_abrvjt.html">A</A> <A HREF="B_abrvjt.html">B</A> <A HREF="C_abrvjt.html">C</A> <A HREF="D_abrvjt.html">D</A> <A HREF="E_abrvjt.html">E</A> <A HREF="F_abrvjt.html">F</A> <A HREF="G_abrvjt.html">G</A> <A HREF="H_abrvjt.html">H</A> <A HREF="I_abrvjt.html">I</A> <A HREF="J_abrvjt.html">J</A> <A HREF="K_abrvjt.html">K</A> <A HREF="L_abrvjt.html">L</A> <A HREF="M_abrvjt.html">M</A> <A HREF="N_abrvjt.html">N</A> <A HREF="O_abrvjt.html">O</A> <A HREF="P_abrvjt.html">P</A> <A HREF="Q_abrvjt.html">Q</A> <A HREF="R_abrvjt.html">R</A> <A HREF="S_abrvjt.html">S</A> <A HREF="T_abrvjt.html">T</A> <A HREF="U_abrvjt.html">U</A> <A HREF="V_abrvjt.html">V</A> <A HREF="W_abrvjt.html">W</A> <A HREF="X_abrvjt.html">X</A> <A HREF="Y_abrvjt.html">Y</A> <A HREF="Z_abrvjt.html">Z</A><BR>
+<hr size=1 noshade>
+<DL>
+<A NAME="S"></A><DT>SABOURAUDIA-JOURNAL OF MEDICAL AND VETERINARY MYCOLOGY
+<B><DD>	SABOURAUDIA
+</B><DT>SACRED MUSIC
+<B><DD>	SACRED MUSIC
+</B><DT>SADHANA-ACADEMY PROCEEDINGS IN ENGINEERING SCIENCES
+<B><DD>	SADHANA-ACAD P ENG S
+</B><DT>SAECULUM
+<B><DD>	SAECULUM
+</B><DT>SAFETY SCIENCE
+<B><DD>	SAFETY SCI
+</B><DT>SAGGI-NEUROPSICOLOGIA INFANTILE PSICOPEDAGOGIA RIABILITAZIONE
+<B><DD>	SAGGI
+</B><DT>SALMAGUNDI-A QUARTERLY OF THE HUMANITIES AND SOCIAL SCIENCES
+<B><DD>	SALMAGUNDI
+</B><DT>SALUD MENTAL
+<B><DD>	SALUD MENT
+</B><DT>SALUD PUBLICA DE MEXICO
+<B><DD>	SALUD PUBLICA MEXICO
+</B><DT>SAMPE JOURNAL
+<B><DD>	SAMPE J
+</B><DT>SAMPE QUARTERLY-SOCIETY FOR THE ADVANCEMENT OF MATERIAL AND PROCESS ENGINEERING
+<B><DD>	SAMPE QUART
+</B><DT>SANKHYA-THE INDIAN JOURNAL OF STATISTICS SERIES A
+<B><DD>	SANKHYA SER A
+</B><DT>SANKHYA-THE INDIAN JOURNAL OF STATISTICS SERIES B
+<B><DD>	SANKHYA SER B
+</B><DT>SAR AND QSAR IN ENVIRONMENTAL RESEARCH
+<B><DD>	SAR QSAR ENVIRON RES
+</B><DT>SARCOIDOSIS
+<B><DD>	SARCOIDOSIS
+</B><DT>SARCOIDOSIS VASCULITIS AND DIFFUSE LUNG DISEASES
+<B><DD>	SARCOIDOSIS VASC DIF
+</B><DT>SARSIA
+<B><DD>	SARSIA
+</B><DT>SAUDI MEDICAL JOURNAL
+<B><DD>	SAUDI MED J
+</B><DT>SBORNIK LEKARSKY
+<B><DD>	SB LEK
+</B><DT>SBORNIK MATHEMATICS
+<B><DD>	SB MATH+
+</B><DT>SBORNIK VYSOKE SKOLY CHEMICKO-TECHNOLOGICKE V PRAZE-POTRAVINY
+<B><DD>	SB VYS SK CHEM TECHN
+</B><DT>SCANDINAVIAN AUDIOLOGY
+<B><DD>	SCAND AUDIOL
+</B><DT>SCANDINAVIAN CARDIOVASCULAR JOURNAL
+<B><DD>	SCAND CARDIOVASC J
+</B><DT>SCANDINAVIAN HOUSING & PLANNING RESEARCH
+<B><DD>	SCAND HOUS PLAN RES
+</B><DT>SCANDINAVIAN JOURNAL OF CARING SCIENCES
+<B><DD>	SCAND J CARING SCI
+</B><DT>SCANDINAVIAN JOURNAL OF CLINICAL & LABORATORY INVESTIGATION
+<B><DD>	SCAND J CLIN LAB INV
+</B><DT>SCANDINAVIAN JOURNAL OF DENTAL RESEARCH
+<B><DD>	SCAND J DENT RES
+</B><DT>SCANDINAVIAN JOURNAL OF ECONOMICS
+<B><DD>	SCAND J ECON
+</B><DT>SCANDINAVIAN JOURNAL OF FOREST RESEARCH
+<B><DD>	SCAND J FOREST RES
+</B><DT>SCANDINAVIAN JOURNAL OF GASTROENTEROLOGY
+<B><DD>	SCAND J GASTROENTERO
+</B><DT>SCANDINAVIAN JOURNAL OF HAEMATOLOGY
+<B><DD>	SCAND J HAEMATOL
+</B><DT>SCANDINAVIAN JOURNAL OF HISTORY
+<B><DD>	SCAND J HIST
+</B><DT>SCANDINAVIAN JOURNAL OF IMMUNOLOGY
+<B><DD>	SCAND J IMMUNOL
+</B><DT>SCANDINAVIAN JOURNAL OF INFECTIOUS DISEASES
+<B><DD>	SCAND J INFECT DIS
+</B><DT>SCANDINAVIAN JOURNAL OF LABORATORY ANIMAL SCIENCE
+<B><DD>	SCAND J LAB ANIM SCI
+</B><DT>SCANDINAVIAN JOURNAL OF MEDICINE & SCIENCE IN SPORTS
+<B><DD>	SCAND J MED SCI SPOR
+</B><DT>SCANDINAVIAN JOURNAL OF METALLURGY
+<B><DD>	SCAND J METALL
+</B><DT>SCANDINAVIAN JOURNAL OF PLASTIC AND RECONSTRUCTIVE SURGERY AND HAND SURGERY
+<B><DD>	SCAND J PLAST RECONS
+</B><DT>SCANDINAVIAN JOURNAL OF PRIMARY HEALTH CARE
+<B><DD>	SCAND J PRIM HEALTH
+</B><DT>SCANDINAVIAN JOURNAL OF PSYCHOLOGY
+<B><DD>	SCAND J PSYCHOL
+</B><DT>SCANDINAVIAN JOURNAL OF PUBLIC HEALTH
+<B><DD>	SCAND J PUBLIC HEALT
+</B><DT>SCANDINAVIAN JOURNAL OF REHABILITATION MEDICINE
+<B><DD>	SCAND J REHABIL MED
+</B><DT>SCANDINAVIAN JOURNAL OF RHEUMATOLOGY
+<B><DD>	SCAND J RHEUMATOL
+</B><DT>SCANDINAVIAN JOURNAL OF SOCIAL MEDICINE
+<B><DD>	SCAND J SOC MED
+</B><DT>SCANDINAVIAN JOURNAL OF SOCIAL WELFARE
+<B><DD>	SCAND J SOC WELFARE
+</B><DT>SCANDINAVIAN JOURNAL OF STATISTICS
+<B><DD>	SCAND J STAT
+</B><DT>SCANDINAVIAN JOURNAL OF THORACIC AND CARDIOVASCULAR SURGERY
+<B><DD>	SCAND J THORAC CARD
+</B><DT>SCANDINAVIAN JOURNAL OF UROLOGY AND NEPHROLOGY
+<B><DD>	SCAND J UROL NEPHROL
+</B><DT>SCANDINAVIAN JOURNAL OF WORK ENVIRONMENT & HEALTH
+<B><DD>	SCAND J WORK ENV HEA
+</B><DT>SCANDINAVIAN POLITICAL STUDIES
+<B><DD>	SCAND POLIT STUD
+</B><DT>SCANDINAVIAN STUDIES
+<B><DD>	SCAND STUD
+</B><DT>SCANDINAVICA
+<B><DD>	SCANDINAVICA
+</B><DT>SCANNING
+<B><DD>	SCANNING
+</B><DT>SCANNING ELECTRON MICROSCOPY
+<B><DD>	SCAN ELECTRON MICROS
+</B><DT>SCANNING ELECTRON MICROSCOPY
+<B><DD>	SCANNING MICROSCOPY
+</B><DT>SCANNING MICROSCOPY
+<B><DD>	SCANNING MICROSCOPY
+</B><DT>SCHIZOPHRENIA BULLETIN
+<B><DD>	SCHIZOPHRENIA BULL
+</B><DT>SCHIZOPHRENIA RESEARCH
+<B><DD>	SCHIZOPHR RES
+</B><DT>SCHMERZ
+<B><DD>	SCHMERZ
+</B><DT>SCHOLARLY PUBLISHING
+<B><DD>	SCHOLARLY PUBL
+</B><DT>SCHOOL EFFECTIVENESS AND SCHOOL IMPROVEMENT
+<B><DD>	SCH EFF SCH IMPROV
+</B><DT>SCHOOL PSYCHOLOGY INTERNATIONAL
+<B><DD>	SCHOOL PSYCHOL INT
+</B><DT>SCHOOL PSYCHOLOGY QUARTERLY
+<B><DD>	SCHOOL PSYCHOL QUART
+</B><DT>SCHOOL PSYCHOLOGY REVIEW
+<B><DD>	SCHOOL PSYCHOL REV
+</B><DT>SCHWEIZER ARCHIV FUR NEUROLOGIE UND PSYCHIATRIE
+<B><DD>	SCHWEIZ ARCH NEUROL
+</B><DT>SCHWEIZER ARCHIV FUR TIERHEILKUNDE
+<B><DD>	SCHWEIZ ARCH TIERH
+</B><DT>SCHWEIZERISCHE MEDIZINISCHE WOCHENSCHRIFT
+<B><DD>	SCHWEIZ MED WSCHR
+</B><DT>SCHWEIZERISCHE MINERALOGISCHE UND PETROGRAPHISCHE MITTEILUNGEN
+<B><DD>	SCHWEIZ MINER PETROG
+</B><DT>SCHWEIZERISCHE RUNDSCHAU FUR MEDIZIN PRAXIS
+<B><DD>	SCHWEIZ RUNDSCH MED
+</B><DT>SCHWEIZERISCHE ZEITSCHRIFT FUR HYDROLOGIE-SWISS JOURNAL OF HYDROLOGY
+<B><DD>	SCHWEIZ Z HYDROL
+</B><DT>SCHWEIZERISCHE ZEITSCHRIFT FUR PSYCHOLOGIE-REVUE SUISSE DE PSYCHOLOGIE
+<B><DD>	SCHWEIZ Z PSYCHOL
+</B><DT>SCHWEIZERISCHES ARCHIV FUR VOLKSKUNDE
+<B><DD>	SCHWEIZ ARCH VOLKSKU
+</B><DT>SCIENCE
+<B><DD>	SCIENCE
+</B><DT>SCIENCE & JUSTICE
+<B><DD>	SCI JUSTICE
+</B><DT>SCIENCE & SOCIETY
+<B><DD>	SCI SOC
+</B><DT>SCIENCE & SPORTS
+<B><DD>	SCI SPORT
+</B><DT>SCIENCE & TECHNOLOGY LIBRARIES
+<B><DD>	SCI TECH LIBR
+</B><DT>SCIENCE 83
+<B><DD>	SCIENCE 85
+</B><DT>SCIENCE 84
+<B><DD>	SCIENCE 85
+</B><DT>SCIENCE 85
+<B><DD>	SCIENCE 85
+</B><DT>SCIENCE AND EDUCATION ADMINISTRATION PUBLICATIONS
+<B><DD>	SCI EDUC ADMIN PUBL
+</B><DT>SCIENCE AND ENGINEERING ETHICS
+<B><DD>	SCI ENG ETHICS
+</B><DT>SCIENCE AND ENGINEERING OF COMPOSITE MATERIALS
+<B><DD>	SCI ENG COMPOS MATER
+</B><DT>SCIENCE AND TECHNOLOGY OF WELDING AND JOINING
+<B><DD>	SCI TECHNOL WELD JOI
+</B><DT>SCIENCE BULLETIN OF THE FACULTY OF AGRICULTURE KYUSHU UNIVERSITY
+<B><DD>	SCI B FAC AGR KYUSHU
+</B><DT>SCIENCE COMMUNICATION
+<B><DD>	SCI COMMUN
+</B><DT>SCIENCE DIGEST
+<B><DD>	SCI DIG
+</B><DT>SCIENCE EDUCATION
+<B><DD>	SCI EDUC
+</B><DT>SCIENCE IN CHINA SERIES A-MATHEMATICS PHYSICS ASTRONOMY
+<B><DD>	SCI CHINA SER A
+</B><DT>SCIENCE IN CHINA SERIES A-MATHEMATICS PHYSICS ASTRONOMY & TECHNOLOGICAL SCIENCES
+<B><DD>	SCI CHINA SER A
+</B><DT>SCIENCE IN CHINA SERIES B-CHEMISTRY
+<B><DD>	SCI CHINA SER B
+</B><DT>SCIENCE IN CHINA SERIES B-CHEMISTRY LIFE SCIENCES & EARTH SCIENCES
+<B><DD>	SCI CHINA SER B
+</B><DT>SCIENCE IN CHINA SERIES C-LIFE SCIENCES
+<B><DD>	SCI CHINA SER C
+</B><DT>SCIENCE IN CHINA SERIES D-EARTH SCIENCES
+<B><DD>	SCI CHINA SER D
+</B><DT>SCIENCE IN CHINA SERIES E-TECHNOLOGICAL SCIENCES
+<B><DD>	SCI CHINA SER E
+</B><DT>SCIENCE IN CONTEXT
+<B><DD>	SCI CONTEXT
+</B><DT>SCIENCE NEWS
+<B><DD>	SCI NEWS
+</B><DT>SCIENCE OF COMPUTER PROGRAMMING
+<B><DD>	SCI COMPUT PROGRAM
+</B><DT>SCIENCE OF THE TOTAL ENVIRONMENT
+<B><DD>	SCI TOTAL ENVIRON
+</B><DT>SCIENCE PROGRESS
+<B><DD>	SCI PROG
+</B><DT>SCIENCE REPORTS OF THE RESEARCH INSTITUTES TOHOKU UNIVERSITY SERIES A-PHYSICS CHEMISTRY AND METALLURGY
+<B><DD>	SCI REP RES TOHOKU A
+</B><DT>SCIENCE TECHNOLOGY & HUMAN VALUES
+<B><DD>	SCI TECHNOL HUM VAL
+</B><DT>SCIENCE-FICTION STUDIES
+<B><DD>	SCI-FICTION STUD
+</B><DT>SCIENCES DES ALIMENTS
+<B><DD>	SCI ALIMENT
+</B><DT>SCIENCES ET TECHNIQUES DE L ANIMAL DE LABORATOIRE
+<B><DD>	SCI TECH ANIM LAB
+</B><DT>SCIENCES ET TECHNIQUES DE L EAU
+<B><DD>	SCI TECH EAU
+</B><DT>SCIENCES SOCIALES ET SANTE
+<B><DD>	SCI SOC SANTE
+</B><DT>SCIENCES-NEW YORK
+<B><DD>	SCIENCES
+</B><DT>SCIENTIA GEOLOGICA SINICA
+<B><DD>	SCI GEOL SINICA
+</B><DT>SCIENTIA HORTICULTURAE
+<B><DD>	SCI HORTIC-AMSTERDAM
+</B><DT>SCIENTIA MARINA
+<B><DD>	SCI MAR
+</B><DT>SCIENTIA SINICA
+<B><DD>	SCI SINICA
+</B><DT>SCIENTIA SINICA SERIES A-MATHEMATICAL PHYSICAL ASTRONOMICAL & TECHNICAL SCIENCES
+<B><DD>	SCI CHINA SER A
+</B><DT>SCIENTIA SINICA SERIES A-MATHEMATICAL PHYSICAL ASTRONOMICAL & TECHNICAL SCIENCES
+<B><DD>	SCI SIN A-MATH P A T
+</B><DT>SCIENTIA SINICA SERIES B-CHEMICAL BIOLOGICAL AGRICULTURAL MEDICAL & EARTH SCIENCES
+<B><DD>	SCI CHINA SER B
+</B><DT>SCIENTIA SINICA SERIES B-CHEMICAL BIOLOGICAL AGRICULTURAL MEDICAL & EARTH SCIENCES
+<B><DD>	SCI SIN B-CHEM B A M
+</B><DT>SCIENTIFIC AMERICAN
+<B><DD>	SCI AM
+</B><DT>SCIENTIFIC HORTICULTURE
+<B><DD>	SCI HORTIC-ENGLAND
+</B><DT>SCIENTIST
+<B><DD>	SCIENTIST
+</B><DT>SCIENTOMETRICS
+<B><DD>	SCIENTOMETRICS
+</B><DT>SCOTIA-INTERDISCIPLINARY JOURNAL OF SCOTTISH STUDIES
+<B><DD>	SCOTIA-INTERDISC J S
+</B><DT>SCOTTISH GEOGRAPHICAL JOURNAL
+<B><DD>	SCOTT GEOGR J
+</B><DT>SCOTTISH GEOGRAPHICAL MAGAZINE
+<B><DD>	SCOT GEOGR MAG
+</B><DT>SCOTTISH HISTORICAL REVIEW
+<B><DD>	SCOT HIST REV
+</B><DT>SCOTTISH JOURNAL OF GEOLOGY
+<B><DD>	SCOT J GEOL
+</B><DT>SCOTTISH JOURNAL OF POLITICAL ECONOMY
+<B><DD>	SCOT J POLIT ECON
+</B><DT>SCOTTISH JOURNAL OF THEOLOGY
+<B><DD>	SCOT J THEOLOGY
+</B><DT>SCOTTISH LITERARY JOURNAL
+<B><DD>	SCOT LITERARY J
+</B><DT>SCOTTISH MEDICAL JOURNAL
+<B><DD>	SCOT MED J
+</B><DT>SCREEN
+<B><DD>	SCREEN
+</B><DT>SCREENING
+<B><DD>	SCREENING
+</B><DT>SCRIBLERIAN AND THE KIT-CATS
+<B><DD>	SCRIBLERIAN KIT-CATS
+</B><DT>SCRIPTA MATERIALIA
+<B><DD>	SCRIPTA MATER
+</B><DT>SCRIPTA METALLURGICA
+<B><DD>	SCRIPTA METALL MATER
+</B><DT>SCRIPTA METALLURGICA ET MATERIALIA
+<B><DD>	SCRIPTA METALL MATER
+</B><DT>SCRIPTORIUM
+<B><DD>	SCRIPTORIUM
+</B><DT>SCULPTURE REVIEW
+<B><DD>	SCULPT REV
+</B><DT>SEA FRONTIERS
+<B><DD>	SEA FRONTIERS
+</B><DT>SEA TECHNOLOGY
+<B><DD>	SEA TECHNOL
+</B><DT>SEARCH
+<B><DD>	SEARCH
+</B><DT>SEARCHER-THE MAGAZINE FOR DATABASE PROFESSIONALS
+<B><DD>	SEARCHER
+</B><DT>SECOND MESSENGERS AND PHOSPHOPROTEINS
+<B><DD>	SEC MESS PHOSPHOPROT
+</B><DT>SECURITIES REGULATION LAW JOURNAL
+<B><DD>	SECUR REGUL LAW J
+</B><DT>SECURITY DIALOGUE
+<B><DD>	SECUR DIALOGUE
+</B><DT>SECURITY STUDIES
+<B><DD>	SECUR STUD
+</B><DT>SEDIMENTARY GEOLOGY
+<B><DD>	SEDIMENT GEOL
+</B><DT>SEDIMENTOLOGY
+<B><DD>	SEDIMENTOLOGY
+</B><DT>SEED SCIENCE AND TECHNOLOGY
+<B><DD>	SEED SCI TECHNOL
+</B><DT>SEED SCIENCE RESEARCH
+<B><DD>	SEED SCI RES
+</B><DT>SEFARAD
+<B><DD>	SEFARAD
+</B><DT>SEIBUTSU-KOGAKU KAISHI
+<B><DD>	SEIBUTSU-KOGAKU KAIS
+</B><DT>SEIBUTSU-KOGAKU KAISHI-JOURNAL OF THE SOCIETY FOR FERMENTATION AND BIOENGINEERING
+<B><DD>	SEIBUTSU-KOGAKU KAIS
+</B><DT>SEIKAGAKU
+<B><DD>	SEIKAGAKU
+</B><DT>SEIZURE
+<B><DD>	SEIZURE
+</B><DT>SEIZURE-EUROPEAN JOURNAL OF EPILEPSY
+<B><DD>	SEIZURE-EUR J EPILEP
+</B><DT>SEKIYU GAKKAISHI-JOURNAL OF THE JAPAN PETROLEUM INSTITUTE
+<B><DD>	SEKIYU GAKKAISHI
+</B><DT>SELECTIVE CANCER THERAPEUTICS
+<B><DD>	SELECT CANCER THER
+</B><DT>SELECTIVE ELECTRODE REVIEWS
+<B><DD>	SELECT ELECTR REV
+</B><DT>SELF-ASSEMBLED INGAAS/GAAS QUANTUM DOTS
+<B><DD>	SEMICONDUCT SEMIMET
+</B><DT>SEMAINE DES HOPITAUX
+<B><DD>	SEM HOP PARIS
+</B><DT>SEMEIA
+<B><DD>	SEMEIA
+</B><DT>SEMICONDUCTOR SCIENCE AND TECHNOLOGY
+<B><DD>	SEMICOND SCI TECH
+</B><DT>SEMICONDUCTORS
+<B><DD>	SEMICONDUCTORS+
+</B><DT>SEMICONDUCTORS AND INSULATORS
+<B><DD>	SEMICOND INSUL
+</B><DT>SEMICONDUCTORS AND SEMIMETALS
+<B><DD>	SEMICONDUCT SEMIMET
+</B><DT>SEMIGROUP FORUM
+<B><DD>	SEMIGROUP FORUM
+</B><DT>SEMINAR-A JOURNAL OF GERMANIC STUDIES
+<B><DD>	SEMINAR-J GER STUD
+</B><DT>SEMINARS IN ANESTHESIA
+<B><DD>	SEMIN ANESTH
+</B><DT>SEMINARS IN ARTHRITIS AND RHEUMATISM
+<B><DD>	SEMIN ARTHRITIS RHEU
+</B><DT>SEMINARS IN AVIAN AND EXOTIC PET MEDICINE
+<B><DD>	SEMIN AVIAN EXOT PET
+</B><DT>SEMINARS IN CANCER BIOLOGY
+<B><DD>	SEMIN CANCER BIOL
+</B><DT>SEMINARS IN CELL & DEVELOPMENTAL BIOLOGY
+<B><DD>	SEMIN CELL DEV BIOL
+</B><DT>SEMINARS IN CELL BIOLOGY
+<B><DD>	SEMIN CELL BIOL
+</B><DT>SEMINARS IN CUTANEOUS MEDICINE AND SURGERY
+<B><DD>	SEMIN CUTAN MED SURG
+</B><DT>SEMINARS IN DERMATOLOGY
+<B><DD>	SEMIN DERMATOL
+</B><DT>SEMINARS IN DIAGNOSTIC PATHOLOGY
+<B><DD>	SEMIN DIAGN PATHOL
+</B><DT>SEMINARS IN DIALYSIS
+<B><DD>	SEMIN DIALYSIS
+</B><DT>SEMINARS IN HEMATOLOGY
+<B><DD>	SEMIN HEMATOL
+</B><DT>SEMINARS IN IMMUNOLOGY
+<B><DD>	SEMIN IMMUNOL
+</B><DT>SEMINARS IN INTERVENTIONAL RADIOLOGY
+<B><DD>	SEMIN INTERVENT RAD
+</B><DT>SEMINARS IN LIVER DISEASE
+<B><DD>	SEMIN LIVER DIS
+</B><DT>SEMINARS IN NEPHROLOGY
+<B><DD>	SEMIN NEPHROL
+</B><DT>SEMINARS IN NEUROLOGY
+<B><DD>	SEMIN NEUROL
+</B><DT>SEMINARS IN NEUROSCIENCE
+<B><DD>	SEMIN NEUROSCI
+</B><DT>SEMINARS IN NUCLEAR MEDICINE
+<B><DD>	SEMIN NUCL MED
+</B><DT>SEMINARS IN ONCOLOGY
+<B><DD>	SEMIN ONCOL
+</B><DT>SEMINARS IN PERINATOLOGY
+<B><DD>	SEMIN PERINATOL
+</B><DT>SEMINARS IN RADIATION ONCOLOGY
+<B><DD>	SEMIN RADIAT ONCOL
+</B><DT>SEMINARS IN REPRODUCTIVE ENDOCRINOLOGY
+<B><DD>	SEMIN REPROD ENDOCR
+</B><DT>SEMINARS IN RESPIRATORY AND CRITICAL CARE MEDICINE
+<B><DD>	SEM RESP CRIT CARE M
+</B><DT>SEMINARS IN RESPIRATORY MEDICINE
+<B><DD>	SEMIN RESPIR MED
+</B><DT>SEMINARS IN ROENTGENOLOGY
+<B><DD>	SEMIN ROENTGENOL
+</B><DT>SEMINARS IN SURGICAL ONCOLOGY
+<B><DD>	SEMIN SURG ONCOL
+</B><DT>SEMINARS IN THE NEUROSCIENCES
+<B><DD>	SEMIN NEUROSCI
+</B><DT>SEMINARS IN THROMBOSIS AND HEMOSTASIS
+<B><DD>	SEMIN THROMB HEMOST
+</B><DT>SEMINARS IN ULTRASOUND CT AND MRI
+<B><DD>	SEMIN ULTRASOUND CT
+</B><DT>SEMINARS IN VETERINARY MEDICINE AND SURGERY-SMALL ANIMAL
+<B><DD>	SEMIN VET MED SURG
+</B><DT>SEMINARS IN VIROLOGY
+<B><DD>	SEMIN VIROL
+</B><DT>SEMIOTICA
+<B><DD>	SEMIOTICA
+</B><DT>SEN-I GAKKAISHI
+<B><DD>	SEN-I GAKKAISHI
+</B><DT>SENSORS AND ACTUATORS
+<B><DD>	SENSOR ACTUATOR
+</B><DT>SENSORS AND ACTUATORS A-PHYSICAL
+<B><DD>	SENSOR ACTUAT A-PHYS
+</B><DT>SENSORS AND ACTUATORS B-CHEMICAL
+<B><DD>	SENSOR ACTUAT B-CHEM
+</B><DT>SENSORS AND MATERIALS
+<B><DD>	SENSOR MATER
+</B><DT>SEPARATION AND PURIFICATION METHODS
+<B><DD>	SEPAR PURIF METHOD
+</B><DT>SEPARATION AND PURIFICATION TECHNOLOGY
+<B><DD>	SEP PURIF TECHNOL
+</B><DT>SEPARATION SCIENCE AND TECHNOLOGY
+<B><DD>	SEPAR SCI TECHNOL
+</B><DT>SEPARATIONS TECHNOLOGY
+<B><DD>	SEPAR TECHNOL
+</B><DT>SERIALS LIBRARIAN
+<B><DD>	SERIALS LIBR
+</B><DT>SERODIAGNOSIS AND IMMUNOTHERAPY IN INFECTIOUS DISEASE
+<B><DD>	SERODIAG IMMUN INF D
+</B><DT>SERVICE INDUSTRIES JOURNAL
+<B><DD>	SERV IND J
+</B><DT>SET-VALUED ANALYSIS
+<B><DD>	SET-VALUED ANAL
+</B><DT>SEVENTEENTH CENTURY
+<B><DD>	SEVENTEENTH CENT
+</B><DT>SEVENTEENTH-CENTURY FRENCH STUDIES
+<B><DD>	SEVENTEEN-CENT FR ST
+</B><DT>SEWANEE REVIEW
+<B><DD>	SEWANEE REV
+</B><DT>SEX ROLES
+<B><DD>	SEX ROLES
+</B><DT>SEXUAL PLANT REPRODUCTION
+<B><DD>	SEX PLANT REPROD
+</B><DT>SEXUALITY AND DISABILITY
+<B><DD>	SEX DISABIL
+</B><DT>SEXUALLY TRANSMITTED DISEASES
+<B><DD>	SEX TRANSM DIS
+</B><DT>SEXUALLY TRANSMITTED INFECTIONS
+<B><DD>	SEX TRANSM INFECT
+</B><DT>SEYBOLD OUTLOOK ON PROFESSIONAL COMPUTING
+<B><DD>	ANDREW SEYBOLD OUT P
+</B><DT>SEYBOLD REPORT ON PROFESSIONAL COMPUTING
+<B><DD>	ANDREW SEYBOLD OUT P
+</B><DT>SHAKESPEARE QUARTERLY
+<B><DD>	SHAKESPEARE QUART
+</B><DT>SHAKESPEARE SURVEY
+<B><DD>	SHAKESPEARE SURV
+</B><DT>SHARP TECHNICAL JOURNAL
+<B><DD>	SHARP TECH J
+</B><DT>SHENANDOAH
+<B><DD>	SHENANDOAH
+</B><DT>SHOCK
+<B><DD>	SHOCK
+</B><DT>SHOCK AND VIBRATION
+<B><DD>	SHOCK VIB
+</B><DT>SHOCK WAVES
+<B><DD>	SHOCK WAVES
+</B><DT>SIAM JOURNAL ON ALGEBRAIC AND DISCRETE METHODS
+<B><DD>	SIAM J ALGEBRA DISCR
+</B><DT>SIAM JOURNAL ON APPLIED MATHEMATICS
+<B><DD>	SIAM J APPL MATH
+</B><DT>SIAM JOURNAL ON COMPUTING
+<B><DD>	SIAM J COMPUT
+</B><DT>SIAM JOURNAL ON CONTROL AND OPTIMIZATION
+<B><DD>	SIAM J CONTROL OPTIM
+</B><DT>SIAM JOURNAL ON DISCRETE MATHEMATICS
+<B><DD>	SIAM J DISCRETE MATH
+</B><DT>SIAM JOURNAL ON MATHEMATICAL ANALYSIS
+<B><DD>	SIAM J MATH ANAL
+</B><DT>SIAM JOURNAL ON MATRIX ANALYSIS AND APPLICATIONS
+<B><DD>	SIAM J MATRIX ANAL A
+</B><DT>SIAM JOURNAL ON NUMERICAL ANALYSIS
+<B><DD>	SIAM J NUMER ANAL
+</B><DT>SIAM JOURNAL ON OPTIMIZATION
+<B><DD>	SIAM J OPTIMIZ
+</B><DT>SIAM JOURNAL ON SCIENTIFIC AND STATISTICAL COMPUTING
+<B><DD>	SIAM J SCI STAT COMP
+</B><DT>SIAM JOURNAL ON SCIENTIFIC COMPUTING
+<B><DD>	SIAM J SCI COMPUT
+</B><DT>SIAM REVIEW
+<B><DD>	SIAM REV
+</B><DT>SIBERIAN MATHEMATICAL JOURNAL
+<B><DD>	SIBERIAN MATH J+
+</B><DT>SIBIRSKII KHIMICHESKII ZHURNAL
+<B><DD>	SIBIRSKII KHIM ZH+
+</B><DT>SIC MATERIALS AND DEVICES
+<B><DD>	SEMICONDUCT SEMIMET
+</B><DT>SIEMENS FORSCHUNGS-UND ENTWICKLUNGSBERICHTE-SIEMENS RESEARCH AND DEVELOPMENT REPORTS
+<B><DD>	SIEMENS FORSCH ENTW
+</B><DT>SIEMENS REVIEW
+<B><DD>	SIEMENS REV
+</B><DT>SIERRA
+<B><DD>	SIERRA
+</B><DT>SIGHT AND SOUND
+<B><DD>	SIGHT SOUND
+</B><DT>SIGMOD RECORD
+<B><DD>	SIGMOD RECORD
+</B><DT>SIGNAL PROCESSING
+<B><DD>	SIGNAL PROCESS
+</B><DT>SIGNAL PROCESSING-IMAGE COMMUNICATION
+<B><DD>	SIGNAL PROCESS-IMAGE
+</B><DT>SIGNS
+<B><DD>	SIGNS
+</B><DT>SIGPLAN NOTICES
+<B><DD>	SIGPLAN NOTICES
+</B><DT>SILICA: PHYSICAL BEHAVIOR, GEOCHEMISTRY AND MATERIALS APPLICATIONS
+<B><DD>	REV MINERAL
+</B><DT>SILICATES INDUSTRIELS
+<B><DD>	SILIC IND
+</B><DT>SILIKATY
+<B><DD>	SILIKATY
+</B><DT>SILVA FENNICA
+<B><DD>	SILVA FENN
+</B><DT>SILVAE GENETICA
+<B><DD>	SILVAE GENET
+</B><DT>SIMIOLUS-NETHERLANDS QUARTERLY FOR THE HISTORY OF ART
+<B><DD>	SIMIOLUS
+</B><DT>SIMULATION
+<B><DD>	SIMULATION
+</B><DT>SIMULATION & GAMING
+<B><DD>	SIMULAT GAMING
+</B><DT>SIMULATION PRACTICE AND THEORY
+<B><DD>	SIMULAT PRACT THEORY
+</B><DT>SINGAPORE JOURNAL OF OBSTETRICS & GYNAECOLOGY
+<B><DD>	SINGAPORE J OBSTET
+</B><DT>SINGAPORE JOURNAL OF TROPICAL GEOGRAPHY
+<B><DD>	SINGAPORE J TROP GEO
+</B><DT>SINN UND FORM
+<B><DD>	SINN FORM
+</B><DT>SIXTEENTH CENTURY JOURNAL
+<B><DD>	SIXTEENTH CENT J
+</B><DT>SKANDINAVISTIK
+<B><DD>	SKANDINAVISTIK
+</B><DT>SKELETAL RADIOLOGY
+<B><DD>	SKELETAL RADIOL
+</B><DT>SKIN PHARMACOLOGY
+<B><DD>	SKIN PHARMACOL
+</B><DT>SKIN PHARMACOLOGY AND APPLIED SKIN PHYSIOLOGY
+<B><DD>	SKIN PHARMACOL APPL
+</B><DT>SKIN RESEARCH AND TECHNOLOGY
+<B><DD>	SKIN RES TECHNOL
+</B><DT>SKULL BASE SURGERY
+<B><DD>	SKULL BASE SURG
+</B><DT>SKY AND TELESCOPE
+<B><DD>	SKY TELESCOPE
+</B><DT>SLAVIC AND EAST EUROPEAN JOURNAL
+<B><DD>	SLAVIC E EUR J
+</B><DT>SLAVIC REVIEW
+<B><DD>	SLAVIC REV
+</B><DT>SLAVONIC AND EAST EUROPEAN REVIEW
+<B><DD>	SLAVON E EUR REV
+</B><DT>SLEEP
+<B><DD>	SLEEP
+</B><DT>SLEEP MEDICINE REVIEWS
+<B><DD>	SLEEP MED REV
+</B><DT>SLOAN MANAGEMENT REVIEW
+<B><DD>	SLOAN MANAGE REV
+</B><DT>SMALL BUSINESS COMPUTER NEWS
+<B><DD>	SMALL BUS COMPUT NEW
+</B><DT>SMALL BUSINESS COMPUTERS
+<B><DD>	SMALL BUS COMPUT
+</B><DT>SMALL BUSINESS ECONOMICS
+<B><DD>	SMALL BUS ECON
+</B><DT>SMALL GROUP RESEARCH
+<B><DD>	SMALL GR RES
+</B><DT>SMALL RUMINANT RESEARCH
+<B><DD>	SMALL RUMINANT RES
+</B><DT>SMART MATERIALS & STRUCTURES
+<B><DD>	SMART MATER STRUCT
+</B><DT>SMITH COLLEGE STUDIES IN SOCIAL WORK
+<B><DD>	SMITH COLL STUD SOC
+</B><DT>SMITHSONIAN
+<B><DD>	SMITHSONIAN
+</B><DT>SMPTE JOURNAL
+<B><DD>	SMPTE J
+</B><DT>SOAP & COSMETICS
+<B><DD>	SOAP COSMET
+</B><DT>SOAP COSMETICS CHEMICAL SPECIALTIES
+<B><DD>	SOAP COSMET CHEM SPE
+</B><DT>SOBORNOST INCORPORATING EASTERN CHURCHES REVIEW
+<B><DD>	SOBORNOST E CHURCH R
+</B><DT>SOCIAL & LEGAL STUDIES
+<B><DD>	SOC LEGAL STUD
+</B><DT>SOCIAL AND ECONOMIC STUDIES
+<B><DD>	SOC ECON STUD
+</B><DT>SOCIAL BEHAVIOR AND PERSONALITY
+<B><DD>	SOC BEHAV PERSONAL
+</B><DT>SOCIAL BIOLOGY
+<B><DD>	SOC BIOL
+</B><DT>SOCIAL CHOICE AND WELFARE
+<B><DD>	SOC CHOICE WELFARE
+</B><DT>SOCIAL COGNITION
+<B><DD>	SOC COGNITION
+</B><DT>SOCIAL COMPASS
+<B><DD>	SOC COMPASS
+</B><DT>SOCIAL DEVELOPMENT
+<B><DD>	SOC DEV
+</B><DT>SOCIAL DYNAMICS-A JOURNAL OF THE CENTRE FOR AFRICAN STUDIES UNIVERSITY OF CAPE TOWN
+<B><DD>	SOC DYNAMICS
+</B><DT>SOCIAL FORCES
+<B><DD>	SOC FORCES
+</B><DT>SOCIAL HISTORY
+<B><DD>	SOC HIST
+</B><DT>SOCIAL HISTORY OF MEDICINE
+<B><DD>	SOC HIST MED
+</B><DT>SOCIAL INDICATORS RESEARCH
+<B><DD>	SOC INDIC RES
+</B><DT>SOCIAL NETWORKS
+<B><DD>	SOC NETWORKS
+</B><DT>SOCIAL PHILOSOPHY & POLICY
+<B><DD>	SOC PHILOS POLICY
+</B><DT>SOCIAL POLICY & ADMINISTRATION
+<B><DD>	SOC POLICY ADMIN
+</B><DT>SOCIAL POLITICS
+<B><DD>	SOC POLIT
+</B><DT>SOCIAL PROBLEMS
+<B><DD>	SOC PROBL
+</B><DT>SOCIAL PSYCHIATRY
+<B><DD>	SOC PSYCH PSYCH EPID
+</B><DT>SOCIAL PSYCHIATRY
+<B><DD>	SOC PSYCHIATR
+</B><DT>SOCIAL PSYCHIATRY AND PSYCHIATRIC EPIDEMIOLOGY
+<B><DD>	SOC PSYCH PSYCH EPID
+</B><DT>SOCIAL PSYCHOLOGY QUARTERLY
+<B><DD>	SOC PSYCHOL QUART
+</B><DT>SOCIAL RESEARCH
+<B><DD>	SOC RES
+</B><DT>SOCIAL SCIENCE & MEDICINE
+<B><DD>	SOC SCI MED
+</B><DT>SOCIAL SCIENCE COMPUTER REVIEW
+<B><DD>	SOC SCI COMPUT REV
+</B><DT>SOCIAL SCIENCE HISTORY
+<B><DD>	SOC SCI HIST
+</B><DT>SOCIAL SCIENCE INFORMATION SUR LES SCIENCES SOCIALES
+<B><DD>	SOC SCI INFORM
+</B><DT>SOCIAL SCIENCE JOURNAL
+<B><DD>	SOC SCI J
+</B><DT>SOCIAL SCIENCE QUARTERLY
+<B><DD>	SOC SCI QUART
+</B><DT>SOCIAL SCIENCE RESEARCH
+<B><DD>	SOC SCI RES
+</B><DT>SOCIAL SECURITY BULLETIN
+<B><DD>	SOC SECUR BULL
+</B><DT>SOCIAL SERVICE REVIEW
+<B><DD>	SOC SERV REV
+</B><DT>SOCIAL STUDIES OF SCIENCE
+<B><DD>	SOC STUD SCI
+</B><DT>SOCIAL WORK
+<B><DD>	SOC WORK
+</B><DT>SOCIAL WORK & SOCIAL SCIENCES REVIEW
+<B><DD>	SOC WORK SOC SCI REV
+</B><DT>SOCIAL WORK IN HEALTH CARE
+<B><DD>	SOC WORK HEALTH CARE
+</B><DT>SOCIAL WORK RESEARCH
+<B><DD>	SOC WORK RES
+</B><DT>SOCIAL WORK RESEARCH & ABSTRACTS
+<B><DD>	SOC WORK RES ABSTR
+</B><DT>SOCIALIST REVIEW
+<B><DD>	SOCIALIST REV
+</B><DT>SOCIETY
+<B><DD>	SOCIETY
+</B><DT>SOCIETY & ANIMALS
+<B><DD>	SOC ANIM
+</B><DT>SOCIETY & NATURAL RESOURCES
+<B><DD>	SOC NATUR RESOUR
+</B><DT>SOCIETY OF PETROLEUM ENGINEERS JOURNAL
+<B><DD>	SOC PETROL ENG J
+</B><DT>SOCIO-ECONOMIC PLANNING SCIENCES
+<B><DD>	SOCIO ECON PLAN SCI
+</B><DT>SOCIOBIOLOGY
+<B><DD>	SOCIOBIOLOGY
+</B><DT>SOCIOLOGIA
+<B><DD>	SOCIOLOGIA
+</B><DT>SOCIOLOGIA RURALIS
+<B><DD>	SOCIOL RURALIS
+</B><DT>SOCIOLOGICAL FORUM
+<B><DD>	SOCIOL FORUM
+</B><DT>SOCIOLOGICAL INQUIRY
+<B><DD>	SOCIOL INQ
+</B><DT>SOCIOLOGICAL METHODOLOGY
+<B><DD>	SOCIOL METHODOL
+</B><DT>SOCIOLOGICAL METHODS & RESEARCH
+<B><DD>	SOCIOL METHOD RES
+</B><DT>SOCIOLOGICAL PERSPECTIVES
+<B><DD>	SOCIOL PERSPECT
+</B><DT>SOCIOLOGICAL QUARTERLY
+<B><DD>	SOCIOL QUART
+</B><DT>SOCIOLOGICAL RESEARCH ONLINE
+<B><DD>	SOCIOL RES ONLINE
+</B><DT>SOCIOLOGICAL REVIEW
+<B><DD>	SOCIOL REV
+</B><DT>SOCIOLOGICAL SPECTRUM
+<B><DD>	SOCIOL SPECTRUM
+</B><DT>SOCIOLOGICAL THEORY
+<B><DD>	SOCIOL THEOR
+</B><DT>SOCIOLOGICAL THEORY AND METHODS
+<B><DD>	SOCIOL THEOR METHOD
+</B><DT>SOCIOLOGICKY CASOPIS
+<B><DD>	SOCIOL CAS
+</B><DT>SOCIOLOGIE DU TRAVAIL
+<B><DD>	SOCIOL TRAV
+</B><DT>SOCIOLOGISK FORSKNING
+<B><DD>	SOCIOL FORSKNIN
+</B><DT>SOCIOLOGY OF EDUCATION
+<B><DD>	SOCIOL EDUC
+</B><DT>SOCIOLOGY OF HEALTH & ILLNESS
+<B><DD>	SOCIOL HEALTH ILL
+</B><DT>SOCIOLOGY OF RELIGION
+<B><DD>	SOCIOL RELIG
+</B><DT>SOCIOLOGY OF SPORT JOURNAL
+<B><DD>	SOCIOL SPORT J
+</B><DT>SOCIOLOGY-THE JOURNAL OF THE BRITISH SOCIOLOGICAL ASSOCIATION
+<B><DD>	SOCIOLOGY
+</B><DT>SOFTWARE & MICROSYSTEMS
+<B><DD>	SOFTW MICROSYST
+</B><DT>SOFTWARE & MICROSYSTEMS
+<B><DD>	SOFTWARE ENG J
+</B><DT>SOFTWARE ENGINEERING JOURNAL
+<B><DD>	SOFTWARE ENG J
+</B><DT>SOFTWARE QUALITY JOURNAL
+<B><DD>	SOFTWARE QUAL J
+</B><DT>SOFTWARE REVIEW
+<B><DD>	SOFTWARE REV
+</B><DT>SOFTWARE-CONCEPTS AND TOOLS
+<B><DD>	SOFTWARE-CONC TOOL
+</B><DT>SOFTWARE-PRACTICE & EXPERIENCE
+<B><DD>	SOFTWARE PRACT EXPER
+</B><DT>SOIL & TILLAGE RESEARCH
+<B><DD>	SOIL TILL RES
+</B><DT>SOIL AND CROP SCIENCE SOCIETY OF FLORIDA PROCEEDINGS
+<B><DD>	SOIL CROP SCI SOC FL
+</B><DT>SOIL BIOLOGY & BIOCHEMISTRY
+<B><DD>	SOIL BIOL BIOCHEM
+</B><DT>SOIL DYNAMICS AND EARTHQUAKE ENGINEERING
+<B><DD>	SOIL DYN EARTHQ ENG
+</B><DT>SOIL SCIENCE
+<B><DD>	SOIL SCI
+</B><DT>SOIL SCIENCE AND PLANT NUTRITION
+<B><DD>	SOIL SCI PLANT NUTR
+</B><DT>SOIL SCIENCE SOCIETY OF AMERICA JOURNAL
+<B><DD>	SOIL SCI SOC AM J
+</B><DT>SOIL TECHNOLOGY
+<B><DD>	SOIL TECHNOL
+</B><DT>SOIL USE AND MANAGEMENT
+<B><DD>	SOIL USE MANAGE
+</B><DT>SOLAR AGE
+<B><DD>	SOL AGE
+</B><DT>SOLAR CELLS
+<B><DD>	SOL CELLS
+</B><DT>SOLAR ENERGY
+<B><DD>	SOL ENERGY
+</B><DT>SOLAR ENERGY MATERIALS
+<B><DD>	SOL ENERG MATER
+</B><DT>SOLAR ENERGY MATERIALS AND SOLAR CELLS
+<B><DD>	SOL ENERG MAT SOL C
+</B><DT>SOLAR PHYSICS
+<B><DD>	SOL PHYS
+</B><DT>SOLDERING & SURFACE MOUNT TECHNOLOGY
+<B><DD>	SOLDER SURF MT TECH
+</B><DT>SOLID MECHANICS ARCHIVES
+<B><DD>	SOLID MECH ARCH
+</B><DT>SOLID STATE COMMUNICATIONS
+<B><DD>	SOLID STATE COMMUN
+</B><DT>SOLID STATE IONICS
+<B><DD>	SOLID STATE IONICS
+</B><DT>SOLID STATE NUCLEAR MAGNETIC RESONANCE
+<B><DD>	SOLID STATE NUCL MAG
+</B><DT>SOLID STATE PHENOMENA
+<B><DD>	SOLID STATE PHENOM
+</B><DT>SOLID STATE PHYSICS-ADVANCES IN RESEARCH AND APPLICATIONS
+<B><DD>	SOLID STATE PHYS
+</B><DT>SOLID STATE SCIENCES
+<B><DD>	SOLID STATE SCI
+</B><DT>SOLID STATE TECHNOLOGY
+<B><DD>	SOLID STATE TECHNOL
+</B><DT>SOLID WASTES MANAGEMENT
+<B><DD>	SOLID WASTE MANAGEM
+</B><DT>SOLID-STATE ELECTRONICS
+<B><DD>	SOLID STATE ELECTRON
+</B><DT>SOLVENT EXTRACTION AND ION EXCHANGE
+<B><DD>	SOLVENT EXTR ION EXC
+</B><DT>SOLVENT EXTRACTION RESEARCH AND DEVELOPMENT-JAPAN
+<B><DD>	SOLVENT EXTR RES DEV
+</B><DT>SOMATIC CELL AND MOLECULAR GENETICS
+<B><DD>	SOMAT CELL MOLEC GEN
+</B><DT>SOMATIC CELL GENETICS
+<B><DD>	SOMAT CELL GENET
+</B><DT>SOMATOSENSORY AND MOTOR RESEARCH
+<B><DD>	SOMATOSENS MOT RES
+</B><DT>SOMATOSENSORY RESEARCH
+<B><DD>	SOMATOSENS MOT RES
+</B><DT>SOMATOSENSORY RESEARCH
+<B><DD>	SOMATOSENS RES
+</B><DT>SOTSIOLOGICHESKIE ISSLEDOVANIYA
+<B><DD>	SOTSIOL ISSLED+
+</B><DT>SOUND AND VIBRATION
+<B><DD>	SOUND VIB
+</B><DT>SOUNDINGS
+<B><DD>	SOUNDINGS
+</B><DT>SOURCE-NOTES IN THE HISTORY OF ART
+<B><DD>	SOURCE-NOTE HIST ART
+</B><DT>SOUTH AFRICAN ARCHAEOLOGICAL BULLETIN
+<B><DD>	S AFR ARCHAEOL BULL
+</B><DT>SOUTH AFRICAN JOURNAL OF ANIMAL SCIENCE-SUID-AFRIKAANSE TYDSKRIF VIR VEEKUNDE
+<B><DD>	S AFR J ANIM SCI
+</B><DT>SOUTH AFRICAN JOURNAL OF BOTANY
+<B><DD>	S AFR J BOT
+</B><DT>SOUTH AFRICAN JOURNAL OF BOTANY-SUID-AFRIKAANSE TYDSKRIF VIR PLANTKUNDE
+<B><DD>	S AFR J BOT
+</B><DT>SOUTH AFRICAN JOURNAL OF CHEMISTRY
+<B><DD>	S AFR J CHEM
+</B><DT>SOUTH AFRICAN JOURNAL OF CHEMISTRY-SUID-AFRIKAANSE TYDSKRIF VIR CHEMIE
+<B><DD>	S AFR J CHEM-S-AFR T
+</B><DT>SOUTH AFRICAN JOURNAL OF ECONOMICS
+<B><DD>	S AFR J ECON
+</B><DT>SOUTH AFRICAN JOURNAL OF GEOLOGY
+<B><DD>	S AFR J GEOL
+</B><DT>SOUTH AFRICAN JOURNAL OF MARINE SCIENCE-SUID-AFRIKAANSE TYDSKRIF VIR SEEWETENSKAP
+<B><DD>	S AFR J MARINE SCI
+</B><DT>SOUTH AFRICAN JOURNAL OF PHILOSOPHY-SUID-AFRIKAANSE TYDSKRIF VIR WYSBEGEERTE
+<B><DD>	S AFR J PHILOS
+</B><DT>SOUTH AFRICAN JOURNAL OF PHYSICS - SUID-AFRIKAANSE TYDSKRIF VIR FISIKA
+<B><DD>	S AFR J PHYS
+</B><DT>SOUTH AFRICAN JOURNAL OF PSYCHOLOGY
+<B><DD>	S AFR J PSYCHOL
+</B><DT>SOUTH AFRICAN JOURNAL OF PSYCHOLOGY-SUID-AFRIKAANSE TYDSKRIF VIR SIELKUNDE
+<B><DD>	S AFR J PSYCHOL
+</B><DT>SOUTH AFRICAN JOURNAL OF SCIENCE
+<B><DD>	S AFR J SCI
+</B><DT>SOUTH AFRICAN JOURNAL OF SURGERY
+<B><DD>	S AFR J SURG
+</B><DT>SOUTH AFRICAN JOURNAL OF WILDLIFE RESEARCH
+<B><DD>	S AFR J WILDL RES
+</B><DT>SOUTH AFRICAN JOURNAL OF ZOOLOGY
+<B><DD>	S AFR J ZOOL
+</B><DT>SOUTH AFRICAN JOURNAL OF ZOOLOGY-SUID-AFRIKAANSE TYDSKRIF VIR DIERKUNDE
+<B><DD>	S AFR J ZOOL
+</B><DT>SOUTH AFRICAN MECHANICAL ENGINEER
+<B><DD>	S AFR MECH ENG
+</B><DT>SOUTH AFRICAN MEDICAL JOURNAL
+<B><DD>	S AFR MED J
+</B><DT>SOUTH AFRICAN STATISTICAL JOURNAL
+<B><DD>	S AFR STAT J
+</B><DT>SOUTH ASIA-JOURNAL OF SOUTH ASIAN STUDIES
+<B><DD>	S ASIA
+</B><DT>SOUTH ATLANTIC QUARTERLY
+<B><DD>	S ATL QUART
+</B><DT>SOUTH DAKOTA FARM & HOME RESEARCH
+<B><DD>	S DAK FARM HOME RES
+</B><DT>SOUTH DAKOTA REVIEW
+<B><DD>	S DAK REV
+</B><DT>SOUTHERLY
+<B><DD>	SOUTHERLY
+</B><DT>SOUTHERN CALIFORNIA LAW REVIEW
+<B><DD>	SOUTHERN CALIF LAW R
+</B><DT>SOUTHERN CULTURES
+<B><DD>	SOUTH CULT
+</B><DT>SOUTHERN ECONOMIC JOURNAL
+<B><DD>	SOUTHERN ECON J
+</B><DT>SOUTHERN HUMANITIES REVIEW
+<B><DD>	SOUTHERN HUMAN REV
+</B><DT>SOUTHERN JOURNAL OF PHILOSOPHY
+<B><DD>	SOUTHERN J PHILOS
+</B><DT>SOUTHERN LITERARY JOURNAL
+<B><DD>	SOUTHERN LIT J
+</B><DT>SOUTHERN MEDICAL JOURNAL
+<B><DD>	SOUTHERN MED J
+</B><DT>SOUTHWESTERN ENTOMOLOGIST
+<B><DD>	SOUTHWEST ENTOMOL
+</B><DT>SOUTHWESTERN HISTORICAL QUARTERLY
+<B><DD>	SOUTHWEST HIST QUART
+</B><DT>SOUTHWESTERN NATURALIST
+<B><DD>	SOUTHWEST NAT
+</B><DT>SOUTHWESTERN VETERINARIAN
+<B><DD>	SOUTHWEST VET
+</B><DT>SOVETSKAYA MEDITSINA
+<B><DD>	SOV MEDITISINA
+</B><DT>SOVIET APPLIED MECHANICS
+<B><DD>	SOV APPL MECH+
+</B><DT>SOVIET ASTRONOMY LETTERS
+<B><DD>	SOV ASTRON LETT+
+</B><DT>SOVIET ATOMIC ENERGY
+<B><DD>	SOV ATOM ENERGY+
+</B><DT>SOVIET ELECTROCHEMISTRY
+<B><DD>	SOV ELECTROCHEM+
+</B><DT>SOVIET ENGINEERING RESEARCH
+<B><DD>	SOV ENG RES
+</B><DT>SOVIET JOURNAL OF COMPUTER AND SYSTEMS SCIENCES
+<B><DD>	SOV J COMPUT SYST S+
+</B><DT>SOVIET JOURNAL OF ECOLOGY
+<B><DD>	SOV J ECOL+
+</B><DT>SOVIET JOURNAL OF NONDESTRUCTIVE TESTING-USSR
+<B><DD>	SOV J NONDESTR TEST+
+</B><DT>SOVIET JOURNAL OF NUCLEAR PHYSICS-USSR
+<B><DD>	SOV J NUCL PHYS+
+</B><DT>SOVIET JOURNAL OF NUMERICAL ANALYSIS AND MATHEMATICAL MODELLING
+<B><DD>	SOV J NUMER ANAL MAT
+</B><DT>SOVIET JOURNAL OF OPTICAL TECHNOLOGY
+<B><DD>	SOV J OPT TECHNOL+
+</B><DT>SOVIET JOURNAL OF REMOTE SENSING
+<B><DD>	SOV J REMOT SENS+
+</B><DT>SOVIET MATERIALS SCIENCE
+<B><DD>	SOV MATER SCI+
+</B><DT>SOVIET MICROELECTRONICS
+<B><DD>	SOV MICROELECTRON+
+</B><DT>SOVIET MINING SCIENCE USSR
+<B><DD>	SOV MIN SCI+
+</B><DT>SOVIET PHYSICS ACOUSTICS-USSR
+<B><DD>	SOV PHYS ACOUST+
+</B><DT>SOVIET PHYSICS SEMICONDUCTORS-USSR
+<B><DD>	SOV PHYS SEMICOND+
+</B><DT>SOVIET PLANT PHYSIOLOGY
+<B><DD>	SOV PLANT PHYSIOL+
+</B><DT>SOVIET POWDER METALLURGY AND METAL CERAMICS
+<B><DD>	SOV POWDER METALL+
+</B><DT>SOVIET RADIOCHEMISTRY
+<B><DD>	SOV RADIOCHEM+
+</B><DT>SOVIET SOIL SCIENCE
+<B><DD>	SOV SOIL SCI+
+</B><DT>SOZIAL-UND PRAVENTIVMEDIZIN
+<B><DD>	SOZ PRAVENTIV MED
+</B><DT>SOZIALE WELT-ZEITSCHRIFT FUR SOZIALWISSENSCHAFTLICHE FORSCHUNG UND PRAXIS
+<B><DD>	SOZ WELT
+</B><DT>SPACE COMMUNICATIONS
+<B><DD>	SPACE COMMUN
+</B><DT>SPACE POLICY
+<B><DD>	SPACE POLICY
+</B><DT>SPACE POWER
+<B><DD>	SPACE POWER
+</B><DT>SPACE SCIENCE REVIEWS
+<B><DD>	SPACE SCI REV
+</B><DT>SPACE SOLAR POWER REVIEW
+<B><DD>	SPACE POWER
+</B><DT>SPACE TECHNOLOGY-INDUSTRIAL AND COMMERCIAL APPLICATIONS
+<B><DD>	SPACE TECHNOL
+</B><DT>SPAN
+<B><DD>	SPAN
+</B><DT>SPATIAL VISION
+<B><DD>	SPATIAL VISION
+</B><DT>SPAZIO E SOCIETA-SPACE & SOCIETY
+<B><DD>	SPAZ SOC-SPACE SOC
+</B><DT>SPE DRILLING & COMPLETION
+<B><DD>	SPE DRILL COMPLETION
+</B><DT>SPE FORMATION EVALUATION
+<B><DD>	SPE FORMATION EVAL
+</B><DT>SPE PRODUCTION & FACILITIES
+<B><DD>	SPE PROD FACIL
+</B><DT>SPE RESERVOIR ENGINEERING
+<B><DD>	SPE RESERVOIR ENG
+</B><DT>SPE RESERVOIR EVALUATION & ENGINEERING
+<B><DD>	SPE RESERV EVAL ENG
+</B><DT>SPECIAL LIBRARIES
+<B><DD>	SPEC LIBR
+</B><DT>SPECIAL PAPERS IN PALAEONTOLOGY
+<B><DD>	SPEC PAP PALAEONTOL
+</B><DT>SPECIFYING ENGINEER
+<B><DD>	SPECIF ENG
+</B><DT>SPECTROCHIMICA ACTA PART A-MOLECULAR AND BIOMOLECULAR SPECTROSCOPY
+<B><DD>	SPECTROCHIM ACTA A
+</B><DT>SPECTROCHIMICA ACTA PART B-ATOMIC SPECTROSCOPY
+<B><DD>	SPECTROCHIM ACTA B
+</B><DT>SPECTROCHIMICA ACTA REVIEWS
+<B><DD>	SPECTROCHIM ACTA REV
+</B><DT>SPECTROSCOPY
+<B><DD>	SPECTROSCOPY
+</B><DT>SPECTROSCOPY AND SPECTRAL ANALYSIS
+<B><DD>	SPECTROSC SPECT ANAL
+</B><DT>SPECTROSCOPY LETTERS
+<B><DD>	SPECTROSC LETT
+</B><DT>SPECTROSCOPY-AN INTERNATIONAL JOURNAL
+<B><DD>	SPECTROSC-INT J
+</B><DT>SPECTRUM-THE JOURNAL OF STATE GOVERNMENT
+<B><DD>	SPECTRUM-J STATE GOV
+</B><DT>SPECULATIONS IN SCIENCE AND TECHNOLOGY
+<B><DD>	SPECULAT SCI TECHNOL
+</B><DT>SPECULUM-A JOURNAL OF MEDIEVAL STUDIES
+<B><DD>	SPECULUM
+</B><DT>SPEECH COMMUNICATION
+<B><DD>	SPEECH COMMUN
+</B><DT>SPIEGEL DER LETTEREN
+<B><DD>	SPIEGEL LETT
+</B><DT>SPILL SCIENCE & TECHNOLOGY BULLETIN
+<B><DD>	SPILL SCI TECHNOL B
+</B><DT>SPINAL CORD
+<B><DD>	SPINAL CORD
+</B><DT>SPINE
+<B><DD>	SPINE
+</B><DT>SPORT EDUCATION AND SOCIETY
+<B><DD>	SPORT EDUC SOC
+</B><DT>SPORT PSYCHOLOGIST
+<B><DD>	SPORT PSYCHOL
+</B><DT>SPORT SCIENCE REVIEW
+<B><DD>	SPORT SCI REV
+</B><DT>SPORTS EXERCISE AND INJURY
+<B><DD>	SPORTS EXERC INJURY
+</B><DT>SPORTS MEDICINE
+<B><DD>	SPORTS MED
+</B><DT>SPORTS MEDICINE AND ARTHROSCOPY REVIEW
+<B><DD>	SPORTS MED ARTHROSC
+</B><DT>SPORTS MEDICINE STANDARDS AND MALPRACTICE REPORTER
+<B><DD>	SPORTS MED STAND MAL
+</B><DT>SPORTVERLETZUNG-SPORTSCHADEN
+<B><DD>	SPORTVERLETZ SPORTSC
+</B><DT>SPRACHE & KOGNITION
+<B><DD>	SPRACHE KOGNIT
+</B><DT>SPRACHWISSENSCHAFT
+<B><DD>	SPRACHWISSENSCHAFT
+</B><DT>SPRINGER SEMINARS IN IMMUNOPATHOLOGY
+<B><DD>	SPRINGER SEMIN IMMUN
+</B><DT>SPRINGER TRACTS IN MODERN PHYSICS
+<B><DD>	SPRINGER TR MOD PHYS
+</B><DT>SRA-JOURNAL OF THE SOCIETY OF RESEARCH ADMINISTRATORS
+<B><DD>	SRA-J SOC RES ADMIN
+</B><DT>STAHL UND EISEN
+<B><DD>	STAHL EISEN
+</B><DT>STAIN TECHNOLOGY
+<B><DD>	STAIN TECHNOL
+</B><DT>STAND MAGAZINE
+<B><DD>	STAND MAG
+</B><DT>STANFORD FRENCH REVIEW
+<B><DD>	STANFORD FR REV
+</B><DT>STANFORD JOURNAL OF INTERNATIONAL LAW
+<B><DD>	STANFORD J INT LAW
+</B><DT>STANFORD LAW REVIEW
+<B><DD>	STANFORD LAW REV
+</B><DT>STARCH-STARKE
+<B><DD>	STARCH-STARKE
+</B><DT>STARKE
+<B><DD>	STARCH-STARKE
+</B><DT>STARKE
+<B><DD>	STARKE
+</B><DT>STATISTICA NEERLANDICA
+<B><DD>	STAT NEERL
+</B><DT>STATISTICA SINICA
+<B><DD>	STAT SINICA
+</B><DT>STATISTICAL METHODS IN MEDICAL RESEARCH
+<B><DD>	STAT METHODS MED RES
+</B><DT>STATISTICAL PAPERS
+<B><DD>	STAT PAP
+</B><DT>STATISTICAL SCIENCE
+<B><DD>	STAT SCI
+</B><DT>STATISTICIAN
+<B><DD>	STATISTICIAN
+</B><DT>STATISTICS
+<B><DD>	STATISTICS
+</B><DT>STATISTICS & PROBABILITY LETTERS
+<B><DD>	STAT PROBABIL LETT
+</B><DT>STATISTICS AND COMPUTING
+<B><DD>	STAT COMPUT
+</B><DT>STATISTICS IN MEDICINE
+<B><DD>	STAT MED
+</B><DT>STAUB REINHALTUNG DER LUFT
+<B><DD>	STAUB REINHALT LUFT
+</B><DT>STEEL IN THE USSR
+<B><DD>	STEEL TRANSL
+</B><DT>STEEL IN THE USSR
+<B><DD>	STEEL USSR
+</B><DT>STEEL IN TRANSLATION
+<B><DD>	STEEL TRANSL
+</B><DT>STEEL RESEARCH
+<B><DD>	STEEL RES
+</B><DT>STEINBECK QUARTERLY
+<B><DD>	STEINBECK QUART
+</B><DT>STEM CELLS
+<B><DD>	STEM CELLS
+</B><DT>STEREOTACTIC AND FUNCTIONAL NEUROSURGERY
+<B><DD>	STEREOT FUNCT NEUROS
+</B><DT>STEROIDS
+<B><DD>	STEROIDS
+</B><DT>STOCHASTIC ANALYSIS AND APPLICATIONS
+<B><DD>	STOCH ANAL APPL
+</B><DT>STOCHASTIC ENVIRONMENTAL RESEARCH AND RISK ASSESSMENT
+<B><DD>	STOCH ENV RES RISK A
+</B><DT>STOCHASTIC HYDROLOGY AND HYDRAULICS
+<B><DD>	STOCH HYDROL HYDRAUL
+</B><DT>STOCHASTIC PROCESSES AND THEIR APPLICATIONS
+<B><DD>	STOCH PROC APPL
+</B><DT>STORIA CONTEMPORANEA
+<B><DD>	STORIA CONTEMP
+</B><DT>STORIA DELL ARTE
+<B><DD>	STORIA ARTE
+</B><DT>STP PHARMA SCIENCES
+<B><DD>	STP PHARMA SCI
+</B><DT>STRAD
+<B><DD>	STRAD
+</B><DT>STRAHLENTHERAPIE
+<B><DD>	STRAHLENTHER ONKOL
+</B><DT>STRAHLENTHERAPIE UND ONKOLOGIE
+<B><DD>	STRAHLENTHER ONKOL
+</B><DT>STRATEGIC MANAGEMENT JOURNAL
+<B><DD>	STRATEGIC MANAGE J
+</B><DT>STRATIGRAPHY AND GEOLOGICAL CORRELATION
+<B><DD>	STRATIGR GEO CORREL+
+</B><DT>STRATIGRAPHY AND GEOLOGICAL CORRELATION
+<B><DD>	STRATIGR GEOL CORREL
+</B><DT>STRENGTH AND CONDITIONING
+<B><DD>	STRENGTH COND
+</B><DT>STRENGTH AND CONDITIONING JOURNAL
+<B><DD>	STRENGTH COND J
+</B><DT>STRENGTH OF MATERIALS
+<B><DD>	STRENGTH MATER+
+</B><DT>STRESS MEDICINE
+<B><DD>	STRESS MEDICINE
+</B><DT>STROJARSTVO
+<B><DD>	STROJARSTVO
+</B><DT>STROJNISKI VESTNIK-JOURNAL OF MECHANICAL ENGINEERING
+<B><DD>	STROJ VESTN-J MECH E
+</B><DT>STROKE
+<B><DD>	STROKE
+</B><DT>STRUCTURAL AND ELECTRONIC PARADIGMS IN CLUSTER CHEMISTRY
+<B><DD>	STRUCT BOND
+</B><DT>STRUCTURAL AND MULTIDISCIPLINARY OPTIMIZATION
+<B><DD>	STRUCT MULTIDISCIP O
+</B><DT>STRUCTURAL CHEMISTRY
+<B><DD>	STRUCT CHEM
+</B><DT>STRUCTURAL DESIGN OF TALL BUILDINGS
+<B><DD>	STRUCT DES TALL BUIL
+</B><DT>STRUCTURAL ENGINEER-PART A
+<B><DD>	STRUCT ENG-A
+</B><DT>STRUCTURAL ENGINEER-PART B
+<B><DD>	STRUCT ENG-B
+</B><DT>STRUCTURAL ENGINEERING AND MECHANICS
+<B><DD>	STRUCT ENG MECH
+</B><DT>STRUCTURAL ENGINEERING PRACTICE
+<B><DD>	STRUCT ENG PRACT
+</B><DT>STRUCTURAL ENGINEERING REVIEW
+<B><DD>	STRUCT ENG REV
+</B><DT>STRUCTURAL OPTIMIZATION
+<B><DD>	STRUCT OPTIMIZATION
+</B><DT>STRUCTURAL SAFETY
+<B><DD>	STRUCT SAF
+</B><DT>STRUCTURE
+<B><DD>	STRUCTURE
+</B><DT>STRUCTURE AND BONDING
+<B><DD>	STRUCT BOND
+</B><DT>STRUCTURE WITH FOLDING & DESIGN
+<B><DD>	STRUCT FOLD DES
+</B><DT>STRUCTURED PROGRAMMING
+<B><DD>	STRUCT PROGRAM
+</B><DT>STUDI E PROBLEMI DI CRITICA TESTUALE
+<B><DD>	STUD PROBL CRIT TEST
+</B><DT>STUDI FRANCESI
+<B><DD>	STUD FRANCESI
+</B><DT>STUDI MEDIEVALI
+<B><DD>	STUD MEDIEV
+</B><DT>STUDI MUSICALI
+<B><DD>	STUD MUSIC
+</B><DT>STUDI PIEMONTESI
+<B><DD>	STUD PIEMONTESI
+</B><DT>STUDI ROMANI
+<B><DD>	STUD ROMANI
+</B><DT>STUDI SECENTESCHI
+<B><DD>	STUD SECENTESCHI
+</B><DT>STUDI STORICI
+<B><DD>	STUD STORICI
+</B><DT>STUDIA BIOPHYSICA
+<B><DD>	STUD BIOPHYS
+</B><DT>STUDIA GEOPHYSICA ET GEODAETICA
+<B><DD>	STUD GEOPHYS GEOD
+</B><DT>STUDIA LEIBNITIANA
+<B><DD>	STUD LEIBNITIANA
+</B><DT>STUDIA LINGUISTICA
+<B><DD>	STUD LINGUISTICA
+</B><DT>STUDIA MATHEMATICA
+<B><DD>	STUD MATH
+</B><DT>STUDIA MONASTICA
+<B><DD>	STUD MONASTICA
+</B><DT>STUDIA MYSTICA
+<B><DD>	STUD MYST
+</B><DT>STUDIA NEOPHILOLOGICA
+<B><DD>	STUD NEOPHILOL
+</B><DT>STUDIA PSYCHOLOGICA
+<B><DD>	STUD PSYCHOL
+</B><DT>STUDIA ROSENTHALIANA
+<B><DD>	STUD ROSENTHALIANA
+</B><DT>STUDIA SCIENTIARUM MATHEMATICARUM HUNGARICA
+<B><DD>	STUD SCI MATH HUNG
+</B><DT>STUDIES IN AMERICAN FICTION
+<B><DD>	STUD AM FICTION
+</B><DT>STUDIES IN AMERICAN POLITICAL DEVELOPMENT
+<B><DD>	STUD AM POLIT DEV
+</B><DT>STUDIES IN APPLIED MATHEMATICS
+<B><DD>	STUD APPL MATH
+</B><DT>STUDIES IN CANADIAN LITERATURE-ETUDES EN LITTERATURE CANADIENNE
+<B><DD>	STUD CAN LIT
+</B><DT>STUDIES IN COMPARATIVE INTERNATIONAL DEVELOPMENT
+<B><DD>	STUD COMP INT DEV
+</B><DT>STUDIES IN CONSERVATION
+<B><DD>	STUD CONSERV
+</B><DT>STUDIES IN EAST EUROPEAN THOUGHT
+<B><DD>	STUD E EUR THOUGHT
+</B><DT>STUDIES IN EIGHTEENTH-CENTURY CULTURE
+<B><DD>	STUD EIGHTEENTH-CENT
+</B><DT>STUDIES IN ENGLISH LITERATURE 1500-1900
+<B><DD>	STUD ENGL LIT-1500
+</B><DT>STUDIES IN FAMILY PLANNING
+<B><DD>	STUD FAMILY PLANN
+</B><DT>STUDIES IN HIGHER EDUCATION
+<B><DD>	STUD HIGH EDUC
+</B><DT>STUDIES IN HISTORY AND PHILOSOPHY OF MODERN PHYSICS
+<B><DD>	STUD HIST PHILOS M P
+</B><DT>STUDIES IN HISTORY AND PHILOSOPHY OF SCIENCE
+<B><DD>	STUD HIST PHILOS SCI
+</B><DT>STUDIES IN LANGUAGE
+<B><DD>	STUD LANG
+</B><DT>STUDIES IN LATIN AMERICAN POPULAR CULTURE
+<B><DD>	STUD LAT AM POP CULT
+</B><DT>STUDIES IN MYCOLOGY
+<B><DD>	STUD MYCOL
+</B><DT>STUDIES IN NONLINEAR DYNAMICS AND ECONOMETRICS
+<B><DD>	STUD NONLINEAR DYN E
+</B><DT>STUDIES IN PHILOLOGY
+<B><DD>	STUD PHILOL
+</B><DT>STUDIES IN RELIGION-SCIENCES RELIGIEUSES
+<B><DD>	STUD RELIG-SCI RELIG
+</B><DT>STUDIES IN ROMANTICISM
+<B><DD>	STUD ROMANTICISM
+</B><DT>STUDIES IN SHORT FICTION
+<B><DD>	STUD SHORT FICTION
+</B><DT>STUDIES IN SURFACE SCIENCE AND CATALYSIS
+<B><DD>	STUD SURF SCI CATAL
+</B><DT>STUDIES IN SYMBOLIC INTERACTION
+<B><DD>	STUD SYM IN
+</B><DT>STUDIES IN SYMBOLIC INTERACTION
+<B><DD>	STUD SYMB INTERACT
+</B><DT>STUDIES IN THE HISTORY OF ART
+<B><DD>	STUD HIST ART
+</B><DT>STUDIES IN THE HISTORY OF GARDENS & DESIGNED LANDSCAPES
+<B><DD>	STUD HIST GARD DES L
+</B><DT>STUDIES IN THE LITERARY IMAGINATION
+<B><DD>	STUD LIT IMAGINATION
+</B><DT>STUDIES IN THE NOVEL
+<B><DD>	STUD NOVEL
+</B><DT>STUDIES ON NEOTROPICAL FAUNA AND ENVIRONMENT
+<B><DD>	STUD NEOTROP FAUNA E
+</B><DT>STYGOLOGIA
+<B><DD>	STYGOLOGIA
+</B><DT>STYLE
+<B><DD>	STYLE
+</B><DT>SUB-STANCE
+<B><DD>	SUB-STANCE
+</B><DT>SUBSTANCE USE & MISUSE
+<B><DD>	SUBST USE MISUSE
+</B><DT>SUGAR JOURNAL
+<B><DD>	SUGAR J
+</B><DT>SUGAR TECHNOLOGY REVIEWS
+<B><DD>	SUGAR TECHNOL REV
+</B><DT>SUGAR Y AZUCAR
+<B><DD>	SUGAR AZUCAR
+</B><DT>SUGARCANE PATHOLOGISTS NEWSLETTER
+<B><DD>	SUGARCANE PATHOL NEW
+</B><DT>SUICIDE AND LIFE-THREATENING BEHAVIOR
+<B><DD>	SUICIDE LIFE-THREAT
+</B><DT>SUID-AFRIKAANSE HISTORIESE JOERNAAL-SOUTH AFRICAN HISTORICAL JOURNAL
+<B><DD>	S AFR HIST J
+</B><DT>SUMITOMO LIGHT METAL TECHNICAL REPORTS
+<B><DD>	SUMITOMO LIGHT M TEC
+</B><DT>SUPERCOMPUTER
+<B><DD>	SUPERCOMPUTER
+</B><DT>SUPERCONDUCTOR SCIENCE & TECHNOLOGY
+<B><DD>	SUPERCOND SCI TECH
+</B><DT>SUPERLATTICES AND MICROSTRUCTURES
+<B><DD>	SUPERLATTICE MICROST
+</B><DT>SUPPORTIVE CARE IN CANCER
+<B><DD>	SUPPORT CARE CANCER
+</B><DT>SUPRAMOLECULAR CHEMISTRY
+<B><DD>	SUPRAMOL CHEM
+</B><DT>SUPRAMOLECULAR SCIENCE
+<B><DD>	SUPRAMOL SCI
+</B><DT>SUPREME COURT REVIEW
+<B><DD>	SUPREME COURT REV
+</B><DT>SURFACE & COATINGS TECHNOLOGY
+<B><DD>	SURF COAT TECH
+</B><DT>SURFACE AND INTERFACE ANALYSIS
+<B><DD>	SURF INTERFACE ANAL
+</B><DT>SURFACE ENGINEERING
+<B><DD>	SURFACE ENG
+</B><DT>SURFACE REVIEW AND LETTERS
+<B><DD>	SURF REV LETT
+</B><DT>SURFACE SCIENCE
+<B><DD>	SURF SCI
+</B><DT>SURFACE SCIENCE REPORTS
+<B><DD>	SURF SCI REP
+</B><DT>SURFACE TECHNOLOGY
+<B><DD>	SURF TECHNOL
+</B><DT>SURGERY
+<B><DD>	SURGERY
+</B><DT>SURGERY GYNECOLOGY & OBSTETRICS
+<B><DD>	SURG GYNECOL OBSTET
+</B><DT>SURGERY TODAY-THE JAPANESE JOURNAL OF SURGERY
+<B><DD>	SURG TODAY
+</B><DT>SURGICAL AND RADIOLOGIC ANATOMY
+<B><DD>	SURG RADIOL ANAT
+</B><DT>SURGICAL CLINICS OF NORTH AMERICA
+<B><DD>	SURG CLIN N AM
+</B><DT>SURGICAL ENDOSCOPY-ULTRASOUND AND INTERVENTIONAL TECHNIQUES
+<B><DD>	SURG ENDOSC-ULTRAS
+</B><DT>SURGICAL FORUM
+<B><DD>	SURG FORUM
+</B><DT>SURGICAL LAPAROSCOPY & ENDOSCOPY
+<B><DD>	SURG LAPAROSC ENDOSC
+</B><DT>SURGICAL LAPAROSCOPY ENDOSCOPY & PERCUTANEOUS TECHNIQUES
+<B><DD>	SURG LAPARO ENDO PER
+</B><DT>SURGICAL NEUROLOGY
+<B><DD>	SURG NEUROL
+</B><DT>SURGICAL ONCOLOGY-OXFORD
+<B><DD>	SURG ONCOL
+</B><DT>SURVEY AND SYNTHESIS OF PATHOLOGY RESEARCH
+<B><DD>	SURV SYN PATHOL RES
+</B><DT>SURVEY OF IMMUNOLOGIC RESEARCH
+<B><DD>	SURV IMMUNOL RES
+</B><DT>SURVEY OF OPHTHALMOLOGY
+<B><DD>	SURV OPHTHALMOL
+</B><DT>SURVEY REVIEW
+<B><DD>	SURV REV
+</B><DT>SURVEYING AND MAPPING
+<B><DD>	SURV MAPP
+</B><DT>SURVEYS IN GEOPHYSICS
+<B><DD>	SURV GEOPHYS
+</B><DT>SURVIVAL
+<B><DD>	SURVIVAL
+</B><DT>SUSTAINABLE DEVELOPMENT
+<B><DD>	SUSTAIN DEV
+</B><DT>SVENSK PAPPERSTIDNING-NORDISK CELLULOSA
+<B><DD>	SVEN PAPPERSTIDN
+</B><DT>SVENSK TIDSKRIFT FOR MUSIKFORSKNING
+<B><DD>	SVEN TIDSKR MUSIKFOR
+</B><DT>SWEDISH DENTAL JOURNAL
+<B><DD>	SWED DENT J
+</B><DT>SWEDISH JOURNAL OF AGRICULTURAL RESEARCH
+<B><DD>	SWED J AGR RES
+</B><DT>SWINE HEALTH AND PRODUCTION
+<B><DD>	SWINE HEALTH PROD
+</B><DT>SWISS JOURNAL OF PSYCHOLOGY
+<B><DD>	SWISS J PSYCHOL
+</B><DT>SYDOWIA
+<B><DD>	SYDOWIA
+</B><DT>SYESIS
+<B><DD>	SYESIS
+</B><DT>SYMBIOSIS
+<B><DD>	SYMBIOSIS
+</B><DT>SYMBOLIC INTERACTION
+<B><DD>	SYMB INTERACT
+</B><DT>SYMPOSIA OF THE SOCIETY FOR EXPERIMENTAL BIOLOGY
+<B><DD>	SYM SOC EXP BIOL
+</B><DT>SYMPOSIUM-A QUARTERLY JOURNAL IN MODERN FOREIGN LITERATURES
+<B><DD>	SYMPOSIUM
+</B><DT>SYMPOSIUM-A QUARTERLY JOURNAL IN MODERN LITERATURES
+<B><DD>	SYMPOSIUM
+</B><DT>SYNAPSE
+<B><DD>	SYNAPSE
+</B><DT>SYNERGISTIC USE OF MULTISENSOR DATA FOR LAND PROCESSES
+<B><DD>	ADV SPACE RES
+</B><DT>SYNLETT
+<B><DD>	SYNLETT
+</B><DT>SYNTAX AND SEMANTICS
+<B><DD>	SYNTAX SEMANTICS
+</B><DT>SYNTHESE
+<B><DD>	SYNTHESE
+</B><DT>SYNTHESIS AND REACTIVITY IN INORGANIC AND METAL-ORGANIC CHEMISTRY
+<B><DD>	SYN REACT INORG MET
+</B><DT>SYNTHESIS-CAMBRIDGE
+<B><DD>	SYNTHESIS-CAMBRIDGE
+</B><DT>SYNTHESIS-STUTTGART
+<B><DD>	SYNTHESIS-STUTTGART
+</B><DT>SYNTHETIC COMMUNICATIONS
+<B><DD>	SYNTHETIC COMMUN
+</B><DT>SYNTHETIC METALS
+<B><DD>	SYNTHETIC MET
+</B><DT>SYSTEM DYNAMICS REVIEW
+<B><DD>	SYST DYNAM REV
+</B><DT>SYSTEM FAMILIE
+<B><DD>	SYST FAM
+</B><DT>SYSTEM FAMILIE-FORSCHUNG UND THERAPIE
+<B><DD>	SYST FAM
+</B><DT>SYSTEMATIC AND APPLIED MICROBIOLOGY
+<B><DD>	SYST APPL MICROBIOL
+</B><DT>SYSTEMATIC BIOLOGY
+<B><DD>	SYST BIOL
+</B><DT>SYSTEMATIC BOTANY
+<B><DD>	SYST BOT
+</B><DT>SYSTEMATIC ENTOMOLOGY
+<B><DD>	SYST ENTOMOL
+</B><DT>SYSTEMATIC PARASITOLOGY
+<B><DD>	SYST PARASITOL
+</B><DT>SYSTEMATIC ZOOLOGY
+<B><DD>	SYST ZOOL
+</B><DT>SYSTEMIC PRACTICE AND ACTION RESEARCH
+<B><DD>	SYST PRACT ACT RES
+</B><DT>SYSTEMS & CONTROL LETTERS
+<B><DD>	SYST CONTROL LETT
+</B><DT>SYSTEMS ANALYSIS MODELLING SIMULATION
+<B><DD>	SYST ANAL MODEL SIM
+</B><DT>SYSTEMS AND COMPUTERS IN JAPAN
+<B><DD>	SYST COMPUT JPN
+</B><DT>SYSTEMS INTEGRATION BUSINESS
+<B><DD>	SYST INTEGRAT BUS
+</B><DT>SYSTEMS OBJECTIVES SOLUTIONS
+<B><DD>	SYST OBJECT SOLUT
+</B><DT>SYSTEMS PRACTICE
+<B><DD>	SYST PRACTICE
+</B><DT>SYSTEMS RESEARCH
+<B><DD>	SYST RES
+</B><DT>SYSTEMS RESEARCH AND BEHAVIORAL SCIENCE
+<B><DD>	SYST RES BEHAV SCI
+</B><DT>SYSTEMS RESEARCH AND INFORMATION SCIENCE
+<B><DD>	SYST RES INFORM SCI
+</B></DL>
+</BODY>
+</HTML>
