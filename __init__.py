@@ -276,7 +276,8 @@ class BibtexBibliography:
         for row in c.execute('SELECT * FROM bibliography ORDER BY tag'):
             entry = {}
             for key,value in zip(keys,row):
-                entry[key] = value
+                if len(value):
+                    entry[key] = value
             self.database.append(entry)
             self.add_schema(entry)
             
@@ -359,7 +360,7 @@ class BibtexBibliography:
                 else:
                     matches = jlist.get_close_matches_short(entry['journal'],n=1)
             except KeyError as e:
-                pass
+                matches = []
 
             if len(matches):
                 score = [y for x,y in matches][0]
@@ -369,10 +370,109 @@ class BibtexBibliography:
                     entry['journal'] = new_journal
                 else:
                     pass
+
+    def to_bibtex(self):
+        output = ''
+        for entry in self.database:
+            keys = entry.keys()
+            keys.remove('entry_type')
+            keys.remove('tag')
+            keys = sorted(keys,key=lambda x: PARAMETER_PRIORITIES[x])[::-1]
+            entry_type = entry['entry_type']
+            tag = entry['tag']
+            output = output = output + '@%s{%s,\n'%(entry_type,tag)
+            for key in keys:
+                output = output + '\t%s={%s},\n'%(key,entry[key])
+            output = output[:-2]+'}\n\n'
+        return output
+
+    def fix_tag_case(self):
+        for entry in self.database:
+            entry['tag'] = entry['tag'].lower()
+
+    def fix_tag_logic(self):
+        for entry in self.database:
+            try:
+                title = entry['title']
+            except:
+                try:
+                    title = entry['booktitle']
+                except:
+                    continue
+
+            term_list = title.replace('-',' ').split(' ')
+            #title_term = term_list[0]
+            
+            for term in term_list:
+                if not term.lower() in LOWER_CASE_WORDS:
+                    title_term = term
+                    break
+
+            title_term = title_term.lower()
+            title_term = ''.join(e for e in title_term if e.isalnum())
+                
+            try:
+                author = entry['author']
+            except:
+                continue
+
+            # print 'author',author
+            author = author.replace('{','').replace('}','')
+            author_list = author.split('and')
+            # print 'author_list',author_list
+            first_author = author_list[0]
+            # print 'first_author',first_author
+            # print 'comma?',first_author.find(',')
+            
+            if first_author.find(',')>-1:
+                author_term = first_author.strip().split(',')[0]
+            else:
+                author_term = first_author.strip().split(' ')[-1]
+            author_term = author_term.lower()
+
+            author_term = ''.join(e for e in author_term if e.isalnum())
+
+
+            try:
+                year = entry['year']
+            except:
+                year = '0000'
+
+            print '%s%s%s'%(author_term,year,title_term)
+                
+
+            
+    def fix_josaa(self):
+        for entry in self.database:
+            try:
+                if entry['journal'].strip()=='Journal of the Optical Society of America':
+                    entry['journal']='Journal of the Optical Society of America A'
+            except:
+                pass
+
+    def remove_brackets(self):
+        for entry in self.database:
+            keys = entry.keys()
+            for key in keys:
+                val = entry[key].strip()
+                if val[0]=='{' and val[-1]=='}':
+                    newval = val[1:-1]
+                    print '%s -> %s'%(entry[key],newval)
+                    entry[key] = newval
+                    
+                    
+                
             
 bb = BibtexBibliography()
-bb.populate_from_bibtex(BIBTEX_FILENAME)
-bb.replace_strings(TITLE_KEY_FILENAME)
-bb.clean_journal_titles()
-bb.write_db()
+rebuild = False
+if rebuild:
+    bb.populate_from_bibtex(BIBTEX_FILENAME)
+    bb.replace_strings(TITLE_KEY_FILENAME)
+    bb.clean_journal_titles()
+    bb.write_db()
 
+bb.read_db()
+bb.fix_tag_logic()
+
+#bb.write_db()
+#print bb.to_bibtex()
