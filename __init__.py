@@ -15,6 +15,7 @@ except:
     pass
 REPLACEMENT_CACHE_FILENAME = os.path.join(REPLACEMENT_CACHE_DIR,'journal_title_replacements.csv')
 DATABASE_FILENAME = './db/pybib.db'
+#BIBTEX_FILENAME = './bibtex/bibliography.bib'
 BIBTEX_FILENAME = './bibtex/bibliography_full.bib'
 TITLE_KEY_FILENAME = './bibtex/longtitles.bib'
 VALID_ENTRY_MINIMUM_LENGTH = 10
@@ -25,6 +26,8 @@ LOWER_CASE_WORDS = ['a', 'aboard', 'about', 'above', 'absent', 'across', 'after'
 PARAMETER_PRIORITIES = {'entry_type':99, 'journal':85, 'tag':100, 'year':65, 'title':90, 'publisher':0, 'author':95, 'number':75, 'volume':80, 'pages':70, 'blurb':0, 'note':0, 'booktitle':0, 'organization':0, 'howpublished':0, 'editor':0, 'timestamp':0, 'owner':0, 'institution':0, 'month':0, 'nourl':0, 'abstract':0, 'keywords':0, 'location':0, '__markedentry':-1, 'chapter':0, 'pii':0, 'doi':0, 'pmid':0, 'school':0, 'address':0, 'url':0, 'edition':0, 'city':0, 'issue':0}
 
 ACRONYMNS = ['AO','OCT','SLO','AO-OCT','AO-SLO','AOSLO','AOOCT','SD-OCT','TD-OCT','SS-OCT','pvOCT']
+FIELDS_TO_IGNORE = ['abstract','keywords']
+RETAG_EXISTING = False
 
 class Journal:
 
@@ -248,10 +251,11 @@ class BibtexString:
             else:
                 temp = item.split('=')
                 key = temp[0].strip().lower()
-                val = '='.join(temp[1:]).strip()
-                if val[0]=='{' and val[-1]=='}':
-                    val = val[1:-1]
-                out[key] = val
+                if not key in FIELDS_TO_IGNORE:
+                    val = '='.join(temp[1:]).strip()
+                    if val[0]=='{' and val[-1]=='}':
+                        val = val[1:-1]
+                    out[key] = val
         return out
         
     
@@ -289,6 +293,8 @@ class BibtexBibliography:
             for ekey in ekeys:
                 if not ekey.lower() in self.parameters:
                     self.parameters.append(ekey.lower())
+                if not ekey.lower() in PARAMETER_PRIORITIES.keys():
+                    PARAMETER_PRIORITIES[ekey.lower()] = 0    
 
     def read_db(self):
         c = self.conn.cursor()
@@ -462,10 +468,18 @@ class BibtexBibliography:
             keys = sorted(keys,key=lambda x: PARAMETER_PRIORITIES[x])[::-1]
             entry_type = entry['entry_type']
             tag = entry['tag']
-            output = output = output + u'@%s{%s,\n'%(entry_type,tag)
+            #output = output = output + u'@%s{%s,\n'%(entry_type,tag)
+            to_add = '@%s{%s,\n'%(entry_type,tag)
+            to_add = to_add.encode('utf-8','replace')
+            output = output = output + to_add
             for key in keys:
-                #print key,entry[key]
-                output = output + u'\t%s={%s},\n'%(key,entry[key])
+                #output = output + u'\t%s={%s},\n'%(key,entry[key])
+                to_add = '\t%s={%s},\n'%(key,entry[key])
+                to_add = to_add.encode('utf-8','replace')
+                output = output + to_add
+
+
+                
             output = output[:-2]+u'}\n\n'
         output = self.escape(output)
         return output
@@ -481,9 +495,15 @@ class BibtexBibliography:
             entry['tag'] = entry['tag'].lower()
 
     def fix_tag_logic(self,debug=False):
+        existing_tags = []
         for entry in self.database:
             if debug:
                 print 'working on %s'%entry
+
+            if 'forced_tag' in entry.keys():
+                entry['tag'] = entry['forced_tag']
+                continue
+                
             try:
                 title = entry['title']
             except:
@@ -510,7 +530,7 @@ class BibtexBibliography:
 
             # print 'author',author
             author = author.replace('{','').replace('}','')
-            author_list = author.split('and')
+            author_list = author.split(' and ')
             # print 'author_list',author_list
             first_author = author_list[0]
             # print 'first_author',first_author
@@ -519,13 +539,12 @@ class BibtexBibliography:
             first_author = first_author.lower()
             first_author = first_author.replace(', jr','').replace(',jr','').replace('jr','')
             first_author = first_author.strip()
-            
+
             if first_author.find(',')>-1:
                 author_term = first_author.split(',')[0]
             else:
                 author_term = first_author.split(' ')[-1]
             
-
             author_term = ''.join(e for e in author_term if e.isalnum())
             
             try:
@@ -534,22 +553,38 @@ class BibtexBibliography:
                 year = '0000'
 
             new_tag = '%s%s%s'%(author_term,year,title_term)
-            entry['tag'] = new_tag
-            continue
-            tag = entry['tag']
-            existing_tags = [x['tag'] for x in self.database]
-            
-            while new_tag in existing_tags:
-                if debug:
-                    print '\t%s is a duplicate'%new_tag
-                    print '\t',[x for x in self.database if x['tag']==new_tag]
-                new_tag = new_tag + '_'
 
-            if debug:
-                if not new_tag==tag:
-                    print '\ttag replaced: %s -> %s'%(tag,new_tag)    
-                    print
+
+            if RETAG_EXISTING:
+                while new_tag in existing_tags:
+                    if debug:
+                        print '\t%s is a duplicate'%new_tag
+                        print '\t',[x for x in self.database if x['tag']==new_tag]
+                    new_tag = new_tag + '_'
+                    
             entry['tag'] = new_tag
+            existing_tags.append(new_tag)
+            if debug:
+                print
+            # print new_tag
+            # continue
+            # tag = entry['tag']
+            # existing_tags = [x['tag'] for x in self.database]
+            
+            # while new_tag in existing_tags:
+            #     if debug:
+            #         print '\t%s is a duplicate'%new_tag
+            #         print '\t',[x for x in self.database if x['tag']==new_tag]
+            #     new_tag = new_tag + '_'
+
+            # if debug:
+            #     if not new_tag==tag:
+            #         print '\ttag replaced: %s -> %s'%(tag,new_tag)    
+            #         print
+
+            # #if entry['author'].find('Cabrera')>-1:
+            # print new_tag
+            # entry['tag'] = new_tag
 
             
     def fix_josaa(self):
