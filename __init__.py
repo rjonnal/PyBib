@@ -6,7 +6,14 @@ import difflib
 import urllib2
 import distance
 
+JOURNAL_LIST_DIR = './journal_list'
 JOURNAL_LIST_FILENAME = './journal_list/jlist.csv'
+REPLACEMENT_CACHE_DIR = os.path.join(JOURNAL_LIST_DIR,'journal_title_replacements')
+try:
+    os.makedirs(REPLACEMENT_CACHE_DIR)
+except:
+    pass
+REPLACEMENT_CACHE_FILENAME = os.path.join(REPLACEMENT_CACHE_DIR,'journal_title_replacements.csv')
 DATABASE_FILENAME = './db/pybib.db'
 BIBTEX_FILENAME = './bibtex/bibliography_full.bib'
 TITLE_KEY_FILENAME = './bibtex/longtitles.bib'
@@ -15,7 +22,7 @@ ISI_HTML_DIR = './journal_list/isi_html'
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 LOWER_CASE_WORDS = ['a', 'aboard', 'about', 'above', 'absent', 'across', 'after', 'against', 'along', 'alongside', 'amid', 'amidst', 'among', 'amongst', 'an', 'and', 'around', 'as', 'aslant', 'astride', 'at', 'athwart', 'atop', 'barring', 'before', 'behind', 'below', 'beneath', 'beside', 'besides', 'between', 'beyond', 'but', 'by', 'despite', 'down', 'during', 'except', 'failing', 'following', 'for', 'for', 'from', 'in', 'inside', 'into', 'like', 'mid', 'minus', 'near', 'next', 'nor', 'notwithstanding', 'of', 'off', 'on', 'onto', 'opposite', 'or', 'out', 'outside', 'over', 'past', 'per', 'plus', 'regarding', 'round', 'save', 'since', 'so', 'than', 'the', 'through', 'throughout', 'till', 'times', 'to', 'toward', 'towards', 'under', 'underneath', 'unlike', 'until', 'up', 'upon', 'via', 'vs.', 'when', 'with', 'within', 'without', 'worth', 'yet']
 
-PARAMETER_PRIORITIES = {'entry_type':99, 'journal':85, 'tag':100, 'year':65, 'title':90, 'publisher':0, 'author':95, 'number':75, 'volume':80, 'pages':70, 'blurb':0, 'note':0, 'booktitle':0, 'organization':0, 'howpublished':0, 'editor':0, 'timestamp':0, 'owner':0, 'institution':0, 'month':0, 'nourl':0, 'abstract':0, 'keywords':0, 'location':0, '__markedentry':0, 'chapter':0, 'pii':0, 'doi':0, 'pmid':0, 'school':0, 'address':0, 'url':0, 'edition':0, 'city':0, 'issue':0}
+PARAMETER_PRIORITIES = {'entry_type':99, 'journal':85, 'tag':100, 'year':65, 'title':90, 'publisher':0, 'author':95, 'number':75, 'volume':80, 'pages':70, 'blurb':0, 'note':0, 'booktitle':0, 'organization':0, 'howpublished':0, 'editor':0, 'timestamp':0, 'owner':0, 'institution':0, 'month':0, 'nourl':0, 'abstract':0, 'keywords':0, 'location':0, '__markedentry':-1, 'chapter':0, 'pii':0, 'doi':0, 'pmid':0, 'school':0, 'address':0, 'url':0, 'edition':0, 'city':0, 'issue':0}
 
 ACRONYMNS = ['AO','OCT','SLO','AO-OCT','AO-SLO','AOSLO','AOOCT','SD-OCT','TD-OCT','SS-OCT','pvOCT']
 
@@ -33,14 +40,17 @@ class Journal:
     def __repr__(self):
         return self.short_title
 
-    def db_put(self,cursor):
-        print 'Adding %s to database (%d).'%(self,Journal.db_put_count),
+    def db_put(self,cursor,debug=False):
+        if debug:
+            print 'Adding %s to database (%d).'%(self,Journal.db_put_count),
         try:
             cursor.execute('''INSERT INTO journals VALUES(?,?)''',(self.long_title,self.short_title))
             Journal.db_put_count = Journal.db_put_count + 1
-            print
+            if debug:
+                print
         except sqlite3.IntegrityError as e:
-            print e,'. Journal "%s" already exists.'%self
+            if debug:
+                print e,'. Journal "%s" already exists.'%self
                 
 class JournalList:
 
@@ -54,14 +64,23 @@ class JournalList:
         c = self.conn.cursor()
         for row in c.execute('SELECT * FROM journals ORDER BY long_title'):
             self.add(*row)
+
+
+    def write_csv(self,filename):
+        with open(filename,'w') as csvfile:
+            writer = csv.writer(csvfile)
+            row = ['long_title','short_title']
+            writer.writerow(row)
+            for j in self.journals:
+                writer.writerow([j.long_title,j.short_title])
         
-    def write_db(self):
+    def write_db(self,debug=False):
         c = self.conn.cursor()
 
         c.execute('''DROP TABLE IF EXISTS journals''')
         c.execute('''CREATE TABLE journals (long_title TEXT PRIMARY KEY, short_title TEXT)''')
         for j in self.journals:
-            j.db_put(self.conn.cursor())
+            j.db_put(self.conn.cursor(),debug=debug)
         self.conn.commit()
         
     def get_html(self):
@@ -76,7 +95,7 @@ class JournalList:
                 fid.write(html)
             response.close()
 
-    def populate_from_csv(self,filename):
+    def populate_from_csv(self,filename,debug=False):
         with open(filename,'rb') as csvfile:
             reader = csv.reader(csvfile)
             header_done = False
@@ -88,7 +107,10 @@ class JournalList:
                     long_title = row[0]
                     short_title = row[1]
                     journal = Journal(long_title,short_title)
-                    self.add(long_title,short_title,True)
+                    if debug:
+                        print long_title,short_title,long_title in self.long_titles
+                    if not long_title in self.long_titles:
+                        self.add(long_title,short_title,True)
 
     def populate_from_html(self,dirname):
         for letter in LETTERS:
@@ -292,9 +314,20 @@ class BibtexBibliography:
             else:
                 priorities.append(0)
 
+        # remove any negative-valued params
+        npri = []
+        npar = []
+        for par,pri in zip(self.parameters,priorities):
+            if pri>=0:
+                npri.append(pri)
+                npar.append(par)
+
+        self.parameters = npar
+        priorities = npri
+                
         # sort params by priority, for sensible ordering in db
         params = [param for (priority,param) in sorted(zip(priorities,self.parameters))][::-1]
-        sql = '(%s TEXT PRIMARY KEY, '%params[0]
+        sql = '(%s TEXT, '%params[0]
         params = params
         for param in params[1:]:
             sql = sql + '%s TEXT, '%param
@@ -350,48 +383,107 @@ class BibtexBibliography:
             except Exception as e:
                 continue
 
-    def clean_journal_titles(self,use_long_titles=True):
+
+    def csv_to_dict(self,filename):
+        out = {}
+        with open(filename,'rb') as fid:
+            reader = csv.reader(fid)
+            for row in reader:
+                out[row[0]] = row[1:]
+        return out
+
+
+    def dict_to_csv(self,d,filename):
+        keys = d.keys()
+        with open(filename,'w') as fid:
+            writer = csv.writer(fid)
+            for k in keys:
+                writer.writerow([k]+d[k])
+
+    def row_to_csv(self,row,filename):
+        if not os.path.exists(filename):
+            with open(filename, 'a'):
+                os.utime(filename, None)
+        with open(filename,'a') as fid:
+            writer = csv.writer(fid)
+            writer.writerow(row)
+            
+    def clean_journal_titles(self,use_cache=True,debug=False):
+        cache = {}
+        if not os.path.exists(REPLACEMENT_CACHE_FILENAME):
+            use_cache = False
+        if use_cache:
+            cache = self.csv_to_dict(REPLACEMENT_CACHE_FILENAME)
+        
         jlist = JournalList()
         jlist.read_db()
+
+        
         for idx,entry in enumerate(self.database):
-            try:
-                if use_long_titles:
-                    matches = jlist.get_close_matches_long(entry['journal'],n=1)
-                else:
-                    matches = jlist.get_close_matches_short(entry['journal'],n=1)
-            except KeyError as e:
-                matches = []
+            if not 'journal' in entry.keys():
+                continue
+            
+            cache_keys = cache.keys()
+            old_title = entry['journal']
+            if old_title in cache_keys:
+                matches = [(cache[old_title][0],cache[old_title][1])]
+                cache_string = '(from cache)'
+            else:
+                matches = jlist.get_close_matches_long(old_title,n=3)
+                cache_string = '(fresh match)'
 
             if len(matches):
                 score = [y for x,y in matches][0]
-                new_journal = [x for x,y in matches][0]
+                new_title = [x for x,y in matches][0]
+                
+                if not old_title in cache_keys:
+                    self.row_to_csv([old_title,new_title,score],REPLACEMENT_CACHE_FILENAME)
+                    cache[old_title] = [new_title,score]
+                if debug:
+                    print 'Item %d of %d.'%(idx+1,len(self.database))
+                    print '\t',matches,cache_string
                 if .95<score<1.0:
-                    print 'Item %d of %d.'%(idx+1,len(self.database)),'%s -> %s.'%(entry['journal'],new_journal)
-                    entry['journal'] = new_journal
+                    entry['journal'] = new_title
+                    if debug:
+                        print '\tREPLACING %s -> %s.'%(entry['journal'],new_title)
+                        print
                 else:
-                    pass
+                    if debug:
+                        print
 
-    def to_bibtex(self):
-        output = ''
-        for entry in self.database:
+    def to_bibtex(self,N=None):
+        if N is None:
+            N = len(self.database)
+        output = u''
+        for entry in self.database[:N]:
             keys = entry.keys()
             keys.remove('entry_type')
             keys.remove('tag')
             keys = sorted(keys,key=lambda x: PARAMETER_PRIORITIES[x])[::-1]
             entry_type = entry['entry_type']
             tag = entry['tag']
-            output = output = output + '@%s{%s,\n'%(entry_type,tag)
+            output = output = output + u'@%s{%s,\n'%(entry_type,tag)
             for key in keys:
-                output = output + '\t%s={%s},\n'%(key,entry[key])
-            output = output[:-2]+'}\n\n'
+                #print key,entry[key]
+                output = output + u'\t%s={%s},\n'%(key,entry[key])
+            output = output[:-2]+u'}\n\n'
+        output = self.escape(output)
         return output
 
+    def escape(self,text,chars='&'):
+        output = text
+        for c in chars:
+            output = output.replace(c,'\%s'%c)
+        return output
+        
     def fix_tag_case(self):
         for entry in self.database:
             entry['tag'] = entry['tag'].lower()
 
-    def fix_tag_logic(self):
+    def fix_tag_logic(self,debug=False):
         for entry in self.database:
+            if debug:
+                print 'working on %s'%entry
             try:
                 title = entry['title']
             except:
@@ -423,23 +515,41 @@ class BibtexBibliography:
             first_author = author_list[0]
             # print 'first_author',first_author
             # print 'comma?',first_author.find(',')
+
+            first_author = first_author.lower()
+            first_author = first_author.replace(', jr','').replace(',jr','').replace('jr','')
+            first_author = first_author.strip()
             
             if first_author.find(',')>-1:
-                author_term = first_author.strip().split(',')[0]
+                author_term = first_author.split(',')[0]
             else:
-                author_term = first_author.strip().split(' ')[-1]
-            author_term = author_term.lower()
+                author_term = first_author.split(' ')[-1]
+            
 
             author_term = ''.join(e for e in author_term if e.isalnum())
-
-
+            
             try:
-                year = entry['year']
+                year = entry['year'].replace(' ','')
             except:
                 year = '0000'
 
-            print '%s%s%s'%(author_term,year,title_term)
-                
+            new_tag = '%s%s%s'%(author_term,year,title_term)
+            entry['tag'] = new_tag
+            continue
+            tag = entry['tag']
+            existing_tags = [x['tag'] for x in self.database]
+            
+            while new_tag in existing_tags:
+                if debug:
+                    print '\t%s is a duplicate'%new_tag
+                    print '\t',[x for x in self.database if x['tag']==new_tag]
+                new_tag = new_tag + '_'
+
+            if debug:
+                if not new_tag==tag:
+                    print '\ttag replaced: %s -> %s'%(tag,new_tag)    
+                    print
+            entry['tag'] = new_tag
 
             
     def fix_josaa(self):
@@ -450,29 +560,48 @@ class BibtexBibliography:
             except:
                 pass
 
-    def remove_brackets(self):
+    def remove_brackets(self,debug=False):
         for entry in self.database:
             keys = entry.keys()
             for key in keys:
                 val = entry[key].strip()
-                if val[0]=='{' and val[-1]=='}':
-                    newval = val[1:-1]
-                    print '%s -> %s'%(entry[key],newval)
+                if len(val):
+                    if val[0]=='{' and val[-1]=='}':
+                        newval = val[1:-1]
+                        if debug:
+                            print '%s -> %s'%(entry[key],newval)
+                        entry[key] = newval
+
+    def remove_newlines(self,debug=False):
+        for entry in self.database:
+            keys = entry.keys()
+            for key in keys:
+                val = entry[key].strip()
+                if len(val):
+                    newval = val.replace('\n',' ').replace('\r','')
+                    if newval==val:
+                        return
+                    if debug:
+                        print '%s -> %s'%(entry[key],newval)
                     entry[key] = newval
-                    
-                    
                 
-            
+build_journal_db = False
+if build_journal_db:
+    jlist = JournalList()
+    jlist.populate_from_csv(os.path.join(JOURNAL_LIST_DIR,'isi_html.csv'))
+    jlist.populate_from_csv(os.path.join(JOURNAL_LIST_DIR,'jlist.csv'))
+    jlist.populate_from_csv(os.path.join(JOURNAL_LIST_DIR,'additions.csv'),True)
+    jlist.write_db(False)
+    
 bb = BibtexBibliography()
-rebuild = False
+rebuild = True
 if rebuild:
     bb.populate_from_bibtex(BIBTEX_FILENAME)
+    bb.remove_brackets()
+    bb.remove_newlines()
     bb.replace_strings(TITLE_KEY_FILENAME)
-    bb.clean_journal_titles()
+    bb.clean_journal_titles(debug=False)
+    bb.fix_tag_logic(debug=False)
     bb.write_db()
 
-bb.read_db()
-bb.fix_tag_logic()
-
-#bb.write_db()
-#print bb.to_bibtex()
+print bb.to_bibtex()
