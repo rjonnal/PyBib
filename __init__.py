@@ -424,7 +424,7 @@ class BibtexBibliography:
         jlist = JournalList()
         jlist.read_db()
 
-        
+
         for idx,entry in enumerate(self.database):
             if not 'journal' in entry.keys():
                 continue
@@ -432,7 +432,7 @@ class BibtexBibliography:
             cache_keys = cache.keys()
             old_title = entry['journal']
             if old_title in cache_keys:
-                matches = [(cache[old_title][0],cache[old_title][1])]
+                matches = [(cache[old_title][0],float(cache[old_title][1]))]
                 cache_string = '(from cache)'
             else:
                 matches = jlist.get_close_matches_long(old_title,n=3)
@@ -448,7 +448,7 @@ class BibtexBibliography:
                 if debug:
                     print 'Item %d of %d.'%(idx+1,len(self.database))
                     print '\t',matches,cache_string
-                if .95<score<1.0:
+                if .9<score<1.0:
                     entry['journal'] = new_title
                     if debug:
                         print '\tREPLACING %s -> %s.'%(entry['journal'],new_title)
@@ -619,6 +619,56 @@ class BibtexBibliography:
                     if debug:
                         print '%s -> %s'%(entry[key],newval)
                     entry[key] = newval
+
+    def title_case(self,string):
+        string = string.replace('-',' ----- ')
+        word_list = string.split(' ')
+        one_word = len(word_list)==1
+        if not word_list[0]==word_list[0].upper():
+            output = [word_list[0].title()]
+        else:
+            output = [word_list[0]]
+        last_colon = False
+        for word in word_list[1:-1]:
+            word = word.strip()
+            if word==word.upper() and all([x.isalnum() for x in word]):
+                output.append(word)
+                continue
+            if last_colon:
+                output.append(word.title())
+            elif word.lower() in LOWER_CASE_WORDS:
+                output.append(word.lower())
+                continue
+            else:
+                output.append(word.title())
+            try:
+                last_colon = word.strip()[-1]==':'
+            except:
+                last_colon = False
+        if not one_word:
+            if not word_list[-1]==word_list[-1].upper():
+                output.append(word_list[-1].title())
+            else:
+                output.append(word_list[-1])
+        return ' '.join(output).replace(' ----- ','-')
+    
+    def fix_title_case(self,debug=False):
+        for entry in self.database:
+            keys = entry.keys()
+            fix_these = ['booktitle','journal']
+            for key in fix_these:
+                try:
+                    oldval = entry[key]
+                    newval = self.title_case(oldval)
+                    if not oldval==newval:
+                        entry[key] = newval
+                        if debug:
+                            print 'REPLACING: %s -> %s'%(oldval,newval)
+                            print
+                except Exception as e:
+                    pass
+                    
+                
                 
 build_journal_db = False
 if build_journal_db:
@@ -637,6 +687,7 @@ if rebuild:
     bb.replace_strings(TITLE_KEY_FILENAME)
     bb.clean_journal_titles(debug=False)
     bb.fix_tag_logic(debug=False)
+    bb.fix_title_case(debug=False)
     bb.write_db()
 
 print bb.to_bibtex()
