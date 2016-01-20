@@ -23,11 +23,65 @@ ISI_HTML_DIR = './journal_list/isi_html'
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 LOWER_CASE_WORDS = ['a', 'aboard', 'about', 'above', 'absent', 'across', 'after', 'against', 'along', 'alongside', 'amid', 'amidst', 'among', 'amongst', 'an', 'and', 'around', 'as', 'aslant', 'astride', 'at', 'athwart', 'atop', 'barring', 'before', 'behind', 'below', 'beneath', 'beside', 'besides', 'between', 'beyond', 'but', 'by', 'despite', 'down', 'during', 'except', 'failing', 'following', 'for', 'for', 'from', 'in', 'inside', 'into', 'like', 'mid', 'minus', 'near', 'next', 'nor', 'notwithstanding', 'of', 'off', 'on', 'onto', 'opposite', 'or', 'out', 'outside', 'over', 'past', 'per', 'plus', 'regarding', 'round', 'save', 'since', 'so', 'than', 'the', 'through', 'throughout', 'till', 'times', 'to', 'toward', 'towards', 'under', 'underneath', 'unlike', 'until', 'up', 'upon', 'via', 'vs.', 'when', 'with', 'within', 'without', 'worth', 'yet']
 
-PARAMETER_PRIORITIES = {'entry_type':99, 'journal':85, 'tag':100, 'year':65, 'title':90, 'publisher':0, 'author':95, 'number':75, 'volume':80, 'pages':70, 'blurb':0, 'note':0, 'booktitle':0, 'organization':0, 'howpublished':0, 'editor':0, 'timestamp':0, 'owner':0, 'institution':0, 'month':0, 'nourl':0, 'abstract':0, 'keywords':0, 'location':0, '__markedentry':-1, 'chapter':0, 'pii':0, 'doi':0, 'pmid':0, 'school':0, 'address':0, 'url':0, 'edition':0, 'city':0, 'issue':0}
+PARAMETER_PRIORITIES = {'entry_type':99, 'journal':85, 'journal_abbreviated':84, 'tag':100, 'year':65, 'title':90, 'publisher':0, 'author':95, 'number':75, 'volume':80, 'pages':70, 'blurb':0, 'note':0, 'booktitle':0, 'organization':0, 'howpublished':0, 'editor':0, 'timestamp':0, 'owner':0, 'institution':0, 'month':0, 'nourl':0, 'abstract':0, 'keywords':0, 'location':0, '__markedentry':-1, 'chapter':0, 'pii':0, 'doi':0, 'pmid':0, 'school':0, 'address':0, 'url':0, 'edition':0, 'city':0, 'issue':0}
 
 ACRONYMNS = ['AO','OCT','SLO','AO-OCT','AO-SLO','AOSLO','AOOCT','SD-OCT','TD-OCT','SS-OCT','pvOCT']
 FIELDS_TO_IGNORE = ['abstract','keywords']
 RETAG_EXISTING = False
+
+
+def title_case_simple(self,string):
+    word_list = string.split(' ')
+    output = [word_list[0].title()]
+    last_colon = False
+    for word in word_list[1:-1]:
+        word = word.strip()
+        if last_colon:
+            output.append(word.title())
+        elif word.lower() in LOWER_CASE_WORDS:
+            output.append(word.lower())
+            continue
+        else:
+            output.append(word.title())
+        try:
+            last_colon = word.strip()[-1]==':'
+        except:
+            last_colon = False
+    output.append(word_list[-1].title())
+    return ' '.join(output)
+    
+def title_case(self,string):
+    string = string.replace('-',' ----- ')
+    word_list = string.split(' ')
+    one_word = len(word_list)==1
+    if not word_list[0]==word_list[0].upper():
+        output = [word_list[0].title()]
+    else:
+        output = [word_list[0]]
+    last_colon = False
+    for word in word_list[1:-1]:
+        word = word.strip()
+        if word==word.upper() and all([x.isalnum() for x in word]):
+            output.append(word)
+            continue
+        if last_colon:
+            output.append(word.title())
+        elif word.lower() in LOWER_CASE_WORDS:
+            output.append(word.lower())
+            continue
+        else:
+            output.append(word.title())
+        try:
+            last_colon = word.strip()[-1]==':'
+        except:
+            last_colon = False
+    if not one_word:
+        if not word_list[-1]==word_list[-1].upper():
+            output.append(word_list[-1].title())
+        else:
+            output.append(word_list[-1])
+    return ' '.join(output).replace(' ----- ','-')
+
 
 class Journal:
 
@@ -38,10 +92,10 @@ class Journal:
         self.short_title = short_title
 
     def __str__(self):
-        return self.short_title
+        return '%s / %s'%(self.long_title,self.short_title)
 
     def __repr__(self):
-        return self.short_title
+        return '%s / %s'%(self.long_title,self.short_title)
 
     def db_put(self,cursor,debug=False):
         if debug:
@@ -58,9 +112,9 @@ class Journal:
 class JournalList:
 
     def __init__(self):
-        self.journals = []
-        self.long_titles = []
-        self.short_titles = []
+        self.journals = {}
+        self.long_titles = {}
+        self.short_titles = {}
         self.conn = sqlite3.connect(DATABASE_FILENAME)
 
     def read_db(self):
@@ -74,7 +128,7 @@ class JournalList:
             writer = csv.writer(csvfile)
             row = ['long_title','short_title']
             writer.writerow(row)
-            for j in self.journals:
+            for j in self.journals.values():
                 writer.writerow([j.long_title,j.short_title])
         
     def write_db(self,debug=False):
@@ -82,7 +136,7 @@ class JournalList:
 
         c.execute('''DROP TABLE IF EXISTS journals''')
         c.execute('''CREATE TABLE journals (long_title TEXT PRIMARY KEY, short_title TEXT)''')
-        for j in self.journals:
+        for j in self.journals.values():
             j.db_put(self.conn.cursor(),debug=debug)
         self.conn.commit()
         
@@ -137,50 +191,51 @@ class JournalList:
                 
     def add(self,long_title,short_title,check_case=False):
         if check_case:
-            long_title = self.title_case(long_title)
-            short_title = self.title_case(short_title)
+            long_title = title_case(long_title)
+            short_title = title_case(short_title)
         journal = Journal(long_title,short_title)
         if not long_title in self.long_titles:
-            self.short_titles.append(short_title)
-            self.long_titles.append(long_title)
-            self.journals.append(journal)
-        
-    def title_case(self,string):
-        word_list = string.split(' ')
-        output = [word_list[0].title()]
-        last_colon = False
-        for word in word_list[1:-1]:
-            word = word.strip()
-            if last_colon:
-                output.append(word.title())
-            elif word.lower() in LOWER_CASE_WORDS:
-                output.append(word.lower())
-                continue
-            else:
-                output.append(word.title())
-            try:
-                last_colon = word.strip()[-1]==':'
-            except:
-                last_colon = False
-        output.append(word_list[-1].title())
-        return ' '.join(output)
-    
+            self.short_titles[short_title.lower()] = short_title
+            self.long_titles[long_title.lower()] = long_title
+            self.journals[long_title.lower()]=journal
 
-    def get_close_matches_short(self,test_string,n=5,cutoff=0.5):
-        return self.get_scored_matches(test_string,self.short_titles,n,cutoff,True)
-
-    def get_close_matches_long(self,test_string,n=5,cutoff=0.5):
-        return self.get_scored_matches(test_string,self.long_titles,n,cutoff,True)
-
-    def get_scored_matches(self,test_string,test_list,n,cutoff,ignore_case):
-        candidates = difflib.get_close_matches(test_string,test_list,n=n,cutoff=cutoff)
+    def get_close_matches(self,test_string,n=5,cutoff=0.5):
+        candidate_keys = difflib.get_close_matches(test_string.lower(),self.long_titles.keys(),n=n,cutoff=cutoff)
+        candidates = []
         scores = []
-        for candidate in candidates:
-            if ignore_case:
-                scores.append(1.0-distance.levenshtein(test_string,candidate,normalized=True))
-            else:
-                scores.append(1.0-distance.levenshtein(test_string.lower(),candidate.lower(),normalized=True))
+
+        for candidate_key in candidate_keys:
+            candidate = self.long_titles[candidate_key]
+            candidates.append(candidate)
+            scores.append(1.0-distance.levenshtein(test_string,candidate))
+
         return zip(candidates,scores)
+    
+    # def get_close_matches_short(self,test_string,n=5,cutoff=0.5):
+    #     return self.get_scored_matches(test_string,self.short_titles,n,cutoff)
+
+    # def get_close_matches_long(self,test_string,n=5,cutoff=0.5):
+    #     return self.get_scored_matches(test_string,self.long_titles,n,cutoff)
+
+
+    # def get_scored_matches(self,test_string,test_dict,n,cutoff):
+    #     candidate_keys = difflib.get_close_matches(test_string,test_dict.keys(),n=n,cutoff=cutoff)
+    #     candidates = []
+    #     scores = []
+        
+    #     for candidate in candidate_keys:
+    #         candidates.append(test_list[candidate]
+            
+    
+    # def get_scored_matches_old(self,test_string,test_list,n,cutoff,ignore_case):
+    #     candidates = difflib.get_close_matches(test_string,test_list,n=n,cutoff=cutoff)
+    #     scores = []
+    #     for candidate in candidates:
+    #         if ignore_case:
+    #             scores.append(1.0-distance.levenshtein(test_string,candidate,normalized=True))
+    #         else:
+    #             scores.append(1.0-distance.levenshtein(test_string.lower(),candidate.lower(),normalized=True))
+    #     return zip(candidates,scores)
     
 
 
@@ -256,6 +311,7 @@ class BibtexString:
                     if val[0]=='{' and val[-1]=='}':
                         val = val[1:-1]
                     out[key] = val
+        
         return out
         
     
@@ -277,8 +333,8 @@ class BibtexBibliography:
         while bs.has_chunks():
             entry = bs.process_chunk()
 
-            while entry['tag'] in self.tags:
-                entry['tag'] = entry['tag'] + '_'
+            #while entry['tag'] in self.tags:
+            #    entry['tag'] = entry['tag'] + '_'
                 
             self.database.append(entry)
             self.add_schema(entry)
@@ -385,7 +441,7 @@ class BibtexBibliography:
             try:
                 journal = item['journal']
                 if journal in keys:
-                    item['journal'] = self.string_database[journal]
+                    item['journal'] = self.string_database[journal].replace('\\','')
             except Exception as e:
                 continue
 
@@ -424,6 +480,7 @@ class BibtexBibliography:
         jlist = JournalList()
         jlist.read_db()
 
+        self.parameters.append('journal_abbreviated')
 
         for idx,entry in enumerate(self.database):
             if not 'journal' in entry.keys():
@@ -431,11 +488,20 @@ class BibtexBibliography:
             
             cache_keys = cache.keys()
             old_title = entry['journal']
+
+            # try to add a key for a short title:
+            key = old_title.lower()
+            try:
+                entry['journal_abbreviated'] = jlist.journals[old_title.lower()].short_title
+            except KeyError as ke:
+                entry['journal_abbreviated'] = old_title
+
+            
             if old_title in cache_keys:
                 matches = [(cache[old_title][0],float(cache[old_title][1]))]
                 cache_string = '(from cache)'
             else:
-                matches = jlist.get_close_matches_long(old_title,n=3)
+                matches = jlist.get_close_matches(old_title,n=3)
                 cache_string = '(fresh match)'
 
             if len(matches):
@@ -457,12 +523,27 @@ class BibtexBibliography:
                     if debug:
                         print
 
-    def to_bibtex(self,N=None):
+    def to_bibtex(self,abbreviated=False,N=None):
         if N is None:
             N = len(self.database)
         output = u''
-        for entry in self.database[:N]:
+        for original_entry in self.database[:N]:
+            entry = {}
+            for key in original_entry.keys():
+                entry[key] = original_entry[key]
             keys = entry.keys()
+            if abbreviated:
+                try:
+                    entry['journal'] = entry['journal_abbreviated']
+                    keys.remove('journal_abbreviated')
+                except:
+                    pass
+            else:
+                try:
+                    keys.remove('journal_abbreviated')
+                except:
+                    pass
+                
             keys.remove('entry_type')
             keys.remove('tag')
             keys = sorted(keys,key=lambda x: PARAMETER_PRIORITIES[x])[::-1]
@@ -473,13 +554,9 @@ class BibtexBibliography:
             to_add = to_add.encode('utf-8','replace')
             output = output = output + to_add
             for key in keys:
-                #output = output + u'\t%s={%s},\n'%(key,entry[key])
                 to_add = '\t%s={%s},\n'%(key,entry[key])
                 to_add = to_add.encode('utf-8','replace')
                 output = output + to_add
-
-
-                
             output = output[:-2]+u'}\n\n'
         output = self.escape(output)
         return output
@@ -620,37 +697,6 @@ class BibtexBibliography:
                         print '%s -> %s'%(entry[key],newval)
                     entry[key] = newval
 
-    def title_case(self,string):
-        string = string.replace('-',' ----- ')
-        word_list = string.split(' ')
-        one_word = len(word_list)==1
-        if not word_list[0]==word_list[0].upper():
-            output = [word_list[0].title()]
-        else:
-            output = [word_list[0]]
-        last_colon = False
-        for word in word_list[1:-1]:
-            word = word.strip()
-            if word==word.upper() and all([x.isalnum() for x in word]):
-                output.append(word)
-                continue
-            if last_colon:
-                output.append(word.title())
-            elif word.lower() in LOWER_CASE_WORDS:
-                output.append(word.lower())
-                continue
-            else:
-                output.append(word.title())
-            try:
-                last_colon = word.strip()[-1]==':'
-            except:
-                last_colon = False
-        if not one_word:
-            if not word_list[-1]==word_list[-1].upper():
-                output.append(word_list[-1].title())
-            else:
-                output.append(word_list[-1])
-        return ' '.join(output).replace(' ----- ','-')
     
     def fix_title_case(self,debug=False):
         for entry in self.database:
@@ -659,7 +705,7 @@ class BibtexBibliography:
             for key in fix_these:
                 try:
                     oldval = entry[key]
-                    newval = self.title_case(oldval)
+                    newval = title_case(oldval)
                     if not oldval==newval:
                         entry[key] = newval
                         if debug:
@@ -690,4 +736,5 @@ if rebuild:
     bb.fix_title_case(debug=False)
     bb.write_db()
 
-print bb.to_bibtex()
+bb.read_db()
+print bb.to_bibtex(abbreviated=True)
