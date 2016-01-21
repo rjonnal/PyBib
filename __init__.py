@@ -6,20 +6,22 @@ import difflib
 import urllib2
 import distance
 
-JOURNAL_LIST_DIR = './journal_list'
-JOURNAL_LIST_FILENAME = './journal_list/jlist.csv'
+root = os.path.dirname(os.path.realpath(__file__))
+
+JOURNAL_LIST_DIR = os.path.join(root,'journal_list')
+JOURNAL_LIST_FILENAME = os.path.join(root,'journal_list/jlist.csv')
 REPLACEMENT_CACHE_DIR = os.path.join(JOURNAL_LIST_DIR,'journal_title_replacements')
 try:
     os.makedirs(REPLACEMENT_CACHE_DIR)
 except:
     pass
 REPLACEMENT_CACHE_FILENAME = os.path.join(REPLACEMENT_CACHE_DIR,'journal_title_replacements.csv')
-DATABASE_FILENAME = './db/pybib.db'
-#BIBTEX_FILENAME = './bibtex/bibliography.bib'
-BIBTEX_FILENAME = './bibtex/bibliography_full.bib'
-TITLE_KEY_FILENAME = './bibtex/longtitles.bib'
+DATABASE_FILENAME = os.path.join(root,'db/pybib.db')
+#BIBTEX_FILENAME = os.path.join(root,'bibtex/bibliography.bib'
+BIBTEX_FILENAME = os.path.join(root,'bibtex/bibliography_full.bib')
+TITLE_KEY_FILENAME = os.path.join(root,'bibtex/longtitles.bib')
 VALID_ENTRY_MINIMUM_LENGTH = 10
-ISI_HTML_DIR = './journal_list/isi_html'
+ISI_HTML_DIR = os.path.join(root,'journal_list/isi_html')
 LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 LOWER_CASE_WORDS = ['a', 'aboard', 'about', 'above', 'absent', 'across', 'after', 'against', 'along', 'alongside', 'amid', 'amidst', 'among', 'amongst', 'an', 'and', 'around', 'as', 'aslant', 'astride', 'at', 'athwart', 'atop', 'barring', 'before', 'behind', 'below', 'beneath', 'beside', 'besides', 'between', 'beyond', 'but', 'by', 'despite', 'down', 'during', 'except', 'failing', 'following', 'for', 'for', 'from', 'in', 'inside', 'into', 'like', 'mid', 'minus', 'near', 'next', 'nor', 'notwithstanding', 'of', 'off', 'on', 'onto', 'opposite', 'or', 'out', 'outside', 'over', 'past', 'per', 'plus', 'regarding', 'round', 'save', 'since', 'so', 'than', 'the', 'through', 'throughout', 'till', 'times', 'to', 'toward', 'towards', 'under', 'underneath', 'unlike', 'until', 'up', 'upon', 'via', 'vs.', 'when', 'with', 'within', 'without', 'worth', 'yet']
 
@@ -715,26 +717,3 @@ class BibtexBibliography:
                     pass
                     
                 
-                
-build_journal_db = False
-if build_journal_db:
-    jlist = JournalList()
-    jlist.populate_from_csv(os.path.join(JOURNAL_LIST_DIR,'isi_html.csv'))
-    jlist.populate_from_csv(os.path.join(JOURNAL_LIST_DIR,'jlist.csv'))
-    jlist.populate_from_csv(os.path.join(JOURNAL_LIST_DIR,'additions.csv'),True)
-    jlist.write_db(False)
-    
-bb = BibtexBibliography()
-rebuild = True
-if rebuild:
-    bb.populate_from_bibtex(BIBTEX_FILENAME)
-    bb.remove_brackets()
-    bb.remove_newlines()
-    bb.replace_strings(TITLE_KEY_FILENAME)
-    bb.clean_journal_titles(debug=False)
-    bb.fix_tag_logic(debug=False)
-    bb.fix_title_case(debug=False)
-    bb.write_db()
-
-bb.read_db()
-print bb.to_bibtex(abbreviated=True)
